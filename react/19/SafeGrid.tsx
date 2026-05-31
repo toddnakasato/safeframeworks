@@ -7,7 +7,7 @@
 import { useState } from "react";
 import type { ConfigBase, OnSafeEvent } from "safecomponents";
 import { createSafeEvent } from "safecomponents";
-import { GRID_DEFAULTS } from "safecomponents/src/components/grid";
+import { GRID_DEFAULTS } from "safecomponents/components/grid";
 import { SafeGridCell } from "./SafeGridCell";
 
 export interface SafeGridProps {

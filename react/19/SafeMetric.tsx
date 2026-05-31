@@ -8,7 +8,7 @@ import { useRef, useEffect } from "react";
 import gsap from "gsap";
 import type { ConfigBase, OnSafeEvent } from "safecomponents";
 import { createSafeEvent } from "safecomponents";
-import type { TrendDirection } from "safecomponents/src/components/metric";
+import type { TrendDirection } from "safecomponents/components/metric";
 import { fmtCurrency, fmtInt, fmtPercent, fmtNumber } from "safecomponents";
 
 export interface SafeMetricProps {
