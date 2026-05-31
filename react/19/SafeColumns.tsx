@@ -1,0 +1,77 @@
+/**
+ * SafeColumns — 12-column CSS grid positioning system.
+ *
+ * Renders via data-attributes. Zero Tailwind. Zero hardcoded values.
+ * Gallery JSON is the single source of truth.
+ *
+ * Children are ConfigBase entries in config.children.
+ * Each child's metadata.span (1–12) controls how many columns it occupies.
+ * Each child's metadata.start (1–12) controls where it begins (optional).
+ */
+import type { ReactNode } from "react";
+import type { ConfigBase, OnSafeEvent } from "safecomponents";
+import { createSafeEvent } from "safecomponents";
+import { COLUMNS_DEFAULTS } from "safecomponents/src/components/columns";
+import { useRenderLog, type RenderLogFn } from "./hooks/useRenderLog";
+
+export interface SafeColumnsProps {
+  config: ConfigBase;
+  /** Render function — receives child config key + config, returns ReactNode */
+  renderChild: (key: string, childConfig: ConfigBase) => ReactNode;
+  onEvent?: OnSafeEvent;
+  onRenderLog?: RenderLogFn;
+}
+
+export function SafeColumns({ config, renderChild, onEvent, onRenderLog }: SafeColumnsProps) {
+  const { metadata } = config;
+  const D = COLUMNS_DEFAULTS;
+  const totalColumns = (metadata.totalColumns as number) ?? D.totalColumns;
+  const gap = (metadata.gap as string) ?? D.gap;
+  const rowGap = (metadata.rowGap as string) ?? gap;
+  const spacing = (metadata.spacing as string) ?? D.spacing;
+  const surface = (metadata.surface as string) ?? D.surface;
+  const radius = (metadata.radius as string) ?? D.radius;
+
+  const renderRef = useRenderLog(onRenderLog, {
+    component: "columns",
+    variant: `${totalColumns}-col`,
+  });
+
+  const gridStyle: React.CSSProperties = {
+    display: "grid",
+    gridTemplateColumns: `repeat(${totalColumns}, minmax(0, 1fr))`,
+    gap,
+    rowGap,
+  };
+
+  const children = config.children ?? {};
+
+  return (
+    <div
+      ref={renderRef}
+      data-component="columns"
+      data-surface={surface}
+      data-radius={radius}
+      data-spacing={spacing}
+      data-columns={totalColumns}
+      style={gridStyle}
+    >
+      {Object.entries(children).map(([key, childConfig]) => {
+        const span = (childConfig.metadata.span as number) ?? totalColumns;
+        const start = childConfig.metadata.start as number | undefined;
+
+        const cellStyle: React.CSSProperties = {
+          gridColumn: start
+            ? `${start} / span ${span}`
+            : `span ${span}`,
+        };
+
+        return (
+          <div key={key} data-role="column" data-span={span} style={cellStyle}>
+            {renderChild(key, childConfig)}
+          </div>
+        );
+      })}
+    </div>
+  );
+}
