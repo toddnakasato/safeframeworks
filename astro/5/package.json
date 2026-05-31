@@ -1,0 +1,10 @@
+{
+  "name": "safeframeworks-astro-5",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "index.ts",
+  "peerDependencies": {
+    "astro": "^5",
+    "safecomponents": "*"
+  }
+}

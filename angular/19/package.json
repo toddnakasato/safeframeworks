@@ -1,0 +1,10 @@
+{
+  "name": "safeframeworks-angular-19",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "index.ts",
+  "peerDependencies": {
+    "@angular/core": "^19",
+    "safecomponents": "*"
+  }
+}

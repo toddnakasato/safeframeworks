@@ -1,0 +1,10 @@
+{
+  "name": "safeframeworks-svelte-4",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "index.ts",
+  "peerDependencies": {
+    "svelte": "^4",
+    "safecomponents": "*"
+  }
+}
