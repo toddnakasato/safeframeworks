@@ -1,0 +1,11 @@
+{
+  "name": "safeframeworks-react-18",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "index.ts",
+  "peerDependencies": {
+    "react": "^18",
+    "react-dom": "^18",
+    "safecomponents": "*"
+  }
+}
