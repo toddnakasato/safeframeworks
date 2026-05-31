@@ -18,7 +18,7 @@ import { SafeDragDrop } from "./SafeDragDrop";
 import { SafeCard } from "./SafeCard";
 import { SafeChart } from "./SafeChart";
 import { SafeColumns } from "./SafeColumns";
-import { SafeFloorplan } from "./SafeFloorplan";
+  // SafeFloorplan not available in React 19 — react-konva requires React 18
 import { SafeFunnel } from "./SafeFunnel";
 import { SafeGauge } from "./SafeGauge";
 import { SafeGrid } from "./SafeGrid";
@@ -198,9 +198,7 @@ export function renderConfigBase(
     return <SafeMap config={config} data={list} onEvent={onEvent} />;
   }
 
-  if (component === "floorplan") {
-    return <SafeFloorplan config={config} data={record} onEvent={onEvent} />;
-  }
+  // SafeFloorplan not available in React 19 — react-konva requires React 18
 
   // --- Unknown ---
   return (
