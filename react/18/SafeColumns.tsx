@@ -11,7 +11,7 @@
 import type { ReactNode } from "react";
 import type { ConfigBase, OnSafeEvent } from "safecomponents";
 import { createSafeEvent } from "safecomponents";
-import { COLUMNS_DEFAULTS } from "safecomponents/src/components/columns";
+import { COLUMNS_DEFAULTS } from "safecomponents/components/columns";
 import { useRenderLog, type RenderLogFn } from "./hooks/useRenderLog";
 
 export interface SafeColumnsProps {

@@ -13,11 +13,10 @@ export default defineConfig({
   },
   build: {
     outDir: "../dist",
-    emptyDir: true,
   },
   resolve: {
     alias: {
-      "safecomponents": path.resolve(__dirname, "core.ts"),
+      "safecomponents": path.resolve(__dirname, "../../../safecomponents/src"),
     },
   },
 });

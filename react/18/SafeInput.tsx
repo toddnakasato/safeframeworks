@@ -10,8 +10,8 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import type { ConfigBase, OnSafeEvent } from "safecomponents";
 import { createSafeEvent } from "safecomponents";
-import type { InputType, InputOption, LookupRecord, DisplayFormat } from "safecomponents/src/components/input";
-import { INPUT_DEFAULTS } from "safecomponents/src/components/input";
+import type { InputType, InputOption, LookupRecord, DisplayFormat } from "safecomponents/components/input";
+import { INPUT_DEFAULTS } from "safecomponents/components/input";
 import Editor from "@monaco-editor/react";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";

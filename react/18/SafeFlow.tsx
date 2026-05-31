@@ -9,7 +9,7 @@ import type {
   FlowStep,
   FlowBranch,
   FlowStory,
-} from "safecomponents/src/components/flow";
+} from "safecomponents/components/flow";
 
 export interface SafeFlowProps {
   config: ConfigBase;

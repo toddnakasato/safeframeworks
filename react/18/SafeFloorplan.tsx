@@ -9,7 +9,7 @@ import React, { useState, useCallback, useMemo, useEffect, useRef } from "react"
 import { Stage, Layer, Line, Rect, Circle, Text, Group } from "react-konva";
 import type { ConfigBase, OnSafeEvent } from "safecomponents";
 import { createSafeEvent } from "safecomponents";
-import type { FloorplanItem, FloorplanStructure, Room, Wall } from "safecomponents/src/components/floorplan";
+import type { FloorplanItem, FloorplanStructure, Room, Wall } from "safecomponents/components/floorplan";
 
 export interface SafeFloorplanProps {
   config: ConfigBase;

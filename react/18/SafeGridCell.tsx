@@ -7,7 +7,7 @@
 import type { Field, ConfigBase, OnSafeEvent } from "safecomponents";
 import { createSafeEvent } from "safecomponents";
 import { SafeInput } from "./SafeInput";
-import { INPUT_DEFAULTS } from "safecomponents/src/components/input";
+import { INPUT_DEFAULTS } from "safecomponents/components/input";
 
 export interface SafeGridCellProps {
   field: Field;
