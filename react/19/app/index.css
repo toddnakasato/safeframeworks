@@ -1,0 +1,32 @@
+@import "../../../../safecomponents/src/styles/components.css";
+
+:root {
+  --sd-surface: #f8f8f8;
+  --sd-surface-raised: #ffffff;
+  --sd-surface-overlay: #f0f0f0;
+  --sd-text: #333333;
+  --sd-text-muted: #666666;
+  --sd-text-dim: #999999;
+  --sd-border: #e0e0e0;
+  --sd-accent: #4a90d9;
+  --sd-accent-muted: rgba(74, 144, 217, 0.15);
+  --sd-success: #22c55e;
+  --sd-danger: #ef4444;
+  --sd-warning: #f59e0b;
+  --sd-row-hover: rgba(0, 0, 0, 0.04);
+  --sd-row-selected: rgba(74, 144, 217, 0.12);
+  --sd-radius-md: 6px;
+}
+
+body {
+  margin: 0;
+  background: var(--sd-surface);
+  color: var(--sd-text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 13px;
+}
+
+#root {
+  height: 100vh;
+  display: flex;
+}
