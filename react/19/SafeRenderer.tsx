@@ -80,7 +80,7 @@ export function renderConfigBase(
     for (const [key, child] of Object.entries(config.children ?? {})) {
       regions[key] = renderConfigBase(child, wrappedOnEvent);
     }
-    return <SafeLayout config={config} regions={regions} wrappedOnEvent={wrappedOnEvent} />;
+    return <SafeLayout config={config} regions={regions} onEvent={wrappedOnEvent} />;
   }
 
   if (component === "columns") {
@@ -88,7 +88,7 @@ export function renderConfigBase(
       <SafeColumns
         config={config}
         renderChild={(_key, child) => renderConfigBase(child, wrappedOnEvent)}
-        wrappedOnEvent={wrappedOnEvent}
+        onEvent={wrappedOnEvent}
       />
     );
   }
@@ -108,7 +108,7 @@ export function renderConfigBase(
     }
     return (
       <div>
-        <SafeCard config={config} data={record} wrappedOnEvent={wrappedOnEvent} />
+        <SafeCard config={config} data={record} onEvent={wrappedOnEvent} />
         {childNodes.length > 0 && (
           <div data-role="card-actions" style={{ display: "flex", gap: "var(--sd-space-md)", padding: "var(--sd-space-md) var(--sd-space-lg)" }}>
             {childNodes}
@@ -121,31 +121,31 @@ export function renderConfigBase(
   // --- Leaf components ---
 
   if (component === "calendar") {
-    return <SafeCalendar config={config} wrappedOnEvent={wrappedOnEvent} />;
+    return <SafeCalendar config={config} onEvent={wrappedOnEvent} />;
   }
   if (component === "toggle") {
-    return <SafeToggle config={config} data={list} wrappedOnEvent={wrappedOnEvent} />;
+    return <SafeToggle config={config} data={list} onEvent={wrappedOnEvent} />;
   }
   if (component === "week") {
-    return <SafeWeek config={config} wrappedOnEvent={wrappedOnEvent} />;
+    return <SafeWeek config={config} onEvent={wrappedOnEvent} />;
   }
   if (component === "chat") {
-    return <SafeChat config={config} wrappedOnEvent={wrappedOnEvent} />;
+    return <SafeChat config={config} onEvent={wrappedOnEvent} />;
   }
   if (component === "tabs") {
-    return <SafeTabs config={config} wrappedOnEvent={wrappedOnEvent} />;
+    return <SafeTabs config={config} onEvent={wrappedOnEvent} />;
   }
   if (component === "callout") {
-    return <SafeCallout config={config} wrappedOnEvent={wrappedOnEvent} />;
+    return <SafeCallout config={config} onEvent={wrappedOnEvent} />;
   }
   if (component === "drag-drop") {
-    return <SafeDragDrop config={config} data={list} wrappedOnEvent={wrappedOnEvent} />;
+    return <SafeDragDrop config={config} data={list} onEvent={wrappedOnEvent} />;
   }
   if (component === "button") {
     return (
       <SafeButton
         config={config}
-        wrappedOnEvent={wrappedOnEvent}
+        onEvent={wrappedOnEvent}
         eventContext={ctx?.parentContext}
         renderChild={(key, child) => renderConfigBase(child, wrappedOnEvent, { parentContext: { parent: (config.metadata.ref as string) ?? "button", path: key } })}
       />
@@ -153,60 +153,60 @@ export function renderConfigBase(
   }
 
   if (component === "grid") {
-    return <SafeGrid config={config} data={record} wrappedOnEvent={wrappedOnEvent} />;
+    return <SafeGrid config={config} data={record} onEvent={wrappedOnEvent} />;
   }
 
   if (component === "input") {
     const field = (config.metadata.field as string) ?? Object.keys(record)[0];
-    return <SafeInput config={config} data={record} field={field} wrappedOnEvent={wrappedOnEvent} />;
+    return <SafeInput config={config} data={record} field={field} onEvent={wrappedOnEvent} />;
   }
 
   if (component === "picker") {
-    return <SafePicker config={config} data={list} wrappedOnEvent={wrappedOnEvent} />;
+    return <SafePicker config={config} data={list} onEvent={wrappedOnEvent} />;
   }
 
   if (component === "table") {
-    return <SafeTable config={config} data={list} wrappedOnEvent={wrappedOnEvent} />;
+    return <SafeTable config={config} data={list} onEvent={wrappedOnEvent} />;
   }
 
   if (component === "tree") {
-    return <SafeTree config={config} data={list} wrappedOnEvent={wrappedOnEvent} />;
+    return <SafeTree config={config} data={list} onEvent={wrappedOnEvent} />;
   }
 
   if (component === "sheet") {
-    return <SafeSheet config={config} data={list} wrappedOnEvent={wrappedOnEvent} />;
+    return <SafeSheet config={config} data={list} onEvent={wrappedOnEvent} />;
   }
 
   if (component === "chart") {
-    return <SafeChart config={config} data={list} wrappedOnEvent={wrappedOnEvent} />;
+    return <SafeChart config={config} data={list} onEvent={wrappedOnEvent} />;
   }
 
   if (component === "heatmap") {
-    return <SafeHeatmap config={config} data={list} wrappedOnEvent={wrappedOnEvent} />;
+    return <SafeHeatmap config={config} data={list} onEvent={wrappedOnEvent} />;
   }
 
   if (component === "gauge") {
-    return <SafeGauge config={config} data={record} wrappedOnEvent={wrappedOnEvent} />;
+    return <SafeGauge config={config} data={record} onEvent={wrappedOnEvent} />;
   }
 
   if (component === "funnel") {
-    return <SafeFunnel config={config} data={list} wrappedOnEvent={wrappedOnEvent} />;
+    return <SafeFunnel config={config} data={list} onEvent={wrappedOnEvent} />;
   }
 
   if (component === "sankey") {
-    return <SafeSankey config={config} data={record as any} wrappedOnEvent={wrappedOnEvent} />;
+    return <SafeSankey config={config} data={record as any} onEvent={wrappedOnEvent} />;
   }
 
   if (component === "treemap") {
-    return <SafeTreemap config={config} data={list} wrappedOnEvent={wrappedOnEvent} />;
+    return <SafeTreemap config={config} data={list} onEvent={wrappedOnEvent} />;
   }
 
   if (component === "timeline") {
-    return <SafeTimeline config={config} data={list} wrappedOnEvent={wrappedOnEvent} />;
+    return <SafeTimeline config={config} data={list} onEvent={wrappedOnEvent} />;
   }
 
   if (component === "map") {
-    return <SafeMap config={config} data={list} wrappedOnEvent={wrappedOnEvent} />;
+    return <SafeMap config={config} data={list} onEvent={wrappedOnEvent} />;
   }
 
   // SafeFloorplan not available in React 19 — react-konva requires React 18
