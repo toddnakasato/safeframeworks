@@ -62,22 +62,33 @@ export function renderConfigBase(
   const component = config.metadata.component as string;
   const { inline, list, record } = extractData(config);
 
+  // If this config has an eventHandler, wrap onEvent to tag events with the handler name
+  const wrappedOnEvent: OnSafeEvent | undefined = onEvent && config.eventHandler
+    ? (event) => {
+        const tagged = {
+          ...event,
+          context: { ...(event.context ?? {}), eventHandler: config.eventHandler },
+        };
+        onEvent(tagged as any);
+      }
+    : onEvent;
+
   // --- Container components (recurse into children) ---
 
   if (component === "layout") {
     const regions: Record<string, ReactNode> = {};
     for (const [key, child] of Object.entries(config.children ?? {})) {
-      regions[key] = renderConfigBase(child, onEvent);
+      regions[key] = renderConfigBase(child, wrappedOnEvent);
     }
-    return <SafeLayout config={config} regions={regions} onEvent={onEvent} />;
+    return <SafeLayout config={config} regions={regions} wrappedOnEvent={wrappedOnEvent} />;
   }
 
   if (component === "columns") {
     return (
       <SafeColumns
         config={config}
-        renderChild={(_key, child) => renderConfigBase(child, onEvent)}
-        onEvent={onEvent}
+        renderChild={(_key, child) => renderConfigBase(child, wrappedOnEvent)}
+        wrappedOnEvent={wrappedOnEvent}
       />
     );
   }
@@ -88,7 +99,7 @@ export function renderConfigBase(
       for (const [key, child] of Object.entries(config.children)) {
         childNodes.push(
           <div key={key} data-child={key}>
-            {renderConfigBase(child, onEvent, {
+            {renderConfigBase(child, wrappedOnEvent, {
               parentContext: { parent: (config.metadata.ref as string) ?? "card", path: key },
             })}
           </div>
@@ -97,7 +108,7 @@ export function renderConfigBase(
     }
     return (
       <div>
-        <SafeCard config={config} data={record} onEvent={onEvent} />
+        <SafeCard config={config} data={record} wrappedOnEvent={wrappedOnEvent} />
         {childNodes.length > 0 && (
           <div data-role="card-actions" style={{ display: "flex", gap: "var(--sd-space-md)", padding: "var(--sd-space-md) var(--sd-space-lg)" }}>
             {childNodes}
@@ -110,92 +121,92 @@ export function renderConfigBase(
   // --- Leaf components ---
 
   if (component === "calendar") {
-    return <SafeCalendar config={config} onEvent={onEvent} />;
+    return <SafeCalendar config={config} wrappedOnEvent={wrappedOnEvent} />;
   }
   if (component === "toggle") {
-    return <SafeToggle config={config} data={list} onEvent={onEvent} />;
+    return <SafeToggle config={config} data={list} wrappedOnEvent={wrappedOnEvent} />;
   }
   if (component === "week") {
-    return <SafeWeek config={config} onEvent={onEvent} />;
+    return <SafeWeek config={config} wrappedOnEvent={wrappedOnEvent} />;
   }
   if (component === "chat") {
-    return <SafeChat config={config} onEvent={onEvent} />;
+    return <SafeChat config={config} wrappedOnEvent={wrappedOnEvent} />;
   }
   if (component === "tabs") {
-    return <SafeTabs config={config} onEvent={onEvent} />;
+    return <SafeTabs config={config} wrappedOnEvent={wrappedOnEvent} />;
   }
   if (component === "callout") {
-    return <SafeCallout config={config} onEvent={onEvent} />;
+    return <SafeCallout config={config} wrappedOnEvent={wrappedOnEvent} />;
   }
   if (component === "drag-drop") {
-    return <SafeDragDrop config={config} data={list} onEvent={onEvent} />;
+    return <SafeDragDrop config={config} data={list} wrappedOnEvent={wrappedOnEvent} />;
   }
   if (component === "button") {
     return (
       <SafeButton
         config={config}
-        onEvent={onEvent}
+        wrappedOnEvent={wrappedOnEvent}
         eventContext={ctx?.parentContext}
-        renderChild={(key, child) => renderConfigBase(child, onEvent, { parentContext: { parent: (config.metadata.ref as string) ?? "button", path: key } })}
+        renderChild={(key, child) => renderConfigBase(child, wrappedOnEvent, { parentContext: { parent: (config.metadata.ref as string) ?? "button", path: key } })}
       />
     );
   }
 
   if (component === "grid") {
-    return <SafeGrid config={config} data={record} onEvent={onEvent} />;
+    return <SafeGrid config={config} data={record} wrappedOnEvent={wrappedOnEvent} />;
   }
 
   if (component === "input") {
     const field = (config.metadata.field as string) ?? Object.keys(record)[0];
-    return <SafeInput config={config} data={record} field={field} onEvent={onEvent} />;
+    return <SafeInput config={config} data={record} field={field} wrappedOnEvent={wrappedOnEvent} />;
   }
 
   if (component === "picker") {
-    return <SafePicker config={config} data={list} onEvent={onEvent} />;
+    return <SafePicker config={config} data={list} wrappedOnEvent={wrappedOnEvent} />;
   }
 
   if (component === "table") {
-    return <SafeTable config={config} data={list} onEvent={onEvent} />;
+    return <SafeTable config={config} data={list} wrappedOnEvent={wrappedOnEvent} />;
   }
 
   if (component === "tree") {
-    return <SafeTree config={config} data={list} onEvent={onEvent} />;
+    return <SafeTree config={config} data={list} wrappedOnEvent={wrappedOnEvent} />;
   }
 
   if (component === "sheet") {
-    return <SafeSheet config={config} data={list} onEvent={onEvent} />;
+    return <SafeSheet config={config} data={list} wrappedOnEvent={wrappedOnEvent} />;
   }
 
   if (component === "chart") {
-    return <SafeChart config={config} data={list} onEvent={onEvent} />;
+    return <SafeChart config={config} data={list} wrappedOnEvent={wrappedOnEvent} />;
   }
 
   if (component === "heatmap") {
-    return <SafeHeatmap config={config} data={list} onEvent={onEvent} />;
+    return <SafeHeatmap config={config} data={list} wrappedOnEvent={wrappedOnEvent} />;
   }
 
   if (component === "gauge") {
-    return <SafeGauge config={config} data={record} onEvent={onEvent} />;
+    return <SafeGauge config={config} data={record} wrappedOnEvent={wrappedOnEvent} />;
   }
 
   if (component === "funnel") {
-    return <SafeFunnel config={config} data={list} onEvent={onEvent} />;
+    return <SafeFunnel config={config} data={list} wrappedOnEvent={wrappedOnEvent} />;
   }
 
   if (component === "sankey") {
-    return <SafeSankey config={config} data={record as any} onEvent={onEvent} />;
+    return <SafeSankey config={config} data={record as any} wrappedOnEvent={wrappedOnEvent} />;
   }
 
   if (component === "treemap") {
-    return <SafeTreemap config={config} data={list} onEvent={onEvent} />;
+    return <SafeTreemap config={config} data={list} wrappedOnEvent={wrappedOnEvent} />;
   }
 
   if (component === "timeline") {
-    return <SafeTimeline config={config} data={list} onEvent={onEvent} />;
+    return <SafeTimeline config={config} data={list} wrappedOnEvent={wrappedOnEvent} />;
   }
 
   if (component === "map") {
-    return <SafeMap config={config} data={list} onEvent={onEvent} />;
+    return <SafeMap config={config} data={list} wrappedOnEvent={wrappedOnEvent} />;
   }
 
   // SafeFloorplan not available in React 19 — react-konva requires React 18
