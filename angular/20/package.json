@@ -1,10 +1,10 @@
 {
-  "name": "safeframeworks-vue-4",
+  "name": "safeframeworks-angular-20",
   "version": "0.1.0",
   "type": "module",
   "main": "index.ts",
   "peerDependencies": {
-    "vue": "^3.5",
+    "@angular/core": "^20",
     "safecomponents": "*"
   }
 }
