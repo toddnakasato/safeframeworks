@@ -239,7 +239,7 @@ export async function resolveConfigLayout(
   state?: Record<string, any>,
 ): Promise<ConfigBase> {
   const children: Record<string, ConfigBase> = {};
-  for (const [slot, rawPath] of Object.entries(layout.children ?? {})) {
+  for (const [slot, rawPath] of Object.entries(layout.slots ?? {})) {
     // Interpolate {{key}} templates from state
     let filePath = rawPath;
     if (state) {
@@ -257,6 +257,7 @@ export async function resolveConfigLayout(
     if (resolved) children[slot] = resolved;
   }
   return {
+    component: "layout",
     metadata: { ...layout.metadata },
     children,
   };
