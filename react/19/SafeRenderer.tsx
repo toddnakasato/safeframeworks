@@ -61,7 +61,7 @@ export function renderConfigBase(
   onEvent?: OnSafeEvent,
   ctx?: RenderContext,
 ): ReactNode {
-  const component = config.metadata.component as string;
+  const component = config.component ?? (config.metadata.component as string);
   const { inline, list, record } = extractData(config);
 
   // Resolve the handler: this config's own eventHandler takes precedence, otherwise inherit from parent context

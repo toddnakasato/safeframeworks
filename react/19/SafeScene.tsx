@@ -66,7 +66,7 @@ function renderConfig(
   onRenderLog?: RenderLogFn,
   boundState?: Record<string, any>,
 ): ReactNode {
-  const component = config.metadata.component;
+  const component = config.component ?? config.metadata.component;
 
   // Recursively render children into regions
   const regions: Record<string, ReactNode> = {};
