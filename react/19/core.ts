@@ -8,3 +8,5 @@ export { createDispatcher } from "../../../safecontracts/src/dispatcher";
 export type { Dispatcher, EventFires, EventShape, EventShapeMap } from "../../../safecontracts/src/dispatcher";
 export { fmtDate, fmtCurrency, fmtInt, fmtPercent, fmtStr, fmtNumber } from "../../../safecontracts/src/formatter";
 export { resolveColors } from "../../../safecontracts/src/palette";
+export type { GalleryEntry, ResolverContext } from "../../../safecontracts/src/registry";
+export { resolve } from "../../../safecontracts/src/resolver";
