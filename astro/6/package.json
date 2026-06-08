@@ -1,10 +1,10 @@
 {
-  "name": "safeframeworks-astro-5",
+  "name": "safeframeworks-astro-6",
   "version": "0.1.0",
   "type": "module",
   "main": "index.ts",
   "peerDependencies": {
-    "astro": "^5",
+    "astro": "^6",
     "safecontracts": "*"
   }
 }

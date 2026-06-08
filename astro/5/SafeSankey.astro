@@ -1,0 +1,22 @@
+---
+/**
+ * SafeSankey — Astro 5 sankey component.
+ * Implements sankey contract from safecontracts.
+ * Outputs data-* attributes for intent. No hardcoded CSS.
+ */
+import type { ConfigBase, OnSafeEvent } from 'safecontracts';
+
+interface Props {
+  config: ConfigBase;
+  onEvent?: OnSafeEvent;
+}
+
+const { config, onEvent } = Astro.props;
+---
+
+<div
+  data-component="sankey"
+  data-variant={config.metadata.variant}
+>
+  <slot />
+</div>

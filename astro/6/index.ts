@@ -1,4 +1,4 @@
-// safeframeworks/astro/5 — Astro 5 component exports
+// safeframeworks/astro/6 — Astro 6 component exports
 
 export { default as SafeLayout } from './SafeLayout.astro';
 export { default as SafeColumns } from './SafeColumns.astro';
