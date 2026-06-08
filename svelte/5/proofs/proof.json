@@ -1,7 +1,7 @@
 {
   "ok": true,
-  "framework": "react",
-  "version": "19",
+  "framework": "svelte",
+  "version": "5",
   "checked": 26,
   "failures": []
 }

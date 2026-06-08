@@ -5,6 +5,6 @@
   "main": "index.ts",
   "peerDependencies": {
     "svelte": "^5",
-    "safecomponents": "*"
+    "safecontracts": "*"
   }
 }

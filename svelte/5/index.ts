@@ -1,9 +1,28 @@
-/**
- * safeframeworks/svelte/5
- * 
- * Framework-native components implementing safecomponents contracts.
- * Same ConfigBase, same Intent, same events — Svelte rendering.
- * 
- * TODO: Implement components against safecomponents contracts.
- */
-export {};
+// safeframeworks/svelte/5 — Svelte 5 component exports
+
+export { default as SafeLayout } from "./SafeLayout.svelte";
+export { default as SafeColumns } from "./SafeColumns.svelte";
+export { default as SafeCard } from "./SafeCard.svelte";
+export { default as SafeButton } from "./SafeButton.svelte";
+export { default as SafeTable } from "./SafeTable.svelte";
+export { default as SafeTree } from "./SafeTree.svelte";
+export { default as SafeSheet } from "./SafeSheet.svelte";
+export { default as SafeChart } from "./SafeChart.svelte";
+export { default as SafeHeatmap } from "./SafeHeatmap.svelte";
+export { default as SafeGauge } from "./SafeGauge.svelte";
+export { default as SafeFunnel } from "./SafeFunnel.svelte";
+export { default as SafeSankey } from "./SafeSankey.svelte";
+export { default as SafeTreemap } from "./SafeTreemap.svelte";
+export { default as SafeTimeline } from "./SafeTimeline.svelte";
+export { default as SafeMap } from "./SafeMap.svelte";
+export { default as SafeCalendar } from "./SafeCalendar.svelte";
+export { default as SafeToggle } from "./SafeToggle.svelte";
+export { default as SafeWeek } from "./SafeWeek.svelte";
+export { default as SafeChat } from "./SafeChat.svelte";
+export { default as SafeTabs } from "./SafeTabs.svelte";
+export { default as SafeCallout } from "./SafeCallout.svelte";
+export { default as SafeDragDrop } from "./SafeDragDrop.svelte";
+export { default as SafeGrid } from "./SafeGrid.svelte";
+export { default as SafeInput } from "./SafeInput.svelte";
+export { default as SafePicker } from "./SafePicker.svelte";
+export { default as SafeNav } from "./SafeNav.svelte";
