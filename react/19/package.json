@@ -12,14 +12,15 @@
     "react-dom": "^19"
   },
   "dependencies": {
+    "@monaco-editor/react": "*",
     "d3": "*",
     "d3-sankey": "*",
-    "recharts": "*",
-    "hyperformula": "*",
-    "@monaco-editor/react": "*",
     "gsap": "*",
+    "hyperformula": "*",
     "leaflet": "*",
+    "lucide-react": "^1.17.0",
     "react-markdown": "*",
+    "recharts": "*",
     "remark-gfm": "*"
   },
   "devDependencies": {
