@@ -1,10 +1,10 @@
 {
-  "name": "safeframeworks-angular-20",
+  "name": "safeframeworks-angular-22",
   "version": "0.1.0",
   "type": "module",
   "main": "index.ts",
   "peerDependencies": {
-    "@angular/core": "^20",
+    "@angular/core": "^22",
     "safecontracts": "*"
   }
 }
