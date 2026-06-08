@@ -1,13 +1,13 @@
 /**
  * SafeNav — config-driven navigation sidebar.
  * navStyle variants: classic (more to come).
- * Uses lucide-react icons — same library as figma designs.
- * Everything renders from ConfigBase metadata. Zero hardcoded content.
+ * Layout and classes from figma. Data from ConfigBase.
  */
-import { useState, type ReactNode, type CSSProperties } from "react";
+import { useState, type ReactNode } from "react";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
 import { createSafeEvent } from "safecontracts";
-import * as LucideIcons from "lucide-react";
+import * as Icons from "lucide-react";
+import { ChevronDown, ChevronRight, Search } from "lucide-react";
 
 export interface SafeNavProps {
   config: ConfigBase;
@@ -17,19 +17,18 @@ export interface SafeNavProps {
 export function SafeNav({ config, onEvent }: SafeNavProps) {
   const navStyle = (config.metadata.navStyle as string) ?? "classic";
   if (navStyle === "classic") return <NavClassic config={config} onEvent={onEvent} />;
-  return <div style={{ padding: 12, color: "#888", fontSize: 13 }}>Unknown navStyle: {navStyle}</div>;
+  return <div className="p-3 text-sm text-muted-foreground">Unknown navStyle: {navStyle}</div>;
 }
 
-// ─── Icon resolver ──────────────────────────────────────────────────────────
-
+/** Resolve a kebab-case icon name to a lucide component. */
 function LucideIcon({ name, size = 16 }: { name: string; size?: number }) {
   const pascal = name.split("-").map((s) => s.charAt(0).toUpperCase() + s.slice(1)).join("");
-  const Icon = (LucideIcons as any)[pascal] ?? (LucideIcons as any)[pascal + "2"] ?? null;
-  if (!Icon) return <span style={{ width: size, height: size, display: "inline-flex", alignItems: "center", justifyContent: "center" }}>•</span>;
-  return <Icon size={size} />;
+  const Comp = (Icons as any)[pascal] ?? (Icons as any)[pascal + "2"] ?? null;
+  if (!Comp) return null;
+  return <Comp size={size} />;
 }
 
-// ─── Classic ────────────────────────────────────────────────────────────────
+// ─── Classic (figma layout, ConfigBase data) ────────────────────────────────
 
 function NavClassic({ config, onEvent }: SafeNavProps) {
   const { metadata, children } = config;
@@ -37,75 +36,60 @@ function NavClassic({ config, onEvent }: SafeNavProps) {
   const [expanded, setExpanded] = useState<string[]>([]);
   const [search, setSearch] = useState("");
 
-  // All visual properties from metadata
-  const width = (metadata.width as number) ?? 224;
-  const title = (metadata.title as string) ?? "";
-  const subtitle = (metadata.subtitle as string) ?? "";
+  const title = metadata.title as string | undefined;
+  const subtitle = metadata.subtitle as string | undefined;
   const headerIcon = metadata.icon as string | undefined;
-  const headerColor = (metadata.headerColor as string) ?? "#2563eb";
   const showSearch = metadata.search === true;
   const userName = metadata.userName as string | undefined;
   const userEmail = metadata.userEmail as string | undefined;
   const userInitials = (metadata.userInitials as string) ?? (userName ? userName.split(" ").map(w => w[0]).join("").slice(0, 2) : "");
-  const showUser = !!userName;
-
-  const toggle = (key: string) =>
-    setExpanded((p) => p.includes(key) ? p.filter((k) => k !== key) : [...p, key]);
 
   const fire = (key: string) => {
     setActive(key);
     onEvent?.(createSafeEvent("nav", "navigate", { key, value: key }, { context: { path: key } }));
   };
 
+  const toggle = (key: string) =>
+    setExpanded((p) => p.includes(key) ? p.filter((k) => k !== key) : [...p, key]);
+
   const renderItem = (key: string, child: ConfigBase, depth = 0): ReactNode => {
     const label = (child.metadata?.label as string) ?? key;
     const icon = child.metadata?.icon as string | undefined;
     const badge = child.metadata?.badge as number | undefined;
-    const hasKids = child.children && Object.keys(child.children).length > 0;
-    const on = active === key;
-    const open = expanded.includes(key);
-
-    const btnStyle: CSSProperties = {
-      width: "100%", display: "flex", alignItems: "center",
-      gap: 10, padding: "6px 12px",
-      paddingLeft: depth > 0 ? 32 : 12,
-      borderRadius: 6, fontSize: 13, lineHeight: "20px",
-      border: "none", cursor: "pointer", textAlign: "left",
-      background: on ? headerColor : "transparent",
-      color: on ? "#fff" : "rgba(0,0,0,0.7)",
-      transition: "background 0.12s, color 0.12s",
-      fontFamily: "inherit", fontWeight: on ? 500 : 400,
-    };
+    const hasChildren = child.children && Object.keys(child.children).length > 0;
+    const isActive = active === key;
+    const isExpanded = expanded.includes(key);
 
     return (
       <div key={key}>
         <button
-          style={btnStyle}
-          onClick={() => { fire(key); if (hasKids) toggle(key); }}
-          onMouseEnter={(e) => { if (!on) { e.currentTarget.style.background = "#f5f5f5"; e.currentTarget.style.color = "#111"; } }}
-          onMouseLeave={(e) => { if (!on) { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = "rgba(0,0,0,0.7)"; } }}
+          onClick={() => { fire(key); if (hasChildren) toggle(key); }}
+          className={`w-full flex items-center gap-2.5 px-3 py-1.5 rounded-md text-sm transition-colors
+            ${depth > 0 ? "pl-8" : ""}
+            ${isActive
+              ? "bg-primary text-primary-foreground"
+              : "text-foreground/70 hover:bg-accent hover:text-accent-foreground"
+            }`}
         >
-          {icon && <span style={{ flexShrink: 0, display: "flex" }}><LucideIcon name={icon} size={16} /></span>}
-          {!icon && depth > 0 && (
-            <span style={{ width: 6, height: 6, borderRadius: "50%", background: on ? "#fff" : "currentColor", flexShrink: 0, opacity: 0.5 }} />
-          )}
-          <span style={{ flex: 1, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{label}</span>
+          {icon && <span className="shrink-0"><LucideIcon name={icon} size={16} /></span>}
+          {!icon && depth > 0 && <span className="w-1.5 h-1.5 rounded-full bg-current inline-block" />}
+          <span className="flex-1 text-left">{label}</span>
           {badge != null && (
-            <span style={{
-              fontSize: 11, padding: "0 6px", borderRadius: 999, fontWeight: 500, lineHeight: "18px",
-              background: on ? "rgba(255,255,255,0.2)" : "#f3f4f6",
-              color: on ? "#fff" : "#6b7280",
-            }}>{badge}</span>
+            <span className={`text-xs px-1.5 py-0.5 rounded-full ${isActive ? "bg-primary-foreground/20 text-primary-foreground" : "bg-muted text-muted-foreground"}`}>
+              {badge}
+            </span>
           )}
-          {hasKids && (
-            <span style={{ flexShrink: 0, display: "flex", opacity: 0.5 }}>
-              {open ? <LucideIcons.ChevronDown size={13} /> : <LucideIcons.ChevronRight size={13} />}
+          {hasChildren && (
+            <span className="shrink-0">
+              {isExpanded ? <ChevronDown size={13} /> : <ChevronRight size={13} />}
             </span>
           )}
         </button>
-        {hasKids && open && (
-          <div style={{ marginTop: 2, marginBottom: 2 }}>
-            {Object.entries(child.children!).map(([k, c]) => renderItem(k, c, depth + 1))}
+        {hasChildren && isExpanded && (
+          <div className="mt-0.5 mb-0.5">
+            {Object.entries(child.children!).map(([k, c]) =>
+              renderItem(k, c, depth + 1)
+            )}
           </div>
         )}
       </div>
@@ -113,76 +97,63 @@ function NavClassic({ config, onEvent }: SafeNavProps) {
   };
 
   const entries = Object.entries(children ?? {});
-  const main = entries.filter(([_, c]) => (c.metadata?.section as string) !== "bottom");
-  const bottom = entries.filter(([_, c]) => (c.metadata?.section as string) === "bottom");
+  const mainItems = entries.filter(([_, c]) => (c.metadata?.section as string) !== "bottom");
+  const bottomItems = entries.filter(([_, c]) => (c.metadata?.section as string) === "bottom");
 
   return (
-    <div
-      data-component="nav" data-nav-style="classic"
-      style={{
-        width, height: "100%", display: "flex", flexDirection: "column",
-        background: "#fff", borderRight: "1px solid #e5e7eb",
-        fontFamily: "system-ui, -apple-system, sans-serif",
-      }}
-    >
-      {/* Header — icon or initial, title, subtitle */}
+    <div className="w-56 h-full flex flex-col bg-sidebar border-r border-sidebar-border">
+      {/* Header */}
       {title && (
-        <div style={{ padding: 16, borderBottom: "1px solid #e5e7eb", display: "flex", alignItems: "center", gap: 8 }}>
-          <div style={{
-            width: 28, height: 28, borderRadius: 6, background: headerColor,
-            display: "flex", alignItems: "center", justifyContent: "center",
-            color: "#fff", fontSize: 12, fontWeight: 600,
-          }}>
-            {headerIcon ? <LucideIcon name={headerIcon} size={14} /> : title.charAt(0).toUpperCase()}
-          </div>
-          <div>
-            <div style={{ fontSize: 14, fontWeight: 600, lineHeight: 1 }}>{title}</div>
-            {subtitle && <div style={{ fontSize: 11, color: "#6b7280", marginTop: 3 }}>{subtitle}</div>}
+        <div className="px-4 py-4 border-b border-sidebar-border">
+          <div className="flex items-center gap-2">
+            <div className="w-7 h-7 rounded-md bg-primary flex items-center justify-center">
+              {headerIcon
+                ? <span className="text-primary-foreground"><LucideIcon name={headerIcon} size={14} /></span>
+                : <span className="text-primary-foreground text-xs font-semibold">{title.charAt(0).toUpperCase()}</span>
+              }
+            </div>
+            <div>
+              <p className="text-sm font-semibold leading-none">{title}</p>
+              {subtitle && <p className="text-xs text-muted-foreground mt-0.5">{subtitle}</p>}
+            </div>
           </div>
         </div>
       )}
 
       {/* Search */}
       {showSearch && (
-        <div style={{ padding: 12 }}>
-          <div style={{
-            display: "flex", alignItems: "center", gap: 8,
-            padding: "6px 10px", borderRadius: 6,
-            background: "rgba(243,244,246,0.6)", fontSize: 13, color: "#6b7280",
-          }}>
-            <LucideIcons.Search size={13} />
+        <div className="px-3 py-3">
+          <div className="flex items-center gap-2 px-2.5 py-1.5 rounded-md bg-muted/60 text-muted-foreground text-sm">
+            <Search size={13} />
             <input
-              value={search} onChange={(e) => setSearch(e.target.value)}
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
               placeholder="Search…"
-              style={{ background: "transparent", border: "none", outline: "none", flex: 1, fontSize: 13, color: "#111", fontFamily: "inherit" }}
+              className="bg-transparent outline-none flex-1 text-foreground placeholder:text-muted-foreground"
             />
           </div>
         </div>
       )}
 
-      {/* Main nav */}
-      <nav style={{ flex: 1, padding: "0 8px", overflowY: "auto", display: "flex", flexDirection: "column", gap: 2 }}>
-        {main.map(([k, c]) => renderItem(k, c))}
+      {/* Nav items */}
+      <nav className="flex-1 px-2 overflow-y-auto space-y-0.5">
+        {mainItems.map(([k, c]) => renderItem(k, c))}
       </nav>
 
       {/* Bottom */}
-      {bottom.length > 0 && (
-        <div style={{ padding: 8, borderTop: "1px solid #e5e7eb", display: "flex", flexDirection: "column", gap: 2 }}>
-          {bottom.map(([k, c]) => renderItem(k, c))}
+      {bottomItems.length > 0 && (
+        <div className="px-2 py-2 border-t border-sidebar-border space-y-0.5">
+          {bottomItems.map(([k, c]) => renderItem(k, c))}
         </div>
       )}
 
-      {/* User footer — fully from metadata */}
-      {showUser && (
-        <div style={{ padding: 12, borderTop: "1px solid #e5e7eb", display: "flex", alignItems: "center", gap: 10 }}>
-          <div style={{
-            width: 28, height: 28, borderRadius: "50%", background: "#e5e7eb",
-            display: "flex", alignItems: "center", justifyContent: "center",
-            fontSize: 11, fontWeight: 500, color: "#374151",
-          }}>{userInitials}</div>
-          <div style={{ flex: 1, minWidth: 0 }}>
-            <div style={{ fontSize: 13, fontWeight: 500, lineHeight: 1, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{userName}</div>
-            {userEmail && <div style={{ fontSize: 11, color: "#6b7280", marginTop: 3, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{userEmail}</div>}
+      {/* User */}
+      {userName && (
+        <div className="px-3 py-3 border-t border-sidebar-border flex items-center gap-2.5">
+          <div className="w-7 h-7 rounded-full bg-secondary flex items-center justify-center text-xs font-medium">{userInitials}</div>
+          <div className="flex-1 min-w-0">
+            <p className="text-sm font-medium leading-none truncate">{userName}</p>
+            {userEmail && <p className="text-xs text-muted-foreground mt-0.5 truncate">{userEmail}</p>}
           </div>
         </div>
       )}
