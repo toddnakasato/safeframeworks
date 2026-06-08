@@ -1,4 +1,4 @@
-@import "../../../../safecomponents/src/styles/components.css";
+@import "../../../../safestyles/vanilla/components.css";
 
 :root {
   --sd-surface: #f8f8f8;

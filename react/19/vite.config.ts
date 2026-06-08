@@ -19,7 +19,6 @@ export default defineConfig({
     alias: {
       "safecontracts/components": path.resolve(__dirname, "../../../safecontracts/src/components"),
       "safecontracts": path.resolve(__dirname, "core.ts"),
-      "safecomponents": path.resolve(__dirname, "core.ts"),
     },
   },
 });
