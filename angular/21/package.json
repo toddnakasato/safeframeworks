@@ -5,6 +5,6 @@
   "main": "index.ts",
   "peerDependencies": {
     "@angular/core": "^21",
-    "safecomponents": "*"
+    "safecontracts": "*"
   }
 }
