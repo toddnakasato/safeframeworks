@@ -3,8 +3,8 @@
  * All styling from config. No hardcoded styles.
  */
 import type { ReactNode } from "react";
-import type { ConfigBase, OnSafeEvent } from "safecomponents";
-import { createSafeEvent } from "safecomponents";
+import type { ConfigBase, OnSafeEvent } from "safecontracts";
+import { createSafeEvent } from "safecontracts";
 import { useRenderLog, type RenderLogFn } from "./hooks/useRenderLog";
 
 export interface SafeLayoutProps {
@@ -49,7 +49,7 @@ export function SafeLayout({ config, regions, onEvent, onRenderLog }: SafeLayout
 
   if (variant === "stack") {
     return (
-      <div ref={renderRef} style={{ ...baseStyle, display: "flex", flexDirection: "column", gap, width: "100%", flex: 1, minHeight: 0 }}>
+      <div ref={renderRef} data-component="layout" data-variant={variant} style={{ ...baseStyle, display: "flex", flexDirection: "column", gap, width: "100%", flex: 1, minHeight: 0 }}>
         {Object.values(regions).map((node, i) => (
           <div key={i}>{node}</div>
         ))}
@@ -59,7 +59,7 @@ export function SafeLayout({ config, regions, onEvent, onRenderLog }: SafeLayout
 
   if (variant === "single") {
     return (
-      <div ref={renderRef} style={{ ...baseStyle, display: "flex", flexDirection: "column", width: "100%", flex: 1, minHeight: 0 }}>
+      <div ref={renderRef} data-component="layout" data-variant={variant} style={{ ...baseStyle, display: "flex", flexDirection: "column", width: "100%", flex: 1, minHeight: 0 }}>
         {regions.main}
       </div>
     );
@@ -68,7 +68,7 @@ export function SafeLayout({ config, regions, onEvent, onRenderLog }: SafeLayout
   if (variant === "left-main") {
     const columns = (metadata.columns as string) ?? "1fr 1fr";
     return (
-      <div ref={renderRef} style={{ ...baseStyle, display: "grid", gridTemplateColumns: columns, gap, width: "100%", flex: 1, minHeight: 0 }}>
+      <div ref={renderRef} data-component="layout" data-variant={variant} style={{ ...baseStyle, display: "grid", gridTemplateColumns: columns, gap, width: "100%", flex: 1, minHeight: 0 }}>
         <div style={{ minWidth: 0 }}>{regions.left}</div>
         <div style={{ minWidth: 0 }}>{regions.main}</div>
       </div>
@@ -77,7 +77,7 @@ export function SafeLayout({ config, regions, onEvent, onRenderLog }: SafeLayout
 
   if (variant === "main-detail") {
     return (
-      <div ref={renderRef} style={{ ...baseStyle, display: "flex", gap, width: "100%", flex: 1, minHeight: 0 }}>
+      <div ref={renderRef} data-component="layout" data-variant={variant} style={{ ...baseStyle, display: "flex", gap, width: "100%", flex: 1, minHeight: 0 }}>
         <div style={{ flex: 1, minWidth: 0 }}>{regions.main}</div>
         <div style={{ flexShrink: 0, width: detailW }}>{regions.detail}</div>
       </div>
@@ -86,7 +86,7 @@ export function SafeLayout({ config, regions, onEvent, onRenderLog }: SafeLayout
 
   if (variant === "left-main-right") {
     return (
-      <div ref={renderRef} style={{ ...baseStyle, display: "flex", gap, width: "100%", flex: 1, minHeight: 0 }}>
+      <div ref={renderRef} data-component="layout" data-variant={variant} style={{ ...baseStyle, display: "flex", gap, width: "100%", flex: 1, minHeight: 0 }}>
         <div style={{ flexShrink: 0, width: sidebarW }}>{regions.left}</div>
         <div style={{ flex: 1, minWidth: 0 }}>{regions.main}</div>
         <div style={{ flexShrink: 0, width: detailW }}>{regions.right}</div>
@@ -96,7 +96,7 @@ export function SafeLayout({ config, regions, onEvent, onRenderLog }: SafeLayout
 
   if (variant === "header-main") {
     return (
-      <div ref={renderRef} style={{ ...baseStyle, display: "flex", flexDirection: "column", width: "100%", flex: 1, minHeight: 0 }}>
+      <div ref={renderRef} data-component="layout" data-variant={variant} style={{ ...baseStyle, display: "flex", flexDirection: "column", width: "100%", flex: 1, minHeight: 0 }}>
         <div style={{ flexShrink: 0 }}>
           {backButton}
           {regions.header}
@@ -108,7 +108,7 @@ export function SafeLayout({ config, regions, onEvent, onRenderLog }: SafeLayout
 
   if (variant === "header-main-detail") {
     return (
-      <div ref={renderRef} style={{ ...baseStyle, display: "flex", flexDirection: "column", gap, width: "100%", flex: 1, minHeight: 0 }}>
+      <div ref={renderRef} data-component="layout" data-variant={variant} style={{ ...baseStyle, display: "flex", flexDirection: "column", gap, width: "100%", flex: 1, minHeight: 0 }}>
         <div>{regions.header}</div>
         <div style={{ display: "flex", gap, flex: 1, minHeight: 0 }}>
           <div style={{ flex: 1, minWidth: 0 }}>{regions.main}</div>
@@ -118,5 +118,5 @@ export function SafeLayout({ config, regions, onEvent, onRenderLog }: SafeLayout
     );
   }
 
-  return <div ref={renderRef} style={{ ...baseStyle, width: "100%", flex: 1, minHeight: 0 }}>{regions.main}</div>;
+  return <div ref={renderRef} data-component="layout" data-variant={variant} style={{ ...baseStyle, width: "100%", flex: 1, minHeight: 0 }}>{regions.main}</div>;
 }

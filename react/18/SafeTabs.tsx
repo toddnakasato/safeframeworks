@@ -7,8 +7,8 @@
  * Fires "select" event with the active tab key.
  */
 import React, { useState } from "react";
-import type { ConfigBase, SafeEvent } from "safecomponents";
-import { createSafeEvent } from "safecomponents";
+import type { ConfigBase, SafeEvent } from "safecontracts";
+import { createSafeEvent } from "safecontracts";
 
 interface TabItem {
   key: string;

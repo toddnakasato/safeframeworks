@@ -6,8 +6,8 @@
 import { useRef, useEffect } from "react";
 import * as d3 from "d3";
 import { sankey as d3Sankey, sankeyLinkHorizontal } from "d3-sankey";
-import type { ConfigBase, OnSafeEvent } from "safecomponents";
-import { createSafeEvent } from "safecomponents";
+import type { ConfigBase, OnSafeEvent } from "safecontracts";
+import { createSafeEvent } from "safecontracts";
 
 export interface SafeSankeyProps {
   config: ConfigBase;
@@ -15,7 +15,7 @@ export interface SafeSankeyProps {
   onEvent?: OnSafeEvent;
 }
 
-import { resolveColors } from "safecomponents";
+import { resolveColors } from "safecontracts";
 
 export function SafeSankey({ config, data, onEvent }: SafeSankeyProps) {
   const { metadata } = config;

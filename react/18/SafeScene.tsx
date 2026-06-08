@@ -11,11 +11,11 @@
  * The host passes: config, serverCall function, data loader. Nothing else.
  */
 import { forwardRef, useCallback, useEffect, useImperativeHandle, useMemo, useRef, useState } from "react";
-import type { ConfigBase, OnSafeEvent } from "safecomponents";
-import { createSafeEvent } from "safecomponents";
-import type { EventShapeMap } from "safecomponents";
-import type { HandlerContext } from "safecomponents";
-import { createDispatcher } from "safecomponents";
+import type { ConfigBase, OnSafeEvent } from "safecontracts";
+import { createSafeEvent } from "safecontracts";
+import type { EventShapeMap } from "safecontracts";
+import type { HandlerContext } from "safecontracts";
+import { createDispatcher } from "safecontracts";
 import { SafeLayout } from "./SafeLayout";
 import { SafePicker } from "./SafePicker";
 import { SafeCard } from "./SafeCard";

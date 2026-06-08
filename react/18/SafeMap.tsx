@@ -5,8 +5,8 @@
  */
 import { useRef, useEffect } from "react";
 import L from "leaflet";
-import type { ConfigBase, OnSafeEvent } from "safecomponents";
-import { createSafeEvent } from "safecomponents";
+import type { ConfigBase, OnSafeEvent } from "safecontracts";
+import { createSafeEvent } from "safecontracts";
 
 export interface SafeMapProps {
   config: ConfigBase;

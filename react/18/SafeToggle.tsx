@@ -6,8 +6,8 @@
  * Events: "change" (toggle flipped), "expand" (section opened/closed).
  */
 import { useState } from "react";
-import type { ConfigBase, OnSafeEvent } from "safecomponents";
-import { createSafeEvent } from "safecomponents";
+import type { ConfigBase, OnSafeEvent } from "safecontracts";
+import { createSafeEvent } from "safecontracts";
 
 export interface SafeToggleProps {
   config: ConfigBase;

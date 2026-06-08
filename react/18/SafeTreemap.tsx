@@ -5,8 +5,8 @@
  */
 import { useRef, useEffect } from "react";
 import * as d3 from "d3";
-import type { ConfigBase, OnSafeEvent } from "safecomponents";
-import { createSafeEvent } from "safecomponents";
+import type { ConfigBase, OnSafeEvent } from "safecontracts";
+import { createSafeEvent } from "safecontracts";
 
 export interface SafeTreemapProps {
   config: ConfigBase;
@@ -14,7 +14,7 @@ export interface SafeTreemapProps {
   onEvent?: OnSafeEvent;
 }
 
-import { resolveColors } from "safecomponents";
+import { resolveColors } from "safecontracts";
 
 export function SafeTreemap({ config, data, onEvent }: SafeTreemapProps) {
   const { metadata } = config;

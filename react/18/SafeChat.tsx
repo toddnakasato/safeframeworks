@@ -7,8 +7,8 @@
  * Events: "send" (user typed message), "action" (quick action clicked).
  */
 import { useState, useRef, useEffect } from "react";
-import type { ConfigBase, OnSafeEvent } from "safecomponents";
-import { createSafeEvent } from "safecomponents";
+import type { ConfigBase, OnSafeEvent } from "safecontracts";
+import { createSafeEvent } from "safecontracts";
 
 export interface SafeChatProps {
   config: ConfigBase;

@@ -4,10 +4,10 @@
  * Each cell delegates rendering to SafeInput with the correct inputType
  * derived from the field type. Config-driven. No formatting logic here.
  */
-import type { Field, ConfigBase, OnSafeEvent } from "safecomponents";
-import { createSafeEvent } from "safecomponents";
+import type { Field, ConfigBase, OnSafeEvent } from "safecontracts";
+import { createSafeEvent } from "safecontracts";
 import { SafeInput } from "./SafeInput";
-import { INPUT_DEFAULTS } from "safecomponents/components/input";
+import { INPUT_DEFAULTS } from "safecontracts/components/input";
 
 export interface SafeGridCellProps {
   field: Field;

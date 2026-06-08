@@ -4,8 +4,8 @@
  */
 import { useRef, useEffect } from "react";
 import * as d3 from "d3";
-import type { ConfigBase, OnSafeEvent } from "safecomponents";
-import { createSafeEvent } from "safecomponents";
+import type { ConfigBase, OnSafeEvent } from "safecontracts";
+import { createSafeEvent } from "safecontracts";
 
 export interface SafeFunnelProps {
   config: ConfigBase;
@@ -13,7 +13,7 @@ export interface SafeFunnelProps {
   onEvent?: OnSafeEvent;
 }
 
-import { resolveColors } from "safecomponents";
+import { resolveColors } from "safecontracts";
 
 export function SafeFunnel({ config, data, onEvent }: SafeFunnelProps) {
   const { metadata } = config;

@@ -7,9 +7,9 @@
  */
 import { useState, useMemo, useCallback, useRef, useEffect } from "react";
 import { HyperFormula } from "hyperformula";
-import type { ConfigBase, OnSafeEvent } from "safecomponents";
-import { createSafeEvent } from "safecomponents";
-import type { SheetColumn } from "safecomponents/components/sheet";
+import type { ConfigBase, OnSafeEvent } from "safecontracts";
+import { createSafeEvent } from "safecontracts";
+import type { SheetColumn } from "safecontracts/components/sheet";
 
 export interface SafeSheetProps {
   config: ConfigBase;

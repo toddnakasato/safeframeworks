@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { renderConfigBase } from "../SafeRenderer";
-import type { ConfigBase, SafeEvent } from "safecomponents";
+import type { ConfigBase, SafeEvent } from "safecontracts";
 import { getConfig, getState, getLayout, getScene, getComponent, dispatchEvent } from "./client";
 
 async function resolveLayout(layout: any): Promise<ConfigBase> {

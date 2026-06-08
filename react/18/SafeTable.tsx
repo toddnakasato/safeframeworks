@@ -6,10 +6,10 @@
  * Host CSS maps data-attributes to visuals.
  */
 import { useState, useEffect, useMemo, useCallback } from "react";
-import type { ConfigBase, OnSafeEvent, Field } from "safecomponents";
-import { createSafeEvent } from "safecomponents";
-import { findHandlers } from "safecomponents";
-import { fmtDate, fmtCurrency, fmtInt, fmtPercent, fmtStr } from "safecomponents";
+import type { ConfigBase, OnSafeEvent, Field } from "safecontracts";
+import { createSafeEvent } from "safecontracts";
+import { findHandlers } from "safecontracts";
+import { fmtDate, fmtCurrency, fmtInt, fmtPercent, fmtStr } from "safecontracts";
 
 export interface SafeTableProps {
   config: ConfigBase;

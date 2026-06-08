@@ -16,7 +16,7 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      "safecomponents": path.resolve(__dirname, "../../../safecomponents/src"),
+      "safecontracts": path.resolve(__dirname, "../../../safecontracts/src"),
     },
   },
 });

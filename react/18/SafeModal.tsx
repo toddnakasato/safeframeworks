@@ -2,7 +2,7 @@
  * SafeModal — config-driven dialog.
  */
 import type { ReactNode } from "react";
-import type { ConfigBase } from "safecomponents";
+import type { ConfigBase } from "safecontracts";
 
 export interface SafeModalProps {
   config: ConfigBase;

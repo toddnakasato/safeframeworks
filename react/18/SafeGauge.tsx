@@ -4,8 +4,8 @@
  */
 import { useRef, useEffect } from "react";
 import * as d3 from "d3";
-import type { ConfigBase, OnSafeEvent } from "safecomponents";
-import { createSafeEvent } from "safecomponents";
+import type { ConfigBase, OnSafeEvent } from "safecontracts";
+import { createSafeEvent } from "safecontracts";
 
 export interface SafeGaugeProps {
   config: ConfigBase;

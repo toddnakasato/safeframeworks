@@ -5,7 +5,7 @@
  * Data-attributes for variant and position. Zero Tailwind.
  * Reusable — not tied to any specific component.
  */
-import type { ConfigBase, OnSafeEvent } from "safecomponents";
+import type { ConfigBase, OnSafeEvent } from "safecontracts";
 
 export interface SafeCalloutProps {
   config: ConfigBase;
