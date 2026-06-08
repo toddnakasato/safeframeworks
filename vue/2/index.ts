@@ -1,4 +1,4 @@
-// safeframeworks/vue/3 — Vue 3 component exports
+// safeframeworks/vue/2 — Vue 2 component exports
 
 export { default as SafeLayout } from "./SafeLayout.vue";
 export { default as SafeColumns } from "./SafeColumns.vue";

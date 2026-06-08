@@ -1,0 +1,25 @@
+<!--
+  SafeGrid — Vue 3 grid component.
+  Implements grid contract from safecontracts.
+  Outputs data-* attributes for intent. No hardcoded CSS.
+-->
+<script setup lang="ts">
+import type { ConfigBase, OnSafeEvent } from 'safecontracts';
+
+defineProps<{
+  config: ConfigBase;
+  onEvent?: OnSafeEvent;
+}>();
+</script>
+
+<template>
+  <div
+    data-component="grid"
+    :data-spacing="config.metadata.spacing"
+    :data-radius="config.metadata.radius"
+    :data-surface="config.metadata.surface"
+    :data-collapsible="config.metadata.collapsible"
+  >
+    <slot />
+  </div>
+</template>

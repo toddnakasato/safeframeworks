@@ -1,10 +1,10 @@
 {
-  "name": "safeframeworks-vue-3",
+  "name": "safeframeworks-vue-2",
   "version": "0.1.0",
   "type": "module",
   "main": "index.ts",
   "peerDependencies": {
-    "vue": "^3",
+    "vue": "^2.7",
     "safecontracts": "*"
   }
 }
