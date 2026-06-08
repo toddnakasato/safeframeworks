@@ -26,6 +26,7 @@ import { SafeHeatmap } from "./SafeHeatmap";
 import { SafeInput } from "./SafeInput";
 import { SafeLayout } from "./SafeLayout";
 import { SafeMap } from "./SafeMap";
+import { SafeNav } from "./SafeNav";
 import { SafePicker } from "./SafePicker";
 import { SafeSankey } from "./SafeSankey";
 import { SafeSheet } from "./SafeSheet";
@@ -215,6 +216,10 @@ export function renderConfigBase(
 
   if (component === "map") {
     return <SafeMap config={config} data={list} onEvent={stampedOnEvent} />;
+  }
+
+  if (component === "nav") {
+    return <SafeNav config={config} onEvent={stampedOnEvent} />;
   }
 
 
