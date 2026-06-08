@@ -16,9 +16,6 @@ export { SafeDragDrop } from "./SafeDragDrop";
 export type { SafeDragDropProps } from "./SafeDragDrop";
 export type { SafeCalendarProps } from "./SafeCalendar";
 export type { SafeButtonProps } from "./SafeButton";
-// SafeFloorplan exported separately — konva requires canvas at import time
-export { SafeFloorplan } from "./SafeFloorplan";
-export type { SafeFloorplanProps } from "./SafeFloorplan";
 export { SafeMetric } from "./SafeMetric";
 export type { SafeMetricProps } from "./SafeMetric";
 export { SafeChart } from "./SafeChart";

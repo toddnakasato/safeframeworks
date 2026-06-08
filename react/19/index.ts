@@ -16,7 +16,6 @@ export { SafeDragDrop } from "./SafeDragDrop";
 export type { SafeDragDropProps } from "./SafeDragDrop";
 export type { SafeCalendarProps } from "./SafeCalendar";
 export type { SafeButtonProps } from "./SafeButton";
-// SafeFloorplan not available in React 19 — react-konva requires React 18
 export { SafeMetric } from "./SafeMetric";
 export type { SafeMetricProps } from "./SafeMetric";
 export { SafeChart } from "./SafeChart";

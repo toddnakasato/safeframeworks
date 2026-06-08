@@ -5,7 +5,7 @@ import { getConfig, getState, getLayout, getScene, getComponent, dispatchEvent }
 
 async function resolveLayout(layout: any): Promise<ConfigBase> {
   const children: Record<string, ConfigBase> = {};
-  for (const [slot, ref] of Object.entries(layout.children ?? {})) {
+  for (const [slot, ref] of Object.entries(layout.slots ?? {})) {
     const path = ref as string;
     if (path.includes("{{")) continue;
     const parts = path.split("/");
@@ -16,7 +16,7 @@ async function resolveLayout(layout: any): Promise<ConfigBase> {
     else if (folder === "scenes") json = await getScene(name);
     if (json) children[slot] = json as ConfigBase;
   }
-  return { metadata: layout.metadata, children };
+  return { component: "layout", metadata: layout.metadata ?? {}, children };
 }
 
 export default function App() {
@@ -28,20 +28,21 @@ export default function App() {
     try {
       const config = await getConfig();
       const state = await getState();
-      const layoutPath = (config.layout as string) ?? "layout";
+      const layoutPath = (config.layout as string) ?? "layouts/layout.json";
       const layoutName = layoutPath.split("/").pop()?.replace(".json", "") ?? "layout";
       const layout = await getLayout(layoutName);
-      const activeScene = state.activeScene ?? "dashboard";
+      const activeScene = state.activeScene ?? "home";
 
-      const resolvedChildren: Record<string, string> = {};
-      for (const [slot, ref] of Object.entries(layout.children ?? {})) {
-        resolvedChildren[slot] = (ref as string).replace("{{activeScene}}", `${activeScene}.json`);
+      // Resolve templates in slots
+      const resolvedSlots: Record<string, string> = {};
+      for (const [slot, ref] of Object.entries(layout.slots ?? {})) {
+        resolvedSlots[slot] = (ref as string).replace("{{activeScene}}", `${activeScene}.json`);
       }
-      layout.children = resolvedChildren;
+      layout.slots = resolvedSlots;
 
       const resolved = await resolveLayout(layout);
       const handlers = Object.values(resolved.children ?? {})
-        .map((c: any) => c.eventHandler)
+        .map((c: any) => c.eventHandler?.handler)
         .filter(Boolean) as string[];
       setEventHandlers(handlers);
       setRoot(resolved);
@@ -59,8 +60,9 @@ export default function App() {
   const handleEvent = useCallback((event: SafeEvent) => {
     const payload = (event.data ?? {}) as Record<string, any>;
     const context = event.context ?? {};
-    for (const h of eventHandlers) {
-      dispatchEvent(event.name, { ...payload, ...context }, h).then(() => load());
+    const handler = (event as any).handler;
+    if (handler) {
+      dispatchEvent(event.name, { ...payload, ...context }, handler).then(() => load());
     }
   }, [eventHandlers]);
 
