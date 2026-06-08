@@ -2,6 +2,7 @@
  * SafeNav — config-driven navigation sidebar.
  * navStyle variants: classic (more to come).
  * Uses lucide-react icons — same library as figma designs.
+ * Everything renders from ConfigBase metadata. Zero hardcoded content.
  */
 import { useState, type ReactNode, type CSSProperties } from "react";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
@@ -22,13 +23,7 @@ export function SafeNav({ config, onEvent }: SafeNavProps) {
 // ─── Icon resolver ──────────────────────────────────────────────────────────
 
 function LucideIcon({ name, size = 16 }: { name: string; size?: number }) {
-  // Convert kebab-case to PascalCase: "bar-chart" → "BarChart", "file-text" → "FileText"
-  const pascal = name
-    .split("-")
-    .map((s) => s.charAt(0).toUpperCase() + s.slice(1))
-    .join("");
-
-  // Lucide uses numeric suffixes: BarChart2, Code2, etc. Try both.
+  const pascal = name.split("-").map((s) => s.charAt(0).toUpperCase() + s.slice(1)).join("");
   const Icon = (LucideIcons as any)[pascal] ?? (LucideIcons as any)[pascal + "2"] ?? null;
   if (!Icon) return <span style={{ width: size, height: size, display: "inline-flex", alignItems: "center", justifyContent: "center" }}>•</span>;
   return <Icon size={size} />;
@@ -42,10 +37,17 @@ function NavClassic({ config, onEvent }: SafeNavProps) {
   const [expanded, setExpanded] = useState<string[]>([]);
   const [search, setSearch] = useState("");
 
+  // All visual properties from metadata
+  const width = (metadata.width as number) ?? 224;
   const title = (metadata.title as string) ?? "";
   const subtitle = (metadata.subtitle as string) ?? "";
+  const headerIcon = metadata.icon as string | undefined;
+  const headerColor = (metadata.headerColor as string) ?? "#2563eb";
   const showSearch = metadata.search === true;
-  const showUserFooter = metadata.userFooter === true;
+  const userName = metadata.userName as string | undefined;
+  const userEmail = metadata.userEmail as string | undefined;
+  const userInitials = (metadata.userInitials as string) ?? (userName ? userName.split(" ").map(w => w[0]).join("").slice(0, 2) : "");
+  const showUser = !!userName;
 
   const toggle = (key: string) =>
     setExpanded((p) => p.includes(key) ? p.filter((k) => k !== key) : [...p, key]);
@@ -69,7 +71,7 @@ function NavClassic({ config, onEvent }: SafeNavProps) {
       paddingLeft: depth > 0 ? 32 : 12,
       borderRadius: 6, fontSize: 13, lineHeight: "20px",
       border: "none", cursor: "pointer", textAlign: "left",
-      background: on ? "#2563eb" : "transparent",
+      background: on ? headerColor : "transparent",
       color: on ? "#fff" : "rgba(0,0,0,0.7)",
       transition: "background 0.12s, color 0.12s",
       fontFamily: "inherit", fontWeight: on ? 500 : 400,
@@ -115,19 +117,24 @@ function NavClassic({ config, onEvent }: SafeNavProps) {
   const bottom = entries.filter(([_, c]) => (c.metadata?.section as string) === "bottom");
 
   return (
-    <div style={{
-      width: 224, height: "100%", display: "flex", flexDirection: "column",
-      background: "#fff", borderRight: "1px solid #e5e7eb",
-      fontFamily: "system-ui, -apple-system, sans-serif",
-    }}>
-      {/* Header */}
+    <div
+      data-component="nav" data-nav-style="classic"
+      style={{
+        width, height: "100%", display: "flex", flexDirection: "column",
+        background: "#fff", borderRight: "1px solid #e5e7eb",
+        fontFamily: "system-ui, -apple-system, sans-serif",
+      }}
+    >
+      {/* Header — icon or initial, title, subtitle */}
       {title && (
         <div style={{ padding: 16, borderBottom: "1px solid #e5e7eb", display: "flex", alignItems: "center", gap: 8 }}>
           <div style={{
-            width: 28, height: 28, borderRadius: 6, background: "#2563eb",
+            width: 28, height: 28, borderRadius: 6, background: headerColor,
             display: "flex", alignItems: "center", justifyContent: "center",
             color: "#fff", fontSize: 12, fontWeight: 600,
-          }}>{title.charAt(0).toUpperCase()}</div>
+          }}>
+            {headerIcon ? <LucideIcon name={headerIcon} size={14} /> : title.charAt(0).toUpperCase()}
+          </div>
           <div>
             <div style={{ fontSize: 14, fontWeight: 600, lineHeight: 1 }}>{title}</div>
             {subtitle && <div style={{ fontSize: 11, color: "#6b7280", marginTop: 3 }}>{subtitle}</div>}
@@ -165,17 +172,17 @@ function NavClassic({ config, onEvent }: SafeNavProps) {
         </div>
       )}
 
-      {/* User footer */}
-      {showUserFooter && (
+      {/* User footer — fully from metadata */}
+      {showUser && (
         <div style={{ padding: 12, borderTop: "1px solid #e5e7eb", display: "flex", alignItems: "center", gap: 10 }}>
           <div style={{
             width: 28, height: 28, borderRadius: "50%", background: "#e5e7eb",
             display: "flex", alignItems: "center", justifyContent: "center",
             fontSize: 11, fontWeight: 500, color: "#374151",
-          }}>JD</div>
+          }}>{userInitials}</div>
           <div style={{ flex: 1, minWidth: 0 }}>
-            <div style={{ fontSize: 13, fontWeight: 500, lineHeight: 1, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>Jane Doe</div>
-            <div style={{ fontSize: 11, color: "#6b7280", marginTop: 3, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>jane@acme.com</div>
+            <div style={{ fontSize: 13, fontWeight: 500, lineHeight: 1, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{userName}</div>
+            {userEmail && <div style={{ fontSize: 11, color: "#6b7280", marginTop: 3, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{userEmail}</div>}
           </div>
         </div>
       )}
