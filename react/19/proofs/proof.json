@@ -1,19 +1,6 @@
 {
-  "ok": false,
+  "ok": true,
   "framework": "react",
   "version": "19",
-  "failures": [
-    {
-      "component": "button",
-      "error": "contract missing XxxConfig extends ConfigBase"
-    },
-    {
-      "component": "nav",
-      "error": "contract missing XxxConfig extends ConfigBase"
-    },
-    {
-      "component": "layout",
-      "error": "implementation does not output data-component attribute"
-    }
-  ]
+  "failures": []
 }

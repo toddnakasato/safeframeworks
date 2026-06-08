@@ -1,0 +1,111 @@
+{
+  "ok": false,
+  "framework": "angular",
+  "version": "20",
+  "failures": [
+    {
+      "component": "layout",
+      "error": "no implementation file: SafeLayout{.ts}"
+    },
+    {
+      "component": "columns",
+      "error": "no implementation file: SafeColumns{.ts}"
+    },
+    {
+      "component": "card",
+      "error": "no implementation file: SafeCard{.ts}"
+    },
+    {
+      "component": "button",
+      "error": "no implementation file: SafeButton{.ts}"
+    },
+    {
+      "component": "table",
+      "error": "no implementation file: SafeTable{.ts}"
+    },
+    {
+      "component": "tree",
+      "error": "no implementation file: SafeTree{.ts}"
+    },
+    {
+      "component": "sheet",
+      "error": "no implementation file: SafeSheet{.ts}"
+    },
+    {
+      "component": "chart",
+      "error": "no implementation file: SafeChart{.ts}"
+    },
+    {
+      "component": "heatmap",
+      "error": "no implementation file: SafeHeatmap{.ts}"
+    },
+    {
+      "component": "gauge",
+      "error": "no implementation file: SafeGauge{.ts}"
+    },
+    {
+      "component": "funnel",
+      "error": "no implementation file: SafeFunnel{.ts}"
+    },
+    {
+      "component": "sankey",
+      "error": "no implementation file: SafeSankey{.ts}"
+    },
+    {
+      "component": "treemap",
+      "error": "no implementation file: SafeTreemap{.ts}"
+    },
+    {
+      "component": "timeline",
+      "error": "no implementation file: SafeTimeline{.ts}"
+    },
+    {
+      "component": "map",
+      "error": "no implementation file: SafeMap{.ts}"
+    },
+    {
+      "component": "calendar",
+      "error": "no implementation file: SafeCalendar{.ts}"
+    },
+    {
+      "component": "toggle",
+      "error": "no implementation file: SafeToggle{.ts}"
+    },
+    {
+      "component": "week",
+      "error": "no implementation file: SafeWeek{.ts}"
+    },
+    {
+      "component": "chat",
+      "error": "no implementation file: SafeChat{.ts}"
+    },
+    {
+      "component": "tabs",
+      "error": "no implementation file: SafeTabs{.ts}"
+    },
+    {
+      "component": "callout",
+      "error": "no implementation file: SafeCallout{.ts}"
+    },
+    {
+      "component": "drag-drop",
+      "error": "no implementation file: SafeDragDrop{.ts}"
+    },
+    {
+      "component": "grid",
+      "error": "no implementation file: SafeGrid{.ts}"
+    },
+    {
+      "component": "input",
+      "error": "no implementation file: SafeInput{.ts}"
+    },
+    {
+      "component": "picker",
+      "error": "no implementation file: SafePicker{.ts}"
+    },
+    {
+      "component": "nav",
+      "error": "no implementation file: SafeNav{.ts}"
+    }
+  ]
+}
