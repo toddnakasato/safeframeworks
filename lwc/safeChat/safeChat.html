@@ -1,0 +1,12 @@
+<template>
+  <div
+  data-component="chat"
+  >
+    <template lwc:if={title}>
+      <div data-role="title">{title}</div>
+    </template>
+    <div data-role="messages">
+      <slot></slot>
+    </div>
+  </div>
+</template>

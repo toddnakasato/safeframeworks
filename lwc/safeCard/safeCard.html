@@ -1,0 +1,15 @@
+<template>
+  <div
+  data-component="card"
+  data-variant={variant}
+  data-surface={surface}
+  data-spacing={spacing}
+  data-radius={radius}
+  data-density={density}
+  >
+    <template lwc:if={header}>
+      <div data-role="header">{header}</div>
+    </template>
+    <slot></slot>
+  </div>
+</template>

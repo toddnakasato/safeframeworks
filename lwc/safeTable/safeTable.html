@@ -1,0 +1,19 @@
+<template>
+  <div
+  data-component="table"
+  data-variant={variant}
+  data-spacing={spacing}
+  data-header-style={headerStyle}
+  data-row-divider={rowDivider}
+  data-row-numbers={rowNumbers}
+  data-truncate={truncate}
+  data-column-lines={columnLines}
+  data-header-divider={headerDivider}
+  data-zebra={zebra}
+  data-selectable={selectable}
+  >
+    <div data-role="scroll">
+      <slot></slot>
+    </div>
+  </div>
+</template>
