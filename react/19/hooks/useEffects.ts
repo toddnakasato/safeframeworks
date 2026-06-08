@@ -6,7 +6,7 @@
  */
 import { useRef, useCallback } from "react";
 import gsap from "gsap";
-import type { Effect } from "safecomponents";
+import type { Effect } from "safecontracts";
 
 function createOverlay(target: HTMLElement, color: string, dur: number, delay: number): gsap.core.Timeline {
   const overlay = document.createElement("div");

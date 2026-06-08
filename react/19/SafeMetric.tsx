@@ -6,10 +6,10 @@
  */
 import { useRef, useEffect } from "react";
 import gsap from "gsap";
-import type { ConfigBase, OnSafeEvent } from "safecomponents";
-import { createSafeEvent } from "safecomponents";
-import type { TrendDirection } from "safecomponents/components/metric";
-import { fmtCurrency, fmtInt, fmtPercent, fmtNumber } from "safecomponents";
+import type { ConfigBase, OnSafeEvent } from "safecontracts";
+import { createSafeEvent } from "safecontracts";
+import type { TrendDirection } from "safecontracts/components/metric";
+import { fmtCurrency, fmtInt, fmtPercent, fmtNumber } from "safecontracts";
 
 export interface SafeMetricProps {
   config: ConfigBase;

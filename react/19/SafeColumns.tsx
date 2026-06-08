@@ -9,9 +9,9 @@
  * Each child's metadata.start (1–12) controls where it begins (optional).
  */
 import type { ReactNode } from "react";
-import type { ConfigBase, OnSafeEvent } from "safecomponents";
-import { createSafeEvent } from "safecomponents";
-import { COLUMNS_DEFAULTS } from "safecomponents/components/columns";
+import type { ConfigBase, OnSafeEvent } from "safecontracts";
+import { createSafeEvent } from "safecontracts";
+import { COLUMNS_DEFAULTS } from "safecontracts/components/columns";
 import { useRenderLog, type RenderLogFn } from "./hooks/useRenderLog";
 
 export interface SafeColumnsProps {

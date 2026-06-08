@@ -11,10 +11,10 @@ import {
   ComposedChart,
   XAxis, YAxis, Tooltip, Legend, CartesianGrid, ResponsiveContainer,
 } from "recharts";
-import type { ConfigBase, OnSafeEvent } from "safecomponents";
-import { createSafeEvent } from "safecomponents";
+import type { ConfigBase, OnSafeEvent } from "safecontracts";
+import { createSafeEvent } from "safecontracts";
 
-import { resolveColors } from "safecomponents";
+import { resolveColors } from "safecontracts";
 
 export interface SafeChartProps {
   config: ConfigBase;

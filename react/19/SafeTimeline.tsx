@@ -4,8 +4,8 @@
  */
 import { useRef, useEffect, useMemo } from "react";
 import * as d3 from "d3";
-import type { ConfigBase, OnSafeEvent } from "safecomponents";
-import { createSafeEvent } from "safecomponents";
+import type { ConfigBase, OnSafeEvent } from "safecontracts";
+import { createSafeEvent } from "safecontracts";
 
 export interface SafeTimelineProps {
   config: ConfigBase;
@@ -13,7 +13,7 @@ export interface SafeTimelineProps {
   onEvent?: OnSafeEvent;
 }
 
-import { resolveColors } from "safecomponents";
+import { resolveColors } from "safecontracts";
 
 function getCategoryColor(categories: string[], cat: string, colors: string[]): string {
   const idx = categories.indexOf(cat);

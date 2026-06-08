@@ -7,8 +7,8 @@
  * Group variants: toolbar, toggle, stepper, pagination.
  */
 import { useState } from "react";
-import type { ConfigBase, OnSafeEvent, SafeEventContext } from "safecomponents";
-import { createSafeEvent } from "safecomponents";
+import type { ConfigBase, OnSafeEvent, SafeEventContext } from "safecontracts";
+import { createSafeEvent } from "safecontracts";
 
 export interface SafeButtonProps {
   config: ConfigBase;

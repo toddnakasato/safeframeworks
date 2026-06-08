@@ -6,7 +6,7 @@
  */
 import React from "react";
 import type { ReactNode } from "react";
-import type { ConfigBase, ConfigLayout, OnSafeEvent } from "safecomponents";
+import type { ConfigBase, ConfigLayout, OnSafeEvent } from "safecontracts";
 import { SafeButton } from "./SafeButton";
 import { SafeCalendar } from "./SafeCalendar";
 import { SafeCallout } from "./SafeCallout";

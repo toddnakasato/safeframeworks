@@ -8,8 +8,8 @@
  * Events: "navigate" (prev/next), "select" (day click).
  */
 import { useState } from "react";
-import type { ConfigBase, OnSafeEvent } from "safecomponents";
-import { createSafeEvent } from "safecomponents";
+import type { ConfigBase, OnSafeEvent } from "safecontracts";
+import { createSafeEvent } from "safecontracts";
 
 export interface SafeCalendarProps {
   config: ConfigBase;

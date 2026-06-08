@@ -5,9 +5,9 @@
  * Gallery JSON is the single source of truth.
  */
 import { useState } from "react";
-import type { ConfigBase, OnSafeEvent } from "safecomponents";
-import { createSafeEvent } from "safecomponents";
-import { GRID_DEFAULTS } from "safecomponents/components/grid";
+import type { ConfigBase, OnSafeEvent } from "safecontracts";
+import { createSafeEvent } from "safecontracts";
+import { GRID_DEFAULTS } from "safecontracts/components/grid";
 import { SafeGridCell } from "./SafeGridCell";
 
 export interface SafeGridProps {

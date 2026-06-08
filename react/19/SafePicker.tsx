@@ -1,7 +1,7 @@
 import { useState, useMemo, useRef, useEffect } from "react";
-import type { ConfigBase, OnSafeEvent } from "safecomponents";
-import { createSafeEvent } from "safecomponents";
-import type { RowCell, RowDef } from "safecomponents";
+import type { ConfigBase, OnSafeEvent } from "safecontracts";
+import { createSafeEvent } from "safecontracts";
+import type { RowCell, RowDef } from "safecontracts";
 import { useRenderLog, type RenderLogFn } from "./hooks/useRenderLog";
 
 export interface SafePickerProps {
