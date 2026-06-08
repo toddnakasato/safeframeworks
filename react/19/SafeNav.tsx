@@ -101,10 +101,10 @@ function NavClassic({ config, onEvent }: SafeNavProps) {
   const bottomItems = entries.filter(([_, c]) => (c.metadata?.section as string) === "bottom");
 
   return (
-    <div className="w-56 h-full flex flex-col bg-sidebar border-r border-sidebar-border">
+    <div className="w-56 h-full flex flex-col bg-background border-r border-border">
       {/* Header */}
       {title && (
-        <div className="px-4 py-4 border-b border-sidebar-border">
+        <div className="px-4 py-4 border-b border-border">
           <div className="flex items-center gap-2">
             <div className="w-7 h-7 rounded-md bg-primary flex items-center justify-center">
               {headerIcon
@@ -142,14 +142,14 @@ function NavClassic({ config, onEvent }: SafeNavProps) {
 
       {/* Bottom */}
       {bottomItems.length > 0 && (
-        <div className="px-2 py-2 border-t border-sidebar-border space-y-0.5">
+        <div className="px-2 py-2 border-t border-border space-y-0.5">
           {bottomItems.map(([k, c]) => renderItem(k, c))}
         </div>
       )}
 
       {/* User */}
       {userName && (
-        <div className="px-3 py-3 border-t border-sidebar-border flex items-center gap-2.5">
+        <div className="px-3 py-3 border-t border-border flex items-center gap-2.5">
           <div className="w-7 h-7 rounded-full bg-secondary flex items-center justify-center text-xs font-medium">{userInitials}</div>
           <div className="flex-1 min-w-0">
             <p className="text-sm font-medium leading-none truncate">{userName}</p>
