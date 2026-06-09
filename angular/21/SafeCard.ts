@@ -12,7 +12,8 @@ import type { ConfigBase, OnSafeEvent } from 'safecontracts';
   standalone: true,
   imports: [NgIf],
   template: `
-    <div *ngIf="config.metadata.header" data-role="header">{{ config.metadata.header }}</div>
+    <div *ngIf="config.metadata.title" data-role="header">{{ config.metadata.title }}</div>
+    <div *ngIf="config.metadata.subtitle" data-role="subtitle">{{ config.metadata.subtitle }}</div>
     <ng-content></ng-content>
   `,
   host: {

@@ -4,17 +4,18 @@
  * Outputs data-* attributes for intent. No hardcoded CSS.
  */
 import { Component, Input } from '@angular/core';
-import { NgIf } from '@angular/common';
+import { NgFor } from '@angular/common';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
 
 @Component({
   selector: 'safe-tabs',
   standalone: true,
-  imports: [NgIf],
+  imports: [NgFor],
   template: `
     <div data-tabs-bar>
-      <ng-content></ng-content>
+      <button *ngFor="let tab of config.metadata.tabs || []" data-role="tab" [attr.data-tab-key]="tab.key">{{ tab.label }}</button>
     </div>
+    <div data-tabs-panel><ng-content></ng-content></div>
   `,
   host: {
     '[attr.data-component]': "'tabs'",

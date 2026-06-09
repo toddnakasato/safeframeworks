@@ -12,13 +12,14 @@ import type { ConfigBase, OnSafeEvent } from 'safecontracts';
   standalone: true,
   imports: [NgIf],
   template: `
+    <div *ngIf="config.metadata.title" data-role="title">{{ config.metadata.title }}</div>
     <div data-role="messages">
-      <ng-content></ng-content>
+      <div data-role="message" data-sender="system">Welcome to chat</div>
     </div>
+    <div data-role="input"><input placeholder="{{ config.metadata.placeholder || 'Type a message...' }}" /></div>
   `,
   host: {
-    '[attr.data-component]': "'chat'",
-    '[attr.data-variant]': 'config.metadata.variant'
+    '[attr.data-component]': "'chat'"
   }
 })
 export class SafeChatComponent {

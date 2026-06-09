@@ -12,7 +12,11 @@ import type { ConfigBase, OnSafeEvent } from 'safecontracts';
   standalone: true,
   imports: [NgIf],
   template: `
-    <ng-content></ng-content>
+    <label data-role="toggle-label">
+      <input type="checkbox" data-role="toggle-input" [checked]="config.metadata.checked" [disabled]="config.metadata.disabled" />
+      <span data-role="toggle-slider"></span>
+      <span *ngIf="config.metadata.label" data-role="label">{{ config.metadata.label }}</span>
+    </label>
   `,
   host: {
     '[attr.data-component]': "'toggle'",

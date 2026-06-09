@@ -4,15 +4,13 @@
  * Outputs data-* attributes for intent. No hardcoded CSS.
  */
 import { Component, Input } from '@angular/core';
-import { NgIf } from '@angular/common';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
 
 @Component({
   selector: 'safe-sankey',
   standalone: true,
-  imports: [NgIf],
   template: `
-    <ng-content></ng-content>
+    <div style="text-align:center;padding:16px;color:var(--sd-text-dim,#6b7280)">Sankey diagram — requires D3</div>
   `,
   host: {
     '[attr.data-component]': "'sankey'",

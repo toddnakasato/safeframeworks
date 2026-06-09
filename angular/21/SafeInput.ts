@@ -12,8 +12,11 @@ import type { ConfigBase, OnSafeEvent } from 'safecontracts';
   standalone: true,
   imports: [NgIf],
   template: `
-    <div [attr.data-input-type]="config.metadata.inputType">
-      <ng-content></ng-content>
+    <div *ngIf="config.metadata.placeholder" data-role="field">
+      <input [placeholder]="config.metadata.placeholder || ''" data-role="field" />
+    </div>
+    <div *ngIf="!config.metadata.placeholder" data-role="field">
+      <input placeholder="Enter value..." data-role="field" />
     </div>
   `,
   host: {

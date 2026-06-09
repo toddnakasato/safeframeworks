@@ -4,15 +4,13 @@
  * Outputs data-* attributes for intent. No hardcoded CSS.
  */
 import { Component, Input } from '@angular/core';
-import { NgIf } from '@angular/common';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
 
 @Component({
   selector: 'safe-map',
   standalone: true,
-  imports: [NgIf],
   template: `
-    <ng-content></ng-content>
+    <div style="height:120px;background:var(--sd-surface-raised,#f3f4f6);display:flex;align-items:center;justify-content:center;border-radius:4px;color:var(--sd-text-dim,#6b7280)">Map — requires Leaflet</div>
   `,
   host: {
     '[attr.data-component]': "'map'",

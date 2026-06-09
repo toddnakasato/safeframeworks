@@ -4,15 +4,13 @@
  * Outputs data-* attributes for intent. No hardcoded CSS.
  */
 import { Component, Input } from '@angular/core';
-import { NgIf } from '@angular/common';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
 
 @Component({
   selector: 'safe-callout',
   standalone: true,
-  imports: [NgIf],
   template: `
-    <ng-content></ng-content>
+    <div data-role="message">{{ config.metadata.message || 'Callout' }}</div>
   `,
   host: {
     '[attr.data-component]': "'callout'",

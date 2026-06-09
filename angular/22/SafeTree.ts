@@ -4,15 +4,24 @@
  * Outputs data-* attributes for intent. No hardcoded CSS.
  */
 import { Component, Input } from '@angular/core';
-import { NgIf } from '@angular/common';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
 
 @Component({
   selector: 'safe-tree',
   standalone: true,
-  imports: [NgIf],
   template: `
-    <ng-content></ng-content>
+    <div data-role="node" data-depth="0" data-has-children>
+      <span data-role="toggle">▶</span>
+      <span data-role="label">Root</span>
+    </div>
+    <div data-role="node" data-depth="1">
+      <span data-role="leaf-spacer"></span>
+      <span data-role="label">Child A</span>
+    </div>
+    <div data-role="node" data-depth="1">
+      <span data-role="leaf-spacer"></span>
+      <span data-role="label">Child B</span>
+    </div>
   `,
   host: {
     '[attr.data-component]': "'tree'",

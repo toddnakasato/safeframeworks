@@ -4,15 +4,17 @@
  * Outputs data-* attributes for intent. No hardcoded CSS.
  */
 import { Component, Input } from '@angular/core';
-import { NgIf } from '@angular/common';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
 
 @Component({
   selector: 'safe-funnel',
   standalone: true,
-  imports: [NgIf],
   template: `
-    <ng-content></ng-content>
+    <div style="display:flex;flex-direction:column;gap:4px;padding:8px">
+      <div style="background:var(--sd-accent,#3b82f6);color:white;padding:8px;text-align:center;border-radius:4px;width:100%">Leads: 100</div>
+      <div style="background:var(--sd-accent,#3b82f6);color:white;padding:8px;text-align:center;border-radius:4px;width:75%;margin:0 auto">Qualified: 75</div>
+      <div style="background:var(--sd-accent,#3b82f6);color:white;padding:8px;text-align:center;border-radius:4px;width:50%;margin:0 auto">Won: 50</div>
+    </div>
   `,
   host: {
     '[attr.data-component]': "'funnel'",

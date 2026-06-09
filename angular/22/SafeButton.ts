@@ -12,7 +12,9 @@ import type { ConfigBase, OnSafeEvent } from 'safecontracts';
   standalone: true,
   imports: [NgIf],
   template: `
+    <span *ngIf="config.metadata.icon" data-role="icon">{{ config.metadata.icon }}</span>
     <span *ngIf="config.metadata.label" data-role="label">{{ config.metadata.label }}</span>
+    <span *ngIf="config.metadata.suffix" data-role="suffix">{{ config.metadata.suffix }}</span>
   `,
   host: {
     '[attr.data-component]': "'button'",

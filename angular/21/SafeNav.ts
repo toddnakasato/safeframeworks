@@ -12,9 +12,11 @@ import type { ConfigBase, OnSafeEvent } from 'safecontracts';
   standalone: true,
   imports: [NgIf],
   template: `
-    <div [attr.data-nav-style]="config.metadata.navStyle">
-      <ng-content></ng-content>
+    <div *ngIf="config.metadata.title" data-nav-header>
+      <div data-nav-logo>{{ config.metadata.title?.charAt(0) }}</div>
+      <div data-nav-title>{{ config.metadata.title }}</div>
     </div>
+    <nav data-nav-main><ng-content></ng-content></nav>
   `,
   host: {
     '[attr.data-component]': "'nav'",

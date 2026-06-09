@@ -4,15 +4,16 @@
  * Outputs data-* attributes for intent. No hardcoded CSS.
  */
 import { Component, Input } from '@angular/core';
-import { NgIf } from '@angular/common';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
 
 @Component({
   selector: 'safe-layout',
   standalone: true,
-  imports: [NgIf],
   template: `
-    <ng-content></ng-content>
+    <div style="display:flex;flex-direction:column;gap:var(--sd-space-md,8px);padding:8px">
+      <ng-content></ng-content>
+      <div style="color:var(--sd-text-dim,#6b7280);font-size:12px">Layout variant: {{ config.metadata.variant }}</div>
+    </div>
   `,
   host: {
     '[attr.data-component]': "'layout'",
