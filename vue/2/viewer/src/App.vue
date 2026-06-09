@@ -63,6 +63,10 @@ function switchStyle(s) {
   const link = document.getElementById('safestyle-link');
   if (link) link.setAttribute('href', '/styles/' + s + '/components.css');
 }
+
+function selectComponent(name) {
+  activeComponent.value = name;
+}
 </script>
 
 <template>
@@ -72,33 +76,33 @@ function switchStyle(s) {
       <button v-for="s in STYLES" :key="s" class="style-btn" :class="{ active: s === activeStyle }" @click="switchStyle(s)">{{ s }}</button>
 
       <div class="section-label" style="margin-top:16px">COMPONENTS</div>
-      <button class="comp-btn" :class="{ active: activeComponent === null }" @click="activeComponent = null">All</button>
-      <button class="comp-btn" :class="{ active: activeComponent === 'layout' }" @click="activeComponent = 'layout'">layout</button>
-      <button class="comp-btn" :class="{ active: activeComponent === 'columns' }" @click="activeComponent = 'columns'">columns</button>
-      <button class="comp-btn" :class="{ active: activeComponent === 'card' }" @click="activeComponent = 'card'">card</button>
-      <button class="comp-btn" :class="{ active: activeComponent === 'button' }" @click="activeComponent = 'button'">button</button>
-      <button class="comp-btn" :class="{ active: activeComponent === 'table' }" @click="activeComponent = 'table'">table</button>
-      <button class="comp-btn" :class="{ active: activeComponent === 'tree' }" @click="activeComponent = 'tree'">tree</button>
-      <button class="comp-btn" :class="{ active: activeComponent === 'sheet' }" @click="activeComponent = 'sheet'">sheet</button>
-      <button class="comp-btn" :class="{ active: activeComponent === 'chart' }" @click="activeComponent = 'chart'">chart</button>
-      <button class="comp-btn" :class="{ active: activeComponent === 'heatmap' }" @click="activeComponent = 'heatmap'">heatmap</button>
-      <button class="comp-btn" :class="{ active: activeComponent === 'gauge' }" @click="activeComponent = 'gauge'">gauge</button>
-      <button class="comp-btn" :class="{ active: activeComponent === 'funnel' }" @click="activeComponent = 'funnel'">funnel</button>
-      <button class="comp-btn" :class="{ active: activeComponent === 'sankey' }" @click="activeComponent = 'sankey'">sankey</button>
-      <button class="comp-btn" :class="{ active: activeComponent === 'treemap' }" @click="activeComponent = 'treemap'">treemap</button>
-      <button class="comp-btn" :class="{ active: activeComponent === 'timeline' }" @click="activeComponent = 'timeline'">timeline</button>
-      <button class="comp-btn" :class="{ active: activeComponent === 'map' }" @click="activeComponent = 'map'">map</button>
-      <button class="comp-btn" :class="{ active: activeComponent === 'calendar' }" @click="activeComponent = 'calendar'">calendar</button>
-      <button class="comp-btn" :class="{ active: activeComponent === 'toggle' }" @click="activeComponent = 'toggle'">toggle</button>
-      <button class="comp-btn" :class="{ active: activeComponent === 'week' }" @click="activeComponent = 'week'">week</button>
-      <button class="comp-btn" :class="{ active: activeComponent === 'chat' }" @click="activeComponent = 'chat'">chat</button>
-      <button class="comp-btn" :class="{ active: activeComponent === 'tabs' }" @click="activeComponent = 'tabs'">tabs</button>
-      <button class="comp-btn" :class="{ active: activeComponent === 'callout' }" @click="activeComponent = 'callout'">callout</button>
-      <button class="comp-btn" :class="{ active: activeComponent === 'drag-drop' }" @click="activeComponent = 'drag-drop'">drag-drop</button>
-      <button class="comp-btn" :class="{ active: activeComponent === 'grid' }" @click="activeComponent = 'grid'">grid</button>
-      <button class="comp-btn" :class="{ active: activeComponent === 'input' }" @click="activeComponent = 'input'">input</button>
-      <button class="comp-btn" :class="{ active: activeComponent === 'picker' }" @click="activeComponent = 'picker'">picker</button>
-      <button class="comp-btn" :class="{ active: activeComponent === 'nav' }" @click="activeComponent = 'nav'">nav</button>
+      <button class="comp-btn" :class="{ active: activeComponent === null }" @click="selectComponent(null)">All</button>
+      <button class="comp-btn" :class="{ active: activeComponent === 'layout' }" @click="selectComponent('layout')">layout</button>
+      <button class="comp-btn" :class="{ active: activeComponent === 'columns' }" @click="selectComponent('columns')">columns</button>
+      <button class="comp-btn" :class="{ active: activeComponent === 'card' }" @click="selectComponent('card')">card</button>
+      <button class="comp-btn" :class="{ active: activeComponent === 'button' }" @click="selectComponent('button')">button</button>
+      <button class="comp-btn" :class="{ active: activeComponent === 'table' }" @click="selectComponent('table')">table</button>
+      <button class="comp-btn" :class="{ active: activeComponent === 'tree' }" @click="selectComponent('tree')">tree</button>
+      <button class="comp-btn" :class="{ active: activeComponent === 'sheet' }" @click="selectComponent('sheet')">sheet</button>
+      <button class="comp-btn" :class="{ active: activeComponent === 'chart' }" @click="selectComponent('chart')">chart</button>
+      <button class="comp-btn" :class="{ active: activeComponent === 'heatmap' }" @click="selectComponent('heatmap')">heatmap</button>
+      <button class="comp-btn" :class="{ active: activeComponent === 'gauge' }" @click="selectComponent('gauge')">gauge</button>
+      <button class="comp-btn" :class="{ active: activeComponent === 'funnel' }" @click="selectComponent('funnel')">funnel</button>
+      <button class="comp-btn" :class="{ active: activeComponent === 'sankey' }" @click="selectComponent('sankey')">sankey</button>
+      <button class="comp-btn" :class="{ active: activeComponent === 'treemap' }" @click="selectComponent('treemap')">treemap</button>
+      <button class="comp-btn" :class="{ active: activeComponent === 'timeline' }" @click="selectComponent('timeline')">timeline</button>
+      <button class="comp-btn" :class="{ active: activeComponent === 'map' }" @click="selectComponent('map')">map</button>
+      <button class="comp-btn" :class="{ active: activeComponent === 'calendar' }" @click="selectComponent('calendar')">calendar</button>
+      <button class="comp-btn" :class="{ active: activeComponent === 'toggle' }" @click="selectComponent('toggle')">toggle</button>
+      <button class="comp-btn" :class="{ active: activeComponent === 'week' }" @click="selectComponent('week')">week</button>
+      <button class="comp-btn" :class="{ active: activeComponent === 'chat' }" @click="selectComponent('chat')">chat</button>
+      <button class="comp-btn" :class="{ active: activeComponent === 'tabs' }" @click="selectComponent('tabs')">tabs</button>
+      <button class="comp-btn" :class="{ active: activeComponent === 'callout' }" @click="selectComponent('callout')">callout</button>
+      <button class="comp-btn" :class="{ active: activeComponent === 'drag-drop' }" @click="selectComponent('drag-drop')">drag-drop</button>
+      <button class="comp-btn" :class="{ active: activeComponent === 'grid' }" @click="selectComponent('grid')">grid</button>
+      <button class="comp-btn" :class="{ active: activeComponent === 'input' }" @click="selectComponent('input')">input</button>
+      <button class="comp-btn" :class="{ active: activeComponent === 'picker' }" @click="selectComponent('picker')">picker</button>
+      <button class="comp-btn" :class="{ active: activeComponent === 'nav' }" @click="selectComponent('nav')">nav</button>
     </div>
     <div class="main">
       <h3>vue/2 — {{ activeStyle }}<span v-if="activeComponent" class="active-comp"> — {{ activeComponent }}</span></h3>
