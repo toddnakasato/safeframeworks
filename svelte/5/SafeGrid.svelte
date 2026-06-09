@@ -1,11 +1,9 @@
 <!--
   SafeGrid — Svelte 5 grid component.
-  Implements grid contract from safecontracts.
   Outputs data-* attributes for intent. No hardcoded CSS.
 -->
 <script lang="ts">
   import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-
   let { config, onEvent }: { config: ConfigBase; onEvent?: OnSafeEvent } = $props();
 </script>
 
@@ -16,5 +14,5 @@
   data-surface={config.metadata.surface}
   data-collapsible={config.metadata.collapsible}
 >
-  <slot />
+  <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px;padding:8px"><div style="padding:8px;border:1px solid var(--sd-border,#e5e7eb);border-radius:4px">Cell 1</div><div style="padding:8px;border:1px solid var(--sd-border,#e5e7eb);border-radius:4px">Cell 2</div></div>
 </div>

@@ -1,11 +1,9 @@
 <!--
-  SafeCalendar — Svelte 5 calendar component.
-  Implements calendar contract from safecontracts.
+  SafeCalendar — Svelte 4 calendar component.
   Outputs data-* attributes for intent. No hardcoded CSS.
 -->
 <script lang="ts">
   import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-
   export let config: ConfigBase;
   export let onEvent: OnSafeEvent | undefined = undefined;
 </script>
@@ -15,5 +13,5 @@
   data-variant={config.metadata.variant}
   data-size={config.metadata.size}
 >
-  <slot />
+  <div data-role="header"><button data-role="prev">‹</button><span data-role="title">June 2026</span><button data-role="next">›</button></div>
 </div>

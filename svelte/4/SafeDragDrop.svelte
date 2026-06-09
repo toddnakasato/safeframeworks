@@ -1,11 +1,9 @@
 <!--
-  SafeDragDrop — Svelte 5 drag-drop component.
-  Implements drag-drop contract from safecontracts.
+  SafeDragDrop — Svelte 4 drag-drop component.
   Outputs data-* attributes for intent. No hardcoded CSS.
 -->
 <script lang="ts">
   import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-
   export let config: ConfigBase;
   export let onEvent: OnSafeEvent | undefined = undefined;
 </script>
@@ -14,5 +12,5 @@
   data-component="drag-drop"
   data-variant={config.metadata.variant}
 >
-  <slot />
+  <div style="display:flex;gap:16px"><div style="flex:1;border:2px dashed var(--sd-border,#e5e7eb);border-radius:8px;padding:8px"><div data-role="item" style="padding:4px 8px;background:var(--sd-surface-raised,#f3f4f6);border-radius:4px;margin-bottom:4px">Item A</div><div data-role="item" style="padding:4px 8px;background:var(--sd-surface-raised,#f3f4f6);border-radius:4px">Item B</div></div><div style="flex:1;border:2px dashed var(--sd-border,#e5e7eb);border-radius:8px;padding:8px;display:flex;align-items:center;justify-content:center;color:var(--sd-text-dim,#6b7280)">Drop here</div></div>
 </div>

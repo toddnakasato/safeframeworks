@@ -1,11 +1,9 @@
 <!--
   SafeButton — Svelte 5 button component.
-  Implements button contract from safecontracts.
   Outputs data-* attributes for intent. No hardcoded CSS.
 -->
 <script lang="ts">
   import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-
   let { config, onEvent }: { config: ConfigBase; onEvent?: OnSafeEvent } = $props();
 </script>
 
@@ -22,5 +20,6 @@
   data-group-variant={config.metadata.groupVariant}
   data-group-direction={config.metadata.groupDirection}
 >
-  {#if config.metadata.label}<span data-role="label">{config.metadata.label}</span>{/if}
+  {#if config.metadata.icon}<span data-role="icon">{config.metadata.icon}</span>{/if}
+    {#if config.metadata.label}<span data-role="label">{config.metadata.label}</span>{/if}
 </div>

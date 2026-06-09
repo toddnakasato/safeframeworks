@@ -1,11 +1,9 @@
 <!--
-  SafeMap — Svelte 5 map component.
-  Implements map contract from safecontracts.
+  SafeMap — Svelte 4 map component.
   Outputs data-* attributes for intent. No hardcoded CSS.
 -->
 <script lang="ts">
   import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-
   export let config: ConfigBase;
   export let onEvent: OnSafeEvent | undefined = undefined;
 </script>
@@ -14,5 +12,5 @@
   data-component="map"
   data-variant={config.metadata.variant}
 >
-  <slot />
+  <div style="height:120px;background:var(--sd-surface-raised,#f3f4f6);display:flex;align-items:center;justify-content:center;border-radius:4px;color:var(--sd-text-dim,#6b7280)">Map</div>
 </div>

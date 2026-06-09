@@ -1,11 +1,9 @@
 <!--
-  SafeChat — Svelte 5 chat component.
-  Implements chat contract from safecontracts.
+  SafeChat — Svelte 4 chat component.
   Outputs data-* attributes for intent. No hardcoded CSS.
 -->
 <script lang="ts">
   import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-
   export let config: ConfigBase;
   export let onEvent: OnSafeEvent | undefined = undefined;
 </script>
@@ -14,7 +12,6 @@
   data-component="chat"
 >
   {#if config.metadata.title}<div data-role="title">{config.metadata.title}</div>{/if}
-  <div data-role="messages">
-    <slot />
-  </div>
+    <div data-role="messages"><div data-role="message" data-sender="system">Welcome to chat</div></div>
+    <div data-role="input"><input placeholder={config.metadata.placeholder || "Type a message..."} /></div>
 </div>

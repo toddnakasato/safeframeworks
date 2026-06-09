@@ -1,11 +1,9 @@
 <!--
-  SafeTable — Svelte 5 table component.
-  Implements table contract from safecontracts.
+  SafeTable — Svelte 4 table component.
   Outputs data-* attributes for intent. No hardcoded CSS.
 -->
 <script lang="ts">
   import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-
   export let config: ConfigBase;
   export let onEvent: OnSafeEvent | undefined = undefined;
 </script>
@@ -23,7 +21,5 @@
   data-zebra={config.metadata.zebra}
   data-selectable={config.metadata.selectable}
 >
-  <div data-role="scroll">
-    <slot />
-  </div>
+  <div data-role="scroll"><table><thead data-role="thead"><tr data-role="header-row"><th>Column</th><th>Value</th></tr></thead><tbody data-role="tbody"><tr data-role="row"><td data-role="cell">Sample</td><td data-role="cell">Data</td></tr></tbody></table></div>
 </div>
