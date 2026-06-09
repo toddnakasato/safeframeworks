@@ -38,7 +38,7 @@ export async function dispatchEvent(
   if (!h) return;
 
   // State update: read, apply payload mapping, write
-  if (h.target === "server" && h.action === "state") {
+  if (h.target === "runtime" && h.action === "state") {
     const stateRaw = await invoke<string>("read_state");
     const state = JSON.parse(stateRaw);
 
