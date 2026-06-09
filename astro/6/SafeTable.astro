@@ -1,16 +1,10 @@
 ---
 /**
  * SafeTable — Astro 6 table component.
- * Implements table contract from safecontracts.
  * Outputs data-* attributes for intent. No hardcoded CSS.
  */
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-
-interface Props {
-  config: ConfigBase;
-  onEvent?: OnSafeEvent;
-}
-
+interface Props { config: ConfigBase; onEvent?: OnSafeEvent; }
 const { config, onEvent } = Astro.props;
 ---
 
@@ -27,7 +21,5 @@ const { config, onEvent } = Astro.props;
   data-zebra={config.metadata.zebra}
   data-selectable={config.metadata.selectable}
 >
-  <div data-role="scroll">
-    <slot />
-  </div>
+  <div data-role="scroll"><table><thead data-role="thead"><tr data-role="header-row"><th>Column</th><th>Value</th></tr></thead><tbody data-role="tbody"><tr data-role="row"><td data-role="cell">Sample</td><td data-role="cell">Data</td></tr></tbody></table></div>
 </div>

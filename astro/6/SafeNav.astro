@@ -1,16 +1,10 @@
 ---
 /**
  * SafeNav — Astro 6 nav component.
- * Implements nav contract from safecontracts.
  * Outputs data-* attributes for intent. No hardcoded CSS.
  */
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-
-interface Props {
-  config: ConfigBase;
-  onEvent?: OnSafeEvent;
-}
-
+interface Props { config: ConfigBase; onEvent?: OnSafeEvent; }
 const { config, onEvent } = Astro.props;
 ---
 
@@ -18,7 +12,6 @@ const { config, onEvent } = Astro.props;
   data-component="nav"
   data-nav-style={config.metadata.navStyle}
 >
-  <div data-nav-style={config.metadata.navStyle}>
-    <slot />
-  </div>
+  {config.metadata.title && <div data-nav-header><div data-nav-logo>{config.metadata.title?.charAt(0)}</div><div data-nav-title>{config.metadata.title}</div></div>}
+      <nav data-nav-main><slot /></nav>
 </div>

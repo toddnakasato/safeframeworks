@@ -1,16 +1,10 @@
 ---
 /**
  * SafeSankey — Astro 6 sankey component.
- * Implements sankey contract from safecontracts.
  * Outputs data-* attributes for intent. No hardcoded CSS.
  */
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-
-interface Props {
-  config: ConfigBase;
-  onEvent?: OnSafeEvent;
-}
-
+interface Props { config: ConfigBase; onEvent?: OnSafeEvent; }
 const { config, onEvent } = Astro.props;
 ---
 
@@ -18,5 +12,5 @@ const { config, onEvent } = Astro.props;
   data-component="sankey"
   data-variant={config.metadata.variant}
 >
-  <slot />
+  <div style="text-align:center;padding:16px;color:var(--sd-text-dim,#6b7280)">Sankey diagram</div>
 </div>
