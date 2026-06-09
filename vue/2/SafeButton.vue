@@ -1,12 +1,10 @@
 <!--
   SafeButton — Vue 2 button component.
-  Implements button contract from safecontracts.
   Outputs data-* attributes for intent. No hardcoded CSS.
 -->
 <script lang="ts">
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
 import { defineComponent, type PropType } from 'vue';
-
 export default defineComponent({
   name: 'SafeButton',
   props: {
@@ -30,6 +28,7 @@ export default defineComponent({
     :data-group-variant="config.metadata.groupVariant"
     :data-group-direction="config.metadata.groupDirection"
   >
-    <span v-if="config.metadata.label" data-role="label">{{ config.metadata.label }}</span>
+      <span v-if="config.metadata.icon" data-role="icon">{{ config.metadata.icon }}</span>
+      <span v-if="config.metadata.label" data-role="label">{{ config.metadata.label }}</span>
   </div>
 </template>

@@ -1,15 +1,10 @@
 <!--
   SafeChart — Vue 3 chart component.
-  Implements chart contract from safecontracts.
   Outputs data-* attributes for intent. No hardcoded CSS.
 -->
 <script setup lang="ts">
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-
-defineProps<{
-  config: ConfigBase;
-  onEvent?: OnSafeEvent;
-}>();
+defineProps<{ config: ConfigBase; onEvent?: OnSafeEvent }>();
 </script>
 
 <template>
@@ -18,6 +13,6 @@ defineProps<{
     :data-variant="config.metadata.variant"
     :data-chart-type="config.metadata.chartType"
   >
-    <slot />
+      <div data-role="title">{{ config.metadata.title || "Chart" }}</div><div style="height:120px;display:flex;align-items:flex-end;gap:4px;padding:8px"><div style="flex:1;background:var(--sd-accent,#3b82f6);height:60%"></div><div style="flex:1;background:var(--sd-accent,#3b82f6);height:80%"></div><div style="flex:1;background:var(--sd-accent,#3b82f6);height:40%"></div></div>
   </div>
 </template>

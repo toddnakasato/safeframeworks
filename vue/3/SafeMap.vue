@@ -1,15 +1,10 @@
 <!--
   SafeMap — Vue 3 map component.
-  Implements map contract from safecontracts.
   Outputs data-* attributes for intent. No hardcoded CSS.
 -->
 <script setup lang="ts">
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-
-defineProps<{
-  config: ConfigBase;
-  onEvent?: OnSafeEvent;
-}>();
+defineProps<{ config: ConfigBase; onEvent?: OnSafeEvent }>();
 </script>
 
 <template>
@@ -17,6 +12,6 @@ defineProps<{
     data-component="map"
     :data-variant="config.metadata.variant"
   >
-    <slot />
+      <div style="height:120px;background:var(--sd-surface-raised,#f3f4f6);display:flex;align-items:center;justify-content:center;border-radius:4px;color:var(--sd-text-dim,#6b7280)">Map</div>
   </div>
 </template>

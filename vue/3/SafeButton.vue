@@ -1,15 +1,10 @@
 <!--
   SafeButton — Vue 3 button component.
-  Implements button contract from safecontracts.
   Outputs data-* attributes for intent. No hardcoded CSS.
 -->
 <script setup lang="ts">
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-
-defineProps<{
-  config: ConfigBase;
-  onEvent?: OnSafeEvent;
-}>();
+defineProps<{ config: ConfigBase; onEvent?: OnSafeEvent }>();
 </script>
 
 <template>
@@ -26,6 +21,7 @@ defineProps<{
     :data-group-variant="config.metadata.groupVariant"
     :data-group-direction="config.metadata.groupDirection"
   >
-    <span v-if="config.metadata.label" data-role="label">{{ config.metadata.label }}</span>
+      <span v-if="config.metadata.icon" data-role="icon">{{ config.metadata.icon }}</span>
+      <span v-if="config.metadata.label" data-role="label">{{ config.metadata.label }}</span>
   </div>
 </template>

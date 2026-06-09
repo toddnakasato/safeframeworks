@@ -27,13 +27,41 @@ import SafeInput from '../../SafeInput.vue';
 import SafePicker from '../../SafePicker.vue';
 import SafeNav from '../../SafeNav.vue';
 
-const STYLES = ["vanilla", "tailwind", "tailwind-daisy", "material"];
-const activeStyle = ref("vanilla");
+const STYLES = ['vanilla', 'tailwind', 'tailwind-daisy', 'material'];
+const activeStyle = ref('vanilla');
+const activeComponent = ref(null);
+
+const layoutConfig = { component: 'layout', metadata: {"variant": "default"} };
+const columnsConfig = { component: 'columns', metadata: {"spacing": "normal", "radius": "normal", "surface": "normal"} };
+const cardConfig = { component: 'card', metadata: {"variant": "default", "surface": "normal", "spacing": "normal", "radius": "normal", "density": "normal", "title": "Sample Card", "subtitle": "Subtitle"} };
+const buttonConfig = { component: 'button', metadata: {"variant": "primary", "size": "md", "disabled": false, "loading": "normal", "fullWidth": "normal", "iconOnly": "normal", "selected": "normal", "status": "normal", "groupVariant": "normal", "groupDirection": "normal", "label": "Click Me"} };
+const tableConfig = { component: 'table', metadata: {"variant": "default", "spacing": "normal", "headerStyle": "normal", "rowDivider": "normal", "rowNumbers": "normal", "truncate": "normal", "columnLines": "normal", "headerDivider": "normal", "zebra": "normal", "selectable": "normal"} };
+const treeConfig = { component: 'tree', metadata: {"variant": "default", "spacing": "normal"} };
+const sheetConfig = { component: 'sheet', metadata: {"variant": "default", "spacing": "normal", "surface": "normal"} };
+const chartConfig = { component: 'chart', metadata: {"variant": "default", "chartType": "bar", "title": "Revenue"} };
+const heatmapConfig = { component: 'heatmap', metadata: {"variant": "default"} };
+const gaugeConfig = { component: 'gauge', metadata: {"variant": "default"} };
+const funnelConfig = { component: 'funnel', metadata: {"variant": "default"} };
+const sankeyConfig = { component: 'sankey', metadata: {"variant": "default"} };
+const treemapConfig = { component: 'treemap', metadata: {"variant": "default"} };
+const timelineConfig = { component: 'timeline', metadata: {"variant": "default"} };
+const mapConfig = { component: 'map', metadata: {"variant": "default"} };
+const calendarConfig = { component: 'calendar', metadata: {"variant": "default", "size": "normal"} };
+const toggleConfig = { component: 'toggle', metadata: {"variant": "default", "disabled": false, "labelPosition": "right", "label": "Enable feature", "checked": false} };
+const weekConfig = { component: 'week', metadata: {"variant": "default"} };
+const chatConfig = { component: 'chat', metadata: {"title": "Chat", "placeholder": "Type a message..."} };
+const tabsConfig = { component: 'tabs', metadata: {"variant": "default", "position": "top", "tabs": [{"key": "one", "label": "Tab One"}, {"key": "two", "label": "Tab Two"}]} };
+const calloutConfig = { component: 'callout', metadata: {"variant": "info", "position": "top", "message": "This is a callout."} };
+const dragdropConfig = { component: 'drag-drop', metadata: {"variant": "default"} };
+const gridConfig = { component: 'grid', metadata: {"spacing": "normal", "radius": "normal", "surface": "normal", "collapsible": false} };
+const inputConfig = { component: 'input', metadata: {"inputType": "text", "align": "normal", "valign": "normal", "placeholder": "Type here..."} };
+const pickerConfig = { component: 'picker', metadata: {"variant": "default"} };
+const navConfig = { component: 'nav', metadata: {"navStyle": "classic", "title": "Viewer"} };
 
 function switchStyle(s) {
   activeStyle.value = s;
-  const link = document.getElementById("safestyle-link");
-  if (link) link.setAttribute("href", "/styles/" + s + "/components.css");
+  const link = document.getElementById('safestyle-link');
+  if (link) link.setAttribute('href', '/styles/' + s + '/components.css');
 }
 </script>
 
@@ -42,164 +70,192 @@ function switchStyle(s) {
     <div class="sidebar">
       <div class="section-label">STYLE</div>
       <button v-for="s in STYLES" :key="s" class="style-btn" :class="{ active: s === activeStyle }" @click="switchStyle(s)">{{ s }}</button>
-      <div class="section-label" style="margin-top:12px">vue/3</div>
+
+      <div class="section-label" style="margin-top:16px">COMPONENTS</div>
+      <button class="comp-btn" :class="{ active: activeComponent === null }" @click="activeComponent = null">All</button>
+      <button class="comp-btn" :class="{ active: activeComponent === 'layout' }" @click="activeComponent = 'layout'">layout</button>
+      <button class="comp-btn" :class="{ active: activeComponent === 'columns' }" @click="activeComponent = 'columns'">columns</button>
+      <button class="comp-btn" :class="{ active: activeComponent === 'card' }" @click="activeComponent = 'card'">card</button>
+      <button class="comp-btn" :class="{ active: activeComponent === 'button' }" @click="activeComponent = 'button'">button</button>
+      <button class="comp-btn" :class="{ active: activeComponent === 'table' }" @click="activeComponent = 'table'">table</button>
+      <button class="comp-btn" :class="{ active: activeComponent === 'tree' }" @click="activeComponent = 'tree'">tree</button>
+      <button class="comp-btn" :class="{ active: activeComponent === 'sheet' }" @click="activeComponent = 'sheet'">sheet</button>
+      <button class="comp-btn" :class="{ active: activeComponent === 'chart' }" @click="activeComponent = 'chart'">chart</button>
+      <button class="comp-btn" :class="{ active: activeComponent === 'heatmap' }" @click="activeComponent = 'heatmap'">heatmap</button>
+      <button class="comp-btn" :class="{ active: activeComponent === 'gauge' }" @click="activeComponent = 'gauge'">gauge</button>
+      <button class="comp-btn" :class="{ active: activeComponent === 'funnel' }" @click="activeComponent = 'funnel'">funnel</button>
+      <button class="comp-btn" :class="{ active: activeComponent === 'sankey' }" @click="activeComponent = 'sankey'">sankey</button>
+      <button class="comp-btn" :class="{ active: activeComponent === 'treemap' }" @click="activeComponent = 'treemap'">treemap</button>
+      <button class="comp-btn" :class="{ active: activeComponent === 'timeline' }" @click="activeComponent = 'timeline'">timeline</button>
+      <button class="comp-btn" :class="{ active: activeComponent === 'map' }" @click="activeComponent = 'map'">map</button>
+      <button class="comp-btn" :class="{ active: activeComponent === 'calendar' }" @click="activeComponent = 'calendar'">calendar</button>
+      <button class="comp-btn" :class="{ active: activeComponent === 'toggle' }" @click="activeComponent = 'toggle'">toggle</button>
+      <button class="comp-btn" :class="{ active: activeComponent === 'week' }" @click="activeComponent = 'week'">week</button>
+      <button class="comp-btn" :class="{ active: activeComponent === 'chat' }" @click="activeComponent = 'chat'">chat</button>
+      <button class="comp-btn" :class="{ active: activeComponent === 'tabs' }" @click="activeComponent = 'tabs'">tabs</button>
+      <button class="comp-btn" :class="{ active: activeComponent === 'callout' }" @click="activeComponent = 'callout'">callout</button>
+      <button class="comp-btn" :class="{ active: activeComponent === 'drag-drop' }" @click="activeComponent = 'drag-drop'">drag-drop</button>
+      <button class="comp-btn" :class="{ active: activeComponent === 'grid' }" @click="activeComponent = 'grid'">grid</button>
+      <button class="comp-btn" :class="{ active: activeComponent === 'input' }" @click="activeComponent = 'input'">input</button>
+      <button class="comp-btn" :class="{ active: activeComponent === 'picker' }" @click="activeComponent = 'picker'">picker</button>
+      <button class="comp-btn" :class="{ active: activeComponent === 'nav' }" @click="activeComponent = 'nav'">nav</button>
     </div>
     <div class="main">
-      <h3>vue/3 — {{ activeStyle }}</h3>
-      <div class="component-card">
+      <h3>vue/3 — {{ activeStyle }}<span v-if="activeComponent" class="active-comp"> — {{ activeComponent }}</span></h3>
+      <div v-if="activeComponent === null || activeComponent === 'layout'" class="component-card">
         <div class="component-label">layout</div>
         <div class="component-body">
-          <SafeLayout :config='{ component: "layout", metadata: {"variant": "default"} }' />
+          <SafeLayout :config="layoutConfig" />
         </div>
       </div>
-      <div class="component-card">
+      <div v-if="activeComponent === null || activeComponent === 'columns'" class="component-card">
         <div class="component-label">columns</div>
         <div class="component-body">
-          <SafeColumns :config='{ component: "columns", metadata: {"spacing": "normal", "radius": "normal", "surface": "normal"} }' />
+          <SafeColumns :config="columnsConfig" />
         </div>
       </div>
-      <div class="component-card">
+      <div v-if="activeComponent === null || activeComponent === 'card'" class="component-card">
         <div class="component-label">card</div>
         <div class="component-body">
-          <SafeCard :config='{ component: "card", metadata: {"variant": "default", "surface": "normal", "spacing": "normal", "radius": "normal", "density": "normal"} }' />
+          <SafeCard :config="cardConfig" />
         </div>
       </div>
-      <div class="component-card">
+      <div v-if="activeComponent === null || activeComponent === 'button'" class="component-card">
         <div class="component-label">button</div>
         <div class="component-body">
-          <SafeButton :config='{ component: "button", metadata: {"variant": "default", "size": "normal", "disabled": false, "loading": "normal", "fullWidth": "normal", "iconOnly": "normal", "selected": "normal", "status": "normal", "groupVariant": "normal", "groupDirection": "normal"} }' />
+          <SafeButton :config="buttonConfig" />
         </div>
       </div>
-      <div class="component-card">
+      <div v-if="activeComponent === null || activeComponent === 'table'" class="component-card">
         <div class="component-label">table</div>
         <div class="component-body">
-          <SafeTable :config='{ component: "table", metadata: {"variant": "default", "spacing": "normal", "headerStyle": "normal", "rowDivider": "normal", "rowNumbers": "normal", "truncate": "normal", "columnLines": "normal", "headerDivider": "normal", "zebra": "normal", "selectable": "normal"} }' />
+          <SafeTable :config="tableConfig" />
         </div>
       </div>
-      <div class="component-card">
+      <div v-if="activeComponent === null || activeComponent === 'tree'" class="component-card">
         <div class="component-label">tree</div>
         <div class="component-body">
-          <SafeTree :config='{ component: "tree", metadata: {"variant": "default", "spacing": "normal"} }' />
+          <SafeTree :config="treeConfig" />
         </div>
       </div>
-      <div class="component-card">
+      <div v-if="activeComponent === null || activeComponent === 'sheet'" class="component-card">
         <div class="component-label">sheet</div>
         <div class="component-body">
-          <SafeSheet :config='{ component: "sheet", metadata: {"variant": "default", "spacing": "normal", "surface": "normal"} }' />
+          <SafeSheet :config="sheetConfig" />
         </div>
       </div>
-      <div class="component-card">
+      <div v-if="activeComponent === null || activeComponent === 'chart'" class="component-card">
         <div class="component-label">chart</div>
         <div class="component-body">
-          <SafeChart :config='{ component: "chart", metadata: {"variant": "default", "chartType": "bar"} }' />
+          <SafeChart :config="chartConfig" />
         </div>
       </div>
-      <div class="component-card">
+      <div v-if="activeComponent === null || activeComponent === 'heatmap'" class="component-card">
         <div class="component-label">heatmap</div>
         <div class="component-body">
-          <SafeHeatmap :config='{ component: "heatmap", metadata: {"variant": "default"} }' />
+          <SafeHeatmap :config="heatmapConfig" />
         </div>
       </div>
-      <div class="component-card">
+      <div v-if="activeComponent === null || activeComponent === 'gauge'" class="component-card">
         <div class="component-label">gauge</div>
         <div class="component-body">
-          <SafeGauge :config='{ component: "gauge", metadata: {"variant": "default"} }' />
+          <SafeGauge :config="gaugeConfig" />
         </div>
       </div>
-      <div class="component-card">
+      <div v-if="activeComponent === null || activeComponent === 'funnel'" class="component-card">
         <div class="component-label">funnel</div>
         <div class="component-body">
-          <SafeFunnel :config='{ component: "funnel", metadata: {"variant": "default"} }' />
+          <SafeFunnel :config="funnelConfig" />
         </div>
       </div>
-      <div class="component-card">
+      <div v-if="activeComponent === null || activeComponent === 'sankey'" class="component-card">
         <div class="component-label">sankey</div>
         <div class="component-body">
-          <SafeSankey :config='{ component: "sankey", metadata: {"variant": "default"} }' />
+          <SafeSankey :config="sankeyConfig" />
         </div>
       </div>
-      <div class="component-card">
+      <div v-if="activeComponent === null || activeComponent === 'treemap'" class="component-card">
         <div class="component-label">treemap</div>
         <div class="component-body">
-          <SafeTreemap :config='{ component: "treemap", metadata: {"variant": "default"} }' />
+          <SafeTreemap :config="treemapConfig" />
         </div>
       </div>
-      <div class="component-card">
+      <div v-if="activeComponent === null || activeComponent === 'timeline'" class="component-card">
         <div class="component-label">timeline</div>
         <div class="component-body">
-          <SafeTimeline :config='{ component: "timeline", metadata: {"variant": "default"} }' />
+          <SafeTimeline :config="timelineConfig" />
         </div>
       </div>
-      <div class="component-card">
+      <div v-if="activeComponent === null || activeComponent === 'map'" class="component-card">
         <div class="component-label">map</div>
         <div class="component-body">
-          <SafeMap :config='{ component: "map", metadata: {"variant": "default"} }' />
+          <SafeMap :config="mapConfig" />
         </div>
       </div>
-      <div class="component-card">
+      <div v-if="activeComponent === null || activeComponent === 'calendar'" class="component-card">
         <div class="component-label">calendar</div>
         <div class="component-body">
-          <SafeCalendar :config='{ component: "calendar", metadata: {"variant": "default", "size": "normal"} }' />
+          <SafeCalendar :config="calendarConfig" />
         </div>
       </div>
-      <div class="component-card">
+      <div v-if="activeComponent === null || activeComponent === 'toggle'" class="component-card">
         <div class="component-label">toggle</div>
         <div class="component-body">
-          <SafeToggle :config='{ component: "toggle", metadata: {"variant": "default", "disabled": false, "labelPosition": "normal"} }' />
+          <SafeToggle :config="toggleConfig" />
         </div>
       </div>
-      <div class="component-card">
+      <div v-if="activeComponent === null || activeComponent === 'week'" class="component-card">
         <div class="component-label">week</div>
         <div class="component-body">
-          <SafeWeek :config='{ component: "week", metadata: {"variant": "default"} }' />
+          <SafeWeek :config="weekConfig" />
         </div>
       </div>
-      <div class="component-card">
+      <div v-if="activeComponent === null || activeComponent === 'chat'" class="component-card">
         <div class="component-label">chat</div>
         <div class="component-body">
-          <SafeChat :config='{ component: "chat", metadata: {} }' />
+          <SafeChat :config="chatConfig" />
         </div>
       </div>
-      <div class="component-card">
+      <div v-if="activeComponent === null || activeComponent === 'tabs'" class="component-card">
         <div class="component-label">tabs</div>
         <div class="component-body">
-          <SafeTabs :config='{ component: "tabs", metadata: {"variant": "default", "position": "normal"} }' />
+          <SafeTabs :config="tabsConfig" />
         </div>
       </div>
-      <div class="component-card">
+      <div v-if="activeComponent === null || activeComponent === 'callout'" class="component-card">
         <div class="component-label">callout</div>
         <div class="component-body">
-          <SafeCallout :config='{ component: "callout", metadata: {"variant": "default", "position": "normal"} }' />
+          <SafeCallout :config="calloutConfig" />
         </div>
       </div>
-      <div class="component-card">
+      <div v-if="activeComponent === null || activeComponent === 'drag-drop'" class="component-card">
         <div class="component-label">drag-drop</div>
         <div class="component-body">
-          <SafeDragDrop :config='{ component: "drag-drop", metadata: {"variant": "default"} }' />
+          <SafeDragDrop :config="dragdropConfig" />
         </div>
       </div>
-      <div class="component-card">
+      <div v-if="activeComponent === null || activeComponent === 'grid'" class="component-card">
         <div class="component-label">grid</div>
         <div class="component-body">
-          <SafeGrid :config='{ component: "grid", metadata: {"spacing": "normal", "radius": "normal", "surface": "normal", "collapsible": false} }' />
+          <SafeGrid :config="gridConfig" />
         </div>
       </div>
-      <div class="component-card">
+      <div v-if="activeComponent === null || activeComponent === 'input'" class="component-card">
         <div class="component-label">input</div>
         <div class="component-body">
-          <SafeInput :config='{ component: "input", metadata: {"inputType": "text", "align": "normal", "valign": "normal"} }' />
+          <SafeInput :config="inputConfig" />
         </div>
       </div>
-      <div class="component-card">
+      <div v-if="activeComponent === null || activeComponent === 'picker'" class="component-card">
         <div class="component-label">picker</div>
         <div class="component-body">
-          <SafePicker :config='{ component: "picker", metadata: {"variant": "default"} }' />
+          <SafePicker :config="pickerConfig" />
         </div>
       </div>
-      <div class="component-card">
+      <div v-if="activeComponent === null || activeComponent === 'nav'" class="component-card">
         <div class="component-label">nav</div>
         <div class="component-body">
-          <SafeNav :config='{ component: "nav", metadata: {"navStyle": "classic"} }' />
+          <SafeNav :config="navConfig" />
         </div>
       </div>
     </div>
@@ -208,12 +264,15 @@ function switchStyle(s) {
 
 <style>
 .viewer { display: flex; height: 100vh; font-family: system-ui, sans-serif; }
-.sidebar { width: 200px; border-right: 1px solid #e5e7eb; padding: 12px; overflow-y: auto; }
+.sidebar { width: 220px; border-right: 1px solid #e5e7eb; padding: 12px; overflow-y: auto; flex-shrink: 0; }
 .section-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: #6b7280; margin-bottom: 8px; }
-.style-btn { display: block; width: 100%; text-align: left; padding: 4px 8px; font-size: 13px; border: none; border-radius: 4px; cursor: pointer; background: transparent; color: #1a1a1a; margin-bottom: 2px; }
-.style-btn.active { background: #3b82f6; color: white; }
+.style-btn, .comp-btn { display: block; width: 100%; text-align: left; padding: 4px 8px; font-size: 13px; border: none; border-radius: 4px; cursor: pointer; background: transparent; color: #1a1a1a; margin-bottom: 2px; }
+.style-btn.active, .comp-btn.active { background: #3b82f6; color: white; }
+.style-btn:hover, .comp-btn:hover { background: #f3f4f6; }
+.style-btn.active:hover, .comp-btn.active:hover { background: #3b82f6; }
 .main { flex: 1; overflow-y: auto; padding: 24px; }
-.main h3 { font-size: 14px; font-weight: 600; margin-bottom: 16px; }
+h3 { font-size: 14px; font-weight: 600; margin-bottom: 16px; }
+.active-comp { font-weight: 400; color: #6b7280; }
 .component-card { border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden; margin-bottom: 16px; }
 .component-label { padding: 8px 12px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: #6b7280; border-bottom: 1px solid #e5e7eb; background: #fafafa; }
 .component-body { padding: 16px; }

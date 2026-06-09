@@ -1,12 +1,10 @@
 <!--
   SafeToggle — Vue 2 toggle component.
-  Implements toggle contract from safecontracts.
   Outputs data-* attributes for intent. No hardcoded CSS.
 -->
 <script lang="ts">
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
 import { defineComponent, type PropType } from 'vue';
-
 export default defineComponent({
   name: 'SafeToggle',
   props: {
@@ -23,6 +21,6 @@ export default defineComponent({
     :data-disabled="config.metadata.disabled"
     :data-label-position="config.metadata.labelPosition"
   >
-    <slot />
+      <label data-role="toggle-label"><input type="checkbox" data-role="toggle-input" :checked="config.metadata.checked" :disabled="config.metadata.disabled" /><span data-role="toggle-slider"></span><span v-if="config.metadata.label" data-role="label">{{ config.metadata.label }}</span></label>
   </div>
 </template>

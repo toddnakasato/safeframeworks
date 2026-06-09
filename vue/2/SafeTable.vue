@@ -1,12 +1,10 @@
 <!--
   SafeTable — Vue 2 table component.
-  Implements table contract from safecontracts.
   Outputs data-* attributes for intent. No hardcoded CSS.
 -->
 <script lang="ts">
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
 import { defineComponent, type PropType } from 'vue';
-
 export default defineComponent({
   name: 'SafeTable',
   props: {
@@ -30,8 +28,6 @@ export default defineComponent({
     :data-zebra="config.metadata.zebra"
     :data-selectable="config.metadata.selectable"
   >
-    <div data-role="scroll">
-      <slot />
-    </div>
+      <div data-role="scroll"><table><thead data-role="thead"><tr data-role="header-row"><th>Column</th><th>Value</th></tr></thead><tbody data-role="tbody"><tr data-role="row"><td data-role="cell">Sample</td><td data-role="cell">Data</td></tr></tbody></table></div>
   </div>
 </template>
