@@ -10,16 +10,18 @@
   "dependencies": {
     "@angular/core": "^22",
     "@angular/common": "^22",
+    "@angular/compiler": "^22",
     "@angular/platform-browser": "^22",
     "@angular/platform-browser-dynamic": "^22",
-    "@angular/compiler": "^22",
     "rxjs": "^7",
     "zone.js": "^0.15"
   },
   "devDependencies": {
     "@analogjs/vite-plugin-angular": "^1",
-    "vite": "^6",
+    "@angular/build": "^22",
+    "@angular/compiler-cli": "^22",
     "@tauri-apps/api": "^2",
-    "typescript": "^5"
+    "typescript": "6.0",
+    "vite": "^6"
   }
 }
