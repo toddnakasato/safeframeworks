@@ -1,0 +1,16 @@
+{
+  "name": "safeframeworks-astro-5-viewer",
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev --port 1437",
+    "build": "astro build",
+    "tauri": "tauri"
+  },
+  "dependencies": {
+    "astro": "^5"
+  },
+  "devDependencies": {
+    "@tauri-apps/api": "^2"
+  }
+}

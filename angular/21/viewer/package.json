@@ -1,0 +1,25 @@
+{
+  "name": "safeframeworks-angular-21-viewer",
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "tauri": "tauri"
+  },
+  "dependencies": {
+    "@angular/core": "^21",
+    "@angular/common": "^21",
+    "@angular/platform-browser": "^21",
+    "@angular/platform-browser-dynamic": "^21",
+    "@angular/compiler": "^21",
+    "rxjs": "^7",
+    "zone.js": "^0.15"
+  },
+  "devDependencies": {
+    "@analogjs/vite-plugin-angular": "^1",
+    "vite": "^6",
+    "@tauri-apps/api": "^2",
+    "typescript": "^5"
+  }
+}
