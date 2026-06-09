@@ -41,6 +41,7 @@ function fieldToInputConfig(field: Field, locale: string, currency: string, time
   }
 
   return {
+    component: "input",
     metadata: {
       component: "input",
       name: field.name,
