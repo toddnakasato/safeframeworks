@@ -1,0 +1,38 @@
+/* Viewer base tokens — default values for --sd-* variables */
+:root {
+  --sd-surface: #ffffff;
+  --sd-surface-raised: #f9fafb;
+  --sd-surface-base: #ffffff;
+  --sd-surface-sunken: rgba(243,244,246,0.6);
+  --sd-surface-overlay: rgba(0,0,0,0.5);
+  --sd-border: #e5e7eb;
+  --sd-text: #1a1a1a;
+  --sd-text-dim: #9ca3af;
+  --sd-text-muted: #6b7280;
+  --sd-accent: #3b82f6;
+  --sd-accent-muted: rgba(59,130,246,0.1);
+  --sd-danger: #ef4444;
+  --sd-success: #22c55e;
+  --sd-warning: #f59e0b;
+  --sd-row-hover: rgba(0,0,0,0.03);
+  --sd-row-selected: rgba(59,130,246,0.08);
+  --sd-font-xs: 10px;
+  --sd-font-sm: 12px;
+  --sd-font-md: 13px;
+  --sd-font-base: 14px;
+  --sd-font-lg: 16px;
+  --sd-font-xl: 18px;
+  --sd-font-2xl: 22px;
+  --sd-space-xs: 2px;
+  --sd-space-sm: 4px;
+  --sd-space-md: 8px;
+  --sd-space-lg: 12px;
+  --sd-space-xl: 16px;
+  --sd-radius-sm: 3px;
+  --sd-radius-md: 4px;
+  --sd-radius-lg: 8px;
+  --sd-radius-pill: 999px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: system-ui, -apple-system, sans-serif; color: var(--sd-text); background: var(--sd-surface); }
