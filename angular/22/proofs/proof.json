@@ -2,5 +2,6 @@
   "ok": true,
   "framework": "angular",
   "version": "22",
+  "checked": 26,
   "failures": []
 }

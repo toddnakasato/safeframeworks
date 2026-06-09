@@ -2,5 +2,6 @@
   "ok": true,
   "framework": "react",
   "version": "18",
+  "checked": 26,
   "failures": []
 }
