@@ -1,24 +1,15 @@
 /**
  * safeChart — LWC chart component.
- * Implements chart contract from safecontracts (ConfigBase).
- * Outputs data-* attributes for intent. No hardcoded CSS.
+ * Extends SafeContract (ConfigBase). Outputs data-* attributes for intent.
  */
-import { LightningElement, api } from 'lwc';
+import SafeContract from 'c/safeContract';
 
-export default class SafeChart extends LightningElement {
-  /** @type {import('safecontracts').ConfigBase} */
-  @api config;
-
-  /** @type {import('safecontracts').OnSafeEvent} */
-  @api onEvent;
-
-  /** @returns {string} data-variant attribute value */
+export default class SafeChart extends SafeContract {
   get variant() {
-    return this.config?.metadata?.variant;
+    return this.getMetadata('variant');
   }
 
-  /** @returns {string} data-chart-type attribute value */
   get chartType() {
-    return this.config?.metadata?.chartType;
+    return this.getMetadata('chartType');
   }
 }

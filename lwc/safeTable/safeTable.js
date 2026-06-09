@@ -1,64 +1,47 @@
 /**
  * safeTable — LWC table component.
- * Implements table contract from safecontracts (ConfigBase).
- * Outputs data-* attributes for intent. No hardcoded CSS.
+ * Extends SafeContract (ConfigBase). Outputs data-* attributes for intent.
  */
-import { LightningElement, api } from 'lwc';
+import SafeContract from 'c/safeContract';
 
-export default class SafeTable extends LightningElement {
-  /** @type {import('safecontracts').ConfigBase} */
-  @api config;
-
-  /** @type {import('safecontracts').OnSafeEvent} */
-  @api onEvent;
-
-  /** @returns {string} data-variant attribute value */
+export default class SafeTable extends SafeContract {
   get variant() {
-    return this.config?.metadata?.variant;
+    return this.getMetadata('variant');
   }
 
-  /** @returns {string} data-spacing attribute value */
   get spacing() {
-    return this.config?.metadata?.spacing;
+    return this.getMetadata('spacing');
   }
 
-  /** @returns {string} data-header-style attribute value */
   get headerStyle() {
-    return this.config?.metadata?.headerStyle;
+    return this.getMetadata('headerStyle');
   }
 
-  /** @returns {string} data-row-divider attribute value */
   get rowDivider() {
-    return this.config?.metadata?.rowDivider;
+    return this.getMetadata('rowDivider');
   }
 
-  /** @returns {string} data-row-numbers attribute value */
   get rowNumbers() {
-    return this.config?.metadata?.rowNumbers;
+    return this.getMetadata('rowNumbers');
   }
 
-  /** @returns {string} data-truncate attribute value */
   get truncate() {
-    return this.config?.metadata?.truncate;
+    return this.getMetadata('truncate');
   }
 
-  /** @returns {string} data-column-lines attribute value */
   get columnLines() {
-    return this.config?.metadata?.columnLines;
+    return this.getMetadata('columnLines');
   }
 
-  /** @returns {string} data-header-divider attribute value */
   get headerDivider() {
-    return this.config?.metadata?.headerDivider;
+    return this.getMetadata('headerDivider');
   }
 
-  /** @returns {string} data-zebra attribute value */
   get zebra() {
-    return this.config?.metadata?.zebra;
+    return this.getMetadata('zebra');
   }
 
-  /** @returns {string} data-selectable attribute value */
   get selectable() {
-    return this.config?.metadata?.selectable;
+    return this.getMetadata('selectable');
   }
 }

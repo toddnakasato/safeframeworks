@@ -1,19 +1,11 @@
 /**
  * safeFunnel — LWC funnel component.
- * Implements funnel contract from safecontracts (ConfigBase).
- * Outputs data-* attributes for intent. No hardcoded CSS.
+ * Extends SafeContract (ConfigBase). Outputs data-* attributes for intent.
  */
-import { LightningElement, api } from 'lwc';
+import SafeContract from 'c/safeContract';
 
-export default class SafeFunnel extends LightningElement {
-  /** @type {import('safecontracts').ConfigBase} */
-  @api config;
-
-  /** @type {import('safecontracts').OnSafeEvent} */
-  @api onEvent;
-
-  /** @returns {string} data-variant attribute value */
+export default class SafeFunnel extends SafeContract {
   get variant() {
-    return this.config?.metadata?.variant;
+    return this.getMetadata('variant');
   }
 }

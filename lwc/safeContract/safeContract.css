@@ -1,0 +1,4 @@
+/* safeContract — base class, no visual output */
+:host {
+  display: contents;
+}

@@ -1,29 +1,19 @@
 /**
  * safeSheet — LWC sheet component.
- * Implements sheet contract from safecontracts (ConfigBase).
- * Outputs data-* attributes for intent. No hardcoded CSS.
+ * Extends SafeContract (ConfigBase). Outputs data-* attributes for intent.
  */
-import { LightningElement, api } from 'lwc';
+import SafeContract from 'c/safeContract';
 
-export default class SafeSheet extends LightningElement {
-  /** @type {import('safecontracts').ConfigBase} */
-  @api config;
-
-  /** @type {import('safecontracts').OnSafeEvent} */
-  @api onEvent;
-
-  /** @returns {string} data-variant attribute value */
+export default class SafeSheet extends SafeContract {
   get variant() {
-    return this.config?.metadata?.variant;
+    return this.getMetadata('variant');
   }
 
-  /** @returns {string} data-spacing attribute value */
   get spacing() {
-    return this.config?.metadata?.spacing;
+    return this.getMetadata('spacing');
   }
 
-  /** @returns {string} data-surface attribute value */
   get surface() {
-    return this.config?.metadata?.surface;
+    return this.getMetadata('surface');
   }
 }
