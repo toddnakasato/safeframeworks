@@ -248,7 +248,7 @@ import SafeNav from "../../../SafeNav.astro";
     </div>
     </div>
   </div>
-  <script>
+  <script is:inline>
     function switchStyle(s) {
       document.getElementById("safestyle-link").href = "/styles/" + s + "/components.css";
       document.getElementById("style-name").textContent = s;
