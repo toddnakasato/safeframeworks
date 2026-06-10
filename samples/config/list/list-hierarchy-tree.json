@@ -3,7 +3,8 @@
   "metadata": {
     "variant": "hierarchy",
     "pageSize": 8,
-    "pageNumbers": true
+    "pageNumbers": true,
+    "density": "compact"
   },
   "data": {
     "items": {

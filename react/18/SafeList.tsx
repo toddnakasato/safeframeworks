@@ -35,6 +35,17 @@ function fieldOf(meta: Record<string, unknown>, key: string, fallback: string): 
   return (meta[key] as string) ?? fallback;
 }
 
+/** Intent tokens from metadata -> data-* attributes. Paint lives in safestyles. */
+function intentAttrs(meta: Record<string, unknown>): Record<string, string | undefined> {
+  return {
+    "data-accent": meta.accent as string | undefined,
+    "data-surface": meta.surface as string | undefined,
+    "data-spacing": meta.spacing as string | undefined,
+    "data-density": meta.density as string | undefined,
+    "data-radius": meta.radius as string | undefined,
+  };
+}
+
 /* ------------------------------------------------------------------ */
 /*  Pagination bar (figma: numbered links + prev/next)                 */
 /* ------------------------------------------------------------------ */
@@ -90,7 +101,7 @@ function SimpleList({ config, data, onEvent }: { config: ConfigBase; data: any[]
   const { page, totalPages, slice, go } = usePager(data.length, pageSize, onEvent);
 
   return (
-    <div data-component="list" data-variant={withIcons ? "icon" : "simple"} data-direction={direction}>
+    <div data-component="list" data-variant={withIcons ? "icon" : "simple"} data-direction={direction} {...intentAttrs(meta)}>
       <div data-role="list-items">
         {slice(data).map((item, i) => {
           const label = typeof item === "string" ? item : item[labelField];
@@ -138,7 +149,7 @@ function SelectionList({ config, data, onEvent }: { config: ConfigBase; data: an
   const isSelected = (i: number) => (mode === "single" ? single === i : multi.has(i));
 
   return (
-    <div data-component="list" data-variant="selection" data-selection-mode={mode}>
+    <div data-component="list" data-variant="selection" data-selection-mode={mode} {...intentAttrs(meta)}>
       <div data-role="list-items">
         {data.map((item, i) => (
           <div key={i} data-role="list-item" data-selected={isSelected(i) || undefined} tabIndex={0}
@@ -167,7 +178,7 @@ function ColumnsList({ config, data, onEvent }: { config: ConfigBase; data: any[
   const { page, totalPages, slice, go } = usePager(data.length, pageSize, onEvent);
 
   return (
-    <div data-component="list" data-variant="columns">
+    <div data-component="list" data-variant="columns" {...intentAttrs(meta)}>
       <div data-role="list-header" style={{ gridTemplateColumns: `repeat(${fields.length}, 1fr)` }}>
         {fields.map((f: any) => (
           <span key={f.name} data-role="header-cell">{f.label ?? f.name}</span>
@@ -198,7 +209,7 @@ function FilesList({ config, data, onEvent }: { config: ConfigBase; data: any[];
   const { page, totalPages, slice, go } = usePager(data.length, pageSize, onEvent);
 
   return (
-    <div data-component="list" data-variant="files">
+    <div data-component="list" data-variant="files" {...intentAttrs(meta)}>
       <div data-role="list-items">
         {slice(data).map((item, i) => (
           <div key={i} data-role="list-item" data-file-type={item.type} tabIndex={0} role="listitem"
@@ -231,7 +242,7 @@ function ActionsList({ config, data, onEvent }: { config: ConfigBase; data: any[
   const actionField = fieldOf(meta, "actionField", "action");
 
   return (
-    <div data-component="list" data-variant="actions">
+    <div data-component="list" data-variant="actions" {...intentAttrs(meta)}>
       <div data-role="list-items">
         {data.map((item, i) => {
           const status = item[statusField] as string | undefined;
@@ -311,7 +322,7 @@ function HierarchyList({ config, data, onEvent }: { config: ConfigBase; data: an
   };
 
   return (
-    <div data-component="list" data-variant="hierarchy">
+    <div data-component="list" data-variant="hierarchy" {...intentAttrs(meta)}>
       <div data-role="list-items">
         {slice(flat).map((node) => {
           const isGroup = !!node.children?.length;
@@ -343,6 +354,7 @@ function HierarchyList({ config, data, onEvent }: { config: ConfigBase; data: an
 /* ------------------------------------------------------------------ */
 
 function PropertyGrid({ config, data, onEvent }: { config: ConfigBase; data: any[]; onEvent?: OnSafeEvent }) {
+  const meta = config.metadata;
   const [expanded, setExpanded] = useState<Set<string>>(
     () => new Set(data.filter((g) => g.children?.length).map((g) => String(g.id))),
   );
@@ -407,7 +419,7 @@ function PropertyGrid({ config, data, onEvent }: { config: ConfigBase; data: any
   };
 
   return (
-    <div data-component="list" data-variant="property-grid">
+    <div data-component="list" data-variant="property-grid" {...intentAttrs(meta)}>
       <div data-role="list-items">{data.map((n) => renderNode(n, 0))}</div>
     </div>
   );
@@ -452,7 +464,7 @@ function GanttList({ config, data, onEvent }: { config: ConfigBase; data: any[];
   };
 
   return (
-    <div data-component="list" data-variant="gantt">
+    <div data-component="list" data-variant="gantt" {...intentAttrs(meta)}>
       <div data-role="gantt-scroll">
         <div data-role="gantt-header">
           <span data-role="gantt-title">

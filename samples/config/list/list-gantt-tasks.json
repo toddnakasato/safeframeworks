@@ -4,7 +4,8 @@
     "variant": "gantt",
     "title": "Active Task List",
     "startDate": "2026-06-07",
-    "days": 14
+    "days": 14,
+    "accent": "brand"
   },
   "data": {
     "items": {

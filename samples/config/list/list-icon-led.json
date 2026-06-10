@@ -2,7 +2,9 @@
   "component": "list",
   "metadata": {
     "variant": "icon",
-    "direction": "vertical"
+    "direction": "vertical",
+    "spacing": "loose",
+    "surface": "base"
   },
   "data": {
     "items": {

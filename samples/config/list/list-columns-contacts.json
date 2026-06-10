@@ -3,7 +3,8 @@
   "metadata": {
     "variant": "columns",
     "pageSize": 4,
-    "pageNumbers": true
+    "pageNumbers": true,
+    "density": "compact"
   },
   "data": {
     "items": {

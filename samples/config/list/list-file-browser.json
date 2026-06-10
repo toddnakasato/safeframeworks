@@ -3,7 +3,9 @@
   "metadata": {
     "variant": "files",
     "pageSize": 4,
-    "pageNumbers": true
+    "pageNumbers": true,
+    "density": "compact",
+    "surface": "base"
   },
   "data": {
     "items": {

@@ -1,7 +1,8 @@
 {
   "component": "list",
   "metadata": {
-    "variant": "actions"
+    "variant": "actions",
+    "spacing": "loose"
   },
   "data": {
     "items": {

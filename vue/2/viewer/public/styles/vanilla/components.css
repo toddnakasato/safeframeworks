@@ -2190,3 +2190,48 @@
 [data-component="list"] [data-role="gantt-cell"][data-active][data-accent="success"] { --gantt-color: var(--sd-success, #22c55e); }
 [data-component="list"] [data-role="gantt-cell"][data-active][data-accent="warn"] { --gantt-color: var(--sd-warning, #f59e0b); }
 [data-component="list"] [data-role="gantt-cell"][data-active][data-accent="danger"] { --gantt-color: var(--sd-danger, #ef4444); }
+
+/* ── SafeList intent: spacing / density / surface / radius / accent ──
+   Tokens from config metadata (data-* on the list root) -> paint. */
+[data-component="list"][data-spacing="tight"] [data-role="list-items"] { gap: 4px; }
+[data-component="list"][data-spacing="tight"] [data-role="list-item"] { padding: 8px; }
+[data-component="list"][data-spacing="loose"] [data-role="list-items"] { gap: 12px; }
+[data-component="list"][data-spacing="loose"] [data-role="list-item"] { padding: 16px; }
+
+[data-component="list"][data-density="compact"] { font-size: var(--sd-font-sm, 13px); }
+[data-component="list"][data-density="compact"] [data-role="list-item"] { padding: 6px 10px; gap: var(--sd-space-sm, 8px); }
+[data-component="list"][data-density="compact"] [data-role="item-description"],
+[data-component="list"][data-density="compact"] [data-role="item-meta"] { font-size: var(--sd-font-xs, 11px); }
+
+[data-component="list"][data-surface="raised"] [data-role="list-item"] {
+  background: var(--sd-surface-raised, #f3f4f6);
+}
+[data-component="list"][data-surface="base"] [data-role="list-item"] {
+  background: var(--sd-surface-base, #fff);
+}
+[data-component="list"][data-surface="sunken"] [data-role="list-item"] {
+  background: var(--sd-surface-sunken, #f8fafc);
+}
+
+[data-component="list"][data-radius="sm"] [data-role="list-item"] { border-radius: var(--sd-radius-sm, 3px); }
+[data-component="list"][data-radius="lg"] [data-role="list-item"] { border-radius: var(--sd-radius-lg, 12px); }
+[data-component="list"][data-radius="pill"] [data-role="list-item"] { border-radius: var(--sd-radius-pill, 999px); }
+
+/* accent token recolors selection/control highlights via --list-accent */
+[data-component="list"][data-accent="brand"] { --list-accent: var(--sd-accent, #3b82f6); }
+[data-component="list"][data-accent="info"] { --list-accent: var(--sd-info, #3b82f6); }
+[data-component="list"][data-accent="success"] { --list-accent: var(--sd-success, #22c55e); }
+[data-component="list"][data-accent="warn"] { --list-accent: var(--sd-warning, #f59e0b); }
+[data-component="list"][data-accent="danger"] { --list-accent: var(--sd-danger, #ef4444); }
+[data-component="list"][data-accent="neutral"] { --list-accent: var(--sd-text-dim, #6b7280); }
+[data-component="list"][data-accent] [data-role="list-item"]:focus-visible { outline-color: var(--list-accent); }
+[data-component="list"][data-accent][data-variant="selection"] [data-role="list-item"][data-selected] {
+  border-color: var(--list-accent);
+  background: color-mix(in srgb, var(--list-accent) 6%, transparent);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--list-accent) 20%, transparent);
+}
+[data-component="list"][data-accent] [data-role="item-control"][data-checked] {
+  border-color: var(--list-accent);
+  background: var(--list-accent);
+}
+[data-component="list"][data-accent] [data-role="gantt-date"][data-today] { background: var(--list-accent); }

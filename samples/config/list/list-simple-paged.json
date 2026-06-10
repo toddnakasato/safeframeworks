@@ -4,7 +4,8 @@
     "variant": "simple",
     "direction": "vertical",
     "pageSize": 5,
-    "pageNumbers": true
+    "pageNumbers": true,
+    "accent": "brand"
   },
   "data": {
     "items": {

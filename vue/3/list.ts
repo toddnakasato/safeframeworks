@@ -612,6 +612,11 @@ export function createSafeList(container: HTMLElement, config: ConfigBase, onEve
 
     const root = el("div");
     root.setAttribute("data-component", "list");
+    // Intent tokens -> data-* attributes. Paint lives in safestyles.
+    for (const key of ["accent", "surface", "spacing", "density", "radius"] as const) {
+        const v = config.metadata[key] as string | undefined;
+        if (v) root.setAttribute(`data-${key}`, v);
+    }
 
     switch (variant) {
         case "simple":

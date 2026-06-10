@@ -1,7 +1,8 @@
 {
   "component": "list",
   "metadata": {
-    "variant": "property-grid"
+    "variant": "property-grid",
+    "density": "compact"
   },
   "data": {
     "items": {
