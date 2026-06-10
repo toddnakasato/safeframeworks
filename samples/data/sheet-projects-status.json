@@ -1,0 +1,38 @@
+[
+  [
+    "Website Redesign",
+    "Active",
+    0.72,
+    12400
+  ],
+  [
+    "Mobile App",
+    "At Risk",
+    0.45,
+    28000
+  ],
+  [
+    "Data Pipeline",
+    "Completed",
+    1.0,
+    9800
+  ],
+  [
+    "API Gateway",
+    "In Progress",
+    0.61,
+    15500
+  ],
+  [
+    "Auth Service",
+    "Failed",
+    0.3,
+    7200
+  ],
+  [
+    "Billing Portal",
+    "Scheduled",
+    0.0,
+    18900
+  ]
+]

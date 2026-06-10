@@ -1,12 +1,7 @@
-<!--
-  SafeCallout — Vue 2 callout component.
-  Renders via shared-mapping callout builder (./callout) — identical across
-  frameworks. Structure + data-* only.
--->
 <script lang="ts">
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
 import { defineComponent, type PropType } from 'vue';
-import { createSafeCallout } from './callout';
+import { createSafeCallout } from '../../builders/callout';
 
 export default defineComponent({
   name: 'SafeCallout',

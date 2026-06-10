@@ -1,9 +1,3 @@
-/**
- * SafeRenderer — pure ConfigBase → ReactNode renderer.
- *
- * Component registry lookup + recursive children. No state, no dispatcher.
- * One function, one map. Every consumer calls this instead of hand-rolling if/else.
- */
 import React from "react";
 import type { ReactNode } from "react";
 import type { ConfigBase, ConfigLayout, OnSafeEvent } from "safecontracts";
@@ -36,7 +30,6 @@ import { SafeTimeline } from "./SafeTimeline";
 import { SafeTree } from "./SafeTree";
 import { SafeTreemap } from "./SafeTreemap";
 
-/** Extract inline data from config (contract: data is Record<string, DataSource>). */
 function extractData(config: ConfigBase): { inline: any; list: any[]; record: Record<string, any> } {
   const raw = Object.values(config.data ?? {})[0]?.inline;
   const list = Array.isArray(raw) ? raw : [];
@@ -44,20 +37,23 @@ function extractData(config: ConfigBase): { inline: any; list: any[]; record: Re
   return { inline: raw, list, record };
 }
 
-/** Context passed through recursive rendering. */
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Properties
+ *
+ ----------------------------------------------------------------------------------------------------*/
+
 export interface RenderContext {
-  /** Parent info for event routing (e.g. button inside card). */
   parentContext?: { parent: string; path: string };
-  /** Handler file path inherited from parent config's eventHandler. */
   handler?: string;
 }
 
-/**
- * Render a ConfigBase tree into React nodes. Recursive.
+/*----------------------------------------------------------------------------------------------------
  *
- * Handles all registered component types. Unknown components render a fallback.
- * Layout and columns children are resolved recursively.
- */
+ * Implementation
+ *
+ ----------------------------------------------------------------------------------------------------*/
+
 export function renderConfigBase(
   config: ConfigBase,
   onEvent?: OnSafeEvent,
@@ -227,8 +223,6 @@ export function renderConfigBase(
     return <SafeNav config={config} onEvent={stampedOnEvent} />;
   }
 
-
-
   // --- Unknown ---
   return (
     <div style={{ padding: "var(--sd-space-md)", color: "var(--sd-text-dim)", fontSize: "var(--sd-font-sm)" }}>
@@ -237,10 +231,6 @@ export function renderConfigBase(
   );
 }
 
-/**
- * renderConfigLayout — resolve string refs to ConfigBase, then render via SafeLayout.
- * The resolver is provided by the host (Tauri invoke, HTTP fetch, etc).
- */
 export type ConfigResolver = (path: string) => Promise<ConfigBase | null>;
 
 export async function resolveConfigLayout(

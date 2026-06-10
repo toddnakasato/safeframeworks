@@ -1,11 +1,6 @@
-/**
- * SafeTabs — Angular tabbed panel navigation.
- * Renders via shared-mapping tabs builder (./tabs) — identical across
- * frameworks. Structure + data-* only.
- */
 import { Component, Input, ElementRef, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-import { createSafeTabs } from './tabs';
+import { createSafeTabs } from '../../builders/tabs';
 
 @Component({
   selector: 'safe-tabs',

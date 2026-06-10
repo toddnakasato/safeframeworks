@@ -1,12 +1,7 @@
-<!--
-  SafeCalendar — Vue 3 calendar component.
-  Renders via shared-mapping calendar builder (./calendar) — identical across
-  frameworks. Structure + data-* only. No hardcoded CSS.
--->
 <script setup lang="ts">
 import { ref, onMounted, onBeforeUnmount } from 'vue';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-import { createSafeCalendar } from './calendar';
+import { createSafeCalendar } from '../../builders/calendar';
 
 const props = defineProps<{ config: ConfigBase; onEvent?: OnSafeEvent }>();
 const containerRef = ref<HTMLElement | null>(null);

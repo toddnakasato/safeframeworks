@@ -1,12 +1,12 @@
-/**
- * SafeTree — config-driven hierarchical tree view.
- *
- * Renders via data-attributes. Zero Tailwind. Zero hardcoded values.
- * Flat data in → tree structure out. Host CSS provides visuals.
- */
 import { useState, useMemo, useCallback } from "react";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
 import { createSafeEvent } from "safecontracts";
+
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Properties
+ *
+ ----------------------------------------------------------------------------------------------------*/
 
 export interface SafeTreeProps {
   config: ConfigBase;
@@ -21,6 +21,12 @@ interface TreeNode {
   depth: number;
 }
 
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Helpers
+ *
+ ----------------------------------------------------------------------------------------------------*/
+
 function buildTree(
   data: Record<string, any>[],
   idField: string,
@@ -29,13 +35,11 @@ function buildTree(
   const map = new Map<string, TreeNode>();
   const roots: TreeNode[] = [];
 
-  // Create nodes
   for (const record of data) {
     const id = String(record[idField] ?? "");
     map.set(id, { record, id, children: [], depth: 0 });
   }
 
-  // Build hierarchy
   for (const record of data) {
     const id = String(record[idField] ?? "");
     const parentId = record[parentField];
@@ -53,7 +57,6 @@ function buildTree(
     }
   }
 
-  // Set depths
   function setDepth(nodes: TreeNode[], depth: number) {
     for (const n of nodes) {
       n.depth = depth;
@@ -64,6 +67,12 @@ function buildTree(
 
   return roots;
 }
+
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Implementation
+ *
+ ----------------------------------------------------------------------------------------------------*/
 
 function TreeNodeRow({
   node,
@@ -151,7 +160,6 @@ export function SafeTree({ config, data, onEvent }: SafeTreeProps) {
 
   const tree = useMemo(() => buildTree(data, idField, parentField), [data, idField, parentField]);
 
-  // Collect all node ids up to expandDepth
   const initialExpanded = useMemo(() => {
     const set = new Set<string>();
     function walk(nodes: TreeNode[], depth: number) {

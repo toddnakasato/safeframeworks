@@ -1,11 +1,6 @@
-/**
- * SafeList — Angular flexible list.
- * Renders via shared-mapping list builder (./list) — identical across
- * frameworks (figma Atom List Specs). Structure + data-* only.
- */
 import { Component, Input, ElementRef, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-import { createSafeList } from './list';
+import { createSafeList } from '../../builders/list';
 
 @Component({
   selector: 'safe-list',

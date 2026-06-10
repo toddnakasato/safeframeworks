@@ -72,8 +72,20 @@ import picker1Config from "./config/picker/picker1.json";
 import picker2Config from "./config/picker/picker2.json";
 import sankey1Config from "./config/sankey/sankey1.json";
 import sankey2Config from "./config/sankey/sankey2.json";
-import sheet1Config from "./config/sheet/sheet1.json";
-import sheet2Config from "./config/sheet/sheet2.json";
+import sheetBasicConfig from "./config/sheet/sheet-basic.json";
+import sheetColumnsOnlyConfig from "./config/sheet/sheet-columns-only.json";
+import sheetCompactConfig from "./config/sheet/sheet-compact.json";
+import sheetDarkConfig from "./config/sheet/sheet-dark.json";
+import sheetEmptyConfig from "./config/sheet/sheet-empty.json";
+import sheetGroupedConfig from "./config/sheet/sheet-grouped.json";
+import sheetKeyValueConfig from "./config/sheet/sheet-key-value.json";
+import sheetPivotConfig from "./config/sheet/sheet-pivot.json";
+import sheetRowsOnlyConfig from "./config/sheet/sheet-rows-only.json";
+import sheetSingleColumnConfig from "./config/sheet/sheet-single-column.json";
+import sheetSkeletonConfig from "./config/sheet/sheet-skeleton.json";
+import sheetSpreadsheetConfig from "./config/sheet/sheet-spreadsheet.json";
+import sheetStatusConfig from "./config/sheet/sheet-status.json";
+import sheetStripedConfig from "./config/sheet/sheet-striped.json";
 import table1Config from "./config/table/table1.json";
 import table2Config from "./config/table/table2.json";
 import tabs1Config from "./config/tabs/tabs1.json";
@@ -103,6 +115,15 @@ import listSimpleData from "./data/list-simple.json";
 import listTasksData from "./data/list-tasks.json";
 import listThemesData from "./data/list-themes.json";
 import mapManhattanData from "./data/map-manhattan.json";
+import sheetChannelTrafficData from "./data/sheet-channel-traffic.json";
+import sheetDenseLogData from "./data/sheet-dense-log.json";
+import sheetFormulasData from "./data/sheet-formulas.json";
+import sheetGroupedStaffData from "./data/sheet-grouped-staff.json";
+import sheetMetricsData from "./data/sheet-metrics.json";
+import sheetPeopleData from "./data/sheet-people.json";
+import sheetProjectsStatusData from "./data/sheet-projects-status.json";
+import sheetRegionSalesData from "./data/sheet-region-sales.json";
+import sheetTickersData from "./data/sheet-tickers.json";
 import sankeyFlowData from "./data/sankey-flow.json";
 import tableRowsData from "./data/table-rows.json";
 import timelineEventsData from "./data/timeline-events.json";
@@ -110,6 +131,15 @@ import treeNodesData from "./data/tree-nodes.json";
 
 /** data/<name>.json keyed by DataSource.name — mirrors SceneHost file loading. */
 const DATA_FILES: Record<string, unknown> = {
+    "sheet-channel-traffic": sheetChannelTrafficData,
+    "sheet-dense-log": sheetDenseLogData,
+    "sheet-formulas": sheetFormulasData,
+    "sheet-grouped-staff": sheetGroupedStaffData,
+    "sheet-metrics": sheetMetricsData,
+    "sheet-people": sheetPeopleData,
+    "sheet-projects-status": sheetProjectsStatusData,
+    "sheet-region-sales": sheetRegionSalesData,
+    "sheet-tickers": sheetTickersData,
     "card-info": cardInfoData,
     "chart-series": chartSeriesData,
     "drag-drop-items": dragDropItemsData,
@@ -244,8 +274,20 @@ export const SAMPLES: Record<string, Record<string, ConfigBase>> = {
         "sankey2": resolveData(sankey2Config as unknown as ConfigBase),
     },
     sheet: {
-        "sheet1": resolveData(sheet1Config as unknown as ConfigBase),
-        "sheet2": resolveData(sheet2Config as unknown as ConfigBase),
+        "sheet-basic": resolveData(sheetBasicConfig as unknown as ConfigBase),
+        "sheet-columns-only": resolveData(sheetColumnsOnlyConfig as unknown as ConfigBase),
+        "sheet-compact": resolveData(sheetCompactConfig as unknown as ConfigBase),
+        "sheet-dark": resolveData(sheetDarkConfig as unknown as ConfigBase),
+        "sheet-empty": resolveData(sheetEmptyConfig as unknown as ConfigBase),
+        "sheet-grouped": resolveData(sheetGroupedConfig as unknown as ConfigBase),
+        "sheet-key-value": resolveData(sheetKeyValueConfig as unknown as ConfigBase),
+        "sheet-pivot": resolveData(sheetPivotConfig as unknown as ConfigBase),
+        "sheet-rows-only": resolveData(sheetRowsOnlyConfig as unknown as ConfigBase),
+        "sheet-single-column": resolveData(sheetSingleColumnConfig as unknown as ConfigBase),
+        "sheet-skeleton": resolveData(sheetSkeletonConfig as unknown as ConfigBase),
+        "sheet-spreadsheet": resolveData(sheetSpreadsheetConfig as unknown as ConfigBase),
+        "sheet-status": resolveData(sheetStatusConfig as unknown as ConfigBase),
+        "sheet-striped": resolveData(sheetStripedConfig as unknown as ConfigBase),
     },
     table: {
         "table1": resolveData(table1Config as unknown as ConfigBase),

@@ -1,12 +1,7 @@
-<!--
-  SafeTimeline — Svelte 4 timeline component.
-  Renders via shared-mapping timeline builder (./timeline) — identical across
-  frameworks. Structure + data-* only. No hardcoded CSS.
--->
 <script lang="ts">
   import { onMount, onDestroy } from 'svelte';
   import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-  import { createSafeTimeline } from './timeline';
+  import { createSafeTimeline } from '../../builders/timeline';
 
   export let config: ConfigBase;
   export let onEvent: OnSafeEvent | undefined = undefined;

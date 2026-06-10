@@ -1,12 +1,7 @@
-<!--
-  SafeFunnel — Vue 2 D3 funnel/conversion bars.
-  Renders via shared-mapping funnel builder (./funnel) — identical across
-  frameworks. Structure + data-* only.
--->
 <script lang="ts">
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
 import { defineComponent, type PropType } from 'vue';
-import { createSafeFunnel } from './funnel';
+import { createSafeFunnel } from '../../builders/funnel';
 
 export default defineComponent({
   name: 'SafeFunnel',

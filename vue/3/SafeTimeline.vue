@@ -1,12 +1,7 @@
-<!--
-  SafeTimeline — Vue 3 timeline component.
-  Renders via shared-mapping timeline builder (./timeline) — identical across
-  frameworks. Structure + data-* only. No hardcoded CSS.
--->
 <script setup lang="ts">
 import { ref, onMounted, onBeforeUnmount } from 'vue';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-import { createSafeTimeline } from './timeline';
+import { createSafeTimeline } from '../../builders/timeline';
 
 const props = defineProps<{ config: ConfigBase; onEvent?: OnSafeEvent }>();
 const containerRef = ref<HTMLElement | null>(null);

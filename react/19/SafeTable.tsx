@@ -1,15 +1,14 @@
-/**
- * SafeTable — config-driven table component.
- *
- * Renders via data-attributes. Zero Tailwind. Zero hardcoded values.
- * Gallery JSON is the single source of truth.
- * Host CSS maps data-attributes to visuals.
- */
 import { useState, useEffect, useMemo, useCallback } from "react";
 import type { ConfigBase, OnSafeEvent, Field } from "safecontracts";
 import { createSafeEvent } from "safecontracts";
 import { findHandlers } from "safecontracts";
 import { fmtDate, fmtCurrency, fmtInt, fmtPercent, fmtStr } from "safecontracts";
+
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Properties
+ *
+ ----------------------------------------------------------------------------------------------------*/
 
 export interface SafeTableProps {
   config: ConfigBase;
@@ -23,6 +22,12 @@ interface SortState {
   field: string;
   dir: SortDir;
 }
+
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Helpers
+ *
+ ----------------------------------------------------------------------------------------------------*/
 
 function formatValue(value: any, field: Field): string {
   if (value === null || value === undefined) return "—";
@@ -47,6 +52,12 @@ function numericType(type: string): boolean {
   return type === "currency" || type === "number" || type === "percent";
 }
 
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Implementation
+ *
+ ----------------------------------------------------------------------------------------------------*/
+
 export function SafeTable({ config, data, onEvent }: SafeTableProps) {
   const { metadata } = config;
   const schema = Object.values(config.data ?? {})[0]?.schema;
@@ -61,7 +72,6 @@ export function SafeTable({ config, data, onEvent }: SafeTableProps) {
   const [page, setPage] = useState(0);
   const [selected, setSelected] = useState<Set<string>>(new Set());
 
-  // Visual config — all exposed as data-attributes
   const variant = (metadata.variant as string) ?? "default";
   const spacing = (metadata.spacing as string) ?? "normal";
   const headerStyle = (metadata.headerStyle as string) ?? "default";
@@ -80,7 +90,6 @@ export function SafeTable({ config, data, onEvent }: SafeTableProps) {
   const [dragOverIdx, setDragOverIdx] = useState<number | null>(null);
   const [localOrder, setLocalOrder] = useState<Record<string, any>[] | null>(null);
 
-  // Reset local order only when data content actually changes
   const dataKey = useMemo(() => JSON.stringify(data.map(r => r.Id ?? r.id)), [data]);
   useEffect(() => { setLocalOrder(null); }, [dataKey]);
 
@@ -158,7 +167,6 @@ export function SafeTable({ config, data, onEvent }: SafeTableProps) {
     }
   }, [paged, selected, fire]);
 
-  // Footer summary computation
   const summaryRow = useMemo(() => {
     if (!footerSummary) return null;
     const row: Record<string, any> = {};
@@ -239,7 +247,7 @@ export function SafeTable({ config, data, onEvent }: SafeTableProps) {
           <tbody data-role="tbody">
             {paged.map((row, rowIndex) => {
               const rowId = row.Id ?? row.id ?? String(rowIndex);
-              const hasClickHandler = true; // Events handled by dispatcher, not ConfigBase
+              const hasClickHandler = true;
               const globalIndex = pageSize ? page * pageSize + rowIndex : rowIndex;
               return (
                 <tr
@@ -336,7 +344,6 @@ export function SafeTable({ config, data, onEvent }: SafeTableProps) {
         </table>
       </div>
 
-      {/* Pagination */}
       {pageSize > 0 && totalPages > 1 && (
         <div data-role="pagination">
           <span data-role="page-info">

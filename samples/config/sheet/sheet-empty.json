@@ -1,0 +1,28 @@
+{
+  "component": "sheet",
+  "metadata": {
+    "variant": "skeleton",
+    "columns": [
+      {
+        "label": "Name",
+        "align": "left"
+      },
+      {
+        "label": "Role",
+        "align": "left"
+      },
+      {
+        "label": "Department",
+        "align": "left"
+      },
+      {
+        "label": "Salary",
+        "format": "currency",
+        "decimals": 0,
+        "align": "right"
+      }
+    ],
+    "skeletonRows": 5,
+    "rowNumbers": false
+  }
+}

@@ -1,13 +1,8 @@
-<!--
-  SafeChart — Svelte 5 chart component.
-  Renders via Chart.js (shared builder — identical across frameworks).
-  Outputs data-* attributes for intent. No hardcoded CSS.
--->
 <script lang="ts">
   import { onMount, onDestroy } from 'svelte';
   import type { Chart } from 'chart.js';
   import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-  import { createSafeChart } from './chart';
+  import { createSafeChart } from '../../builders/chart';
 
   let { config, onEvent }: { config: ConfigBase; onEvent?: OnSafeEvent } = $props();
 

@@ -1,17 +1,31 @@
-/**
- * SafeGauge — D3 radial gauge for KPI visualization.
- * Data-attributes for host CSS. Zero Tailwind.
- */
 import { useRef, useEffect } from "react";
 import * as d3 from "d3";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
 import { createSafeEvent } from "safecontracts";
+
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Properties
+ *
+ ----------------------------------------------------------------------------------------------------*/
 
 export interface SafeGaugeProps {
   config: ConfigBase;
   data: Record<string, any>;
   onEvent?: OnSafeEvent;
 }
+
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Helpers
+ *
+ ----------------------------------------------------------------------------------------------------*/
+
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Implementation
+ *
+ ----------------------------------------------------------------------------------------------------*/
 
 export function SafeGauge({ config, data, onEvent }: SafeGaugeProps) {
   const { metadata } = config;
@@ -33,7 +47,6 @@ export function SafeGauge({ config, data, onEvent }: SafeGaugeProps) {
   const startAngle = variant === "half" ? -Math.PI / 2 : -Math.PI * 0.75;
   const endAngle = variant === "half" ? Math.PI / 2 : Math.PI * 0.75;
 
-  // Find correct threshold color
   const getColor = () => {
     for (const [threshold, col] of thresholds) {
       if (pct * 100 <= threshold) return col;
@@ -55,12 +68,10 @@ export function SafeGauge({ config, data, onEvent }: SafeGaugeProps) {
 
     const arc = d3.arc().innerRadius(radius - arcWidth).outerRadius(radius).cornerRadius(4);
 
-    // Background arc
     g.append("path")
       .attr("d", arc({ startAngle, endAngle, innerRadius: radius - arcWidth, outerRadius: radius } as any))
       .attr("fill", "var(--sd-border)");
 
-    // Value arc
     const valueEnd = startAngle + (endAngle - startAngle) * pct;
     g.append("path")
       .attr("d", arc({ startAngle, endAngle: startAngle, innerRadius: radius - arcWidth, outerRadius: radius } as any))
@@ -72,7 +83,6 @@ export function SafeGauge({ config, data, onEvent }: SafeGaugeProps) {
         return (t: number) => arc({ startAngle, endAngle: interp(t), innerRadius: radius - arcWidth, outerRadius: radius } as any)!;
       });
 
-    // Target line
     if (target != null) {
       const targetPct = (target - min) / (max - min);
       const targetAngle = startAngle + (endAngle - startAngle) * targetPct;
@@ -85,7 +95,6 @@ export function SafeGauge({ config, data, onEvent }: SafeGaugeProps) {
         .attr("stroke-width", 2);
     }
 
-    // Value text
     g.append("text")
       .attr("text-anchor", "middle")
       .attr("dy", variant === "half" ? "-0.5em" : "0.1em")
@@ -94,7 +103,6 @@ export function SafeGauge({ config, data, onEvent }: SafeGaugeProps) {
       .attr("font-weight", 700)
       .text(`${Math.round(value)}${unit}`);
 
-    // Label
     if (label) {
       g.append("text")
         .attr("text-anchor", "middle")

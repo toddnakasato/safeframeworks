@@ -1,12 +1,7 @@
-<!--
-  SafeChat — Svelte 5 chat (bubbles, input, quick actions).
-  Renders via shared-mapping chat builder (./chat) — identical across
-  frameworks. Structure + data-* only.
--->
 <script lang="ts">
   import { onMount, onDestroy } from 'svelte';
   import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-  import { createSafeChat } from './chat';
+  import { createSafeChat } from '../../builders/chat';
 
   let { config, onEvent }: { config: ConfigBase; onEvent?: OnSafeEvent } = $props();
 

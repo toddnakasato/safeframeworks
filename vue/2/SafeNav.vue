@@ -1,12 +1,7 @@
-<!--
-  SafeNav — Vue 2 nav component.
-  navStyle "accordion" renders via shared-mapping nav builder (./nav) —
-  identical across frameworks (figma Shopfront design).
--->
 <script lang="ts">
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
 import { defineComponent, type PropType } from 'vue';
-import { createSafeNav } from './nav';
+import { createSafeNav } from '../../builders/nav';
 
 export default defineComponent({
   name: 'SafeNav',

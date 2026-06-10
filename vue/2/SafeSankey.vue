@@ -1,12 +1,7 @@
-<!--
-  SafeSankey — Vue 2 sankey component.
-  Renders via shared-mapping sankey builder (./sankey) — identical across frameworks.
-  Outputs data-* attributes for intent. No hardcoded CSS.
--->
 <script lang="ts">
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
 import { defineComponent, type PropType } from 'vue';
-import { renderSafeSankey, sankeyData } from './sankey';
+import { renderSafeSankey, sankeyData } from '../../builders/sankey';
 
 export default defineComponent({
   name: 'SafeSankey',

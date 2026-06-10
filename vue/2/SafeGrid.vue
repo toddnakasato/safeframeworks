@@ -1,12 +1,7 @@
-<!--
-  SafeGrid — Vue 2 grid component.
-  Renders via shared-mapping grid builder (./grid) — identical across
-  frameworks. Structure + data-* only.
--->
 <script lang="ts">
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
 import { defineComponent, type PropType } from 'vue';
-import { createSafeGrid } from './grid';
+import { createSafeGrid } from '../../builders/grid';
 
 export default defineComponent({
   name: 'SafeGrid',

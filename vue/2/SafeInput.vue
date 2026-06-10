@@ -1,12 +1,7 @@
-<!--
-  SafeInput — Vue 2 input component.
-  Renders via shared-mapping input builder (./input) — identical across
-  frameworks. Structure + data-* only. No hardcoded CSS.
--->
 <script lang="ts">
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
 import { defineComponent, type PropType } from 'vue';
-import { createSafeInput } from './input';
+import { createSafeInput } from '../../builders/input';
 
 export default defineComponent({
   name: 'SafeInput',

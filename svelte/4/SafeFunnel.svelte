@@ -1,12 +1,7 @@
-<!--
-  SafeFunnel — Svelte 4 D3 funnel/conversion bars.
-  Renders via shared-mapping funnel builder (./funnel) — identical across
-  frameworks. Structure + data-* only.
--->
 <script lang="ts">
   import { onMount, onDestroy } from 'svelte';
   import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-  import { createSafeFunnel } from './funnel';
+  import { createSafeFunnel } from '../../builders/funnel';
 
   export let config: ConfigBase;
   export let onEvent: OnSafeEvent | undefined = undefined;

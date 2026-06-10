@@ -1,12 +1,7 @@
-<!--
-  SafeGauge — Vue 2 D3 radial KPI gauge.
-  Renders via shared-mapping gauge builder (./gauge) — identical across
-  frameworks. Structure + data-* only.
--->
 <script lang="ts">
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
 import { defineComponent, type PropType } from 'vue';
-import { createSafeGauge } from './gauge';
+import { createSafeGauge } from '../../builders/gauge';
 
 export default defineComponent({
   name: 'SafeGauge',

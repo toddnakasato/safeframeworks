@@ -1,10 +1,4 @@
 ---
-/**
- * SafeHeatmap — Astro 5 grid of value-colored cells.
- * Renders via shared-mapping heatmap builder (./heatmap) — identical across
- * frameworks. Server-renders the shell; client script mounts the
- * component. Structure + data-* only.
- */
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
 interface Props { config: ConfigBase; onEvent?: OnSafeEvent; }
 const { config } = Astro.props;
@@ -13,6 +7,6 @@ const { config } = Astro.props;
 <div data-heatmap-config={JSON.stringify(config)}></div>
 
 <script>
-  import { initSafeHeatmaps } from "./heatmap";
+  import { initSafeHeatmaps } from "../../builders/heatmap";
   initSafeHeatmaps();
 </script>

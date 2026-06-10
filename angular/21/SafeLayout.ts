@@ -1,11 +1,6 @@
-/**
- * SafeLayout — Angular named-region composition.
- * Renders via shared-mapping layout builder (./layout) — identical across
- * frameworks. Structure + data-* only.
- */
 import { Component, Input, ElementRef, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-import { createSafeLayout } from './layout';
+import { createSafeLayout } from '../../builders/layout';
 
 @Component({
   selector: 'safe-layout',

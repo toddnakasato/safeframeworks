@@ -3,12 +3,30 @@ import { createSafeEvent } from "safecontracts";
 import type { RowCell, RowDef } from "safecontracts";
 import { useRenderLog, type RenderLogFn } from "./hooks/useRenderLog";
 
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Properties
+ *
+ ----------------------------------------------------------------------------------------------------*/
+
 export interface SafeCardProps {
   config: ConfigBase;
   data: Record<string, any>;
   onEvent?: OnSafeEvent;
   onRenderLog?: RenderLogFn;
 }
+
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Helpers
+ *
+ ----------------------------------------------------------------------------------------------------*/
+
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Implementation
+ *
+ ----------------------------------------------------------------------------------------------------*/
 
 export function SafeCard({ config, data, onEvent, onRenderLog }: SafeCardProps) {
   const { metadata } = config;

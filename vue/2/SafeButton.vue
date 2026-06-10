@@ -1,12 +1,7 @@
-<!--
-  SafeButton — Vue 2 button component.
-  Renders via shared-mapping button builder (./button) — identical across
-  frameworks. Structure + data-* only.
--->
 <script lang="ts">
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
 import { defineComponent, type PropType } from 'vue';
-import { createSafeButton } from './button';
+import { createSafeButton } from '../../builders/button';
 
 export default defineComponent({
   name: 'SafeButton',

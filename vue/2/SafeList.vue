@@ -1,12 +1,7 @@
-<!--
-  SafeList — Vue 2 flexible list.
-  Renders via shared-mapping list builder (./list) — identical across
-  frameworks (figma Atom List Specs). Structure + data-* only.
--->
 <script lang="ts">
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
 import { defineComponent, type PropType } from 'vue';
-import { createSafeList } from './list';
+import { createSafeList } from '../../builders/list';
 
 export default defineComponent({
   name: 'SafeList',

@@ -1,15 +1,3 @@
-/**
- * SafeScene — generic config-driven scene renderer.
- *
- * One config tree in. Full scene out. Handles:
- * - Layout rendering from config.metadata.component + config.children
- * - Dispatcher mounting from config.eventHandlers
- * - State management (data binding from serverCall results)
- * - Scene transitions (picker → detail via "select", detail → picker via "back")
- * - Render logging
- *
- * The host passes: config, serverCall function, data loader. Nothing else.
- */
 import { forwardRef, useCallback, useEffect, useImperativeHandle, useMemo, useRef, useState } from "react";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
 import { createSafeEvent } from "safecontracts";
@@ -24,22 +12,27 @@ import { renderConfigBase } from "./SafeRenderer";
 import type { RenderLogFn } from "./hooks/useRenderLog";
 import type { ReactNode } from "react";
 
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Properties
+ *
+ ----------------------------------------------------------------------------------------------------*/
+
 export interface SafeSceneProps {
-  /** The scene config tree. */
   config: ConfigBase;
-  /** The detail scene config tree (shown after select). */
   detailConfig?: ConfigBase;
-  /** Initial list data (from SQLite cache). */
   data?: Record<string, any>[];
-  /** Event shapes for the dispatcher. */
   shapes?: EventShapeMap;
-  /** Server call function — provided by the host. */
   serverCall?: (domain: string, action: string, args?: Record<string, any>) => Promise<any>;
-  /** Called on state changes (fire, bind, render). */
   onLog?: (phase: string, event: string, payload?: any) => void;
-  /** Transform raw record into flat display record. */
   flattenRecord?: (record: Record<string, any>) => Record<string, any>;
 }
+
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Helpers
+ *
+ ----------------------------------------------------------------------------------------------------*/
 
 function defaultFlatten(record: Record<string, any>): Record<string, any> {
   const flat: Record<string, any> = {};
@@ -55,7 +48,6 @@ function defaultFlatten(record: Record<string, any>): Record<string, any> {
   return flat;
 }
 
-/** Render a config node into a React element. Recurses into children. */
 function renderConfig(
   config: ConfigBase,
   data: Record<string, any> | Record<string, any>[],
@@ -116,6 +108,12 @@ function renderConfig(
 export interface SafeSceneHandle {
   emit: (event: string, payload: any) => Promise<void>;
 }
+
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Implementation
+ *
+ ----------------------------------------------------------------------------------------------------*/
 
 export const SafeScene = forwardRef<SafeSceneHandle, SafeSceneProps>(function SafeScene({
   config,

@@ -1,6 +1,3 @@
-/**
- * SafeFlow — config-driven storyboard/pipeline with branching.
- */
 import type { ReactNode } from "react";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
 import { createSafeEvent } from "safecontracts";
@@ -11,11 +8,23 @@ import type {
   FlowStory,
 } from "safecontracts/components/flow";
 
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Properties
+ *
+ ----------------------------------------------------------------------------------------------------*/
+
 export interface SafeFlowProps {
   config: ConfigBase;
   renderStep?: (step: FlowStep, isActive: boolean) => ReactNode;
   onEvent?: OnSafeEvent;
 }
+
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Implementation
+ *
+ ----------------------------------------------------------------------------------------------------*/
 
 function Connector({ active }: { active?: boolean }) {
   return (

@@ -1,12 +1,7 @@
-<!--
-  SafeToggle — Vue 3 toggle component.
-  Renders via shared-mapping toggle builder (./toggle) — identical across
-  frameworks. Structure + data-* only. No hardcoded CSS.
--->
 <script setup lang="ts">
 import { ref, onMounted, onBeforeUnmount } from 'vue';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-import { createSafeToggle } from './toggle';
+import { createSafeToggle } from '../../builders/toggle';
 
 const props = defineProps<{ config: ConfigBase; onEvent?: OnSafeEvent }>();
 const containerRef = ref<HTMLElement | null>(null);

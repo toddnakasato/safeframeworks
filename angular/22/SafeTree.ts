@@ -1,11 +1,6 @@
-/**
- * SafeTree — Angular tree component.
- * Renders via shared-mapping tree builder (./tree) — identical across
- * frameworks. Structure + data-* only. No hardcoded CSS.
- */
 import { Component, Input, ElementRef, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-import { createSafeTree } from './tree';
+import { createSafeTree } from '../../builders/tree';
 
 @Component({
   selector: 'safe-tree',

@@ -1,11 +1,6 @@
-/**
- * SafeTable — Angular table component.
- * Renders via shared-mapping table builder (./table) — identical across
- * frameworks. Structure + data-* only.
- */
 import { Component, Input, ElementRef, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-import { createSafeTable } from './table';
+import { createSafeTable } from '../../builders/table';
 
 @Component({
   selector: 'safe-table',

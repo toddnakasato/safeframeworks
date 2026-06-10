@@ -1,12 +1,7 @@
-<!--
-  SafeTabs — Vue 2 tabbed panel navigation.
-  Renders via shared-mapping tabs builder (./tabs) — identical across
-  frameworks. Structure + data-* only.
--->
 <script lang="ts">
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
 import { defineComponent, type PropType } from 'vue';
-import { createSafeTabs } from './tabs';
+import { createSafeTabs } from '../../builders/tabs';
 
 export default defineComponent({
   name: 'SafeTabs',

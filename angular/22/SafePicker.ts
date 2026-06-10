@@ -1,11 +1,6 @@
-/**
- * SafePicker — Angular searchable list/card picker.
- * Renders via shared-mapping picker builder (./picker) — identical across
- * frameworks. Structure + data-* only.
- */
 import { Component, Input, ElementRef, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-import { createSafePicker } from './picker';
+import { createSafePicker } from '../../builders/picker';
 
 @Component({
   selector: 'safe-picker',

@@ -1,11 +1,6 @@
-/**
- * SafeCallout — Angular callout component.
- * Renders via shared-mapping callout builder (./callout) — identical across
- * frameworks. Structure + data-* only. No hardcoded CSS.
- */
 import { Component, Input, ElementRef, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-import { createSafeCallout } from './callout';
+import { createSafeCallout } from '../../builders/callout';
 
 @Component({
   selector: 'safe-callout',

@@ -1,11 +1,6 @@
-/**
- * SafeChat — Angular chat (bubbles, input, quick actions).
- * Renders via shared-mapping chat builder (./chat) — identical across
- * frameworks. Structure + data-* only.
- */
 import { Component, Input, ElementRef, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-import { createSafeChat } from './chat';
+import { createSafeChat } from '../../builders/chat';
 
 @Component({
   selector: 'safe-chat',

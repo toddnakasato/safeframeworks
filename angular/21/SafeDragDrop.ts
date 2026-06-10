@@ -1,11 +1,6 @@
-/**
- * SafeDragDrop — Angular drag-and-drop (generic / file / palette).
- * Renders via shared-mapping dragdrop builder (./dragdrop) — identical across
- * frameworks. Structure + data-* only.
- */
 import { Component, Input, ElementRef, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-import { createSafeDragDrop } from './dragdrop';
+import { createSafeDragDrop } from '../../builders/dragdrop';
 
 @Component({
   selector: 'safe-drag-drop',

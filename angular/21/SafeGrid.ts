@@ -1,11 +1,6 @@
-/**
- * SafeGrid — Angular grid component.
- * Renders via shared-mapping grid builder (./grid) — identical across
- * frameworks. Structure + data-* only. No hardcoded CSS.
- */
 import { Component, Input, ElementRef, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-import { createSafeGrid } from './grid';
+import { createSafeGrid } from '../../builders/grid';
 
 @Component({
   selector: 'safe-grid',

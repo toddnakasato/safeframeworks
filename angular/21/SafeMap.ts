@@ -1,12 +1,7 @@
-/**
- * SafeMap — Angular map component.
- * Renders via shared-mapping map builder (./map) — identical across frameworks.
- * Leaflet + OpenStreetMap. Outputs data-* attributes for intent. No hardcoded CSS.
- */
 import { Component, Input, ElementRef, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
 import type * as L from 'leaflet';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-import { createSafeMap, mapData } from './map';
+import { createSafeMap, mapData } from '../../builders/map';
 
 @Component({
   selector: 'safe-map',

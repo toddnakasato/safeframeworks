@@ -1,26 +1,33 @@
-/**
- * SafeColumns — 12-column CSS grid positioning system.
- *
- * Renders via data-attributes. Zero Tailwind. Zero hardcoded values.
- * Gallery JSON is the single source of truth.
- *
- * Children are ConfigBase entries in config.children.
- * Each child's metadata.span (1–12) controls how many columns it occupies.
- * Each child's metadata.start (1–12) controls where it begins (optional).
- */
 import type { ReactNode } from "react";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
 import { createSafeEvent } from "safecontracts";
 import { COLUMNS_DEFAULTS } from "safecontracts/components/columns";
 import { useRenderLog, type RenderLogFn } from "./hooks/useRenderLog";
 
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Properties
+ *
+ ----------------------------------------------------------------------------------------------------*/
+
 export interface SafeColumnsProps {
   config: ConfigBase;
-  /** Render function — receives child config key + config, returns ReactNode */
   renderChild: (key: string, childConfig: ConfigBase) => ReactNode;
   onEvent?: OnSafeEvent;
   onRenderLog?: RenderLogFn;
 }
+
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Helpers
+ *
+ ----------------------------------------------------------------------------------------------------*/
+
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Implementation
+ *
+ ----------------------------------------------------------------------------------------------------*/
 
 export function SafeColumns({ config, renderChild, onEvent, onRenderLog }: SafeColumnsProps) {
   const { metadata } = config;

@@ -17,7 +17,7 @@
     "hyperformula": "^3.3.0"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^5",
+    "@vitejs/plugin-vue2": "^2",
     "vite": "^6",
     "@tauri-apps/api": "^2"
   }

@@ -4,6 +4,12 @@ import { createSafeEvent } from "safecontracts";
 import type { RowCell, RowDef } from "safecontracts";
 import { useRenderLog, type RenderLogFn } from "./hooks/useRenderLog";
 
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Properties
+ *
+ ----------------------------------------------------------------------------------------------------*/
+
 export interface SafePickerProps {
   config: ConfigBase;
   data: Record<string, any>[];
@@ -12,6 +18,18 @@ export interface SafePickerProps {
   onEvent?: OnSafeEvent;
   onRenderLog?: RenderLogFn;
 }
+
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Helpers
+ *
+ ----------------------------------------------------------------------------------------------------*/
+
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Implementation
+ *
+ ----------------------------------------------------------------------------------------------------*/
 
 export function SafePicker({ config, data, loading, error, onEvent, onRenderLog }: SafePickerProps) {
   const { metadata } = config;

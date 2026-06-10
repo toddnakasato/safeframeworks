@@ -1,0 +1,46 @@
+{
+  "component": "sheet",
+  "metadata": {
+    "variant": "default",
+    "surface": "deep",
+    "rowNumbers": false,
+    "editable": false,
+    "columns": [
+      {
+        "label": "Pair",
+        "align": "left"
+      },
+      {
+        "label": "Price",
+        "format": "number",
+        "decimals": 2,
+        "align": "right"
+      },
+      {
+        "label": "24h",
+        "format": "percent",
+        "decimals": 2,
+        "align": "right"
+      },
+      {
+        "label": "Volume",
+        "format": "number",
+        "decimals": 0,
+        "align": "right"
+      }
+    ]
+  },
+  "data": {
+    "sheet-tickers": {
+      "name": "sheet-tickers",
+      "source": "file"
+    }
+  },
+  "eventHandler": {
+    "handler": "sheet",
+    "events": [
+      "select",
+      "edit"
+    ]
+  }
+}

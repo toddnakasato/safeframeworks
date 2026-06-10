@@ -1,12 +1,7 @@
-<!--
-  SafeChat — Vue 2 chat (bubbles, input, quick actions).
-  Renders via shared-mapping chat builder (./chat) — identical across
-  frameworks. Structure + data-* only.
--->
 <script lang="ts">
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
 import { defineComponent, type PropType } from 'vue';
-import { createSafeChat } from './chat';
+import { createSafeChat } from '../../builders/chat';
 
 export default defineComponent({
   name: 'SafeChat',

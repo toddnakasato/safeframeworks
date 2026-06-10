@@ -1,10 +1,4 @@
 ---
-/**
- * SafeList — Astro 5 flexible list.
- * Renders via shared-mapping list builder (./list) — identical across
- * frameworks (figma Atom List Specs). Server-renders the shell; client
- * script mounts the list. Structure + data-* only.
- */
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
 interface Props { config: ConfigBase; onEvent?: OnSafeEvent; }
 const { config } = Astro.props;
@@ -13,6 +7,6 @@ const { config } = Astro.props;
 <div data-list-config={JSON.stringify(config)}></div>
 
 <script>
-  import { initSafeLists } from "./list";
+  import { initSafeLists } from "../../builders/list";
   initSafeLists();
 </script>

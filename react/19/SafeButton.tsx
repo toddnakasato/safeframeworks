@@ -1,17 +1,27 @@
-/**
- * SafeButton — clickable action trigger, single or grouped.
- * Data-attributes for host CSS. Zero Tailwind.
- *
- * Single mode: renders one button with icon, label, iconRight, suffix, description.
- * Group mode (children present): renders a container that wraps child buttons.
- * Group variants: toolbar, toggle, stepper, pagination.
- */
 import { useState } from "react";
 import type { ConfigBase, OnSafeEvent, SafeEventContext } from "safecontracts";
 import { createSafeEvent } from "safecontracts";
 import * as Icons from "lucide-react";
 
-/** Resolve a lucide icon name ("trash-2" → Trash2). Falls back to raw text (emoji). */
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Properties
+ *
+ ----------------------------------------------------------------------------------------------------*/
+
+export interface SafeButtonProps {
+  config: ConfigBase;
+  onEvent?: OnSafeEvent;
+  eventContext?: SafeEventContext;
+  renderChild?: (key: string, child: ConfigBase) => React.ReactNode;
+}
+
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Helpers
+ *
+ ----------------------------------------------------------------------------------------------------*/
+
 function IconGlyph({ name }: { name: string }) {
   const pascal = name
     .split("-")
@@ -22,18 +32,11 @@ function IconGlyph({ name }: { name: string }) {
   return <>{name}</>;
 }
 
-export interface SafeButtonProps {
-  config: ConfigBase;
-  onEvent?: OnSafeEvent;
-  /** Context injected by parent — ref name, parent ref, child key path. */
-  eventContext?: SafeEventContext;
-  /** Render function for children (injected by SafeRenderer for group mode). */
-  renderChild?: (key: string, child: ConfigBase) => React.ReactNode;
-}
-
-/* ------------------------------------------------------------------ */
-/*  Pagination helper                                                  */
-/* ------------------------------------------------------------------ */
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Implementation
+ *
+ ----------------------------------------------------------------------------------------------------*/
 
 function PaginationGroup({
   config,
@@ -114,10 +117,6 @@ function PaginationGroup({
   );
 }
 
-/* ------------------------------------------------------------------ */
-/*  Group container                                                    */
-/* ------------------------------------------------------------------ */
-
 function ButtonGroup({
   config,
   onEvent,
@@ -157,7 +156,6 @@ function ButtonGroup({
             </div>
           );
         }
-        // Fallback: render child as single button inline
         return (
           <div key={key} data-role="group-item">
             <SingleButton config={child} onEvent={onEvent} />
@@ -167,10 +165,6 @@ function ButtonGroup({
     </div>
   );
 }
-
-/* ------------------------------------------------------------------ */
-/*  Single button                                                      */
-/* ------------------------------------------------------------------ */
 
 function SingleButton({
   config,
@@ -247,10 +241,6 @@ function SingleButton({
     </button>
   );
 }
-
-/* ------------------------------------------------------------------ */
-/*  Main export                                                        */
-/* ------------------------------------------------------------------ */
 
 export function SafeButton({
   config,

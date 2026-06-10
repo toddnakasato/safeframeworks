@@ -1,12 +1,6 @@
-/**
- * SafeNav — Angular nav component.
- * navStyle "accordion" renders via shared-mapping nav builder (./nav) —
- * identical across frameworks (figma Shopfront design).
- * Outputs data-* attributes for intent. No hardcoded CSS.
- */
 import { Component, Input, ElementRef, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-import { createSafeNav } from './nav';
+import { createSafeNav } from '../../builders/nav';
 
 @Component({
   selector: 'safe-nav',

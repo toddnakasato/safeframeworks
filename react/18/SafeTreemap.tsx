@@ -1,12 +1,14 @@
-/**
- * SafeTreemap — D3 treemap: nested rectangles sized by value.
- * Flat data with id/parent, or simple label/value list.
- * Data-attributes for host CSS. Zero Tailwind.
- */
 import { useRef, useEffect } from "react";
 import * as d3 from "d3";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
 import { createSafeEvent } from "safecontracts";
+import { resolveColors } from "safecontracts";
+
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Properties
+ *
+ ----------------------------------------------------------------------------------------------------*/
 
 export interface SafeTreemapProps {
   config: ConfigBase;
@@ -14,7 +16,17 @@ export interface SafeTreemapProps {
   onEvent?: OnSafeEvent;
 }
 
-import { resolveColors } from "safecontracts";
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Helpers
+ *
+ ----------------------------------------------------------------------------------------------------*/
+
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Implementation
+ *
+ ----------------------------------------------------------------------------------------------------*/
 
 export function SafeTreemap({ config, data, onEvent }: SafeTreemapProps) {
   const { metadata } = config;
@@ -36,10 +48,8 @@ export function SafeTreemap({ config, data, onEvent }: SafeTreemapProps) {
     const height = 320;
     svg.attr("viewBox", `0 0 ${width} ${height}`);
 
-    // Build hierarchy
     let root: d3.HierarchyNode<any>;
     if (idField && parentField) {
-      // Flat data with parent refs
       const stratify = d3.stratify()
         .id((d: any) => d[idField])
         .parentId((d: any) => d[parentField]);
@@ -47,7 +57,6 @@ export function SafeTreemap({ config, data, onEvent }: SafeTreemapProps) {
         ...data.map(d => ({ ...d, [parentField]: d[parentField] ?? "__root__" }))];
       root = stratify(withRoot).sum((d: any) => Math.max(0, Number(d[valueField]) || 0));
     } else {
-      // Simple flat list
       root = d3.hierarchy({ children: data } as any).sum((d: any) => Math.max(0, Number(d[valueField]) || 0));
     }
 
@@ -55,7 +64,6 @@ export function SafeTreemap({ config, data, onEvent }: SafeTreemapProps) {
 
     const leaves = (root as any).leaves();
 
-    // Cells
     const g = svg.append("g");
     const cells = g.selectAll("g").data(leaves).join("g")
       .attr("transform", (d: any) => `translate(${d.x0},${d.y0})`)
@@ -69,7 +77,6 @@ export function SafeTreemap({ config, data, onEvent }: SafeTreemapProps) {
       .attr("rx", 3)
       .attr("opacity", 0.85);
 
-    // Labels (only if cell is big enough)
     cells.each(function(d: any) {
       const w = d.x1 - d.x0;
       const h = d.y1 - d.y0;

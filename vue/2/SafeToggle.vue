@@ -1,12 +1,7 @@
-<!--
-  SafeToggle — Vue 2 toggle component.
-  Renders via shared-mapping toggle builder (./toggle) — identical across
-  frameworks. Structure + data-* only. No hardcoded CSS.
--->
 <script lang="ts">
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
 import { defineComponent, type PropType } from 'vue';
-import { createSafeToggle } from './toggle';
+import { createSafeToggle } from '../../builders/toggle';
 
 export default defineComponent({
   name: 'SafeToggle',

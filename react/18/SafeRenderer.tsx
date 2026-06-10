@@ -1,9 +1,3 @@
-/**
- * SafeRenderer — pure ConfigBase → ReactNode renderer.
- *
- * Component registry lookup + recursive children. No state, no dispatcher.
- * One function, one map. Every consumer calls this instead of hand-rolling if/else.
- */
 import React from "react";
 import type { ReactNode } from "react";
 import type { ConfigBase, ConfigLayout, OnSafeEvent } from "safecontracts";
@@ -18,6 +12,7 @@ import { SafeDragDrop } from "./SafeDragDrop";
 import { SafeCard } from "./SafeCard";
 import { SafeChart } from "./SafeChart";
 import { SafeColumns } from "./SafeColumns";
+
 import { SafeFunnel } from "./SafeFunnel";
 import { SafeGauge } from "./SafeGauge";
 import { SafeGrid } from "./SafeGrid";
@@ -26,6 +21,7 @@ import { SafeInput } from "./SafeInput";
 import { SafeLayout } from "./SafeLayout";
 import { SafeList } from "./SafeList";
 import { SafeMap } from "./SafeMap";
+import { SafeNav } from "./SafeNav";
 import { SafePicker } from "./SafePicker";
 import { SafeSankey } from "./SafeSankey";
 import { SafeSheet } from "./SafeSheet";
@@ -34,7 +30,6 @@ import { SafeTimeline } from "./SafeTimeline";
 import { SafeTree } from "./SafeTree";
 import { SafeTreemap } from "./SafeTreemap";
 
-/** Extract inline data from config. */
 function extractData(config: ConfigBase): { inline: any; list: any[]; record: Record<string, any> } {
   const raw = Object.values(config.data ?? {})[0]?.inline;
   const list = Array.isArray(raw) ? raw : [];
@@ -42,42 +37,64 @@ function extractData(config: ConfigBase): { inline: any; list: any[]; record: Re
   return { inline: raw, list, record };
 }
 
-/** Context passed through recursive rendering. */
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Properties
+ *
+ ----------------------------------------------------------------------------------------------------*/
+
 export interface RenderContext {
-  /** Parent info for event routing (e.g. button inside card). */
   parentContext?: { parent: string; path: string };
+  handler?: string;
 }
 
-/**
- * Render a ConfigBase tree into React nodes. Recursive.
+/*----------------------------------------------------------------------------------------------------
  *
- * Handles all registered component types. Unknown components render a fallback.
- * Layout and columns children are resolved recursively.
- */
+ * Implementation
+ *
+ ----------------------------------------------------------------------------------------------------*/
+
 export function renderConfigBase(
   config: ConfigBase,
   onEvent?: OnSafeEvent,
   ctx?: RenderContext,
 ): ReactNode {
-  const component = config.metadata.component as string;
+  const component = config.component ?? (config.metadata.component as string);
   const { inline, list, record } = extractData(config);
+
+  // Resolve the handler: this config's own eventHandler takes precedence, otherwise inherit from parent context
+  const handler = config.eventHandler?.handler ?? ctx?.handler;
+
+  // Build a child context that carries the handler down the tree
+  const childCtx = (extra?: Partial<RenderContext>): RenderContext => ({
+    ...ctx,
+    ...extra,
+    handler,
+  });
+
+  // Wrap onEvent to stamp the handler on every event fired from this subtree
+  const stampedOnEvent: OnSafeEvent | undefined = onEvent && handler
+    ? (event) => {
+        onEvent({ ...event, handler });
+      }
+    : onEvent;
 
   // --- Container components (recurse into children) ---
 
   if (component === "layout") {
     const regions: Record<string, ReactNode> = {};
     for (const [key, child] of Object.entries(config.children ?? {})) {
-      regions[key] = renderConfigBase(child, onEvent);
+      regions[key] = renderConfigBase(child, stampedOnEvent, childCtx());
     }
-    return <SafeLayout config={config} regions={regions} onEvent={onEvent} />;
+    return <SafeLayout config={config} regions={regions} onEvent={stampedOnEvent} />;
   }
 
   if (component === "columns") {
     return (
       <SafeColumns
         config={config}
-        renderChild={(_key, child) => renderConfigBase(child, onEvent)}
-        onEvent={onEvent}
+        renderChild={(_key, child) => renderConfigBase(child, stampedOnEvent, childCtx())}
+        onEvent={stampedOnEvent}
       />
     );
   }
@@ -88,16 +105,16 @@ export function renderConfigBase(
       for (const [key, child] of Object.entries(config.children)) {
         childNodes.push(
           <div key={key} data-child={key}>
-            {renderConfigBase(child, onEvent, {
+            {renderConfigBase(child, stampedOnEvent, childCtx({
               parentContext: { parent: (config.metadata.ref as string) ?? "card", path: key },
-            })}
+            }))}
           </div>
         );
       }
     }
     return (
       <div>
-        <SafeCard config={config} data={record} onEvent={onEvent} />
+        <SafeCard config={config} data={record} onEvent={stampedOnEvent} />
         {childNodes.length > 0 && (
           <div data-role="card-actions" style={{ display: "flex", gap: "var(--sd-space-md)", padding: "var(--sd-space-md) var(--sd-space-lg)" }}>
             {childNodes}
@@ -110,44 +127,44 @@ export function renderConfigBase(
   // --- Leaf components ---
 
   if (component === "calendar") {
-    return <SafeCalendar config={config} onEvent={onEvent} />;
+    return <SafeCalendar config={config} onEvent={stampedOnEvent} />;
   }
   if (component === "toggle") {
-    return <SafeToggle config={config} data={list} onEvent={onEvent} />;
+    return <SafeToggle config={config} data={list} onEvent={stampedOnEvent} />;
   }
   if (component === "week") {
-    return <SafeWeek config={config} onEvent={onEvent} />;
+    return <SafeWeek config={config} onEvent={stampedOnEvent} />;
   }
   if (component === "chat") {
-    return <SafeChat config={config} onEvent={onEvent} />;
+    return <SafeChat config={config} onEvent={stampedOnEvent} />;
   }
   if (component === "tabs") {
-    return <SafeTabs config={config} onEvent={onEvent} />;
+    return <SafeTabs config={config} onEvent={stampedOnEvent} />;
   }
   if (component === "callout") {
-    return <SafeCallout config={config} onEvent={onEvent} />;
+    return <SafeCallout config={config} onEvent={stampedOnEvent} />;
   }
   if (component === "drag-drop") {
-    return <SafeDragDrop config={config} data={list} onEvent={onEvent} />;
+    return <SafeDragDrop config={config} data={list} onEvent={stampedOnEvent} />;
   }
   if (component === "button") {
     return (
       <SafeButton
         config={config}
-        onEvent={onEvent}
+        onEvent={stampedOnEvent}
         eventContext={ctx?.parentContext}
-        renderChild={(key, child) => renderConfigBase(child, onEvent, { parentContext: { parent: (config.metadata.ref as string) ?? "button", path: key } })}
+        renderChild={(key, child) => renderConfigBase(child, stampedOnEvent, childCtx({ parentContext: { parent: (config.metadata.ref as string) ?? "button", path: key } }))}
       />
     );
   }
 
   if (component === "grid") {
-    return <SafeGrid config={config} data={record} onEvent={onEvent} />;
+    return <SafeGrid config={config} data={record} onEvent={stampedOnEvent} />;
   }
 
   if (component === "input") {
     const field = (config.metadata.field as string) ?? Object.keys(record)[0];
-    return <SafeInput config={config} data={record} field={field} onEvent={onEvent} />;
+    return <SafeInput config={config} data={record} field={field} onEvent={stampedOnEvent} />;
   }
 
   if (component === "list") {
@@ -155,51 +172,55 @@ export function renderConfigBase(
   }
 
   if (component === "picker") {
-    return <SafePicker config={config} data={list} onEvent={onEvent} />;
+    return <SafePicker config={config} data={list} onEvent={stampedOnEvent} />;
   }
 
   if (component === "table") {
-    return <SafeTable config={config} data={list} onEvent={onEvent} />;
+    return <SafeTable config={config} data={list} onEvent={stampedOnEvent} />;
   }
 
   if (component === "tree") {
-    return <SafeTree config={config} data={list} onEvent={onEvent} />;
+    return <SafeTree config={config} data={list} onEvent={stampedOnEvent} />;
   }
 
   if (component === "sheet") {
-    return <SafeSheet config={config} data={list} onEvent={onEvent} />;
+    return <SafeSheet config={config} data={list} onEvent={stampedOnEvent} />;
   }
 
   if (component === "chart") {
-    return <SafeChart config={config} data={list} onEvent={onEvent} />;
+    return <SafeChart config={config} data={list} onEvent={stampedOnEvent} />;
   }
 
   if (component === "heatmap") {
-    return <SafeHeatmap config={config} data={list} onEvent={onEvent} />;
+    return <SafeHeatmap config={config} data={list} onEvent={stampedOnEvent} />;
   }
 
   if (component === "gauge") {
-    return <SafeGauge config={config} data={record} onEvent={onEvent} />;
+    return <SafeGauge config={config} data={record} onEvent={stampedOnEvent} />;
   }
 
   if (component === "funnel") {
-    return <SafeFunnel config={config} data={list} onEvent={onEvent} />;
+    return <SafeFunnel config={config} data={list} onEvent={stampedOnEvent} />;
   }
 
   if (component === "sankey") {
-    return <SafeSankey config={config} data={record as any} onEvent={onEvent} />;
+    return <SafeSankey config={config} data={record as any} onEvent={stampedOnEvent} />;
   }
 
   if (component === "treemap") {
-    return <SafeTreemap config={config} data={list} onEvent={onEvent} />;
+    return <SafeTreemap config={config} data={list} onEvent={stampedOnEvent} />;
   }
 
   if (component === "timeline") {
-    return <SafeTimeline config={config} data={list} onEvent={onEvent} />;
+    return <SafeTimeline config={config} data={list} onEvent={stampedOnEvent} />;
   }
 
   if (component === "map") {
-    return <SafeMap config={config} data={list} onEvent={onEvent} />;
+    return <SafeMap config={config} data={list} onEvent={stampedOnEvent} />;
+  }
+
+  if (component === "nav") {
+    return <SafeNav config={config} onEvent={stampedOnEvent} />;
   }
 
   // --- Unknown ---
@@ -210,23 +231,33 @@ export function renderConfigBase(
   );
 }
 
-/**
- * renderConfigLayout — resolve string refs to ConfigBase, then render via SafeLayout.
- * The resolver is provided by the host (Tauri invoke, HTTP fetch, etc).
- */
 export type ConfigResolver = (path: string) => Promise<ConfigBase | null>;
 
 export async function resolveConfigLayout(
   layout: ConfigLayout,
   resolver: ConfigResolver,
+  state?: Record<string, any>,
 ): Promise<ConfigBase> {
   const children: Record<string, ConfigBase> = {};
-  for (const [slot, filePath] of Object.entries(layout.children ?? {})) {
-    if (filePath.includes("{{")) continue;
+  for (const [slot, rawPath] of Object.entries(layout.slots ?? {})) {
+    // Interpolate {{key}} templates from state
+    let filePath = rawPath;
+    if (state) {
+      const matches = rawPath.match(/\{\{(\w+)\}\}/g);
+      if (matches) {
+        for (const m of matches) {
+          const key = m.replace(/[{}]/g, "");
+          const val = Array.isArray(state[key]) ? state[key][0] : state[key];
+          if (val != null) filePath = filePath.replace(m, `${val}.json`);
+        }
+      }
+    }
+    if (filePath.includes("{{")) continue; // unresolved template — skip
     const resolved = await resolver(filePath);
     if (resolved) children[slot] = resolved;
   }
   return {
+    component: "layout",
     metadata: { ...layout.metadata },
     children,
   };

@@ -1,11 +1,6 @@
-/**
- * SafeCard — Angular record display card.
- * Renders via shared-mapping card builder (./card) — identical across
- * frameworks. Structure + data-* only.
- */
 import { Component, Input, ElementRef, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-import { createSafeCard } from './card';
+import { createSafeCard } from '../../builders/card';
 
 @Component({
   selector: 'safe-card',

@@ -1,0 +1,23 @@
+{
+  "component": "sheet",
+  "metadata": {
+    "variant": "default",
+    "editable": true,
+    "formulaBar": true,
+    "rowNumbers": true,
+    "frozenRows": 1
+  },
+  "data": {
+    "sheet-formulas": {
+      "name": "sheet-formulas",
+      "source": "file"
+    }
+  },
+  "eventHandler": {
+    "handler": "sheet",
+    "events": [
+      "select",
+      "edit"
+    ]
+  }
+}

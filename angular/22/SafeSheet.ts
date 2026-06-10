@@ -1,11 +1,6 @@
-/**
- * SafeSheet — Angular sheet component.
- * Renders via shared-mapping sheet builder (./sheet) — identical across
- * frameworks (HyperFormula calc engine). Structure + data-* only.
- */
 import { Component, Input, ElementRef, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-import { createSafeSheet } from './sheet';
+import { createSafeSheet } from '../../builders/sheet';
 
 @Component({
   selector: 'safe-sheet',

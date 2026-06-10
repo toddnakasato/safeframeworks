@@ -1,10 +1,4 @@
 ---
-/**
- * SafeChart — Astro 6 chart component.
- * Renders via Chart.js (same builder in every framework — identical rendering).
- * Server-renders the shell; a client script mounts Chart.js on the canvas.
- * Outputs data-* attributes for intent. No hardcoded CSS.
- */
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
 interface Props { config: ConfigBase; onEvent?: OnSafeEvent; }
 const { config } = Astro.props;
@@ -22,6 +16,6 @@ const { config } = Astro.props;
 </div>
 
 <script>
-  import { initSafeCharts } from "./chart";
+  import { initSafeCharts } from "../../builders/chart";
   initSafeCharts();
 </script>

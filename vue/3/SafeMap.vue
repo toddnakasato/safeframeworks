@@ -1,13 +1,8 @@
-<!--
-  SafeMap — Vue 3 map component.
-  Renders via shared-mapping map builder (./map) — identical across frameworks.
-  Leaflet + OpenStreetMap. Outputs data-* attributes for intent. No hardcoded CSS.
--->
 <script setup lang="ts">
 import { ref, onMounted, onBeforeUnmount } from 'vue';
 import type * as L from 'leaflet';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-import { createSafeMap, mapData } from './map';
+import { createSafeMap, mapData } from '../../builders/map';
 
 const props = defineProps<{ config: ConfigBase; onEvent?: OnSafeEvent }>();
 

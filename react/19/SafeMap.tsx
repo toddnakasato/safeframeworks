@@ -1,19 +1,31 @@
-/**
- * SafeMap — Leaflet + OpenStreetMap map component.
- * Renders via shared-mapping map builder (./map) — identical across frameworks.
- * Config-driven markers, circles, polylines from datasource.
- * Data-attributes for host CSS. Zero Tailwind.
- */
 import { useRef, useEffect } from "react";
 import type L from "leaflet";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
-import { createSafeMap } from "./map";
+import { createSafeMap } from "../../builders/map";
+
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Properties
+ *
+ ----------------------------------------------------------------------------------------------------*/
 
 export interface SafeMapProps {
   config: ConfigBase;
   data: Record<string, any>[];
   onEvent?: OnSafeEvent;
 }
+
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Helpers
+ *
+ ----------------------------------------------------------------------------------------------------*/
+
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Implementation
+ *
+ ----------------------------------------------------------------------------------------------------*/
 
 export function SafeMap({ config, data, onEvent }: SafeMapProps) {
   const { metadata } = config;

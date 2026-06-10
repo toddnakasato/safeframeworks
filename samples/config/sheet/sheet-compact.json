@@ -1,0 +1,46 @@
+{
+  "component": "sheet",
+  "metadata": {
+    "variant": "default",
+    "spacing": "tight",
+    "rowNumbers": false,
+    "editable": false,
+    "columns": [
+      {
+        "label": "Date",
+        "align": "left"
+      },
+      {
+        "label": "Request",
+        "align": "left"
+      },
+      {
+        "label": "Method",
+        "align": "center"
+      },
+      {
+        "label": "Code",
+        "align": "center"
+      },
+      {
+        "label": "ms",
+        "format": "number",
+        "decimals": 0,
+        "align": "right"
+      }
+    ]
+  },
+  "data": {
+    "sheet-dense-log": {
+      "name": "sheet-dense-log",
+      "source": "file"
+    }
+  },
+  "eventHandler": {
+    "handler": "sheet",
+    "events": [
+      "select",
+      "edit"
+    ]
+  }
+}

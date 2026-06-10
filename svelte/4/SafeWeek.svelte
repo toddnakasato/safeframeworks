@@ -1,12 +1,7 @@
-<!--
-  SafeWeek — Svelte 4 weekly planner.
-  Renders via shared-mapping week builder (./week) — identical across
-  frameworks (figma Atom Week Specs). Structure + data-* only.
--->
 <script lang="ts">
   import { onMount, onDestroy } from 'svelte';
   import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-  import { createSafeWeek } from './week';
+  import { createSafeWeek } from '../../builders/week';
 
   export let config: ConfigBase;
   export let onEvent: OnSafeEvent | undefined = undefined;

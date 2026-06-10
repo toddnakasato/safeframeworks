@@ -1,12 +1,7 @@
-<!--
-  SafeSheet — Vue 2 sheet component.
-  Renders via shared-mapping sheet builder (./sheet) — identical across
-  frameworks (HyperFormula calc engine). Structure + data-* only.
--->
 <script lang="ts">
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
 import { defineComponent, type PropType } from 'vue';
-import { createSafeSheet } from './sheet';
+import { createSafeSheet } from '../../builders/sheet';
 
 export default defineComponent({
   name: 'SafeSheet',

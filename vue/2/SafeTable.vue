@@ -1,12 +1,7 @@
-<!--
-  SafeTable — Vue 2 table component.
-  Renders via shared-mapping table builder (./table) — identical across
-  frameworks. Structure + data-* only.
--->
 <script lang="ts">
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
 import { defineComponent, type PropType } from 'vue';
-import { createSafeTable } from './table';
+import { createSafeTable } from '../../builders/table';
 
 export default defineComponent({
   name: 'SafeTable',

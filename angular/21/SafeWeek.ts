@@ -1,11 +1,6 @@
-/**
- * SafeWeek — Angular weekly planner.
- * Renders via shared-mapping week builder (./week) — identical across
- * frameworks (figma Atom Week Specs). Structure + data-* only.
- */
 import { Component, Input, ElementRef, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-import { createSafeWeek } from './week';
+import { createSafeWeek } from '../../builders/week';
 
 @Component({
   selector: 'safe-week',

@@ -1,24 +1,23 @@
-/**
- * SafeWeek — config-driven weekly planner.
- *
- * Variants: full (Sun-Sat), workweek (Mon-Fri), full-with-preview (7-day + mini weeks).
- * Date math internal. Data-attributes for host CSS. Zero Tailwind.
- * Events: "navigate" (prev/next week), "select" (click time slot).
- */
 import { useState } from "react";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
-import { createSafeEvent } from "safecontracts";
+import { createSafeEvent, DAY_NAMES_SHORT, MONTH_NAMES } from "safecontracts";
+
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Properties
+ *
+ ----------------------------------------------------------------------------------------------------*/
 
 export interface SafeWeekProps {
   config: ConfigBase;
   onEvent?: OnSafeEvent;
 }
 
-const DAY_NAMES_SHORT = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
-const MONTH_NAMES = [
-  "January", "February", "March", "April", "May", "June",
-  "July", "August", "September", "October", "November", "December",
-];
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Helpers
+ *
+ ----------------------------------------------------------------------------------------------------*/
 
 function todayDate(): Date { return new Date(); }
 
@@ -70,9 +69,11 @@ function isWeekend(date: Date): boolean {
   return d === 0 || d === 6;
 }
 
-/* ------------------------------------------------------------------ */
-/*  Mini week (for preview variant)                                    */
-/* ------------------------------------------------------------------ */
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Implementation
+ *
+ ----------------------------------------------------------------------------------------------------*/
 
 function MiniWeek({
   dates,
@@ -105,10 +106,6 @@ function MiniWeek({
     </div>
   );
 }
-
-/* ------------------------------------------------------------------ */
-/*  Week grid                                                          */
-/* ------------------------------------------------------------------ */
 
 function WeekGrid({
   dates,
@@ -150,10 +147,8 @@ function WeekGrid({
         data-role="week-grid"
         style={{ gridTemplateColumns: `auto repeat(${dates.length}, 1fr)` }}
       >
-        {/* Empty corner */}
         <div data-role="week-corner" />
 
-        {/* Day headers */}
         {dates.map((date, i) => (
           <div
             key={i}
@@ -166,7 +161,6 @@ function WeekGrid({
           </div>
         ))}
 
-        {/* Time rows */}
         {hours.map((h) => (
           <div key={h} data-role="week-time-row" style={{ display: "contents" }}>
             <div data-role="week-time-label">{formatHour(h)}</div>
@@ -185,10 +179,6 @@ function WeekGrid({
     </div>
   );
 }
-
-/* ------------------------------------------------------------------ */
-/*  Main export                                                        */
-/* ------------------------------------------------------------------ */
 
 export function SafeWeek({ config, onEvent }: SafeWeekProps) {
   const { metadata } = config;

@@ -1,0 +1,35 @@
+{
+  "component": "sheet",
+  "metadata": {
+    "variant": "minimal",
+    "columnHeaders": true,
+    "rowNumbers": false,
+    "editable": false,
+    "columns": [
+      {
+        "label": "Channel",
+        "align": "left"
+      },
+      {
+        "label": "Visits",
+        "format": "number",
+        "decimals": 0,
+        "align": "right",
+        "bar": true
+      }
+    ]
+  },
+  "data": {
+    "sheet-channel-traffic": {
+      "name": "sheet-channel-traffic",
+      "source": "file"
+    }
+  },
+  "eventHandler": {
+    "handler": "sheet",
+    "events": [
+      "select",
+      "edit"
+    ]
+  }
+}

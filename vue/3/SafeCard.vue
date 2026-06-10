@@ -1,12 +1,7 @@
-<!--
-  SafeCard — Vue 3 record display card.
-  Renders via shared-mapping card builder (./card) — identical across
-  frameworks. Structure + data-* only.
--->
 <script setup lang="ts">
 import { ref, onMounted, onBeforeUnmount } from 'vue';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-import { createSafeCard } from './card';
+import { createSafeCard } from '../../builders/card';
 
 const props = defineProps<{ config: ConfigBase; onEvent?: OnSafeEvent }>();
 const containerRef = ref<HTMLElement | null>(null);

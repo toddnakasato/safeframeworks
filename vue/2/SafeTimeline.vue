@@ -1,12 +1,7 @@
-<!--
-  SafeTimeline — Vue 2 timeline component.
-  Renders via shared-mapping timeline builder (./timeline) — identical across
-  frameworks. Structure + data-* only. No hardcoded CSS.
--->
 <script lang="ts">
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
 import { defineComponent, type PropType } from 'vue';
-import { createSafeTimeline } from './timeline';
+import { createSafeTimeline } from '../../builders/timeline';
 
 export default defineComponent({
   name: 'SafeTimeline',

@@ -1,10 +1,4 @@
 ---
-/**
- * SafeTree — Astro 5 tree component.
- * Renders via shared-mapping tree builder (./tree) — identical across
- * frameworks. Server-renders the shell; client script mounts the tree.
- * Structure + data-* only.
- */
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
 interface Props { config: ConfigBase; onEvent?: OnSafeEvent; }
 const { config } = Astro.props;
@@ -13,6 +7,6 @@ const { config } = Astro.props;
 <div data-tree-config={JSON.stringify(config)}></div>
 
 <script>
-  import { initSafeTrees } from "./tree";
+  import { initSafeTrees } from "../../builders/tree";
   initSafeTrees();
 </script>

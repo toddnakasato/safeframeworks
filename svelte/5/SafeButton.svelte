@@ -1,12 +1,7 @@
-<!--
-  SafeButton — Svelte 5 button component.
-  Renders via shared-mapping button builder (./button) — identical across
-  frameworks. Structure + data-* only.
--->
 <script lang="ts">
   import { onMount, onDestroy } from 'svelte';
   import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-  import { createSafeButton } from './button';
+  import { createSafeButton } from '../../builders/button';
 
   let { config, onEvent }: { config: ConfigBase; onEvent?: OnSafeEvent } = $props();
 

@@ -1,5 +1,3 @@
-// safeframeworks/angular/21 — Angular 21 component exports
-
 export { SafeLayoutComponent } from "./SafeLayout";
 export { SafeColumnsComponent } from "./SafeColumns";
 export { SafeCardComponent } from "./SafeCard";

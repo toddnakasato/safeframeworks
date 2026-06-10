@@ -1,12 +1,7 @@
-<!--
-  SafeInput — Svelte 4 input component.
-  Renders via shared-mapping input builder (./input) — identical across
-  frameworks. Structure + data-* only. No hardcoded CSS.
--->
 <script lang="ts">
   import { onMount, onDestroy } from 'svelte';
   import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-  import { createSafeInput } from './input';
+  import { createSafeInput } from '../../builders/input';
 
   export let config: ConfigBase;
   export let onEvent: OnSafeEvent | undefined = undefined;

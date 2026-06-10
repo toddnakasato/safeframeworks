@@ -1,12 +1,7 @@
-<!--
-  SafePicker — Svelte 5 searchable list/card picker.
-  Renders via shared-mapping picker builder (./picker) — identical across
-  frameworks. Structure + data-* only.
--->
 <script lang="ts">
   import { onMount, onDestroy } from 'svelte';
   import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-  import { createSafePicker } from './picker';
+  import { createSafePicker } from '../../builders/picker';
 
   let { config, onEvent }: { config: ConfigBase; onEvent?: OnSafeEvent } = $props();
 

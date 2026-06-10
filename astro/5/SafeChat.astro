@@ -1,10 +1,4 @@
 ---
-/**
- * SafeChat — Astro 5 chat (bubbles, input, quick actions).
- * Renders via shared-mapping chat builder (./chat) — identical across
- * frameworks. Server-renders the shell; client script mounts the component.
- * Structure + data-* only.
- */
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
 interface Props { config: ConfigBase; onEvent?: OnSafeEvent; }
 const { config } = Astro.props;
@@ -13,6 +7,6 @@ const { config } = Astro.props;
 <div data-chat-config={JSON.stringify(config)}></div>
 
 <script>
-  import { initSafeChats } from "./chat";
+  import { initSafeChats } from "../../builders/chat";
   initSafeChats();
 </script>

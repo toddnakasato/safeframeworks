@@ -1,13 +1,13 @@
-/**
- * SafeGridCell — label + SafeInput pair.
- *
- * Each cell delegates rendering to SafeInput with the correct inputType
- * derived from the field type. Config-driven. No formatting logic here.
- */
 import type { Field, ConfigBase, OnSafeEvent } from "safecontracts";
 import { createSafeEvent } from "safecontracts";
 import { SafeInput } from "./SafeInput";
 import { INPUT_DEFAULTS } from "safecontracts/components/input";
+
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Properties
+ *
+ ----------------------------------------------------------------------------------------------------*/
 
 export interface SafeGridCellProps {
   field: Field;
@@ -21,7 +21,12 @@ export interface SafeGridCellProps {
   onEvent?: OnSafeEvent;
 }
 
-/** Map field.type to SafeInput inputType + displayFormat */
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Helpers
+ *
+ ----------------------------------------------------------------------------------------------------*/
+
 function fieldToInputConfig(field: Field, locale: string, currency: string, timezone: string, emptyValue: string, booleanTrue: string, booleanFalse: string): ConfigBase {
   const type = field.type;
   let inputType = "text";
@@ -41,6 +46,7 @@ function fieldToInputConfig(field: Field, locale: string, currency: string, time
   }
 
   return {
+    component: "input",
     metadata: {
       component: "input",
       name: field.name,
@@ -55,6 +61,12 @@ function fieldToInputConfig(field: Field, locale: string, currency: string, time
     },
   };
 }
+
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Implementation
+ *
+ ----------------------------------------------------------------------------------------------------*/
 
 export function SafeGridCell({ field, value, locale, currency, timezone, emptyValue, booleanTrue, booleanFalse, onEvent }: SafeGridCellProps) {
   const l = locale ?? INPUT_DEFAULTS.locale;

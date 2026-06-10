@@ -1,0 +1,37 @@
+{
+  "component": "sheet",
+  "metadata": {
+    "variant": "grouped",
+    "groupCol": 0,
+    "columns": [
+      {
+        "label": "Group"
+      },
+      {
+        "label": "Name",
+        "align": "left"
+      },
+      {
+        "label": "Title",
+        "align": "left"
+      },
+      {
+        "label": "Location",
+        "align": "left"
+      }
+    ]
+  },
+  "data": {
+    "sheet-grouped-staff": {
+      "name": "sheet-grouped-staff",
+      "source": "file"
+    }
+  },
+  "eventHandler": {
+    "handler": "sheet",
+    "events": [
+      "select",
+      "edit"
+    ]
+  }
+}

@@ -1,8 +1,11 @@
-/**
- * SafeModal — config-driven dialog.
- */
 import type { ReactNode } from "react";
 import type { ConfigBase } from "safecontracts";
+
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Properties
+ *
+ ----------------------------------------------------------------------------------------------------*/
 
 export interface SafeModalProps {
   config: ConfigBase;
@@ -10,6 +13,12 @@ export interface SafeModalProps {
   onConfirm?: () => void;
   onCancel?: () => void;
 }
+
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Implementation
+ *
+ ----------------------------------------------------------------------------------------------------*/
 
 export function SafeModal({ config, children, onConfirm, onCancel }: SafeModalProps) {
   const { metadata } = config;

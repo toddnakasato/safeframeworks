@@ -1,20 +1,38 @@
-/**
- * SafeNav — config-driven navigation sidebar.
- * Outputs data-* attributes from NavMetadata. CSS framework handles the look.
- * Uses lucide-react for icons (same as figma designs).
- *
- * navStyle variants: classic (more to come).
- */
 import { useState, useRef, useEffect, type ReactNode } from "react";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
 import { createSafeEvent } from "safecontracts";
 import * as Icons from "lucide-react";
-import { createSafeNav } from "./nav";
+import { createSafeNav } from "../../builders/nav";
+
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Properties
+ *
+ ----------------------------------------------------------------------------------------------------*/
 
 export interface SafeNavProps {
   config: ConfigBase;
   onEvent?: OnSafeEvent;
 }
+
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Helpers
+ *
+ ----------------------------------------------------------------------------------------------------*/
+
+function LucideIcon({ name, size = 16 }: { name: string; size?: number }) {
+  const pascal = name.split("-").map((s) => s.charAt(0).toUpperCase() + s.slice(1)).join("");
+  const Comp = (Icons as any)[pascal] ?? (Icons as any)[pascal + "2"] ?? null;
+  if (!Comp) return null;
+  return <Comp size={size} />;
+}
+
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Implementation
+ *
+ ----------------------------------------------------------------------------------------------------*/
 
 export function SafeNav({ config, onEvent }: SafeNavProps) {
   const navStyle = (config.metadata.navStyle as string) ?? "classic";
@@ -22,8 +40,6 @@ export function SafeNav({ config, onEvent }: SafeNavProps) {
   if (navStyle === "accordion") return <NavBuilder config={config} onEvent={onEvent} />;
   return <div data-component="nav" data-nav-style={navStyle}>Unknown navStyle: {navStyle}</div>;
 }
-
-// ─── Builder-backed styles (accordion) ──────────────────────────────────────
 
 function NavBuilder({ config, onEvent }: SafeNavProps) {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -34,17 +50,6 @@ function NavBuilder({ config, onEvent }: SafeNavProps) {
   }, [config, onEvent]);
   return <div ref={containerRef} data-nav-host />;
 }
-
-// ─── Icon resolver ──────────────────────────────────────────────────────────
-
-function LucideIcon({ name, size = 16 }: { name: string; size?: number }) {
-  const pascal = name.split("-").map((s) => s.charAt(0).toUpperCase() + s.slice(1)).join("");
-  const Comp = (Icons as any)[pascal] ?? (Icons as any)[pascal + "2"] ?? null;
-  if (!Comp) return null;
-  return <Comp size={size} />;
-}
-
-// ─── Classic ────────────────────────────────────────────────────────────────
 
 function NavClassic({ config, onEvent }: SafeNavProps) {
   const { metadata, children } = config;
@@ -113,7 +118,6 @@ function NavClassic({ config, onEvent }: SafeNavProps) {
 
   return (
     <div data-component="nav" data-nav-style="classic">
-      {/* Header */}
       {title && (
         <div data-nav-header>
           <div data-nav-header-inner>
@@ -131,7 +135,6 @@ function NavClassic({ config, onEvent }: SafeNavProps) {
         </div>
       )}
 
-      {/* Search */}
       {showSearch && (
         <div data-nav-search-wrapper>
           <div data-nav-search>
@@ -146,19 +149,16 @@ function NavClassic({ config, onEvent }: SafeNavProps) {
         </div>
       )}
 
-      {/* Main nav */}
       <nav data-nav-main>
         {main.map(([k, c]) => renderItem(k, c))}
       </nav>
 
-      {/* Bottom section */}
       {bottom.length > 0 && (
         <div data-nav-bottom>
           {bottom.map(([k, c]) => renderItem(k, c))}
         </div>
       )}
 
-      {/* User footer */}
       {userName && (
         <div data-nav-user>
           <div data-nav-user-avatar>{userInitials}</div>

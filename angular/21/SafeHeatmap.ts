@@ -1,11 +1,6 @@
-/**
- * SafeHeatmap — Angular grid of value-colored cells.
- * Renders via shared-mapping heatmap builder (./heatmap) — identical across
- * frameworks. Structure + data-* only.
- */
 import { Component, Input, ElementRef, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-import { createSafeHeatmap } from './heatmap';
+import { createSafeHeatmap } from '../../builders/heatmap';
 
 @Component({
   selector: 'safe-heatmap',

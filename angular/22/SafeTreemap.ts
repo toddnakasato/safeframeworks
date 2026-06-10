@@ -1,11 +1,6 @@
-/**
- * SafeTreemap — Angular D3 nested rectangles.
- * Renders via shared-mapping treemap builder (./treemap) — identical across
- * frameworks. Structure + data-* only.
- */
 import { Component, Input, ElementRef, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-import { createSafeTreemap } from './treemap';
+import { createSafeTreemap } from '../../builders/treemap';
 
 @Component({
   selector: 'safe-treemap',

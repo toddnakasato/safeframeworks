@@ -1,10 +1,4 @@
 ---
-/**
- * SafeButton — Astro 5 button component.
- * Renders via shared-mapping button builder (./button) — identical across
- * frameworks. Server-renders the shell; client script mounts the button.
- * Structure + data-* only.
- */
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
 interface Props { config: ConfigBase; onEvent?: OnSafeEvent; }
 const { config } = Astro.props;
@@ -13,6 +7,6 @@ const { config } = Astro.props;
 <div data-button-config={JSON.stringify(config)}></div>
 
 <script>
-  import { initSafeButtons } from "./button";
+  import { initSafeButtons } from "../../builders/button";
   initSafeButtons();
 </script>

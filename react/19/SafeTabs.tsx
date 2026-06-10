@@ -1,14 +1,12 @@
-/**
- * SafeTabs — tabbed panel navigation.
- *
- * Variants: default (underline), pill, boxed.
- * Position: top, bottom, left, right.
- * Each tab maps to a child ConfigBase via key.
- * Fires "select" event with the active tab key.
- */
 import React, { useState } from "react";
 import type { ConfigBase, SafeEvent } from "safecontracts";
 import { createSafeEvent } from "safecontracts";
+
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Properties
+ *
+ ----------------------------------------------------------------------------------------------------*/
 
 interface TabItem {
   key: string;
@@ -21,6 +19,12 @@ interface Props {
   config: ConfigBase;
   onEvent?: (event: SafeEvent) => void;
 }
+
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Implementation
+ *
+ ----------------------------------------------------------------------------------------------------*/
 
 export function SafeTabs({ config, onEvent }: Props) {
   const { metadata, children } = config;

@@ -1,12 +1,7 @@
-<!--
-  SafeSankey — Vue 3 sankey component.
-  Renders via shared-mapping sankey builder (./sankey) — identical across frameworks.
-  Outputs data-* attributes for intent. No hardcoded CSS.
--->
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-import { renderSafeSankey, sankeyData } from './sankey';
+import { renderSafeSankey, sankeyData } from '../../builders/sankey';
 
 const props = defineProps<{ config: ConfigBase; onEvent?: OnSafeEvent }>();
 const svgRef = ref<SVGSVGElement | null>(null);

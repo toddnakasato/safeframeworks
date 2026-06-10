@@ -1,12 +1,7 @@
-<!--
-  SafeTabs — Svelte 4 tabbed panel navigation.
-  Renders via shared-mapping tabs builder (./tabs) — identical across
-  frameworks. Structure + data-* only.
--->
 <script lang="ts">
   import { onMount, onDestroy } from 'svelte';
   import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-  import { createSafeTabs } from './tabs';
+  import { createSafeTabs } from '../../builders/tabs';
 
   export let config: ConfigBase;
   export let onEvent: OnSafeEvent | undefined = undefined;

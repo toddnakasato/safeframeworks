@@ -1,12 +1,7 @@
-<!--
-  SafeTree — Svelte 5 tree component.
-  Renders via shared-mapping tree builder (./tree) — identical across
-  frameworks. Structure + data-* only.
--->
 <script lang="ts">
   import { onMount, onDestroy } from 'svelte';
   import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-  import { createSafeTree } from './tree';
+  import { createSafeTree } from '../../builders/tree';
 
   let { config, onEvent }: { config: ConfigBase; onEvent?: OnSafeEvent } = $props();
 

@@ -1,15 +1,29 @@
-/**
- * SafeHeatmap — config-driven grid of value-colored cells.
- * Data-attributes for host CSS. Zero Tailwind.
- */
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
 import { createSafeEvent } from "safecontracts";
+
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Properties
+ *
+ ----------------------------------------------------------------------------------------------------*/
 
 export interface SafeHeatmapProps {
   config: ConfigBase;
   data: Record<string, any>[];
   onEvent?: OnSafeEvent;
 }
+
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Helpers
+ *
+ ----------------------------------------------------------------------------------------------------*/
+
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Implementation
+ *
+ ----------------------------------------------------------------------------------------------------*/
 
 export function SafeHeatmap({ config, data, onEvent }: SafeHeatmapProps) {
   const { metadata } = config;

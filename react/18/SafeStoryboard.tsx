@@ -1,17 +1,17 @@
-/**
- * SafeStoryboard — config-driven story/scene visual navigator.
- *
- * Each story card shows a scene view (picker or detail) at small scale.
- */
 import type { ReactNode } from "react";
 
 // Legacy types kept inline for backward compatibility
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Properties
+ *
+ ----------------------------------------------------------------------------------------------------*/
+
 interface StoryStep { scene: string; view: "picker" | "detail"; }
 interface StoryDef { name: string; scenes: StoryStep[]; }
 
 export interface SafeStoryboardProps {
   stories: StoryDef[];
-  /** Rendered scene thumbnails keyed by "scene:view" */
   sceneThumbnails: Record<string, ReactNode>;
   activeScene?: string;
   title?: string;
@@ -22,6 +22,12 @@ export interface SafeStoryboardProps {
   onPlayStory?: (story: StoryDef) => void;
 }
 
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Helpers
+ *
+ ----------------------------------------------------------------------------------------------------*/
+
 function stepKey(step: StoryStep): string {
   return `${step.scene}:${step.view}`;
 }
@@ -31,6 +37,12 @@ function stepLabel(step: StoryStep): string {
   const view = step.view === "detail" ? "Detail" : "List";
   return `${name} ${view}`;
 }
+
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Implementation
+ *
+ ----------------------------------------------------------------------------------------------------*/
 
 export function SafeStoryboard({
   stories,

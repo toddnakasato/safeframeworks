@@ -1,9 +1,3 @@
-/**
- * SafeMetric — config-driven animated counter.
- *
- * Reads MetricConfig for value field, format, trend.
- * Animates number changes with GSAP.
- */
 import { useRef, useEffect } from "react";
 import gsap from "gsap";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
@@ -11,11 +5,23 @@ import { createSafeEvent } from "safecontracts";
 import type { TrendDirection } from "safecontracts/components/metric";
 import { fmtCurrency, fmtInt, fmtPercent, fmtNumber } from "safecontracts";
 
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Properties
+ *
+ ----------------------------------------------------------------------------------------------------*/
+
 export interface SafeMetricProps {
   config: ConfigBase;
   data: Record<string, any>;
   onEvent?: OnSafeEvent;
 }
+
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Helpers
+ *
+ ----------------------------------------------------------------------------------------------------*/
 
 function formatByType(value: number, format: string | undefined): string {
   switch (format) {
@@ -67,6 +73,12 @@ const SIZE_MAP: Record<string, string> = {
   minimal: "var(--sd-font-2xl)",
   default: "var(--sd-font-3xl)",
 };
+
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Implementation
+ *
+ ----------------------------------------------------------------------------------------------------*/
 
 export function SafeMetric({ config, data, onEvent }: SafeMetricProps) {
   const { metadata } = config;

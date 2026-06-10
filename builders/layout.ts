@@ -1,0 +1,67 @@
+import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
+import { createSafeEvent, LAYOUT_VARIANTS } from "../../safecontracts/src/contracts";
+
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Properties
+ *
+ ----------------------------------------------------------------------------------------------------*/
+
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Helpers
+ *
+ ----------------------------------------------------------------------------------------------------*/
+
+function el(tag: string, role?: string, text?: string): HTMLElement {
+    const e = document.createElement(tag);
+    if (role) e.setAttribute("data-role", role);
+    if (text != null) e.textContent = text;
+    return e;
+}
+
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Implementation
+ *
+ ----------------------------------------------------------------------------------------------------*/
+
+export function createSafeLayout(container: HTMLElement, config: ConfigBase, onEvent?: OnSafeEvent): HTMLElement {
+    const metadata = config.metadata;
+    const variant = (metadata.variant as string) ?? "single";
+    const backLabel = metadata.backLabel as string | undefined;
+
+    const root = el("div");
+    root.setAttribute("data-component", "layout");
+    root.setAttribute("data-variant", variant);
+
+    if (backLabel) {
+        const back = el("button", "layout-back", backLabel);
+        back.onclick = () => onEvent?.(createSafeEvent("layout", "back", {}));
+        root.appendChild(back);
+    }
+
+    root.appendChild(el("div", "layout-note", `Layout variant: ${variant}`));
+
+    const regions: string[] = variant === "stack"
+        ? Object.keys(config.children ?? {})
+        : [...(LAYOUT_VARIANTS[variant] ?? ["main"])];
+
+    for (const region of regions) {
+        const r = el("div", "layout-region", region);
+        r.setAttribute("data-region", region);
+        root.appendChild(r);
+    }
+
+    container.appendChild(root);
+    return root;
+}
+
+export function initSafeLayouts(root: Document | HTMLElement = document): void {
+    root.querySelectorAll<HTMLElement>("div[data-layout-config]").forEach((host) => {
+        if (host.dataset.layoutMounted) return;
+        host.dataset.layoutMounted = "1";
+        const config = JSON.parse(host.dataset.layoutConfig!) as ConfigBase;
+        createSafeLayout(host, config);
+    });
+}

@@ -1,12 +1,7 @@
-<!--
-  SafeTree — Vue 2 tree component.
-  Renders via shared-mapping tree builder (./tree) — identical across
-  frameworks. Structure + data-* only.
--->
 <script lang="ts">
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
 import { defineComponent, type PropType } from 'vue';
-import { createSafeTree } from './tree';
+import { createSafeTree } from '../../builders/tree';
 
 export default defineComponent({
   name: 'SafeTree',

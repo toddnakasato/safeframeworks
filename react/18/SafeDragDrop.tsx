@@ -1,18 +1,12 @@
-/**
- * SafeDragDrop — pure drag-and-drop component.
- *
- * Uses native HTML5 drag-and-drop. Zero dependencies.
- * Data-attributes drive all visual states. Fires SafeEvents.
- * Owns no data state — consumer handles everything via events.
- *
- * Variants:
- *   generic — draggable items (from inline data) + drop zones
- *   file    — native OS file drop zone
- *   palette — categorized draggable items + named section drop targets
- */
 import { useState, useCallback, useRef } from "react";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
 import { createSafeEvent } from "safecontracts";
+
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Properties
+ *
+ ----------------------------------------------------------------------------------------------------*/
 
 export interface SafeDragDropProps {
   config: ConfigBase;
@@ -20,9 +14,17 @@ export interface SafeDragDropProps {
   onEvent?: OnSafeEvent;
 }
 
-/* ------------------------------------------------------------------ */
-/*  Generic variant                                                    */
-/* ------------------------------------------------------------------ */
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Helpers
+ *
+ ----------------------------------------------------------------------------------------------------*/
+
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Implementation
+ *
+ ----------------------------------------------------------------------------------------------------*/
 
 function GenericDragDrop({
   config,
@@ -102,10 +104,6 @@ function GenericDragDrop({
   );
 }
 
-/* ------------------------------------------------------------------ */
-/*  File variant                                                       */
-/* ------------------------------------------------------------------ */
-
 function FileDragDrop({
   config,
   onEvent,
@@ -172,10 +170,6 @@ function FileDragDrop({
     </div>
   );
 }
-
-/* ------------------------------------------------------------------ */
-/*  Palette variant                                                    */
-/* ------------------------------------------------------------------ */
 
 function PaletteDragDrop({
   config,
@@ -259,10 +253,6 @@ function PaletteDragDrop({
     </div>
   );
 }
-
-/* ------------------------------------------------------------------ */
-/*  Main export                                                        */
-/* ------------------------------------------------------------------ */
 
 export function SafeDragDrop({ config, data, onEvent }: SafeDragDropProps) {
   const variant = (config.metadata.variant as string) ?? "generic";

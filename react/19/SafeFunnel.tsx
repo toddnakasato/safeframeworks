@@ -1,11 +1,14 @@
-/**
- * SafeFunnel — D3 funnel/conversion visualization.
- * Data-attributes for host CSS. Zero Tailwind.
- */
 import { useRef, useEffect } from "react";
 import * as d3 from "d3";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
 import { createSafeEvent } from "safecontracts";
+import { resolveColors } from "safecontracts";
+
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Properties
+ *
+ ----------------------------------------------------------------------------------------------------*/
 
 export interface SafeFunnelProps {
   config: ConfigBase;
@@ -13,7 +16,17 @@ export interface SafeFunnelProps {
   onEvent?: OnSafeEvent;
 }
 
-import { resolveColors } from "safecontracts";
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Helpers
+ *
+ ----------------------------------------------------------------------------------------------------*/
+
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Implementation
+ *
+ ----------------------------------------------------------------------------------------------------*/
 
 export function SafeFunnel({ config, data, onEvent }: SafeFunnelProps) {
   const { metadata } = config;
@@ -47,7 +60,6 @@ export function SafeFunnel({ config, data, onEvent }: SafeFunnelProps) {
       const y = i * (barHeight + 6) + 10;
       const color = FUNNEL_COLORS[i % FUNNEL_COLORS.length];
 
-      // Bar
       const g = svg.append("g").style("cursor", "pointer")
         .on("click", () => onEvent?.(createSafeEvent("funnel", "select", { index: i, data: d })));
 
@@ -58,14 +70,12 @@ export function SafeFunnel({ config, data, onEvent }: SafeFunnelProps) {
         .transition().duration(600).delay(i * 100)
         .attr("width", barW);
 
-      // Label
       g.append("text")
         .attr("x", width / 2).attr("y", y + barHeight / 2)
         .attr("text-anchor", "middle").attr("dy", "0.35em")
         .attr("fill", "var(--sd-surface)").attr("font-size", 12).attr("font-weight", 600)
         .text(String(d[labelField] ?? ""));
 
-      // Value + percent on right
       const displayVal = val.toLocaleString();
       const pctText = showPercent ? ` (${Math.round(pct * 100)}%)` : "";
       g.append("text")
@@ -74,7 +84,6 @@ export function SafeFunnel({ config, data, onEvent }: SafeFunnelProps) {
         .attr("fill", "var(--sd-text-dim)").attr("font-size", 11)
         .text(`${displayVal}${pctText}`);
 
-      // Conversion rate between stages
       if (showConversion && i > 0) {
         const prevVal = Number(data[i - 1][valueField]) ?? 1;
         const convRate = prevVal > 0 ? Math.round((val / prevVal) * 100) : 0;

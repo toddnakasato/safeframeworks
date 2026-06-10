@@ -1,14 +1,12 @@
-/**
- * SafeChat — config-driven chat component.
- *
- * Renders message bubbles, text input, send button, quick actions.
- * Owns local message list (appends user messages on send).
- * Data-attributes for host CSS. Zero Tailwind.
- * Events: "send" (user typed message), "action" (quick action clicked).
- */
 import { useState, useRef, useEffect } from "react";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
 import { createSafeEvent } from "safecontracts";
+
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Properties
+ *
+ ----------------------------------------------------------------------------------------------------*/
 
 export interface SafeChatProps {
   config: ConfigBase;
@@ -21,9 +19,21 @@ interface Message {
   timestamp: string;
 }
 
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Helpers
+ *
+ ----------------------------------------------------------------------------------------------------*/
+
 function now(): string {
   return new Date().toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit" });
 }
+
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Implementation
+ *
+ ----------------------------------------------------------------------------------------------------*/
 
 export function SafeChat({ config, onEvent }: SafeChatProps) {
   const { metadata } = config;
@@ -69,12 +79,10 @@ export function SafeChat({ config, onEvent }: SafeChatProps) {
 
   return (
     <div data-component="chat">
-      {/* Header */}
       <div data-role="chat-header">
         <span data-role="chat-title">{title}</span>
       </div>
 
-      {/* Messages */}
       <div data-role="chat-messages" ref={scrollRef}>
         {messages.map((msg, i) => (
           <div key={i} data-role="chat-message" data-sender={msg.role}>
@@ -86,7 +94,6 @@ export function SafeChat({ config, onEvent }: SafeChatProps) {
         ))}
       </div>
 
-      {/* Input */}
       <div data-role="chat-input-area">
         <input
           data-role="chat-input"
@@ -101,7 +108,6 @@ export function SafeChat({ config, onEvent }: SafeChatProps) {
         </button>
       </div>
 
-      {/* Quick Actions */}
       {quickActions.length > 0 && (
         <div data-role="chat-actions">
           {quickActions.map((action: any, i: number) => (

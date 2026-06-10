@@ -1,12 +1,7 @@
-<!--
-  SafeHeatmap — Vue 2 grid of value-colored cells.
-  Renders via shared-mapping heatmap builder (./heatmap) — identical across
-  frameworks. Structure + data-* only.
--->
 <script lang="ts">
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
 import { defineComponent, type PropType } from 'vue';
-import { createSafeHeatmap } from './heatmap';
+import { createSafeHeatmap } from '../../builders/heatmap';
 
 export default defineComponent({
   name: 'SafeHeatmap',

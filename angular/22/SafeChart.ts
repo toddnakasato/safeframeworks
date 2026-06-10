@@ -1,13 +1,7 @@
-/**
- * SafeChart — Angular chart component.
- * Implements chart contract from safecontracts.
- * Renders via Chart.js (shared builder — identical across frameworks).
- * Outputs data-* attributes for intent. No hardcoded CSS.
- */
 import { Component, Input, ElementRef, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
 import type { Chart } from 'chart.js';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-import { createSafeChart } from './chart';
+import { createSafeChart } from '../../builders/chart';
 
 @Component({
   selector: 'safe-chart',

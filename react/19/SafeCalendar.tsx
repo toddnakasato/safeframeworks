@@ -1,24 +1,26 @@
-/**
- * SafeCalendar — config-driven calendar component.
- *
- * Variants: grid (single month), year (12 months), comparison (side-by-side),
- * flat (horizontal rows), flat-quarter (grouped by quarter).
- *
- * All date math is internal. Data-attributes for host CSS. Zero Tailwind.
- * Events: "navigate" (prev/next), "select" (day click).
- */
 import { useState } from "react";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
-import { createSafeEvent } from "safecontracts";
+import { createSafeEvent, MONTH_NAMES } from "safecontracts";
+
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Properties
+ *
+ ----------------------------------------------------------------------------------------------------*/
 
 export interface SafeCalendarProps {
   config: ConfigBase;
   onEvent?: OnSafeEvent;
 }
 
-/* ------------------------------------------------------------------ */
-/*  Date helpers                                                       */
-/* ------------------------------------------------------------------ */
+const DAY_NAMES_SHORT = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+const DAY_NAMES_NARROW = ["SU", "M", "TU", "W", "TH", "F", "SA"];
+
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Helpers
+ *
+ ----------------------------------------------------------------------------------------------------*/
 
 function getDaysInMonth(year: number, month: number): number {
   return new Date(year, month + 1, 0).getDate();
@@ -33,14 +35,6 @@ function todayTuple(): [number, number, number] {
   return [d.getFullYear(), d.getMonth(), d.getDate()];
 }
 
-const MONTH_NAMES = [
-  "January", "February", "March", "April", "May", "June",
-  "July", "August", "September", "October", "November", "December",
-];
-
-const DAY_NAMES_SHORT = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-const DAY_NAMES_NARROW = ["SU", "M", "TU", "W", "TH", "F", "SA"];
-
 function shiftDays(names: string[], weekStart: string): string[] {
   if (weekStart === "monday") return [...names.slice(1), names[0]];
   return names;
@@ -51,7 +45,6 @@ function shiftFirstDay(firstDay: number, weekStart: string): number {
   return firstDay;
 }
 
-/** Generate array: nulls for leading blanks, then day numbers. */
 function generateDays(year: number, month: number, weekStart: string): (number | null)[] {
   const total = getDaysInMonth(year, month);
   const first = shiftFirstDay(getFirstDayOfMonth(year, month), weekStart);
@@ -61,9 +54,11 @@ function generateDays(year: number, month: number, weekStart: string): (number |
   return days;
 }
 
-/* ------------------------------------------------------------------ */
-/*  Sub-renderers                                                      */
-/* ------------------------------------------------------------------ */
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Implementation
+ *
+ ----------------------------------------------------------------------------------------------------*/
 
 interface MonthGridProps {
   year: number;
@@ -175,10 +170,6 @@ function FlatDayHeaders(props: { weekStart: string; maxCells: number }) {
   );
 }
 
-/* ------------------------------------------------------------------ */
-/*  Main component                                                     */
-/* ------------------------------------------------------------------ */
-
 export function SafeCalendar({ config, onEvent }: SafeCalendarProps) {
   const { metadata } = config;
   const variant = (metadata.variant as string) ?? "grid";
@@ -210,7 +201,6 @@ export function SafeCalendar({ config, onEvent }: SafeCalendarProps) {
     onEvent?.(createSafeEvent("calendar", "select", { year: y, month: m, day: d }));
   };
 
-  /* --- grid: single month ----------------------------------------- */
   if (variant === "grid") {
     return (
       <MonthGrid
@@ -222,7 +212,6 @@ export function SafeCalendar({ config, onEvent }: SafeCalendarProps) {
     );
   }
 
-  /* --- year: 12 month grid ---------------------------------------- */
   if (variant === "year") {
     return (
       <div data-component="calendar" data-variant="year">
@@ -239,7 +228,6 @@ export function SafeCalendar({ config, onEvent }: SafeCalendarProps) {
     );
   }
 
-  /* --- comparison: this month vs previous month(s) ---------------- */
   if (variant === "comparison") {
     const months: { year: number; month: number; label: string; current: boolean }[] = [];
     for (let offset = -compareMonths; offset <= 0; offset++) {
@@ -268,7 +256,6 @@ export function SafeCalendar({ config, onEvent }: SafeCalendarProps) {
     );
   }
 
-  /* --- flat: all months horizontal -------------------------------- */
   if (variant === "flat") {
     return (
       <div data-component="calendar" data-variant="flat">
@@ -285,7 +272,6 @@ export function SafeCalendar({ config, onEvent }: SafeCalendarProps) {
     );
   }
 
-  /* --- flat-quarter: grouped by quarter --------------------------- */
   if (variant === "flat-quarter") {
     const quarterLabels = ["Q1", "Q2", "Q3", "Q4"];
     const quarterAccents = ["success", "info", "warn", "danger"];
@@ -313,7 +299,6 @@ export function SafeCalendar({ config, onEvent }: SafeCalendarProps) {
     );
   }
 
-  /* --- fallback --------------------------------------------------- */
   return (
     <div data-component="calendar" data-variant={variant}>
       Unknown calendar variant: {variant}

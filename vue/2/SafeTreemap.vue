@@ -1,12 +1,7 @@
-<!--
-  SafeTreemap — Vue 2 D3 nested rectangles.
-  Renders via shared-mapping treemap builder (./treemap) — identical across
-  frameworks. Structure + data-* only.
--->
 <script lang="ts">
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
 import { defineComponent, type PropType } from 'vue';
-import { createSafeTreemap } from './treemap';
+import { createSafeTreemap } from '../../builders/treemap';
 
 export default defineComponent({
   name: 'SafeTreemap',

@@ -1,11 +1,14 @@
-/**
- * SafeTimeline — D3-powered timeline with 5 visual variants.
- * Data-attributes for host CSS. Zero Tailwind.
- */
 import { useRef, useEffect, useMemo } from "react";
 import * as d3 from "d3";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
 import { createSafeEvent } from "safecontracts";
+import { resolveColors } from "safecontracts";
+
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Properties
+ *
+ ----------------------------------------------------------------------------------------------------*/
 
 export interface SafeTimelineProps {
   config: ConfigBase;
@@ -13,12 +16,22 @@ export interface SafeTimelineProps {
   onEvent?: OnSafeEvent;
 }
 
-import { resolveColors } from "safecontracts";
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Helpers
+ *
+ ----------------------------------------------------------------------------------------------------*/
 
 function getCategoryColor(categories: string[], cat: string, colors: string[]): string {
   const idx = categories.indexOf(cat);
   return colors[idx % colors.length];
 }
+
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Implementation
+ *
+ ----------------------------------------------------------------------------------------------------*/
 
 export function SafeTimeline({ config, data, onEvent }: SafeTimelineProps) {
   const { metadata } = config;
@@ -49,7 +62,6 @@ export function SafeTimeline({ config, data, onEvent }: SafeTimelineProps) {
 
   const svgRef = useRef<SVGSVGElement>(null);
 
-  // D3 variants: horizontal, swimlane, gantt
   useEffect(() => {
     if (!svgRef.current) return;
     if (variant !== "horizontal" && variant !== "swimlane" && variant !== "gantt") return;
@@ -65,7 +77,6 @@ export function SafeTimeline({ config, data, onEvent }: SafeTimelineProps) {
         .domain(sorted.map((_, i) => String(i)))
         .range([60, width - 60]);
 
-      // Line
       svg.append("line")
         .attr("x1", 60).attr("y1", 80).attr("x2", width - 60).attr("y2", 80)
         .attr("stroke", "var(--sd-border)").attr("stroke-width", 2);
@@ -76,20 +87,17 @@ export function SafeTimeline({ config, data, onEvent }: SafeTimelineProps) {
         const cat = categoryField ? String(d[categoryField] ?? "") : "";
         const color = cat ? getCategoryColor(categories, cat, COLORS) : COLORS[i % COLORS.length];
 
-        // Dot
         svg.append("circle")
           .attr("cx", cx).attr("cy", 80).attr("r", 6)
           .attr("fill", color).attr("stroke", "var(--sd-surface)").attr("stroke-width", 2)
           .style("cursor", "pointer")
           .on("click", () => onEvent?.(createSafeEvent("timeline", "select", { index: i, data: d })));
 
-        // Stem
         svg.append("line")
           .attr("x1", cx).attr("y1", 80)
           .attr("x2", cx).attr("y2", above ? 40 : 120)
           .attr("stroke", "var(--sd-border)").attr("stroke-width", 1);
 
-        // Icon
         const icon = iconField ? String(d[iconField] ?? "") : "";
         if (icon) {
           svg.append("text")
@@ -98,14 +106,12 @@ export function SafeTimeline({ config, data, onEvent }: SafeTimelineProps) {
             .text(icon);
         }
 
-        // Label
         svg.append("text")
           .attr("x", cx).attr("y", above ? (icon ? 16 : 28) : (icon ? 156 : 140))
           .attr("text-anchor", "middle")
           .attr("fill", "var(--sd-text)").attr("font-size", 10).attr("font-weight", 600)
           .text(String(d[labelField] ?? "").slice(0, 20));
 
-        // Date
         svg.append("text")
           .attr("x", cx).attr("y", above ? (icon ? 4 : 16) : (icon ? 168 : 152))
           .attr("text-anchor", "middle")
@@ -127,25 +133,21 @@ export function SafeTimeline({ config, data, onEvent }: SafeTimelineProps) {
       const maxDate = Math.max(...dates);
       const x = d3.scaleLinear().domain([minDate, maxDate]).range([labelW + 20, width - 20]);
 
-      // Lanes
       categories.forEach((cat, li) => {
         const y = li * (laneHeight + laneGap) + 20;
         const color = getCategoryColor(categories, cat, COLORS);
 
-        // Lane bg
         svg.append("rect")
           .attr("x", labelW + 10).attr("y", y)
           .attr("width", width - labelW - 30).attr("height", laneHeight)
           .attr("rx", 4).attr("fill", "var(--sd-surface-raised)").attr("opacity", 0.5);
 
-        // Lane label
         svg.append("text")
           .attr("x", labelW).attr("y", y + laneHeight / 2)
           .attr("text-anchor", "end").attr("dy", "0.35em")
           .attr("fill", color).attr("font-size", 10).attr("font-weight", 600)
           .text(cat);
 
-        // Events in this lane
         const laneItems = sorted.filter(d => String(d[categoryField ?? ""] ?? "") === cat);
         laneItems.forEach((d, ei) => {
           const cx = x(new Date(d[dateField]).getTime());
@@ -165,7 +167,6 @@ export function SafeTimeline({ config, data, onEvent }: SafeTimelineProps) {
               .text(icon);
           }
 
-          // Tooltip on hover
           const g = svg.append("g").attr("opacity", 0).style("pointer-events", "none");
           g.append("rect")
             .attr("x", cx - 60).attr("y", y - 22)
@@ -207,7 +208,6 @@ export function SafeTimeline({ config, data, onEvent }: SafeTimelineProps) {
         const color = cat ? getCategoryColor(categories, cat, COLORS) : COLORS[i % COLORS.length];
         const icon = iconField ? String(d[iconField] ?? "") : "";
 
-        // Row bg
         if (i % 2 === 0) {
           svg.append("rect")
             .attr("x", 0).attr("y", y)
@@ -215,14 +215,12 @@ export function SafeTimeline({ config, data, onEvent }: SafeTimelineProps) {
             .attr("fill", "var(--sd-surface-raised)").attr("opacity", 0.3);
         }
 
-        // Label
         svg.append("text")
           .attr("x", 8).attr("y", y + rowH / 2)
           .attr("dy", "0.35em")
           .attr("fill", "var(--sd-text)").attr("font-size", 11).attr("font-weight", 500)
           .text(`${icon} ${String(d[labelField] ?? "")}`.trim().slice(0, 22));
 
-        // Bar
         const barX = x(start);
         const barW = Math.max(8, x(end) - x(start));
         svg.append("rect")
@@ -235,7 +233,6 @@ export function SafeTimeline({ config, data, onEvent }: SafeTimelineProps) {
           .attr("width", barW);
       });
 
-      // Time axis at top
       const axis = d3.axisTop(d3.scaleTime().domain([new Date(minDate), new Date(maxDate)]).range([labelW + 10, width - 20]))
         .ticks(6).tickFormat(d3.timeFormat("%b %d") as any);
       svg.append("g")
@@ -247,7 +244,6 @@ export function SafeTimeline({ config, data, onEvent }: SafeTimelineProps) {
     }
   }, [sorted, variant, metadata]);
 
-  // D3 variants render in SVG
   if (variant === "horizontal" || variant === "swimlane" || variant === "gantt") {
     return (
       <div data-component="timeline" data-variant={variant} style={{ width: "100%", overflowX: "auto" }}>
@@ -256,7 +252,6 @@ export function SafeTimeline({ config, data, onEvent }: SafeTimelineProps) {
     );
   }
 
-  // Alternating variant — HTML, left/right zigzag
   if (variant === "alternating") {
     return (
       <div data-component="timeline" data-variant="alternating">
@@ -285,7 +280,6 @@ export function SafeTimeline({ config, data, onEvent }: SafeTimelineProps) {
     );
   }
 
-  // Default variant — vertical
   return (
     <div data-component="timeline" data-variant={variant}>
       {sorted.map((item, i) => {

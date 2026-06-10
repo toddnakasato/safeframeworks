@@ -1,11 +1,6 @@
-/**
- * SafeTimeline — Angular timeline component.
- * Renders via shared-mapping timeline builder (./timeline) — identical across
- * frameworks. Structure + data-* only. No hardcoded CSS.
- */
 import { Component, Input, ElementRef, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-import { createSafeTimeline } from './timeline';
+import { createSafeTimeline } from '../../builders/timeline';
 
 @Component({
   selector: 'safe-timeline',

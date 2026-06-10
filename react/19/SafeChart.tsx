@@ -1,20 +1,31 @@
-/**
- * SafeChart — config-driven chart component.
- *
- * Reads ConfigBase for chart type, fields, colors.
- * Renders via Chart.js (shared builder — identical across frameworks).
- * Data-attributes for host CSS. Zero Tailwind.
- */
 import { useEffect, useRef } from "react";
 import type { Chart } from "chart.js";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
-import { createSafeChart } from "./chart";
+import { createSafeChart } from "../../builders/chart";
+
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Properties
+ *
+ ----------------------------------------------------------------------------------------------------*/
 
 export interface SafeChartProps {
   config: ConfigBase;
   data: Record<string, any>[];
   onEvent?: OnSafeEvent;
 }
+
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Helpers
+ *
+ ----------------------------------------------------------------------------------------------------*/
+
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Implementation
+ *
+ ----------------------------------------------------------------------------------------------------*/
 
 export function SafeChart({ config, data, onEvent }: SafeChartProps) {
   const { metadata } = config;
@@ -25,7 +36,6 @@ export function SafeChart({ config, data, onEvent }: SafeChartProps) {
 
   useEffect(() => {
     if (!canvasRef.current) return;
-    // Renderer receives resolved data via props; rebuild config.data per contract shape.
     const resolved: ConfigBase = data?.length
       ? { ...config, data: { values: { name: "values", type: "list", source: "inline", schema: { fields: [] }, inline: data } } }
       : config;

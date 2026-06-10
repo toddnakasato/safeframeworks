@@ -1,12 +1,7 @@
-<!--
-  SafeNav — Svelte 5 nav component.
-  navStyle "accordion" renders via shared-mapping nav builder (./nav) —
-  identical across frameworks (figma Shopfront design).
--->
 <script lang="ts">
   import { onMount, onDestroy } from 'svelte';
   import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-  import { createSafeNav } from './nav';
+  import { createSafeNav } from '../../builders/nav';
 
   let { config, onEvent }: { config: ConfigBase; onEvent?: OnSafeEvent } = $props();
 

@@ -1,12 +1,7 @@
-<!--
-  SafeLayout — Svelte 4 named-region composition.
-  Renders via shared-mapping layout builder (./layout) — identical across
-  frameworks. Structure + data-* only.
--->
 <script lang="ts">
   import { onMount, onDestroy } from 'svelte';
   import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-  import { createSafeLayout } from './layout';
+  import { createSafeLayout } from '../../builders/layout';
 
   export let config: ConfigBase;
   export let onEvent: OnSafeEvent | undefined = undefined;

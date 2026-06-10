@@ -1,11 +1,6 @@
-/**
- * SafeColumns — Angular 12-column grid positioning.
- * Renders via shared-mapping columns builder (./columns) — identical across
- * frameworks. Structure + data-* only.
- */
 import { Component, Input, ElementRef, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-import { createSafeColumns } from './columns';
+import { createSafeColumns } from '../../builders/columns';
 
 @Component({
   selector: 'safe-columns',

@@ -1,11 +1,13 @@
-/**
- * SafeLayout — config-driven composition of children into named regions.
- * All styling from config. No hardcoded styles.
- */
 import type { ReactNode } from "react";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
 import { createSafeEvent } from "safecontracts";
 import { useRenderLog, type RenderLogFn } from "./hooks/useRenderLog";
+
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Properties
+ *
+ ----------------------------------------------------------------------------------------------------*/
 
 export interface SafeLayoutProps {
   config: ConfigBase;
@@ -13,6 +15,18 @@ export interface SafeLayoutProps {
   onEvent?: OnSafeEvent;
   onRenderLog?: RenderLogFn;
 }
+
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Helpers
+ *
+ ----------------------------------------------------------------------------------------------------*/
+
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Implementation
+ *
+ ----------------------------------------------------------------------------------------------------*/
 
 export function SafeLayout({ config, regions, onEvent, onRenderLog }: SafeLayoutProps) {
   const { metadata } = config;

@@ -1,11 +1,6 @@
-/**
- * SafeSankey — Angular sankey component.
- * Renders via shared-mapping sankey builder (./sankey) — identical across frameworks.
- * Outputs data-* attributes for intent. No hardcoded CSS.
- */
 import { Component, Input, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-import { renderSafeSankey, sankeyData } from './sankey';
+import { renderSafeSankey, sankeyData } from '../../builders/sankey';
 
 @Component({
   selector: 'safe-sankey',

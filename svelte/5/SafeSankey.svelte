@@ -1,12 +1,7 @@
-<!--
-  SafeSankey — Svelte 5 sankey component.
-  Renders via shared-mapping sankey builder (./sankey) — identical across frameworks.
-  Outputs data-* attributes for intent. No hardcoded CSS.
--->
 <script lang="ts">
   import { onMount } from 'svelte';
   import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-  import { renderSafeSankey, sankeyData } from './sankey';
+  import { renderSafeSankey, sankeyData } from '../../builders/sankey';
 
   let { config, onEvent }: { config: ConfigBase; onEvent?: OnSafeEvent } = $props();
 

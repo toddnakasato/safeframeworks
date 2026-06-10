@@ -1,0 +1,41 @@
+{
+  "component": "sheet",
+  "metadata": {
+    "variant": "default",
+    "columns": [
+      {
+        "label": "Name",
+        "align": "left"
+      },
+      {
+        "label": "Role",
+        "align": "left"
+      },
+      {
+        "label": "Department",
+        "align": "left"
+      },
+      {
+        "label": "Salary",
+        "format": "currency",
+        "decimals": 0,
+        "align": "right"
+      }
+    ],
+    "rowNumbers": false,
+    "editable": false
+  },
+  "data": {
+    "sheet-people": {
+      "name": "sheet-people",
+      "source": "file"
+    }
+  },
+  "eventHandler": {
+    "handler": "sheet",
+    "events": [
+      "select",
+      "edit"
+    ]
+  }
+}

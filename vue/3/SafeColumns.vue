@@ -1,12 +1,7 @@
-<!--
-  SafeColumns — Vue 3 12-column grid positioning.
-  Renders via shared-mapping columns builder (./columns) — identical across
-  frameworks. Structure + data-* only.
--->
 <script setup lang="ts">
 import { ref, onMounted, onBeforeUnmount } from 'vue';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-import { createSafeColumns } from './columns';
+import { createSafeColumns } from '../../builders/columns';
 
 const props = defineProps<{ config: ConfigBase; onEvent?: OnSafeEvent }>();
 const containerRef = ref<HTMLElement | null>(null);

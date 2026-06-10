@@ -1,13 +1,12 @@
-/**
- * SafeToggle — config-driven on/off switch.
- *
- * Variants: switch (single), table (settings list), expandable (collapsible groups).
- * Owns toggle state. Data-attributes for host CSS. Zero Tailwind.
- * Events: "change" (toggle flipped), "expand" (section opened/closed).
- */
 import { useState } from "react";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
 import { createSafeEvent } from "safecontracts";
+
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Properties
+ *
+ ----------------------------------------------------------------------------------------------------*/
 
 export interface SafeToggleProps {
   config: ConfigBase;
@@ -15,9 +14,11 @@ export interface SafeToggleProps {
   onEvent?: OnSafeEvent;
 }
 
-/* ------------------------------------------------------------------ */
-/*  Switch track                                                       */
-/* ------------------------------------------------------------------ */
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Helpers
+ *
+ ----------------------------------------------------------------------------------------------------*/
 
 function SwitchTrack({
   checked,
@@ -42,9 +43,11 @@ function SwitchTrack({
   );
 }
 
-/* ------------------------------------------------------------------ */
-/*  Single switch variant                                              */
-/* ------------------------------------------------------------------ */
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Implementation
+ *
+ ----------------------------------------------------------------------------------------------------*/
 
 function SingleSwitch({ config, onEvent }: SafeToggleProps) {
   const { metadata } = config;
@@ -88,10 +91,6 @@ function SingleSwitch({ config, onEvent }: SafeToggleProps) {
   );
 }
 
-/* ------------------------------------------------------------------ */
-/*  Table variant                                                      */
-/* ------------------------------------------------------------------ */
-
 function TableToggle({ config, data, onEvent }: SafeToggleProps) {
   const items = (config.metadata.items as any[]) ?? data ?? [];
 
@@ -130,10 +129,6 @@ function TableToggle({ config, data, onEvent }: SafeToggleProps) {
     </div>
   );
 }
-
-/* ------------------------------------------------------------------ */
-/*  Expandable variant                                                 */
-/* ------------------------------------------------------------------ */
 
 function ExpandableToggle({ config, data, onEvent }: SafeToggleProps) {
   const items = (config.metadata.items as any[]) ?? data ?? [];
@@ -205,10 +200,6 @@ function ExpandableToggle({ config, data, onEvent }: SafeToggleProps) {
     </div>
   );
 }
-
-/* ------------------------------------------------------------------ */
-/*  Main export                                                        */
-/* ------------------------------------------------------------------ */
 
 export function SafeToggle({ config, data, onEvent }: SafeToggleProps) {
   const variant = (config.metadata.variant as string) ?? "switch";

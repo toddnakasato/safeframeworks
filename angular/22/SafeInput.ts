@@ -1,11 +1,6 @@
-/**
- * SafeInput — Angular input component.
- * Renders via shared-mapping input builder (./input) — identical across
- * frameworks. Structure + data-* only. No hardcoded CSS.
- */
 import { Component, Input, ElementRef, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-import { createSafeInput } from './input';
+import { createSafeInput } from '../../builders/input';
 
 @Component({
   selector: 'safe-input',

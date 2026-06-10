@@ -1,12 +1,7 @@
-<!--
-  SafeDragDrop — Vue 2 drag-and-drop (generic / file / palette).
-  Renders via shared-mapping dragdrop builder (./dragdrop) — identical across
-  frameworks. Structure + data-* only.
--->
 <script lang="ts">
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
 import { defineComponent, type PropType } from 'vue';
-import { createSafeDragDrop } from './dragdrop';
+import { createSafeDragDrop } from '../../builders/dragdrop';
 
 export default defineComponent({
   name: 'SafeDragDrop',

@@ -1,12 +1,7 @@
-<!--
-  SafeGrid — Svelte 4 grid component.
-  Renders via shared-mapping grid builder (./grid) — identical across
-  frameworks. Structure + data-* only.
--->
 <script lang="ts">
   import { onMount, onDestroy } from 'svelte';
   import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-  import { createSafeGrid } from './grid';
+  import { createSafeGrid } from '../../builders/grid';
 
   export let config: ConfigBase;
   export let onEvent: OnSafeEvent | undefined = undefined;

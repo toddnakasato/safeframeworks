@@ -1,0 +1,28 @@
+{
+  "component": "sheet",
+  "metadata": {
+    "variant": "empty",
+    "columns": [
+      {
+        "label": "Name",
+        "align": "left"
+      },
+      {
+        "label": "Role",
+        "align": "left"
+      },
+      {
+        "label": "Department",
+        "align": "left"
+      },
+      {
+        "label": "Salary",
+        "format": "currency",
+        "decimals": 0,
+        "align": "right"
+      }
+    ],
+    "rowNumbers": false,
+    "emptyMessage": "No records yet \u2014 add your first row"
+  }
+}

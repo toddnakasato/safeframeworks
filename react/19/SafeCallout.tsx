@@ -1,16 +1,27 @@
-/**
- * SafeCallout — positioned annotation bubble.
- *
- * Display-only. Renders colored dot + message + pointer arrow.
- * Data-attributes for variant and position. Zero Tailwind.
- * Reusable — not tied to any specific component.
- */
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
+
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Properties
+ *
+ ----------------------------------------------------------------------------------------------------*/
 
 export interface SafeCalloutProps {
   config: ConfigBase;
   onEvent?: OnSafeEvent;
 }
+
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Helpers
+ *
+ ----------------------------------------------------------------------------------------------------*/
+
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Implementation
+ *
+ ----------------------------------------------------------------------------------------------------*/
 
 export function SafeCallout({ config }: SafeCalloutProps) {
   const { metadata } = config;

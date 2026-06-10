@@ -1,13 +1,8 @@
-<!--
-  SafeChart — Vue 2 chart component.
-  Renders via Chart.js (same builder in every framework — identical rendering).
-  Outputs data-* attributes for intent. No hardcoded CSS.
--->
 <script lang="ts">
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
 import type { Chart } from 'chart.js';
 import { defineComponent, type PropType } from 'vue';
-import { createSafeChart } from './chart';
+import { createSafeChart } from '../../builders/chart';
 
 export default defineComponent({
   name: 'SafeChart',

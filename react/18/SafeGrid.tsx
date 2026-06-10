@@ -1,20 +1,32 @@
-/**
- * SafeGrid — config-driven CSS grid of label/value cells.
- *
- * Renders via data-attributes. Zero Tailwind. Zero hardcoded values.
- * Gallery JSON is the single source of truth.
- */
 import { useState } from "react";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
 import { createSafeEvent } from "safecontracts";
 import { GRID_DEFAULTS } from "safecontracts/components/grid";
 import { SafeGridCell } from "./SafeGridCell";
 
-export interface SafeGridProps {
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Properties
+ *
+ ----------------------------------------------------------------------------------------------------*/
+
+interface SafeGridProps {
   config: ConfigBase;
   data: Record<string, any>;
   onEvent?: OnSafeEvent;
 }
+
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Helpers
+ *
+ ----------------------------------------------------------------------------------------------------*/
+
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Implementation
+ *
+ ----------------------------------------------------------------------------------------------------*/
 
 export function SafeGrid({ config, data, onEvent }: SafeGridProps) {
   const { metadata } = config;

@@ -1,11 +1,6 @@
-/**
- * SafeGauge — Angular D3 radial KPI gauge.
- * Renders via shared-mapping gauge builder (./gauge) — identical across
- * frameworks. Structure + data-* only.
- */
 import { Component, Input, ElementRef, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-import { createSafeGauge } from './gauge';
+import { createSafeGauge } from '../../builders/gauge';
 
 @Component({
   selector: 'safe-gauge',

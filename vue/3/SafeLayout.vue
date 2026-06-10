@@ -1,12 +1,7 @@
-<!--
-  SafeLayout — Vue 3 named-region composition.
-  Renders via shared-mapping layout builder (./layout) — identical across
-  frameworks. Structure + data-* only.
--->
 <script setup lang="ts">
 import { ref, onMounted, onBeforeUnmount } from 'vue';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-import { createSafeLayout } from './layout';
+import { createSafeLayout } from '../../builders/layout';
 
 const props = defineProps<{ config: ConfigBase; onEvent?: OnSafeEvent }>();
 const containerRef = ref<HTMLElement | null>(null);

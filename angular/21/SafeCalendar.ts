@@ -1,11 +1,6 @@
-/**
- * SafeCalendar — Angular calendar component.
- * Renders via shared-mapping calendar builder (./calendar) — identical across
- * frameworks. Structure + data-* only. No hardcoded CSS.
- */
 import { Component, Input, ElementRef, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-import { createSafeCalendar } from './calendar';
+import { createSafeCalendar } from '../../builders/calendar';
 
 @Component({
   selector: 'safe-calendar',

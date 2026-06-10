@@ -1,12 +1,3 @@
-/**
- * SafeInput — config-driven view/edit field component.
- *
- * Reads metadata. Renders native HTML with data-attributes.
- * Gallery JSON is the single source of truth.
- * Zero hardcoded values — all defaults in INPUT_DEFAULTS.
- * Zero inline styles — all visuals via data-attributes mapped by CSS.
- * Fully internationalized.
- */
 import { useState, useRef, useEffect, useCallback } from "react";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
 import { createSafeEvent } from "safecontracts";
@@ -15,6 +6,25 @@ import { INPUT_DEFAULTS } from "safecontracts/components/input";
 import Editor from "@monaco-editor/react";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Properties
+ *
+ ----------------------------------------------------------------------------------------------------*/
+
+export interface SafeInputProps {
+  config: ConfigBase;
+  data: Record<string, any>;
+  field?: string;
+  onEvent?: OnSafeEvent;
+}
+
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Helpers
+ *
+ ----------------------------------------------------------------------------------------------------*/
 
 function applyMask(raw: string, mask: string, maskChar: string): string {
   if (!mask) return raw;
@@ -31,7 +41,6 @@ function applyMask(raw: string, mask: string, maskChar: string): string {
   return result;
 }
 
-// --- Formatters (all parameterized) ---
 function fmtCurrency(value: any, locale: string, currency: string, decimals: number): string {
   if (value == null || value === "") return "";
   return new Intl.NumberFormat(locale, { style: "currency", currency, minimumFractionDigits: decimals, maximumFractionDigits: decimals }).format(Number(value));
@@ -71,18 +80,16 @@ function formatDisplay(value: any, format: DisplayFormat | undefined, locale: st
   }
 }
 
-export interface SafeInputProps {
-  config: ConfigBase;
-  data: Record<string, any>;
-  field?: string;
-  onEvent?: OnSafeEvent;
-}
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Implementation
+ *
+ ----------------------------------------------------------------------------------------------------*/
 
 export function SafeInput({ config, data, field, onEvent }: SafeInputProps) {
   const { metadata } = config;
   const D = INPUT_DEFAULTS;
 
-  // All config from metadata
   const inputType = (metadata.inputType as InputType) ?? "text";
   const displayFormat = metadata.displayFormat as DisplayFormat | undefined;
   const defaultText = (metadata.defaultText as string) ?? "";
@@ -150,7 +157,6 @@ export function SafeInput({ config, data, field, onEvent }: SafeInputProps) {
   const fieldName = field ?? metadata.name ?? "";
   const rawValue = data[fieldName];
 
-  // State
   const [isEditing, setIsEditing] = useState(!!metadata.forceEditMode);
   const [editValue, setEditValue] = useState<any>(rawValue);
   const [editValueMax, setEditValueMax] = useState<any>(
@@ -171,7 +177,6 @@ export function SafeInput({ config, data, field, onEvent }: SafeInputProps) {
     onEvent?.(createSafeEvent("SafeInput", name, payload));
   }, [onEvent]);
 
-  // --- Display value ---
   function getDisplayValue(): string {
     if (rawValue == null || (rawValue === "" && rawValue !== 0 && rawValue !== false)) return defaultText;
     if (inputType === "lookup") {
@@ -207,7 +212,6 @@ export function SafeInput({ config, data, field, onEvent }: SafeInputProps) {
       : lookupEmptyMessage;
   }
 
-  // --- Handlers ---
   function handleEditClick() {
     setIsEditing(true);
     fireEvent("editmode", { editing: true });
@@ -260,7 +264,6 @@ export function SafeInput({ config, data, field, onEvent }: SafeInputProps) {
 
   const shouldShowEditMode = isEditing || !!metadata.forceEditMode;
 
-  // Root attributes shared by all renders
   const rootAttrs = {
     "data-component": "input",
     "data-input-type": inputType,
@@ -268,7 +271,6 @@ export function SafeInput({ config, data, field, onEvent }: SafeInputProps) {
     "data-valign": valign,
   };
 
-  // ===================== EDIT MODE =====================
   if (shouldShowEditMode) {
     return (
       <div {...rootAttrs} data-mode="edit" data-orientation={orientation}>
@@ -515,7 +517,6 @@ export function SafeInput({ config, data, field, onEvent }: SafeInputProps) {
     );
   }
 
-  // ===================== VIEW MODE =====================
   const displayValue = getDisplayValue();
   const maxLinesStyle = maxLines ? { maxHeight: `${maxLines * 1.5}em`, overflow: "hidden" as const } : undefined;
 
@@ -620,7 +621,6 @@ export function SafeInput({ config, data, field, onEvent }: SafeInputProps) {
     );
   }
 
-  // All other types
   return (
     <div {...rootAttrs} data-mode="view">
       <div data-role="view-mode">

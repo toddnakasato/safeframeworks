@@ -1,0 +1,47 @@
+{
+  "component": "sheet",
+  "metadata": {
+    "variant": "pivot",
+    "totalsRow": true,
+    "totalsCol": true,
+    "columns": [
+      {
+        "label": "Region",
+        "align": "left"
+      },
+      {
+        "label": "Q1",
+        "format": "currency",
+        "decimals": 0
+      },
+      {
+        "label": "Q2",
+        "format": "currency",
+        "decimals": 0
+      },
+      {
+        "label": "Q3",
+        "format": "currency",
+        "decimals": 0
+      },
+      {
+        "label": "Q4",
+        "format": "currency",
+        "decimals": 0
+      }
+    ]
+  },
+  "data": {
+    "sheet-region-sales": {
+      "name": "sheet-region-sales",
+      "source": "file"
+    }
+  },
+  "eventHandler": {
+    "handler": "sheet",
+    "events": [
+      "select",
+      "edit"
+    ]
+  }
+}

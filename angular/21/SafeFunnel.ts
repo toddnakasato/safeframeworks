@@ -1,11 +1,6 @@
-/**
- * SafeFunnel — Angular D3 funnel/conversion bars.
- * Renders via shared-mapping funnel builder (./funnel) — identical across
- * frameworks. Structure + data-* only.
- */
 import { Component, Input, ElementRef, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-import { createSafeFunnel } from './funnel';
+import { createSafeFunnel } from '../../builders/funnel';
 
 @Component({
   selector: 'safe-funnel',

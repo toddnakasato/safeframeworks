@@ -1,0 +1,8 @@
+{
+  "component": "sheet",
+  "metadata": {
+    "variant": "skeleton",
+    "skeletonRows": 6,
+    "skeletonCols": 4
+  }
+}

@@ -1,18 +1,30 @@
-/**
- * SafeSankey — D3 sankey flow diagram.
- * Renders via shared-mapping sankey builder (./sankey) — identical across frameworks.
- * Data: { nodes: [{name}], links: [{source, target, value}] }
- * Data-attributes for host CSS. Zero Tailwind.
- */
 import { useRef, useEffect } from "react";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
-import { renderSafeSankey, type SankeyData } from "./sankey";
+import { renderSafeSankey, type SankeyData } from "../../builders/sankey";
+
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Properties
+ *
+ ----------------------------------------------------------------------------------------------------*/
 
 export interface SafeSankeyProps {
   config: ConfigBase;
   data: SankeyData;
   onEvent?: OnSafeEvent;
 }
+
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Helpers
+ *
+ ----------------------------------------------------------------------------------------------------*/
+
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Implementation
+ *
+ ----------------------------------------------------------------------------------------------------*/
 
 export function SafeSankey({ config, data, onEvent }: SafeSankeyProps) {
   const { metadata } = config;

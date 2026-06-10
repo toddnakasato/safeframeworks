@@ -1,0 +1,29 @@
+{
+  "component": "sheet",
+  "metadata": {
+    "variant": "key-value",
+    "columns": [
+      {
+        "align": "left"
+      },
+      {
+        "format": "number",
+        "decimals": 0,
+        "align": "right"
+      }
+    ]
+  },
+  "data": {
+    "sheet-metrics": {
+      "name": "sheet-metrics",
+      "source": "file"
+    }
+  },
+  "eventHandler": {
+    "handler": "sheet",
+    "events": [
+      "select",
+      "edit"
+    ]
+  }
+}
