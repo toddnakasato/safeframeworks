@@ -32,7 +32,7 @@ function NavBuilder({ config, onEvent }: SafeNavProps) {
     const root = createSafeNav(containerRef.current, config, onEvent);
     return () => root.remove();
   }, [config, onEvent]);
-  return <div ref={containerRef} style={{ height: "100%" }} />;
+  return <div ref={containerRef} data-nav-host />;
 }
 
 // ─── Icon resolver ──────────────────────────────────────────────────────────

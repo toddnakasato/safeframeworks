@@ -12,7 +12,7 @@ import { createSafeMap, mapData } from './map';
   selector: 'safe-map',
   standalone: true,
   template: `
-    <div #mapContainer style="width:100%;height:360px;border-radius:var(--sd-radius-md,6px);overflow:hidden"></div>
+    <div #mapContainer data-map-container></div>
   `,
   host: {
     '[attr.data-component]': "'map'",

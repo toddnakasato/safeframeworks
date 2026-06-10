@@ -10,7 +10,7 @@ interface Props { config: ConfigBase; onEvent?: OnSafeEvent; }
 const { config } = Astro.props;
 ---
 
-<div data-nav-config={JSON.stringify(config)} style="height:100%"></div>
+<div data-nav-config={JSON.stringify(config)} data-nav-host></div>
 
 <script>
   import { initSafeNavs } from "./nav";

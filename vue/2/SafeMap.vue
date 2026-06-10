@@ -34,6 +34,6 @@ export default defineComponent({
     data-component="map"
     :data-variant="config.metadata.variant"
   >
-    <div ref="mapContainer" style="width:100%;height:360px;border-radius:var(--sd-radius-md,6px);overflow:hidden"></div>
+    <div ref="mapContainer" data-map-container></div>
   </div>
 </template>

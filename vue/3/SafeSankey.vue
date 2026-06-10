@@ -22,6 +22,6 @@ onMounted(() => {
     :data-variant="config.metadata.variant"
   >
     <div v-if="config.metadata.title" data-role="title">{{ config.metadata.title }}</div>
-    <svg ref="svgRef" style="width:100%;max-width:700px;display:block"></svg>
+    <svg ref="svgRef" data-sankey-svg></svg>
   </div>
 </template>

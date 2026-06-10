@@ -23,4 +23,4 @@
   });
 </script>
 
-<div bind:this={container} style="height:100%"></div>
+<div bind:this={container} data-nav-host></div>

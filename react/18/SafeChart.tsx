@@ -19,7 +19,6 @@ export interface SafeChartProps {
 export function SafeChart({ config, data, onEvent }: SafeChartProps) {
   const { metadata } = config;
   const variant = (metadata.variant as string) ?? "default";
-  const height = variant === "dense" ? 192 : variant === "minimal" ? 224 : 288;
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const chartRef = useRef<Chart | null>(null);
@@ -38,9 +37,11 @@ export function SafeChart({ config, data, onEvent }: SafeChartProps) {
   }, [config, data, onEvent]);
 
   return (
-    <div data-component="chart" data-variant={variant} data-chart-type={metadata.chartType} style={{ width: "100%", height }}>
+    <div data-component="chart" data-variant={variant} data-chart-type={metadata.chartType}>
       {metadata.title && <div data-role="title">{metadata.title as string}</div>}
-      <canvas ref={canvasRef} />
+      <div data-chart-area>
+        <canvas ref={canvasRef} />
+      </div>
     </div>
   );
 }

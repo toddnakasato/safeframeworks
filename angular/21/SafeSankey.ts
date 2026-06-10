@@ -12,7 +12,7 @@ import { renderSafeSankey, sankeyData } from './sankey';
   standalone: true,
   template: `
     <div data-role="title">{{ config.metadata.title || '' }}</div>
-    <svg #sankeySvg style="width:100%;max-width:700px;display:block"></svg>
+    <svg #sankeySvg data-sankey-svg></svg>
   `,
   host: {
     '[attr.data-component]': "'sankey'",

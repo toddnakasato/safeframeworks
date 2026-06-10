@@ -36,7 +36,7 @@ export default defineComponent({
     :data-chart-type="config.metadata.chartType"
   >
     <div data-role="title">{{ config.metadata.title || "Chart" }}</div>
-    <div data-role="chart-area" style="position:relative;height:240px">
+    <div data-chart-area>
       <canvas ref="chartCanvas"></canvas>
     </div>
   </div>

@@ -29,5 +29,5 @@ export default defineComponent({
 </script>
 
 <template>
-  <div ref="navContainer" style="height:100%"></div>
+  <div ref="navContainer" data-nav-host></div>
 </template>

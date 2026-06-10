@@ -23,5 +23,5 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div ref="containerRef" style="height:100%"></div>
+  <div ref="containerRef" data-nav-host></div>
 </template>

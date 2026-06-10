@@ -28,13 +28,15 @@ function resolveColor(c?: string): string {
 }
 
 function createIcon(color?: string, icon?: string): L.DivIcon {
+    // Structure + data attribute only — shape/size/border live in safestyles.
+    // Pin color is config/data-driven, exposed as a CSS custom property.
     const bg = resolveColor(color);
     return L.divIcon({
         className: "",
         iconSize: [28, 28],
         iconAnchor: [14, 28],
         popupAnchor: [0, -28],
-        html: `<div style="width:28px;height:28px;border-radius:50% 50% 50% 0;background:${bg};transform:rotate(-45deg);display:flex;align-items:center;justify-content:center;border:2px solid white;box-shadow:0 2px 6px rgba(0,0,0,0.3)"><span style="transform:rotate(45deg);font-size:12px">${icon ?? "●"}</span></div>`,
+        html: `<div data-map-pin style="--pin-color:${bg}"><span data-map-pin-icon>${icon ?? "●"}</span></div>`,
     });
 }
 
@@ -91,10 +93,10 @@ export function createSafeMap(
         const marker = L.marker([lat, lng], { icon: createIcon(color, icon) }).addTo(map);
 
         if (label || desc) {
-            const popupHtml = `<div style="font-size:12px;min-width:120px">
-        <strong style="font-size:13px">${label}</strong>
-        ${desc ? `<br/><span style="color:var(--sd-text-dim);font-size:11px">${desc}</span>` : ""}
-        <br/><span style="color:var(--sd-text-dim);font-size:9px">${lat.toFixed(4)}, ${lng.toFixed(4)}</span>
+            const popupHtml = `<div data-map-popup>
+        <strong data-map-popup-label>${label}</strong>
+        ${desc ? `<br/><span data-map-popup-desc>${desc}</span>` : ""}
+        <br/><span data-map-popup-coords>${lat.toFixed(4)}, ${lng.toFixed(4)}</span>
       </div>`;
             marker.bindPopup(popupHtml);
         }

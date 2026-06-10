@@ -32,14 +32,13 @@ export function SafeMap({ config, data, onEvent }: SafeMapProps) {
     };
   }, [config, data, onEvent]);
 
-  const useAbsolute = !height;
-
   return (
-    <div data-component="map" data-variant={variant} style={{ width: "100%", height: "100%", position: "relative" }}>
-      <div ref={containerRef} style={useAbsolute
-        ? { position: "absolute", inset: 0, borderRadius: "var(--sd-radius-md)", overflow: "hidden" }
-        : { width: "100%", height, minHeight: 300, borderRadius: "var(--sd-radius-md)", overflow: "hidden" }
-      } />
+    <div data-component="map" data-variant={variant}>
+      <div
+        ref={containerRef}
+        data-map-container
+        style={height ? ({ "--map-height": `${height}px` } as React.CSSProperties) : undefined}
+      />
     </div>
   );
 }

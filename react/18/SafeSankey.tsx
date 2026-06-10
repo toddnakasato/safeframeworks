@@ -26,7 +26,7 @@ export function SafeSankey({ config, data, onEvent }: SafeSankeyProps) {
   return (
     <div data-component="sankey" data-variant={(metadata.variant as string) ?? "default"}>
       {metadata.title && <div data-role="title">{metadata.title as string}</div>}
-      <svg ref={svgRef} style={{ width: "100%", maxWidth: 700, display: "block" }} />
+      <svg ref={svgRef} data-sankey-svg />
     </div>
   );
 }

@@ -22,5 +22,5 @@
   data-variant={config.metadata.variant}
 >
   {#if config.metadata.title}<div data-role="title">{config.metadata.title}</div>{/if}
-  <svg bind:this={svg} style="width:100%;max-width:700px;display:block"></svg>
+  <svg bind:this={svg} data-sankey-svg></svg>
 </div>

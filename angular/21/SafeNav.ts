@@ -11,7 +11,7 @@ import { createSafeNav } from './nav';
 @Component({
   selector: 'safe-nav',
   standalone: true,
-  template: `<div #navContainer style="height:100%"></div>`,
+  template: `<div #navContainer data-nav-host></div>`,
   host: {
     '[attr.data-component]': "'nav'",
     '[attr.data-nav-style]': 'config.metadata.navStyle'
