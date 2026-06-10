@@ -62,6 +62,7 @@ import treemap1Config from "./config/treemap/treemap1.json";
 import treemap2Config from "./config/treemap/treemap2.json";
 import week1Config from "./config/week/week1.json";
 import week2Config from "./config/week/week2.json";
+import week3Config from "./config/week/week3.json";
 
 import cardInfoData from "./data/card-info.json";
 import chartSeriesData from "./data/chart-series.json";
@@ -201,5 +202,6 @@ export const SAMPLES: Record<string, Record<string, ConfigBase>> = {
     week: {
         "week1": resolveData(week1Config as unknown as ConfigBase),
         "week2": resolveData(week2Config as unknown as ConfigBase),
+        "week3": resolveData(week3Config as unknown as ConfigBase),
     },
 };

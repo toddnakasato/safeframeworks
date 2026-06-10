@@ -1,30 +1,29 @@
 /**
- * SafeWeek — Angular week component.
- * Implements week contract from safecontracts.
- * Outputs data-* attributes for intent. No hardcoded CSS.
+ * SafeWeek — Angular weekly planner.
+ * Renders via shared-mapping week builder (./week) — identical across
+ * frameworks (figma Atom Week Specs). Structure + data-* only.
  */
-import { Component, Input } from '@angular/core';
-import { NgFor } from '@angular/common';
+import { Component, Input, ElementRef, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
+import { createSafeWeek } from './week';
 
 @Component({
   selector: 'safe-week',
   standalone: true,
-  imports: [NgFor],
-  template: `
-    <div data-role="header">
-      <button>‹</button><span>June 8-14, 2026</span><button>›</button>
-    </div>
-    <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:1px;font-size:11px;text-align:center;padding:8px">
-      <span *ngFor="let d of ['Sun','Mon','Tue','Wed','Thu','Fri','Sat']">{{ d }}</span>
-    </div>
-  `,
-  host: {
-    '[attr.data-component]': "'week'",
-    '[attr.data-variant]': 'config.metadata.variant'
-  }
+  template: `<div #weekContainer></div>`
 })
-export class SafeWeekComponent {
+export class SafeWeekComponent implements AfterViewInit, OnDestroy {
   @Input() config!: ConfigBase;
   @Input() onEvent?: OnSafeEvent;
+  @ViewChild('weekContainer') containerRef!: ElementRef<HTMLElement>;
+  private root: HTMLElement | null = null;
+
+  ngAfterViewInit() {
+    this.root = createSafeWeek(this.containerRef.nativeElement, this.config, this.onEvent);
+  }
+
+  ngOnDestroy() {
+    this.root?.remove();
+    this.root = null;
+  }
 }

@@ -1,7 +1,9 @@
 {
   "component": "week",
   "metadata": {
-    "variant": "dense"
+    "variant": "workweek",
+    "startHour": 9,
+    "endHour": 17
   },
   "eventHandler": {
     "handler": "week",

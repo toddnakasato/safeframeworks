@@ -1,24 +1,33 @@
 <!--
-  SafeWeek — Vue 2 week component.
-  Outputs data-* attributes for intent. No hardcoded CSS.
+  SafeWeek — Vue 2 weekly planner.
+  Renders via shared-mapping week builder (./week) — identical across
+  frameworks (figma Atom Week Specs). Structure + data-* only.
 -->
 <script lang="ts">
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
 import { defineComponent, type PropType } from 'vue';
+import { createSafeWeek } from './week';
+
 export default defineComponent({
   name: 'SafeWeek',
   props: {
     config: { type: Object as PropType<ConfigBase>, required: true },
     onEvent: { type: Function as PropType<OnSafeEvent>, default: undefined },
   },
+  data() {
+    return { root: null as HTMLElement | null };
+  },
+  mounted() {
+    const el = this.$refs.weekContainer as HTMLElement;
+    if (el) this.root = createSafeWeek(el, this.config, this.onEvent);
+  },
+  beforeDestroy() {
+    this.root?.remove();
+    this.root = null;
+  },
 });
 </script>
 
 <template>
-  <div
-    data-component="week"
-    :data-variant="config.metadata.variant"
-  >
-      <div data-role="header"><button>‹</button><span>June 8-14, 2026</span><button>›</button></div><div style="display:grid;grid-template-columns:repeat(7,1fr);gap:1px;font-size:11px;text-align:center;padding:8px"><span v-for="d in ['Sun','Mon','Tue','Wed','Thu','Fri','Sat']" :key="d">{{ d }}</span></div>
-  </div>
+  <div ref="weekContainer"></div>
 </template>

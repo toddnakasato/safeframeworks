@@ -1,7 +1,7 @@
 {
   "component": "week",
   "metadata": {
-    "variant": "default"
+    "variant": "full"
   },
   "eventHandler": {
     "handler": "week",

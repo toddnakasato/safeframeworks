@@ -1,16 +1,18 @@
 ---
 /**
- * SafeWeek — Astro 6 week component.
- * Outputs data-* attributes for intent. No hardcoded CSS.
+ * SafeWeek — Astro 6 weekly planner.
+ * Renders via shared-mapping week builder (./week) — identical across
+ * frameworks (figma Atom Week Specs). Server-renders the shell; client
+ * script mounts the planner. Structure + data-* only.
  */
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
 interface Props { config: ConfigBase; onEvent?: OnSafeEvent; }
-const { config, onEvent } = Astro.props;
+const { config } = Astro.props;
 ---
 
-<div
-  data-component="week"
-  data-variant={config.metadata.variant}
->
-  <div data-role="header"><button>‹</button><span>June 8-14, 2026</span><button>›</button></div><div style="display:grid;grid-template-columns:repeat(7,1fr);gap:1px;font-size:11px;text-align:center;padding:8px">{["Sun","Mon","Tue","Wed","Thu","Fri","Sat"].map(d => <span>{d}</span>)}</div>
-</div>
+<div data-week-config={JSON.stringify(config)}></div>
+
+<script>
+  import { initSafeWeeks } from "./week";
+  initSafeWeeks();
+</script>
