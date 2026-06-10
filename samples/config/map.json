@@ -8,15 +8,14 @@
     "labelField": "Name",
     "descriptionField": "Description",
     "iconField": "Icon",
-    "colorField": "Color",
     "radiusField": "Radius",
     "center": [
       40.7484,
       -73.9857
     ],
     "zoom": 12,
-    "height": 360,
-    "fitBounds": true
+    "fitBounds": true,
+    "accentField": "Accent"
   },
   "data": {
     "locations": {
@@ -51,8 +50,8 @@
             "type": "text"
           },
           {
-            "name": "Color",
-            "label": "Color",
+            "name": "Accent",
+            "label": "Accent",
             "type": "text"
           },
           {

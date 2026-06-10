@@ -8,8 +8,9 @@
  *
  * Structure + data-* attributes ONLY. All opinionated styling (size, color,
  * spacing) lives in safestyles components.css mapping data-* → --sd-*.
- * Config-driven colors (headerColor, accentColor) are exposed as CSS custom
- * properties (--nav-header-color, --nav-accent) for the stylesheet to use.
+ * Contract = intent, safestyle = paint: accent Intent tokens ("brand",
+ * "success", ...) are emitted as data-accent attributes; safestyles maps
+ * each token to --sd-* paint.
  *
  * SafeNav calls createSafeNav(container, config, onEvent) and removes the
  * returned root on unmount. Same mapping in every framework/version.
@@ -47,7 +48,7 @@ export function createSafeNav(container: HTMLElement, config: ConfigBase, onEven
     const title = metadata.title as string | undefined;
     const subtitle = metadata.subtitle as string | undefined;
     const headerIconName = (metadata.icon as string) ?? "store";
-    const headerColor = metadata.headerColor as string | undefined;
+    const accent = metadata.accent as string | undefined;
     const width = metadata.width as number | undefined;
 
     const expanded = new Set<string>();
@@ -60,8 +61,8 @@ export function createSafeNav(container: HTMLElement, config: ConfigBase, onEven
     if (groups.length) expanded.add(groups[0][0]);
 
     const root = el("div", { "data-component": "nav", "data-nav-style": "accordion" });
-    // Config-driven values only — no opinionated styling.
-    if (headerColor) root.style.setProperty("--nav-header-color", headerColor);
+    // Intent only — paint is safestyles' job.
+    if (accent) root.setAttribute("data-accent", accent);
     if (width) root.style.setProperty("--nav-width", `${width}px`);
 
     // ── Header ──
@@ -99,11 +100,11 @@ export function createSafeNav(container: HTMLElement, config: ConfigBase, onEven
         nav.replaceChildren();
         for (const [gKey, group] of groups) {
             const gMeta = group.metadata ?? {};
-            const accent = gMeta.accentColor as string | undefined;
+            const gAccent = gMeta.accent as string | undefined;
             const isExpanded = expanded.has(gKey);
 
             const wrap = el("div", { "data-nav-item": "", "data-depth": "0" });
-            if (accent) wrap.style.setProperty("--nav-accent", accent);
+            if (gAccent) wrap.setAttribute("data-accent", gAccent);
 
             // Group header button
             const btn = el("button", { "data-nav-button": "", "data-has-children": "true", "data-depth": "0" });

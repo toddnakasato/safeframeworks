@@ -1581,7 +1581,7 @@
 /* ────────────────────────────────────────────────────────────────────────────
    SafeNav — accordion (figma Shopfront design)
    Structure from nav builder; all opinionated values here, --sd-* driven.
-   Config-driven colors arrive as custom props: --nav-header-color, --nav-accent.
+   Intent arrives as data-accent tokens; this file maps token -> paint.
    ──────────────────────────────────────────────────────────────────────────── */
 [data-nav-host] {
   height: 100%;
@@ -1613,9 +1613,23 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--nav-header-color, var(--sd-accent, #3b82f6));
+  background: var(--nav-accent, var(--sd-accent, #3b82f6));
   color: var(--sd-text-inverse, #fff);
 }
+
+/* Intent accent tokens -> paint. One mapping for nav root and items. */
+[data-nav-style="accordion"][data-accent="brand"],
+[data-nav-style="accordion"] [data-nav-item][data-accent="brand"] { --nav-accent: var(--sd-accent, #3b82f6); }
+[data-nav-style="accordion"][data-accent="info"],
+[data-nav-style="accordion"] [data-nav-item][data-accent="info"] { --nav-accent: var(--sd-info, #3b82f6); }
+[data-nav-style="accordion"][data-accent="success"],
+[data-nav-style="accordion"] [data-nav-item][data-accent="success"] { --nav-accent: var(--sd-success, #10b981); }
+[data-nav-style="accordion"][data-accent="warn"],
+[data-nav-style="accordion"] [data-nav-item][data-accent="warn"] { --nav-accent: var(--sd-warning, #f59e0b); }
+[data-nav-style="accordion"][data-accent="danger"],
+[data-nav-style="accordion"] [data-nav-item][data-accent="danger"] { --nav-accent: var(--sd-danger, #ef4444); }
+[data-nav-style="accordion"][data-accent="neutral"],
+[data-nav-style="accordion"] [data-nav-item][data-accent="neutral"] { --nav-accent: var(--sd-text-dim, #6b7280); }
 [data-nav-style="accordion"] [data-nav-title] {
   font-size: var(--sd-font-md, 14px);
   font-weight: 600;
@@ -1727,7 +1741,7 @@
 
 /* ────────────────────────────────────────────────────────────────────────────
    SafeMap — Leaflet container, pin, popup
-   Pin color is data-driven, arrives as --pin-color custom prop.
+   Pin intent arrives as data-accent tokens; this file maps token -> paint.
    ──────────────────────────────────────────────────────────────────────────── */
 [data-map-container] {
   width: 100%;
@@ -1740,6 +1754,14 @@
   height: 28px;
   border-radius: 50% 50% 50% 0;
   background: var(--pin-color, var(--sd-accent, #3b82f6));
+}
+[data-map-pin][data-accent="brand"] { --pin-color: var(--sd-accent, #3b82f6); }
+[data-map-pin][data-accent="info"] { --pin-color: var(--sd-info, #3b82f6); }
+[data-map-pin][data-accent="success"] { --pin-color: var(--sd-success, #10b981); }
+[data-map-pin][data-accent="warn"] { --pin-color: var(--sd-warning, #f59e0b); }
+[data-map-pin][data-accent="danger"] { --pin-color: var(--sd-danger, #ef4444); }
+[data-map-pin][data-accent="neutral"] { --pin-color: var(--sd-text-dim, #6b7280); }
+[data-map-pin] {
   transform: rotate(-45deg);
   display: flex;
   align-items: center;

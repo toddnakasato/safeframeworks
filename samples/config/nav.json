@@ -5,7 +5,7 @@
     "title": "Shopfront",
     "subtitle": "Admin Panel",
     "icon": "store",
-    "headerColor": "#6366f1"
+    "accent": "brand"
   },
   "children": {
     "orders": {
@@ -13,7 +13,7 @@
       "metadata": {
         "label": "Orders",
         "icon": "shopping-cart",
-        "accentColor": "#6366f1"
+        "accent": "brand"
       },
       "children": {
         "all-orders": {
@@ -56,7 +56,7 @@
       "metadata": {
         "label": "Catalog",
         "icon": "package",
-        "accentColor": "#ec4899"
+        "accent": "danger"
       },
       "children": {
         "products": {
@@ -90,7 +90,7 @@
       "metadata": {
         "label": "Customers",
         "icon": "star",
-        "accentColor": "#f59e0b"
+        "accent": "warn"
       },
       "children": {
         "all-customers": {
@@ -118,7 +118,7 @@
       "metadata": {
         "label": "Finance",
         "icon": "credit-card",
-        "accentColor": "#10b981"
+        "accent": "success"
       },
       "children": {
         "transactions": {
@@ -146,7 +146,7 @@
       "metadata": {
         "label": "Analytics",
         "icon": "bar-chart",
-        "accentColor": "#3b82f6"
+        "accent": "info"
       },
       "children": {
         "overview": {
@@ -174,7 +174,7 @@
       "metadata": {
         "label": "Marketing",
         "icon": "megaphone",
-        "accentColor": "#8b5cf6"
+        "accent": "neutral"
       },
       "children": {
         "campaigns": {

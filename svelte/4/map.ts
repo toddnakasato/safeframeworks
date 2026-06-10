@@ -18,25 +18,30 @@ const TILE_URLS: Record<string, string> = {
     satellite: "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
 };
 
-const MARKER_COLORS: Record<string, string> = {
-    red: "var(--sd-danger)", blue: "var(--sd-accent)", green: "var(--sd-success)", yellow: "var(--sd-warning)",
-    purple: "var(--sd-chart-3, #bc8cff)", orange: "var(--sd-chart-4, #f0883e)", cyan: "var(--sd-chart-6, #79c0ff)", pink: "var(--sd-chart-8, #d2a8ff)",
+/** Accent Intent token -> --sd-* variable name. Paint stays in safestyles/index.css. */
+const ACCENT_VARS: Record<string, string> = {
+    brand: "--sd-accent", info: "--sd-info", success: "--sd-success",
+    warn: "--sd-warning", danger: "--sd-danger", neutral: "--sd-text-dim",
 };
 
-function resolveColor(c?: string): string {
-    return MARKER_COLORS[c ?? ""] ?? c ?? "var(--sd-accent)";
+/**
+ * Resolve an accent token to a concrete color at draw time — needed only for
+ * Leaflet path options (SVG attrs can't consume CSS vars). Values come from
+ * the product's --sd-* tokens; no colors are defined here.
+ */
+function accentColor(accent?: string): string {
+    const v = ACCENT_VARS[accent ?? "brand"] ?? "--sd-accent";
+    return getComputedStyle(document.documentElement).getPropertyValue(v).trim() || "#3b82f6";
 }
 
-function createIcon(color?: string, icon?: string): L.DivIcon {
-    // Structure + data attribute only — shape/size/border live in safestyles.
-    // Pin color is config/data-driven, exposed as a CSS custom property.
-    const bg = resolveColor(color);
+function createIcon(accent?: string, icon?: string): L.DivIcon {
+    // Structure + intent attribute only — paint lives in safestyles.
     return L.divIcon({
         className: "",
         iconSize: [28, 28],
         iconAnchor: [14, 28],
         popupAnchor: [0, -28],
-        html: `<div data-map-pin style="--pin-color:${bg}"><span data-map-pin-icon>${icon ?? "●"}</span></div>`,
+        html: `<div data-map-pin data-accent="${accent ?? "brand"}"><span data-map-pin-icon>${icon ?? "●"}</span></div>`,
     });
 }
 
@@ -60,7 +65,7 @@ export function createSafeMap(
     const labelField = (metadata.labelField as string) ?? "label";
     const descriptionField = metadata.descriptionField as string | undefined;
     const iconField = metadata.iconField as string | undefined;
-    const colorField = metadata.colorField as string | undefined;
+    const accentField = metadata.accentField as string | undefined;
     const radiusField = metadata.radiusField as string | undefined;
     const center = (metadata.center as [number, number]) ?? [40.7128, -74.006];
     const zoom = (metadata.zoom as number) ?? 12;
@@ -87,10 +92,10 @@ export function createSafeMap(
         const label = String(d[labelField] ?? "");
         const desc = descriptionField ? String(d[descriptionField] ?? "") : "";
         const icon = iconField ? String(d[iconField] ?? "") : undefined;
-        const color = colorField ? String(d[colorField] ?? "") : undefined;
+        const accent = accentField ? String(d[accentField] ?? "") : undefined;
         const radius = radiusField ? Number(d[radiusField]) : undefined;
 
-        const marker = L.marker([lat, lng], { icon: createIcon(color, icon) }).addTo(map);
+        const marker = L.marker([lat, lng], { icon: createIcon(accent, icon) }).addTo(map);
 
         if (label || desc) {
             const popupHtml = `<div data-map-popup>
@@ -106,10 +111,11 @@ export function createSafeMap(
         pathPoints.push([lat, lng]);
 
         if (radius && radius > 0) {
+            const c = accentColor(accent);
             const circle = L.circle([lat, lng], {
                 radius,
-                color: resolveColor(color),
-                fillColor: resolveColor(color),
+                color: c,
+                fillColor: c,
                 fillOpacity: 0.15,
                 weight: 2,
             }).addTo(map);
