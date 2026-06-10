@@ -70,8 +70,10 @@ import nav1Config from "./config/nav/nav1.json";
 import nav2Config from "./config/nav/nav2.json";
 import picker1Config from "./config/picker/picker1.json";
 import picker2Config from "./config/picker/picker2.json";
-import sankey1Config from "./config/sankey/sankey1.json";
-import sankey2Config from "./config/sankey/sankey2.json";
+import flowArcTradeConfig from "./config/flow/flow-arc-trade.json";
+import flowChordTradeConfig from "./config/flow/flow-chord-trade.json";
+import flowForceTeamConfig from "./config/flow/flow-force-team.json";
+import flowSankeyRevenueConfig from "./config/flow/flow-sankey-revenue.json";
 import sheetBasicConfig from "./config/sheet/sheet-basic.json";
 import sheetColumnsOnlyConfig from "./config/sheet/sheet-columns-only.json";
 import sheetCompactConfig from "./config/sheet/sheet-compact.json";
@@ -96,8 +98,10 @@ import toggle1Config from "./config/toggle/toggle1.json";
 import toggle2Config from "./config/toggle/toggle2.json";
 import tree1Config from "./config/tree/tree1.json";
 import tree2Config from "./config/tree/tree2.json";
-import treemap1Config from "./config/treemap/treemap1.json";
-import treemap2Config from "./config/treemap/treemap2.json";
+import hierarchyIcicleDiskConfig from "./config/hierarchy/hierarchy-icicle-disk.json";
+import hierarchyPackBudgetConfig from "./config/hierarchy/hierarchy-pack-budget.json";
+import hierarchySunburstDiskConfig from "./config/hierarchy/hierarchy-sunburst-disk.json";
+import hierarchyTreemapDiskConfig from "./config/hierarchy/hierarchy-treemap-disk.json";
 import week1Config from "./config/week/week1.json";
 import week2Config from "./config/week/week2.json";
 import week3Config from "./config/week/week3.json";
@@ -124,7 +128,11 @@ import sheetPeopleData from "./data/sheet-people.json";
 import sheetProjectsStatusData from "./data/sheet-projects-status.json";
 import sheetRegionSalesData from "./data/sheet-region-sales.json";
 import sheetTickersData from "./data/sheet-tickers.json";
-import sankeyFlowData from "./data/sankey-flow.json";
+import flowRevenueData from "./data/flow-revenue.json";
+import flowRegionTradeData from "./data/flow-region-trade.json";
+import flowTeamNetworkData from "./data/flow-team-network.json";
+import hierarchyBudgetData from "./data/hierarchy-budget.json";
+import hierarchyDiskUsageData from "./data/hierarchy-disk-usage.json";
 import tableRowsData from "./data/table-rows.json";
 import timelineEventsData from "./data/timeline-events.json";
 import treeNodesData from "./data/tree-nodes.json";
@@ -153,7 +161,11 @@ const DATA_FILES: Record<string, unknown> = {
     "list-tasks": listTasksData,
     "list-themes": listThemesData,
     "map-manhattan": mapManhattanData,
-    "sankey-flow": sankeyFlowData,
+    "flow-revenue": flowRevenueData,
+    "flow-region-trade": flowRegionTradeData,
+    "flow-team-network": flowTeamNetworkData,
+    "hierarchy-budget": hierarchyBudgetData,
+    "hierarchy-disk-usage": hierarchyDiskUsageData,
     "table-rows": tableRowsData,
     "timeline-events": timelineEventsData,
     "tree-nodes": treeNodesData,
@@ -269,9 +281,11 @@ export const SAMPLES: Record<string, Record<string, ConfigBase>> = {
         "picker1": resolveData(picker1Config as unknown as ConfigBase),
         "picker2": resolveData(picker2Config as unknown as ConfigBase),
     },
-    sankey: {
-        "sankey1": resolveData(sankey1Config as unknown as ConfigBase),
-        "sankey2": resolveData(sankey2Config as unknown as ConfigBase),
+    flow: {
+        "flow-arc-trade": resolveData(flowArcTradeConfig as unknown as ConfigBase),
+        "flow-chord-trade": resolveData(flowChordTradeConfig as unknown as ConfigBase),
+        "flow-force-team": resolveData(flowForceTeamConfig as unknown as ConfigBase),
+        "flow-sankey-revenue": resolveData(flowSankeyRevenueConfig as unknown as ConfigBase),
     },
     sheet: {
         "sheet-basic": resolveData(sheetBasicConfig as unknown as ConfigBase),
@@ -309,9 +323,11 @@ export const SAMPLES: Record<string, Record<string, ConfigBase>> = {
         "tree1": resolveData(tree1Config as unknown as ConfigBase),
         "tree2": resolveData(tree2Config as unknown as ConfigBase),
     },
-    treemap: {
-        "treemap1": resolveData(treemap1Config as unknown as ConfigBase),
-        "treemap2": resolveData(treemap2Config as unknown as ConfigBase),
+    hierarchy: {
+        "hierarchy-icicle-disk": resolveData(hierarchyIcicleDiskConfig as unknown as ConfigBase),
+        "hierarchy-pack-budget": resolveData(hierarchyPackBudgetConfig as unknown as ConfigBase),
+        "hierarchy-sunburst-disk": resolveData(hierarchySunburstDiskConfig as unknown as ConfigBase),
+        "hierarchy-treemap-disk": resolveData(hierarchyTreemapDiskConfig as unknown as ConfigBase),
     },
     week: {
         "week1": resolveData(week1Config as unknown as ConfigBase),

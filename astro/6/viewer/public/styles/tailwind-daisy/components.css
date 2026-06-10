@@ -1869,9 +1869,9 @@
 }
 
 /* ────────────────────────────────────────────────────────────────────────────
-   SafeSankey — svg sizing (drawn by d3)
+   SafeFlow — svg sizing (drawn by d3)
    ──────────────────────────────────────────────────────────────────────────── */
-[data-sankey-svg] {
+[data-flow-svg] {
   width: 100%;
   max-width: 700px;
   display: block;

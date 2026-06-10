@@ -1,0 +1,21 @@
+{
+  "component": "flow",
+  "metadata": {
+    "variant": "sankey",
+    "title": "Revenue Flow"
+  },
+  "eventHandler": {
+    "handler": "flow",
+    "events": [
+      "node:click",
+      "link:click"
+    ]
+  },
+  "data": {
+    "flow-revenue": {
+      "name": "flow-revenue",
+      "type": "record",
+      "source": "file"
+    }
+  }
+}

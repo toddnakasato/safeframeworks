@@ -1,0 +1,21 @@
+{
+  "component": "flow",
+  "metadata": {
+    "variant": "force",
+    "title": "Team Collaboration"
+  },
+  "eventHandler": {
+    "handler": "flow",
+    "events": [
+      "node:click",
+      "link:click"
+    ]
+  },
+  "data": {
+    "flow-team-network": {
+      "name": "flow-team-network",
+      "type": "record",
+      "source": "file"
+    }
+  }
+}

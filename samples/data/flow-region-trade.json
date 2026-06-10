@@ -1,0 +1,61 @@
+{
+  "nodes": [
+    {
+      "name": "North America"
+    },
+    {
+      "name": "Europe"
+    },
+    {
+      "name": "Asia"
+    },
+    {
+      "name": "South America"
+    },
+    {
+      "name": "Africa"
+    }
+  ],
+  "links": [
+    {
+      "source": "North America",
+      "target": "Europe",
+      "value": 42
+    },
+    {
+      "source": "North America",
+      "target": "Asia",
+      "value": 31
+    },
+    {
+      "source": "Europe",
+      "target": "Asia",
+      "value": 28
+    },
+    {
+      "source": "Europe",
+      "target": "Africa",
+      "value": 12
+    },
+    {
+      "source": "Asia",
+      "target": "North America",
+      "value": 36
+    },
+    {
+      "source": "Asia",
+      "target": "South America",
+      "value": 9
+    },
+    {
+      "source": "South America",
+      "target": "Europe",
+      "value": 14
+    },
+    {
+      "source": "Africa",
+      "target": "Asia",
+      "value": 7
+    }
+  ]
+}

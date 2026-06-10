@@ -12,8 +12,8 @@ import { SafeChartComponent } from '../../SafeChart';
 import { SafeHeatmapComponent } from '../../SafeHeatmap';
 import { SafeGaugeComponent } from '../../SafeGauge';
 import { SafeFunnelComponent } from '../../SafeFunnel';
-import { SafeSankeyComponent } from '../../SafeSankey';
-import { SafeTreemapComponent } from '../../SafeTreemap';
+import { SafeFlowComponent } from '../../SafeFlow';
+import { SafeHierarchyComponent } from '../../SafeHierarchy';
 import { SafeTimelineComponent } from '../../SafeTimeline';
 import { SafeMapComponent } from '../../SafeMap';
 import { SafeCalendarComponent } from '../../SafeCalendar';
@@ -32,7 +32,7 @@ import { SafeNavComponent } from '../../SafeNav';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [NgFor, NgIf, SafeLayoutComponent, SafeColumnsComponent, SafeCardComponent, SafeButtonComponent, SafeTableComponent, SafeTreeComponent, SafeSheetComponent, SafeChartComponent, SafeHeatmapComponent, SafeGaugeComponent, SafeFunnelComponent, SafeSankeyComponent, SafeTreemapComponent, SafeTimelineComponent, SafeMapComponent, SafeCalendarComponent, SafeToggleComponent, SafeWeekComponent, SafeChatComponent, SafeTabsComponent, SafeCalloutComponent, SafeDragDropComponent, SafeGridComponent, SafeInputComponent, SafeListComponent, SafePickerComponent, SafeNavComponent],
+  imports: [NgFor, NgIf, SafeLayoutComponent, SafeColumnsComponent, SafeCardComponent, SafeButtonComponent, SafeTableComponent, SafeTreeComponent, SafeSheetComponent, SafeChartComponent, SafeHeatmapComponent, SafeGaugeComponent, SafeFunnelComponent, SafeFlowComponent, SafeHierarchyComponent, SafeTimelineComponent, SafeMapComponent, SafeCalendarComponent, SafeToggleComponent, SafeWeekComponent, SafeChatComponent, SafeTabsComponent, SafeCalloutComponent, SafeDragDropComponent, SafeGridComponent, SafeInputComponent, SafeListComponent, SafePickerComponent, SafeNavComponent],
   template: `
     <div class="viewer">
       <div class="sidebar">
@@ -138,19 +138,19 @@ import { SafeNavComponent } from '../../SafeNav';
             </div>
           </div>
         </ng-container>
-        <ng-container *ngIf="show('sankey')">
-          <div class="component-card" *ngFor="let v of variations('sankey')">
+        <ng-container *ngIf="show('flow')">
+          <div class="component-card" *ngFor="let v of variations('flow')">
             <div class="component-label">{{v}}</div>
             <div class="component-body">
-              <safe-sankey [config]="cfg('sankey', v)"></safe-sankey>
+              <safe-flow [config]="cfg('flow', v)"></safe-flow>
             </div>
           </div>
         </ng-container>
-        <ng-container *ngIf="show('treemap')">
-          <div class="component-card" *ngFor="let v of variations('treemap')">
+        <ng-container *ngIf="show('hierarchy')">
+          <div class="component-card" *ngFor="let v of variations('hierarchy')">
             <div class="component-label">{{v}}</div>
             <div class="component-body">
-              <safe-treemap [config]="cfg('treemap', v)"></safe-treemap>
+              <safe-hierarchy [config]="cfg('hierarchy', v)"></safe-hierarchy>
             </div>
           </div>
         </ng-container>

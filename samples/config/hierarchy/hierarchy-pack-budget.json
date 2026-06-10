@@ -1,0 +1,21 @@
+{
+  "component": "hierarchy",
+  "metadata": {
+    "variant": "pack",
+    "labelField": "label",
+    "valueField": "value"
+  },
+  "eventHandler": {
+    "handler": "hierarchy",
+    "events": [
+      "select"
+    ]
+  },
+  "data": {
+    "hierarchy-budget": {
+      "name": "hierarchy-budget",
+      "type": "record",
+      "source": "file"
+    }
+  }
+}

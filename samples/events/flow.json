@@ -1,0 +1,14 @@
+{
+  "handlers": [
+    {
+      "on": "node:click",
+      "target": "local",
+      "handler": "log"
+    },
+    {
+      "on": "link:click",
+      "target": "local",
+      "handler": "log"
+    }
+  ]
+}

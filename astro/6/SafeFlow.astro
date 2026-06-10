@@ -1,0 +1,15 @@
+---
+import type { ConfigBase, OnSafeEvent } from 'safecontracts';
+interface Props { config: ConfigBase; onEvent?: OnSafeEvent; }
+const { config } = Astro.props;
+---
+
+<div>
+  {config.metadata.title && <div data-role="title">{config.metadata.title}</div>}
+  <svg data-flow-config={JSON.stringify(config)} data-flow-svg></svg>
+</div>
+
+<script>
+  import { initSafeFlows } from "../../builders/flow";
+  initSafeFlows();
+</script>

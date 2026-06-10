@@ -1,0 +1,23 @@
+{
+  "component": "hierarchy",
+  "metadata": {
+    "variant": "sunburst",
+    "labelField": "label",
+    "valueField": "value",
+    "idField": "id",
+    "parentField": "parent"
+  },
+  "eventHandler": {
+    "handler": "hierarchy",
+    "events": [
+      "select"
+    ]
+  },
+  "data": {
+    "hierarchy-disk-usage": {
+      "name": "hierarchy-disk-usage",
+      "type": "record",
+      "source": "file"
+    }
+  }
+}

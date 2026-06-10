@@ -1,0 +1,34 @@
+[
+  {
+    "label": "Engineering",
+    "value": 4200
+  },
+  {
+    "label": "Marketing",
+    "value": 2800
+  },
+  {
+    "label": "Sales",
+    "value": 3500
+  },
+  {
+    "label": "Support",
+    "value": 1500
+  },
+  {
+    "label": "Ops",
+    "value": 1900
+  },
+  {
+    "label": "Design",
+    "value": 1200
+  },
+  {
+    "label": "Legal",
+    "value": 600
+  },
+  {
+    "label": "HR",
+    "value": 800
+  }
+]

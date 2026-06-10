@@ -1,0 +1,83 @@
+{
+  "nodes": [
+    {
+      "name": "Alice",
+      "group": "Engineering"
+    },
+    {
+      "name": "Marcus",
+      "group": "Engineering"
+    },
+    {
+      "name": "Priya",
+      "group": "Engineering"
+    },
+    {
+      "name": "Sofia",
+      "group": "Design"
+    },
+    {
+      "name": "James",
+      "group": "Design"
+    },
+    {
+      "name": "Olivia",
+      "group": "Marketing"
+    },
+    {
+      "name": "Liam",
+      "group": "Marketing"
+    },
+    {
+      "name": "Zoe",
+      "group": "Marketing"
+    }
+  ],
+  "links": [
+    {
+      "source": "Alice",
+      "target": "Marcus",
+      "value": 12
+    },
+    {
+      "source": "Alice",
+      "target": "Priya",
+      "value": 8
+    },
+    {
+      "source": "Marcus",
+      "target": "Sofia",
+      "value": 5
+    },
+    {
+      "source": "Sofia",
+      "target": "James",
+      "value": 9
+    },
+    {
+      "source": "James",
+      "target": "Alice",
+      "value": 4
+    },
+    {
+      "source": "Olivia",
+      "target": "Liam",
+      "value": 7
+    },
+    {
+      "source": "Olivia",
+      "target": "Zoe",
+      "value": 6
+    },
+    {
+      "source": "Zoe",
+      "target": "Sofia",
+      "value": 3
+    },
+    {
+      "source": "Liam",
+      "target": "Marcus",
+      "value": 2
+    }
+  ]
+}

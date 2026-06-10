@@ -11,8 +11,8 @@ import SafeChart from "../../../SafeChart.astro";
 import SafeHeatmap from "../../../SafeHeatmap.astro";
 import SafeGauge from "../../../SafeGauge.astro";
 import SafeFunnel from "../../../SafeFunnel.astro";
-import SafeSankey from "../../../SafeSankey.astro";
-import SafeTreemap from "../../../SafeTreemap.astro";
+import SafeFlow from "../../../SafeFlow.astro";
+import SafeHierarchy from "../../../SafeHierarchy.astro";
 import SafeTimeline from "../../../SafeTimeline.astro";
 import SafeMap from "../../../SafeMap.astro";
 import SafeCalendar from "../../../SafeCalendar.astro";
@@ -167,19 +167,19 @@ const variationsOf = (c: string) => Object.keys(SAMPLES[c]).sort();
         </div>
       </div>
     ))}
-    {Object.keys(SAMPLES["sankey"]).sort().map((v) => (
-      <div class="component-card" data-comp="sankey" data-var={v}>
+    {Object.keys(SAMPLES["flow"]).sort().map((v) => (
+      <div class="component-card" data-comp="flow" data-var={v}>
         <div class="component-label">{v}</div>
         <div class="component-body">
-          <SafeSankey config={SAMPLES["sankey"][v]} />
+          <SafeFlow config={SAMPLES["flow"][v]} />
         </div>
       </div>
     ))}
-    {Object.keys(SAMPLES["treemap"]).sort().map((v) => (
-      <div class="component-card" data-comp="treemap" data-var={v}>
+    {Object.keys(SAMPLES["hierarchy"]).sort().map((v) => (
+      <div class="component-card" data-comp="hierarchy" data-var={v}>
         <div class="component-label">{v}</div>
         <div class="component-body">
-          <SafeTreemap config={SAMPLES["treemap"][v]} />
+          <SafeHierarchy config={SAMPLES["hierarchy"][v]} />
         </div>
       </div>
     ))}

@@ -1,0 +1,21 @@
+{
+  "component": "flow",
+  "metadata": {
+    "variant": "arc",
+    "title": "Trade Routes"
+  },
+  "eventHandler": {
+    "handler": "flow",
+    "events": [
+      "node:click",
+      "link:click"
+    ]
+  },
+  "data": {
+    "flow-region-trade": {
+      "name": "flow-region-trade",
+      "type": "record",
+      "source": "file"
+    }
+  }
+}

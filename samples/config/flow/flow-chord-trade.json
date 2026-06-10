@@ -1,0 +1,21 @@
+{
+  "component": "flow",
+  "metadata": {
+    "variant": "chord",
+    "title": "Regional Trade"
+  },
+  "eventHandler": {
+    "handler": "flow",
+    "events": [
+      "node:click",
+      "link:click"
+    ]
+  },
+  "data": {
+    "flow-region-trade": {
+      "name": "flow-region-trade",
+      "type": "record",
+      "source": "file"
+    }
+  }
+}

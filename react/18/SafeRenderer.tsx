@@ -23,12 +23,12 @@ import { SafeList } from "./SafeList";
 import { SafeMap } from "./SafeMap";
 import { SafeNav } from "./SafeNav";
 import { SafePicker } from "./SafePicker";
-import { SafeSankey } from "./SafeSankey";
+import { SafeFlow } from "./SafeFlow";
 import { SafeSheet } from "./SafeSheet";
 import { SafeTable } from "./SafeTable";
 import { SafeTimeline } from "./SafeTimeline";
 import { SafeTree } from "./SafeTree";
-import { SafeTreemap } from "./SafeTreemap";
+import { SafeHierarchy } from "./SafeHierarchy";
 
 function extractData(config: ConfigBase): { inline: any; list: any[]; record: Record<string, any> } {
   const raw = Object.values(config.data ?? {})[0]?.inline;
@@ -203,12 +203,12 @@ export function renderConfigBase(
     return <SafeFunnel config={config} data={list} onEvent={stampedOnEvent} />;
   }
 
-  if (component === "sankey") {
-    return <SafeSankey config={config} data={record as any} onEvent={stampedOnEvent} />;
+  if (component === "flow") {
+    return <SafeFlow config={config} onEvent={stampedOnEvent} />;
   }
 
-  if (component === "treemap") {
-    return <SafeTreemap config={config} data={list} onEvent={stampedOnEvent} />;
+  if (component === "hierarchy") {
+    return <SafeHierarchy config={config} onEvent={stampedOnEvent} />;
   }
 
   if (component === "timeline") {

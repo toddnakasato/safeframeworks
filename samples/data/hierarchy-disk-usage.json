@@ -1,0 +1,74 @@
+[
+  {
+    "id": "src",
+    "parent": null,
+    "label": "src",
+    "value": 0
+  },
+  {
+    "id": "src/app",
+    "parent": "src",
+    "label": "app",
+    "value": 0
+  },
+  {
+    "id": "src/app/components",
+    "parent": "src/app",
+    "label": "components",
+    "value": 480
+  },
+  {
+    "id": "src/app/pages",
+    "parent": "src/app",
+    "label": "pages",
+    "value": 320
+  },
+  {
+    "id": "src/app/hooks",
+    "parent": "src/app",
+    "label": "hooks",
+    "value": 95
+  },
+  {
+    "id": "src/lib",
+    "parent": "src",
+    "label": "lib",
+    "value": 0
+  },
+  {
+    "id": "src/lib/utils",
+    "parent": "src/lib",
+    "label": "utils",
+    "value": 140
+  },
+  {
+    "id": "src/lib/api",
+    "parent": "src/lib",
+    "label": "api",
+    "value": 210
+  },
+  {
+    "id": "src/styles",
+    "parent": "src",
+    "label": "styles",
+    "value": 88
+  },
+  {
+    "id": "assets",
+    "parent": null,
+    "label": "assets",
+    "value": 0
+  },
+  {
+    "id": "assets/images",
+    "parent": "assets",
+    "label": "images",
+    "value": 1240
+  },
+  {
+    "id": "assets/fonts",
+    "parent": "assets",
+    "label": "fonts",
+    "value": 360
+  }
+]
