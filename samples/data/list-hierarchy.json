@@ -1,0 +1,129 @@
+[
+  {
+    "id": "root",
+    "name": "Organization",
+    "icon": "building",
+    "children": [
+      {
+        "id": "team",
+        "name": "Teams",
+        "icon": "users",
+        "children": [
+          {
+            "id": "team-eng",
+            "name": "Engineering Team",
+            "icon": "code",
+            "count": "12 members"
+          },
+          {
+            "id": "team-design",
+            "name": "Design Team",
+            "icon": "palette",
+            "count": "8 members"
+          },
+          {
+            "id": "team-product",
+            "name": "Product Team",
+            "icon": "package",
+            "count": "6 members"
+          }
+        ]
+      },
+      {
+        "id": "projects",
+        "name": "Projects",
+        "icon": "briefcase",
+        "children": [
+          {
+            "id": "proj-alpha",
+            "name": "Project Alpha",
+            "icon": "folder",
+            "children": [
+              {
+                "id": "alpha-docs",
+                "name": "Documentation",
+                "icon": "file-text",
+                "count": "24 files"
+              },
+              {
+                "id": "alpha-code",
+                "name": "Source Code",
+                "icon": "code",
+                "count": "156 files"
+              },
+              {
+                "id": "alpha-assets",
+                "name": "Design Assets",
+                "icon": "image",
+                "count": "89 files"
+              }
+            ]
+          },
+          {
+            "id": "proj-beta",
+            "name": "Project Beta",
+            "icon": "folder",
+            "children": [
+              {
+                "id": "beta-api",
+                "name": "API Layer",
+                "icon": "server",
+                "count": "45 endpoints"
+              },
+              {
+                "id": "beta-db",
+                "name": "Database Schema",
+                "icon": "database",
+                "count": "23 tables"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "resources",
+        "name": "Resources",
+        "icon": "archive",
+        "children": [
+          {
+            "id": "res-templates",
+            "name": "Templates",
+            "icon": "file-text",
+            "count": "15 items"
+          },
+          {
+            "id": "res-guidelines",
+            "name": "Guidelines",
+            "icon": "settings",
+            "count": "8 documents"
+          },
+          {
+            "id": "res-training",
+            "name": "Training Materials",
+            "icon": "graduation-cap",
+            "count": "32 resources"
+          }
+        ]
+      },
+      {
+        "id": "archived",
+        "name": "Archived Projects",
+        "icon": "archive",
+        "children": [
+          {
+            "id": "arch-legacy",
+            "name": "Legacy System",
+            "icon": "settings",
+            "count": "Deprecated"
+          },
+          {
+            "id": "arch-old",
+            "name": "Old Platform",
+            "icon": "server",
+            "count": "Archived"
+          }
+        ]
+      }
+    ]
+  }
+]

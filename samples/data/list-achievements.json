@@ -1,0 +1,32 @@
+[
+  {
+    "label": "Project Completed",
+    "description": "Successfully delivered Q4 roadmap",
+    "icon": "trophy"
+  },
+  {
+    "label": "Team Excellence",
+    "description": "Recognized for outstanding collaboration",
+    "icon": "star"
+  },
+  {
+    "label": "Innovation Award",
+    "description": "Best new feature implementation",
+    "icon": "graduation-cap"
+  },
+  {
+    "label": "Client Success",
+    "description": "Achieved 99.9% uptime milestone",
+    "icon": "briefcase"
+  },
+  {
+    "label": "Learning Badge",
+    "description": "Completed advanced certification",
+    "icon": "award"
+  },
+  {
+    "label": "Global Recognition",
+    "description": "Featured in industry publication",
+    "icon": "globe"
+  }
+]

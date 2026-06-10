@@ -1,0 +1,20 @@
+{
+  "component": "list",
+  "metadata": {
+    "variant": "property-grid"
+  },
+  "data": {
+    "items": {
+      "name": "list-properties",
+      "type": "list",
+      "source": "file"
+    }
+  },
+  "eventHandler": {
+    "handler": "list",
+    "events": [
+      "expand",
+      "change"
+    ]
+  }
+}

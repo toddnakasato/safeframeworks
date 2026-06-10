@@ -1,0 +1,46 @@
+{
+  "component": "list",
+  "metadata": {
+    "variant": "columns",
+    "pageSize": 4,
+    "pageNumbers": true
+  },
+  "data": {
+    "items": {
+      "name": "list-contacts",
+      "type": "list",
+      "source": "file",
+      "schema": {
+        "fields": [
+          {
+            "name": "Name",
+            "label": "Name",
+            "type": "text"
+          },
+          {
+            "name": "Email",
+            "label": "Email",
+            "type": "text"
+          },
+          {
+            "name": "Phone",
+            "label": "Phone",
+            "type": "text"
+          },
+          {
+            "name": "Department",
+            "label": "Department",
+            "type": "text"
+          }
+        ]
+      }
+    }
+  },
+  "eventHandler": {
+    "handler": "list",
+    "events": [
+      "select",
+      "page"
+    ]
+  }
+}

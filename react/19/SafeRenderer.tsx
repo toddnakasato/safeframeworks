@@ -25,6 +25,7 @@ import { SafeGrid } from "./SafeGrid";
 import { SafeHeatmap } from "./SafeHeatmap";
 import { SafeInput } from "./SafeInput";
 import { SafeLayout } from "./SafeLayout";
+import { SafeList } from "./SafeList";
 import { SafeMap } from "./SafeMap";
 import { SafeNav } from "./SafeNav";
 import { SafePicker } from "./SafePicker";
@@ -168,6 +169,10 @@ export function renderConfigBase(
   if (component === "input") {
     const field = (config.metadata.field as string) ?? Object.keys(record)[0];
     return <SafeInput config={config} data={record} field={field} onEvent={stampedOnEvent} />;
+  }
+
+  if (component === "list") {
+    return <SafeList config={config} data={list} onEvent={stampedOnEvent} />;
   }
 
   if (component === "picker") {

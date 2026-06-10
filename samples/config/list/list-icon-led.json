@@ -1,0 +1,20 @@
+{
+  "component": "list",
+  "metadata": {
+    "variant": "icon",
+    "direction": "vertical"
+  },
+  "data": {
+    "items": {
+      "name": "list-achievements",
+      "type": "list",
+      "source": "file"
+    }
+  },
+  "eventHandler": {
+    "handler": "list",
+    "events": [
+      "select"
+    ]
+  }
+}

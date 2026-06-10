@@ -1,0 +1,58 @@
+[
+  {
+    "name": "Project Proposal.pdf",
+    "type": "document",
+    "size": "2.4 MB",
+    "modified": "2 hours ago",
+    "icon": "file-text"
+  },
+  {
+    "name": "Marketing Assets",
+    "type": "folder",
+    "size": "45 files",
+    "modified": "1 day ago",
+    "icon": "folder"
+  },
+  {
+    "name": "Team Photo.jpg",
+    "type": "image",
+    "size": "3.2 MB",
+    "modified": "3 days ago",
+    "icon": "image"
+  },
+  {
+    "name": "Demo Video.mp4",
+    "type": "video",
+    "size": "124 MB",
+    "modified": "1 week ago",
+    "icon": "video"
+  },
+  {
+    "name": "Background Music.mp3",
+    "type": "audio",
+    "size": "8.7 MB",
+    "modified": "2 weeks ago",
+    "icon": "music"
+  },
+  {
+    "name": "Archive_2024.zip",
+    "type": "archive",
+    "size": "67 MB",
+    "modified": "1 month ago",
+    "icon": "archive"
+  },
+  {
+    "name": "Configuration.json",
+    "type": "document",
+    "size": "12 KB",
+    "modified": "2 months ago",
+    "icon": "settings"
+  },
+  {
+    "name": "Security Keys",
+    "type": "folder",
+    "size": "12 files",
+    "modified": "3 months ago",
+    "icon": "shield"
+  }
+]

@@ -1,0 +1,32 @@
+[
+  {
+    "label": "Dashboard Overview"
+  },
+  {
+    "label": "User Management"
+  },
+  {
+    "label": "Settings Configuration"
+  },
+  {
+    "label": "Reports & Analytics"
+  },
+  {
+    "label": "Security & Permissions"
+  },
+  {
+    "label": "Integration Setup"
+  },
+  {
+    "label": "Backup & Recovery"
+  },
+  {
+    "label": "System Monitoring"
+  },
+  {
+    "label": "API Documentation"
+  },
+  {
+    "label": "Help & Support"
+  }
+]

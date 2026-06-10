@@ -1,0 +1,22 @@
+{
+  "component": "list",
+  "metadata": {
+    "variant": "files",
+    "pageSize": 4,
+    "pageNumbers": true
+  },
+  "data": {
+    "items": {
+      "name": "list-files",
+      "type": "list",
+      "source": "file"
+    }
+  },
+  "eventHandler": {
+    "handler": "list",
+    "events": [
+      "select",
+      "page"
+    ]
+  }
+}

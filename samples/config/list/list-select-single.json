@@ -1,0 +1,20 @@
+{
+  "component": "list",
+  "metadata": {
+    "variant": "selection",
+    "selectionMode": "single"
+  },
+  "data": {
+    "items": {
+      "name": "list-themes",
+      "type": "list",
+      "source": "file"
+    }
+  },
+  "eventHandler": {
+    "handler": "list",
+    "events": [
+      "select"
+    ]
+  }
+}

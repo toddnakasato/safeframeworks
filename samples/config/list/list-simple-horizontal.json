@@ -1,0 +1,20 @@
+{
+  "component": "list",
+  "metadata": {
+    "variant": "simple",
+    "direction": "horizontal"
+  },
+  "data": {
+    "items": {
+      "name": "list-simple",
+      "type": "list",
+      "source": "file"
+    }
+  },
+  "eventHandler": {
+    "handler": "list",
+    "events": [
+      "select"
+    ]
+  }
+}

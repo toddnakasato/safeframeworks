@@ -1,0 +1,20 @@
+{
+  "component": "list",
+  "metadata": {
+    "variant": "actions"
+  },
+  "data": {
+    "items": {
+      "name": "list-tasks",
+      "type": "list",
+      "source": "file"
+    }
+  },
+  "eventHandler": {
+    "handler": "list",
+    "events": [
+      "select",
+      "action"
+    ]
+  }
+}

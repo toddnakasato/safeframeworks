@@ -1,0 +1,37 @@
+[
+  {
+    "title": "System Backup",
+    "status": "Completed",
+    "time": "2:30 PM",
+    "icon": "shield",
+    "action": "View Log"
+  },
+  {
+    "title": "Data Sync",
+    "status": "In Progress",
+    "time": "3:15 PM",
+    "icon": "globe",
+    "action": "Monitor"
+  },
+  {
+    "title": "Report Generation",
+    "status": "Pending",
+    "time": "4:00 PM",
+    "icon": "file-text",
+    "action": "Start"
+  },
+  {
+    "title": "User Import",
+    "status": "Failed",
+    "time": "4:45 PM",
+    "icon": "user",
+    "action": "Retry"
+  },
+  {
+    "title": "Email Campaign",
+    "status": "Scheduled",
+    "time": "5:30 PM",
+    "icon": "mail",
+    "action": "Edit"
+  }
+]

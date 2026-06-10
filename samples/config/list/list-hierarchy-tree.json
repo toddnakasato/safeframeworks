@@ -1,0 +1,23 @@
+{
+  "component": "list",
+  "metadata": {
+    "variant": "hierarchy",
+    "pageSize": 8,
+    "pageNumbers": true
+  },
+  "data": {
+    "items": {
+      "name": "list-hierarchy",
+      "type": "list",
+      "source": "file"
+    }
+  },
+  "eventHandler": {
+    "handler": "list",
+    "events": [
+      "select",
+      "expand",
+      "page"
+    ]
+  }
+}

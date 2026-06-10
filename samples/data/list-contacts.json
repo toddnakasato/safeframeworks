@@ -1,0 +1,50 @@
+[
+  {
+    "Name": "Alice Johnson",
+    "Email": "alice.johnson@company.com",
+    "Phone": "+1 (555) 123-4567",
+    "Department": "Engineering"
+  },
+  {
+    "Name": "Bob Smith",
+    "Email": "bob.smith@company.com",
+    "Phone": "+1 (555) 234-5678",
+    "Department": "Marketing"
+  },
+  {
+    "Name": "Carol Davis",
+    "Email": "carol.davis@company.com",
+    "Phone": "+1 (555) 345-6789",
+    "Department": "Sales"
+  },
+  {
+    "Name": "David Wilson",
+    "Email": "david.wilson@company.com",
+    "Phone": "+1 (555) 456-7890",
+    "Department": "HR"
+  },
+  {
+    "Name": "Eva Brown",
+    "Email": "eva.brown@company.com",
+    "Phone": "+1 (555) 567-8901",
+    "Department": "Finance"
+  },
+  {
+    "Name": "Frank Miller",
+    "Email": "frank.miller@company.com",
+    "Phone": "+1 (555) 678-9012",
+    "Department": "Operations"
+  },
+  {
+    "Name": "Grace Taylor",
+    "Email": "grace.taylor@company.com",
+    "Phone": "+1 (555) 789-0123",
+    "Department": "Design"
+  },
+  {
+    "Name": "Henry Anderson",
+    "Email": "henry.anderson@company.com",
+    "Phone": "+1 (555) 890-1234",
+    "Department": "Legal"
+  }
+]

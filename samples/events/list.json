@@ -1,0 +1,32 @@
+{
+  "handlers": [
+    {
+      "event": "select",
+      "action": "log"
+    },
+    {
+      "event": "toggle",
+      "action": "log"
+    },
+    {
+      "event": "expand",
+      "action": "log"
+    },
+    {
+      "event": "action",
+      "action": "log"
+    },
+    {
+      "event": "page",
+      "action": "log"
+    },
+    {
+      "event": "change",
+      "action": "log"
+    },
+    {
+      "event": "navigate",
+      "action": "log"
+    }
+  ]
+}

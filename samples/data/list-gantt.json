@@ -1,0 +1,32 @@
+[
+  {
+    "label": "Requirements Analysis",
+    "start": "2026-06-08",
+    "end": "2026-06-10",
+    "accent": "success"
+  },
+  {
+    "label": "System Design",
+    "start": "2026-06-10",
+    "end": "2026-06-13",
+    "accent": "info"
+  },
+  {
+    "label": "Implementation",
+    "start": "2026-06-12",
+    "end": "2026-06-18",
+    "accent": "brand"
+  },
+  {
+    "label": "Testing & QA",
+    "start": "2026-06-16",
+    "end": "2026-06-20",
+    "accent": "warn"
+  },
+  {
+    "label": "Deployment",
+    "start": "2026-06-19",
+    "end": "2026-06-21",
+    "accent": "danger"
+  }
+]

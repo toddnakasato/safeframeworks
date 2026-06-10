@@ -1,0 +1,22 @@
+[
+  {
+    "label": "Light Theme",
+    "description": "Clean, bright interface"
+  },
+  {
+    "label": "Dark Theme",
+    "description": "Easy on the eyes"
+  },
+  {
+    "label": "Auto Theme",
+    "description": "Follows system preference"
+  },
+  {
+    "label": "High Contrast",
+    "description": "Enhanced accessibility"
+  },
+  {
+    "label": "Custom Theme",
+    "description": "Personalized colors"
+  }
+]

@@ -1,0 +1,23 @@
+{
+  "component": "list",
+  "metadata": {
+    "variant": "simple",
+    "direction": "vertical",
+    "pageSize": 5,
+    "pageNumbers": true
+  },
+  "data": {
+    "items": {
+      "name": "list-simple",
+      "type": "list",
+      "source": "file"
+    }
+  },
+  "eventHandler": {
+    "handler": "list",
+    "events": [
+      "select",
+      "page"
+    ]
+  }
+}

@@ -1,0 +1,144 @@
+[
+  {
+    "id": "general",
+    "name": "General",
+    "children": [
+      {
+        "id": "description",
+        "name": "Description",
+        "value": ""
+      },
+      {
+        "id": "defaultView",
+        "name": "Default View",
+        "value": "Datasheet",
+        "options": [
+          "Datasheet",
+          "PivotTable",
+          "PivotChart"
+        ]
+      },
+      {
+        "id": "filter",
+        "name": "Filter",
+        "value": ""
+      },
+      {
+        "id": "orderBy",
+        "name": "Order By",
+        "value": ""
+      },
+      {
+        "id": "maxRecords",
+        "name": "Max Records",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "id": "display",
+    "name": "Display",
+    "children": [
+      {
+        "id": "orientation",
+        "name": "Orientation",
+        "value": "Left-to-Right",
+        "options": [
+          "Left-to-Right",
+          "Right-to-Left"
+        ]
+      },
+      {
+        "id": "fontSize",
+        "name": "Font Size",
+        "value": 11
+      },
+      {
+        "id": "fontWeight",
+        "name": "Font Weight",
+        "value": "Normal",
+        "options": [
+          "Normal",
+          "Bold"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "data-source",
+    "name": "Data Source",
+    "children": [
+      {
+        "id": "sourceDatabase",
+        "name": "Source Database",
+        "value": "(current)"
+      },
+      {
+        "id": "recordsetType",
+        "name": "Recordset Type",
+        "value": "Dynaset",
+        "options": [
+          "Dynaset",
+          "Snapshot"
+        ]
+      },
+      {
+        "id": "odbcTimeout",
+        "name": "ODBC Timeout",
+        "value": 60
+      },
+      {
+        "id": "recordLocks",
+        "name": "Record Locks",
+        "value": "No Locks",
+        "options": [
+          "No Locks",
+          "All Records",
+          "Edited Record"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "behavior",
+    "name": "Behavior",
+    "children": [
+      {
+        "id": "allowEdits",
+        "name": "Allow Edits",
+        "value": "Yes",
+        "options": [
+          "Yes",
+          "No"
+        ]
+      },
+      {
+        "id": "allowAdditions",
+        "name": "Allow Additions",
+        "value": "Yes",
+        "options": [
+          "Yes",
+          "No"
+        ]
+      },
+      {
+        "id": "allowDeletions",
+        "name": "Allow Deletions",
+        "value": "Yes",
+        "options": [
+          "Yes",
+          "No"
+        ]
+      },
+      {
+        "id": "dataEntry",
+        "name": "Data Entry",
+        "value": "No",
+        "options": [
+          "Yes",
+          "No"
+        ]
+      }
+    ]
+  }
+]

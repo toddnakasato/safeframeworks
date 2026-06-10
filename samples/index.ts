@@ -1,5 +1,5 @@
 /**
- * Shared sample ConfigBase data for all 26 COMPONENT_REGISTRY components.
+ * Shared sample ConfigBase data for all COMPONENT_REGISTRY components.
  * config/<component>/<variation>.json — variation names are short
  * descriptions (e.g. button-primary-icon = singular; buttons-stepper =
  * group/list). Data values in data/ (shared across variations, referenced
@@ -53,6 +53,17 @@ import input1Config from "./config/input/input1.json";
 import input2Config from "./config/input/input2.json";
 import layout1Config from "./config/layout/layout1.json";
 import layout2Config from "./config/layout/layout2.json";
+import listActionsConfig from "./config/list/list-actions.json";
+import listColumnsContactsConfig from "./config/list/list-columns-contacts.json";
+import listFileBrowserConfig from "./config/list/list-file-browser.json";
+import listGanttTasksConfig from "./config/list/list-gantt-tasks.json";
+import listHierarchyTreeConfig from "./config/list/list-hierarchy-tree.json";
+import listIconLedConfig from "./config/list/list-icon-led.json";
+import listPropertyGridConfig from "./config/list/list-property-grid.json";
+import listSelectMultipleConfig from "./config/list/list-select-multiple.json";
+import listSelectSingleConfig from "./config/list/list-select-single.json";
+import listSimpleHorizontalConfig from "./config/list/list-simple-horizontal.json";
+import listSimplePagedConfig from "./config/list/list-simple-paged.json";
 import map1Config from "./config/map/map1.json";
 import map2Config from "./config/map/map2.json";
 import nav1Config from "./config/nav/nav1.json";
@@ -82,6 +93,15 @@ import week3Config from "./config/week/week3.json";
 import cardInfoData from "./data/card-info.json";
 import chartSeriesData from "./data/chart-series.json";
 import dragDropItemsData from "./data/drag-drop-items.json";
+import listAchievementsData from "./data/list-achievements.json";
+import listContactsData from "./data/list-contacts.json";
+import listFilesData from "./data/list-files.json";
+import listGanttData from "./data/list-gantt.json";
+import listHierarchyData from "./data/list-hierarchy.json";
+import listPropertiesData from "./data/list-properties.json";
+import listSimpleData from "./data/list-simple.json";
+import listTasksData from "./data/list-tasks.json";
+import listThemesData from "./data/list-themes.json";
 import mapManhattanData from "./data/map-manhattan.json";
 import sankeyFlowData from "./data/sankey-flow.json";
 import tableRowsData from "./data/table-rows.json";
@@ -93,6 +113,15 @@ const DATA_FILES: Record<string, unknown> = {
     "card-info": cardInfoData,
     "chart-series": chartSeriesData,
     "drag-drop-items": dragDropItemsData,
+    "list-achievements": listAchievementsData,
+    "list-contacts": listContactsData,
+    "list-files": listFilesData,
+    "list-gantt": listGanttData,
+    "list-hierarchy": listHierarchyData,
+    "list-properties": listPropertiesData,
+    "list-simple": listSimpleData,
+    "list-tasks": listTasksData,
+    "list-themes": listThemesData,
     "map-manhattan": mapManhattanData,
     "sankey-flow": sankeyFlowData,
     "table-rows": tableRowsData,
@@ -184,6 +213,19 @@ export const SAMPLES: Record<string, Record<string, ConfigBase>> = {
     layout: {
         "layout1": resolveData(layout1Config as unknown as ConfigBase),
         "layout2": resolveData(layout2Config as unknown as ConfigBase),
+    },
+    list: {
+        "list-actions": resolveData(listActionsConfig as unknown as ConfigBase),
+        "list-columns-contacts": resolveData(listColumnsContactsConfig as unknown as ConfigBase),
+        "list-file-browser": resolveData(listFileBrowserConfig as unknown as ConfigBase),
+        "list-gantt-tasks": resolveData(listGanttTasksConfig as unknown as ConfigBase),
+        "list-hierarchy-tree": resolveData(listHierarchyTreeConfig as unknown as ConfigBase),
+        "list-icon-led": resolveData(listIconLedConfig as unknown as ConfigBase),
+        "list-property-grid": resolveData(listPropertyGridConfig as unknown as ConfigBase),
+        "list-select-multiple": resolveData(listSelectMultipleConfig as unknown as ConfigBase),
+        "list-select-single": resolveData(listSelectSingleConfig as unknown as ConfigBase),
+        "list-simple-horizontal": resolveData(listSimpleHorizontalConfig as unknown as ConfigBase),
+        "list-simple-paged": resolveData(listSimplePagedConfig as unknown as ConfigBase),
     },
     map: {
         "map1": resolveData(map1Config as unknown as ConfigBase),
