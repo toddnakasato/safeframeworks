@@ -1,0 +1,74 @@
+[
+  {
+    "lat": 40.7484,
+    "lng": -73.9857,
+    "Name": "Empire State HQ",
+    "Description": "Headquarters — 180 staff, floors 42-45",
+    "Icon": "🏢",
+    "Color": "blue",
+    "Radius": 800
+  },
+  {
+    "lat": 40.758,
+    "lng": -73.9855,
+    "Name": "Times Square Sales",
+    "Description": "Enterprise sales — 45 reps, $12M pipeline",
+    "Icon": "💼",
+    "Color": "green",
+    "Radius": 600
+  },
+  {
+    "lat": 40.7527,
+    "lng": -73.9772,
+    "Name": "Grand Central Engineering",
+    "Description": "Platform team — 85 engineers, 3 squads",
+    "Icon": "⚙️",
+    "Color": "purple",
+    "Radius": 500
+  },
+  {
+    "lat": 40.7061,
+    "lng": -74.0088,
+    "Name": "FiDi Data Center",
+    "Description": "Primary DC — 2,400 servers, 99.99% uptime",
+    "Icon": "🖥️",
+    "Color": "red",
+    "Radius": 400
+  },
+  {
+    "lat": 40.7831,
+    "lng": -73.9712,
+    "Name": "Upper West Support",
+    "Description": "Customer success — 32 agents, 24/7 coverage",
+    "Icon": "🎧",
+    "Color": "yellow",
+    "Radius": 700
+  },
+  {
+    "lat": 40.7484,
+    "lng": -73.9566,
+    "Name": "Midtown East Finance",
+    "Description": "Finance & legal — 28 staff, CFO office",
+    "Icon": "💰",
+    "Color": "green",
+    "Radius": 450
+  },
+  {
+    "lat": 40.7411,
+    "lng": -74.0018,
+    "Name": "Chelsea Creative",
+    "Description": "Design studio — 22 designers, UX lab",
+    "Icon": "🎨",
+    "Color": "pink",
+    "Radius": 550
+  },
+  {
+    "lat": 40.7259,
+    "lng": -73.9897,
+    "Name": "East Village Startup Lab",
+    "Description": "Incubator — 6 startups, shared workspace",
+    "Icon": "🚀",
+    "Color": "purple",
+    "Radius": 350
+  }
+]

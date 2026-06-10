@@ -1,15 +1,32 @@
 <!--
   SafeMap — Svelte 5 map component.
-  Outputs data-* attributes for intent. No hardcoded CSS.
+  Renders via shared-mapping map builder (./map) — identical across frameworks.
+  Leaflet + OpenStreetMap. Outputs data-* attributes for intent. No hardcoded CSS.
 -->
 <script lang="ts">
+  import { onMount, onDestroy } from 'svelte';
+  import type * as L from 'leaflet';
   import type { ConfigBase, OnSafeEvent } from 'safecontracts';
+  import { createSafeMap, mapData } from './map';
+
   let { config, onEvent }: { config: ConfigBase; onEvent?: OnSafeEvent } = $props();
+
+  let container: HTMLElement;
+  let map: L.Map | null = null;
+
+  onMount(() => {
+    map = createSafeMap(container, config, mapData(config), onEvent);
+  });
+
+  onDestroy(() => {
+    map?.remove();
+    map = null;
+  });
 </script>
 
 <div
   data-component="map"
   data-variant={config.metadata.variant}
 >
-  <div style="height:120px;background:var(--sd-surface-raised,#f3f4f6);display:flex;align-items:center;justify-content:center;border-radius:4px;color:var(--sd-text-dim,#6b7280)">Map</div>
+  <div bind:this={container} style="width:100%;height:360px;border-radius:var(--sd-radius-md,6px);overflow:hidden"></div>
 </div>

@@ -1,10 +1,27 @@
 <!--
   SafeMap — Vue 3 map component.
-  Outputs data-* attributes for intent. No hardcoded CSS.
+  Renders via shared-mapping map builder (./map) — identical across frameworks.
+  Leaflet + OpenStreetMap. Outputs data-* attributes for intent. No hardcoded CSS.
 -->
 <script setup lang="ts">
+import { ref, onMounted, onBeforeUnmount } from 'vue';
+import type * as L from 'leaflet';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-defineProps<{ config: ConfigBase; onEvent?: OnSafeEvent }>();
+import { createSafeMap, mapData } from './map';
+
+const props = defineProps<{ config: ConfigBase; onEvent?: OnSafeEvent }>();
+
+const containerRef = ref<HTMLElement | null>(null);
+let map: L.Map | null = null;
+
+onMounted(() => {
+  if (containerRef.value) map = createSafeMap(containerRef.value, props.config, mapData(props.config), props.onEvent);
+});
+
+onBeforeUnmount(() => {
+  map?.remove();
+  map = null;
+});
 </script>
 
 <template>
@@ -12,6 +29,6 @@ defineProps<{ config: ConfigBase; onEvent?: OnSafeEvent }>();
     data-component="map"
     :data-variant="config.metadata.variant"
   >
-      <div style="height:120px;background:var(--sd-surface-raised,#f3f4f6);display:flex;align-items:center;justify-content:center;border-radius:4px;color:var(--sd-text-dim,#6b7280)">Map</div>
+    <div ref="containerRef" style="width:100%;height:360px;border-radius:var(--sd-radius-md,6px);overflow:hidden"></div>
   </div>
 </template>

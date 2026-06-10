@@ -1,7 +1,68 @@
 {
   "component": "map",
   "metadata": {
-    "variant": "default"
+    "variant": "default",
+    "title": "Manhattan Offices",
+    "latField": "lat",
+    "lngField": "lng",
+    "labelField": "Name",
+    "descriptionField": "Description",
+    "iconField": "Icon",
+    "colorField": "Color",
+    "radiusField": "Radius",
+    "center": [
+      40.7484,
+      -73.9857
+    ],
+    "zoom": 12,
+    "height": 360,
+    "fitBounds": true
+  },
+  "data": {
+    "locations": {
+      "name": "map-manhattan",
+      "type": "list",
+      "source": "file",
+      "schema": {
+        "fields": [
+          {
+            "name": "lat",
+            "label": "Latitude",
+            "type": "number"
+          },
+          {
+            "name": "lng",
+            "label": "Longitude",
+            "type": "number"
+          },
+          {
+            "name": "Name",
+            "label": "Name",
+            "type": "text"
+          },
+          {
+            "name": "Description",
+            "label": "Description",
+            "type": "text"
+          },
+          {
+            "name": "Icon",
+            "label": "Icon",
+            "type": "text"
+          },
+          {
+            "name": "Color",
+            "label": "Color",
+            "type": "text"
+          },
+          {
+            "name": "Radius",
+            "label": "Radius (m)",
+            "type": "number"
+          }
+        ]
+      }
+    }
   },
   "eventHandler": {
     "handler": "map",

@@ -39,6 +39,7 @@ import weekConfig from "./config/week.json";
 import cardInfoData from "./data/card-info.json";
 import chartSeriesData from "./data/chart-series.json";
 import dragDropItemsData from "./data/drag-drop-items.json";
+import mapManhattanData from "./data/map-manhattan.json";
 import sankeyFlowData from "./data/sankey-flow.json";
 import tableRowsData from "./data/table-rows.json";
 import timelineEventsData from "./data/timeline-events.json";
@@ -49,6 +50,7 @@ const DATA_FILES: Record<string, unknown> = {
     "card-info": cardInfoData,
     "chart-series": chartSeriesData,
     "drag-drop-items": dragDropItemsData,
+    "map-manhattan": mapManhattanData,
     "sankey-flow": sankeyFlowData,
     "table-rows": tableRowsData,
     "timeline-events": timelineEventsData,
