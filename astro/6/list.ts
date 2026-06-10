@@ -19,7 +19,8 @@
 import { createElement, type IconNode } from "lucide";
 import * as lucide from "lucide";
 import type { ConfigBase, OnSafeEvent } from "../../../safecontracts/src/contracts";
-import { createSafeEvent } from "../../../safecontracts/src/contracts";
+import { createSafeEvent, DAY_NAMES_SHORT } from "../../../safecontracts/src/contracts";
+import { LIST_DEFAULTS, LIST_STATUS_ACCENTS } from "../../../safecontracts/src/components/list";
 
 /* ------------------------------------------------------------------ */
 /*  Helpers                                                            */
@@ -112,12 +113,12 @@ function buildPager(page: number, totalPages: number, numbers: boolean, go: (p: 
 
 function buildSimple(root: HTMLElement, config: ConfigBase, data: any[], onEvent?: OnSafeEvent): void {
     const meta = config.metadata;
-    const direction = (meta.direction as string) ?? "vertical";
+    const direction = (meta.direction as string) ?? LIST_DEFAULTS.direction;
     const labelField = fieldOf(meta, "labelField", "label");
     const iconField = fieldOf(meta, "iconField", "icon");
     const descriptionField = fieldOf(meta, "descriptionField", "description");
     const withIcons = (meta.variant as string) === "icon";
-    const pageSize = (meta.pageSize as number) ?? 0;
+    const pageSize = (meta.pageSize as number) ?? LIST_DEFAULTS.pageSize;
     const numbers = meta.pageNumbers !== false;
     const state: PagerState = { page: 1 };
 
@@ -157,7 +158,7 @@ function buildSimple(root: HTMLElement, config: ConfigBase, data: any[], onEvent
 
 function buildSelection(root: HTMLElement, config: ConfigBase, data: any[], onEvent?: OnSafeEvent): void {
     const meta = config.metadata;
-    const mode = (meta.selectionMode as string) ?? "single";
+    const mode = (meta.selectionMode as string) ?? LIST_DEFAULTS.selectionMode;
     const labelField = fieldOf(meta, "labelField", "label");
     const descriptionField = fieldOf(meta, "descriptionField", "description");
     let single: number | null = null;
@@ -208,7 +209,7 @@ function buildColumns(root: HTMLElement, config: ConfigBase, data: any[], onEven
     const meta = config.metadata;
     const schema = Object.values(config.data ?? {})[0]?.schema;
     const fields = (schema?.fields ?? []) as any[];
-    const pageSize = (meta.pageSize as number) ?? 0;
+    const pageSize = (meta.pageSize as number) ?? LIST_DEFAULTS.pageSize;
     const numbers = meta.pageNumbers !== false;
     const state: PagerState = { page: 1 };
 
@@ -242,7 +243,7 @@ function buildFiles(root: HTMLElement, config: ConfigBase, data: any[], onEvent?
     const meta = config.metadata;
     const labelField = fieldOf(meta, "labelField", "name");
     const iconField = fieldOf(meta, "iconField", "icon");
-    const pageSize = (meta.pageSize as number) ?? 0;
+    const pageSize = (meta.pageSize as number) ?? LIST_DEFAULTS.pageSize;
     const numbers = meta.pageNumbers !== false;
     const state: PagerState = { page: 1 };
 
@@ -276,11 +277,6 @@ function buildFiles(root: HTMLElement, config: ConfigBase, data: any[], onEvent?
     render();
 }
 
-const STATUS_INTENT: Record<string, string> = {
-    completed: "success", "in progress": "info", pending: "neutral",
-    failed: "danger", scheduled: "warn",
-};
-
 function buildActions(root: HTMLElement, config: ConfigBase, data: any[], onEvent?: OnSafeEvent): void {
     const meta = config.metadata;
     const labelField = fieldOf(meta, "labelField", "title");
@@ -290,11 +286,15 @@ function buildActions(root: HTMLElement, config: ConfigBase, data: any[], onEven
     const actionField = fieldOf(meta, "actionField", "action");
 
     root.setAttribute("data-variant", "actions");
+    const overrides = Object.fromEntries(
+        Object.entries((meta.statusAccents as Record<string, string>) ?? {}).map(([k, v]) => [k.toLowerCase(), v]),
+    );
+    const statusAccents: Record<string, string> = { ...LIST_STATUS_ACCENTS, ...overrides };
 
     const items = el("div", "list-items");
     data.forEach((item, i) => {
         const status = item[statusField] as string | undefined;
-        const intent = status ? STATUS_INTENT[status.toLowerCase()] ?? "neutral" : undefined;
+        const intent = status ? statusAccents[status.toLowerCase()] ?? "neutral" : undefined;
         const row = el("div", "list-item");
         row.tabIndex = 0;
         row.setAttribute("role", "listitem");
@@ -355,7 +355,7 @@ function buildHierarchy(root: HTMLElement, config: ConfigBase, data: any[], onEv
     const labelField = fieldOf(meta, "labelField", "name");
     const iconField = fieldOf(meta, "iconField", "icon");
     const countField = fieldOf(meta, "countField", "count");
-    const pageSize = (meta.pageSize as number) ?? 0;
+    const pageSize = (meta.pageSize as number) ?? LIST_DEFAULTS.pageSize;
     const numbers = meta.pageNumbers !== false;
     const expanded = new Set<string>(collectGroupIds(data).slice(0, 3));
     const state: PagerState = { page: 1 };
@@ -506,12 +506,10 @@ function buildPropertyGrid(root: HTMLElement, config: ConfigBase, data: any[], o
 /*  Gantt (dark date header + activity rows)                           */
 /* ------------------------------------------------------------------ */
 
-const DAY_NAMES = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
-
 function buildGantt(root: HTMLElement, config: ConfigBase, data: any[], onEvent?: OnSafeEvent): void {
     const meta = config.metadata;
-    const title = (meta.title as string) ?? "Active Task List";
-    const days = (meta.days as number) ?? 14;
+    const title = (meta.title as string) ?? LIST_DEFAULTS.ganttTitle;
+    const days = (meta.days as number) ?? LIST_DEFAULTS.ganttDays;
     const labelField = fieldOf(meta, "labelField", "label");
     const baseStart = meta.startDate ? new Date(meta.startDate as string) : new Date();
     let offset = 0;
@@ -566,7 +564,7 @@ function buildGantt(root: HTMLElement, config: ConfigBase, data: any[], onEvent?
             const cell = el("span", "gantt-date");
             if (sameDay(d, today)) cell.setAttribute("data-today", "true");
             if (d.getDay() === 0 || d.getDay() === 6) cell.setAttribute("data-weekend", "true");
-            cell.appendChild(el("span", "gantt-day-name", DAY_NAMES[d.getDay()]));
+            cell.appendChild(el("span", "gantt-day-name", DAY_NAMES_SHORT[d.getDay()]));
             cell.appendChild(el("span", "gantt-day-num", String(d.getDate())));
             dateRow.appendChild(cell);
         }
@@ -608,7 +606,7 @@ function buildGantt(root: HTMLElement, config: ConfigBase, data: any[], onEvent?
 export function createSafeList(container: HTMLElement, config: ConfigBase, onEvent?: OnSafeEvent): HTMLElement {
     const raw = Object.values(config.data ?? {})[0]?.inline;
     const list: any[] = Array.isArray(raw) ? raw : [];
-    const variant = (config.metadata.variant as string) ?? "simple";
+    const variant = (config.metadata.variant as string) ?? LIST_DEFAULTS.variant;
 
     const root = el("div");
     root.setAttribute("data-component", "list");

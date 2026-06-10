@@ -1,27 +1,25 @@
-/**
- * SafeList — flexible collection of items, horizontal or vertical.
- * From figma "Atom List Specs" (finAtomList). Data-attributes for host CSS.
- *
- * Variants: simple, icon, selection, columns, files, actions, hierarchy,
- * property-grid, gantt.
- * Events: select, toggle (selection), expand (hierarchy/property groups),
- * action (action buttons), page (pagination), change (property edits),
- * navigate (gantt date window).
- */
 import { useState } from "react";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
-import { createSafeEvent } from "safecontracts";
+import { createSafeEvent, DAY_NAMES_SHORT, LIST_DEFAULTS, LIST_STATUS_ACCENTS } from "safecontracts";
 import * as Icons from "lucide-react";
 
-export interface SafeListProps {
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Properties
+ *
+ ----------------------------------------------------------------------------------------------------*/
+
+interface SafeListProps {
     config: ConfigBase;
     data?: any[];
     onEvent?: OnSafeEvent;
 }
 
-/* ------------------------------------------------------------------ */
-/*  Helpers                                                            */
-/* ------------------------------------------------------------------ */
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Helpers
+ *
+ ----------------------------------------------------------------------------------------------------*/
 
 function IconGlyph({ name, size = 16 }: { name?: string; size?: number }) {
     if (!name) return null;
@@ -34,24 +32,19 @@ function IconGlyph({ name, size = 16 }: { name?: string; size?: number }) {
     return <>{name}</>;
 }
 
-function fieldOf(meta: Record<string, unknown>, key: string, fallback: string): string {
-    return (meta[key] as string) ?? fallback;
+function fieldOf(meta: Record<string, unknown>, key: keyof typeof LIST_DEFAULTS, metaKey?: string): string {
+    return (meta[metaKey ?? key] as string) ?? (LIST_DEFAULTS[key] as string);
 }
 
-/** Intent tokens from metadata -> data-* attributes. Paint lives in safestyles. */
 function intentAttrs(meta: Record<string, unknown>): Record<string, string | undefined> {
     return {
         "data-accent": meta.accent as string | undefined,
         "data-surface": meta.surface as string | undefined,
         "data-spacing": meta.spacing as string | undefined,
         "data-density": meta.density as string | undefined,
-        "data-radius": meta.radius as string | undefined,
+        "data-radius": meta.radius as string | undefined
     };
 }
-
-/* ------------------------------------------------------------------ */
-/*  Pagination bar (figma: numbered links + prev/next)                 */
-/* ------------------------------------------------------------------ */
 
 function Pager({ page, totalPages, numbers, onPage }: { page: number; totalPages: number; numbers: boolean; onPage: (p: number) => void }) {
     if (totalPages <= 1) return null;
@@ -91,18 +84,20 @@ function usePager(count: number, pageSize: number, onEvent?: OnSafeEvent) {
     return { page: clamped, totalPages, slice, go };
 }
 
-/* ------------------------------------------------------------------ */
-/*  Variants                                                           */
-/* ------------------------------------------------------------------ */
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Implementation
+ *
+ ----------------------------------------------------------------------------------------------------*/
 
 function SimpleList({ config, data, onEvent }: { config: ConfigBase; data: any[]; onEvent?: OnSafeEvent }) {
     const meta = config.metadata;
-    const direction = (meta.direction as string) ?? "vertical";
-    const labelField = fieldOf(meta, "labelField", "label");
-    const iconField = fieldOf(meta, "iconField", "icon");
-    const descriptionField = fieldOf(meta, "descriptionField", "description");
+    const direction = (meta.direction as string) ?? LIST_DEFAULTS.direction;
+    const labelField = fieldOf(meta, "labelField");
+    const iconField = fieldOf(meta, "iconField");
+    const descriptionField = fieldOf(meta, "descriptionField");
     const withIcons = (meta.variant as string) === "icon";
-    const pageSize = (meta.pageSize as number) ?? 0;
+    const pageSize = (meta.pageSize as number) ?? LIST_DEFAULTS.pageSize;
     const numbers = meta.pageNumbers !== false;
     const { page, totalPages, slice, go } = usePager(data.length, pageSize, onEvent);
 
@@ -135,9 +130,9 @@ function SimpleList({ config, data, onEvent }: { config: ConfigBase; data: any[]
 
 function SelectionList({ config, data, onEvent }: { config: ConfigBase; data: any[]; onEvent?: OnSafeEvent }) {
     const meta = config.metadata;
-    const mode = (meta.selectionMode as string) ?? "single";
-    const labelField = fieldOf(meta, "labelField", "label");
-    const descriptionField = fieldOf(meta, "descriptionField", "description");
+    const mode = (meta.selectionMode as string) ?? LIST_DEFAULTS.selectionMode;
+    const labelField = fieldOf(meta, "labelField");
+    const descriptionField = fieldOf(meta, "descriptionField");
     const [single, setSingle] = useState<number | null>(null);
     const [multi, setMulti] = useState<Set<number>>(new Set());
 
@@ -189,7 +184,7 @@ function ColumnsList({ config, data, onEvent }: { config: ConfigBase; data: any[
     const meta = config.metadata;
     const schema = Object.values(config.data ?? {})[0]?.schema;
     const fields = schema?.fields ?? [];
-    const pageSize = (meta.pageSize as number) ?? 0;
+    const pageSize = (meta.pageSize as number) ?? LIST_DEFAULTS.pageSize;
     const numbers = meta.pageNumbers !== false;
     const { page, totalPages, slice, go } = usePager(data.length, pageSize, onEvent);
 
@@ -227,9 +222,9 @@ function ColumnsList({ config, data, onEvent }: { config: ConfigBase; data: any[
 
 function FilesList({ config, data, onEvent }: { config: ConfigBase; data: any[]; onEvent?: OnSafeEvent }) {
     const meta = config.metadata;
-    const labelField = fieldOf(meta, "labelField", "name");
-    const iconField = fieldOf(meta, "iconField", "icon");
-    const pageSize = (meta.pageSize as number) ?? 0;
+    const labelField = (meta.labelField as string) ?? LIST_DEFAULTS.labelFieldByVariant.files;
+    const iconField = fieldOf(meta, "iconField");
+    const pageSize = (meta.pageSize as number) ?? LIST_DEFAULTS.pageSize;
     const numbers = meta.pageNumbers !== false;
     const { page, totalPages, slice, go } = usePager(data.length, pageSize, onEvent);
 
@@ -261,28 +256,24 @@ function FilesList({ config, data, onEvent }: { config: ConfigBase; data: any[];
     );
 }
 
-const STATUS_INTENT: Record<string, string> = {
-    completed: "success",
-    "in progress": "info",
-    pending: "neutral",
-    failed: "danger",
-    scheduled: "warn"
-};
-
 function ActionsList({ config, data, onEvent }: { config: ConfigBase; data: any[]; onEvent?: OnSafeEvent }) {
     const meta = config.metadata;
-    const labelField = fieldOf(meta, "labelField", "title");
-    const iconField = fieldOf(meta, "iconField", "icon");
-    const statusField = fieldOf(meta, "statusField", "status");
-    const timeField = fieldOf(meta, "timeField", "time");
-    const actionField = fieldOf(meta, "actionField", "action");
+    const labelField = (meta.labelField as string) ?? LIST_DEFAULTS.labelFieldByVariant.actions;
+    const iconField = fieldOf(meta, "iconField");
+    const statusField = fieldOf(meta, "statusField");
+    const timeField = fieldOf(meta, "timeField");
+    const actionField = fieldOf(meta, "actionField");
+    const overrides = Object.fromEntries(
+        Object.entries((meta.statusAccents as Record<string, string>) ?? {}).map(([k, v]) => [k.toLowerCase(), v]),
+    );
+    const statusAccents = { ...LIST_STATUS_ACCENTS, ...overrides };
 
     return (
         <div data-component="list" data-variant="actions" {...intentAttrs(meta)}>
             <div data-role="list-items">
                 {data.map((item, i) => {
                     const status = item[statusField] as string | undefined;
-                    const intent = status ? (STATUS_INTENT[status.toLowerCase()] ?? "neutral") : undefined;
+                    const intent = status ? (statusAccents[status.toLowerCase()] ?? "neutral") : undefined;
                     return (
                         <div key={i} data-role="list-item" tabIndex={0} role="listitem">
                             <span data-role="item-icon">
@@ -316,10 +307,6 @@ function ActionsList({ config, data, onEvent }: { config: ConfigBase; data: any[
     );
 }
 
-/* ------------------------------------------------------------------ */
-/*  Hierarchy (expandable tree, paginated flat view)                   */
-/* ------------------------------------------------------------------ */
-
 function flattenTree(nodes: any[], expanded: Set<string>, level = 0): any[] {
     const out: any[] = [];
     for (const node of nodes) {
@@ -344,10 +331,10 @@ function collectGroupIds(nodes: any[]): string[] {
 
 function HierarchyList({ config, data, onEvent }: { config: ConfigBase; data: any[]; onEvent?: OnSafeEvent }) {
     const meta = config.metadata;
-    const labelField = fieldOf(meta, "labelField", "name");
-    const iconField = fieldOf(meta, "iconField", "icon");
-    const countField = fieldOf(meta, "countField", "count");
-    const pageSize = (meta.pageSize as number) ?? 0;
+    const labelField = (meta.labelField as string) ?? LIST_DEFAULTS.labelFieldByVariant.hierarchy;
+    const iconField = fieldOf(meta, "iconField");
+    const countField = fieldOf(meta, "countField");
+    const pageSize = (meta.pageSize as number) ?? LIST_DEFAULTS.pageSize;
     const numbers = meta.pageNumbers !== false;
     const [expanded, setExpanded] = useState<Set<string>>(() => new Set(collectGroupIds(data).slice(0, 3)));
 
@@ -403,12 +390,8 @@ function HierarchyList({ config, data, onEvent }: { config: ConfigBase; data: an
     );
 }
 
-/* ------------------------------------------------------------------ */
-/*  Property grid (grouped name/value rows, editable values)           */
-/* ------------------------------------------------------------------ */
-
 function PropertyGrid({ config, data, onEvent }: { config: ConfigBase; data: any[]; onEvent?: OnSafeEvent }) {
-  const meta = config.metadata;
+    const meta = config.metadata;
     const [expanded, setExpanded] = useState<Set<string>>(() => new Set(data.filter((g) => g.children?.length).map((g) => String(g.id))));
     const [values, setValues] = useState<Record<string, unknown>>(() => {
         const init: Record<string, unknown> = {};
@@ -493,17 +476,11 @@ function PropertyGrid({ config, data, onEvent }: { config: ConfigBase; data: any
     );
 }
 
-/* ------------------------------------------------------------------ */
-/*  Gantt (dark date header + activity rows)                           */
-/* ------------------------------------------------------------------ */
-
-const DAY_NAMES = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
-
 function GanttList({ config, data, onEvent }: { config: ConfigBase; data: any[]; onEvent?: OnSafeEvent }) {
     const meta = config.metadata;
-    const title = (meta.title as string) ?? "Active Task List";
-    const days = (meta.days as number) ?? 14;
-    const labelField = fieldOf(meta, "labelField", "label");
+    const title = (meta.title as string) ?? LIST_DEFAULTS.ganttTitle;
+    const days = (meta.days as number) ?? LIST_DEFAULTS.ganttDays;
+    const labelField = fieldOf(meta, "labelField");
     const baseStart = meta.startDate ? new Date(meta.startDate as string) : new Date();
     const [offset, setOffset] = useState(0);
 
@@ -545,7 +522,7 @@ function GanttList({ config, data, onEvent }: { config: ConfigBase; data: any[];
                     <span data-role="gantt-dates" style={{ gridTemplateColumns: `repeat(${days}, 1fr)` }}>
                         {dates.map((d, i) => (
                             <span key={i} data-role="gantt-date" data-today={sameDay(d, today) || undefined} data-weekend={d.getDay() === 0 || d.getDay() === 6 || undefined}>
-                                <span data-role="gantt-day-name">{DAY_NAMES[d.getDay()]}</span>
+                                <span data-role="gantt-day-name">{DAY_NAMES_SHORT[d.getDay()]}</span>
                                 <span data-role="gantt-day-num">{d.getDate()}</span>
                             </span>
                         ))}
@@ -577,14 +554,10 @@ function GanttList({ config, data, onEvent }: { config: ConfigBase; data: any[];
     );
 }
 
-/* ------------------------------------------------------------------ */
-/*  Main export                                                        */
-/* ------------------------------------------------------------------ */
-
 export function SafeList({ config, data, onEvent }: SafeListProps) {
     const raw = data ?? (Object.values(config.data ?? {})[0]?.inline as any[] | undefined);
     const list = Array.isArray(raw) ? raw : [];
-    const variant = (config.metadata.variant as string) ?? "simple";
+    const variant = (config.metadata.variant as string) ?? LIST_DEFAULTS.variant;
 
     switch (variant) {
         case "simple":
