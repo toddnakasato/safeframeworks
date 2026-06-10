@@ -1,17 +1,27 @@
 <!--
   SafeNav — Svelte 4 nav component.
-  Outputs data-* attributes for intent. No hardcoded CSS.
+  navStyle "accordion" renders via shared-mapping nav builder (./nav) —
+  identical across frameworks (figma Shopfront design).
 -->
 <script lang="ts">
+  import { onMount, onDestroy } from 'svelte';
   import type { ConfigBase, OnSafeEvent } from 'safecontracts';
+  import { createSafeNav } from './nav';
+
   export let config: ConfigBase;
   export let onEvent: OnSafeEvent | undefined = undefined;
+
+  let container: HTMLElement;
+  let root: HTMLElement | null = null;
+
+  onMount(() => {
+    root = createSafeNav(container, config, onEvent);
+  });
+
+  onDestroy(() => {
+    root?.remove();
+    root = null;
+  });
 </script>
 
-<div
-  data-component="nav"
-  data-nav-style={config.metadata.navStyle}
->
-  {#if config.metadata.title}<div data-nav-header><div data-nav-logo>{config.metadata.title?.charAt(0)}</div><div data-nav-title>{config.metadata.title}</div></div>{/if}
-    <nav data-nav-main><slot /></nav>
-</div>
+<div bind:this={container} style="height:100%"></div>

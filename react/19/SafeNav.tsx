@@ -5,10 +5,11 @@
  *
  * navStyle variants: classic (more to come).
  */
-import { useState, type ReactNode } from "react";
+import { useState, useRef, useEffect, type ReactNode } from "react";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
 import { createSafeEvent } from "safecontracts";
 import * as Icons from "lucide-react";
+import { createSafeNav } from "./nav";
 
 export interface SafeNavProps {
   config: ConfigBase;
@@ -18,7 +19,20 @@ export interface SafeNavProps {
 export function SafeNav({ config, onEvent }: SafeNavProps) {
   const navStyle = (config.metadata.navStyle as string) ?? "classic";
   if (navStyle === "classic") return <NavClassic config={config} onEvent={onEvent} />;
+  if (navStyle === "accordion") return <NavBuilder config={config} onEvent={onEvent} />;
   return <div data-component="nav" data-nav-style={navStyle}>Unknown navStyle: {navStyle}</div>;
+}
+
+// ─── Builder-backed styles (accordion) ──────────────────────────────────────
+
+function NavBuilder({ config, onEvent }: SafeNavProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (!containerRef.current) return;
+    const root = createSafeNav(containerRef.current, config, onEvent);
+    return () => root.remove();
+  }, [config, onEvent]);
+  return <div ref={containerRef} style={{ height: "100%" }} />;
 }
 
 // ─── Icon resolver ──────────────────────────────────────────────────────────

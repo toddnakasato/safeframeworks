@@ -22,7 +22,8 @@
     "react-markdown": "*",
     "recharts": "*",
     "remark-gfm": "*",
-    "chart.js": "^4"
+    "chart.js": "^4",
+    "lucide": "^0.469"
   },
   "devDependencies": {
     "@types/d3": "^7.4.3",

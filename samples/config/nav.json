@@ -1,23 +1,232 @@
 {
   "component": "nav",
   "metadata": {
-    "navStyle": "classic",
-    "title": "Viewer",
-    "search": true
+    "navStyle": "accordion",
+    "title": "Shopfront",
+    "subtitle": "Admin Panel",
+    "icon": "store",
+    "headerColor": "#6366f1"
   },
   "children": {
-    "home": {
+    "orders": {
       "component": "nav",
       "metadata": {
-        "label": "Home",
-        "icon": "home"
+        "label": "Orders",
+        "icon": "shopping-cart",
+        "accentColor": "#6366f1"
+      },
+      "children": {
+        "all-orders": {
+          "component": "nav",
+          "metadata": {
+            "label": "All Orders",
+            "badge": "234"
+          }
+        },
+        "pending": {
+          "component": "nav",
+          "metadata": {
+            "label": "Pending",
+            "badge": "12"
+          }
+        },
+        "fulfilled": {
+          "component": "nav",
+          "metadata": {
+            "label": "Fulfilled"
+          }
+        },
+        "cancelled": {
+          "component": "nav",
+          "metadata": {
+            "label": "Cancelled"
+          }
+        },
+        "returns": {
+          "component": "nav",
+          "metadata": {
+            "label": "Returns",
+            "badge": "3"
+          }
+        }
       }
     },
-    "settings": {
+    "catalog": {
       "component": "nav",
       "metadata": {
-        "label": "Settings",
-        "icon": "settings",
+        "label": "Catalog",
+        "icon": "package",
+        "accentColor": "#ec4899"
+      },
+      "children": {
+        "products": {
+          "component": "nav",
+          "metadata": {
+            "label": "Products"
+          }
+        },
+        "collections": {
+          "component": "nav",
+          "metadata": {
+            "label": "Collections"
+          }
+        },
+        "pricing": {
+          "component": "nav",
+          "metadata": {
+            "label": "Pricing"
+          }
+        },
+        "tags-attributes": {
+          "component": "nav",
+          "metadata": {
+            "label": "Tags & Attributes"
+          }
+        }
+      }
+    },
+    "customers": {
+      "component": "nav",
+      "metadata": {
+        "label": "Customers",
+        "icon": "star",
+        "accentColor": "#f59e0b"
+      },
+      "children": {
+        "all-customers": {
+          "component": "nav",
+          "metadata": {
+            "label": "All Customers"
+          }
+        },
+        "segments": {
+          "component": "nav",
+          "metadata": {
+            "label": "Segments"
+          }
+        },
+        "loyalty": {
+          "component": "nav",
+          "metadata": {
+            "label": "Loyalty"
+          }
+        }
+      }
+    },
+    "finance": {
+      "component": "nav",
+      "metadata": {
+        "label": "Finance",
+        "icon": "credit-card",
+        "accentColor": "#10b981"
+      },
+      "children": {
+        "transactions": {
+          "component": "nav",
+          "metadata": {
+            "label": "Transactions"
+          }
+        },
+        "payouts": {
+          "component": "nav",
+          "metadata": {
+            "label": "Payouts"
+          }
+        },
+        "invoices": {
+          "component": "nav",
+          "metadata": {
+            "label": "Invoices"
+          }
+        }
+      }
+    },
+    "analytics": {
+      "component": "nav",
+      "metadata": {
+        "label": "Analytics",
+        "icon": "bar-chart",
+        "accentColor": "#3b82f6"
+      },
+      "children": {
+        "overview": {
+          "component": "nav",
+          "metadata": {
+            "label": "Overview"
+          }
+        },
+        "sales": {
+          "component": "nav",
+          "metadata": {
+            "label": "Sales"
+          }
+        },
+        "traffic": {
+          "component": "nav",
+          "metadata": {
+            "label": "Traffic"
+          }
+        }
+      }
+    },
+    "marketing": {
+      "component": "nav",
+      "metadata": {
+        "label": "Marketing",
+        "icon": "megaphone",
+        "accentColor": "#8b5cf6"
+      },
+      "children": {
+        "campaigns": {
+          "component": "nav",
+          "metadata": {
+            "label": "Campaigns"
+          }
+        },
+        "email": {
+          "component": "nav",
+          "metadata": {
+            "label": "Email",
+            "badge": "New"
+          }
+        },
+        "discounts": {
+          "component": "nav",
+          "metadata": {
+            "label": "Discounts"
+          }
+        }
+      }
+    },
+    "globe": {
+      "component": "nav",
+      "metadata": {
+        "label": "",
+        "icon": "globe",
+        "section": "bottom"
+      }
+    },
+    "refresh": {
+      "component": "nav",
+      "metadata": {
+        "label": "",
+        "icon": "refresh-ccw",
+        "section": "bottom"
+      }
+    },
+    "shipping": {
+      "component": "nav",
+      "metadata": {
+        "label": "",
+        "icon": "truck",
+        "section": "bottom"
+      }
+    },
+    "mail": {
+      "component": "nav",
+      "metadata": {
+        "label": "",
+        "icon": "mail",
         "section": "bottom"
       }
     }

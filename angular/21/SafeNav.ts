@@ -1,29 +1,34 @@
 /**
  * SafeNav — Angular nav component.
- * Implements nav contract from safecontracts.
+ * navStyle "accordion" renders via shared-mapping nav builder (./nav) —
+ * identical across frameworks (figma Shopfront design).
  * Outputs data-* attributes for intent. No hardcoded CSS.
  */
-import { Component, Input } from '@angular/core';
-import { NgIf } from '@angular/common';
+import { Component, Input, ElementRef, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
+import { createSafeNav } from './nav';
 
 @Component({
   selector: 'safe-nav',
   standalone: true,
-  imports: [NgIf],
-  template: `
-    <div *ngIf="config.metadata.title" data-nav-header>
-      <div data-nav-logo>{{ config.metadata.title?.charAt(0) }}</div>
-      <div data-nav-title>{{ config.metadata.title }}</div>
-    </div>
-    <nav data-nav-main><ng-content></ng-content></nav>
-  `,
+  template: `<div #navContainer style="height:100%"></div>`,
   host: {
     '[attr.data-component]': "'nav'",
     '[attr.data-nav-style]': 'config.metadata.navStyle'
   }
 })
-export class SafeNavComponent {
+export class SafeNavComponent implements AfterViewInit, OnDestroy {
   @Input() config!: ConfigBase;
   @Input() onEvent?: OnSafeEvent;
+  @ViewChild('navContainer') containerRef!: ElementRef<HTMLElement>;
+  private root: HTMLElement | null = null;
+
+  ngAfterViewInit() {
+    this.root = createSafeNav(this.containerRef.nativeElement, this.config, this.onEvent);
+  }
+
+  ngOnDestroy() {
+    this.root?.remove();
+    this.root = null;
+  }
 }

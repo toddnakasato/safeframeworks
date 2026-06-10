@@ -1,17 +1,18 @@
 ---
 /**
  * SafeNav — Astro 6 nav component.
- * Outputs data-* attributes for intent. No hardcoded CSS.
+ * navStyle "accordion" renders via shared-mapping nav builder (./nav) —
+ * identical across frameworks (figma Shopfront design).
+ * Server-renders the shell; a client script mounts the nav.
  */
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
 interface Props { config: ConfigBase; onEvent?: OnSafeEvent; }
-const { config, onEvent } = Astro.props;
+const { config } = Astro.props;
 ---
 
-<div
-  data-component="nav"
-  data-nav-style={config.metadata.navStyle}
->
-  {config.metadata.title && <div data-nav-header><div data-nav-logo>{config.metadata.title?.charAt(0)}</div><div data-nav-title>{config.metadata.title}</div></div>}
-      <nav data-nav-main><slot /></nav>
-</div>
+<div data-nav-config={JSON.stringify(config)} style="height:100%"></div>
+
+<script>
+  import { initSafeNavs } from "./nav";
+  initSafeNavs();
+</script>

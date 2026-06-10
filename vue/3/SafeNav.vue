@@ -1,18 +1,27 @@
 <!--
   SafeNav — Vue 3 nav component.
-  Outputs data-* attributes for intent. No hardcoded CSS.
+  navStyle "accordion" renders via shared-mapping nav builder (./nav) —
+  identical across frameworks (figma Shopfront design).
 -->
 <script setup lang="ts">
+import { ref, onMounted, onBeforeUnmount } from 'vue';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-defineProps<{ config: ConfigBase; onEvent?: OnSafeEvent }>();
+import { createSafeNav } from './nav';
+
+const props = defineProps<{ config: ConfigBase; onEvent?: OnSafeEvent }>();
+const containerRef = ref<HTMLElement | null>(null);
+let root: HTMLElement | null = null;
+
+onMounted(() => {
+  if (containerRef.value) root = createSafeNav(containerRef.value, props.config, props.onEvent);
+});
+
+onBeforeUnmount(() => {
+  root?.remove();
+  root = null;
+});
 </script>
 
 <template>
-  <div
-    data-component="nav"
-    :data-nav-style="config.metadata.navStyle"
-  >
-      <div v-if="config.metadata.title" data-nav-header><div data-nav-logo>{{ config.metadata.title?.charAt(0) }}</div><div data-nav-title>{{ config.metadata.title }}</div></div>
-      <nav data-nav-main><slot /></nav>
-  </div>
+  <div ref="containerRef" style="height:100%"></div>
 </template>
