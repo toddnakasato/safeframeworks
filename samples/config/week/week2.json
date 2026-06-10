@@ -1,0 +1,13 @@
+{
+  "component": "week",
+  "metadata": {
+    "variant": "dense"
+  },
+  "eventHandler": {
+    "handler": "week",
+    "events": [
+      "navigate",
+      "select"
+    ]
+  }
+}

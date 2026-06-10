@@ -1,0 +1,8 @@
+{
+  "component": "columns",
+  "metadata": {
+    "spacing": "loose",
+    "radius": "lg",
+    "surface": "raised"
+  }
+}

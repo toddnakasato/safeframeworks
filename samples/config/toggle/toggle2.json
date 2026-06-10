@@ -1,0 +1,16 @@
+{
+  "component": "toggle",
+  "metadata": {
+    "variant": "checkbox",
+    "disabled": false,
+    "labelPosition": "left",
+    "label": "Email notifications"
+  },
+  "eventHandler": {
+    "handler": "toggle",
+    "events": [
+      "change",
+      "expand"
+    ]
+  }
+}

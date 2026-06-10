@@ -1,0 +1,8 @@
+{
+  "component": "callout",
+  "metadata": {
+    "variant": "warn",
+    "position": "bottom",
+    "message": "Scheduled maintenance tonight at 11 PM."
+  }
+}

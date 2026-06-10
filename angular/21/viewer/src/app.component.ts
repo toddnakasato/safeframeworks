@@ -39,167 +39,224 @@ import { SafeNavComponent } from '../../SafeNav';
         <button *ngFor="let s of styles" class="style-btn" [class.active]="s === activeStyle" (click)="switchStyle(s)">{{s}}</button>
 
         <div class="section-label" style="margin-top:16px">COMPONENTS</div>
-        <button class="comp-btn" [class.active]="activeComponent === null" (click)="activeComponent = null">All</button>
-        <button *ngFor="let name of componentNames" class="comp-btn" [class.active]="activeComponent === name" (click)="activeComponent = name">{{name}}</button>
+        <button class="comp-btn" [class.active]="activeComponent === null" (click)="selectComponent(null)">All</button>
+        <ng-container *ngFor="let name of componentNames">
+          <button class="comp-btn" [class.active]="activeComponent === name && !activeVariation" (click)="selectComponent(name)">{{name}}</button>
+          <ng-container *ngIf="activeComponent === name">
+            <button *ngFor="let v of allVariations(name)" class="var-btn" [class.active]="activeVariation === v" (click)="selectVariation(name, v)">{{v}}</button>
+          </ng-container>
+        </ng-container>
       </div>
       <div class="main">
-        <h3>angular/21 — {{activeStyle}}<span *ngIf="activeComponent" class="active-comp"> — {{activeComponent}}</span></h3>
-        <div class="component-card" *ngIf="activeComponent === null || activeComponent === 'layout'">
-          <div class="component-label">layout</div>
-          <div class="component-body">
-            <safe-layout [config]="layoutConfig"></safe-layout>
+        <h3>angular/21 — {{activeStyle}}<span *ngIf="activeComponent" class="active-comp"> — {{activeVariation ?? activeComponent}}</span></h3>
+        <ng-container *ngIf="show('layout')">
+          <div class="component-card" *ngFor="let v of variations('layout')">
+            <div class="component-label">{{v}}</div>
+            <div class="component-body">
+              <safe-layout [config]="cfg('layout', v)"></safe-layout>
+            </div>
           </div>
-        </div>
-        <div class="component-card" *ngIf="activeComponent === null || activeComponent === 'columns'">
-          <div class="component-label">columns</div>
-          <div class="component-body">
-            <safe-columns [config]="columnsConfig"></safe-columns>
+        </ng-container>
+        <ng-container *ngIf="show('columns')">
+          <div class="component-card" *ngFor="let v of variations('columns')">
+            <div class="component-label">{{v}}</div>
+            <div class="component-body">
+              <safe-columns [config]="cfg('columns', v)"></safe-columns>
+            </div>
           </div>
-        </div>
-        <div class="component-card" *ngIf="activeComponent === null || activeComponent === 'card'">
-          <div class="component-label">card</div>
-          <div class="component-body">
-            <safe-card [config]="cardConfig"></safe-card>
+        </ng-container>
+        <ng-container *ngIf="show('card')">
+          <div class="component-card" *ngFor="let v of variations('card')">
+            <div class="component-label">{{v}}</div>
+            <div class="component-body">
+              <safe-card [config]="cfg('card', v)"></safe-card>
+            </div>
           </div>
-        </div>
-        <div class="component-card" *ngIf="activeComponent === null || activeComponent === 'button'">
-          <div class="component-label">button</div>
-          <div class="component-body">
-            <safe-button [config]="buttonConfig"></safe-button>
+        </ng-container>
+        <ng-container *ngIf="show('button')">
+          <div class="component-card" *ngFor="let v of variations('button')">
+            <div class="component-label">{{v}}</div>
+            <div class="component-body">
+              <safe-button [config]="cfg('button', v)"></safe-button>
+            </div>
           </div>
-        </div>
-        <div class="component-card" *ngIf="activeComponent === null || activeComponent === 'table'">
-          <div class="component-label">table</div>
-          <div class="component-body">
-            <safe-table [config]="tableConfig"></safe-table>
+        </ng-container>
+        <ng-container *ngIf="show('table')">
+          <div class="component-card" *ngFor="let v of variations('table')">
+            <div class="component-label">{{v}}</div>
+            <div class="component-body">
+              <safe-table [config]="cfg('table', v)"></safe-table>
+            </div>
           </div>
-        </div>
-        <div class="component-card" *ngIf="activeComponent === null || activeComponent === 'tree'">
-          <div class="component-label">tree</div>
-          <div class="component-body">
-            <safe-tree [config]="treeConfig"></safe-tree>
+        </ng-container>
+        <ng-container *ngIf="show('tree')">
+          <div class="component-card" *ngFor="let v of variations('tree')">
+            <div class="component-label">{{v}}</div>
+            <div class="component-body">
+              <safe-tree [config]="cfg('tree', v)"></safe-tree>
+            </div>
           </div>
-        </div>
-        <div class="component-card" *ngIf="activeComponent === null || activeComponent === 'sheet'">
-          <div class="component-label">sheet</div>
-          <div class="component-body">
-            <safe-sheet [config]="sheetConfig"></safe-sheet>
+        </ng-container>
+        <ng-container *ngIf="show('sheet')">
+          <div class="component-card" *ngFor="let v of variations('sheet')">
+            <div class="component-label">{{v}}</div>
+            <div class="component-body">
+              <safe-sheet [config]="cfg('sheet', v)"></safe-sheet>
+            </div>
           </div>
-        </div>
-        <div class="component-card" *ngIf="activeComponent === null || activeComponent === 'chart'">
-          <div class="component-label">chart</div>
-          <div class="component-body">
-            <safe-chart [config]="chartConfig"></safe-chart>
+        </ng-container>
+        <ng-container *ngIf="show('chart')">
+          <div class="component-card" *ngFor="let v of variations('chart')">
+            <div class="component-label">{{v}}</div>
+            <div class="component-body">
+              <safe-chart [config]="cfg('chart', v)"></safe-chart>
+            </div>
           </div>
-        </div>
-        <div class="component-card" *ngIf="activeComponent === null || activeComponent === 'heatmap'">
-          <div class="component-label">heatmap</div>
-          <div class="component-body">
-            <safe-heatmap [config]="heatmapConfig"></safe-heatmap>
+        </ng-container>
+        <ng-container *ngIf="show('heatmap')">
+          <div class="component-card" *ngFor="let v of variations('heatmap')">
+            <div class="component-label">{{v}}</div>
+            <div class="component-body">
+              <safe-heatmap [config]="cfg('heatmap', v)"></safe-heatmap>
+            </div>
           </div>
-        </div>
-        <div class="component-card" *ngIf="activeComponent === null || activeComponent === 'gauge'">
-          <div class="component-label">gauge</div>
-          <div class="component-body">
-            <safe-gauge [config]="gaugeConfig"></safe-gauge>
+        </ng-container>
+        <ng-container *ngIf="show('gauge')">
+          <div class="component-card" *ngFor="let v of variations('gauge')">
+            <div class="component-label">{{v}}</div>
+            <div class="component-body">
+              <safe-gauge [config]="cfg('gauge', v)"></safe-gauge>
+            </div>
           </div>
-        </div>
-        <div class="component-card" *ngIf="activeComponent === null || activeComponent === 'funnel'">
-          <div class="component-label">funnel</div>
-          <div class="component-body">
-            <safe-funnel [config]="funnelConfig"></safe-funnel>
+        </ng-container>
+        <ng-container *ngIf="show('funnel')">
+          <div class="component-card" *ngFor="let v of variations('funnel')">
+            <div class="component-label">{{v}}</div>
+            <div class="component-body">
+              <safe-funnel [config]="cfg('funnel', v)"></safe-funnel>
+            </div>
           </div>
-        </div>
-        <div class="component-card" *ngIf="activeComponent === null || activeComponent === 'sankey'">
-          <div class="component-label">sankey</div>
-          <div class="component-body">
-            <safe-sankey [config]="sankeyConfig"></safe-sankey>
+        </ng-container>
+        <ng-container *ngIf="show('sankey')">
+          <div class="component-card" *ngFor="let v of variations('sankey')">
+            <div class="component-label">{{v}}</div>
+            <div class="component-body">
+              <safe-sankey [config]="cfg('sankey', v)"></safe-sankey>
+            </div>
           </div>
-        </div>
-        <div class="component-card" *ngIf="activeComponent === null || activeComponent === 'treemap'">
-          <div class="component-label">treemap</div>
-          <div class="component-body">
-            <safe-treemap [config]="treemapConfig"></safe-treemap>
+        </ng-container>
+        <ng-container *ngIf="show('treemap')">
+          <div class="component-card" *ngFor="let v of variations('treemap')">
+            <div class="component-label">{{v}}</div>
+            <div class="component-body">
+              <safe-treemap [config]="cfg('treemap', v)"></safe-treemap>
+            </div>
           </div>
-        </div>
-        <div class="component-card" *ngIf="activeComponent === null || activeComponent === 'timeline'">
-          <div class="component-label">timeline</div>
-          <div class="component-body">
-            <safe-timeline [config]="timelineConfig"></safe-timeline>
+        </ng-container>
+        <ng-container *ngIf="show('timeline')">
+          <div class="component-card" *ngFor="let v of variations('timeline')">
+            <div class="component-label">{{v}}</div>
+            <div class="component-body">
+              <safe-timeline [config]="cfg('timeline', v)"></safe-timeline>
+            </div>
           </div>
-        </div>
-        <div class="component-card" *ngIf="activeComponent === null || activeComponent === 'map'">
-          <div class="component-label">map</div>
-          <div class="component-body">
-            <safe-map [config]="mapConfig"></safe-map>
+        </ng-container>
+        <ng-container *ngIf="show('map')">
+          <div class="component-card" *ngFor="let v of variations('map')">
+            <div class="component-label">{{v}}</div>
+            <div class="component-body">
+              <safe-map [config]="cfg('map', v)"></safe-map>
+            </div>
           </div>
-        </div>
-        <div class="component-card" *ngIf="activeComponent === null || activeComponent === 'calendar'">
-          <div class="component-label">calendar</div>
-          <div class="component-body">
-            <safe-calendar [config]="calendarConfig"></safe-calendar>
+        </ng-container>
+        <ng-container *ngIf="show('calendar')">
+          <div class="component-card" *ngFor="let v of variations('calendar')">
+            <div class="component-label">{{v}}</div>
+            <div class="component-body">
+              <safe-calendar [config]="cfg('calendar', v)"></safe-calendar>
+            </div>
           </div>
-        </div>
-        <div class="component-card" *ngIf="activeComponent === null || activeComponent === 'toggle'">
-          <div class="component-label">toggle</div>
-          <div class="component-body">
-            <safe-toggle [config]="toggleConfig"></safe-toggle>
+        </ng-container>
+        <ng-container *ngIf="show('toggle')">
+          <div class="component-card" *ngFor="let v of variations('toggle')">
+            <div class="component-label">{{v}}</div>
+            <div class="component-body">
+              <safe-toggle [config]="cfg('toggle', v)"></safe-toggle>
+            </div>
           </div>
-        </div>
-        <div class="component-card" *ngIf="activeComponent === null || activeComponent === 'week'">
-          <div class="component-label">week</div>
-          <div class="component-body">
-            <safe-week [config]="weekConfig"></safe-week>
+        </ng-container>
+        <ng-container *ngIf="show('week')">
+          <div class="component-card" *ngFor="let v of variations('week')">
+            <div class="component-label">{{v}}</div>
+            <div class="component-body">
+              <safe-week [config]="cfg('week', v)"></safe-week>
+            </div>
           </div>
-        </div>
-        <div class="component-card" *ngIf="activeComponent === null || activeComponent === 'chat'">
-          <div class="component-label">chat</div>
-          <div class="component-body">
-            <safe-chat [config]="chatConfig"></safe-chat>
+        </ng-container>
+        <ng-container *ngIf="show('chat')">
+          <div class="component-card" *ngFor="let v of variations('chat')">
+            <div class="component-label">{{v}}</div>
+            <div class="component-body">
+              <safe-chat [config]="cfg('chat', v)"></safe-chat>
+            </div>
           </div>
-        </div>
-        <div class="component-card" *ngIf="activeComponent === null || activeComponent === 'tabs'">
-          <div class="component-label">tabs</div>
-          <div class="component-body">
-            <safe-tabs [config]="tabsConfig"></safe-tabs>
+        </ng-container>
+        <ng-container *ngIf="show('tabs')">
+          <div class="component-card" *ngFor="let v of variations('tabs')">
+            <div class="component-label">{{v}}</div>
+            <div class="component-body">
+              <safe-tabs [config]="cfg('tabs', v)"></safe-tabs>
+            </div>
           </div>
-        </div>
-        <div class="component-card" *ngIf="activeComponent === null || activeComponent === 'callout'">
-          <div class="component-label">callout</div>
-          <div class="component-body">
-            <safe-callout [config]="calloutConfig"></safe-callout>
+        </ng-container>
+        <ng-container *ngIf="show('callout')">
+          <div class="component-card" *ngFor="let v of variations('callout')">
+            <div class="component-label">{{v}}</div>
+            <div class="component-body">
+              <safe-callout [config]="cfg('callout', v)"></safe-callout>
+            </div>
           </div>
-        </div>
-        <div class="component-card" *ngIf="activeComponent === null || activeComponent === 'drag-drop'">
-          <div class="component-label">drag-drop</div>
-          <div class="component-body">
-            <safe-drag-drop [config]="dragdropConfig"></safe-drag-drop>
+        </ng-container>
+        <ng-container *ngIf="show('drag-drop')">
+          <div class="component-card" *ngFor="let v of variations('drag-drop')">
+            <div class="component-label">{{v}}</div>
+            <div class="component-body">
+              <safe-drag-drop [config]="cfg('drag-drop', v)"></safe-drag-drop>
+            </div>
           </div>
-        </div>
-        <div class="component-card" *ngIf="activeComponent === null || activeComponent === 'grid'">
-          <div class="component-label">grid</div>
-          <div class="component-body">
-            <safe-grid [config]="gridConfig"></safe-grid>
+        </ng-container>
+        <ng-container *ngIf="show('grid')">
+          <div class="component-card" *ngFor="let v of variations('grid')">
+            <div class="component-label">{{v}}</div>
+            <div class="component-body">
+              <safe-grid [config]="cfg('grid', v)"></safe-grid>
+            </div>
           </div>
-        </div>
-        <div class="component-card" *ngIf="activeComponent === null || activeComponent === 'input'">
-          <div class="component-label">input</div>
-          <div class="component-body">
-            <safe-input [config]="inputConfig"></safe-input>
+        </ng-container>
+        <ng-container *ngIf="show('input')">
+          <div class="component-card" *ngFor="let v of variations('input')">
+            <div class="component-label">{{v}}</div>
+            <div class="component-body">
+              <safe-input [config]="cfg('input', v)"></safe-input>
+            </div>
           </div>
-        </div>
-        <div class="component-card" *ngIf="activeComponent === null || activeComponent === 'picker'">
-          <div class="component-label">picker</div>
-          <div class="component-body">
-            <safe-picker [config]="pickerConfig"></safe-picker>
+        </ng-container>
+        <ng-container *ngIf="show('picker')">
+          <div class="component-card" *ngFor="let v of variations('picker')">
+            <div class="component-label">{{v}}</div>
+            <div class="component-body">
+              <safe-picker [config]="cfg('picker', v)"></safe-picker>
+            </div>
           </div>
-        </div>
-        <div class="component-card" *ngIf="activeComponent === null || activeComponent === 'nav'">
-          <div class="component-label">nav</div>
-          <div class="component-body">
-            <safe-nav [config]="navConfig"></safe-nav>
+        </ng-container>
+        <ng-container *ngIf="show('nav')">
+          <div class="component-card" *ngFor="let v of variations('nav')">
+            <div class="component-label">{{v}}</div>
+            <div class="component-body">
+              <safe-nav [config]="cfg('nav', v)"></safe-nav>
+            </div>
           </div>
-        </div>
+        </ng-container>
       </div>
     </div>
   `,
@@ -207,10 +264,11 @@ import { SafeNavComponent } from '../../SafeNav';
     .viewer { display: flex; height: 100vh; font-family: system-ui, sans-serif; }
     .sidebar { width: 220px; border-right: 1px solid #e5e7eb; padding: 12px; overflow-y: auto; flex-shrink: 0; }
     .section-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: #6b7280; margin-bottom: 8px; }
-    .style-btn, .comp-btn { display: block; width: 100%; text-align: left; padding: 4px 8px; font-size: 13px; border: none; border-radius: 4px; cursor: pointer; background: transparent; color: #1a1a1a; margin-bottom: 2px; }
-    .style-btn.active, .comp-btn.active { background: #3b82f6; color: white; }
-    .style-btn:hover, .comp-btn:hover { background: #f3f4f6; }
-    .style-btn.active:hover, .comp-btn.active:hover { background: #3b82f6; }
+    .style-btn, .comp-btn, .var-btn { display: block; width: 100%; text-align: left; padding: 4px 8px; font-size: 13px; border: none; border-radius: 4px; cursor: pointer; background: transparent; color: #1a1a1a; margin-bottom: 2px; }
+    .var-btn { padding-left: 22px; }
+    .style-btn.active, .comp-btn.active, .var-btn.active { background: #3b82f6; color: white; }
+    .style-btn:hover, .comp-btn:hover, .var-btn:hover { background: #f3f4f6; }
+    .style-btn.active:hover, .comp-btn.active:hover, .var-btn.active:hover { background: #3b82f6; }
     .main { flex: 1; overflow-y: auto; padding: 24px; }
     h3 { font-size: 14px; font-weight: 600; margin-bottom: 16px; }
     .active-comp { font-weight: 400; color: #6b7280; }
@@ -223,34 +281,37 @@ export class AppComponent {
   styles = ['vanilla', 'tailwind', 'tailwind-daisy', 'material'];
   activeStyle = 'vanilla';
   activeComponent: string | null = null;
+  activeVariation: string | null = null;
   componentNames = Object.keys(SAMPLES).sort();
 
-  layoutConfig = SAMPLES['layout'];
-  columnsConfig = SAMPLES['columns'];
-  cardConfig = SAMPLES['card'];
-  buttonConfig = SAMPLES['button'];
-  tableConfig = SAMPLES['table'];
-  treeConfig = SAMPLES['tree'];
-  sheetConfig = SAMPLES['sheet'];
-  chartConfig = SAMPLES['chart'];
-  heatmapConfig = SAMPLES['heatmap'];
-  gaugeConfig = SAMPLES['gauge'];
-  funnelConfig = SAMPLES['funnel'];
-  sankeyConfig = SAMPLES['sankey'];
-  treemapConfig = SAMPLES['treemap'];
-  timelineConfig = SAMPLES['timeline'];
-  mapConfig = SAMPLES['map'];
-  calendarConfig = SAMPLES['calendar'];
-  toggleConfig = SAMPLES['toggle'];
-  weekConfig = SAMPLES['week'];
-  chatConfig = SAMPLES['chat'];
-  tabsConfig = SAMPLES['tabs'];
-  calloutConfig = SAMPLES['callout'];
-  dragdropConfig = SAMPLES['drag-drop'];
-  gridConfig = SAMPLES['grid'];
-  inputConfig = SAMPLES['input'];
-  pickerConfig = SAMPLES['picker'];
-  navConfig = SAMPLES['nav'];
+  show(comp: string) {
+    return this.activeComponent === null || this.activeComponent === comp;
+  }
+
+  allVariations(comp: string) {
+    return Object.keys((SAMPLES as any)[comp] ?? {}).sort();
+  }
+
+  variations(comp: string) {
+    const vs = this.allVariations(comp);
+    return this.activeVariation && this.activeComponent === comp
+      ? vs.filter(v => v === this.activeVariation)
+      : vs;
+  }
+
+  cfg(comp: string, v: string) {
+    return (SAMPLES as any)[comp][v];
+  }
+
+  selectComponent(name: string | null) {
+    this.activeComponent = name;
+    this.activeVariation = null;
+  }
+
+  selectVariation(comp: string, v: string) {
+    this.activeComponent = comp;
+    this.activeVariation = v;
+  }
 
   switchStyle(s: string) {
     this.activeStyle = s;

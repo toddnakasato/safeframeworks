@@ -1,7 +1,8 @@
 /**
- * Viewer App — renders all 26 components with style switching.
+ * Viewer App — renders all components/variations with style switching.
  * Select a safestyle (vanilla, tailwind, tailwind-daisy, material) to see
- * the same components styled differently.
+ * the same components styled differently. Sidebar: component menu with
+ * variation sub-items, generated from SAMPLES.
  */
 import { useState, useEffect } from "react";
 import { renderConfigBase } from "../../SafeRenderer";
@@ -13,10 +14,8 @@ const COMPONENT_NAMES = Object.keys(SAMPLES).sort();
 
 /** Load a safestyles CSS file dynamically. */
 function loadStyle(name: string) {
-  // Remove existing safestyle link
   const existing = document.getElementById("safestyle-link");
   if (existing) existing.remove();
-
   const link = document.createElement("link");
   link.id = "safestyle-link";
   link.rel = "stylesheet";
@@ -27,6 +26,7 @@ function loadStyle(name: string) {
 export default function App() {
   const [activeStyle, setActiveStyle] = useState<string>("vanilla");
   const [activeComponent, setActiveComponent] = useState<string | null>(null);
+  const [activeVariation, setActiveVariation] = useState<string | null>(null);
   const [events, setEvents] = useState<SafeEvent[]>([]);
 
   useEffect(() => {
@@ -37,9 +37,32 @@ export default function App() {
     setEvents(prev => [event, ...prev].slice(0, 20));
   };
 
-  const componentsToShow = activeComponent
-    ? [activeComponent]
-    : COMPONENT_NAMES;
+  const selectComponent = (name: string | null) => {
+    setActiveComponent(name);
+    setActiveVariation(null);
+  };
+  const selectVariation = (comp: string, variation: string) => {
+    setActiveComponent(comp);
+    setActiveVariation(variation);
+  };
+
+  /** [component, variation] pairs to render, per current selection. */
+  const toShow: [string, string][] = [];
+  for (const comp of activeComponent ? [activeComponent] : COMPONENT_NAMES) {
+    const variations = Object.keys(SAMPLES[comp] ?? {}).sort();
+    for (const v of activeVariation ? [activeVariation] : variations) {
+      if (SAMPLES[comp]?.[v]) toShow.push([comp, v]);
+    }
+  }
+
+  const itemStyle = (active: boolean, indent = 0): React.CSSProperties => ({
+    display: "block", width: "100%", textAlign: "left", padding: "4px 8px",
+    paddingLeft: 8 + indent * 14,
+    fontSize: 13, border: "none", borderRadius: 4, cursor: "pointer",
+    background: active ? "#3b82f6" : "transparent",
+    color: active ? "#fff" : "#1a1a1a",
+    marginBottom: 2,
+  });
 
   return (
     <div style={{ display: "flex", height: "100vh", fontFamily: "system-ui, sans-serif" }}>
@@ -49,51 +72,29 @@ export default function App() {
         <div style={{ padding: 12, borderBottom: "1px solid var(--sd-border, #e5e7eb)" }}>
           <div style={{ fontSize: 11, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.05em", color: "#6b7280", marginBottom: 8 }}>Style</div>
           {STYLES.map(s => (
-            <button
-              key={s}
-              onClick={() => setActiveStyle(s)}
-              style={{
-                display: "block", width: "100%", textAlign: "left", padding: "4px 8px",
-                fontSize: 13, border: "none", borderRadius: 4, cursor: "pointer",
-                background: s === activeStyle ? "#3b82f6" : "transparent",
-                color: s === activeStyle ? "#fff" : "#1a1a1a",
-                marginBottom: 2,
-              }}
-            >
+            <button key={s} onClick={() => setActiveStyle(s)} style={itemStyle(s === activeStyle)}>
               {s}
             </button>
           ))}
         </div>
 
-        {/* Component list */}
+        {/* Component menu with variation sub-items */}
         <div style={{ flex: 1, overflow: "auto", padding: 8 }}>
           <div style={{ fontSize: 11, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.05em", color: "#6b7280", marginBottom: 8, padding: "0 4px" }}>Components</div>
-          <button
-            onClick={() => setActiveComponent(null)}
-            style={{
-              display: "block", width: "100%", textAlign: "left", padding: "4px 8px",
-              fontSize: 13, border: "none", borderRadius: 4, cursor: "pointer",
-              background: activeComponent === null ? "#3b82f6" : "transparent",
-              color: activeComponent === null ? "#fff" : "#1a1a1a",
-              marginBottom: 2,
-            }}
-          >
+          <button onClick={() => selectComponent(null)} style={itemStyle(activeComponent === null)}>
             All
           </button>
           {COMPONENT_NAMES.map(name => (
-            <button
-              key={name}
-              onClick={() => setActiveComponent(name)}
-              style={{
-                display: "block", width: "100%", textAlign: "left", padding: "4px 8px",
-                fontSize: 13, border: "none", borderRadius: 4, cursor: "pointer",
-                background: name === activeComponent ? "#3b82f6" : "transparent",
-                color: name === activeComponent ? "#fff" : "#1a1a1a",
-                marginBottom: 2,
-              }}
-            >
-              {name}
-            </button>
+            <div key={name}>
+              <button onClick={() => selectComponent(name)} style={itemStyle(name === activeComponent && !activeVariation)}>
+                {name}
+              </button>
+              {name === activeComponent && Object.keys(SAMPLES[name]).sort().map(v => (
+                <button key={v} onClick={() => selectVariation(name, v)} style={itemStyle(v === activeVariation, 1)}>
+                  {v}
+                </button>
+              ))}
+            </div>
           ))}
         </div>
       </div>
@@ -102,24 +103,20 @@ export default function App() {
       <div style={{ flex: 1, overflow: "auto", padding: 24 }}>
         <div style={{ fontSize: 14, fontWeight: 600, marginBottom: 16, color: "#1a1a1a" }}>
           react/19 — {activeStyle}
-          {activeComponent && <span style={{ fontWeight: 400, color: "#6b7280" }}> — {activeComponent}</span>}
+          {activeComponent && <span style={{ fontWeight: 400, color: "#6b7280" }}> — {activeVariation ?? activeComponent}</span>}
         </div>
 
         <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
-          {componentsToShow.map(name => {
-            const config = SAMPLES[name];
-            if (!config) return null;
-            return (
-              <div key={name} style={{ border: "1px solid var(--sd-border, #e5e7eb)", borderRadius: 8, overflow: "hidden" }}>
-                <div style={{ padding: "8px 12px", fontSize: 11, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.05em", color: "#6b7280", borderBottom: "1px solid var(--sd-border, #e5e7eb)", background: "#fafafa" }}>
-                  {name}
-                </div>
-                <div style={{ padding: 16 }}>
-                  {renderConfigBase(config, handleEvent)}
-                </div>
+          {toShow.map(([comp, v]) => (
+            <div key={v} style={{ border: "1px solid var(--sd-border, #e5e7eb)", borderRadius: 8, overflow: "hidden" }}>
+              <div style={{ padding: "8px 12px", fontSize: 11, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.05em", color: "#6b7280", borderBottom: "1px solid var(--sd-border, #e5e7eb)", background: "#fafafa" }}>
+                {v}
               </div>
-            );
-          })}
+              <div style={{ padding: 16 }}>
+                {renderConfigBase(SAMPLES[comp][v], handleEvent)}
+              </div>
+            </div>
+          ))}
         </div>
 
         {/* Event log */}

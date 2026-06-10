@@ -1,0 +1,15 @@
+{
+  "component": "chat",
+  "metadata": {
+    "title": "Support",
+    "placeholder": "Ask a question…"
+  },
+  "eventHandler": {
+    "handler": "chat",
+    "events": [
+      "send",
+      "scroll",
+      "action"
+    ]
+  }
+}

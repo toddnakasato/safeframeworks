@@ -1,0 +1,12 @@
+{
+  "component": "funnel",
+  "metadata": {
+    "variant": "dense"
+  },
+  "eventHandler": {
+    "handler": "funnel",
+    "events": [
+      "select"
+    ]
+  }
+}

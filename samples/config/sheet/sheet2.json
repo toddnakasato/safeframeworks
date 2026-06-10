@@ -1,0 +1,15 @@
+{
+  "component": "sheet",
+  "metadata": {
+    "variant": "default",
+    "spacing": "tight",
+    "surface": "raised"
+  },
+  "eventHandler": {
+    "handler": "sheet",
+    "events": [
+      "select",
+      "edit"
+    ]
+  }
+}

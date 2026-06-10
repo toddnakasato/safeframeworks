@@ -1,0 +1,12 @@
+{
+  "component": "treemap",
+  "metadata": {
+    "variant": "dense"
+  },
+  "eventHandler": {
+    "handler": "treemap",
+    "events": [
+      "select"
+    ]
+  }
+}

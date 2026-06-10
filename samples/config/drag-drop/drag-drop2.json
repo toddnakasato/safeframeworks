@@ -1,0 +1,37 @@
+{
+  "component": "drag-drop",
+  "metadata": {
+    "variant": "default",
+    "spacing": "loose"
+  },
+  "data": {
+    "items": {
+      "name": "drag-drop-items",
+      "type": "list",
+      "source": "file",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "label": "ID",
+            "type": "text"
+          },
+          {
+            "name": "label",
+            "label": "Label",
+            "type": "text"
+          }
+        ]
+      }
+    }
+  },
+  "eventHandler": {
+    "handler": "drag-drop",
+    "events": [
+      "drag-start",
+      "drag-end",
+      "drop",
+      "file-drop"
+    ]
+  }
+}

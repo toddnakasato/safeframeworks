@@ -1,0 +1,14 @@
+{
+  "component": "button",
+  "metadata": {
+    "variant": "secondary",
+    "label": "Save Draft",
+    "size": "sm"
+  },
+  "eventHandler": {
+    "handler": "button",
+    "events": [
+      "click"
+    ]
+  }
+}

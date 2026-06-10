@@ -1,0 +1,36 @@
+{
+  "component": "tree",
+  "metadata": {
+    "variant": "default",
+    "spacing": "tight"
+  },
+  "data": {
+    "nodes": {
+      "name": "tree-nodes",
+      "type": "list",
+      "source": "file",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "label": "ID",
+            "type": "text"
+          },
+          {
+            "name": "label",
+            "label": "Label",
+            "type": "text"
+          }
+        ]
+      }
+    }
+  },
+  "eventHandler": {
+    "handler": "tree",
+    "events": [
+      "select",
+      "expand",
+      "collapse"
+    ]
+  }
+}
