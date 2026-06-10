@@ -25,13 +25,14 @@ import { SafeCalloutComponent } from '../../SafeCallout';
 import { SafeDragDropComponent } from '../../SafeDragDrop';
 import { SafeGridComponent } from '../../SafeGrid';
 import { SafeInputComponent } from '../../SafeInput';
+import { SafeListComponent } from '../../SafeList';
 import { SafePickerComponent } from '../../SafePicker';
 import { SafeNavComponent } from '../../SafeNav';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [NgFor, NgIf, SafeLayoutComponent, SafeColumnsComponent, SafeCardComponent, SafeButtonComponent, SafeTableComponent, SafeTreeComponent, SafeSheetComponent, SafeChartComponent, SafeHeatmapComponent, SafeGaugeComponent, SafeFunnelComponent, SafeSankeyComponent, SafeTreemapComponent, SafeTimelineComponent, SafeMapComponent, SafeCalendarComponent, SafeToggleComponent, SafeWeekComponent, SafeChatComponent, SafeTabsComponent, SafeCalloutComponent, SafeDragDropComponent, SafeGridComponent, SafeInputComponent, SafePickerComponent, SafeNavComponent],
+  imports: [NgFor, NgIf, SafeLayoutComponent, SafeColumnsComponent, SafeCardComponent, SafeButtonComponent, SafeTableComponent, SafeTreeComponent, SafeSheetComponent, SafeChartComponent, SafeHeatmapComponent, SafeGaugeComponent, SafeFunnelComponent, SafeSankeyComponent, SafeTreemapComponent, SafeTimelineComponent, SafeMapComponent, SafeCalendarComponent, SafeToggleComponent, SafeWeekComponent, SafeChatComponent, SafeTabsComponent, SafeCalloutComponent, SafeDragDropComponent, SafeGridComponent, SafeInputComponent, SafeListComponent, SafePickerComponent, SafeNavComponent],
   template: `
     <div class="viewer">
       <div class="sidebar">
@@ -238,6 +239,14 @@ import { SafeNavComponent } from '../../SafeNav';
             <div class="component-label">{{v}}</div>
             <div class="component-body">
               <safe-input [config]="cfg('input', v)"></safe-input>
+            </div>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="show('list')">
+          <div class="component-card" *ngFor="let v of variations('list')">
+            <div class="component-label">{{v}}</div>
+            <div class="component-body">
+              <safe-list [config]="cfg('list', v)"></safe-list>
             </div>
           </div>
         </ng-container>

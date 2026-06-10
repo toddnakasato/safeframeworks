@@ -24,5 +24,6 @@ export { default as SafeCallout } from "./SafeCallout.svelte";
 export { default as SafeDragDrop } from "./SafeDragDrop.svelte";
 export { default as SafeGrid } from "./SafeGrid.svelte";
 export { default as SafeInput } from "./SafeInput.svelte";
+export { default as SafeList } from "./SafeList.svelte";
 export { default as SafePicker } from "./SafePicker.svelte";
 export { default as SafeNav } from "./SafeNav.svelte";

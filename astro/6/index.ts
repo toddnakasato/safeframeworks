@@ -24,5 +24,6 @@ export { default as SafeCallout } from './SafeCallout.astro';
 export { default as SafeDragDrop } from './SafeDragDrop.astro';
 export { default as SafeGrid } from './SafeGrid.astro';
 export { default as SafeInput } from './SafeInput.astro';
+export { default as SafeList } from './SafeList.astro';
 export { default as SafePicker } from './SafePicker.astro';
 export { default as SafeNav } from './SafeNav.astro';

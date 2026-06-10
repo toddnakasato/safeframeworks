@@ -46,7 +46,7 @@ function Pager({
   return (
     <div data-role="list-pager">
       <button data-role="pager-btn" data-dir="prev" disabled={page <= 1} data-disabled={page <= 1 || undefined}
-        onClick={() => onPage(page - 1)}>‹</button>
+        onClick={() => onPage(page - 1)}>‹ Previous</button>
       {numbers
         ? Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => (
             <button key={p} data-role="pager-num" data-active={p === page || undefined} onClick={() => onPage(p)}>
@@ -55,7 +55,7 @@ function Pager({
           ))
         : <span data-role="pager-info">{page} / {totalPages}</span>}
       <button data-role="pager-btn" data-dir="next" disabled={page >= totalPages} data-disabled={page >= totalPages || undefined}
-        onClick={() => onPage(page + 1)}>›</button>
+        onClick={() => onPage(page + 1)}>Next ›</button>
     </div>
   );
 }

@@ -24,5 +24,6 @@ export { default as SafeCallout } from "./SafeCallout.vue";
 export { default as SafeDragDrop } from "./SafeDragDrop.vue";
 export { default as SafeGrid } from "./SafeGrid.vue";
 export { default as SafeInput } from "./SafeInput.vue";
+export { default as SafeList } from "./SafeList.vue";
 export { default as SafePicker } from "./SafePicker.vue";
 export { default as SafeNav } from "./SafeNav.vue";

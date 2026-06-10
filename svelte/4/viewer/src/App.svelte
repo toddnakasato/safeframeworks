@@ -24,10 +24,11 @@
   import SafeDragDrop from "../../SafeDragDrop.svelte";
   import SafeGrid from "../../SafeGrid.svelte";
   import SafeInput from "../../SafeInput.svelte";
+  import SafeList from "../../SafeList.svelte";
   import SafePicker from "../../SafePicker.svelte";
   import SafeNav from "../../SafeNav.svelte";
 
-  const comps = { "layout": SafeLayout, "columns": SafeColumns, "card": SafeCard, "button": SafeButton, "table": SafeTable, "tree": SafeTree, "sheet": SafeSheet, "chart": SafeChart, "heatmap": SafeHeatmap, "gauge": SafeGauge, "funnel": SafeFunnel, "sankey": SafeSankey, "treemap": SafeTreemap, "timeline": SafeTimeline, "map": SafeMap, "calendar": SafeCalendar, "toggle": SafeToggle, "week": SafeWeek, "chat": SafeChat, "tabs": SafeTabs, "callout": SafeCallout, "drag-drop": SafeDragDrop, "grid": SafeGrid, "input": SafeInput, "picker": SafePicker, "nav": SafeNav };
+  const comps = { "layout": SafeLayout, "columns": SafeColumns, "card": SafeCard, "button": SafeButton, "table": SafeTable, "tree": SafeTree, "sheet": SafeSheet, "chart": SafeChart, "heatmap": SafeHeatmap, "gauge": SafeGauge, "funnel": SafeFunnel, "sankey": SafeSankey, "treemap": SafeTreemap, "timeline": SafeTimeline, "map": SafeMap, "calendar": SafeCalendar, "toggle": SafeToggle, "week": SafeWeek, "chat": SafeChat, "tabs": SafeTabs, "callout": SafeCallout, "drag-drop": SafeDragDrop, "grid": SafeGrid, "input": SafeInput, "list": SafeList, "picker": SafePicker, "nav": SafeNav };
   const STYLES = ["vanilla", "tailwind", "tailwind-daisy", "material"];
   const componentNames = Object.keys(SAMPLES).sort();
   let activeStyle = "vanilla";

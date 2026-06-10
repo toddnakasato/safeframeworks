@@ -24,5 +24,6 @@ export { SafeCalloutComponent } from "./SafeCallout";
 export { SafeDragDropComponent } from "./SafeDragDrop";
 export { SafeGridComponent } from "./SafeGrid";
 export { SafeInputComponent } from "./SafeInput";
+export { SafeListComponent } from "./SafeList";
 export { SafePickerComponent } from "./SafePicker";
 export { SafeNavComponent } from "./SafeNav";

@@ -1820,7 +1820,7 @@
    property-grid, gantt. Intent via data-accent; paint mapped here.
    ──────────────────────────────────────────────────────────────────────────── */
 [data-component="list"] {
-  font-size: var(--sd-font-md, 13px);
+  font-size: var(--sd-font-md, 14px);
   color: var(--sd-text, #e2e8f0);
 }
 [data-component="list"] [data-role="list-items"] {
@@ -1835,11 +1835,11 @@
 [data-component="list"] [data-role="list-item"] {
   display: flex;
   align-items: center;
-  gap: var(--sd-space-md, 10px);
-  padding: var(--sd-space-md, 10px) var(--sd-space-lg, 14px);
+  gap: var(--sd-space-lg, 12px);
+  padding: 12px;
   border: 1px solid var(--sd-border, #3b4451);
-  border-radius: var(--sd-radius-md, 8px);
-  background: var(--sd-surface-sunken, #191e24);
+  border-radius: var(--sd-radius-lg, 8px);
+  background: color-mix(in srgb, var(--sd-surface-sunken, #191e24) 50%, transparent);
   cursor: pointer;
   transition: background 0.15s, border-color 0.15s;
 }
@@ -1885,24 +1885,29 @@
 }
 [data-component="list"] [data-role="pager-btn"],
 [data-component="list"] [data-role="pager-num"] {
-  min-width: 28px;
-  height: 28px;
-  padding: 0 6px;
-  border: 1px solid var(--sd-border, #3b4451);
-  border-radius: var(--sd-radius-md, 8px);
+  min-width: 36px;
+  height: 36px;
+  padding: 0 10px;
+  border: none;
+  border-radius: var(--sd-radius-lg, 8px);
   background: transparent;
   color: var(--sd-text, #e2e8f0);
-  font-size: var(--sd-font-sm, 12px);
+  font-size: var(--sd-font-md, 14px);
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
 }
 [data-component="list"] [data-role="pager-btn"]:hover:not([data-disabled]),
 [data-component="list"] [data-role="pager-num"]:hover {
   background: var(--sd-surface-raised, #2a323c);
 }
 [data-component="list"] [data-role="pager-num"][data-active] {
-  background: var(--sd-accent, #7480ff);
-  border-color: transparent;
-  color: var(--sd-text-inverse, #1d232a);
+  background: transparent;
+  border: 1px solid var(--sd-border, #3b4451);
+  color: var(--sd-text, #e2e8f0);
+  font-weight: 500;
 }
 [data-component="list"] [data-role="pager-btn"][data-disabled] {
   opacity: 0.4;
@@ -1917,7 +1922,8 @@
 /* Selection */
 [data-component="list"][data-variant="selection"] [data-role="list-item"][data-selected] {
   border-color: var(--sd-accent, #7480ff);
-  background: color-mix(in srgb, var(--sd-accent, #7480ff) 8%, transparent);
+  background: color-mix(in srgb, var(--sd-accent, #7480ff) 6%, transparent);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--sd-accent, #7480ff) 20%, transparent);
 }
 [data-component="list"] [data-role="item-control"] {
   width: 16px;
