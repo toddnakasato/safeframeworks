@@ -1,0 +1,14 @@
+{
+  "handlers": [
+    {
+      "on": "change",
+      "target": "local",
+      "handler": "log"
+    },
+    {
+      "on": "expand",
+      "target": "local",
+      "handler": "log"
+    }
+  ]
+}

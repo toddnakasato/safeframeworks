@@ -22,7 +22,8 @@
     "gsap": "*",
     "leaflet": "*",
     "react-markdown": "*",
-    "remark-gfm": "*"
+    "remark-gfm": "*",
+    "chart.js": "^4"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4",

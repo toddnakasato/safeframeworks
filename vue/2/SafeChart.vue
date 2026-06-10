@@ -1,15 +1,30 @@
 <!--
   SafeChart — Vue 2 chart component.
+  Renders via Chart.js (same builder in every framework — identical rendering).
   Outputs data-* attributes for intent. No hardcoded CSS.
 -->
 <script lang="ts">
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
+import type { Chart } from 'chart.js';
 import { defineComponent, type PropType } from 'vue';
+import { createSafeChart } from './chart';
+
 export default defineComponent({
   name: 'SafeChart',
   props: {
     config: { type: Object as PropType<ConfigBase>, required: true },
     onEvent: { type: Function as PropType<OnSafeEvent>, default: undefined },
+  },
+  data() {
+    return { chart: null as Chart | null };
+  },
+  mounted() {
+    const canvas = this.$refs.chartCanvas as HTMLCanvasElement;
+    if (canvas) this.chart = createSafeChart(canvas, this.config, this.onEvent);
+  },
+  beforeDestroy() {
+    this.chart?.destroy();
+    this.chart = null;
   },
 });
 </script>
@@ -20,6 +35,9 @@ export default defineComponent({
     :data-variant="config.metadata.variant"
     :data-chart-type="config.metadata.chartType"
   >
-      <div data-role="title">{{ config.metadata.title || "Chart" }}</div><div style="height:120px;display:flex;align-items:flex-end;gap:4px;padding:8px"><div style="flex:1;background:var(--sd-accent,#3b82f6);height:60%"></div><div style="flex:1;background:var(--sd-accent,#3b82f6);height:80%"></div><div style="flex:1;background:var(--sd-accent,#3b82f6);height:40%"></div></div>
+    <div data-role="title">{{ config.metadata.title || "Chart" }}</div>
+    <div data-role="chart-area" style="position:relative;height:240px">
+      <canvas ref="chartCanvas"></canvas>
+    </div>
   </div>
 </template>

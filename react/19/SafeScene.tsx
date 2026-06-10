@@ -93,7 +93,7 @@ function renderConfig(
   }
 
   if (component === "card") {
-    if (fieldLabels && (config.data?.[0]?.schema?.fields.length ?? 0) > 0) {
+    if (fieldLabels && (Object.values(config.data ?? {})[0]?.schema?.fields.length ?? 0) > 0) {
       const resolved = {
         ...config,
         schema: {

@@ -1,0 +1,19 @@
+{
+  "handlers": [
+    {
+      "on": "select",
+      "target": "local",
+      "handler": "log"
+    },
+    {
+      "on": "expand",
+      "target": "local",
+      "handler": "log"
+    },
+    {
+      "on": "collapse",
+      "target": "local",
+      "handler": "log"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "component": "button",
+  "metadata": {
+    "variant": "primary",
+    "label": "Click Me",
+    "size": "md"
+  },
+  "eventHandler": {
+    "handler": "button",
+    "events": [
+      "click"
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "handlers": [
+    {
+      "on": "select",
+      "target": "local",
+      "handler": "log"
+    },
+    {
+      "on": "marker:click",
+      "target": "local",
+      "handler": "log"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "component": "table",
+  "metadata": {
+    "variant": "default",
+    "spacing": "normal",
+    "headerStyle": "uppercase",
+    "rowDivider": "thin",
+    "zebra": "even"
+  },
+  "data": {
+    "rows": {
+      "name": "table-rows",
+      "type": "list",
+      "source": "file",
+      "schema": {
+        "fields": [
+          {
+            "name": "name",
+            "label": "Name",
+            "type": "text"
+          },
+          {
+            "name": "value",
+            "label": "Value",
+            "type": "text"
+          }
+        ]
+      }
+    }
+  },
+  "eventHandler": {
+    "handler": "table",
+    "events": [
+      "select",
+      "sort",
+      "row:click",
+      "row:select",
+      "page"
+    ]
+  }
+}

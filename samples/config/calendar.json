@@ -1,0 +1,14 @@
+{
+  "component": "calendar",
+  "metadata": {
+    "variant": "default",
+    "size": "md"
+  },
+  "eventHandler": {
+    "handler": "calendar",
+    "events": [
+      "navigate",
+      "select"
+    ]
+  }
+}

@@ -35,9 +35,9 @@ import { SafeTimeline } from "./SafeTimeline";
 import { SafeTree } from "./SafeTree";
 import { SafeTreemap } from "./SafeTreemap";
 
-/** Extract inline data from config. */
+/** Extract inline data from config (contract: data is Record<string, DataSource>). */
 function extractData(config: ConfigBase): { inline: any; list: any[]; record: Record<string, any> } {
-  const raw = config.data?.[0]?.inline;
+  const raw = Object.values(config.data ?? {})[0]?.inline;
   const list = Array.isArray(raw) ? raw : [];
   const record = (Array.isArray(raw) ? raw[0] : raw) ?? {};
   return { inline: raw, list, record };

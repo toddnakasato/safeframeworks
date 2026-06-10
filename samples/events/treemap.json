@@ -1,0 +1,9 @@
+{
+  "handlers": [
+    {
+      "on": "select",
+      "target": "local",
+      "handler": "log"
+    }
+  ]
+}

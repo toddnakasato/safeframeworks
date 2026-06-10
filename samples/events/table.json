@@ -1,0 +1,29 @@
+{
+  "handlers": [
+    {
+      "on": "select",
+      "target": "local",
+      "handler": "log"
+    },
+    {
+      "on": "sort",
+      "target": "local",
+      "handler": "log"
+    },
+    {
+      "on": "row:click",
+      "target": "local",
+      "handler": "log"
+    },
+    {
+      "on": "row:select",
+      "target": "local",
+      "handler": "log"
+    },
+    {
+      "on": "page",
+      "target": "local",
+      "handler": "log"
+    }
+  ]
+}

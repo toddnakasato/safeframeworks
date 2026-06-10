@@ -1,0 +1,12 @@
+{
+  "component": "gauge",
+  "metadata": {
+    "variant": "default"
+  },
+  "eventHandler": {
+    "handler": "gauge",
+    "events": [
+      "click"
+    ]
+  }
+}

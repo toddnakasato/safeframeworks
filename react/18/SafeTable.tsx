@@ -49,7 +49,7 @@ function numericType(type: string): boolean {
 
 export function SafeTable({ config, data, onEvent }: SafeTableProps) {
   const { metadata } = config;
-  const schema = config.data?.[0]?.schema;
+  const schema = Object.values(config.data ?? {})[0]?.schema;
   const fields = (schema?.fields ?? []).filter((f) => f.visible !== false);
 
   const [sort, setSort] = useState<SortState>(() => ({

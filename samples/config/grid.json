@@ -1,0 +1,15 @@
+{
+  "component": "grid",
+  "metadata": {
+    "spacing": "normal",
+    "radius": "md",
+    "surface": "base",
+    "collapsible": false
+  },
+  "eventHandler": {
+    "handler": "grid",
+    "events": [
+      "click"
+    ]
+  }
+}

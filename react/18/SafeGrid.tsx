@@ -19,7 +19,7 @@ export interface SafeGridProps {
 export function SafeGrid({ config, data, onEvent }: SafeGridProps) {
   const { metadata } = config;
   const D = GRID_DEFAULTS;
-  const schema = config.data?.[0]?.schema;
+  const schema = Object.values(config.data ?? {})[0]?.schema;
   const columns = (metadata.columns as string) ?? D.columns;
   const label = metadata.label as string | undefined;
   const collapsible = !!metadata.collapsible;

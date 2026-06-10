@@ -1,0 +1,9 @@
+{
+  "handlers": [
+    {
+      "on": "cell:click",
+      "target": "local",
+      "handler": "log"
+    }
+  ]
+}

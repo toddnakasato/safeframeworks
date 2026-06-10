@@ -1,0 +1,31 @@
+{
+  "component": "nav",
+  "metadata": {
+    "navStyle": "classic",
+    "title": "Viewer",
+    "search": true
+  },
+  "children": {
+    "home": {
+      "component": "nav",
+      "metadata": {
+        "label": "Home",
+        "icon": "home"
+      }
+    },
+    "settings": {
+      "component": "nav",
+      "metadata": {
+        "label": "Settings",
+        "icon": "settings",
+        "section": "bottom"
+      }
+    }
+  },
+  "eventHandler": {
+    "handler": "nav",
+    "events": [
+      "navigate"
+    ]
+  }
+}

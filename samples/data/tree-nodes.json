@@ -1,0 +1,17 @@
+[
+  {
+    "id": "1",
+    "label": "Root",
+    "parentId": null
+  },
+  {
+    "id": "2",
+    "label": "Child A",
+    "parentId": "1"
+  },
+  {
+    "id": "3",
+    "label": "Child B",
+    "parentId": "1"
+  }
+]

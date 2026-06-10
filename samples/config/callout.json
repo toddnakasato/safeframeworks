@@ -1,0 +1,8 @@
+{
+  "component": "callout",
+  "metadata": {
+    "variant": "info",
+    "position": "top",
+    "message": "This is a callout."
+  }
+}

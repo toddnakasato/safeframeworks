@@ -1,0 +1,12 @@
+{
+  "component": "heatmap",
+  "metadata": {
+    "variant": "default"
+  },
+  "eventHandler": {
+    "handler": "heatmap",
+    "events": [
+      "cell:click"
+    ]
+  }
+}

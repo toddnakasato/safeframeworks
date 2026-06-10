@@ -1,0 +1,33 @@
+{
+  "component": "timeline",
+  "metadata": {
+    "variant": "default"
+  },
+  "data": {
+    "events": {
+      "name": "timeline-events",
+      "type": "list",
+      "source": "file",
+      "schema": {
+        "fields": [
+          {
+            "name": "date",
+            "label": "Date",
+            "type": "date"
+          },
+          {
+            "name": "label",
+            "label": "Label",
+            "type": "text"
+          }
+        ]
+      }
+    }
+  },
+  "eventHandler": {
+    "handler": "timeline",
+    "events": [
+      "select"
+    ]
+  }
+}

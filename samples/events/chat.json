@@ -1,0 +1,19 @@
+{
+  "handlers": [
+    {
+      "on": "send",
+      "target": "local",
+      "handler": "log"
+    },
+    {
+      "on": "scroll",
+      "target": "local",
+      "handler": "log"
+    },
+    {
+      "on": "action",
+      "target": "local",
+      "handler": "log"
+    }
+  ]
+}

@@ -35,7 +35,7 @@ import { SafeTreemap } from "./SafeTreemap";
 
 /** Extract inline data from config. */
 function extractData(config: ConfigBase): { inline: any; list: any[]; record: Record<string, any> } {
-  const raw = config.data?.[0]?.inline;
+  const raw = Object.values(config.data ?? {})[0]?.inline;
   const list = Array.isArray(raw) ? raw : [];
   const record = (Array.isArray(raw) ? raw[0] : raw) ?? {};
   return { inline: raw, list, record };

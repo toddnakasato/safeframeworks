@@ -1,16 +1,27 @@
 <!--
   SafeSankey — Svelte 4 sankey component.
+  Renders via shared-mapping sankey builder (./sankey) — identical across frameworks.
   Outputs data-* attributes for intent. No hardcoded CSS.
 -->
 <script lang="ts">
+  import { onMount } from 'svelte';
   import type { ConfigBase, OnSafeEvent } from 'safecontracts';
+  import { renderSafeSankey, sankeyData } from './sankey';
+
   export let config: ConfigBase;
   export let onEvent: OnSafeEvent | undefined = undefined;
+
+  let svg: SVGSVGElement;
+
+  onMount(() => {
+    renderSafeSankey(svg, config, sankeyData(config), onEvent);
+  });
 </script>
 
 <div
   data-component="sankey"
   data-variant={config.metadata.variant}
 >
-  <div style="text-align:center;padding:16px;color:var(--sd-text-dim,#6b7280)">Sankey diagram</div>
+  {#if config.metadata.title}<div data-role="title">{config.metadata.title}</div>{/if}
+  <svg bind:this={svg} style="width:100%;max-width:700px;display:block"></svg>
 </div>

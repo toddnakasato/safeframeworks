@@ -5,11 +5,11 @@
  */
 import { useState, useEffect } from "react";
 import { renderConfigBase } from "../../SafeRenderer";
-import { SAMPLES } from "./samples";
+import { SAMPLES } from "../../../../samples";
 import type { SafeEvent } from "safecontracts";
 
 const STYLES = ["vanilla", "tailwind", "tailwind-daisy", "material"] as const;
-const COMPONENT_NAMES = Object.keys(SAMPLES);
+const COMPONENT_NAMES = Object.keys(SAMPLES).sort();
 
 /** Load a safestyles CSS file dynamically. */
 function loadStyle(name: string) {

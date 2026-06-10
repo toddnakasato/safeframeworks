@@ -1,0 +1,16 @@
+{
+  "component": "toggle",
+  "metadata": {
+    "variant": "switch",
+    "disabled": false,
+    "labelPosition": "right",
+    "label": "Enable feature"
+  },
+  "eventHandler": {
+    "handler": "toggle",
+    "events": [
+      "change",
+      "expand"
+    ]
+  }
+}

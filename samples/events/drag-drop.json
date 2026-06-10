@@ -1,0 +1,24 @@
+{
+  "handlers": [
+    {
+      "on": "drag-start",
+      "target": "local",
+      "handler": "log"
+    },
+    {
+      "on": "drag-end",
+      "target": "local",
+      "handler": "log"
+    },
+    {
+      "on": "drop",
+      "target": "local",
+      "handler": "log"
+    },
+    {
+      "on": "file-drop",
+      "target": "local",
+      "handler": "log"
+    }
+  ]
+}

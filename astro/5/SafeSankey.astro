@@ -1,16 +1,24 @@
 ---
 /**
  * SafeSankey — Astro 5 sankey component.
+ * Renders via shared-mapping sankey builder (./sankey) — identical across frameworks.
+ * Server-renders the shell; a client script mounts the D3 sankey on the SVG.
  * Outputs data-* attributes for intent. No hardcoded CSS.
  */
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
 interface Props { config: ConfigBase; onEvent?: OnSafeEvent; }
-const { config, onEvent } = Astro.props;
+const { config } = Astro.props;
 ---
 
 <div
   data-component="sankey"
   data-variant={config.metadata.variant}
 >
-  <div style="text-align:center;padding:16px;color:var(--sd-text-dim,#6b7280)">Sankey diagram</div>
+  {config.metadata.title && <div data-role="title">{config.metadata.title}</div>}
+  <svg data-sankey-config={JSON.stringify(config)} style="width:100%;max-width:700px;display:block"></svg>
 </div>
+
+<script>
+  import { initSafeSankeys } from "./sankey";
+  initSafeSankeys();
+</script>

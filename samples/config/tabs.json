@@ -1,0 +1,25 @@
+{
+  "component": "tabs",
+  "metadata": {
+    "variant": "default",
+    "position": "top",
+    "tabs": [
+      {
+        "key": "one",
+        "label": "Tab One",
+        "child": ""
+      },
+      {
+        "key": "two",
+        "label": "Tab Two",
+        "child": ""
+      }
+    ]
+  },
+  "eventHandler": {
+    "handler": "tabs",
+    "events": [
+      "select"
+    ]
+  }
+}

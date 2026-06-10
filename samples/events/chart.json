@@ -1,0 +1,14 @@
+{
+  "handlers": [
+    {
+      "on": "click",
+      "target": "local",
+      "handler": "log"
+    },
+    {
+      "on": "hover",
+      "target": "local",
+      "handler": "log"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "component": "funnel",
+  "metadata": {
+    "variant": "default"
+  },
+  "eventHandler": {
+    "handler": "funnel",
+    "events": [
+      "select"
+    ]
+  }
+}

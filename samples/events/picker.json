@@ -1,0 +1,19 @@
+{
+  "handlers": [
+    {
+      "on": "select",
+      "target": "local",
+      "handler": "log"
+    },
+    {
+      "on": "filter",
+      "target": "local",
+      "handler": "log"
+    },
+    {
+      "on": "search",
+      "target": "local",
+      "handler": "log"
+    }
+  ]
+}

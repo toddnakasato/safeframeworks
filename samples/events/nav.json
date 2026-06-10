@@ -1,0 +1,9 @@
+{
+  "handlers": [
+    {
+      "on": "navigate",
+      "target": "local",
+      "handler": "log"
+    }
+  ]
+}

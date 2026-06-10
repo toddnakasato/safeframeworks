@@ -1,23 +1,30 @@
 /**
  * SafeSankey — Angular sankey component.
- * Implements sankey contract from safecontracts.
+ * Renders via shared-mapping sankey builder (./sankey) — identical across frameworks.
  * Outputs data-* attributes for intent. No hardcoded CSS.
  */
-import { Component, Input } from '@angular/core';
+import { Component, Input, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
+import { renderSafeSankey, sankeyData } from './sankey';
 
 @Component({
   selector: 'safe-sankey',
   standalone: true,
   template: `
-    <div style="text-align:center;padding:16px;color:var(--sd-text-dim,#6b7280)">Sankey diagram — requires D3</div>
+    <div data-role="title">{{ config.metadata.title || '' }}</div>
+    <svg #sankeySvg style="width:100%;max-width:700px;display:block"></svg>
   `,
   host: {
     '[attr.data-component]': "'sankey'",
     '[attr.data-variant]': 'config.metadata.variant'
   }
 })
-export class SafeSankeyComponent {
+export class SafeSankeyComponent implements AfterViewInit {
   @Input() config!: ConfigBase;
   @Input() onEvent?: OnSafeEvent;
+  @ViewChild('sankeySvg') svgRef!: ElementRef<SVGSVGElement>;
+
+  ngAfterViewInit() {
+    renderSafeSankey(this.svgRef.nativeElement, this.config, sankeyData(this.config), this.onEvent);
+  }
 }

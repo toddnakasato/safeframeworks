@@ -1,0 +1,14 @@
+{
+  "component": "picker",
+  "metadata": {
+    "variant": "default"
+  },
+  "eventHandler": {
+    "handler": "picker",
+    "events": [
+      "select",
+      "filter",
+      "search"
+    ]
+  }
+}

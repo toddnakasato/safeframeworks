@@ -1,0 +1,29 @@
+{
+  "handlers": [
+    {
+      "on": "change",
+      "target": "local",
+      "handler": "log"
+    },
+    {
+      "on": "editmode",
+      "target": "local",
+      "handler": "log"
+    },
+    {
+      "on": "canceledit",
+      "target": "local",
+      "handler": "log"
+    },
+    {
+      "on": "textinput",
+      "target": "local",
+      "handler": "log"
+    },
+    {
+      "on": "navigate",
+      "target": "local",
+      "handler": "log"
+    }
+  ]
+}

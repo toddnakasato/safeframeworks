@@ -62,7 +62,7 @@ export function SafeCard({ config, data, onEvent, onRenderLog }: SafeCardProps) 
     );
   }
 
-  const resolvedSchema = config.data?.[0]?.schema;
+  const resolvedSchema = Object.values(config.data ?? {})[0]?.schema;
   const fields = resolvedSchema?.fields ?? [];
 
   return (

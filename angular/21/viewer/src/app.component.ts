@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SAMPLES } from '../../../../samples';
 import { NgFor, NgIf } from '@angular/common';
 import { SafeLayoutComponent } from '../../SafeLayout';
 import { SafeColumnsComponent } from '../../SafeColumns';
@@ -39,32 +40,7 @@ import { SafeNavComponent } from '../../SafeNav';
 
         <div class="section-label" style="margin-top:16px">COMPONENTS</div>
         <button class="comp-btn" [class.active]="activeComponent === null" (click)="activeComponent = null">All</button>
-        <button class="comp-btn" [class.active]="activeComponent === 'layout'" (click)="activeComponent = 'layout'">layout</button>
-        <button class="comp-btn" [class.active]="activeComponent === 'columns'" (click)="activeComponent = 'columns'">columns</button>
-        <button class="comp-btn" [class.active]="activeComponent === 'card'" (click)="activeComponent = 'card'">card</button>
-        <button class="comp-btn" [class.active]="activeComponent === 'button'" (click)="activeComponent = 'button'">button</button>
-        <button class="comp-btn" [class.active]="activeComponent === 'table'" (click)="activeComponent = 'table'">table</button>
-        <button class="comp-btn" [class.active]="activeComponent === 'tree'" (click)="activeComponent = 'tree'">tree</button>
-        <button class="comp-btn" [class.active]="activeComponent === 'sheet'" (click)="activeComponent = 'sheet'">sheet</button>
-        <button class="comp-btn" [class.active]="activeComponent === 'chart'" (click)="activeComponent = 'chart'">chart</button>
-        <button class="comp-btn" [class.active]="activeComponent === 'heatmap'" (click)="activeComponent = 'heatmap'">heatmap</button>
-        <button class="comp-btn" [class.active]="activeComponent === 'gauge'" (click)="activeComponent = 'gauge'">gauge</button>
-        <button class="comp-btn" [class.active]="activeComponent === 'funnel'" (click)="activeComponent = 'funnel'">funnel</button>
-        <button class="comp-btn" [class.active]="activeComponent === 'sankey'" (click)="activeComponent = 'sankey'">sankey</button>
-        <button class="comp-btn" [class.active]="activeComponent === 'treemap'" (click)="activeComponent = 'treemap'">treemap</button>
-        <button class="comp-btn" [class.active]="activeComponent === 'timeline'" (click)="activeComponent = 'timeline'">timeline</button>
-        <button class="comp-btn" [class.active]="activeComponent === 'map'" (click)="activeComponent = 'map'">map</button>
-        <button class="comp-btn" [class.active]="activeComponent === 'calendar'" (click)="activeComponent = 'calendar'">calendar</button>
-        <button class="comp-btn" [class.active]="activeComponent === 'toggle'" (click)="activeComponent = 'toggle'">toggle</button>
-        <button class="comp-btn" [class.active]="activeComponent === 'week'" (click)="activeComponent = 'week'">week</button>
-        <button class="comp-btn" [class.active]="activeComponent === 'chat'" (click)="activeComponent = 'chat'">chat</button>
-        <button class="comp-btn" [class.active]="activeComponent === 'tabs'" (click)="activeComponent = 'tabs'">tabs</button>
-        <button class="comp-btn" [class.active]="activeComponent === 'callout'" (click)="activeComponent = 'callout'">callout</button>
-        <button class="comp-btn" [class.active]="activeComponent === 'drag-drop'" (click)="activeComponent = 'drag-drop'">drag-drop</button>
-        <button class="comp-btn" [class.active]="activeComponent === 'grid'" (click)="activeComponent = 'grid'">grid</button>
-        <button class="comp-btn" [class.active]="activeComponent === 'input'" (click)="activeComponent = 'input'">input</button>
-        <button class="comp-btn" [class.active]="activeComponent === 'picker'" (click)="activeComponent = 'picker'">picker</button>
-        <button class="comp-btn" [class.active]="activeComponent === 'nav'" (click)="activeComponent = 'nav'">nav</button>
+        <button *ngFor="let name of componentNames" class="comp-btn" [class.active]="activeComponent === name" (click)="activeComponent = name">{{name}}</button>
       </div>
       <div class="main">
         <h3>angular/21 — {{activeStyle}}<span *ngIf="activeComponent" class="active-comp"> — {{activeComponent}}</span></h3>
@@ -247,33 +223,34 @@ export class AppComponent {
   styles = ['vanilla', 'tailwind', 'tailwind-daisy', 'material'];
   activeStyle = 'vanilla';
   activeComponent: string | null = null;
+  componentNames = Object.keys(SAMPLES).sort();
 
-  layoutConfig = { component: 'layout', metadata: {"variant": "default"} };
-  columnsConfig = { component: 'columns', metadata: {"spacing": "normal", "radius": "normal", "surface": "normal"} };
-  cardConfig = { component: 'card', metadata: {"variant": "default", "surface": "normal", "spacing": "normal", "radius": "normal", "density": "normal", "title": "Sample Card", "subtitle": "Subtitle"} };
-  buttonConfig = { component: 'button', metadata: {"variant": "primary", "size": "md", "disabled": false, "loading": "normal", "fullWidth": "normal", "iconOnly": "normal", "selected": "normal", "status": "normal", "groupVariant": "normal", "groupDirection": "normal", "label": "Click Me"} };
-  tableConfig = { component: 'table', metadata: {"variant": "default", "spacing": "normal", "headerStyle": "normal", "rowDivider": "normal", "rowNumbers": "normal", "truncate": "normal", "columnLines": "normal", "headerDivider": "normal", "zebra": "normal", "selectable": "normal"} };
-  treeConfig = { component: 'tree', metadata: {"variant": "default", "spacing": "normal"} };
-  sheetConfig = { component: 'sheet', metadata: {"variant": "default", "spacing": "normal", "surface": "normal"} };
-  chartConfig = { component: 'chart', metadata: {"variant": "default", "chartType": "bar", "title": "Revenue"} };
-  heatmapConfig = { component: 'heatmap', metadata: {"variant": "default"} };
-  gaugeConfig = { component: 'gauge', metadata: {"variant": "default"} };
-  funnelConfig = { component: 'funnel', metadata: {"variant": "default"} };
-  sankeyConfig = { component: 'sankey', metadata: {"variant": "default"} };
-  treemapConfig = { component: 'treemap', metadata: {"variant": "default"} };
-  timelineConfig = { component: 'timeline', metadata: {"variant": "default"} };
-  mapConfig = { component: 'map', metadata: {"variant": "default"} };
-  calendarConfig = { component: 'calendar', metadata: {"variant": "default", "size": "normal"} };
-  toggleConfig = { component: 'toggle', metadata: {"variant": "default", "disabled": false, "labelPosition": "right", "label": "Enable feature", "checked": false} };
-  weekConfig = { component: 'week', metadata: {"variant": "default"} };
-  chatConfig = { component: 'chat', metadata: {"title": "Chat", "placeholder": "Type a message..."} };
-  tabsConfig = { component: 'tabs', metadata: {"variant": "default", "position": "top", "tabs": [{"key": "one", "label": "Tab One"}, {"key": "two", "label": "Tab Two"}]} };
-  calloutConfig = { component: 'callout', metadata: {"variant": "info", "position": "top", "message": "This is a callout."} };
-  dragdropConfig = { component: 'drag-drop', metadata: {"variant": "default"} };
-  gridConfig = { component: 'grid', metadata: {"spacing": "normal", "radius": "normal", "surface": "normal", "collapsible": false} };
-  inputConfig = { component: 'input', metadata: {"inputType": "text", "align": "normal", "valign": "normal", "placeholder": "Type here..."} };
-  pickerConfig = { component: 'picker', metadata: {"variant": "default"} };
-  navConfig = { component: 'nav', metadata: {"navStyle": "classic", "title": "Viewer"} };
+  layoutConfig = SAMPLES['layout'];
+  columnsConfig = SAMPLES['columns'];
+  cardConfig = SAMPLES['card'];
+  buttonConfig = SAMPLES['button'];
+  tableConfig = SAMPLES['table'];
+  treeConfig = SAMPLES['tree'];
+  sheetConfig = SAMPLES['sheet'];
+  chartConfig = SAMPLES['chart'];
+  heatmapConfig = SAMPLES['heatmap'];
+  gaugeConfig = SAMPLES['gauge'];
+  funnelConfig = SAMPLES['funnel'];
+  sankeyConfig = SAMPLES['sankey'];
+  treemapConfig = SAMPLES['treemap'];
+  timelineConfig = SAMPLES['timeline'];
+  mapConfig = SAMPLES['map'];
+  calendarConfig = SAMPLES['calendar'];
+  toggleConfig = SAMPLES['toggle'];
+  weekConfig = SAMPLES['week'];
+  chatConfig = SAMPLES['chat'];
+  tabsConfig = SAMPLES['tabs'];
+  calloutConfig = SAMPLES['callout'];
+  dragdropConfig = SAMPLES['drag-drop'];
+  gridConfig = SAMPLES['grid'];
+  inputConfig = SAMPLES['input'];
+  pickerConfig = SAMPLES['picker'];
+  navConfig = SAMPLES['nav'];
 
   switchStyle(s: string) {
     this.activeStyle = s;

@@ -1,0 +1,19 @@
+{
+  "component": "input",
+  "metadata": {
+    "inputType": "text",
+    "align": "left",
+    "valign": "center",
+    "placeholder": "Type here..."
+  },
+  "eventHandler": {
+    "handler": "input",
+    "events": [
+      "change",
+      "editmode",
+      "canceledit",
+      "textinput",
+      "navigate"
+    ]
+  }
+}

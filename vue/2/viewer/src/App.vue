@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue';
+import { SAMPLES } from '../../../../samples';
 import SafeLayout from '../../SafeLayout.vue';
 import SafeColumns from '../../SafeColumns.vue';
 import SafeCard from '../../SafeCard.vue';
@@ -30,33 +31,34 @@ import SafeNav from '../../SafeNav.vue';
 const STYLES = ['vanilla', 'tailwind', 'tailwind-daisy', 'material'];
 const activeStyle = ref('vanilla');
 const activeComponent = ref(null);
+const componentNames = Object.keys(SAMPLES).sort();
 
-const layoutConfig = { component: 'layout', metadata: {"variant": "default"} };
-const columnsConfig = { component: 'columns', metadata: {"spacing": "normal", "radius": "normal", "surface": "normal"} };
-const cardConfig = { component: 'card', metadata: {"variant": "default", "surface": "normal", "spacing": "normal", "radius": "normal", "density": "normal", "title": "Sample Card", "subtitle": "Subtitle"} };
-const buttonConfig = { component: 'button', metadata: {"variant": "primary", "size": "md", "disabled": false, "loading": "normal", "fullWidth": "normal", "iconOnly": "normal", "selected": "normal", "status": "normal", "groupVariant": "normal", "groupDirection": "normal", "label": "Click Me"} };
-const tableConfig = { component: 'table', metadata: {"variant": "default", "spacing": "normal", "headerStyle": "normal", "rowDivider": "normal", "rowNumbers": "normal", "truncate": "normal", "columnLines": "normal", "headerDivider": "normal", "zebra": "normal", "selectable": "normal"} };
-const treeConfig = { component: 'tree', metadata: {"variant": "default", "spacing": "normal"} };
-const sheetConfig = { component: 'sheet', metadata: {"variant": "default", "spacing": "normal", "surface": "normal"} };
-const chartConfig = { component: 'chart', metadata: {"variant": "default", "chartType": "bar", "title": "Revenue"} };
-const heatmapConfig = { component: 'heatmap', metadata: {"variant": "default"} };
-const gaugeConfig = { component: 'gauge', metadata: {"variant": "default"} };
-const funnelConfig = { component: 'funnel', metadata: {"variant": "default"} };
-const sankeyConfig = { component: 'sankey', metadata: {"variant": "default"} };
-const treemapConfig = { component: 'treemap', metadata: {"variant": "default"} };
-const timelineConfig = { component: 'timeline', metadata: {"variant": "default"} };
-const mapConfig = { component: 'map', metadata: {"variant": "default"} };
-const calendarConfig = { component: 'calendar', metadata: {"variant": "default", "size": "normal"} };
-const toggleConfig = { component: 'toggle', metadata: {"variant": "default", "disabled": false, "labelPosition": "right", "label": "Enable feature", "checked": false} };
-const weekConfig = { component: 'week', metadata: {"variant": "default"} };
-const chatConfig = { component: 'chat', metadata: {"title": "Chat", "placeholder": "Type a message..."} };
-const tabsConfig = { component: 'tabs', metadata: {"variant": "default", "position": "top", "tabs": [{"key": "one", "label": "Tab One"}, {"key": "two", "label": "Tab Two"}]} };
-const calloutConfig = { component: 'callout', metadata: {"variant": "info", "position": "top", "message": "This is a callout."} };
-const dragdropConfig = { component: 'drag-drop', metadata: {"variant": "default"} };
-const gridConfig = { component: 'grid', metadata: {"spacing": "normal", "radius": "normal", "surface": "normal", "collapsible": false} };
-const inputConfig = { component: 'input', metadata: {"inputType": "text", "align": "normal", "valign": "normal", "placeholder": "Type here..."} };
-const pickerConfig = { component: 'picker', metadata: {"variant": "default"} };
-const navConfig = { component: 'nav', metadata: {"navStyle": "classic", "title": "Viewer"} };
+const layoutConfig = SAMPLES['layout'];
+const columnsConfig = SAMPLES['columns'];
+const cardConfig = SAMPLES['card'];
+const buttonConfig = SAMPLES['button'];
+const tableConfig = SAMPLES['table'];
+const treeConfig = SAMPLES['tree'];
+const sheetConfig = SAMPLES['sheet'];
+const chartConfig = SAMPLES['chart'];
+const heatmapConfig = SAMPLES['heatmap'];
+const gaugeConfig = SAMPLES['gauge'];
+const funnelConfig = SAMPLES['funnel'];
+const sankeyConfig = SAMPLES['sankey'];
+const treemapConfig = SAMPLES['treemap'];
+const timelineConfig = SAMPLES['timeline'];
+const mapConfig = SAMPLES['map'];
+const calendarConfig = SAMPLES['calendar'];
+const toggleConfig = SAMPLES['toggle'];
+const weekConfig = SAMPLES['week'];
+const chatConfig = SAMPLES['chat'];
+const tabsConfig = SAMPLES['tabs'];
+const calloutConfig = SAMPLES['callout'];
+const dragdropConfig = SAMPLES['drag-drop'];
+const gridConfig = SAMPLES['grid'];
+const inputConfig = SAMPLES['input'];
+const pickerConfig = SAMPLES['picker'];
+const navConfig = SAMPLES['nav'];
 
 function switchStyle(s) {
   activeStyle.value = s;
@@ -77,32 +79,7 @@ function selectComponent(name) {
 
       <div class="section-label" style="margin-top:16px">COMPONENTS</div>
       <button class="comp-btn" :class="{ active: activeComponent === null }" @click="selectComponent(null)">All</button>
-      <button class="comp-btn" :class="{ active: activeComponent === 'layout' }" @click="selectComponent('layout')">layout</button>
-      <button class="comp-btn" :class="{ active: activeComponent === 'columns' }" @click="selectComponent('columns')">columns</button>
-      <button class="comp-btn" :class="{ active: activeComponent === 'card' }" @click="selectComponent('card')">card</button>
-      <button class="comp-btn" :class="{ active: activeComponent === 'button' }" @click="selectComponent('button')">button</button>
-      <button class="comp-btn" :class="{ active: activeComponent === 'table' }" @click="selectComponent('table')">table</button>
-      <button class="comp-btn" :class="{ active: activeComponent === 'tree' }" @click="selectComponent('tree')">tree</button>
-      <button class="comp-btn" :class="{ active: activeComponent === 'sheet' }" @click="selectComponent('sheet')">sheet</button>
-      <button class="comp-btn" :class="{ active: activeComponent === 'chart' }" @click="selectComponent('chart')">chart</button>
-      <button class="comp-btn" :class="{ active: activeComponent === 'heatmap' }" @click="selectComponent('heatmap')">heatmap</button>
-      <button class="comp-btn" :class="{ active: activeComponent === 'gauge' }" @click="selectComponent('gauge')">gauge</button>
-      <button class="comp-btn" :class="{ active: activeComponent === 'funnel' }" @click="selectComponent('funnel')">funnel</button>
-      <button class="comp-btn" :class="{ active: activeComponent === 'sankey' }" @click="selectComponent('sankey')">sankey</button>
-      <button class="comp-btn" :class="{ active: activeComponent === 'treemap' }" @click="selectComponent('treemap')">treemap</button>
-      <button class="comp-btn" :class="{ active: activeComponent === 'timeline' }" @click="selectComponent('timeline')">timeline</button>
-      <button class="comp-btn" :class="{ active: activeComponent === 'map' }" @click="selectComponent('map')">map</button>
-      <button class="comp-btn" :class="{ active: activeComponent === 'calendar' }" @click="selectComponent('calendar')">calendar</button>
-      <button class="comp-btn" :class="{ active: activeComponent === 'toggle' }" @click="selectComponent('toggle')">toggle</button>
-      <button class="comp-btn" :class="{ active: activeComponent === 'week' }" @click="selectComponent('week')">week</button>
-      <button class="comp-btn" :class="{ active: activeComponent === 'chat' }" @click="selectComponent('chat')">chat</button>
-      <button class="comp-btn" :class="{ active: activeComponent === 'tabs' }" @click="selectComponent('tabs')">tabs</button>
-      <button class="comp-btn" :class="{ active: activeComponent === 'callout' }" @click="selectComponent('callout')">callout</button>
-      <button class="comp-btn" :class="{ active: activeComponent === 'drag-drop' }" @click="selectComponent('drag-drop')">drag-drop</button>
-      <button class="comp-btn" :class="{ active: activeComponent === 'grid' }" @click="selectComponent('grid')">grid</button>
-      <button class="comp-btn" :class="{ active: activeComponent === 'input' }" @click="selectComponent('input')">input</button>
-      <button class="comp-btn" :class="{ active: activeComponent === 'picker' }" @click="selectComponent('picker')">picker</button>
-      <button class="comp-btn" :class="{ active: activeComponent === 'nav' }" @click="selectComponent('nav')">nav</button>
+      <button v-for="name in componentNames" :key="name" class="comp-btn" :class="{ active: activeComponent === name }" @click="selectComponent(name)">{{ name }}</button>
     </div>
     <div class="main">
       <h3>vue/2 — {{ activeStyle }}<span v-if="activeComponent" class="active-comp"> — {{ activeComponent }}</span></h3>

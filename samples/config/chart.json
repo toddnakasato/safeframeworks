@@ -1,0 +1,35 @@
+{
+  "component": "chart",
+  "metadata": {
+    "variant": "default",
+    "chartType": "bar"
+  },
+  "data": {
+    "series": {
+      "name": "chart-series",
+      "type": "list",
+      "source": "file",
+      "schema": {
+        "fields": [
+          {
+            "name": "label",
+            "label": "Label",
+            "type": "text"
+          },
+          {
+            "name": "value",
+            "label": "Value",
+            "type": "number"
+          }
+        ]
+      }
+    }
+  },
+  "eventHandler": {
+    "handler": "chart",
+    "events": [
+      "click",
+      "hover"
+    ]
+  }
+}

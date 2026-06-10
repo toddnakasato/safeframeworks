@@ -1,0 +1,13 @@
+{
+  "component": "map",
+  "metadata": {
+    "variant": "default"
+  },
+  "eventHandler": {
+    "handler": "map",
+    "events": [
+      "select",
+      "marker:click"
+    ]
+  }
+}

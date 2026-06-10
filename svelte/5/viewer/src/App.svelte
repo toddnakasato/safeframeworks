@@ -1,4 +1,5 @@
 <script>
+  import { SAMPLES } from "../../../../samples";
   import SafeLayout from "../../SafeLayout.svelte";
   import SafeColumns from "../../SafeColumns.svelte";
   import SafeCard from "../../SafeCard.svelte";
@@ -29,6 +30,7 @@
   const STYLES = ["vanilla", "tailwind", "tailwind-daisy", "material"];
   let activeStyle = "vanilla";
   let activeComponent = null;
+  const componentNames = Object.keys(SAMPLES).sort();
 
   function switchStyle(s) {
     activeStyle = s;
@@ -46,32 +48,9 @@
 
     <div class="section-label" style="margin-top:16px">COMPONENTS</div>
       <button class="comp-btn" class:active={activeComponent === null} on:click={() => activeComponent = null}>All</button>
-      <button class="comp-btn" class:active={activeComponent === "layout"} on:click={() => activeComponent = "layout"}>layout</button>
-      <button class="comp-btn" class:active={activeComponent === "columns"} on:click={() => activeComponent = "columns"}>columns</button>
-      <button class="comp-btn" class:active={activeComponent === "card"} on:click={() => activeComponent = "card"}>card</button>
-      <button class="comp-btn" class:active={activeComponent === "button"} on:click={() => activeComponent = "button"}>button</button>
-      <button class="comp-btn" class:active={activeComponent === "table"} on:click={() => activeComponent = "table"}>table</button>
-      <button class="comp-btn" class:active={activeComponent === "tree"} on:click={() => activeComponent = "tree"}>tree</button>
-      <button class="comp-btn" class:active={activeComponent === "sheet"} on:click={() => activeComponent = "sheet"}>sheet</button>
-      <button class="comp-btn" class:active={activeComponent === "chart"} on:click={() => activeComponent = "chart"}>chart</button>
-      <button class="comp-btn" class:active={activeComponent === "heatmap"} on:click={() => activeComponent = "heatmap"}>heatmap</button>
-      <button class="comp-btn" class:active={activeComponent === "gauge"} on:click={() => activeComponent = "gauge"}>gauge</button>
-      <button class="comp-btn" class:active={activeComponent === "funnel"} on:click={() => activeComponent = "funnel"}>funnel</button>
-      <button class="comp-btn" class:active={activeComponent === "sankey"} on:click={() => activeComponent = "sankey"}>sankey</button>
-      <button class="comp-btn" class:active={activeComponent === "treemap"} on:click={() => activeComponent = "treemap"}>treemap</button>
-      <button class="comp-btn" class:active={activeComponent === "timeline"} on:click={() => activeComponent = "timeline"}>timeline</button>
-      <button class="comp-btn" class:active={activeComponent === "map"} on:click={() => activeComponent = "map"}>map</button>
-      <button class="comp-btn" class:active={activeComponent === "calendar"} on:click={() => activeComponent = "calendar"}>calendar</button>
-      <button class="comp-btn" class:active={activeComponent === "toggle"} on:click={() => activeComponent = "toggle"}>toggle</button>
-      <button class="comp-btn" class:active={activeComponent === "week"} on:click={() => activeComponent = "week"}>week</button>
-      <button class="comp-btn" class:active={activeComponent === "chat"} on:click={() => activeComponent = "chat"}>chat</button>
-      <button class="comp-btn" class:active={activeComponent === "tabs"} on:click={() => activeComponent = "tabs"}>tabs</button>
-      <button class="comp-btn" class:active={activeComponent === "callout"} on:click={() => activeComponent = "callout"}>callout</button>
-      <button class="comp-btn" class:active={activeComponent === "drag-drop"} on:click={() => activeComponent = "drag-drop"}>drag-drop</button>
-      <button class="comp-btn" class:active={activeComponent === "grid"} on:click={() => activeComponent = "grid"}>grid</button>
-      <button class="comp-btn" class:active={activeComponent === "input"} on:click={() => activeComponent = "input"}>input</button>
-      <button class="comp-btn" class:active={activeComponent === "picker"} on:click={() => activeComponent = "picker"}>picker</button>
-      <button class="comp-btn" class:active={activeComponent === "nav"} on:click={() => activeComponent = "nav"}>nav</button>
+      {#each componentNames as name}
+        <button class="comp-btn" class:active={activeComponent === name} on:click={() => activeComponent = name}>{name}</button>
+      {/each}
   </div>
   <div class="main">
     <h3>svelte/5 — {activeStyle}{#if activeComponent}<span class="active-comp"> — {activeComponent}</span>{/if}</h3>
@@ -79,7 +58,7 @@
     <div class="component-card">
       <div class="component-label">layout</div>
       <div class="component-body">
-        <SafeLayout config={{ component: "layout", metadata: {"variant": "default"} }} />
+        <SafeLayout config={SAMPLES["layout"]} />
       </div>
     </div>
     {/if}
@@ -87,7 +66,7 @@
     <div class="component-card">
       <div class="component-label">columns</div>
       <div class="component-body">
-        <SafeColumns config={{ component: "columns", metadata: {"spacing": "normal", "radius": "normal", "surface": "normal"} }} />
+        <SafeColumns config={SAMPLES["columns"]} />
       </div>
     </div>
     {/if}
@@ -95,7 +74,7 @@
     <div class="component-card">
       <div class="component-label">card</div>
       <div class="component-body">
-        <SafeCard config={{ component: "card", metadata: {"variant": "default", "surface": "normal", "spacing": "normal", "radius": "normal", "density": "normal", "title": "Sample Card", "subtitle": "Subtitle"} }} />
+        <SafeCard config={SAMPLES["card"]} />
       </div>
     </div>
     {/if}
@@ -103,7 +82,7 @@
     <div class="component-card">
       <div class="component-label">button</div>
       <div class="component-body">
-        <SafeButton config={{ component: "button", metadata: {"variant": "primary", "size": "md", "disabled": false, "loading": "normal", "fullWidth": "normal", "iconOnly": "normal", "selected": "normal", "status": "normal", "groupVariant": "normal", "groupDirection": "normal", "label": "Click Me"} }} />
+        <SafeButton config={SAMPLES["button"]} />
       </div>
     </div>
     {/if}
@@ -111,7 +90,7 @@
     <div class="component-card">
       <div class="component-label">table</div>
       <div class="component-body">
-        <SafeTable config={{ component: "table", metadata: {"variant": "default", "spacing": "normal", "headerStyle": "normal", "rowDivider": "normal", "rowNumbers": "normal", "truncate": "normal", "columnLines": "normal", "headerDivider": "normal", "zebra": "normal", "selectable": "normal"} }} />
+        <SafeTable config={SAMPLES["table"]} />
       </div>
     </div>
     {/if}
@@ -119,7 +98,7 @@
     <div class="component-card">
       <div class="component-label">tree</div>
       <div class="component-body">
-        <SafeTree config={{ component: "tree", metadata: {"variant": "default", "spacing": "normal"} }} />
+        <SafeTree config={SAMPLES["tree"]} />
       </div>
     </div>
     {/if}
@@ -127,7 +106,7 @@
     <div class="component-card">
       <div class="component-label">sheet</div>
       <div class="component-body">
-        <SafeSheet config={{ component: "sheet", metadata: {"variant": "default", "spacing": "normal", "surface": "normal"} }} />
+        <SafeSheet config={SAMPLES["sheet"]} />
       </div>
     </div>
     {/if}
@@ -135,7 +114,7 @@
     <div class="component-card">
       <div class="component-label">chart</div>
       <div class="component-body">
-        <SafeChart config={{ component: "chart", metadata: {"variant": "default", "chartType": "bar", "title": "Revenue"} }} />
+        <SafeChart config={SAMPLES["chart"]} />
       </div>
     </div>
     {/if}
@@ -143,7 +122,7 @@
     <div class="component-card">
       <div class="component-label">heatmap</div>
       <div class="component-body">
-        <SafeHeatmap config={{ component: "heatmap", metadata: {"variant": "default"} }} />
+        <SafeHeatmap config={SAMPLES["heatmap"]} />
       </div>
     </div>
     {/if}
@@ -151,7 +130,7 @@
     <div class="component-card">
       <div class="component-label">gauge</div>
       <div class="component-body">
-        <SafeGauge config={{ component: "gauge", metadata: {"variant": "default"} }} />
+        <SafeGauge config={SAMPLES["gauge"]} />
       </div>
     </div>
     {/if}
@@ -159,7 +138,7 @@
     <div class="component-card">
       <div class="component-label">funnel</div>
       <div class="component-body">
-        <SafeFunnel config={{ component: "funnel", metadata: {"variant": "default"} }} />
+        <SafeFunnel config={SAMPLES["funnel"]} />
       </div>
     </div>
     {/if}
@@ -167,7 +146,7 @@
     <div class="component-card">
       <div class="component-label">sankey</div>
       <div class="component-body">
-        <SafeSankey config={{ component: "sankey", metadata: {"variant": "default"} }} />
+        <SafeSankey config={SAMPLES["sankey"]} />
       </div>
     </div>
     {/if}
@@ -175,7 +154,7 @@
     <div class="component-card">
       <div class="component-label">treemap</div>
       <div class="component-body">
-        <SafeTreemap config={{ component: "treemap", metadata: {"variant": "default"} }} />
+        <SafeTreemap config={SAMPLES["treemap"]} />
       </div>
     </div>
     {/if}
@@ -183,7 +162,7 @@
     <div class="component-card">
       <div class="component-label">timeline</div>
       <div class="component-body">
-        <SafeTimeline config={{ component: "timeline", metadata: {"variant": "default"} }} />
+        <SafeTimeline config={SAMPLES["timeline"]} />
       </div>
     </div>
     {/if}
@@ -191,7 +170,7 @@
     <div class="component-card">
       <div class="component-label">map</div>
       <div class="component-body">
-        <SafeMap config={{ component: "map", metadata: {"variant": "default"} }} />
+        <SafeMap config={SAMPLES["map"]} />
       </div>
     </div>
     {/if}
@@ -199,7 +178,7 @@
     <div class="component-card">
       <div class="component-label">calendar</div>
       <div class="component-body">
-        <SafeCalendar config={{ component: "calendar", metadata: {"variant": "default", "size": "normal"} }} />
+        <SafeCalendar config={SAMPLES["calendar"]} />
       </div>
     </div>
     {/if}
@@ -207,7 +186,7 @@
     <div class="component-card">
       <div class="component-label">toggle</div>
       <div class="component-body">
-        <SafeToggle config={{ component: "toggle", metadata: {"variant": "default", "disabled": false, "labelPosition": "right", "label": "Enable feature", "checked": false} }} />
+        <SafeToggle config={SAMPLES["toggle"]} />
       </div>
     </div>
     {/if}
@@ -215,7 +194,7 @@
     <div class="component-card">
       <div class="component-label">week</div>
       <div class="component-body">
-        <SafeWeek config={{ component: "week", metadata: {"variant": "default"} }} />
+        <SafeWeek config={SAMPLES["week"]} />
       </div>
     </div>
     {/if}
@@ -223,7 +202,7 @@
     <div class="component-card">
       <div class="component-label">chat</div>
       <div class="component-body">
-        <SafeChat config={{ component: "chat", metadata: {"title": "Chat", "placeholder": "Type a message..."} }} />
+        <SafeChat config={SAMPLES["chat"]} />
       </div>
     </div>
     {/if}
@@ -231,7 +210,7 @@
     <div class="component-card">
       <div class="component-label">tabs</div>
       <div class="component-body">
-        <SafeTabs config={{ component: "tabs", metadata: {"variant": "default", "position": "top", "tabs": [{"key": "one", "label": "Tab One"}, {"key": "two", "label": "Tab Two"}]} }} />
+        <SafeTabs config={SAMPLES["tabs"]} />
       </div>
     </div>
     {/if}
@@ -239,7 +218,7 @@
     <div class="component-card">
       <div class="component-label">callout</div>
       <div class="component-body">
-        <SafeCallout config={{ component: "callout", metadata: {"variant": "info", "position": "top", "message": "This is a callout."} }} />
+        <SafeCallout config={SAMPLES["callout"]} />
       </div>
     </div>
     {/if}
@@ -247,7 +226,7 @@
     <div class="component-card">
       <div class="component-label">drag-drop</div>
       <div class="component-body">
-        <SafeDragDrop config={{ component: "drag-drop", metadata: {"variant": "default"} }} />
+        <SafeDragDrop config={SAMPLES["drag-drop"]} />
       </div>
     </div>
     {/if}
@@ -255,7 +234,7 @@
     <div class="component-card">
       <div class="component-label">grid</div>
       <div class="component-body">
-        <SafeGrid config={{ component: "grid", metadata: {"spacing": "normal", "radius": "normal", "surface": "normal", "collapsible": false} }} />
+        <SafeGrid config={SAMPLES["grid"]} />
       </div>
     </div>
     {/if}
@@ -263,7 +242,7 @@
     <div class="component-card">
       <div class="component-label">input</div>
       <div class="component-body">
-        <SafeInput config={{ component: "input", metadata: {"inputType": "text", "align": "normal", "valign": "normal", "placeholder": "Type here..."} }} />
+        <SafeInput config={SAMPLES["input"]} />
       </div>
     </div>
     {/if}
@@ -271,7 +250,7 @@
     <div class="component-card">
       <div class="component-label">picker</div>
       <div class="component-body">
-        <SafePicker config={{ component: "picker", metadata: {"variant": "default"} }} />
+        <SafePicker config={SAMPLES["picker"]} />
       </div>
     </div>
     {/if}
@@ -279,7 +258,7 @@
     <div class="component-card">
       <div class="component-label">nav</div>
       <div class="component-body">
-        <SafeNav config={{ component: "nav", metadata: {"navStyle": "classic", "title": "Viewer"} }} />
+        <SafeNav config={SAMPLES["nav"]} />
       </div>
     </div>
     {/if}

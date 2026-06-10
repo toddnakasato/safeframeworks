@@ -1,4 +1,5 @@
 ---
+import { SAMPLES } from "../../../../../samples";
 import SafeLayout from "../../../SafeLayout.astro";
 import SafeColumns from "../../../SafeColumns.astro";
 import SafeCard from "../../../SafeCard.astro";
@@ -61,189 +62,189 @@ import SafeNav from "../../../SafeNav.astro";
 
       <div class="section-label" style="margin-top:16px">COMPONENTS</div>
         <button class="comp-btn active" onclick="filterComp(null)">All</button>
-        <button class="comp-btn" onclick="filterComp('layout')">layout</button>
-        <button class="comp-btn" onclick="filterComp('columns')">columns</button>
-        <button class="comp-btn" onclick="filterComp('card')">card</button>
         <button class="comp-btn" onclick="filterComp('button')">button</button>
-        <button class="comp-btn" onclick="filterComp('table')">table</button>
-        <button class="comp-btn" onclick="filterComp('tree')">tree</button>
-        <button class="comp-btn" onclick="filterComp('sheet')">sheet</button>
-        <button class="comp-btn" onclick="filterComp('chart')">chart</button>
-        <button class="comp-btn" onclick="filterComp('heatmap')">heatmap</button>
-        <button class="comp-btn" onclick="filterComp('gauge')">gauge</button>
-        <button class="comp-btn" onclick="filterComp('funnel')">funnel</button>
-        <button class="comp-btn" onclick="filterComp('sankey')">sankey</button>
-        <button class="comp-btn" onclick="filterComp('treemap')">treemap</button>
-        <button class="comp-btn" onclick="filterComp('timeline')">timeline</button>
-        <button class="comp-btn" onclick="filterComp('map')">map</button>
         <button class="comp-btn" onclick="filterComp('calendar')">calendar</button>
-        <button class="comp-btn" onclick="filterComp('toggle')">toggle</button>
-        <button class="comp-btn" onclick="filterComp('week')">week</button>
-        <button class="comp-btn" onclick="filterComp('chat')">chat</button>
-        <button class="comp-btn" onclick="filterComp('tabs')">tabs</button>
         <button class="comp-btn" onclick="filterComp('callout')">callout</button>
+        <button class="comp-btn" onclick="filterComp('card')">card</button>
+        <button class="comp-btn" onclick="filterComp('chart')">chart</button>
+        <button class="comp-btn" onclick="filterComp('chat')">chat</button>
+        <button class="comp-btn" onclick="filterComp('columns')">columns</button>
         <button class="comp-btn" onclick="filterComp('drag-drop')">drag-drop</button>
+        <button class="comp-btn" onclick="filterComp('funnel')">funnel</button>
+        <button class="comp-btn" onclick="filterComp('gauge')">gauge</button>
         <button class="comp-btn" onclick="filterComp('grid')">grid</button>
+        <button class="comp-btn" onclick="filterComp('heatmap')">heatmap</button>
         <button class="comp-btn" onclick="filterComp('input')">input</button>
-        <button class="comp-btn" onclick="filterComp('picker')">picker</button>
+        <button class="comp-btn" onclick="filterComp('layout')">layout</button>
+        <button class="comp-btn" onclick="filterComp('map')">map</button>
         <button class="comp-btn" onclick="filterComp('nav')">nav</button>
+        <button class="comp-btn" onclick="filterComp('picker')">picker</button>
+        <button class="comp-btn" onclick="filterComp('sankey')">sankey</button>
+        <button class="comp-btn" onclick="filterComp('sheet')">sheet</button>
+        <button class="comp-btn" onclick="filterComp('table')">table</button>
+        <button class="comp-btn" onclick="filterComp('tabs')">tabs</button>
+        <button class="comp-btn" onclick="filterComp('timeline')">timeline</button>
+        <button class="comp-btn" onclick="filterComp('toggle')">toggle</button>
+        <button class="comp-btn" onclick="filterComp('tree')">tree</button>
+        <button class="comp-btn" onclick="filterComp('treemap')">treemap</button>
+        <button class="comp-btn" onclick="filterComp('week')">week</button>
     </div>
     <div class="main">
       <h3>astro/6 — <span id="style-name">vanilla</span><span id="comp-name" class="active-comp"></span></h3>
     <div class="component-card" data-comp="layout">
       <div class="component-label">layout</div>
       <div class="component-body">
-        <SafeLayout config={{"component": "layout", "metadata": {"variant": "default"}}} />
+        <SafeLayout config={SAMPLES["layout"]} />
       </div>
     </div>
     <div class="component-card" data-comp="columns">
       <div class="component-label">columns</div>
       <div class="component-body">
-        <SafeColumns config={{"component": "columns", "metadata": {"spacing": "normal", "radius": "normal", "surface": "normal"}}} />
+        <SafeColumns config={SAMPLES["columns"]} />
       </div>
     </div>
     <div class="component-card" data-comp="card">
       <div class="component-label">card</div>
       <div class="component-body">
-        <SafeCard config={{"component": "card", "metadata": {"variant": "default", "surface": "normal", "spacing": "normal", "radius": "normal", "density": "normal", "title": "Sample Card", "subtitle": "Subtitle"}}} />
+        <SafeCard config={SAMPLES["card"]} />
       </div>
     </div>
     <div class="component-card" data-comp="button">
       <div class="component-label">button</div>
       <div class="component-body">
-        <SafeButton config={{"component": "button", "metadata": {"variant": "primary", "size": "md", "disabled": false, "loading": "normal", "fullWidth": "normal", "iconOnly": "normal", "selected": "normal", "status": "normal", "groupVariant": "normal", "groupDirection": "normal", "label": "Click Me"}}} />
+        <SafeButton config={SAMPLES["button"]} />
       </div>
     </div>
     <div class="component-card" data-comp="table">
       <div class="component-label">table</div>
       <div class="component-body">
-        <SafeTable config={{"component": "table", "metadata": {"variant": "default", "spacing": "normal", "headerStyle": "normal", "rowDivider": "normal", "rowNumbers": "normal", "truncate": "normal", "columnLines": "normal", "headerDivider": "normal", "zebra": "normal", "selectable": "normal"}}} />
+        <SafeTable config={SAMPLES["table"]} />
       </div>
     </div>
     <div class="component-card" data-comp="tree">
       <div class="component-label">tree</div>
       <div class="component-body">
-        <SafeTree config={{"component": "tree", "metadata": {"variant": "default", "spacing": "normal"}}} />
+        <SafeTree config={SAMPLES["tree"]} />
       </div>
     </div>
     <div class="component-card" data-comp="sheet">
       <div class="component-label">sheet</div>
       <div class="component-body">
-        <SafeSheet config={{"component": "sheet", "metadata": {"variant": "default", "spacing": "normal", "surface": "normal"}}} />
+        <SafeSheet config={SAMPLES["sheet"]} />
       </div>
     </div>
     <div class="component-card" data-comp="chart">
       <div class="component-label">chart</div>
       <div class="component-body">
-        <SafeChart config={{"component": "chart", "metadata": {"variant": "default", "chartType": "bar", "title": "Revenue"}}} />
+        <SafeChart config={SAMPLES["chart"]} />
       </div>
     </div>
     <div class="component-card" data-comp="heatmap">
       <div class="component-label">heatmap</div>
       <div class="component-body">
-        <SafeHeatmap config={{"component": "heatmap", "metadata": {"variant": "default"}}} />
+        <SafeHeatmap config={SAMPLES["heatmap"]} />
       </div>
     </div>
     <div class="component-card" data-comp="gauge">
       <div class="component-label">gauge</div>
       <div class="component-body">
-        <SafeGauge config={{"component": "gauge", "metadata": {"variant": "default"}}} />
+        <SafeGauge config={SAMPLES["gauge"]} />
       </div>
     </div>
     <div class="component-card" data-comp="funnel">
       <div class="component-label">funnel</div>
       <div class="component-body">
-        <SafeFunnel config={{"component": "funnel", "metadata": {"variant": "default"}}} />
+        <SafeFunnel config={SAMPLES["funnel"]} />
       </div>
     </div>
     <div class="component-card" data-comp="sankey">
       <div class="component-label">sankey</div>
       <div class="component-body">
-        <SafeSankey config={{"component": "sankey", "metadata": {"variant": "default"}}} />
+        <SafeSankey config={SAMPLES["sankey"]} />
       </div>
     </div>
     <div class="component-card" data-comp="treemap">
       <div class="component-label">treemap</div>
       <div class="component-body">
-        <SafeTreemap config={{"component": "treemap", "metadata": {"variant": "default"}}} />
+        <SafeTreemap config={SAMPLES["treemap"]} />
       </div>
     </div>
     <div class="component-card" data-comp="timeline">
       <div class="component-label">timeline</div>
       <div class="component-body">
-        <SafeTimeline config={{"component": "timeline", "metadata": {"variant": "default"}}} />
+        <SafeTimeline config={SAMPLES["timeline"]} />
       </div>
     </div>
     <div class="component-card" data-comp="map">
       <div class="component-label">map</div>
       <div class="component-body">
-        <SafeMap config={{"component": "map", "metadata": {"variant": "default"}}} />
+        <SafeMap config={SAMPLES["map"]} />
       </div>
     </div>
     <div class="component-card" data-comp="calendar">
       <div class="component-label">calendar</div>
       <div class="component-body">
-        <SafeCalendar config={{"component": "calendar", "metadata": {"variant": "default", "size": "normal"}}} />
+        <SafeCalendar config={SAMPLES["calendar"]} />
       </div>
     </div>
     <div class="component-card" data-comp="toggle">
       <div class="component-label">toggle</div>
       <div class="component-body">
-        <SafeToggle config={{"component": "toggle", "metadata": {"variant": "default", "disabled": false, "labelPosition": "right", "label": "Enable feature", "checked": false}}} />
+        <SafeToggle config={SAMPLES["toggle"]} />
       </div>
     </div>
     <div class="component-card" data-comp="week">
       <div class="component-label">week</div>
       <div class="component-body">
-        <SafeWeek config={{"component": "week", "metadata": {"variant": "default"}}} />
+        <SafeWeek config={SAMPLES["week"]} />
       </div>
     </div>
     <div class="component-card" data-comp="chat">
       <div class="component-label">chat</div>
       <div class="component-body">
-        <SafeChat config={{"component": "chat", "metadata": {"title": "Chat", "placeholder": "Type a message..."}}} />
+        <SafeChat config={SAMPLES["chat"]} />
       </div>
     </div>
     <div class="component-card" data-comp="tabs">
       <div class="component-label">tabs</div>
       <div class="component-body">
-        <SafeTabs config={{"component": "tabs", "metadata": {"variant": "default", "position": "top", "tabs": [{"key": "one", "label": "Tab One"}, {"key": "two", "label": "Tab Two"}]}}} />
+        <SafeTabs config={SAMPLES["tabs"]} />
       </div>
     </div>
     <div class="component-card" data-comp="callout">
       <div class="component-label">callout</div>
       <div class="component-body">
-        <SafeCallout config={{"component": "callout", "metadata": {"variant": "info", "position": "top", "message": "This is a callout."}}} />
+        <SafeCallout config={SAMPLES["callout"]} />
       </div>
     </div>
     <div class="component-card" data-comp="drag-drop">
       <div class="component-label">drag-drop</div>
       <div class="component-body">
-        <SafeDragDrop config={{"component": "drag-drop", "metadata": {"variant": "default"}}} />
+        <SafeDragDrop config={SAMPLES["drag-drop"]} />
       </div>
     </div>
     <div class="component-card" data-comp="grid">
       <div class="component-label">grid</div>
       <div class="component-body">
-        <SafeGrid config={{"component": "grid", "metadata": {"spacing": "normal", "radius": "normal", "surface": "normal", "collapsible": false}}} />
+        <SafeGrid config={SAMPLES["grid"]} />
       </div>
     </div>
     <div class="component-card" data-comp="input">
       <div class="component-label">input</div>
       <div class="component-body">
-        <SafeInput config={{"component": "input", "metadata": {"inputType": "text", "align": "normal", "valign": "normal", "placeholder": "Type here..."}}} />
+        <SafeInput config={SAMPLES["input"]} />
       </div>
     </div>
     <div class="component-card" data-comp="picker">
       <div class="component-label">picker</div>
       <div class="component-body">
-        <SafePicker config={{"component": "picker", "metadata": {"variant": "default"}}} />
+        <SafePicker config={SAMPLES["picker"]} />
       </div>
     </div>
     <div class="component-card" data-comp="nav">
       <div class="component-label">nav</div>
       <div class="component-body">
-        <SafeNav config={{"component": "nav", "metadata": {"navStyle": "classic", "title": "Viewer"}}} />
+        <SafeNav config={SAMPLES["nav"]} />
       </div>
     </div>
     </div>
