@@ -1,0 +1,4 @@
+/* safeHierarchy — intent-only. No hardcoded styles. */
+:host {
+  display: contents;
+}

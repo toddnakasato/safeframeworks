@@ -1,0 +1,360 @@
+{
+  "ok": true,
+  "framework": "react",
+  "version": "18",
+  "checked": 27,
+  "components": {
+    "layout": {
+      "ok": true,
+      "impl": "react/18/SafeLayout.tsx",
+      "via": "native",
+      "checks": {
+        "contract": "pass",
+        "impl": "pass",
+        "imports-safecontracts": "pass",
+        "reads-metadata": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (1/1)"
+      }
+    },
+    "columns": {
+      "ok": true,
+      "impl": "react/18/SafeColumns.tsx",
+      "via": "native",
+      "checks": {
+        "contract": "pass",
+        "impl": "pass",
+        "imports-safecontracts": "pass",
+        "reads-metadata": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (3/3)"
+      }
+    },
+    "card": {
+      "ok": true,
+      "impl": "react/18/SafeCard.tsx",
+      "via": "native",
+      "checks": {
+        "contract": "pass",
+        "impl": "pass",
+        "imports-safecontracts": "pass",
+        "reads-metadata": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (5/5)"
+      }
+    },
+    "button": {
+      "ok": true,
+      "impl": "react/18/SafeButton.tsx",
+      "via": "native",
+      "checks": {
+        "contract": "pass",
+        "impl": "pass",
+        "imports-safecontracts": "pass",
+        "reads-metadata": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (10/10)"
+      }
+    },
+    "table": {
+      "ok": true,
+      "impl": "react/18/SafeTable.tsx",
+      "via": "native",
+      "checks": {
+        "contract": "pass",
+        "impl": "pass",
+        "imports-safecontracts": "pass",
+        "reads-metadata": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (10/10)"
+      }
+    },
+    "tree": {
+      "ok": true,
+      "impl": "react/18/SafeTree.tsx",
+      "via": "native",
+      "checks": {
+        "contract": "pass",
+        "impl": "pass",
+        "imports-safecontracts": "pass",
+        "reads-metadata": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (2/2)"
+      }
+    },
+    "sheet": {
+      "ok": true,
+      "impl": "react/18/SafeSheet.tsx",
+      "via": "builder: builders/sheet.ts",
+      "checks": {
+        "contract": "pass",
+        "impl": "pass",
+        "imports-safecontracts": "pass",
+        "reads-metadata": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (3/3)"
+      }
+    },
+    "chart": {
+      "ok": true,
+      "impl": "react/18/SafeChart.tsx",
+      "via": "builder: builders/chart.ts",
+      "checks": {
+        "contract": "pass",
+        "impl": "pass",
+        "imports-safecontracts": "pass",
+        "reads-metadata": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (2/2)"
+      }
+    },
+    "heatmap": {
+      "ok": true,
+      "impl": "react/18/SafeHeatmap.tsx",
+      "via": "native",
+      "checks": {
+        "contract": "pass",
+        "impl": "pass",
+        "imports-safecontracts": "pass",
+        "reads-metadata": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (1/1)"
+      }
+    },
+    "gauge": {
+      "ok": true,
+      "impl": "react/18/SafeGauge.tsx",
+      "via": "native",
+      "checks": {
+        "contract": "pass",
+        "impl": "pass",
+        "imports-safecontracts": "pass",
+        "reads-metadata": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (1/1)"
+      }
+    },
+    "funnel": {
+      "ok": true,
+      "impl": "react/18/SafeFunnel.tsx",
+      "via": "native",
+      "checks": {
+        "contract": "pass",
+        "impl": "pass",
+        "imports-safecontracts": "pass",
+        "reads-metadata": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (1/1)"
+      }
+    },
+    "flow": {
+      "ok": true,
+      "impl": "react/18/SafeFlow.tsx",
+      "via": "builder: builders/flow.ts",
+      "checks": {
+        "contract": "pass",
+        "impl": "pass",
+        "imports-safecontracts": "pass",
+        "reads-metadata": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (1/1)"
+      }
+    },
+    "hierarchy": {
+      "ok": true,
+      "impl": "react/18/SafeHierarchy.tsx",
+      "via": "builder: builders/hierarchy.ts",
+      "checks": {
+        "contract": "pass",
+        "impl": "pass",
+        "imports-safecontracts": "pass",
+        "reads-metadata": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (1/1)"
+      }
+    },
+    "timeline": {
+      "ok": true,
+      "impl": "react/18/SafeTimeline.tsx",
+      "via": "native",
+      "checks": {
+        "contract": "pass",
+        "impl": "pass",
+        "imports-safecontracts": "pass",
+        "reads-metadata": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (1/1)"
+      }
+    },
+    "map": {
+      "ok": true,
+      "impl": "react/18/SafeMap.tsx",
+      "via": "builder: builders/map.ts",
+      "checks": {
+        "contract": "pass",
+        "impl": "pass",
+        "imports-safecontracts": "pass",
+        "reads-metadata": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (1/1)"
+      }
+    },
+    "calendar": {
+      "ok": true,
+      "impl": "react/18/SafeCalendar.tsx",
+      "via": "native",
+      "checks": {
+        "contract": "pass",
+        "impl": "pass",
+        "imports-safecontracts": "pass",
+        "reads-metadata": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (2/2)"
+      }
+    },
+    "toggle": {
+      "ok": true,
+      "impl": "react/18/SafeToggle.tsx",
+      "via": "native",
+      "checks": {
+        "contract": "pass",
+        "impl": "pass",
+        "imports-safecontracts": "pass",
+        "reads-metadata": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (3/3)"
+      }
+    },
+    "week": {
+      "ok": true,
+      "impl": "react/18/SafeWeek.tsx",
+      "via": "native",
+      "checks": {
+        "contract": "pass",
+        "impl": "pass",
+        "imports-safecontracts": "pass",
+        "reads-metadata": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (1/1)"
+      }
+    },
+    "chat": {
+      "ok": true,
+      "impl": "react/18/SafeChat.tsx",
+      "via": "native",
+      "checks": {
+        "contract": "pass",
+        "impl": "pass",
+        "imports-safecontracts": "pass",
+        "reads-metadata": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (0/0)"
+      }
+    },
+    "tabs": {
+      "ok": true,
+      "impl": "react/18/SafeTabs.tsx",
+      "via": "native",
+      "checks": {
+        "contract": "pass",
+        "impl": "pass",
+        "imports-safecontracts": "pass",
+        "reads-metadata": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (2/2)"
+      }
+    },
+    "callout": {
+      "ok": true,
+      "impl": "react/18/SafeCallout.tsx",
+      "via": "native",
+      "checks": {
+        "contract": "pass",
+        "impl": "pass",
+        "imports-safecontracts": "pass",
+        "reads-metadata": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (2/2)"
+      }
+    },
+    "drag-drop": {
+      "ok": true,
+      "impl": "react/18/SafeDragDrop.tsx",
+      "via": "native",
+      "checks": {
+        "contract": "pass",
+        "impl": "pass",
+        "imports-safecontracts": "pass",
+        "reads-metadata": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (1/1)"
+      }
+    },
+    "grid": {
+      "ok": true,
+      "impl": "react/18/SafeGrid.tsx",
+      "via": "native",
+      "checks": {
+        "contract": "pass",
+        "impl": "pass",
+        "imports-safecontracts": "pass",
+        "reads-metadata": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (4/4)"
+      }
+    },
+    "input": {
+      "ok": true,
+      "impl": "react/18/SafeInput.tsx",
+      "via": "native",
+      "checks": {
+        "contract": "pass",
+        "impl": "pass",
+        "imports-safecontracts": "pass",
+        "reads-metadata": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (3/3)"
+      }
+    },
+    "picker": {
+      "ok": true,
+      "impl": "react/18/SafePicker.tsx",
+      "via": "native",
+      "checks": {
+        "contract": "pass",
+        "impl": "pass",
+        "imports-safecontracts": "pass",
+        "reads-metadata": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (1/1)"
+      }
+    },
+    "nav": {
+      "ok": true,
+      "impl": "react/18/SafeNav.tsx",
+      "via": "builder: builders/nav.ts",
+      "checks": {
+        "contract": "pass",
+        "impl": "pass",
+        "imports-safecontracts": "pass",
+        "reads-metadata": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (1/1)"
+      }
+    },
+    "list": {
+      "ok": true,
+      "impl": "react/18/SafeList.tsx",
+      "via": "native",
+      "checks": {
+        "contract": "pass",
+        "impl": "pass",
+        "imports-safecontracts": "pass",
+        "reads-metadata": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (3/3)"
+      }
+    }
+  },
+  "failures": []
+}

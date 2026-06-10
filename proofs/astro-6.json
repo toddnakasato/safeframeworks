@@ -1,0 +1,360 @@
+{
+  "ok": true,
+  "framework": "astro",
+  "version": "6",
+  "checked": 27,
+  "components": {
+    "layout": {
+      "ok": true,
+      "impl": "astro/6/SafeLayout.astro",
+      "via": "builder: builders/layout.ts",
+      "checks": {
+        "contract": "pass",
+        "impl": "pass",
+        "imports-safecontracts": "pass",
+        "reads-metadata": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (1/1)"
+      }
+    },
+    "columns": {
+      "ok": true,
+      "impl": "astro/6/SafeColumns.astro",
+      "via": "builder: builders/columns.ts",
+      "checks": {
+        "contract": "pass",
+        "impl": "pass",
+        "imports-safecontracts": "pass",
+        "reads-metadata": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (3/3)"
+      }
+    },
+    "card": {
+      "ok": true,
+      "impl": "astro/6/SafeCard.astro",
+      "via": "builder: builders/card.ts",
+      "checks": {
+        "contract": "pass",
+        "impl": "pass",
+        "imports-safecontracts": "pass",
+        "reads-metadata": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (5/5)"
+      }
+    },
+    "button": {
+      "ok": true,
+      "impl": "astro/6/SafeButton.astro",
+      "via": "builder: builders/button.ts",
+      "checks": {
+        "contract": "pass",
+        "impl": "pass",
+        "imports-safecontracts": "pass",
+        "reads-metadata": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (10/10)"
+      }
+    },
+    "table": {
+      "ok": true,
+      "impl": "astro/6/SafeTable.astro",
+      "via": "builder: builders/table.ts",
+      "checks": {
+        "contract": "pass",
+        "impl": "pass",
+        "imports-safecontracts": "pass",
+        "reads-metadata": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (10/10)"
+      }
+    },
+    "tree": {
+      "ok": true,
+      "impl": "astro/6/SafeTree.astro",
+      "via": "builder: builders/tree.ts",
+      "checks": {
+        "contract": "pass",
+        "impl": "pass",
+        "imports-safecontracts": "pass",
+        "reads-metadata": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (2/2)"
+      }
+    },
+    "sheet": {
+      "ok": true,
+      "impl": "astro/6/SafeSheet.astro",
+      "via": "builder: builders/sheet.ts",
+      "checks": {
+        "contract": "pass",
+        "impl": "pass",
+        "imports-safecontracts": "pass",
+        "reads-metadata": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (3/3)"
+      }
+    },
+    "chart": {
+      "ok": true,
+      "impl": "astro/6/SafeChart.astro",
+      "via": "builder: builders/chart.ts",
+      "checks": {
+        "contract": "pass",
+        "impl": "pass",
+        "imports-safecontracts": "pass",
+        "reads-metadata": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (2/2)"
+      }
+    },
+    "heatmap": {
+      "ok": true,
+      "impl": "astro/6/SafeHeatmap.astro",
+      "via": "builder: builders/heatmap.ts",
+      "checks": {
+        "contract": "pass",
+        "impl": "pass",
+        "imports-safecontracts": "pass",
+        "reads-metadata": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (1/1)"
+      }
+    },
+    "gauge": {
+      "ok": true,
+      "impl": "astro/6/SafeGauge.astro",
+      "via": "builder: builders/gauge.ts",
+      "checks": {
+        "contract": "pass",
+        "impl": "pass",
+        "imports-safecontracts": "pass",
+        "reads-metadata": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (1/1)"
+      }
+    },
+    "funnel": {
+      "ok": true,
+      "impl": "astro/6/SafeFunnel.astro",
+      "via": "builder: builders/funnel.ts",
+      "checks": {
+        "contract": "pass",
+        "impl": "pass",
+        "imports-safecontracts": "pass",
+        "reads-metadata": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (1/1)"
+      }
+    },
+    "flow": {
+      "ok": true,
+      "impl": "astro/6/SafeFlow.astro",
+      "via": "builder: builders/flow.ts",
+      "checks": {
+        "contract": "pass",
+        "impl": "pass",
+        "imports-safecontracts": "pass",
+        "reads-metadata": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (1/1)"
+      }
+    },
+    "hierarchy": {
+      "ok": true,
+      "impl": "astro/6/SafeHierarchy.astro",
+      "via": "builder: builders/hierarchy.ts",
+      "checks": {
+        "contract": "pass",
+        "impl": "pass",
+        "imports-safecontracts": "pass",
+        "reads-metadata": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (1/1)"
+      }
+    },
+    "timeline": {
+      "ok": true,
+      "impl": "astro/6/SafeTimeline.astro",
+      "via": "builder: builders/timeline.ts",
+      "checks": {
+        "contract": "pass",
+        "impl": "pass",
+        "imports-safecontracts": "pass",
+        "reads-metadata": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (1/1)"
+      }
+    },
+    "map": {
+      "ok": true,
+      "impl": "astro/6/SafeMap.astro",
+      "via": "builder: builders/map.ts",
+      "checks": {
+        "contract": "pass",
+        "impl": "pass",
+        "imports-safecontracts": "pass",
+        "reads-metadata": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (1/1)"
+      }
+    },
+    "calendar": {
+      "ok": true,
+      "impl": "astro/6/SafeCalendar.astro",
+      "via": "builder: builders/calendar.ts",
+      "checks": {
+        "contract": "pass",
+        "impl": "pass",
+        "imports-safecontracts": "pass",
+        "reads-metadata": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (2/2)"
+      }
+    },
+    "toggle": {
+      "ok": true,
+      "impl": "astro/6/SafeToggle.astro",
+      "via": "builder: builders/toggle.ts",
+      "checks": {
+        "contract": "pass",
+        "impl": "pass",
+        "imports-safecontracts": "pass",
+        "reads-metadata": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (3/3)"
+      }
+    },
+    "week": {
+      "ok": true,
+      "impl": "astro/6/SafeWeek.astro",
+      "via": "builder: builders/week.ts",
+      "checks": {
+        "contract": "pass",
+        "impl": "pass",
+        "imports-safecontracts": "pass",
+        "reads-metadata": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (1/1)"
+      }
+    },
+    "chat": {
+      "ok": true,
+      "impl": "astro/6/SafeChat.astro",
+      "via": "builder: builders/chat.ts",
+      "checks": {
+        "contract": "pass",
+        "impl": "pass",
+        "imports-safecontracts": "pass",
+        "reads-metadata": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (0/0)"
+      }
+    },
+    "tabs": {
+      "ok": true,
+      "impl": "astro/6/SafeTabs.astro",
+      "via": "builder: builders/tabs.ts",
+      "checks": {
+        "contract": "pass",
+        "impl": "pass",
+        "imports-safecontracts": "pass",
+        "reads-metadata": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (2/2)"
+      }
+    },
+    "callout": {
+      "ok": true,
+      "impl": "astro/6/SafeCallout.astro",
+      "via": "builder: builders/callout.ts",
+      "checks": {
+        "contract": "pass",
+        "impl": "pass",
+        "imports-safecontracts": "pass",
+        "reads-metadata": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (2/2)"
+      }
+    },
+    "drag-drop": {
+      "ok": true,
+      "impl": "astro/6/SafeDragDrop.astro",
+      "via": "builder: builders/dragdrop.ts",
+      "checks": {
+        "contract": "pass",
+        "impl": "pass",
+        "imports-safecontracts": "pass",
+        "reads-metadata": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (1/1)"
+      }
+    },
+    "grid": {
+      "ok": true,
+      "impl": "astro/6/SafeGrid.astro",
+      "via": "builder: builders/grid.ts",
+      "checks": {
+        "contract": "pass",
+        "impl": "pass",
+        "imports-safecontracts": "pass",
+        "reads-metadata": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (4/4)"
+      }
+    },
+    "input": {
+      "ok": true,
+      "impl": "astro/6/SafeInput.astro",
+      "via": "builder: builders/input.ts",
+      "checks": {
+        "contract": "pass",
+        "impl": "pass",
+        "imports-safecontracts": "pass",
+        "reads-metadata": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (3/3)"
+      }
+    },
+    "picker": {
+      "ok": true,
+      "impl": "astro/6/SafePicker.astro",
+      "via": "builder: builders/picker.ts",
+      "checks": {
+        "contract": "pass",
+        "impl": "pass",
+        "imports-safecontracts": "pass",
+        "reads-metadata": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (1/1)"
+      }
+    },
+    "nav": {
+      "ok": true,
+      "impl": "astro/6/SafeNav.astro",
+      "via": "builder: builders/nav.ts",
+      "checks": {
+        "contract": "pass",
+        "impl": "pass",
+        "imports-safecontracts": "pass",
+        "reads-metadata": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (1/1)"
+      }
+    },
+    "list": {
+      "ok": true,
+      "impl": "astro/6/SafeList.astro",
+      "via": "builder: builders/list.ts",
+      "checks": {
+        "contract": "pass",
+        "impl": "pass",
+        "imports-safecontracts": "pass",
+        "reads-metadata": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (3/3)"
+      }
+    }
+  },
+  "failures": []
+}

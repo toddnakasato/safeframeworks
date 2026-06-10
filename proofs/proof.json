@@ -1,0 +1,18 @@
+{
+  "ok": true,
+  "targets": {
+    "builders": true,
+    "react-19": true,
+    "react-18": true,
+    "angular-22": true,
+    "angular-21": true,
+    "vue-3": true,
+    "vue-2": true,
+    "svelte-5": true,
+    "svelte-4": true,
+    "astro-6": true,
+    "astro-5": true,
+    "lwc": true
+  },
+  "timestamp": "2026-06-10T15:28:59.055Z"
+}

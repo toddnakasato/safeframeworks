@@ -76,6 +76,8 @@ export function createSafeMap(
     const showPath = !!metadata.showPath;
 
     const map = L.map(container, { center, zoom, zoomControl, attributionControl: false });
+    container.setAttribute("data-component", "map");
+    container.setAttribute("data-variant", variant);
 
     L.tileLayer(TILE_URLS[variant] ?? TILE_URLS.default, { maxZoom: 18 }).addTo(map);
     L.control.attribution({ prefix: false })

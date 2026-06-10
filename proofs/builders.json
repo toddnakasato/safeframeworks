@@ -1,0 +1,385 @@
+{
+  "ok": true,
+  "checked": 27,
+  "builders": {
+    "layout": {
+      "ok": true,
+      "impl": "builders/layout.ts",
+      "via": "builder",
+      "checks": {
+        "exists": "pass",
+        "imports-safecontracts": "pass",
+        "config-typed": "pass",
+        "reads-metadata": "pass",
+        "data-record-contract": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (1/1)"
+      }
+    },
+    "columns": {
+      "ok": true,
+      "impl": "builders/columns.ts",
+      "via": "builder",
+      "checks": {
+        "exists": "pass",
+        "imports-safecontracts": "pass",
+        "config-typed": "pass",
+        "reads-metadata": "pass",
+        "data-record-contract": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (3/3)"
+      }
+    },
+    "card": {
+      "ok": true,
+      "impl": "builders/card.ts",
+      "via": "builder",
+      "checks": {
+        "exists": "pass",
+        "imports-safecontracts": "pass",
+        "config-typed": "pass",
+        "reads-metadata": "pass",
+        "data-record-contract": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (5/5)"
+      }
+    },
+    "button": {
+      "ok": true,
+      "impl": "builders/button.ts",
+      "via": "builder",
+      "checks": {
+        "exists": "pass",
+        "imports-safecontracts": "pass",
+        "config-typed": "pass",
+        "reads-metadata": "pass",
+        "data-record-contract": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (10/10)"
+      }
+    },
+    "table": {
+      "ok": true,
+      "impl": "builders/table.ts",
+      "via": "builder",
+      "checks": {
+        "exists": "pass",
+        "imports-safecontracts": "pass",
+        "config-typed": "pass",
+        "reads-metadata": "pass",
+        "data-record-contract": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (10/10)"
+      }
+    },
+    "tree": {
+      "ok": true,
+      "impl": "builders/tree.ts",
+      "via": "builder",
+      "checks": {
+        "exists": "pass",
+        "imports-safecontracts": "pass",
+        "config-typed": "pass",
+        "reads-metadata": "pass",
+        "data-record-contract": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (2/2)"
+      }
+    },
+    "sheet": {
+      "ok": true,
+      "impl": "builders/sheet.ts",
+      "via": "builder",
+      "checks": {
+        "exists": "pass",
+        "imports-safecontracts": "pass",
+        "config-typed": "pass",
+        "reads-metadata": "pass",
+        "data-record-contract": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (3/3)"
+      }
+    },
+    "chart": {
+      "ok": true,
+      "impl": "builders/chart.ts",
+      "via": "builder",
+      "checks": {
+        "exists": "pass",
+        "imports-safecontracts": "pass",
+        "config-typed": "pass",
+        "reads-metadata": "pass",
+        "data-record-contract": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (2/2)"
+      }
+    },
+    "heatmap": {
+      "ok": true,
+      "impl": "builders/heatmap.ts",
+      "via": "builder",
+      "checks": {
+        "exists": "pass",
+        "imports-safecontracts": "pass",
+        "config-typed": "pass",
+        "reads-metadata": "pass",
+        "data-record-contract": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (1/1)"
+      }
+    },
+    "gauge": {
+      "ok": true,
+      "impl": "builders/gauge.ts",
+      "via": "builder",
+      "checks": {
+        "exists": "pass",
+        "imports-safecontracts": "pass",
+        "config-typed": "pass",
+        "reads-metadata": "pass",
+        "data-record-contract": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (1/1)"
+      }
+    },
+    "funnel": {
+      "ok": true,
+      "impl": "builders/funnel.ts",
+      "via": "builder",
+      "checks": {
+        "exists": "pass",
+        "imports-safecontracts": "pass",
+        "config-typed": "pass",
+        "reads-metadata": "pass",
+        "data-record-contract": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (1/1)"
+      }
+    },
+    "flow": {
+      "ok": true,
+      "impl": "builders/flow.ts",
+      "via": "builder",
+      "checks": {
+        "exists": "pass",
+        "imports-safecontracts": "pass",
+        "config-typed": "pass",
+        "reads-metadata": "pass",
+        "data-record-contract": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (1/1)"
+      }
+    },
+    "hierarchy": {
+      "ok": true,
+      "impl": "builders/hierarchy.ts",
+      "via": "builder",
+      "checks": {
+        "exists": "pass",
+        "imports-safecontracts": "pass",
+        "config-typed": "pass",
+        "reads-metadata": "pass",
+        "data-record-contract": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (1/1)"
+      }
+    },
+    "timeline": {
+      "ok": true,
+      "impl": "builders/timeline.ts",
+      "via": "builder",
+      "checks": {
+        "exists": "pass",
+        "imports-safecontracts": "pass",
+        "config-typed": "pass",
+        "reads-metadata": "pass",
+        "data-record-contract": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (1/1)"
+      }
+    },
+    "map": {
+      "ok": true,
+      "impl": "builders/map.ts",
+      "via": "builder",
+      "checks": {
+        "exists": "pass",
+        "imports-safecontracts": "pass",
+        "config-typed": "pass",
+        "reads-metadata": "pass",
+        "data-record-contract": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (1/1)"
+      }
+    },
+    "calendar": {
+      "ok": true,
+      "impl": "builders/calendar.ts",
+      "via": "builder",
+      "checks": {
+        "exists": "pass",
+        "imports-safecontracts": "pass",
+        "config-typed": "pass",
+        "reads-metadata": "pass",
+        "data-record-contract": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (2/2)"
+      }
+    },
+    "toggle": {
+      "ok": true,
+      "impl": "builders/toggle.ts",
+      "via": "builder",
+      "checks": {
+        "exists": "pass",
+        "imports-safecontracts": "pass",
+        "config-typed": "pass",
+        "reads-metadata": "pass",
+        "data-record-contract": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (3/3)"
+      }
+    },
+    "week": {
+      "ok": true,
+      "impl": "builders/week.ts",
+      "via": "builder",
+      "checks": {
+        "exists": "pass",
+        "imports-safecontracts": "pass",
+        "config-typed": "pass",
+        "reads-metadata": "pass",
+        "data-record-contract": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (1/1)"
+      }
+    },
+    "chat": {
+      "ok": true,
+      "impl": "builders/chat.ts",
+      "via": "builder",
+      "checks": {
+        "exists": "pass",
+        "imports-safecontracts": "pass",
+        "config-typed": "pass",
+        "reads-metadata": "pass",
+        "data-record-contract": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (0/0)"
+      }
+    },
+    "tabs": {
+      "ok": true,
+      "impl": "builders/tabs.ts",
+      "via": "builder",
+      "checks": {
+        "exists": "pass",
+        "imports-safecontracts": "pass",
+        "config-typed": "pass",
+        "reads-metadata": "pass",
+        "data-record-contract": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (2/2)"
+      }
+    },
+    "callout": {
+      "ok": true,
+      "impl": "builders/callout.ts",
+      "via": "builder",
+      "checks": {
+        "exists": "pass",
+        "imports-safecontracts": "pass",
+        "config-typed": "pass",
+        "reads-metadata": "pass",
+        "data-record-contract": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (2/2)"
+      }
+    },
+    "drag-drop": {
+      "ok": true,
+      "impl": "builders/dragdrop.ts",
+      "via": "builder",
+      "checks": {
+        "exists": "pass",
+        "imports-safecontracts": "pass",
+        "config-typed": "pass",
+        "reads-metadata": "pass",
+        "data-record-contract": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (1/1)"
+      }
+    },
+    "grid": {
+      "ok": true,
+      "impl": "builders/grid.ts",
+      "via": "builder",
+      "checks": {
+        "exists": "pass",
+        "imports-safecontracts": "pass",
+        "config-typed": "pass",
+        "reads-metadata": "pass",
+        "data-record-contract": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (4/4)"
+      }
+    },
+    "input": {
+      "ok": true,
+      "impl": "builders/input.ts",
+      "via": "builder",
+      "checks": {
+        "exists": "pass",
+        "imports-safecontracts": "pass",
+        "config-typed": "pass",
+        "reads-metadata": "pass",
+        "data-record-contract": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (3/3)"
+      }
+    },
+    "picker": {
+      "ok": true,
+      "impl": "builders/picker.ts",
+      "via": "builder",
+      "checks": {
+        "exists": "pass",
+        "imports-safecontracts": "pass",
+        "config-typed": "pass",
+        "reads-metadata": "pass",
+        "data-record-contract": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (1/1)"
+      }
+    },
+    "nav": {
+      "ok": true,
+      "impl": "builders/nav.ts",
+      "via": "builder",
+      "checks": {
+        "exists": "pass",
+        "imports-safecontracts": "pass",
+        "config-typed": "pass",
+        "reads-metadata": "pass",
+        "data-record-contract": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (1/1)"
+      }
+    },
+    "list": {
+      "ok": true,
+      "impl": "builders/list.ts",
+      "via": "builder",
+      "checks": {
+        "exists": "pass",
+        "imports-safecontracts": "pass",
+        "config-typed": "pass",
+        "reads-metadata": "pass",
+        "data-record-contract": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (3/3)"
+      }
+    }
+  },
+  "failures": []
+}

@@ -160,6 +160,10 @@ export function buildChartConfig(config: ConfigBase): ChartConfiguration {
 }
 
 export function createSafeChart(canvas: HTMLCanvasElement, config: ConfigBase, onEvent?: OnSafeEvent): Chart {
+    const metadata = config.metadata;
+    canvas.setAttribute("data-component", "chart");
+    canvas.setAttribute("data-variant", (metadata.variant as string) ?? "default");
+    canvas.setAttribute("data-chart-type", (metadata.chartType as string) ?? "bar");
     const cfg = buildChartConfig(config);
     cfg.options = {
         ...cfg.options,

@@ -13,13 +13,14 @@ export const COMPONENT_DATA_FIELDS = {
   "button": ["variant", "size", "disabled", "loading", "fullWidth", "iconOnly", "selected", "status", "groupVariant", "groupDirection"],
   "table": ["variant", "spacing", "headerStyle", "rowDivider", "rowNumbers", "truncate", "columnLines", "headerDivider", "zebra", "selectable"],
   "tree": ["variant", "spacing"],
+  "list": ["variant", "direction", "selectionMode"],
   "sheet": ["variant", "spacing", "surface"],
   "chart": ["variant", "chartType"],
   "heatmap": ["variant"],
   "gauge": ["variant"],
   "funnel": ["variant"],
-  "sankey": ["variant"],
-  "treemap": ["variant"],
+  "flow": ["variant"],
+  "hierarchy": ["variant"],
   "timeline": ["variant"],
   "map": ["variant"],
   "calendar": ["variant", "size"],
@@ -36,7 +37,7 @@ export const COMPONENT_DATA_FIELDS = {
 
 /** Component registry — mirrors safecontracts COMPONENT_REGISTRY. */
 export const COMPONENT_REGISTRY = [
-  "layout", "columns", "card", "button", "table", "tree", "sheet", "chart", "heatmap", "gauge", "funnel", "sankey", "treemap", "timeline", "map", "calendar", "toggle", "week", "chat", "tabs", "callout", "drag-drop", "grid", "input", "picker", "nav"
+  "layout", "columns", "card", "button", "table", "tree", "sheet", "chart", "heatmap", "gauge", "funnel", "flow", "hierarchy", "timeline", "map", "calendar", "toggle", "week", "chat", "tabs", "callout", "drag-drop", "grid", "input", "picker", "nav", "list"
 ];
 
 export default class SafeContract extends LightningElement {

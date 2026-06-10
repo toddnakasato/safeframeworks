@@ -68,6 +68,11 @@ export default function App() {
     <div style={{ display: "flex", height: "100vh", fontFamily: "system-ui, sans-serif" }}>
       {/* Sidebar */}
       <div style={{ width: 220, borderRight: "1px solid var(--sd-border, #e5e7eb)", display: "flex", flexDirection: "column", overflow: "hidden" }}>
+        {/* Brand */}
+        <div style={{ padding: 12, borderBottom: "1px solid var(--sd-border, #e5e7eb)", display: "flex", alignItems: "center", gap: 8 }}>
+          <img src="/shield.png" alt="SafeDesk" style={{ width: 18, height: 21 }} />
+          <span style={{ fontSize: 13, fontWeight: 600 }}>react/19</span>
+        </div>
         {/* Style switcher */}
         <div style={{ padding: 12, borderBottom: "1px solid var(--sd-border, #e5e7eb)" }}>
           <div style={{ fontSize: 11, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.05em", color: "#6b7280", marginBottom: 8 }}>Style</div>

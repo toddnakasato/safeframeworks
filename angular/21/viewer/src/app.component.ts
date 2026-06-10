@@ -36,6 +36,7 @@ import { SafeNavComponent } from '../../SafeNav';
   template: `
     <div class="viewer">
       <div class="sidebar">
+        <div class="brand"><img src="/shield.png" alt="SafeDesk" /><span>angular/21</span></div>
         <div class="section-label">STYLE</div>
         <button *ngFor="let s of styles" class="style-btn" [class.active]="s === activeStyle" (click)="switchStyle(s)">{{s}}</button>
 
@@ -272,6 +273,8 @@ import { SafeNavComponent } from '../../SafeNav';
   styles: [`
     .viewer { display: flex; height: 100vh; font-family: system-ui, sans-serif; }
     .sidebar { width: 220px; border-right: 1px solid #e5e7eb; padding: 12px; overflow-y: auto; flex-shrink: 0; }
+    .brand { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1px solid #e5e7eb; font-size: 13px; font-weight: 600; }
+    .brand img { width: 18px; height: 21px; }
     .section-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: #6b7280; margin-bottom: 8px; }
     .style-btn, .comp-btn, .var-btn { display: block; width: 100%; text-align: left; padding: 4px 8px; font-size: 13px; border: none; border-radius: 4px; cursor: pointer; background: transparent; color: #1a1a1a; margin-bottom: 2px; }
     .var-btn { padding-left: 22px; }
