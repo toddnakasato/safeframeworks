@@ -12,6 +12,21 @@ import type { ConfigBase, DataSource } from "../../safecontracts/src/contracts";
 
 import button1Config from "./config/button/button1.json";
 import button2Config from "./config/button/button2.json";
+import button3Config from "./config/button/button3.json";
+import button4Config from "./config/button/button4.json";
+import button5Config from "./config/button/button5.json";
+import button6Config from "./config/button/button6.json";
+import button7Config from "./config/button/button7.json";
+import button8Config from "./config/button/button8.json";
+import button9Config from "./config/button/button9.json";
+import button10Config from "./config/button/button10.json";
+import button11Config from "./config/button/button11.json";
+import button12Config from "./config/button/button12.json";
+import button13Config from "./config/button/button13.json";
+import button14Config from "./config/button/button14.json";
+import button15Config from "./config/button/button15.json";
+import button16Config from "./config/button/button16.json";
+import button17Config from "./config/button/button17.json";
 import calendar1Config from "./config/calendar/calendar1.json";
 import calendar2Config from "./config/calendar/calendar2.json";
 import callout1Config from "./config/callout/callout1.json";
@@ -102,6 +117,21 @@ export const SAMPLES: Record<string, Record<string, ConfigBase>> = {
     button: {
         "button1": resolveData(button1Config as unknown as ConfigBase),
         "button2": resolveData(button2Config as unknown as ConfigBase),
+        "button3": resolveData(button3Config as unknown as ConfigBase),
+        "button4": resolveData(button4Config as unknown as ConfigBase),
+        "button5": resolveData(button5Config as unknown as ConfigBase),
+        "button6": resolveData(button6Config as unknown as ConfigBase),
+        "button7": resolveData(button7Config as unknown as ConfigBase),
+        "button8": resolveData(button8Config as unknown as ConfigBase),
+        "button9": resolveData(button9Config as unknown as ConfigBase),
+        "button10": resolveData(button10Config as unknown as ConfigBase),
+        "button11": resolveData(button11Config as unknown as ConfigBase),
+        "button12": resolveData(button12Config as unknown as ConfigBase),
+        "button13": resolveData(button13Config as unknown as ConfigBase),
+        "button14": resolveData(button14Config as unknown as ConfigBase),
+        "button15": resolveData(button15Config as unknown as ConfigBase),
+        "button16": resolveData(button16Config as unknown as ConfigBase),
+        "button17": resolveData(button17Config as unknown as ConfigBase),
     },
     calendar: {
         "calendar1": resolveData(calendar1Config as unknown as ConfigBase),

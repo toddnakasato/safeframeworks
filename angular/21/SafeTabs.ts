@@ -1,29 +1,29 @@
 /**
- * SafeTabs — Angular tabs component.
- * Implements tabs contract from safecontracts.
- * Outputs data-* attributes for intent. No hardcoded CSS.
+ * SafeTabs — Angular tabbed panel navigation.
+ * Renders via shared-mapping tabs builder (./tabs) — identical across
+ * frameworks. Structure + data-* only.
  */
-import { Component, Input } from '@angular/core';
-import { NgFor } from '@angular/common';
+import { Component, Input, ElementRef, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
+import { createSafeTabs } from './tabs';
 
 @Component({
   selector: 'safe-tabs',
   standalone: true,
-  imports: [NgFor],
-  template: `
-    <div data-tabs-bar>
-      <button *ngFor="let tab of config.metadata.tabs || []" data-role="tab" [attr.data-tab-key]="tab.key">{{ tab.label }}</button>
-    </div>
-    <div data-tabs-panel><ng-content></ng-content></div>
-  `,
-  host: {
-    '[attr.data-component]': "'tabs'",
-    '[attr.data-variant]': 'config.metadata.variant',
-    '[attr.data-position]': 'config.metadata.position'
-  }
+  template: `<div #tabsContainer></div>`
 })
-export class SafeTabsComponent {
+export class SafeTabsComponent implements AfterViewInit, OnDestroy {
   @Input() config!: ConfigBase;
   @Input() onEvent?: OnSafeEvent;
+  @ViewChild('tabsContainer') containerRef!: ElementRef<HTMLElement>;
+  private root: HTMLElement | null = null;
+
+  ngAfterViewInit() {
+    this.root = createSafeTabs(this.containerRef.nativeElement, this.config, this.onEvent);
+  }
+
+  ngOnDestroy() {
+    this.root?.remove();
+    this.root = null;
+  }
 }

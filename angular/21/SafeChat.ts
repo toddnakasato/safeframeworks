@@ -1,28 +1,29 @@
 /**
- * SafeChat — Angular chat component.
- * Implements chat contract from safecontracts.
- * Outputs data-* attributes for intent. No hardcoded CSS.
+ * SafeChat — Angular chat (bubbles, input, quick actions).
+ * Renders via shared-mapping chat builder (./chat) — identical across
+ * frameworks. Structure + data-* only.
  */
-import { Component, Input } from '@angular/core';
-import { NgIf } from '@angular/common';
+import { Component, Input, ElementRef, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
+import { createSafeChat } from './chat';
 
 @Component({
   selector: 'safe-chat',
   standalone: true,
-  imports: [NgIf],
-  template: `
-    <div *ngIf="config.metadata.title" data-role="title">{{ config.metadata.title }}</div>
-    <div data-role="messages">
-      <div data-role="message" data-sender="system">Welcome to chat</div>
-    </div>
-    <div data-role="input"><input placeholder="{{ config.metadata.placeholder || 'Type a message...' }}" /></div>
-  `,
-  host: {
-    '[attr.data-component]': "'chat'"
-  }
+  template: `<div #chatContainer></div>`
 })
-export class SafeChatComponent {
+export class SafeChatComponent implements AfterViewInit, OnDestroy {
   @Input() config!: ConfigBase;
   @Input() onEvent?: OnSafeEvent;
+  @ViewChild('chatContainer') containerRef!: ElementRef<HTMLElement>;
+  private root: HTMLElement | null = null;
+
+  ngAfterViewInit() {
+    this.root = createSafeChat(this.containerRef.nativeElement, this.config, this.onEvent);
+  }
+
+  ngOnDestroy() {
+    this.root?.remove();
+    this.root = null;
+  }
 }

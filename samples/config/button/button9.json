@@ -1,0 +1,15 @@
+{
+  "component": "button",
+  "metadata": {
+    "variant": "outline",
+    "label": "Unavailable",
+    "disabled": true,
+    "size": "md"
+  },
+  "eventHandler": {
+    "handler": "button",
+    "events": [
+      "click"
+    ]
+  }
+}

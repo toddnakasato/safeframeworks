@@ -1,21 +1,26 @@
 <!--
-  SafeCard — Svelte 5 card component.
-  Outputs data-* attributes for intent. No hardcoded CSS.
+  SafeCard — Svelte 5 record display card.
+  Renders via shared-mapping card builder (./card) — identical across
+  frameworks. Structure + data-* only.
 -->
 <script lang="ts">
+  import { onMount, onDestroy } from 'svelte';
   import type { ConfigBase, OnSafeEvent } from 'safecontracts';
+  import { createSafeCard } from './card';
+
   let { config, onEvent }: { config: ConfigBase; onEvent?: OnSafeEvent } = $props();
+
+  let container: HTMLElement;
+  let root: HTMLElement | null = null;
+
+  onMount(() => {
+    root = createSafeCard(container, config, onEvent);
+  });
+
+  onDestroy(() => {
+    root?.remove();
+    root = null;
+  });
 </script>
 
-<div
-  data-component="card"
-  data-variant={config.metadata.variant}
-  data-surface={config.metadata.surface}
-  data-spacing={config.metadata.spacing}
-  data-radius={config.metadata.radius}
-  data-density={config.metadata.density}
->
-  {#if config.metadata.title}<div data-role="header">{config.metadata.title}</div>{/if}
-    {#if config.metadata.subtitle}<div data-role="subtitle">{config.metadata.subtitle}</div>{/if}
-    <slot />
-</div>
+<div bind:this={container}></div>

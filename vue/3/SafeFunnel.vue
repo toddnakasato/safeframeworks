@@ -1,17 +1,27 @@
 <!--
-  SafeFunnel — Vue 3 funnel component.
-  Outputs data-* attributes for intent. No hardcoded CSS.
+  SafeFunnel — Vue 3 D3 funnel/conversion bars.
+  Renders via shared-mapping funnel builder (./funnel) — identical across
+  frameworks. Structure + data-* only.
 -->
 <script setup lang="ts">
+import { ref, onMounted, onBeforeUnmount } from 'vue';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-defineProps<{ config: ConfigBase; onEvent?: OnSafeEvent }>();
+import { createSafeFunnel } from './funnel';
+
+const props = defineProps<{ config: ConfigBase; onEvent?: OnSafeEvent }>();
+const containerRef = ref<HTMLElement | null>(null);
+let root: HTMLElement | null = null;
+
+onMounted(() => {
+  if (containerRef.value) root = createSafeFunnel(containerRef.value, props.config, props.onEvent);
+});
+
+onBeforeUnmount(() => {
+  root?.remove();
+  root = null;
+});
 </script>
 
 <template>
-  <div
-    data-component="funnel"
-    :data-variant="config.metadata.variant"
-  >
-      <div style="display:flex;flex-direction:column;gap:4px;padding:8px"><div style="background:var(--sd-accent,#3b82f6);color:white;padding:8px;text-align:center;border-radius:4px;width:100%">Leads: 100</div><div style="background:var(--sd-accent,#3b82f6);color:white;padding:8px;text-align:center;border-radius:4px;width:75%;margin:0 auto">Qualified: 75</div><div style="background:var(--sd-accent,#3b82f6);color:white;padding:8px;text-align:center;border-radius:4px;width:50%;margin:0 auto">Won: 50</div></div>
-  </div>
+  <div ref="containerRef"></div>
 </template>

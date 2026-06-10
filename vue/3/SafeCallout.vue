@@ -1,18 +1,27 @@
 <!--
   SafeCallout — Vue 3 callout component.
-  Outputs data-* attributes for intent. No hardcoded CSS.
+  Renders via shared-mapping callout builder (./callout) — identical across
+  frameworks. Structure + data-* only.
 -->
 <script setup lang="ts">
+import { ref, onMounted, onBeforeUnmount } from 'vue';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-defineProps<{ config: ConfigBase; onEvent?: OnSafeEvent }>();
+import { createSafeCallout } from './callout';
+
+const props = defineProps<{ config: ConfigBase; onEvent?: OnSafeEvent }>();
+const containerRef = ref<HTMLElement | null>(null);
+let root: HTMLElement | null = null;
+
+onMounted(() => {
+  if (containerRef.value) root = createSafeCallout(containerRef.value, props.config, props.onEvent);
+});
+
+onBeforeUnmount(() => {
+  root?.remove();
+  root = null;
+});
 </script>
 
 <template>
-  <div
-    data-component="callout"
-    :data-variant="config.metadata.variant"
-    :data-position="config.metadata.position"
-  >
-      <div data-role="message">{{ config.metadata.message || "Callout" }}</div>
-  </div>
+  <div ref="containerRef"></div>
 </template>

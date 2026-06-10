@@ -1,0 +1,15 @@
+{
+  "component": "button",
+  "metadata": {
+    "variant": "primary",
+    "label": "Processing…",
+    "loading": true,
+    "size": "md"
+  },
+  "eventHandler": {
+    "handler": "button",
+    "events": [
+      "click"
+    ]
+  }
+}

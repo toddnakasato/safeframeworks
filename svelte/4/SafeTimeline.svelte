@@ -1,16 +1,27 @@
 <!--
   SafeTimeline — Svelte 4 timeline component.
-  Outputs data-* attributes for intent. No hardcoded CSS.
+  Renders via shared-mapping timeline builder (./timeline) — identical across
+  frameworks. Structure + data-* only. No hardcoded CSS.
 -->
 <script lang="ts">
+  import { onMount, onDestroy } from 'svelte';
   import type { ConfigBase, OnSafeEvent } from 'safecontracts';
+  import { createSafeTimeline } from './timeline';
+
   export let config: ConfigBase;
   export let onEvent: OnSafeEvent | undefined = undefined;
+
+  let container: HTMLElement;
+  let root: HTMLElement | null = null;
+
+  onMount(() => {
+    root = createSafeTimeline(container, config, onEvent);
+  });
+
+  onDestroy(() => {
+    root?.remove();
+    root = null;
+  });
 </script>
 
-<div
-  data-component="timeline"
-  data-variant={config.metadata.variant}
->
-  <div data-role="event"><div data-role="marker"><div data-role="dot"></div><div data-role="line"></div></div><div data-role="content"><div data-role="label">Event 1</div><div data-role="date">2026-01-01</div></div></div><div data-role="event"><div data-role="marker"><div data-role="dot"></div></div><div data-role="content"><div data-role="label">Event 2</div><div data-role="date">2026-06-01</div></div></div>
-</div>
+<div bind:this={container}></div>

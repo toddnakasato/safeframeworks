@@ -1,17 +1,27 @@
 <!--
-  SafeLayout — Vue 3 layout component.
-  Outputs data-* attributes for intent. No hardcoded CSS.
+  SafeLayout — Vue 3 named-region composition.
+  Renders via shared-mapping layout builder (./layout) — identical across
+  frameworks. Structure + data-* only.
 -->
 <script setup lang="ts">
+import { ref, onMounted, onBeforeUnmount } from 'vue';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-defineProps<{ config: ConfigBase; onEvent?: OnSafeEvent }>();
+import { createSafeLayout } from './layout';
+
+const props = defineProps<{ config: ConfigBase; onEvent?: OnSafeEvent }>();
+const containerRef = ref<HTMLElement | null>(null);
+let root: HTMLElement | null = null;
+
+onMounted(() => {
+  if (containerRef.value) root = createSafeLayout(containerRef.value, props.config, props.onEvent);
+});
+
+onBeforeUnmount(() => {
+  root?.remove();
+  root = null;
+});
 </script>
 
 <template>
-  <div
-    data-component="layout"
-    :data-variant="config.metadata.variant"
-  >
-      <div style="color:var(--sd-text-dim,#6b7280);font-size:12px">Layout variant: {{ config.metadata.variant }}</div><slot />
-  </div>
+  <div ref="containerRef"></div>
 </template>

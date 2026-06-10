@@ -1,9 +1,11 @@
 {
   "component": "button",
   "metadata": {
-    "variant": "secondary",
-    "label": "Save Draft",
-    "size": "sm"
+    "variant": "danger",
+    "label": "🗑️ Delete",
+    "icon": "trash-2",
+    "iconPosition": "left",
+    "size": "md"
   },
   "eventHandler": {
     "handler": "button",

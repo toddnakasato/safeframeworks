@@ -1,25 +1,33 @@
 <!--
   SafeTree — Vue 2 tree component.
-  Outputs data-* attributes for intent. No hardcoded CSS.
+  Renders via shared-mapping tree builder (./tree) — identical across
+  frameworks. Structure + data-* only.
 -->
 <script lang="ts">
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
 import { defineComponent, type PropType } from 'vue';
+import { createSafeTree } from './tree';
+
 export default defineComponent({
   name: 'SafeTree',
   props: {
     config: { type: Object as PropType<ConfigBase>, required: true },
     onEvent: { type: Function as PropType<OnSafeEvent>, default: undefined },
   },
+  data() {
+    return { root: null as HTMLElement | null };
+  },
+  mounted() {
+    const el = this.$refs.treeContainer as HTMLElement;
+    if (el) this.root = createSafeTree(el, this.config, this.onEvent);
+  },
+  beforeDestroy() {
+    this.root?.remove();
+    this.root = null;
+  },
 });
 </script>
 
 <template>
-  <div
-    data-component="tree"
-    :data-variant="config.metadata.variant"
-    :data-spacing="config.metadata.spacing"
-  >
-      <div data-role="node" data-depth="0" data-has-children><span data-role="toggle">▶</span><span data-role="label">Root</span></div><div data-role="node" data-depth="1"><span data-role="leaf-spacer"></span><span data-role="label">Child A</span></div><div data-role="node" data-depth="1"><span data-role="leaf-spacer"></span><span data-role="label">Child B</span></div>
-  </div>
+  <div ref="treeContainer"></div>
 </template>

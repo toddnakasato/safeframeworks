@@ -1,17 +1,27 @@
 <!--
-  SafePicker — Vue 3 picker component.
-  Outputs data-* attributes for intent. No hardcoded CSS.
+  SafePicker — Vue 3 searchable list/card picker.
+  Renders via shared-mapping picker builder (./picker) — identical across
+  frameworks. Structure + data-* only.
 -->
 <script setup lang="ts">
+import { ref, onMounted, onBeforeUnmount } from 'vue';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-defineProps<{ config: ConfigBase; onEvent?: OnSafeEvent }>();
+import { createSafePicker } from './picker';
+
+const props = defineProps<{ config: ConfigBase; onEvent?: OnSafeEvent }>();
+const containerRef = ref<HTMLElement | null>(null);
+let root: HTMLElement | null = null;
+
+onMounted(() => {
+  if (containerRef.value) root = createSafePicker(containerRef.value, props.config, props.onEvent);
+});
+
+onBeforeUnmount(() => {
+  root?.remove();
+  root = null;
+});
 </script>
 
 <template>
-  <div
-    data-component="picker"
-    :data-variant="config.metadata.variant"
-  >
-      <div data-role="search-form"><input data-role="search-input" placeholder="Search..." /></div><div data-role="list"><div data-role="list-item">Item 1</div><div data-role="list-item">Item 2</div><div data-role="list-item">Item 3</div></div>
-  </div>
+  <div ref="containerRef"></div>
 </template>

@@ -8,12 +8,13 @@
     "tauri": "tauri"
   },
   "dependencies": {
-    "vue": "^3",
     "chart.js": "^4",
     "d3": "^7",
     "d3-sankey": "^0.12",
+    "hyperformula": "^3.3.0",
     "leaflet": "^1.9",
-    "lucide": "^0.469"
+    "lucide": "^0.469",
+    "vue": "^3"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5",

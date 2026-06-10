@@ -1,28 +1,29 @@
 /**
- * SafePicker — Angular picker component.
- * Implements picker contract from safecontracts.
- * Outputs data-* attributes for intent. No hardcoded CSS.
+ * SafePicker — Angular searchable list/card picker.
+ * Renders via shared-mapping picker builder (./picker) — identical across
+ * frameworks. Structure + data-* only.
  */
-import { Component, Input } from '@angular/core';
+import { Component, Input, ElementRef, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
+import { createSafePicker } from './picker';
 
 @Component({
   selector: 'safe-picker',
   standalone: true,
-  template: `
-    <div data-role="search-form"><input data-role="search-input" placeholder="Search..." /></div>
-    <div data-role="list">
-      <div data-role="list-item">Item 1</div>
-      <div data-role="list-item">Item 2</div>
-      <div data-role="list-item">Item 3</div>
-    </div>
-  `,
-  host: {
-    '[attr.data-component]': "'picker'",
-    '[attr.data-variant]': 'config.metadata.variant'
-  }
+  template: `<div #pickerContainer></div>`
 })
-export class SafePickerComponent {
+export class SafePickerComponent implements AfterViewInit, OnDestroy {
   @Input() config!: ConfigBase;
   @Input() onEvent?: OnSafeEvent;
+  @ViewChild('pickerContainer') containerRef!: ElementRef<HTMLElement>;
+  private root: HTMLElement | null = null;
+
+  ngAfterViewInit() {
+    this.root = createSafePicker(this.containerRef.nativeElement, this.config, this.onEvent);
+  }
+
+  ngOnDestroy() {
+    this.root?.remove();
+    this.root = null;
+  }
 }

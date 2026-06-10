@@ -1,17 +1,27 @@
 <!--
-  SafeTreemap — Vue 3 treemap component.
-  Outputs data-* attributes for intent. No hardcoded CSS.
+  SafeTreemap — Vue 3 D3 nested rectangles.
+  Renders via shared-mapping treemap builder (./treemap) — identical across
+  frameworks. Structure + data-* only.
 -->
 <script setup lang="ts">
+import { ref, onMounted, onBeforeUnmount } from 'vue';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-defineProps<{ config: ConfigBase; onEvent?: OnSafeEvent }>();
+import { createSafeTreemap } from './treemap';
+
+const props = defineProps<{ config: ConfigBase; onEvent?: OnSafeEvent }>();
+const containerRef = ref<HTMLElement | null>(null);
+let root: HTMLElement | null = null;
+
+onMounted(() => {
+  if (containerRef.value) root = createSafeTreemap(containerRef.value, props.config, props.onEvent);
+});
+
+onBeforeUnmount(() => {
+  root?.remove();
+  root = null;
+});
 </script>
 
 <template>
-  <div
-    data-component="treemap"
-    :data-variant="config.metadata.variant"
-  >
-      <div style="display:grid;grid-template-columns:2fr 1fr;grid-template-rows:1fr 1fr;gap:2px;height:120px"><div style="background:var(--sd-accent,#3b82f6);color:white;padding:8px;grid-row:span 2;display:flex;align-items:center;justify-content:center;border-radius:4px">A: 50</div><div style="background:rgba(59,130,246,0.7);color:white;padding:8px;display:flex;align-items:center;justify-content:center;border-radius:4px">B: 30</div><div style="background:rgba(59,130,246,0.4);color:white;padding:8px;display:flex;align-items:center;justify-content:center;border-radius:4px">C: 20</div></div>
-  </div>
+  <div ref="containerRef"></div>
 </template>

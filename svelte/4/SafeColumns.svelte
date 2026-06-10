@@ -1,18 +1,27 @@
 <!--
-  SafeColumns — Svelte 4 columns component.
-  Outputs data-* attributes for intent. No hardcoded CSS.
+  SafeColumns — Svelte 4 12-column grid positioning.
+  Renders via shared-mapping columns builder (./columns) — identical across
+  frameworks. Structure + data-* only.
 -->
 <script lang="ts">
+  import { onMount, onDestroy } from 'svelte';
   import type { ConfigBase, OnSafeEvent } from 'safecontracts';
+  import { createSafeColumns } from './columns';
+
   export let config: ConfigBase;
   export let onEvent: OnSafeEvent | undefined = undefined;
+
+  let container: HTMLElement;
+  let root: HTMLElement | null = null;
+
+  onMount(() => {
+    root = createSafeColumns(container, config, onEvent);
+  });
+
+  onDestroy(() => {
+    root?.remove();
+    root = null;
+  });
 </script>
 
-<div
-  data-component="columns"
-  data-spacing={config.metadata.spacing}
-  data-radius={config.metadata.radius}
-  data-surface={config.metadata.surface}
->
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px"><div style="padding:8px;border:1px solid var(--sd-border,#e5e7eb);border-radius:4px">Column 1</div><div style="padding:8px;border:1px solid var(--sd-border,#e5e7eb);border-radius:4px">Column 2</div></div>
-</div>
+<div bind:this={container}></div>

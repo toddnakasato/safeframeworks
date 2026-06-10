@@ -1,23 +1,27 @@
 <!--
-  SafeCard — Vue 3 card component.
-  Outputs data-* attributes for intent. No hardcoded CSS.
+  SafeCard — Vue 3 record display card.
+  Renders via shared-mapping card builder (./card) — identical across
+  frameworks. Structure + data-* only.
 -->
 <script setup lang="ts">
+import { ref, onMounted, onBeforeUnmount } from 'vue';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-defineProps<{ config: ConfigBase; onEvent?: OnSafeEvent }>();
+import { createSafeCard } from './card';
+
+const props = defineProps<{ config: ConfigBase; onEvent?: OnSafeEvent }>();
+const containerRef = ref<HTMLElement | null>(null);
+let root: HTMLElement | null = null;
+
+onMounted(() => {
+  if (containerRef.value) root = createSafeCard(containerRef.value, props.config, props.onEvent);
+});
+
+onBeforeUnmount(() => {
+  root?.remove();
+  root = null;
+});
 </script>
 
 <template>
-  <div
-    data-component="card"
-    :data-variant="config.metadata.variant"
-    :data-surface="config.metadata.surface"
-    :data-spacing="config.metadata.spacing"
-    :data-radius="config.metadata.radius"
-    :data-density="config.metadata.density"
-  >
-      <div v-if="config.metadata.title" data-role="header">{{ config.metadata.title }}</div>
-      <div v-if="config.metadata.subtitle" data-role="subtitle">{{ config.metadata.subtitle }}</div>
-      <slot />
-  </div>
+  <div ref="containerRef"></div>
 </template>

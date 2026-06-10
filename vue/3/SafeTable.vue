@@ -1,26 +1,27 @@
 <!--
   SafeTable — Vue 3 table component.
-  Outputs data-* attributes for intent. No hardcoded CSS.
+  Renders via shared-mapping table builder (./table) — identical across
+  frameworks. Structure + data-* only.
 -->
 <script setup lang="ts">
+import { ref, onMounted, onBeforeUnmount } from 'vue';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-defineProps<{ config: ConfigBase; onEvent?: OnSafeEvent }>();
+import { createSafeTable } from './table';
+
+const props = defineProps<{ config: ConfigBase; onEvent?: OnSafeEvent }>();
+const containerRef = ref<HTMLElement | null>(null);
+let root: HTMLElement | null = null;
+
+onMounted(() => {
+  if (containerRef.value) root = createSafeTable(containerRef.value, props.config, props.onEvent);
+});
+
+onBeforeUnmount(() => {
+  root?.remove();
+  root = null;
+});
 </script>
 
 <template>
-  <div
-    data-component="table"
-    :data-variant="config.metadata.variant"
-    :data-spacing="config.metadata.spacing"
-    :data-header-style="config.metadata.headerStyle"
-    :data-row-divider="config.metadata.rowDivider"
-    :data-row-numbers="config.metadata.rowNumbers"
-    :data-truncate="config.metadata.truncate"
-    :data-column-lines="config.metadata.columnLines"
-    :data-header-divider="config.metadata.headerDivider"
-    :data-zebra="config.metadata.zebra"
-    :data-selectable="config.metadata.selectable"
-  >
-      <div data-role="scroll"><table><thead data-role="thead"><tr data-role="header-row"><th>Column</th><th>Value</th></tr></thead><tbody data-role="tbody"><tr data-role="row"><td data-role="cell">Sample</td><td data-role="cell">Data</td></tr></tbody></table></div>
-  </div>
+  <div ref="containerRef"></div>
 </template>

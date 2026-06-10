@@ -1,35 +1,29 @@
 /**
  * SafeTree — Angular tree component.
- * Implements tree contract from safecontracts.
- * Outputs data-* attributes for intent. No hardcoded CSS.
+ * Renders via shared-mapping tree builder (./tree) — identical across
+ * frameworks. Structure + data-* only. No hardcoded CSS.
  */
-import { Component, Input } from '@angular/core';
+import { Component, Input, ElementRef, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
+import { createSafeTree } from './tree';
 
 @Component({
   selector: 'safe-tree',
   standalone: true,
-  template: `
-    <div data-role="node" data-depth="0" data-has-children>
-      <span data-role="toggle">▶</span>
-      <span data-role="label">Root</span>
-    </div>
-    <div data-role="node" data-depth="1">
-      <span data-role="leaf-spacer"></span>
-      <span data-role="label">Child A</span>
-    </div>
-    <div data-role="node" data-depth="1">
-      <span data-role="leaf-spacer"></span>
-      <span data-role="label">Child B</span>
-    </div>
-  `,
-  host: {
-    '[attr.data-component]': "'tree'",
-    '[attr.data-variant]': 'config.metadata.variant',
-    '[attr.data-spacing]': 'config.metadata.spacing'
-  }
+  template: `<div #treeContainer></div>`
 })
-export class SafeTreeComponent {
+export class SafeTreeComponent implements AfterViewInit, OnDestroy {
   @Input() config!: ConfigBase;
   @Input() onEvent?: OnSafeEvent;
+  @ViewChild('treeContainer') containerRef!: ElementRef<HTMLElement>;
+  private root: HTMLElement | null = null;
+
+  ngAfterViewInit() {
+    this.root = createSafeTree(this.containerRef.nativeElement, this.config, this.onEvent);
+  }
+
+  ngOnDestroy() {
+    this.root?.remove();
+    this.root = null;
+  }
 }

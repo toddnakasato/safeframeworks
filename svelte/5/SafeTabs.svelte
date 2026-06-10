@@ -1,16 +1,26 @@
 <!--
-  SafeTabs — Svelte 5 tabs component.
-  Outputs data-* attributes for intent. No hardcoded CSS.
+  SafeTabs — Svelte 5 tabbed panel navigation.
+  Renders via shared-mapping tabs builder (./tabs) — identical across
+  frameworks. Structure + data-* only.
 -->
 <script lang="ts">
+  import { onMount, onDestroy } from 'svelte';
   import type { ConfigBase, OnSafeEvent } from 'safecontracts';
+  import { createSafeTabs } from './tabs';
+
   let { config, onEvent }: { config: ConfigBase; onEvent?: OnSafeEvent } = $props();
+
+  let container: HTMLElement;
+  let root: HTMLElement | null = null;
+
+  onMount(() => {
+    root = createSafeTabs(container, config, onEvent);
+  });
+
+  onDestroy(() => {
+    root?.remove();
+    root = null;
+  });
 </script>
 
-<div
-  data-component="tabs"
-  data-variant={config.metadata.variant}
-  data-position={config.metadata.position}
->
-  <div data-tabs-bar>{#each (config.metadata.tabs || []) as tab}<button data-role="tab" data-tab-key={tab.key}>{tab.label}</button>{/each}</div><div data-tabs-panel><slot /></div>
-</div>
+<div bind:this={container}></div>

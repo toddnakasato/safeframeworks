@@ -1,16 +1,27 @@
 <!--
-  SafeLayout — Svelte 4 layout component.
-  Outputs data-* attributes for intent. No hardcoded CSS.
+  SafeLayout — Svelte 4 named-region composition.
+  Renders via shared-mapping layout builder (./layout) — identical across
+  frameworks. Structure + data-* only.
 -->
 <script lang="ts">
+  import { onMount, onDestroy } from 'svelte';
   import type { ConfigBase, OnSafeEvent } from 'safecontracts';
+  import { createSafeLayout } from './layout';
+
   export let config: ConfigBase;
   export let onEvent: OnSafeEvent | undefined = undefined;
+
+  let container: HTMLElement;
+  let root: HTMLElement | null = null;
+
+  onMount(() => {
+    root = createSafeLayout(container, config, onEvent);
+  });
+
+  onDestroy(() => {
+    root?.remove();
+    root = null;
+  });
 </script>
 
-<div
-  data-component="layout"
-  data-variant={config.metadata.variant}
->
-  <div style="color:var(--sd-text-dim,#6b7280);font-size:12px">Layout variant: {config.metadata.variant}</div><slot />
-</div>
+<div bind:this={container}></div>

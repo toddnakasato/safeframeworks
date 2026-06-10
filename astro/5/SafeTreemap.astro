@@ -1,16 +1,18 @@
 ---
 /**
- * SafeTreemap — Astro 5 treemap component.
- * Outputs data-* attributes for intent. No hardcoded CSS.
+ * SafeTreemap — Astro 5 D3 nested rectangles.
+ * Renders via shared-mapping treemap builder (./treemap) — identical across
+ * frameworks. Server-renders the shell; client script mounts the
+ * component. Structure + data-* only.
  */
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
 interface Props { config: ConfigBase; onEvent?: OnSafeEvent; }
-const { config, onEvent } = Astro.props;
+const { config } = Astro.props;
 ---
 
-<div
-  data-component="treemap"
-  data-variant={config.metadata.variant}
->
-  <div style="display:grid;grid-template-columns:2fr 1fr;grid-template-rows:1fr 1fr;gap:2px;height:120px"><div style="background:var(--sd-accent,#3b82f6);color:white;padding:8px;grid-row:span 2;display:flex;align-items:center;justify-content:center;border-radius:4px">A: 50</div><div style="background:rgba(59,130,246,0.7);color:white;padding:8px;display:flex;align-items:center;justify-content:center;border-radius:4px">B: 30</div><div style="background:rgba(59,130,246,0.4);color:white;padding:8px;display:flex;align-items:center;justify-content:center;border-radius:4px">C: 20</div></div>
-</div>
+<div data-treemap-config={JSON.stringify(config)}></div>
+
+<script>
+  import { initSafeTreemaps } from "./treemap";
+  initSafeTreemaps();
+</script>

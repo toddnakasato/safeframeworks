@@ -1,19 +1,27 @@
 <!--
   SafeToggle — Vue 3 toggle component.
-  Outputs data-* attributes for intent. No hardcoded CSS.
+  Renders via shared-mapping toggle builder (./toggle) — identical across
+  frameworks. Structure + data-* only. No hardcoded CSS.
 -->
 <script setup lang="ts">
+import { ref, onMounted, onBeforeUnmount } from 'vue';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-defineProps<{ config: ConfigBase; onEvent?: OnSafeEvent }>();
+import { createSafeToggle } from './toggle';
+
+const props = defineProps<{ config: ConfigBase; onEvent?: OnSafeEvent }>();
+const containerRef = ref<HTMLElement | null>(null);
+let root: HTMLElement | null = null;
+
+onMounted(() => {
+  if (containerRef.value) root = createSafeToggle(containerRef.value, props.config, props.onEvent);
+});
+
+onBeforeUnmount(() => {
+  root?.remove();
+  root = null;
+});
 </script>
 
 <template>
-  <div
-    data-component="toggle"
-    :data-variant="config.metadata.variant"
-    :data-disabled="config.metadata.disabled"
-    :data-label-position="config.metadata.labelPosition"
-  >
-      <label data-role="toggle-label"><input type="checkbox" data-role="toggle-input" :checked="config.metadata.checked" :disabled="config.metadata.disabled" /><span data-role="toggle-slider"></span><span v-if="config.metadata.label" data-role="label">{{ config.metadata.label }}</span></label>
-  </div>
+  <div ref="containerRef"></div>
 </template>

@@ -2,7 +2,9 @@
   "component": "button",
   "metadata": {
     "variant": "primary",
-    "label": "Click Me",
+    "label": "💾 Save Changes",
+    "icon": "save",
+    "iconPosition": "left",
     "size": "md"
   },
   "eventHandler": {

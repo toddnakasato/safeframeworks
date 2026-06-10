@@ -1,0 +1,48 @@
+{
+  "component": "button",
+  "metadata": {
+    "groupVariant": "toggle",
+    "groupDirection": "horizontal"
+  },
+  "children": {
+    "all": {
+      "component": "button",
+      "metadata": {
+        "variant": "ghost",
+        "label": "All",
+        "size": "sm",
+        "selected": true
+      }
+    },
+    "active": {
+      "component": "button",
+      "metadata": {
+        "variant": "ghost",
+        "label": "Active",
+        "size": "sm"
+      }
+    },
+    "archived": {
+      "component": "button",
+      "metadata": {
+        "variant": "ghost",
+        "label": "Archived",
+        "size": "sm"
+      }
+    },
+    "drafts": {
+      "component": "button",
+      "metadata": {
+        "variant": "ghost",
+        "label": "Drafts",
+        "size": "sm"
+      }
+    }
+  },
+  "eventHandler": {
+    "handler": "button",
+    "events": [
+      "click"
+    ]
+  }
+}

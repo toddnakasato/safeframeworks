@@ -1,0 +1,15 @@
+{
+  "component": "button",
+  "metadata": {
+    "variant": "outline",
+    "label": "📤 Share",
+    "iconRight": "share",
+    "size": "md"
+  },
+  "eventHandler": {
+    "handler": "button",
+    "events": [
+      "click"
+    ]
+  }
+}

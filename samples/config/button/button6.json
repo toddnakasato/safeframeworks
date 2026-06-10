@@ -1,0 +1,16 @@
+{
+  "component": "button",
+  "metadata": {
+    "variant": "link",
+    "label": "Edit Profile",
+    "icon": "pencil",
+    "iconPosition": "left",
+    "size": "sm"
+  },
+  "eventHandler": {
+    "handler": "button",
+    "events": [
+      "click"
+    ]
+  }
+}

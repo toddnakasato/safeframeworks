@@ -1,17 +1,27 @@
 <!--
-  SafeHeatmap — Vue 3 heatmap component.
-  Outputs data-* attributes for intent. No hardcoded CSS.
+  SafeHeatmap — Vue 3 grid of value-colored cells.
+  Renders via shared-mapping heatmap builder (./heatmap) — identical across
+  frameworks. Structure + data-* only.
 -->
 <script setup lang="ts">
+import { ref, onMounted, onBeforeUnmount } from 'vue';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-defineProps<{ config: ConfigBase; onEvent?: OnSafeEvent }>();
+import { createSafeHeatmap } from './heatmap';
+
+const props = defineProps<{ config: ConfigBase; onEvent?: OnSafeEvent }>();
+const containerRef = ref<HTMLElement | null>(null);
+let root: HTMLElement | null = null;
+
+onMounted(() => {
+  if (containerRef.value) root = createSafeHeatmap(containerRef.value, props.config, props.onEvent);
+});
+
+onBeforeUnmount(() => {
+  root?.remove();
+  root = null;
+});
 </script>
 
 <template>
-  <div
-    data-component="heatmap"
-    :data-variant="config.metadata.variant"
-  >
-      <div data-role="title">Heatmap</div><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px"><div data-role="cell" style="padding:8px;background:rgba(59,130,246,0.2);text-align:center">3</div><div data-role="cell" style="padding:8px;background:rgba(59,130,246,0.5);text-align:center">7</div><div data-role="cell" style="padding:8px;background:rgba(59,130,246,0.8);text-align:center">9</div></div>
-  </div>
+  <div ref="containerRef"></div>
 </template>

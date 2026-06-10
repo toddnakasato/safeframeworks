@@ -1,24 +1,33 @@
 <!--
   SafeTimeline — Vue 2 timeline component.
-  Outputs data-* attributes for intent. No hardcoded CSS.
+  Renders via shared-mapping timeline builder (./timeline) — identical across
+  frameworks. Structure + data-* only. No hardcoded CSS.
 -->
 <script lang="ts">
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
 import { defineComponent, type PropType } from 'vue';
+import { createSafeTimeline } from './timeline';
+
 export default defineComponent({
   name: 'SafeTimeline',
   props: {
     config: { type: Object as PropType<ConfigBase>, required: true },
     onEvent: { type: Function as PropType<OnSafeEvent>, default: undefined },
   },
+  data() {
+    return { root: null as HTMLElement | null };
+  },
+  mounted() {
+    const el = this.$refs.timelineContainer as HTMLElement;
+    if (el) this.root = createSafeTimeline(el, this.config, this.onEvent);
+  },
+  beforeDestroy() {
+    this.root?.remove();
+    this.root = null;
+  },
 });
 </script>
 
 <template>
-  <div
-    data-component="timeline"
-    :data-variant="config.metadata.variant"
-  >
-      <div data-role="event"><div data-role="marker"><div data-role="dot"></div><div data-role="line"></div></div><div data-role="content"><div data-role="label">Event 1</div><div data-role="date">2026-01-01</div></div></div><div data-role="event"><div data-role="marker"><div data-role="dot"></div></div><div data-role="content"><div data-role="label">Event 2</div><div data-role="date">2026-06-01</div></div></div>
-  </div>
+  <div ref="timelineContainer"></div>
 </template>

@@ -1,26 +1,29 @@
 /**
- * SafeLayout — Angular layout component.
- * Implements layout contract from safecontracts.
- * Outputs data-* attributes for intent. No hardcoded CSS.
+ * SafeLayout — Angular named-region composition.
+ * Renders via shared-mapping layout builder (./layout) — identical across
+ * frameworks. Structure + data-* only.
  */
-import { Component, Input } from '@angular/core';
+import { Component, Input, ElementRef, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
+import { createSafeLayout } from './layout';
 
 @Component({
   selector: 'safe-layout',
   standalone: true,
-  template: `
-    <div style="display:flex;flex-direction:column;gap:var(--sd-space-md,8px);padding:8px">
-      <ng-content></ng-content>
-      <div style="color:var(--sd-text-dim,#6b7280);font-size:12px">Layout variant: {{ config.metadata.variant }}</div>
-    </div>
-  `,
-  host: {
-    '[attr.data-component]': "'layout'",
-    '[attr.data-variant]': 'config.metadata.variant'
-  }
+  template: `<div #layoutContainer></div>`
 })
-export class SafeLayoutComponent {
+export class SafeLayoutComponent implements AfterViewInit, OnDestroy {
   @Input() config!: ConfigBase;
   @Input() onEvent?: OnSafeEvent;
+  @ViewChild('layoutContainer') containerRef!: ElementRef<HTMLElement>;
+  private root: HTMLElement | null = null;
+
+  ngAfterViewInit() {
+    this.root = createSafeLayout(this.containerRef.nativeElement, this.config, this.onEvent);
+  }
+
+  ngOnDestroy() {
+    this.root?.remove();
+    this.root = null;
+  }
 }

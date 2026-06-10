@@ -1,37 +1,29 @@
 /**
  * SafeTable — Angular table component.
- * Implements table contract from safecontracts.
- * Outputs data-* attributes for intent. No hardcoded CSS.
+ * Renders via shared-mapping table builder (./table) — identical across
+ * frameworks. Structure + data-* only.
  */
-import { Component, Input } from '@angular/core';
+import { Component, Input, ElementRef, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
+import { createSafeTable } from './table';
 
 @Component({
   selector: 'safe-table',
   standalone: true,
-  template: `
-    <div data-role="scroll">
-      <table>
-        <thead data-role="thead"><tr data-role="header-row"><th>Column</th><th>Value</th></tr></thead>
-        <tbody data-role="tbody"><tr data-role="row"><td data-role="cell">Sample</td><td data-role="cell">Data</td></tr></tbody>
-      </table>
-    </div>
-  `,
-  host: {
-    '[attr.data-component]': "'table'",
-    '[attr.data-variant]': 'config.metadata.variant',
-    '[attr.data-spacing]': 'config.metadata.spacing',
-    '[attr.data-header-style]': 'config.metadata.headerStyle',
-    '[attr.data-row-divider]': 'config.metadata.rowDivider',
-    '[attr.data-row-numbers]': 'config.metadata.rowNumbers',
-    '[attr.data-truncate]': 'config.metadata.truncate',
-    '[attr.data-column-lines]': 'config.metadata.columnLines',
-    '[attr.data-header-divider]': 'config.metadata.headerDivider',
-    '[attr.data-zebra]': 'config.metadata.zebra',
-    '[attr.data-selectable]': 'config.metadata.selectable'
-  }
+  template: `<div #tableContainer></div>`
 })
-export class SafeTableComponent {
+export class SafeTableComponent implements AfterViewInit, OnDestroy {
   @Input() config!: ConfigBase;
   @Input() onEvent?: OnSafeEvent;
+  @ViewChild('tableContainer') containerRef!: ElementRef<HTMLElement>;
+  private root: HTMLElement | null = null;
+
+  ngAfterViewInit() {
+    this.root = createSafeTable(this.containerRef.nativeElement, this.config, this.onEvent);
+  }
+
+  ngOnDestroy() {
+    this.root?.remove();
+    this.root = null;
+  }
 }

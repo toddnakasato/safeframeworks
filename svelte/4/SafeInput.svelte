@@ -1,18 +1,27 @@
 <!--
   SafeInput — Svelte 4 input component.
-  Outputs data-* attributes for intent. No hardcoded CSS.
+  Renders via shared-mapping input builder (./input) — identical across
+  frameworks. Structure + data-* only. No hardcoded CSS.
 -->
 <script lang="ts">
+  import { onMount, onDestroy } from 'svelte';
   import type { ConfigBase, OnSafeEvent } from 'safecontracts';
+  import { createSafeInput } from './input';
+
   export let config: ConfigBase;
   export let onEvent: OnSafeEvent | undefined = undefined;
+
+  let container: HTMLElement;
+  let root: HTMLElement | null = null;
+
+  onMount(() => {
+    root = createSafeInput(container, config, onEvent);
+  });
+
+  onDestroy(() => {
+    root?.remove();
+    root = null;
+  });
 </script>
 
-<div
-  data-component="input"
-  data-input-type={config.metadata.inputType}
-  data-align={config.metadata.align}
-  data-valign={config.metadata.valign}
->
-  <div data-role="field"><input placeholder={config.metadata.placeholder || "Enter value..."} data-role="field" /></div>
-</div>
+<div bind:this={container}></div>

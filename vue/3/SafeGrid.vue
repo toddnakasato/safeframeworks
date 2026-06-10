@@ -1,20 +1,27 @@
 <!--
   SafeGrid — Vue 3 grid component.
-  Outputs data-* attributes for intent. No hardcoded CSS.
+  Renders via shared-mapping grid builder (./grid) — identical across
+  frameworks. Structure + data-* only.
 -->
 <script setup lang="ts">
+import { ref, onMounted, onBeforeUnmount } from 'vue';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-defineProps<{ config: ConfigBase; onEvent?: OnSafeEvent }>();
+import { createSafeGrid } from './grid';
+
+const props = defineProps<{ config: ConfigBase; onEvent?: OnSafeEvent }>();
+const containerRef = ref<HTMLElement | null>(null);
+let root: HTMLElement | null = null;
+
+onMounted(() => {
+  if (containerRef.value) root = createSafeGrid(containerRef.value, props.config, props.onEvent);
+});
+
+onBeforeUnmount(() => {
+  root?.remove();
+  root = null;
+});
 </script>
 
 <template>
-  <div
-    data-component="grid"
-    :data-spacing="config.metadata.spacing"
-    :data-radius="config.metadata.radius"
-    :data-surface="config.metadata.surface"
-    :data-collapsible="config.metadata.collapsible"
-  >
-      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px;padding:8px"><div style="padding:8px;border:1px solid var(--sd-border,#e5e7eb);border-radius:4px">Cell 1</div><div style="padding:8px;border:1px solid var(--sd-border,#e5e7eb);border-radius:4px">Cell 2</div></div>
-  </div>
+  <div ref="containerRef"></div>
 </template>

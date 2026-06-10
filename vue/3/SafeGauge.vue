@@ -1,17 +1,27 @@
 <!--
-  SafeGauge — Vue 3 gauge component.
-  Outputs data-* attributes for intent. No hardcoded CSS.
+  SafeGauge — Vue 3 D3 radial KPI gauge.
+  Renders via shared-mapping gauge builder (./gauge) — identical across
+  frameworks. Structure + data-* only.
 -->
 <script setup lang="ts">
+import { ref, onMounted, onBeforeUnmount } from 'vue';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-defineProps<{ config: ConfigBase; onEvent?: OnSafeEvent }>();
+import { createSafeGauge } from './gauge';
+
+const props = defineProps<{ config: ConfigBase; onEvent?: OnSafeEvent }>();
+const containerRef = ref<HTMLElement | null>(null);
+let root: HTMLElement | null = null;
+
+onMounted(() => {
+  if (containerRef.value) root = createSafeGauge(containerRef.value, props.config, props.onEvent);
+});
+
+onBeforeUnmount(() => {
+  root?.remove();
+  root = null;
+});
 </script>
 
 <template>
-  <div
-    data-component="gauge"
-    :data-variant="config.metadata.variant"
-  >
-      <div style="text-align:center;padding:16px"><svg viewBox="0 0 100 60" width="120"><path d="M 10 55 A 40 40 0 0 1 90 55" fill="none" stroke="var(--sd-border,#e5e7eb)" stroke-width="8"/><path d="M 10 55 A 40 40 0 0 1 60 17" fill="none" stroke="var(--sd-accent,#3b82f6)" stroke-width="8"/></svg><div data-role="value">67%</div></div>
-  </div>
+  <div ref="containerRef"></div>
 </template>

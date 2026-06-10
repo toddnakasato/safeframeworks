@@ -1,28 +1,29 @@
 /**
- * SafeColumns — Angular columns component.
- * Implements columns contract from safecontracts.
- * Outputs data-* attributes for intent. No hardcoded CSS.
+ * SafeColumns — Angular 12-column grid positioning.
+ * Renders via shared-mapping columns builder (./columns) — identical across
+ * frameworks. Structure + data-* only.
  */
-import { Component, Input } from '@angular/core';
+import { Component, Input, ElementRef, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
+import { createSafeColumns } from './columns';
 
 @Component({
   selector: 'safe-columns',
   standalone: true,
-  template: `
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--sd-space-md,8px)">
-      <div style="padding:8px;border:1px solid var(--sd-border,#e5e7eb);border-radius:4px"><ng-content></ng-content>Column 1</div>
-      <div style="padding:8px;border:1px solid var(--sd-border,#e5e7eb);border-radius:4px">Column 2</div>
-    </div>
-  `,
-  host: {
-    '[attr.data-component]': "'columns'",
-    '[attr.data-spacing]': 'config.metadata.spacing',
-    '[attr.data-radius]': 'config.metadata.radius',
-    '[attr.data-surface]': 'config.metadata.surface'
-  }
+  template: `<div #columnsContainer></div>`
 })
-export class SafeColumnsComponent {
+export class SafeColumnsComponent implements AfterViewInit, OnDestroy {
   @Input() config!: ConfigBase;
   @Input() onEvent?: OnSafeEvent;
+  @ViewChild('columnsContainer') containerRef!: ElementRef<HTMLElement>;
+  private root: HTMLElement | null = null;
+
+  ngAfterViewInit() {
+    this.root = createSafeColumns(this.containerRef.nativeElement, this.config, this.onEvent);
+  }
+
+  ngOnDestroy() {
+    this.root?.remove();
+    this.root = null;
+  }
 }

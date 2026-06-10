@@ -1,24 +1,29 @@
 /**
  * SafeCallout — Angular callout component.
- * Implements callout contract from safecontracts.
- * Outputs data-* attributes for intent. No hardcoded CSS.
+ * Renders via shared-mapping callout builder (./callout) — identical across
+ * frameworks. Structure + data-* only. No hardcoded CSS.
  */
-import { Component, Input } from '@angular/core';
+import { Component, Input, ElementRef, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
+import { createSafeCallout } from './callout';
 
 @Component({
   selector: 'safe-callout',
   standalone: true,
-  template: `
-    <div data-role="message">{{ config.metadata.message || 'Callout' }}</div>
-  `,
-  host: {
-    '[attr.data-component]': "'callout'",
-    '[attr.data-variant]': 'config.metadata.variant',
-    '[attr.data-position]': 'config.metadata.position'
-  }
+  template: `<div #calloutContainer></div>`
 })
-export class SafeCalloutComponent {
+export class SafeCalloutComponent implements AfterViewInit, OnDestroy {
   @Input() config!: ConfigBase;
   @Input() onEvent?: OnSafeEvent;
+  @ViewChild('calloutContainer') containerRef!: ElementRef<HTMLElement>;
+  private root: HTMLElement | null = null;
+
+  ngAfterViewInit() {
+    this.root = createSafeCallout(this.containerRef.nativeElement, this.config, this.onEvent);
+  }
+
+  ngOnDestroy() {
+    this.root?.remove();
+    this.root = null;
+  }
 }

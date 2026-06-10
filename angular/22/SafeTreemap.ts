@@ -1,27 +1,29 @@
 /**
- * SafeTreemap — Angular treemap component.
- * Implements treemap contract from safecontracts.
- * Outputs data-* attributes for intent. No hardcoded CSS.
+ * SafeTreemap — Angular D3 nested rectangles.
+ * Renders via shared-mapping treemap builder (./treemap) — identical across
+ * frameworks. Structure + data-* only.
  */
-import { Component, Input } from '@angular/core';
+import { Component, Input, ElementRef, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
+import { createSafeTreemap } from './treemap';
 
 @Component({
   selector: 'safe-treemap',
   standalone: true,
-  template: `
-    <div style="display:grid;grid-template-columns:2fr 1fr;grid-template-rows:1fr 1fr;gap:2px;height:120px">
-      <div style="background:var(--sd-accent,#3b82f6);color:white;padding:8px;grid-row:span 2;display:flex;align-items:center;justify-content:center;border-radius:4px">A: 50</div>
-      <div style="background:rgba(59,130,246,0.7);color:white;padding:8px;display:flex;align-items:center;justify-content:center;border-radius:4px">B: 30</div>
-      <div style="background:rgba(59,130,246,0.4);color:white;padding:8px;display:flex;align-items:center;justify-content:center;border-radius:4px">C: 20</div>
-    </div>
-  `,
-  host: {
-    '[attr.data-component]': "'treemap'",
-    '[attr.data-variant]': 'config.metadata.variant'
-  }
+  template: `<div #treemapContainer></div>`
 })
-export class SafeTreemapComponent {
+export class SafeTreemapComponent implements AfterViewInit, OnDestroy {
   @Input() config!: ConfigBase;
   @Input() onEvent?: OnSafeEvent;
+  @ViewChild('treemapContainer') containerRef!: ElementRef<HTMLElement>;
+  private root: HTMLElement | null = null;
+
+  ngAfterViewInit() {
+    this.root = createSafeTreemap(this.containerRef.nativeElement, this.config, this.onEvent);
+  }
+
+  ngOnDestroy() {
+    this.root?.remove();
+    this.root = null;
+  }
 }

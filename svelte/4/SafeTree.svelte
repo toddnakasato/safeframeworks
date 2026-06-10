@@ -1,17 +1,27 @@
 <!--
   SafeTree — Svelte 4 tree component.
-  Outputs data-* attributes for intent. No hardcoded CSS.
+  Renders via shared-mapping tree builder (./tree) — identical across
+  frameworks. Structure + data-* only.
 -->
 <script lang="ts">
+  import { onMount, onDestroy } from 'svelte';
   import type { ConfigBase, OnSafeEvent } from 'safecontracts';
+  import { createSafeTree } from './tree';
+
   export let config: ConfigBase;
   export let onEvent: OnSafeEvent | undefined = undefined;
+
+  let container: HTMLElement;
+  let root: HTMLElement | null = null;
+
+  onMount(() => {
+    root = createSafeTree(container, config, onEvent);
+  });
+
+  onDestroy(() => {
+    root?.remove();
+    root = null;
+  });
 </script>
 
-<div
-  data-component="tree"
-  data-variant={config.metadata.variant}
-  data-spacing={config.metadata.spacing}
->
-  <div data-role="node" data-depth="0" data-has-children><span data-role="toggle">▶</span><span data-role="label">Root</span></div><div data-role="node" data-depth="1"><span data-role="leaf-spacer"></span><span data-role="label">Child A</span></div><div data-role="node" data-depth="1"><span data-role="leaf-spacer"></span><span data-role="label">Child B</span></div>
-</div>
+<div bind:this={container}></div>

@@ -1,17 +1,18 @@
 ---
 /**
  * SafeCallout — Astro 5 callout component.
- * Outputs data-* attributes for intent. No hardcoded CSS.
+ * Renders via shared-mapping callout builder (./callout) — identical across
+ * frameworks. Server-renders the shell; client script mounts the callout.
+ * Structure + data-* only.
  */
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
 interface Props { config: ConfigBase; onEvent?: OnSafeEvent; }
-const { config, onEvent } = Astro.props;
+const { config } = Astro.props;
 ---
 
-<div
-  data-component="callout"
-  data-variant={config.metadata.variant}
-  data-position={config.metadata.position}
->
-  <div data-role="message">{config.metadata.message || "Callout"}</div>
-</div>
+<div data-callout-config={JSON.stringify(config)}></div>
+
+<script>
+  import { initSafeCallouts } from "./callout";
+  initSafeCallouts();
+</script>

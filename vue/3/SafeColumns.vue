@@ -1,19 +1,27 @@
 <!--
-  SafeColumns — Vue 3 columns component.
-  Outputs data-* attributes for intent. No hardcoded CSS.
+  SafeColumns — Vue 3 12-column grid positioning.
+  Renders via shared-mapping columns builder (./columns) — identical across
+  frameworks. Structure + data-* only.
 -->
 <script setup lang="ts">
+import { ref, onMounted, onBeforeUnmount } from 'vue';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-defineProps<{ config: ConfigBase; onEvent?: OnSafeEvent }>();
+import { createSafeColumns } from './columns';
+
+const props = defineProps<{ config: ConfigBase; onEvent?: OnSafeEvent }>();
+const containerRef = ref<HTMLElement | null>(null);
+let root: HTMLElement | null = null;
+
+onMounted(() => {
+  if (containerRef.value) root = createSafeColumns(containerRef.value, props.config, props.onEvent);
+});
+
+onBeforeUnmount(() => {
+  root?.remove();
+  root = null;
+});
 </script>
 
 <template>
-  <div
-    data-component="columns"
-    :data-spacing="config.metadata.spacing"
-    :data-radius="config.metadata.radius"
-    :data-surface="config.metadata.surface"
-  >
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px"><div style="padding:8px;border:1px solid var(--sd-border,#e5e7eb);border-radius:4px">Column 1</div><div style="padding:8px;border:1px solid var(--sd-border,#e5e7eb);border-radius:4px">Column 2</div></div>
-  </div>
+  <div ref="containerRef"></div>
 </template>

@@ -1,27 +1,29 @@
 /**
- * SafeFunnel — Angular funnel component.
- * Implements funnel contract from safecontracts.
- * Outputs data-* attributes for intent. No hardcoded CSS.
+ * SafeFunnel — Angular D3 funnel/conversion bars.
+ * Renders via shared-mapping funnel builder (./funnel) — identical across
+ * frameworks. Structure + data-* only.
  */
-import { Component, Input } from '@angular/core';
+import { Component, Input, ElementRef, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
+import { createSafeFunnel } from './funnel';
 
 @Component({
   selector: 'safe-funnel',
   standalone: true,
-  template: `
-    <div style="display:flex;flex-direction:column;gap:4px;padding:8px">
-      <div style="background:var(--sd-accent,#3b82f6);color:white;padding:8px;text-align:center;border-radius:4px;width:100%">Leads: 100</div>
-      <div style="background:var(--sd-accent,#3b82f6);color:white;padding:8px;text-align:center;border-radius:4px;width:75%;margin:0 auto">Qualified: 75</div>
-      <div style="background:var(--sd-accent,#3b82f6);color:white;padding:8px;text-align:center;border-radius:4px;width:50%;margin:0 auto">Won: 50</div>
-    </div>
-  `,
-  host: {
-    '[attr.data-component]': "'funnel'",
-    '[attr.data-variant]': 'config.metadata.variant'
-  }
+  template: `<div #funnelContainer></div>`
 })
-export class SafeFunnelComponent {
+export class SafeFunnelComponent implements AfterViewInit, OnDestroy {
   @Input() config!: ConfigBase;
   @Input() onEvent?: OnSafeEvent;
+  @ViewChild('funnelContainer') containerRef!: ElementRef<HTMLElement>;
+  private root: HTMLElement | null = null;
+
+  ngAfterViewInit() {
+    this.root = createSafeFunnel(this.containerRef.nativeElement, this.config, this.onEvent);
+  }
+
+  ngOnDestroy() {
+    this.root?.remove();
+    this.root = null;
+  }
 }

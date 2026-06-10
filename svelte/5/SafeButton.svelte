@@ -1,25 +1,26 @@
 <!--
   SafeButton — Svelte 5 button component.
-  Outputs data-* attributes for intent. No hardcoded CSS.
+  Renders via shared-mapping button builder (./button) — identical across
+  frameworks. Structure + data-* only.
 -->
 <script lang="ts">
+  import { onMount, onDestroy } from 'svelte';
   import type { ConfigBase, OnSafeEvent } from 'safecontracts';
+  import { createSafeButton } from './button';
+
   let { config, onEvent }: { config: ConfigBase; onEvent?: OnSafeEvent } = $props();
+
+  let container: HTMLElement;
+  let root: HTMLElement | null = null;
+
+  onMount(() => {
+    root = createSafeButton(container, config, onEvent);
+  });
+
+  onDestroy(() => {
+    root?.remove();
+    root = null;
+  });
 </script>
 
-<div
-  data-component="button"
-  data-variant={config.metadata.variant}
-  data-size={config.metadata.size}
-  data-disabled={config.metadata.disabled}
-  data-loading={config.metadata.loading}
-  data-full-width={config.metadata.fullWidth}
-  data-icon-only={config.metadata.iconOnly}
-  data-selected={config.metadata.selected}
-  data-status={config.metadata.status}
-  data-group-variant={config.metadata.groupVariant}
-  data-group-direction={config.metadata.groupDirection}
->
-  {#if config.metadata.icon}<span data-role="icon">{config.metadata.icon}</span>{/if}
-    {#if config.metadata.label}<span data-role="label">{config.metadata.label}</span>{/if}
-</div>
+<div bind:this={container}></div>

@@ -1,0 +1,16 @@
+{
+  "component": "button",
+  "metadata": {
+    "groupVariant": "pagination",
+    "totalPages": 8,
+    "currentPage": 3,
+    "showFirstLast": true,
+    "size": "sm"
+  },
+  "eventHandler": {
+    "handler": "button",
+    "events": [
+      "click"
+    ]
+  }
+}

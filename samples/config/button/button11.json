@@ -1,0 +1,47 @@
+{
+  "component": "button",
+  "metadata": {
+    "groupVariant": "toolbar",
+    "groupDirection": "horizontal"
+  },
+  "children": {
+    "like": {
+      "component": "button",
+      "metadata": {
+        "variant": "ghost",
+        "icon": "heart",
+        "iconOnly": true
+      }
+    },
+    "star": {
+      "component": "button",
+      "metadata": {
+        "variant": "ghost",
+        "icon": "star",
+        "iconOnly": true
+      }
+    },
+    "comment": {
+      "component": "button",
+      "metadata": {
+        "variant": "ghost",
+        "icon": "message-square",
+        "iconOnly": true
+      }
+    },
+    "more": {
+      "component": "button",
+      "metadata": {
+        "variant": "ghost",
+        "icon": "more-horizontal",
+        "iconOnly": true
+      }
+    }
+  },
+  "eventHandler": {
+    "handler": "button",
+    "events": [
+      "click"
+    ]
+  }
+}

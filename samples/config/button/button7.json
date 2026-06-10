@@ -1,0 +1,15 @@
+{
+  "component": "button",
+  "metadata": {
+    "variant": "primary",
+    "label": "🚀 Deploy Now",
+    "iconRight": "rocket",
+    "size": "lg"
+  },
+  "eventHandler": {
+    "handler": "button",
+    "events": [
+      "click"
+    ]
+  }
+}

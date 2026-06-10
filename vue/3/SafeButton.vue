@@ -1,27 +1,27 @@
 <!--
   SafeButton — Vue 3 button component.
-  Outputs data-* attributes for intent. No hardcoded CSS.
+  Renders via shared-mapping button builder (./button) — identical across
+  frameworks. Structure + data-* only.
 -->
 <script setup lang="ts">
+import { ref, onMounted, onBeforeUnmount } from 'vue';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-defineProps<{ config: ConfigBase; onEvent?: OnSafeEvent }>();
+import { createSafeButton } from './button';
+
+const props = defineProps<{ config: ConfigBase; onEvent?: OnSafeEvent }>();
+const containerRef = ref<HTMLElement | null>(null);
+let root: HTMLElement | null = null;
+
+onMounted(() => {
+  if (containerRef.value) root = createSafeButton(containerRef.value, props.config, props.onEvent);
+});
+
+onBeforeUnmount(() => {
+  root?.remove();
+  root = null;
+});
 </script>
 
 <template>
-  <div
-    data-component="button"
-    :data-variant="config.metadata.variant"
-    :data-size="config.metadata.size"
-    :data-disabled="config.metadata.disabled"
-    :data-loading="config.metadata.loading"
-    :data-full-width="config.metadata.fullWidth"
-    :data-icon-only="config.metadata.iconOnly"
-    :data-selected="config.metadata.selected"
-    :data-status="config.metadata.status"
-    :data-group-variant="config.metadata.groupVariant"
-    :data-group-direction="config.metadata.groupDirection"
-  >
-      <span v-if="config.metadata.icon" data-role="icon">{{ config.metadata.icon }}</span>
-      <span v-if="config.metadata.label" data-role="label">{{ config.metadata.label }}</span>
-  </div>
+  <div ref="containerRef"></div>
 </template>

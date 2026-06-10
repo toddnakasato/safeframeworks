@@ -1,19 +1,27 @@
 <!--
   SafeInput — Vue 3 input component.
-  Outputs data-* attributes for intent. No hardcoded CSS.
+  Renders via shared-mapping input builder (./input) — identical across
+  frameworks. Structure + data-* only. No hardcoded CSS.
 -->
 <script setup lang="ts">
+import { ref, onMounted, onBeforeUnmount } from 'vue';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-defineProps<{ config: ConfigBase; onEvent?: OnSafeEvent }>();
+import { createSafeInput } from './input';
+
+const props = defineProps<{ config: ConfigBase; onEvent?: OnSafeEvent }>();
+const containerRef = ref<HTMLElement | null>(null);
+let root: HTMLElement | null = null;
+
+onMounted(() => {
+  if (containerRef.value) root = createSafeInput(containerRef.value, props.config, props.onEvent);
+});
+
+onBeforeUnmount(() => {
+  root?.remove();
+  root = null;
+});
 </script>
 
 <template>
-  <div
-    data-component="input"
-    :data-input-type="config.metadata.inputType"
-    :data-align="config.metadata.align"
-    :data-valign="config.metadata.valign"
-  >
-      <div data-role="field"><input :placeholder="config.metadata.placeholder || 'Enter value...'" data-role="field" /></div>
-  </div>
+  <div ref="containerRef"></div>
 </template>

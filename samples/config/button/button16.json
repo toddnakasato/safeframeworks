@@ -1,0 +1,55 @@
+{
+  "component": "button",
+  "metadata": {
+    "groupVariant": "stepper",
+    "groupDirection": "horizontal"
+  },
+  "children": {
+    "requirements": {
+      "component": "button",
+      "metadata": {
+        "variant": "ghost",
+        "label": "Requirements",
+        "status": "completed"
+      }
+    },
+    "design": {
+      "component": "button",
+      "metadata": {
+        "variant": "ghost",
+        "label": "Design",
+        "status": "completed"
+      }
+    },
+    "build": {
+      "component": "button",
+      "metadata": {
+        "variant": "ghost",
+        "label": "Build",
+        "status": "active"
+      }
+    },
+    "test": {
+      "component": "button",
+      "metadata": {
+        "variant": "ghost",
+        "label": "Test",
+        "status": "pending"
+      }
+    },
+    "deploy": {
+      "component": "button",
+      "metadata": {
+        "variant": "ghost",
+        "label": "Deploy",
+        "status": "pending"
+      }
+    }
+  },
+  "eventHandler": {
+    "handler": "button",
+    "events": [
+      "click"
+    ]
+  }
+}

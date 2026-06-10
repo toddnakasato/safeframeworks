@@ -1,17 +1,18 @@
 ---
 /**
- * SafeChat — Astro 5 chat component.
- * Outputs data-* attributes for intent. No hardcoded CSS.
+ * SafeChat — Astro 5 chat (bubbles, input, quick actions).
+ * Renders via shared-mapping chat builder (./chat) — identical across
+ * frameworks. Server-renders the shell; client script mounts the component.
+ * Structure + data-* only.
  */
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
 interface Props { config: ConfigBase; onEvent?: OnSafeEvent; }
-const { config, onEvent } = Astro.props;
+const { config } = Astro.props;
 ---
 
-<div
-  data-component="chat"
->
-  {config.metadata.title && <div data-role="title">{config.metadata.title}</div>}
-      <div data-role="messages"><div data-role="message" data-sender="system">Welcome to chat</div></div>
-      <div data-role="input"><input placeholder={config.metadata.placeholder || "Type a message..."} /></div>
-</div>
+<div data-chat-config={JSON.stringify(config)}></div>
+
+<script>
+  import { initSafeChats } from "./chat";
+  initSafeChats();
+</script>

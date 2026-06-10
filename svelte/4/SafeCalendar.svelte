@@ -1,17 +1,27 @@
 <!--
   SafeCalendar — Svelte 4 calendar component.
-  Outputs data-* attributes for intent. No hardcoded CSS.
+  Renders via shared-mapping calendar builder (./calendar) — identical across
+  frameworks. Structure + data-* only. No hardcoded CSS.
 -->
 <script lang="ts">
+  import { onMount, onDestroy } from 'svelte';
   import type { ConfigBase, OnSafeEvent } from 'safecontracts';
+  import { createSafeCalendar } from './calendar';
+
   export let config: ConfigBase;
   export let onEvent: OnSafeEvent | undefined = undefined;
+
+  let container: HTMLElement;
+  let root: HTMLElement | null = null;
+
+  onMount(() => {
+    root = createSafeCalendar(container, config, onEvent);
+  });
+
+  onDestroy(() => {
+    root?.remove();
+    root = null;
+  });
 </script>
 
-<div
-  data-component="calendar"
-  data-variant={config.metadata.variant}
-  data-size={config.metadata.size}
->
-  <div data-role="header"><button data-role="prev">‹</button><span data-role="title">June 2026</span><button data-role="next">›</button></div>
-</div>
+<div bind:this={container}></div>

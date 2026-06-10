@@ -1,31 +1,29 @@
 /**
  * SafeToggle — Angular toggle component.
- * Implements toggle contract from safecontracts.
- * Outputs data-* attributes for intent. No hardcoded CSS.
+ * Renders via shared-mapping toggle builder (./toggle) — identical across
+ * frameworks. Structure + data-* only. No hardcoded CSS.
  */
-import { Component, Input } from '@angular/core';
-import { NgIf } from '@angular/common';
+import { Component, Input, ElementRef, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
+import { createSafeToggle } from './toggle';
 
 @Component({
   selector: 'safe-toggle',
   standalone: true,
-  imports: [NgIf],
-  template: `
-    <label data-role="toggle-label">
-      <input type="checkbox" data-role="toggle-input" [checked]="config.metadata.checked" [disabled]="config.metadata.disabled" />
-      <span data-role="toggle-slider"></span>
-      <span *ngIf="config.metadata.label" data-role="label">{{ config.metadata.label }}</span>
-    </label>
-  `,
-  host: {
-    '[attr.data-component]': "'toggle'",
-    '[attr.data-variant]': 'config.metadata.variant',
-    '[attr.data-disabled]': 'config.metadata.disabled',
-    '[attr.data-label-position]': 'config.metadata.labelPosition'
-  }
+  template: `<div #toggleContainer></div>`
 })
-export class SafeToggleComponent {
+export class SafeToggleComponent implements AfterViewInit, OnDestroy {
   @Input() config!: ConfigBase;
   @Input() onEvent?: OnSafeEvent;
+  @ViewChild('toggleContainer') containerRef!: ElementRef<HTMLElement>;
+  private root: HTMLElement | null = null;
+
+  ngAfterViewInit() {
+    this.root = createSafeToggle(this.containerRef.nativeElement, this.config, this.onEvent);
+  }
+
+  ngOnDestroy() {
+    this.root?.remove();
+    this.root = null;
+  }
 }

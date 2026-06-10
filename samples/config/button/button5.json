@@ -1,0 +1,14 @@
+{
+  "component": "button",
+  "metadata": {
+    "variant": "ghost",
+    "label": "⚙️ Settings",
+    "size": "sm"
+  },
+  "eventHandler": {
+    "handler": "button",
+    "events": [
+      "click"
+    ]
+  }
+}

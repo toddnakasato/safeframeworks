@@ -1,0 +1,39 @@
+{
+  "component": "button",
+  "metadata": {
+    "groupVariant": "toolbar",
+    "groupDirection": "vertical"
+  },
+  "children": {
+    "start": {
+      "component": "button",
+      "metadata": {
+        "variant": "primary",
+        "label": "⚡ Quick Start Project",
+        "fullWidth": true
+      }
+    },
+    "create": {
+      "component": "button",
+      "metadata": {
+        "variant": "outline",
+        "label": "Create New Project",
+        "fullWidth": true
+      }
+    },
+    "settings": {
+      "component": "button",
+      "metadata": {
+        "variant": "secondary",
+        "label": "⚙️ Project Settings",
+        "fullWidth": true
+      }
+    }
+  },
+  "eventHandler": {
+    "handler": "button",
+    "events": [
+      "click"
+    ]
+  }
+}

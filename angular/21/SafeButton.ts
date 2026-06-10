@@ -1,36 +1,29 @@
 /**
  * SafeButton — Angular button component.
- * Implements button contract from safecontracts.
- * Outputs data-* attributes for intent. No hardcoded CSS.
+ * Renders via shared-mapping button builder (./button) — identical across
+ * frameworks. Structure + data-* only. No hardcoded CSS.
  */
-import { Component, Input } from '@angular/core';
-import { NgIf } from '@angular/common';
+import { Component, Input, ElementRef, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
+import { createSafeButton } from './button';
 
 @Component({
   selector: 'safe-button',
   standalone: true,
-  imports: [NgIf],
-  template: `
-    <span *ngIf="config.metadata.icon" data-role="icon">{{ config.metadata.icon }}</span>
-    <span *ngIf="config.metadata.label" data-role="label">{{ config.metadata.label }}</span>
-    <span *ngIf="config.metadata.suffix" data-role="suffix">{{ config.metadata.suffix }}</span>
-  `,
-  host: {
-    '[attr.data-component]': "'button'",
-    '[attr.data-variant]': 'config.metadata.variant',
-    '[attr.data-size]': 'config.metadata.size',
-    '[attr.data-disabled]': 'config.metadata.disabled',
-    '[attr.data-loading]': 'config.metadata.loading',
-    '[attr.data-full-width]': 'config.metadata.fullWidth',
-    '[attr.data-icon-only]': 'config.metadata.iconOnly',
-    '[attr.data-selected]': 'config.metadata.selected',
-    '[attr.data-status]': 'config.metadata.status',
-    '[attr.data-group-variant]': 'config.metadata.groupVariant',
-    '[attr.data-group-direction]': 'config.metadata.groupDirection'
-  }
+  template: `<div #buttonContainer></div>`
 })
-export class SafeButtonComponent {
+export class SafeButtonComponent implements AfterViewInit, OnDestroy {
   @Input() config!: ConfigBase;
   @Input() onEvent?: OnSafeEvent;
+  @ViewChild('buttonContainer') containerRef!: ElementRef<HTMLElement>;
+  private root: HTMLElement | null = null;
+
+  ngAfterViewInit() {
+    this.root = createSafeButton(this.containerRef.nativeElement, this.config, this.onEvent);
+  }
+
+  ngOnDestroy() {
+    this.root?.remove();
+    this.root = null;
+  }
 }

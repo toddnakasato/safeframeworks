@@ -1,0 +1,45 @@
+{
+  "component": "button",
+  "metadata": {
+    "groupVariant": "toolbar",
+    "groupDirection": "vertical"
+  },
+  "children": {
+    "dashboard": {
+      "component": "button",
+      "metadata": {
+        "variant": "ghost",
+        "label": "Dashboard",
+        "description": "Overview & metrics",
+        "icon": "layout-dashboard",
+        "fullWidth": true
+      }
+    },
+    "projects": {
+      "component": "button",
+      "metadata": {
+        "variant": "ghost",
+        "label": "Projects",
+        "description": "Manage your work",
+        "icon": "folder",
+        "fullWidth": true
+      }
+    },
+    "team": {
+      "component": "button",
+      "metadata": {
+        "variant": "ghost",
+        "label": "Team",
+        "description": "Members & roles",
+        "icon": "users",
+        "fullWidth": true
+      }
+    }
+  },
+  "eventHandler": {
+    "handler": "button",
+    "events": [
+      "click"
+    ]
+  }
+}

@@ -1,16 +1,26 @@
 <!--
-  SafeChat — Svelte 5 chat component.
-  Outputs data-* attributes for intent. No hardcoded CSS.
+  SafeChat — Svelte 5 chat (bubbles, input, quick actions).
+  Renders via shared-mapping chat builder (./chat) — identical across
+  frameworks. Structure + data-* only.
 -->
 <script lang="ts">
+  import { onMount, onDestroy } from 'svelte';
   import type { ConfigBase, OnSafeEvent } from 'safecontracts';
+  import { createSafeChat } from './chat';
+
   let { config, onEvent }: { config: ConfigBase; onEvent?: OnSafeEvent } = $props();
+
+  let container: HTMLElement;
+  let root: HTMLElement | null = null;
+
+  onMount(() => {
+    root = createSafeChat(container, config, onEvent);
+  });
+
+  onDestroy(() => {
+    root?.remove();
+    root = null;
+  });
 </script>
 
-<div
-  data-component="chat"
->
-  {#if config.metadata.title}<div data-role="title">{config.metadata.title}</div>{/if}
-    <div data-role="messages"><div data-role="message" data-sender="system">Welcome to chat</div></div>
-    <div data-role="input"><input placeholder={config.metadata.placeholder || "Type a message..."} /></div>
-</div>
+<div bind:this={container}></div>

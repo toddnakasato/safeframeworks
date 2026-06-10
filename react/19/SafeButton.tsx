@@ -9,6 +9,18 @@
 import { useState } from "react";
 import type { ConfigBase, OnSafeEvent, SafeEventContext } from "safecontracts";
 import { createSafeEvent } from "safecontracts";
+import * as Icons from "lucide-react";
+
+/** Resolve a lucide icon name ("trash-2" → Trash2). Falls back to raw text (emoji). */
+function IconGlyph({ name }: { name: string }) {
+  const pascal = name
+    .split("-")
+    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+    .join("");
+  const Cmp = (Icons as unknown as Record<string, React.ComponentType<{ size?: number }>>)[pascal];
+  if (Cmp) return <Cmp size={16} />;
+  return <>{name}</>;
+}
 
 export interface SafeButtonProps {
   config: ConfigBase;
@@ -218,9 +230,9 @@ function SingleButton({
         </span>
       )}
       {icon && iconPosition === "left" && !iconOnly && (
-        <span data-role="icon">{icon}</span>
+        <span data-role="icon"><IconGlyph name={icon} /></span>
       )}
-      {iconOnly && icon && <span data-role="icon">{icon}</span>}
+      {iconOnly && icon && <span data-role="icon"><IconGlyph name={icon} /></span>}
       {!iconOnly && label && (
         <span data-role="label">{label}</span>
       )}
@@ -229,9 +241,9 @@ function SingleButton({
       )}
       {suffix && <span data-role="suffix">{suffix}</span>}
       {icon && iconPosition === "right" && !iconOnly && (
-        <span data-role="icon">{icon}</span>
+        <span data-role="icon"><IconGlyph name={icon} /></span>
       )}
-      {iconRight && <span data-role="icon-right">{iconRight}</span>}
+      {iconRight && <span data-role="icon-right"><IconGlyph name={iconRight} /></span>}
     </button>
   );
 }

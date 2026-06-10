@@ -1,18 +1,27 @@
 <!--
   SafeCalendar — Vue 3 calendar component.
-  Outputs data-* attributes for intent. No hardcoded CSS.
+  Renders via shared-mapping calendar builder (./calendar) — identical across
+  frameworks. Structure + data-* only. No hardcoded CSS.
 -->
 <script setup lang="ts">
+import { ref, onMounted, onBeforeUnmount } from 'vue';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-defineProps<{ config: ConfigBase; onEvent?: OnSafeEvent }>();
+import { createSafeCalendar } from './calendar';
+
+const props = defineProps<{ config: ConfigBase; onEvent?: OnSafeEvent }>();
+const containerRef = ref<HTMLElement | null>(null);
+let root: HTMLElement | null = null;
+
+onMounted(() => {
+  if (containerRef.value) root = createSafeCalendar(containerRef.value, props.config, props.onEvent);
+});
+
+onBeforeUnmount(() => {
+  root?.remove();
+  root = null;
+});
 </script>
 
 <template>
-  <div
-    data-component="calendar"
-    :data-variant="config.metadata.variant"
-    :data-size="config.metadata.size"
-  >
-      <div data-role="header"><button data-role="prev">‹</button><span data-role="title">June 2026</span><button data-role="next">›</button></div>
-  </div>
+  <div ref="containerRef"></div>
 </template>

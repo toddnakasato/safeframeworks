@@ -1,0 +1,16 @@
+{
+  "component": "button",
+  "metadata": {
+    "variant": "secondary",
+    "label": "Download",
+    "icon": "download",
+    "iconPosition": "left",
+    "size": "sm"
+  },
+  "eventHandler": {
+    "handler": "button",
+    "events": [
+      "click"
+    ]
+  }
+}

@@ -1,16 +1,27 @@
 <!--
-  SafeFunnel — Svelte 4 funnel component.
-  Outputs data-* attributes for intent. No hardcoded CSS.
+  SafeFunnel — Svelte 4 D3 funnel/conversion bars.
+  Renders via shared-mapping funnel builder (./funnel) — identical across
+  frameworks. Structure + data-* only.
 -->
 <script lang="ts">
+  import { onMount, onDestroy } from 'svelte';
   import type { ConfigBase, OnSafeEvent } from 'safecontracts';
+  import { createSafeFunnel } from './funnel';
+
   export let config: ConfigBase;
   export let onEvent: OnSafeEvent | undefined = undefined;
+
+  let container: HTMLElement;
+  let root: HTMLElement | null = null;
+
+  onMount(() => {
+    root = createSafeFunnel(container, config, onEvent);
+  });
+
+  onDestroy(() => {
+    root?.remove();
+    root = null;
+  });
 </script>
 
-<div
-  data-component="funnel"
-  data-variant={config.metadata.variant}
->
-  <div style="display:flex;flex-direction:column;gap:4px;padding:8px"><div style="background:var(--sd-accent,#3b82f6);color:white;padding:8px;text-align:center;border-radius:4px;width:100%">Leads: 100</div><div style="background:var(--sd-accent,#3b82f6);color:white;padding:8px;text-align:center;border-radius:4px;width:75%;margin:0 auto">Qualified: 75</div><div style="background:var(--sd-accent,#3b82f6);color:white;padding:8px;text-align:center;border-radius:4px;width:50%;margin:0 auto">Won: 50</div></div>
-</div>
+<div bind:this={container}></div>

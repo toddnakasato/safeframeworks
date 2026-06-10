@@ -1,0 +1,83 @@
+/**
+ * Columns builder for this renderer's SafeColumns — 12-column grid positioning.
+ *
+ * Framework-agnostic structural shell of the react JSX implementation.
+ * The react version renders live children into data-role="column" cells via a
+ * renderChild callback; outside the react renderer the builders cannot recurse
+ * into a full renderer, so each cell renders placeholder text instead (same
+ * visible output as the previous stub shells — "Column 1" / "Column 2"), with
+ * contract-true data-* markup.
+ *
+ * Grid template / column placement inline (structural — react sets the same
+ * inline). All paint lives in safestyles.
+ */
+import type { ConfigBase, OnSafeEvent } from "../../../safecontracts/src/contracts";
+import { COLUMNS_DEFAULTS } from "../../../safecontracts/src/components/columns";
+
+function el(tag: string, role?: string, text?: string): HTMLElement {
+    const e = document.createElement(tag);
+    if (role) e.setAttribute("data-role", role);
+    if (text != null) e.textContent = text;
+    return e;
+}
+
+/** Build the columns grid into a container. Returns the root for removal. */
+export function createSafeColumns(container: HTMLElement, config: ConfigBase, _onEvent?: OnSafeEvent): HTMLElement {
+    const metadata = config.metadata;
+    const D = COLUMNS_DEFAULTS;
+    const totalColumns = (metadata.totalColumns as number) ?? D.totalColumns;
+    const gap = (metadata.gap as string) ?? D.gap;
+    const rowGap = (metadata.rowGap as string) ?? gap;
+    const spacing = (metadata.spacing as string) ?? D.spacing;
+    const surface = (metadata.surface as string) ?? D.surface;
+    const radius = (metadata.radius as string) ?? D.radius;
+
+    const root = el("div");
+    root.setAttribute("data-component", "columns");
+    root.setAttribute("data-surface", surface);
+    root.setAttribute("data-radius", radius);
+    root.setAttribute("data-spacing", spacing);
+    root.setAttribute("data-columns", String(totalColumns));
+    // Structural grid template — react sets the same inline.
+    root.style.display = "grid";
+    root.style.gridTemplateColumns = `repeat(${totalColumns}, minmax(0, 1fr))`;
+    root.style.gap = gap;
+    root.style.rowGap = rowGap;
+
+    const children = Object.entries(config.children ?? {});
+    if (children.length > 0) {
+        for (const [key, childConfig] of children) {
+            const span = (childConfig.metadata.span as number) ?? totalColumns;
+            const start = childConfig.metadata.start as number | undefined;
+            const cell = el("div", "column", key);
+            cell.setAttribute("data-span", String(span));
+            cell.style.gridColumn = start ? `${start} / span ${span}` : `span ${span}`;
+            root.appendChild(cell);
+        }
+    } else {
+        // Placeholder cells matching the previous stub shells' visible output.
+        const half = Math.max(1, Math.floor(totalColumns / 2));
+        for (const label of ["Column 1", "Column 2"]) {
+            const cell = el("div", "column", label);
+            cell.setAttribute("data-span", String(half));
+            cell.style.gridColumn = `span ${half}`;
+            root.appendChild(cell);
+        }
+    }
+
+    container.appendChild(root);
+    return root;
+}
+
+/**
+ * Scan-and-mount for server-rendered hosts (Astro): build a columns grid in
+ * every div[data-columns-config] not yet mounted.
+ */
+export function initSafeColumnsAll(root: Document | HTMLElement = document): void {
+    root.querySelectorAll<HTMLElement>("div[data-columns-config]").forEach((host) => {
+        if (host.dataset.columnsMounted) return;
+        host.dataset.columnsMounted = "1";
+        const config = JSON.parse(host.dataset.columnsConfig!) as ConfigBase;
+        createSafeColumns(host, config);
+    });
+}

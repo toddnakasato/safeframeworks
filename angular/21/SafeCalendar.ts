@@ -1,33 +1,29 @@
 /**
  * SafeCalendar — Angular calendar component.
- * Implements calendar contract from safecontracts.
- * Outputs data-* attributes for intent. No hardcoded CSS.
+ * Renders via shared-mapping calendar builder (./calendar) — identical across
+ * frameworks. Structure + data-* only. No hardcoded CSS.
  */
-import { Component, Input } from '@angular/core';
-import { NgFor } from '@angular/common';
+import { Component, Input, ElementRef, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
+import { createSafeCalendar } from './calendar';
 
 @Component({
   selector: 'safe-calendar',
   standalone: true,
-  imports: [NgFor],
-  template: `
-    <div data-role="header">
-      <button data-role="prev">‹</button>
-      <span data-role="title">June 2026</span>
-      <button data-role="next">›</button>
-    </div>
-    <div data-role="grid">
-      <span *ngFor="let d of ['S','M','T','W','T','F','S']" data-role="day-label">{{ d }}</span>
-    </div>
-  `,
-  host: {
-    '[attr.data-component]': "'calendar'",
-    '[attr.data-variant]': 'config.metadata.variant',
-    '[attr.data-size]': 'config.metadata.size'
-  }
+  template: `<div #calendarContainer></div>`
 })
-export class SafeCalendarComponent {
+export class SafeCalendarComponent implements AfterViewInit, OnDestroy {
   @Input() config!: ConfigBase;
   @Input() onEvent?: OnSafeEvent;
+  @ViewChild('calendarContainer') containerRef!: ElementRef<HTMLElement>;
+  private root: HTMLElement | null = null;
+
+  ngAfterViewInit() {
+    this.root = createSafeCalendar(this.containerRef.nativeElement, this.config, this.onEvent);
+  }
+
+  ngOnDestroy() {
+    this.root?.remove();
+    this.root = null;
+  }
 }

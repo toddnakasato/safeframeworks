@@ -1,25 +1,33 @@
 <!--
-  SafeTabs — Vue 2 tabs component.
-  Outputs data-* attributes for intent. No hardcoded CSS.
+  SafeTabs — Vue 2 tabbed panel navigation.
+  Renders via shared-mapping tabs builder (./tabs) — identical across
+  frameworks. Structure + data-* only.
 -->
 <script lang="ts">
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
 import { defineComponent, type PropType } from 'vue';
+import { createSafeTabs } from './tabs';
+
 export default defineComponent({
   name: 'SafeTabs',
   props: {
     config: { type: Object as PropType<ConfigBase>, required: true },
     onEvent: { type: Function as PropType<OnSafeEvent>, default: undefined },
   },
+  data() {
+    return { root: null as HTMLElement | null };
+  },
+  mounted() {
+    const el = this.$refs.tabsContainer as HTMLElement;
+    if (el) this.root = createSafeTabs(el, this.config, this.onEvent);
+  },
+  beforeDestroy() {
+    this.root?.remove();
+    this.root = null;
+  },
 });
 </script>
 
 <template>
-  <div
-    data-component="tabs"
-    :data-variant="config.metadata.variant"
-    :data-position="config.metadata.position"
-  >
-      <div data-tabs-bar><button v-for="tab in (config.metadata.tabs || [])" :key="tab.key" data-role="tab" :data-tab-key="tab.key">{{ tab.label }}</button></div><div data-tabs-panel><slot /></div>
-  </div>
+  <div ref="tabsContainer"></div>
 </template>

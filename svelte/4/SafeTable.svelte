@@ -1,25 +1,27 @@
 <!--
   SafeTable — Svelte 4 table component.
-  Outputs data-* attributes for intent. No hardcoded CSS.
+  Renders via shared-mapping table builder (./table) — identical across
+  frameworks. Structure + data-* only.
 -->
 <script lang="ts">
+  import { onMount, onDestroy } from 'svelte';
   import type { ConfigBase, OnSafeEvent } from 'safecontracts';
+  import { createSafeTable } from './table';
+
   export let config: ConfigBase;
   export let onEvent: OnSafeEvent | undefined = undefined;
+
+  let container: HTMLElement;
+  let root: HTMLElement | null = null;
+
+  onMount(() => {
+    root = createSafeTable(container, config, onEvent);
+  });
+
+  onDestroy(() => {
+    root?.remove();
+    root = null;
+  });
 </script>
 
-<div
-  data-component="table"
-  data-variant={config.metadata.variant}
-  data-spacing={config.metadata.spacing}
-  data-header-style={config.metadata.headerStyle}
-  data-row-divider={config.metadata.rowDivider}
-  data-row-numbers={config.metadata.rowNumbers}
-  data-truncate={config.metadata.truncate}
-  data-column-lines={config.metadata.columnLines}
-  data-header-divider={config.metadata.headerDivider}
-  data-zebra={config.metadata.zebra}
-  data-selectable={config.metadata.selectable}
->
-  <div data-role="scroll"><table><thead data-role="thead"><tr data-role="header-row"><th>Column</th><th>Value</th></tr></thead><tbody data-role="tbody"><tr data-role="row"><td data-role="cell">Sample</td><td data-role="cell">Data</td></tr></tbody></table></div>
-</div>
+<div bind:this={container}></div>

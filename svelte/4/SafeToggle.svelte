@@ -1,18 +1,27 @@
 <!--
   SafeToggle — Svelte 4 toggle component.
-  Outputs data-* attributes for intent. No hardcoded CSS.
+  Renders via shared-mapping toggle builder (./toggle) — identical across
+  frameworks. Structure + data-* only. No hardcoded CSS.
 -->
 <script lang="ts">
+  import { onMount, onDestroy } from 'svelte';
   import type { ConfigBase, OnSafeEvent } from 'safecontracts';
+  import { createSafeToggle } from './toggle';
+
   export let config: ConfigBase;
   export let onEvent: OnSafeEvent | undefined = undefined;
+
+  let container: HTMLElement;
+  let root: HTMLElement | null = null;
+
+  onMount(() => {
+    root = createSafeToggle(container, config, onEvent);
+  });
+
+  onDestroy(() => {
+    root?.remove();
+    root = null;
+  });
 </script>
 
-<div
-  data-component="toggle"
-  data-variant={config.metadata.variant}
-  data-disabled={config.metadata.disabled}
-  data-label-position={config.metadata.labelPosition}
->
-  <label data-role="toggle-label"><input type="checkbox" data-role="toggle-input" checked={config.metadata.checked} disabled={config.metadata.disabled} /><span data-role="toggle-slider"></span>{#if config.metadata.label}<span data-role="label">{config.metadata.label}</span>{/if}</label>
-</div>
+<div bind:this={container}></div>

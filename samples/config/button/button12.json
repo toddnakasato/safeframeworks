@@ -1,0 +1,40 @@
+{
+  "component": "button",
+  "metadata": {
+    "groupVariant": "toolbar",
+    "groupDirection": "horizontal"
+  },
+  "children": {
+    "helpful": {
+      "component": "button",
+      "metadata": {
+        "variant": "ghost",
+        "label": "This was helpful",
+        "size": "sm",
+        "icon": "thumbs-up"
+      }
+    },
+    "more": {
+      "component": "button",
+      "metadata": {
+        "variant": "ghost",
+        "label": "Tell me more",
+        "size": "sm"
+      }
+    },
+    "different": {
+      "component": "button",
+      "metadata": {
+        "variant": "ghost",
+        "label": "Try a different approach",
+        "size": "sm"
+      }
+    }
+  },
+  "eventHandler": {
+    "handler": "button",
+    "events": [
+      "click"
+    ]
+  }
+}

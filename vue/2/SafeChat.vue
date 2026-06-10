@@ -1,25 +1,33 @@
 <!--
-  SafeChat — Vue 2 chat component.
-  Outputs data-* attributes for intent. No hardcoded CSS.
+  SafeChat — Vue 2 chat (bubbles, input, quick actions).
+  Renders via shared-mapping chat builder (./chat) — identical across
+  frameworks. Structure + data-* only.
 -->
 <script lang="ts">
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
 import { defineComponent, type PropType } from 'vue';
+import { createSafeChat } from './chat';
+
 export default defineComponent({
   name: 'SafeChat',
   props: {
     config: { type: Object as PropType<ConfigBase>, required: true },
     onEvent: { type: Function as PropType<OnSafeEvent>, default: undefined },
   },
+  data() {
+    return { root: null as HTMLElement | null };
+  },
+  mounted() {
+    const el = this.$refs.chatContainer as HTMLElement;
+    if (el) this.root = createSafeChat(el, this.config, this.onEvent);
+  },
+  beforeDestroy() {
+    this.root?.remove();
+    this.root = null;
+  },
 });
 </script>
 
 <template>
-  <div
-    data-component="chat"
-  >
-      <div v-if="config.metadata.title" data-role="title">{{ config.metadata.title }}</div>
-      <div data-role="messages"><div data-role="message" data-sender="system">Welcome to chat</div></div>
-      <div data-role="input"><input :placeholder="config.metadata.placeholder || 'Type a message...'" /></div>
-  </div>
+  <div ref="chatContainer"></div>
 </template>
