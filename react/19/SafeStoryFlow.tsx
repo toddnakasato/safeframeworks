@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
 import { createSafeEvent } from "safecontracts";
 import type {
-  FlowNode,
+  StoryFlowNode,
   FlowStep,
   FlowBranch,
   FlowStory,
@@ -139,7 +139,7 @@ function BranchNode({
 function NodesRow({
   nodes, activeStep, renderStep, onStepClick,
 }: {
-  nodes: FlowNode[]; activeStep: string;
+  nodes: StoryFlowNode[]; activeStep: string;
   renderStep?: (step: FlowStep, isActive: boolean) => ReactNode;
   onStepClick: (step: FlowStep) => void;
 }) {
