@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { fireCalendar } from "../../builders/emit";
+import { fireCalendar } from "safecontracts";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
 import { MONTH_NAMES } from "safecontracts";
 

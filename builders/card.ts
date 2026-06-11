@@ -1,5 +1,5 @@
 import type { ConfigBase, OnSafeEvent, RowCell, RowDef } from "../../safecontracts/src/contracts";
-import { fireCard } from "./emit";
+import { fireCard } from "../../safecontracts/src/contracts-emit";
 import { getDataSource } from "../../safecontracts/src/contracts";
 
 /*----------------------------------------------------------------------------------------------------

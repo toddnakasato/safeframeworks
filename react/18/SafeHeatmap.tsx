@@ -1,5 +1,5 @@
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
-import { fireHeatmap } from "../../builders/emit";
+import { fireHeatmap } from "safecontracts";
 
 /*----------------------------------------------------------------------------------------------------
  *

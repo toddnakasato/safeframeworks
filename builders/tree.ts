@@ -1,5 +1,5 @@
 import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
-import { fireTree } from "./emit";
+import { fireTree } from "../../safecontracts/src/contracts-emit";
 import { getDataSource } from "../../safecontracts/src/contracts";
 
 /*----------------------------------------------------------------------------------------------------

@@ -1,5 +1,5 @@
 import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
-import { fireChat } from "./emit";
+import { fireChat } from "../../safecontracts/src/contracts-emit";
 
 /*----------------------------------------------------------------------------------------------------
  *

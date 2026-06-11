@@ -1,5 +1,5 @@
 import { useState, useCallback, useRef } from "react";
-import { fireDragDrop } from "../../builders/emit";
+import { fireDragDrop } from "safecontracts";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
 
 /*----------------------------------------------------------------------------------------------------

@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { fireStoryFlow } from "../../builders/emit";
+import { fireStoryFlow } from "safecontracts";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
 import type {
   StoryFlowNode,

@@ -1,5 +1,5 @@
 import * as d3 from "d3";
-import { fireFlow } from "./emit";
+import { fireFlow } from "../../safecontracts/src/contracts-emit";
 import { getDataSource } from "../../safecontracts/src/contracts";
 import { sankey as d3Sankey, sankeyLinkHorizontal } from "d3-sankey";
 import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";

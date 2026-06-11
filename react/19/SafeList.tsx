@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { fireList } from "../../builders/emit";
+import { fireList } from "safecontracts";
 import { getDataSource } from "safecontracts";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
 import { DAY_NAMES_SHORT, LIST_DEFAULTS, LIST_STATUS_ACCENTS } from "safecontracts";

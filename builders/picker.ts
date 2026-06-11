@@ -1,5 +1,5 @@
 import type { ConfigBase, OnSafeEvent, RowCell, RowDef } from "../../safecontracts/src/contracts";
-import { firePicker } from "./emit";
+import { firePicker } from "../../safecontracts/src/contracts-emit";
 import { getDataSource } from "../../safecontracts/src/contracts";
 
 /*----------------------------------------------------------------------------------------------------

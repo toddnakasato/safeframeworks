@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { fireLayout } from "../../builders/emit";
+import { fireLayout } from "safecontracts";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
 import { useRenderLog, type RenderLogFn } from "./hooks/useRenderLog";
 

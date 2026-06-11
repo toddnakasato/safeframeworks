@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { fireChat } from "../../builders/emit";
+import { fireChat } from "safecontracts";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
 
 /*----------------------------------------------------------------------------------------------------

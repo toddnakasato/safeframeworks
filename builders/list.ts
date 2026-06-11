@@ -1,5 +1,5 @@
 import { createElement, type IconNode } from "lucide";
-import { fireList } from "./emit";
+import { fireList } from "../../safecontracts/src/contracts-emit";
 import { getDataSource } from "../../safecontracts/src/contracts";
 import * as lucide from "lucide";
 import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";

@@ -1,5 +1,5 @@
 import { createElement, ChevronDown, Dot, type IconNode } from "lucide";
-import { fireNav } from "./emit";
+import { fireNav } from "../../safecontracts/src/contracts-emit";
 import * as lucide from "lucide";
 import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
 

@@ -1,5 +1,5 @@
 import { useRef, useEffect, useMemo } from "react";
-import { fireTimeline } from "../../builders/emit";
+import { fireTimeline } from "safecontracts";
 import * as d3 from "d3";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
 import { resolveColors } from "safecontracts";

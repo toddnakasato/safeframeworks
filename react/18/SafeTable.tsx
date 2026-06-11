@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo, useCallback } from "react";
-import { fireTable } from "../../builders/emit";
-import type { TableEvent } from "../../builders/emit";
+import { fireTable } from "safecontracts";
+import type { TableEvent } from "safecontracts";
 import { getDataSource } from "safecontracts";
 import type { ConfigBase, OnSafeEvent, Field } from "safecontracts";
 import { findHandlers } from "safecontracts";

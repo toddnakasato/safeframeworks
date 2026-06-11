@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { fireToggle } from "../../builders/emit";
+import { fireToggle } from "safecontracts";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
 
 /*----------------------------------------------------------------------------------------------------

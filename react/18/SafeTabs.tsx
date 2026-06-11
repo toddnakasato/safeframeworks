@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { fireTabs } from "../../builders/emit";
+import { fireTabs } from "safecontracts";
 import type { ConfigBase, SafeEvent } from "safecontracts";
 
 /*----------------------------------------------------------------------------------------------------

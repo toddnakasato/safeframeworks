@@ -1,5 +1,5 @@
 import * as d3 from "d3";
-import { fireGauge } from "./emit";
+import { fireGauge } from "../../safecontracts/src/contracts-emit";
 import { getDataSource } from "../../safecontracts/src/contracts";
 import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
 

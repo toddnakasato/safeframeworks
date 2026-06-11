@@ -1,5 +1,5 @@
 import { useRef, useEffect } from "react";
-import { fireGauge } from "../../builders/emit";
+import { fireGauge } from "safecontracts";
 import * as d3 from "d3";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
 

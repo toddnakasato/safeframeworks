@@ -1,5 +1,5 @@
 import * as d3 from "d3";
-import { fireHierarchy } from "./emit";
+import { fireHierarchy } from "../../safecontracts/src/contracts-emit";
 import { getDataSource } from "../../safecontracts/src/contracts";
 import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
 import { HIERARCHY_DEFAULTS } from "../../safecontracts/src/components/hierarchy";

@@ -1,5 +1,5 @@
 import { useState, useMemo, useRef, useEffect } from "react";
-import { firePicker } from "../../builders/emit";
+import { firePicker } from "safecontracts";
 import { getDataSource } from "safecontracts";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
 import type { RowCell, RowDef } from "safecontracts";

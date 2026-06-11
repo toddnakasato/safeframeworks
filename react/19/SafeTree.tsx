@@ -1,5 +1,5 @@
 import { useState, useMemo, useCallback } from "react";
-import { fireTree } from "../../builders/emit";
+import { fireTree } from "safecontracts";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
 
 /*----------------------------------------------------------------------------------------------------

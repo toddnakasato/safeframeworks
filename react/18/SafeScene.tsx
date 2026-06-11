@@ -1,8 +1,8 @@
 import { forwardRef, useCallback, useEffect, useImperativeHandle, useMemo, useRef, useState } from "react";
 import { getDataSource } from "safecontracts";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
-import { fireScene } from "../../builders/emit";
-import type { SceneEvent } from "../../builders/emit";
+import { fireScene } from "safecontracts";
+import type { SceneEvent } from "safecontracts";
 import type { EventShapeMap } from "safecontracts";
 import type { HandlerContext } from "safecontracts";
 import { createDispatcher } from "safecontracts";

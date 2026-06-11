@@ -1,5 +1,5 @@
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
-import { fireCard } from "../../builders/emit";
+import { fireCard } from "safecontracts";
 import { getDataSource } from "safecontracts";
 import type { RowCell, RowDef } from "safecontracts";
 import { useRenderLog, type RenderLogFn } from "./hooks/useRenderLog";

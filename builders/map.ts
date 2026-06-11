@@ -1,5 +1,5 @@
 import L from "leaflet";
-import { fireMap } from "./emit";
+import { fireMap } from "../../safecontracts/src/contracts-emit";
 import { getDataSource } from "../../safecontracts/src/contracts";
 import "leaflet/dist/leaflet.css";
 import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";

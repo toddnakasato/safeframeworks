@@ -1,6 +1,6 @@
 import type { ConfigBase, OnSafeEvent, Field } from "../../safecontracts/src/contracts";
-import { fireTable } from "./emit";
-import type { TableEvent } from "./emit";
+import { fireTable } from "../../safecontracts/src/contracts-emit";
+import type { TableEvent } from "../../safecontracts/src/contracts-emit";
 import { getDataSource } from "../../safecontracts/src/contracts";
 import { fmtDate, fmtCurrency, fmtInt, fmtPercent, fmtStr } from "../../safecontracts/src/formatter";
 

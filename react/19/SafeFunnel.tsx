@@ -1,5 +1,5 @@
 import { useRef, useEffect } from "react";
-import { fireFunnel } from "../../builders/emit";
+import { fireFunnel } from "safecontracts";
 import * as d3 from "d3";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
 import { resolveColors } from "safecontracts";

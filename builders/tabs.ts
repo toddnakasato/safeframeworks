@@ -1,5 +1,5 @@
 import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
-import { fireTabs } from "./emit";
+import { fireTabs } from "../../safecontracts/src/contracts-emit";
 
 /*----------------------------------------------------------------------------------------------------
  *

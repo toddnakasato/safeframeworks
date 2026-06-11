@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect, type ReactNode } from "react";
-import { fireNav } from "../../builders/emit";
+import { fireNav } from "safecontracts";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
 import * as Icons from "lucide-react";
 import { createSafeNav } from "../../builders/nav";

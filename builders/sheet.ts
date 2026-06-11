@@ -1,5 +1,5 @@
 import { HyperFormula } from "hyperformula";
-import { fireSheet } from "./emit";
+import { fireSheet } from "../../safecontracts/src/contracts-emit";
 import { getDataSource } from "../../safecontracts/src/contracts";
 import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
 import type { SheetColumn } from "../../safecontracts/src/components/sheet";

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { fireWeek } from "../../builders/emit";
+import { fireWeek } from "safecontracts";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
 import { DAY_NAMES_SHORT, MONTH_NAMES } from "safecontracts";
 

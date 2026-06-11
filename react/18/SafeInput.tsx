@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect, useCallback } from "react";
-import { fireInput } from "../../builders/emit";
-import type { InputEvent } from "../../builders/emit";
+import { fireInput } from "safecontracts";
+import type { InputEvent } from "safecontracts";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
 import type { InputType, InputOption, LookupRecord, DisplayFormat } from "safecontracts/components/input";
 import { INPUT_DEFAULTS } from "safecontracts/components/input";

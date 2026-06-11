@@ -1,6 +1,6 @@
 import { createElement, type IconNode } from "lucide";
-import { fireButton } from "./emit";
-import type { ButtonEvent } from "./emit";
+import { fireButton } from "../../safecontracts/src/contracts-emit";
+import type { ButtonEvent } from "../../safecontracts/src/contracts-emit";
 import * as lucide from "lucide";
 import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
 

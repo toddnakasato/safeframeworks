@@ -1,5 +1,5 @@
 import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
-import { fireCalendar } from "./emit";
+import { fireCalendar } from "../../safecontracts/src/contracts-emit";
 import { MONTH_NAMES } from "../../safecontracts/src/contracts";
 
 /*----------------------------------------------------------------------------------------------------

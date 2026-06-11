@@ -1,5 +1,5 @@
 import { useRef, useEffect } from "react";
-import { fireMetric } from "../../builders/emit";
+import { fireMetric } from "safecontracts";
 import gsap from "gsap";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
 import type { TrendDirection } from "safecontracts/components/metric";

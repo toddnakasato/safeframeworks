@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { fireButton } from "../../builders/emit";
-import type { ButtonEvent } from "../../builders/emit";
+import { fireButton } from "safecontracts";
+import type { ButtonEvent } from "safecontracts";
 import type { ConfigBase, OnSafeEvent, SafeEventContext } from "safecontracts";
 import * as Icons from "lucide-react";
 

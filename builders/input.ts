@@ -1,6 +1,6 @@
 import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
-import { fireInput } from "./emit";
-import type { InputEvent } from "./emit";
+import { fireInput } from "../../safecontracts/src/contracts-emit";
+import type { InputEvent } from "../../safecontracts/src/contracts-emit";
 import { getDataSource } from "../../safecontracts/src/contracts";
 
 /*----------------------------------------------------------------------------------------------------

@@ -11,7 +11,7 @@ import {
 import type { ChartConfiguration } from "chart.js";
 import { getDataSource } from "../../safecontracts/src/contracts";
 import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
-import { fireChart } from "./emit";
+import { fireChart } from "../../safecontracts/src/contracts-emit";
 import { resolveColors } from "../../safecontracts/src/palette";
 
 /*----------------------------------------------------------------------------------------------------
