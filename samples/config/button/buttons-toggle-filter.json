@@ -40,9 +40,6 @@
     }
   },
   "eventHandler": {
-    "handler": "button",
-    "events": [
-      "click"
-    ]
+    "handler": "button"
   }
 }

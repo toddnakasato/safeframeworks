@@ -4,11 +4,6 @@
     "title": "Chat"
   },
   "eventHandler": {
-    "handler": "chat",
-    "events": [
-      "send",
-      "scroll",
-      "action"
-    ]
+    "handler": "chat"
   }
 }

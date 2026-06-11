@@ -29,13 +29,6 @@
     }
   },
   "eventHandler": {
-    "handler": "table",
-    "events": [
-      "select",
-      "sort",
-      "row:click",
-      "row:select",
-      "page"
-    ]
+    "handler": "table"
   }
 }

@@ -26,12 +26,6 @@
     }
   },
   "eventHandler": {
-    "handler": "drag-drop",
-    "events": [
-      "drag-start",
-      "drag-end",
-      "drop",
-      "file-drop"
-    ]
+    "handler": "drag-drop"
   }
 }

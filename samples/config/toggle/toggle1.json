@@ -7,10 +7,6 @@
     "label": "Enable feature"
   },
   "eventHandler": {
-    "handler": "toggle",
-    "events": [
-      "change",
-      "expand"
-    ]
+    "handler": "toggle"
   }
 }

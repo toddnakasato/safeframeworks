@@ -2,13 +2,10 @@
   "component": "button",
   "metadata": {
     "variant": "ghost",
-    "label": "⚙️ Settings",
+    "label": "\u2699\ufe0f Settings",
     "size": "sm"
   },
   "eventHandler": {
-    "handler": "button",
-    "events": [
-      "click"
-    ]
+    "handler": "button"
   }
 }

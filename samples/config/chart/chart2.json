@@ -28,10 +28,6 @@
     }
   },
   "eventHandler": {
-    "handler": "chart",
-    "events": [
-      "click",
-      "hover"
-    ]
+    "handler": "chart"
   }
 }

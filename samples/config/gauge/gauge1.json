@@ -4,9 +4,6 @@
     "variant": "default"
   },
   "eventHandler": {
-    "handler": "gauge",
-    "events": [
-      "click"
-    ]
+    "handler": "gauge"
   }
 }

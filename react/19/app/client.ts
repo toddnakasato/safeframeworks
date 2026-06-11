@@ -1,4 +1,6 @@
 import { invoke } from "@tauri-apps/api/core";
+import { dispatchEvent } from "safecontracts";
+import type { SafeEvent, HandlerFile, HandlerResult, DispatchContext } from "safecontracts";
 
 export async function getConfig(): Promise<any> {
   const raw = await invoke<string>("read_config");
@@ -35,34 +37,33 @@ export async function getData(name: string): Promise<any> {
   }
 }
 
-export async function dispatchEvent(
-  eventName: string,
-  payload: Record<string, any>,
-  handler: string,
-): Promise<any> {
-  // Read event handler config
-  const evtRaw = await invoke<string>("read_file_content", { path: `events/${handler}.json` });
-  const evt = JSON.parse(evtRaw);
-
-  const h = (evt.handlers ?? []).find((h: any) => h.on === eventName);
-  if (!h) return;
-
-  // State update: read, apply payload mapping, write
-  if (h.target === "runtime" && h.action === "state") {
+/**
+ * Dev-app dispatch context: handler files via invoke, "runtime state" action
+ * implemented as read-modify-write of state.json (this dev harness has no
+ * CLI; safeapp proper routes serverCall to the safedesk binary).
+ */
+const ctx: DispatchContext = {
+  readHandlerFile: async (name: string): Promise<HandlerFile | null> => {
+    try {
+      const raw = await invoke<string>("read_file_content", { path: `events/${name}.json` });
+      return JSON.parse(raw) as HandlerFile;
+    } catch {
+      return null;
+    }
+  },
+  serverCall: async (_domain: string, action: string, args?: Record<string, any>) => {
+    if (action !== "state") return null;
     const stateRaw = await invoke<string>("read_state");
     const state = JSON.parse(stateRaw);
-
-    for (const [payloadKey, stateKey] of Object.entries(h.payload ?? {})) {
-      const parts = payloadKey.split(".");
-      let val: any = payload;
-      for (const p of parts) {
-        val = val?.[p];
-      }
-      if (val !== undefined) {
-        state[stateKey as string] = val;
-      }
+    for (const [k, v] of Object.entries(args ?? {})) {
+      if (k === "payload" || v === undefined) continue;
+      state[k] = v;
     }
-
     await invoke("write_state", { content: JSON.stringify(state, null, 2) + "\n" });
-  }
+    return state;
+  },
+};
+
+export async function dispatch(event: SafeEvent): Promise<HandlerResult[]> {
+  return dispatchEvent(event, ctx);
 }

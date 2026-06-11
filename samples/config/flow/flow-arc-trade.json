@@ -5,11 +5,7 @@
     "title": "Trade Routes"
   },
   "eventHandler": {
-    "handler": "flow",
-    "events": [
-      "node:click",
-      "link:click"
-    ]
+    "handler": "flow"
   },
   "data": {
     "graph": {

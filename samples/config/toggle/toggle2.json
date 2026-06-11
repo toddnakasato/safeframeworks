@@ -7,10 +7,6 @@
     "label": "Email notifications"
   },
   "eventHandler": {
-    "handler": "toggle",
-    "events": [
-      "change",
-      "expand"
-    ]
+    "handler": "toggle"
   }
 }

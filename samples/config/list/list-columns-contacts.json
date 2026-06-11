@@ -38,10 +38,6 @@
     }
   },
   "eventHandler": {
-    "handler": "list",
-    "events": [
-      "select",
-      "page"
-    ]
+    "handler": "list"
   }
 }

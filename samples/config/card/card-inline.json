@@ -22,15 +22,11 @@
         ]
       },
       "inline": {
-        "title": "Inline Card — values authored in this config"
+        "title": "Inline Card \u2014 values authored in this config"
       }
     }
   },
   "eventHandler": {
-    "handler": "card",
-    "events": [
-      "click",
-      "back"
-    ]
+    "handler": "card"
   }
 }

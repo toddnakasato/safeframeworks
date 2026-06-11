@@ -4,9 +4,6 @@
     "variant": "default"
   },
   "eventHandler": {
-    "handler": "funnel",
-    "events": [
-      "select"
-    ]
+    "handler": "funnel"
   }
 }

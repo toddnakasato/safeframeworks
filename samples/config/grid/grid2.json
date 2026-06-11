@@ -7,9 +7,6 @@
     "collapsible": true
   },
   "eventHandler": {
-    "handler": "grid",
-    "events": [
-      "click"
-    ]
+    "handler": "grid"
   }
 }

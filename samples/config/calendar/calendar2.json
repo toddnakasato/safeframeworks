@@ -5,10 +5,6 @@
     "size": "sm"
   },
   "eventHandler": {
-    "handler": "calendar",
-    "events": [
-      "navigate",
-      "select"
-    ]
+    "handler": "calendar"
   }
 }

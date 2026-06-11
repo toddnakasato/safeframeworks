@@ -235,9 +235,6 @@
     }
   },
   "eventHandler": {
-    "handler": "nav",
-    "events": [
-      "navigate"
-    ]
+    "handler": "nav"
   }
 }

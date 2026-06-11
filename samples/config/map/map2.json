@@ -65,10 +65,6 @@
     }
   },
   "eventHandler": {
-    "handler": "map",
-    "events": [
-      "select",
-      "marker:click"
-    ]
+    "handler": "map"
   }
 }

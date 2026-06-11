@@ -14,11 +14,6 @@
     }
   },
   "eventHandler": {
-    "handler": "list",
-    "events": [
-      "select",
-      "expand",
-      "page"
-    ]
+    "handler": "list"
   }
 }

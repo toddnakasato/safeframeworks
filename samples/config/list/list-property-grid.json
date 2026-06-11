@@ -12,10 +12,6 @@
     }
   },
   "eventHandler": {
-    "handler": "list",
-    "events": [
-      "expand",
-      "change"
-    ]
+    "handler": "list"
   }
 }

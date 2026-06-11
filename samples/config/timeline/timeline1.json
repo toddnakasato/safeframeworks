@@ -25,9 +25,6 @@
     }
   },
   "eventHandler": {
-    "handler": "timeline",
-    "events": [
-      "select"
-    ]
+    "handler": "timeline"
   }
 }

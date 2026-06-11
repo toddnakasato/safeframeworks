@@ -8,10 +8,7 @@
     "parentField": "parent"
   },
   "eventHandler": {
-    "handler": "hierarchy",
-    "events": [
-      "select"
-    ]
+    "handler": "hierarchy"
   },
   "data": {
     "nodes": {

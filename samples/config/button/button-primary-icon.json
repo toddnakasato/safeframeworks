@@ -2,15 +2,12 @@
   "component": "button",
   "metadata": {
     "variant": "primary",
-    "label": "💾 Save Changes",
+    "label": "\ud83d\udcbe Save Changes",
     "icon": "save",
     "iconPosition": "left",
     "size": "md"
   },
   "eventHandler": {
-    "handler": "button",
-    "events": [
-      "click"
-    ]
+    "handler": "button"
   }
 }

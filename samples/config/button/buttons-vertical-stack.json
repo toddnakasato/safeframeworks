@@ -9,7 +9,7 @@
       "component": "button",
       "metadata": {
         "variant": "primary",
-        "label": "⚡ Quick Start Project",
+        "label": "\u26a1 Quick Start Project",
         "fullWidth": true
       }
     },
@@ -25,15 +25,12 @@
       "component": "button",
       "metadata": {
         "variant": "secondary",
-        "label": "⚙️ Project Settings",
+        "label": "\u2699\ufe0f Project Settings",
         "fullWidth": true
       }
     }
   },
   "eventHandler": {
-    "handler": "button",
-    "events": [
-      "click"
-    ]
+    "handler": "button"
   }
 }

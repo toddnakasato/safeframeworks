@@ -5,11 +5,6 @@
     "spacing": "tight"
   },
   "eventHandler": {
-    "handler": "picker",
-    "events": [
-      "select",
-      "filter",
-      "search"
-    ]
+    "handler": "picker"
   }
 }

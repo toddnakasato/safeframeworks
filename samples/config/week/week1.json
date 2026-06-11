@@ -4,10 +4,6 @@
     "variant": "full"
   },
   "eventHandler": {
-    "handler": "week",
-    "events": [
-      "navigate",
-      "select"
-    ]
+    "handler": "week"
   }
 }

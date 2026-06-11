@@ -2,15 +2,12 @@
   "component": "button",
   "metadata": {
     "variant": "danger",
-    "label": "🗑️ Delete",
+    "label": "\ud83d\uddd1\ufe0f Delete",
     "icon": "trash-2",
     "iconPosition": "left",
     "size": "md"
   },
   "eventHandler": {
-    "handler": "button",
-    "events": [
-      "click"
-    ]
+    "handler": "button"
   }
 }

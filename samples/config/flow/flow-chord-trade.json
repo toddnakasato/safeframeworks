@@ -5,11 +5,7 @@
     "title": "Regional Trade"
   },
   "eventHandler": {
-    "handler": "flow",
-    "events": [
-      "node:click",
-      "link:click"
-    ]
+    "handler": "flow"
   },
   "data": {
     "graph": {

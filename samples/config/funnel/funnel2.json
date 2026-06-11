@@ -4,9 +4,6 @@
     "variant": "dense"
   },
   "eventHandler": {
-    "handler": "funnel",
-    "events": [
-      "select"
-    ]
+    "handler": "funnel"
   }
 }

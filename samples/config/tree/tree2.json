@@ -26,11 +26,6 @@
     }
   },
   "eventHandler": {
-    "handler": "tree",
-    "events": [
-      "select",
-      "expand",
-      "collapse"
-    ]
+    "handler": "tree"
   }
 }

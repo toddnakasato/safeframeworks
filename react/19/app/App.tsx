@@ -3,7 +3,7 @@ import { renderConfigBase } from "../SafeRenderer";
 import type { ConfigBase, SafeEvent } from "safecontracts";
 import { resolveDataSources } from "safecontracts";
 import { listen } from "@tauri-apps/api/event";
-import { getConfig, getState, getLayout, getScene, getComponent, getData, dispatchEvent } from "./client";
+import { getConfig, getState, getLayout, getScene, getComponent, getData, dispatch } from "./client";
 
 async function resolveLayout(layout: any): Promise<ConfigBase> {
   const children: Record<string, ConfigBase> = {};
@@ -23,7 +23,6 @@ async function resolveLayout(layout: any): Promise<ConfigBase> {
 
 export default function App() {
   const [root, setRoot] = useState<ConfigBase | null>(null);
-  const [eventHandlers, setEventHandlers] = useState<string[]>([]);
   const [error, setError] = useState("");
 
   const load = async () => {
@@ -44,10 +43,6 @@ export default function App() {
 
       const resolved = await resolveLayout(layout);
       const withData = await resolveDataSources(resolved, { readData: getData, state });
-      const handlers = Object.values(withData.children ?? {})
-        .map((c: any) => c.eventHandler?.handler)
-        .filter(Boolean) as string[];
-      setEventHandlers(handlers);
       setRoot(withData);
     } catch (e: any) {
       setError(String(e));
@@ -61,13 +56,10 @@ export default function App() {
   }, []);
 
   const handleEvent = useCallback((event: SafeEvent) => {
-    const payload = (event.data ?? {}) as Record<string, any>;
-    const context = event.context ?? {};
-    const handler = (event as any).handler;
-    if (handler) {
-      dispatchEvent(event.name, { ...payload, ...context }, handler).then(() => load());
+    if (event.handler) {
+      dispatch(event).then(() => load());
     }
-  }, [eventHandlers]);
+  }, []);
 
   if (error) return <div style={{ padding: 16, color: "red" }}>{error}</div>;
   if (!root) return null;

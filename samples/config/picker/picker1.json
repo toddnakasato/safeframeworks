@@ -4,11 +4,6 @@
     "variant": "default"
   },
   "eventHandler": {
-    "handler": "picker",
-    "events": [
-      "select",
-      "filter",
-      "search"
-    ]
+    "handler": "picker"
   }
 }

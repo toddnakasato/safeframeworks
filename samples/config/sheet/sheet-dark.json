@@ -37,10 +37,6 @@
     }
   },
   "eventHandler": {
-    "handler": "sheet",
-    "events": [
-      "select",
-      "edit"
-    ]
+    "handler": "sheet"
   }
 }

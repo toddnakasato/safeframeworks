@@ -7,13 +7,6 @@
     "placeholder": "0.00"
   },
   "eventHandler": {
-    "handler": "input",
-    "events": [
-      "change",
-      "editmode",
-      "canceledit",
-      "textinput",
-      "navigate"
-    ]
+    "handler": "input"
   }
 }

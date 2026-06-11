@@ -24,10 +24,6 @@
     }
   },
   "eventHandler": {
-    "handler": "card",
-    "events": [
-      "click",
-      "back"
-    ]
+    "handler": "card"
   }
 }

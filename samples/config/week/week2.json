@@ -6,10 +6,6 @@
     "endHour": 17
   },
   "eventHandler": {
-    "handler": "week",
-    "events": [
-      "navigate",
-      "select"
-    ]
+    "handler": "week"
   }
 }

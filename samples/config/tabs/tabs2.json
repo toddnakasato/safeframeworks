@@ -17,9 +17,6 @@
     ]
   },
   "eventHandler": {
-    "handler": "tabs",
-    "events": [
-      "select"
-    ]
+    "handler": "tabs"
   }
 }

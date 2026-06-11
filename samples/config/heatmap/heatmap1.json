@@ -4,9 +4,6 @@
     "variant": "default"
   },
   "eventHandler": {
-    "handler": "heatmap",
-    "events": [
-      "cell:click"
-    ]
+    "handler": "heatmap"
   }
 }

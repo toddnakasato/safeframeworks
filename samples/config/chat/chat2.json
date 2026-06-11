@@ -2,14 +2,9 @@
   "component": "chat",
   "metadata": {
     "title": "Support",
-    "placeholder": "Ask a question…"
+    "placeholder": "Ask a question\u2026"
   },
   "eventHandler": {
-    "handler": "chat",
-    "events": [
-      "send",
-      "scroll",
-      "action"
-    ]
+    "handler": "chat"
   }
 }
