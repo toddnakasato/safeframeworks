@@ -56,7 +56,7 @@ const ctx: DispatchContext = {
     const stateRaw = await invoke<string>("read_state");
     const state = JSON.parse(stateRaw);
     for (const [k, v] of Object.entries(args ?? {})) {
-      if (k === "payload" || v === undefined) continue;
+      if (v === undefined) continue;
       state[k] = v;
     }
     await invoke("write_state", { content: JSON.stringify(state, null, 2) + "\n" });

@@ -196,8 +196,6 @@ function SingleButton({
     if (disabled || loading) return;
     onEvent?.(
       createSafeEvent("button", eventName, undefined, {
-        type: "request",
-        category: "system",
         context: eventContext,
       }),
     );

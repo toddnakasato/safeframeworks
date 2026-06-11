@@ -78,7 +78,7 @@ function buildSingleButton(config: ConfigBase, onEvent?: OnSafeEvent): HTMLEleme
 
     btn.onclick = () => {
         if (disabled || loading) return;
-        onEvent?.(createSafeEvent("button", eventName, undefined, { type: "request", category: "system" }));
+        onEvent?.(createSafeEvent("button", eventName));
     };
 
     if (loading) btn.appendChild(el("span", { "data-role": "spinner" }));
