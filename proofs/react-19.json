@@ -7,7 +7,7 @@
     "layout": {
       "ok": true,
       "impl": "react/19/SafeLayout.tsx",
-      "via": "native",
+      "via": "builder: builders/emit.ts",
       "checks": {
         "contract": "pass",
         "impl": "pass",
@@ -33,7 +33,7 @@
     "card": {
       "ok": true,
       "impl": "react/19/SafeCard.tsx",
-      "via": "native",
+      "via": "builder: builders/emit.ts",
       "checks": {
         "contract": "pass",
         "impl": "pass",
@@ -46,7 +46,7 @@
     "button": {
       "ok": true,
       "impl": "react/19/SafeButton.tsx",
-      "via": "native",
+      "via": "builder: builders/emit.ts",
       "checks": {
         "contract": "pass",
         "impl": "pass",
@@ -59,7 +59,7 @@
     "table": {
       "ok": true,
       "impl": "react/19/SafeTable.tsx",
-      "via": "native",
+      "via": "builder: builders/emit.ts",
       "checks": {
         "contract": "pass",
         "impl": "pass",
@@ -72,7 +72,7 @@
     "tree": {
       "ok": true,
       "impl": "react/19/SafeTree.tsx",
-      "via": "native",
+      "via": "builder: builders/emit.ts",
       "checks": {
         "contract": "pass",
         "impl": "pass",
@@ -111,7 +111,7 @@
     "heatmap": {
       "ok": true,
       "impl": "react/19/SafeHeatmap.tsx",
-      "via": "native",
+      "via": "builder: builders/emit.ts",
       "checks": {
         "contract": "pass",
         "impl": "pass",
@@ -124,7 +124,7 @@
     "gauge": {
       "ok": true,
       "impl": "react/19/SafeGauge.tsx",
-      "via": "native",
+      "via": "builder: builders/emit.ts",
       "checks": {
         "contract": "pass",
         "impl": "pass",
@@ -137,7 +137,7 @@
     "funnel": {
       "ok": true,
       "impl": "react/19/SafeFunnel.tsx",
-      "via": "native",
+      "via": "builder: builders/emit.ts",
       "checks": {
         "contract": "pass",
         "impl": "pass",
@@ -176,7 +176,7 @@
     "timeline": {
       "ok": true,
       "impl": "react/19/SafeTimeline.tsx",
-      "via": "native",
+      "via": "builder: builders/emit.ts",
       "checks": {
         "contract": "pass",
         "impl": "pass",
@@ -202,7 +202,7 @@
     "calendar": {
       "ok": true,
       "impl": "react/19/SafeCalendar.tsx",
-      "via": "native",
+      "via": "builder: builders/emit.ts",
       "checks": {
         "contract": "pass",
         "impl": "pass",
@@ -215,7 +215,7 @@
     "toggle": {
       "ok": true,
       "impl": "react/19/SafeToggle.tsx",
-      "via": "native",
+      "via": "builder: builders/emit.ts",
       "checks": {
         "contract": "pass",
         "impl": "pass",
@@ -228,7 +228,7 @@
     "week": {
       "ok": true,
       "impl": "react/19/SafeWeek.tsx",
-      "via": "native",
+      "via": "builder: builders/emit.ts",
       "checks": {
         "contract": "pass",
         "impl": "pass",
@@ -241,7 +241,7 @@
     "chat": {
       "ok": true,
       "impl": "react/19/SafeChat.tsx",
-      "via": "native",
+      "via": "builder: builders/emit.ts",
       "checks": {
         "contract": "pass",
         "impl": "pass",
@@ -254,7 +254,7 @@
     "tabs": {
       "ok": true,
       "impl": "react/19/SafeTabs.tsx",
-      "via": "native",
+      "via": "builder: builders/emit.ts",
       "checks": {
         "contract": "pass",
         "impl": "pass",
@@ -280,7 +280,7 @@
     "drag-drop": {
       "ok": true,
       "impl": "react/19/SafeDragDrop.tsx",
-      "via": "native",
+      "via": "builder: builders/emit.ts",
       "checks": {
         "contract": "pass",
         "impl": "pass",
@@ -306,7 +306,7 @@
     "input": {
       "ok": true,
       "impl": "react/19/SafeInput.tsx",
-      "via": "native",
+      "via": "builder: builders/emit.ts",
       "checks": {
         "contract": "pass",
         "impl": "pass",
@@ -319,7 +319,7 @@
     "picker": {
       "ok": true,
       "impl": "react/19/SafePicker.tsx",
-      "via": "native",
+      "via": "builder: builders/emit.ts",
       "checks": {
         "contract": "pass",
         "impl": "pass",
@@ -332,7 +332,7 @@
     "nav": {
       "ok": true,
       "impl": "react/19/SafeNav.tsx",
-      "via": "builder: builders/nav.ts",
+      "via": "builder: builders/emit.ts, builders/nav.ts",
       "checks": {
         "contract": "pass",
         "impl": "pass",
@@ -345,7 +345,7 @@
     "list": {
       "ok": true,
       "impl": "react/19/SafeList.tsx",
-      "via": "native",
+      "via": "builder: builders/emit.ts",
       "checks": {
         "contract": "pass",
         "impl": "pass",
