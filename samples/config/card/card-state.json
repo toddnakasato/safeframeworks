@@ -1,0 +1,33 @@
+{
+  "component": "card",
+  "metadata": {
+    "variant": "outline",
+    "surface": "raised",
+    "spacing": "normal",
+    "radius": "md",
+    "density": "comfortable"
+  },
+  "data": {
+    "info": {
+      "name": "card-state",
+      "type": "record",
+      "source": "state",
+      "schema": {
+        "fields": [
+          {
+            "name": "title",
+            "label": "Title",
+            "type": "text"
+          }
+        ]
+      }
+    }
+  },
+  "eventHandler": {
+    "handler": "card",
+    "events": [
+      "click",
+      "back"
+    ]
+  }
+}

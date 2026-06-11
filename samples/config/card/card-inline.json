@@ -1,0 +1,36 @@
+{
+  "component": "card",
+  "metadata": {
+    "variant": "outline",
+    "surface": "raised",
+    "spacing": "normal",
+    "radius": "md",
+    "density": "comfortable"
+  },
+  "data": {
+    "info": {
+      "name": "card-inline",
+      "type": "record",
+      "source": "inline",
+      "schema": {
+        "fields": [
+          {
+            "name": "title",
+            "label": "Title",
+            "type": "text"
+          }
+        ]
+      },
+      "inline": {
+        "title": "Inline Card — values authored in this config"
+      }
+    }
+  },
+  "eventHandler": {
+    "handler": "card",
+    "events": [
+      "click",
+      "back"
+    ]
+  }
+}

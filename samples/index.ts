@@ -33,6 +33,8 @@ import callout1Config from "./config/callout/callout1.json";
 import callout2Config from "./config/callout/callout2.json";
 import card1Config from "./config/card/card1.json";
 import card2Config from "./config/card/card2.json";
+import cardInlineConfig from "./config/card/card-inline.json";
+import cardStateConfig from "./config/card/card-state.json";
 import chart1Config from "./config/chart/chart1.json";
 import chart2Config from "./config/chart/chart2.json";
 import chat1Config from "./config/chat/chat1.json";
@@ -171,14 +173,25 @@ const DATA_FILES: Record<string, unknown> = {
     "tree-nodes": treeNodesData,
 };
 
-/** Resolve source: "file" references by attaching file contents as inline. */
+/** Sample runtime state — backs source: "state" datasources, mirroring
+ *  what resolveDataSources does with state[name] at runtime. */
+const SAMPLE_STATE: Record<string, any> = {
+    "card-state": { title: "State Card — value resolved from state[\"card-state\"]" },
+};
+
+/** Resolve source references by attaching values as inline.
+ *  file → DATA_FILES[name], state → SAMPLE_STATE[name] (mirrors resolveDataSources). */
 function resolveData(config: ConfigBase): ConfigBase {
     if (!config.data) return config;
     const data: Record<string, DataSource> = {};
     for (const [key, ds] of Object.entries(config.data)) {
-        data[key] = ds.source === "file" && ds.name in DATA_FILES
-            ? { ...ds, inline: DATA_FILES[ds.name] as DataSource["inline"] }
-            : ds;
+        if (ds.source === "file" && ds.name in DATA_FILES) {
+            data[key] = { ...ds, inline: DATA_FILES[ds.name] as DataSource["inline"] };
+        } else if (ds.source === "state" && ds.name in SAMPLE_STATE) {
+            data[key] = { ...ds, inline: SAMPLE_STATE[ds.name] as DataSource["inline"] };
+        } else {
+            data[key] = ds;
+        }
     }
     return { ...config, data };
 }
@@ -215,6 +228,8 @@ export const SAMPLES: Record<string, Record<string, ConfigBase>> = {
     card: {
         "card1": resolveData(card1Config as unknown as ConfigBase),
         "card2": resolveData(card2Config as unknown as ConfigBase),
+        "card-inline": resolveData(cardInlineConfig as unknown as ConfigBase),
+        "card-state": resolveData(cardStateConfig as unknown as ConfigBase),
     },
     chart: {
         "chart1": resolveData(chart1Config as unknown as ConfigBase),
