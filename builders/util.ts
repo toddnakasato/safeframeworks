@@ -29,16 +29,12 @@ export function elAttrs(tag: string, attrs: Record<string, string> = {}): HTMLEl
  * Apply the shared Intent attributes (surface, radius, spacing, density)
  * from metadata to a root element, with per-component defaults.
  */
-export function intentAttrs(
-    root: HTMLElement,
-    metadata: Record<string, any>,
-    defaults: { surface?: string; radius?: string; spacing?: string; density?: string } = {},
-): void {
+export function intentAttrs(root: HTMLElement, metadata: Record<string, any>, defaults: { surface?: string; radius?: string; spacing?: string; density?: string } = {}): void {
     const pairs: [string, string | undefined][] = [
         ["data-surface", (metadata.surface as string) ?? defaults.surface],
         ["data-radius", (metadata.radius as string) ?? defaults.radius],
         ["data-spacing", (metadata.spacing as string) ?? defaults.spacing],
-        ["data-density", (metadata.density as string) ?? defaults.density],
+        ["data-density", (metadata.density as string) ?? defaults.density]
     ];
     for (const [attr, value] of pairs) {
         if (value != null) root.setAttribute(attr, value);
@@ -57,15 +53,14 @@ export function collapsibleHeader(
         toggle?: () => void;
         collapseIcon?: string;
         expandIcon?: string;
-    } = {},
+    } = {}
 ): HTMLElement {
     const header = el("div", "header");
     const hl = el("span", "header-label", label);
     header.appendChild(hl);
     if (opts.collapsible) {
         header.setAttribute("data-collapsible", "true");
-        const chevron = el("span", "header-chevron",
-            opts.collapsed?.() ? (opts.expandIcon ?? "▸") : (opts.collapseIcon ?? "▾"));
+        const chevron = el("span", "header-chevron", opts.collapsed?.() ? (opts.expandIcon ?? "▸") : (opts.collapseIcon ?? "▾"));
         header.appendChild(chevron);
         header.onclick = () => opts.toggle?.();
     }
