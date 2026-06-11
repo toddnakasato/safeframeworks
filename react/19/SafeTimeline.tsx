@@ -228,7 +228,7 @@ export function SafeTimeline({ config, data, onEvent }: SafeTimelineProps) {
           .attr("width", 0).attr("height", rowH - 12)
           .attr("rx", 4).attr("fill", color).attr("opacity", 0.85)
           .style("cursor", "pointer")
-          .on("click", () => fireTimeline(onEvent, "select", { index: i, data: d })
+          .on("click", () => fireTimeline(onEvent, "select", { index: i, data: d }))
           .transition().duration(600).delay(i * 50)
           .attr("width", barW);
       });

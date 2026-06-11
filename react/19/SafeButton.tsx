@@ -193,7 +193,7 @@ function SingleButton({
 
   const handleClick = () => {
     if (disabled || loading) return;
-    fireButton(onEvent, eventName as ButtonEvent, undefined, { // config-driven; validated by prove build
+    fireButton(onEvent, eventName as ButtonEvent, undefined, { // config-driven; validated by prove build)
         context: eventContext,
       });
   };

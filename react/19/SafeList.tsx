@@ -369,7 +369,7 @@ function HierarchyList({ config, data, onEvent }: { config: ConfigBase; data: an
                             tabIndex={0}
                             role={isGroup ? "button" : "listitem"}
                             aria-expanded={isGroup ? isOpen : undefined}
-                            onClick={() => (isGroup ? toggleNode(String(node.id)) : fireList(onEvent, "select", { id: node.id, item: node })}
+                            onClick={() => (isGroup ? toggleNode(String(node.id)) : fireList(onEvent, "select", { id: node.id, item: node }))}
                         >
                             {isGroup ? (
                                 <span data-role="item-chevron" data-expanded={isOpen || undefined}>
