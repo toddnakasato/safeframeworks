@@ -3,6 +3,7 @@
   "targets": {
     "contracts": true,
     "resolver": true,
+    "handlers": true,
     "builders": true,
     "react-19": true,
     "react-18": true,
@@ -16,5 +17,5 @@
     "astro-5": true,
     "lwc": true
   },
-  "timestamp": "2026-06-11T12:06:17.768Z"
+  "timestamp": "2026-06-11T12:18:52.411Z"
 }
