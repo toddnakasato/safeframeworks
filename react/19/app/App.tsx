@@ -1,7 +1,9 @@
 import { useState, useEffect, useCallback } from "react";
 import { renderConfigBase } from "../SafeRenderer";
 import type { ConfigBase, SafeEvent } from "safecontracts";
-import { getConfig, getState, getLayout, getScene, getComponent, dispatchEvent } from "./client";
+import { resolveDataSources } from "safecontracts";
+import { listen } from "@tauri-apps/api/event";
+import { getConfig, getState, getLayout, getScene, getComponent, getData, dispatchEvent } from "./client";
 
 async function resolveLayout(layout: any): Promise<ConfigBase> {
   const children: Record<string, ConfigBase> = {};
@@ -41,11 +43,12 @@ export default function App() {
       layout.slots = resolvedSlots;
 
       const resolved = await resolveLayout(layout);
-      const handlers = Object.values(resolved.children ?? {})
+      const withData = await resolveDataSources(resolved, { readData: getData, state });
+      const handlers = Object.values(withData.children ?? {})
         .map((c: any) => c.eventHandler?.handler)
         .filter(Boolean) as string[];
       setEventHandlers(handlers);
-      setRoot(resolved);
+      setRoot(withData);
     } catch (e: any) {
       setError(String(e));
     }
@@ -53,8 +56,8 @@ export default function App() {
 
   useEffect(() => { load(); }, []);
   useEffect(() => {
-    const interval = setInterval(load, 2000);
-    return () => clearInterval(interval);
+    const unlisten = listen<string>("fs-change", () => load());
+    return () => { unlisten.then((fn) => fn()); };
   }, []);
 
   const handleEvent = useCallback((event: SafeEvent) => {

@@ -25,6 +25,16 @@ export async function getComponent(name: string): Promise<any> {
   return JSON.parse(raw);
 }
 
+/** Load data/<name>.json for source: "file" datasources. */
+export async function getData(name: string): Promise<any> {
+  try {
+    const raw = await invoke<string>("read_file_content", { path: `data/${name}.json` });
+    return JSON.parse(raw);
+  } catch {
+    return undefined;
+  }
+}
+
 export async function dispatchEvent(
   eventName: string,
   payload: Record<string, any>,
