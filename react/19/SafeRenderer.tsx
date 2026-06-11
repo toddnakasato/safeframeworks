@@ -224,30 +224,7 @@ export function renderConfigBase(config: ConfigBase, onEvent?: OnSafeEvent, ctx?
     return <div style={{ padding: "var(--sd-space-md)", color: "var(--sd-text-dim)", fontSize: "var(--sd-font-sm)" }}>Unknown component: {component}</div>;
 }
 
-export type ConfigResolver = (path: string) => Promise<ConfigBase | null>;
-
-export async function resolveConfigLayout(layout: ConfigLayout, resolver: ConfigResolver, state?: Record<string, any>): Promise<ConfigBase> {
-    const children: Record<string, ConfigBase> = {};
-    for (const [slot, rawPath] of Object.entries(layout.slots ?? {})) {
-        // Interpolate {{key}} templates from state
-        let filePath = rawPath;
-        if (state) {
-            const matches = rawPath.match(/\{\{(\w+)\}\}/g);
-            if (matches) {
-                for (const m of matches) {
-                    const key = m.replace(/[{}]/g, "");
-                    const val = Array.isArray(state[key]) ? state[key][0] : state[key];
-                    if (val != null) filePath = filePath.replace(m, `${val}.json`);
-                }
-            }
-        }
-        if (filePath.includes("{{")) continue; // unresolved template — skip
-        const resolved = await resolver(filePath);
-        if (resolved) children[slot] = resolved;
-    }
-    return {
-        component: "layout",
-        metadata: { ...layout.metadata },
-        children
-    };
-}
+// Layout resolution lives in safecontracts (resolver-layout.ts) — re-exported here
+// so existing imports from the renderer keep working.
+export { resolveConfigLayout } from "safecontracts";
+export type { ConfigResolver } from "safecontracts";

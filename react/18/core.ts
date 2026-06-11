@@ -12,3 +12,5 @@ export { resolveColors } from "../../../safecontracts/src/palette";
 export type { GalleryEntry } from "../../../safecontracts/src/registry";
 export type { ResolverContext, DataResolverContext } from "../../../safecontracts/src/resolver";
 export { resolve, resolveDataSources } from "../../../safecontracts/src/resolver";
+export type { ConfigResolver } from "../../../safecontracts/src/resolver-layout";
+export { resolveConfigLayout } from "../../../safecontracts/src/resolver-layout";
