@@ -208,7 +208,7 @@ export function createSafeInput(container: HTMLElement, config: ConfigBase, onEv
     root.setAttribute("data-valign", valign);
 
     const fireEvent = (name: string, payload: any) => {
-        onEvent?.(createSafeEvent("SafeInput", name, payload));
+        onEvent?.(createSafeEvent("input", name, payload));
     };
 
     function getDisplayValue(): string {

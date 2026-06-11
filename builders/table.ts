@@ -92,7 +92,7 @@ export function createSafeTable(container: HTMLElement, config: ConfigBase, onEv
     root.setAttribute("data-component", "table");
 
     const fire = (eventName: string, payload: any) => {
-        onEvent?.(createSafeEvent("SafeTable", eventName, payload));
+        onEvent?.(createSafeEvent("table", eventName, payload));
     };
 
     if (data.length === 0) {
