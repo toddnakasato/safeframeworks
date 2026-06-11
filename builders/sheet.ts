@@ -160,7 +160,7 @@ export function createSafeSheet(container: HTMLElement, config: ConfigBase, onEv
 
     const handleCellClick = (r: number, c: number) => {
         selectedCell = [r, c];
-        fireSheet(onEvent, "select", { row: r, col: c, value: getCellValue(r, c) }));
+        fireSheet(onEvent, "select", { row: r, col: c, value: getCellValue(r, c) });
         render();
     };
 
@@ -189,7 +189,7 @@ export function createSafeSheet(container: HTMLElement, config: ConfigBase, onEv
             }
         } catch {}
         editingCell = null;
-        fireSheet(onEvent, "edit", { row: r, col: c, value: val }));
+        fireSheet(onEvent, "edit", { row: r, col: c, value: val });
         render();
     };
 

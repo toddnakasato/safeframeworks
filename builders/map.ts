@@ -111,7 +111,7 @@ export function createSafeMap(
             marker.bindPopup(popupHtml);
         }
 
-        marker.on("click", () => fireMap(onEvent, "select", { index: i, data: d, lat, lng })));
+        marker.on("click", () => fireMap(onEvent, "select", { index: i, data: d, lat, lng }));
         allLayers.push(marker);
         pathPoints.push([lat, lng]);
 

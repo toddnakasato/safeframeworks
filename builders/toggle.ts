@@ -77,7 +77,7 @@ export function createSafeToggle(container: HTMLElement, config: ConfigBase, onE
             const handleToggle = () => {
                 if (disabled) return;
                 checked = !checked;
-                fireToggle(onEvent, "change", { checked, label }));
+                fireToggle(onEvent, "change", { checked, label });
                 render();
             };
             const labelEl = buildLabelEl();
@@ -99,7 +99,7 @@ export function createSafeToggle(container: HTMLElement, config: ConfigBase, onE
 
         const handleToggle = (key: string, label: string) => {
             states[key] = !states[key];
-            fireToggle(onEvent, "change", { key, checked: states[key], label }));
+            fireToggle(onEvent, "change", { key, checked: states[key], label });
             render();
         };
 
@@ -138,13 +138,13 @@ export function createSafeToggle(container: HTMLElement, config: ConfigBase, onE
 
         const handleToggle = (key: string, label: string) => {
             states[key] = !states[key];
-            fireToggle(onEvent, "change", { key, checked: states[key], label }));
+            fireToggle(onEvent, "change", { key, checked: states[key], label });
             render();
         };
 
         const handleExpand = (key: string) => {
             expanded[key] = !expanded[key];
-            fireToggle(onEvent, "expand", { key, expanded: expanded[key] }));
+            fireToggle(onEvent, "expand", { key, expanded: expanded[key] });
             render();
         };
 

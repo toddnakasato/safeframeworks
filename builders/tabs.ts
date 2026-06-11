@@ -68,7 +68,7 @@ export function createSafeTabs(container: HTMLElement, config: ConfigBase, onEve
             if (active === tab.key) btn.setAttribute("data-active", "");
             btn.onclick = () => {
                 active = tab.key;
-                fireTabs(onEvent, "select", { key: tab.key }));
+                fireTabs(onEvent, "select", { key: tab.key });
                 render();
             };
             btn.style.display = "flex";

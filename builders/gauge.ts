@@ -55,7 +55,7 @@ export function createSafeGauge(container: HTMLElement, config: ConfigBase, onEv
     const root = document.createElement("div");
     root.setAttribute("data-component", "gauge");
     root.setAttribute("data-variant", variant);
-    root.onclick = () => fireGauge(onEvent, "click", { value }));
+    root.onclick = () => fireGauge(onEvent, "click", { value });
 
     const svgEl = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     svgEl.style.width = "100%";

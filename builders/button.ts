@@ -1,5 +1,6 @@
 import { createElement, type IconNode } from "lucide";
 import { fireButton } from "./emit";
+import type { ButtonEvent } from "./emit";
 import * as lucide from "lucide";
 import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
 
@@ -78,7 +79,7 @@ function buildSingleButton(config: ConfigBase, onEvent?: OnSafeEvent): HTMLEleme
 
     btn.onclick = () => {
         if (disabled || loading) return;
-        fireButton(onEvent, eventName));
+        fireButton(onEvent, eventName as ButtonEvent); // config-driven name; validated by prove build
     };
 
     if (loading) btn.appendChild(el("span", { "data-role": "spinner" }));
@@ -124,7 +125,7 @@ function buildPaginationGroup(config: ConfigBase, onEvent?: OnSafeEvent): HTMLEl
 
     const go = (p: number) => {
         page = Math.max(1, Math.min(totalPages, p));
-        fireButton(onEvent, "page", { page, totalPages }));
+        fireButton(onEvent, "page", { page, totalPages });
         render();
     };
 

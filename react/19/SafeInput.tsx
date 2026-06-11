@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import { fireInput } from "../../builders/emit";
+import type { InputEvent } from "../../builders/emit";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
 import type { InputType, InputOption, LookupRecord, DisplayFormat } from "safecontracts/components/input";
 import { INPUT_DEFAULTS } from "safecontracts/components/input";
@@ -174,7 +175,7 @@ export function SafeInput({ config, data, field, onEvent }: SafeInputProps) {
   useEffect(() => { setIsEditing(!!metadata.forceEditMode); }, [metadata.forceEditMode]);
 
   const fireEvent = useCallback((name: string, payload: any) => {
-    fireInput(onEvent, name, payload);
+    fireInput(onEvent, name as InputEvent, payload);
   }, [onEvent]);
 
   function getDisplayValue(): string {

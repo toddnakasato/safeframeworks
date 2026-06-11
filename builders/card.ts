@@ -51,14 +51,14 @@ export function createSafeCard(container: HTMLElement, config: ConfigBase, onEve
     root.setAttribute("data-radius", radius);
     root.setAttribute("data-spacing", spacing);
     root.setAttribute("data-accent", accent);
-    root.onclick = () => fireCard(onEvent, "click", { data }));
+    root.onclick = () => fireCard(onEvent, "click", { data });
 
     const appendBack = () => {
         if (!backLabel) return;
         const back = el("div", "back", backLabel);
         back.onclick = (e) => {
             e.stopPropagation();
-            fireCard(onEvent, "back", {}));
+            fireCard(onEvent, "back", {});
         };
         root.appendChild(back);
     };

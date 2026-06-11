@@ -92,12 +92,12 @@ export function createSafeWeek(container: HTMLElement, config: ConfigBase, onEve
 
     const fireNavigate = (dir: number) => {
         offset += dir;
-        fireWeek(onEvent, "navigate", { direction: dir }));
+        fireWeek(onEvent, "navigate", { direction: dir });
         render();
     };
 
     const fireSelect = (date: Date, hour: number) => {
-        fireWeek(onEvent, "select", { date: date.toISOString().split("T")[0], hour }));
+        fireWeek(onEvent, "select", { date: date.toISOString().split("T")[0], hour });
     };
 
     function buildGrid(dates: Date[]): HTMLElement {

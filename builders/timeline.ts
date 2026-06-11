@@ -67,7 +67,7 @@ export function createSafeTimeline(container: HTMLElement, config: ConfigBase, o
     }
 
     const fireSelect = (index: number, item: Record<string, any>) => {
-        fireTimeline(onEvent, "select", { index, data: item }));
+        fireTimeline(onEvent, "select", { index, data: item });
     };
 
     const root = el("div");

@@ -75,7 +75,7 @@ function renderTreemap(svgEl: SVGSVGElement, root: d3.HierarchyNode<any>, metada
     const cells = svg.append("g").selectAll("g").data(leaves).join("g")
         .attr("transform", (d: any) => `translate(${d.x0},${d.y0})`)
         .style("cursor", "pointer")
-        .on("click", (_, d: any) => fireHierarchy(onEvent, "select", { data: d.data, value: d.value })));
+        .on("click", (_, d: any) => fireHierarchy(onEvent, "select", { data: d.data, value: d.value }));
 
     cells.append("rect")
         .attr("width", (d: any) => Math.max(0, d.x1 - d.x0))
@@ -130,7 +130,7 @@ function renderSunburst(svgEl: SVGSVGElement, root: d3.HierarchyNode<any>, metad
         .attr("fill", (d: any, i: number) => accentFill(d, i, COLORS, svgEl, accentField))
         .attr("opacity", (d: any) => 1 - (d.depth - 1) * 0.18)
         .style("cursor", "pointer")
-        .on("click", (_, d: any) => fireHierarchy(onEvent, "select", { data: d.data, value: d.value })));
+        .on("click", (_, d: any) => fireHierarchy(onEvent, "select", { data: d.data, value: d.value }));
 
     if (showValues) {
         g.selectAll("text")
@@ -169,7 +169,7 @@ function renderPack(svgEl: SVGSVGElement, root: d3.HierarchyNode<any>, metadata:
         .attr("stroke", (d: any) => d.children ? "var(--sd-border)" : "none")
         .attr("opacity", (d: any) => d.children ? 0.6 : 0.85)
         .style("cursor", "pointer")
-        .on("click", (_, d: any) => fireHierarchy(onEvent, "select", { data: d.data, value: d.value })));
+        .on("click", (_, d: any) => fireHierarchy(onEvent, "select", { data: d.data, value: d.value }));
 
     g.selectAll("text")
         .data(nodes.filter((d: any) => !d.children && d.r > 16))
@@ -197,7 +197,7 @@ function renderIcicle(svgEl: SVGSVGElement, root: d3.HierarchyNode<any>, metadat
     const cells = svg.append("g").selectAll("g").data(nodes).join("g")
         .attr("transform", (d: any) => `translate(${d.y0},${d.x0})`)
         .style("cursor", "pointer")
-        .on("click", (_, d: any) => fireHierarchy(onEvent, "select", { data: d.data, value: d.value })));
+        .on("click", (_, d: any) => fireHierarchy(onEvent, "select", { data: d.data, value: d.value }));
 
     cells.append("rect")
         .attr("width", (d: any) => Math.max(0, d.y1 - d.y0))

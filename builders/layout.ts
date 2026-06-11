@@ -38,7 +38,7 @@ export function createSafeLayout(container: HTMLElement, config: ConfigBase, onE
 
     if (backLabel) {
         const back = el("button", "layout-back", backLabel);
-        back.onclick = () => fireLayout(onEvent, "back", {}));
+        back.onclick = () => fireLayout(onEvent, "back", {});
         root.appendChild(back);
     }
 

@@ -90,12 +90,12 @@ export function createSafeCalendar(container: HTMLElement, config: ConfigBase, o
         viewMonth = d.getMonth();
         fireCalendar(onEvent, "navigate", {
             year: d.getFullYear(), month: d.getMonth(), direction: dir,
-        }));
+        });
         render();
     };
 
     const fireSelect = (y: number, m: number, d: number) => {
-        fireCalendar(onEvent, "select", { year: y, month: m, day: d }));
+        fireCalendar(onEvent, "select", { year: y, month: m, day: d });
     };
 
     function buildMonthGrid(

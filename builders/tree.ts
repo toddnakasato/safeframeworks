@@ -119,13 +119,13 @@ export function createSafeTree(container: HTMLElement, config: ConfigBase, onEve
     const handleToggle = (id: string) => {
         if (expanded.has(id)) expanded.delete(id);
         else expanded.add(id);
-        fireTree(onEvent, "expand", { id }));
+        fireTree(onEvent, "expand", { id });
         render();
     };
 
     const handleSelect = (node: TreeNode) => {
         selected = node.id;
-        fireTree(onEvent, "select", { id: node.id, record: node.record }));
+        fireTree(onEvent, "select", { id: node.id, record: node.record });
         render();
     };
 

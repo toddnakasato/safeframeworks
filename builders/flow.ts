@@ -37,11 +37,11 @@ function accentColor(node: FlowNode | undefined, idx: number, colors: string[], 
 }
 
 function nodeEvent(onEvent: OnSafeEvent | undefined, name: string | undefined) {
-    fireFlow(onEvent, "node:click", { name }));
+    fireFlow(onEvent, "node:click", { name });
 }
 
 function linkEvent(onEvent: OnSafeEvent | undefined, source: string | undefined, target: string | undefined, value: number) {
-    fireFlow(onEvent, "link:click", { source, target, value }));
+    fireFlow(onEvent, "link:click", { source, target, value });
 }
 
 /*----------------------------------------------------------------------------------------------------

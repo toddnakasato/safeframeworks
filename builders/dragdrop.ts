@@ -40,11 +40,11 @@ function buildGeneric(root: HTMLElement, config: ConfigBase, items: Record<strin
             node.setAttribute("data-dragging", "true");
             e.dataTransfer!.setData("application/json", JSON.stringify(item));
             e.dataTransfer!.effectAllowed = "move";
-            fireDragDrop(onEvent, "drag-start", { id, item }));
+            fireDragDrop(onEvent, "drag-start", { id, item });
         });
         node.addEventListener("dragend", () => {
             node.removeAttribute("data-dragging");
-            fireDragDrop(onEvent, "drag-end", null));
+            fireDragDrop(onEvent, "drag-end", null);
         });
         if (item.icon) node.appendChild(el("span", "drag-icon", item.icon as string));
         if (item.type) node.appendChild(el("span", "drag-type", item.type as string));
@@ -59,7 +59,7 @@ function buildGeneric(root: HTMLElement, config: ConfigBase, items: Record<strin
         zone.removeAttribute("data-over");
         try {
             const item = JSON.parse(e.dataTransfer!.getData("application/json"));
-            fireDragDrop(onEvent, "drop", { zone: "primary", item }));
+            fireDragDrop(onEvent, "drop", { zone: "primary", item });
         } catch {}
     });
     zone.addEventListener("dragover", (e: DragEvent) => {
@@ -84,7 +84,7 @@ function buildFile(root: HTMLElement, config: ConfigBase, onEvent?: OnSafeEvent)
 
     const fireFiles = (files: FileList | File[]) => {
         const list = Array.from(files).map((f) => ({ name: f.name, size: f.size, type: f.type }));
-        fireDragDrop(onEvent, "file-drop", { files: list }));
+        fireDragDrop(onEvent, "file-drop", { files: list });
     };
 
     const zone = el("div", "file-zone");
@@ -133,11 +133,11 @@ function buildPalette(root: HTMLElement, config: ConfigBase, onEvent?: OnSafeEve
                 node.setAttribute("data-dragging", "true");
                 e.dataTransfer!.setData("application/json", JSON.stringify(item));
                 e.dataTransfer!.effectAllowed = "copy";
-                fireDragDrop(onEvent, "drag-start", { item }));
+                fireDragDrop(onEvent, "drag-start", { item });
             });
             node.addEventListener("dragend", () => {
                 node.removeAttribute("data-dragging");
-                fireDragDrop(onEvent, "drag-end", null));
+                fireDragDrop(onEvent, "drag-end", null);
             });
             if (item.icon) node.appendChild(el("span", "drag-icon", item.icon));
             node.appendChild(el("span", "drag-label", item.label));
@@ -155,7 +155,7 @@ function buildPalette(root: HTMLElement, config: ConfigBase, onEvent?: OnSafeEve
             secEl.removeAttribute("data-over");
             try {
                 const item = JSON.parse(e.dataTransfer!.getData("application/json"));
-                fireDragDrop(onEvent, "drop", { section: sec.id, item }));
+                fireDragDrop(onEvent, "drop", { section: sec.id, item });
             } catch {}
         });
         secEl.addEventListener("dragover", (e: DragEvent) => {

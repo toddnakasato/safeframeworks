@@ -68,7 +68,7 @@ export function createSafeFunnel(container: HTMLElement, config: ConfigBase, onE
         const color = FUNNEL_COLORS[i % FUNNEL_COLORS.length];
 
         const g = svg.append("g").style("cursor", "pointer")
-            .on("click", () => fireFunnel(onEvent, "select", { index: i, data: d })));
+            .on("click", () => fireFunnel(onEvent, "select", { index: i, data: d }));
 
         g.append("rect")
             .attr("x", x).attr("y", y)

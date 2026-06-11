@@ -1,5 +1,6 @@
 import { useState, useEffect, useMemo, useCallback } from "react";
 import { fireTable } from "../../builders/emit";
+import type { TableEvent } from "../../builders/emit";
 import { getDataSource } from "safecontracts";
 import type { ConfigBase, OnSafeEvent, Field } from "safecontracts";
 import { findHandlers } from "safecontracts";
@@ -96,7 +97,7 @@ export function SafeTable({ config, data, onEvent }: SafeTableProps) {
 
   const fire = useCallback(
     (eventName: string, payload: any) => {
-      if (onEvent) fireTable(onEvent, eventName, payload);
+      if (onEvent) fireTable(onEvent, eventName as TableEvent, payload);
     },
     [onEvent],
   );

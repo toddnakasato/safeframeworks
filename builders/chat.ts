@@ -89,7 +89,7 @@ export function createSafeChat(container: HTMLElement, config: ConfigBase, onEve
         input.value = "";
         sendBtn.disabled = true;
         renderMessages();
-        fireChat(onEvent, "send", { message: text }));
+        fireChat(onEvent, "send", { message: text });
     };
 
     input.addEventListener("input", () => {
@@ -110,7 +110,7 @@ export function createSafeChat(container: HTMLElement, config: ConfigBase, onEve
         const actions = el("div", "chat-actions");
         for (const action of quickActions) {
             const btn = el("button", "chat-action");
-            btn.onclick = () => fireChat(onEvent, "action", { label: action.label }));
+            btn.onclick = () => fireChat(onEvent, "action", { label: action.label });
             if (action.icon) btn.appendChild(el("span", "chat-action-icon", action.icon));
             const text = el("div", "chat-action-text");
             text.appendChild(el("span", "chat-action-label", action.label));
