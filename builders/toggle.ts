@@ -1,4 +1,5 @@
 import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
+import { getDataSource } from "../../safecontracts/src/contracts";
 import { createSafeEvent } from "../../safecontracts/src/contracts";
 
 /*----------------------------------------------------------------------------------------------------
@@ -44,7 +45,7 @@ export function createSafeToggle(container: HTMLElement, config: ConfigBase, onE
     const variant = (metadata.variant as string) ?? "switch";
 
     // Self-extract list from config data (SafeRenderer does this for react)
-    const ds = Object.values(config.data ?? {})[0] as any;
+    const ds = getDataSource(config) as any;
     const rawData = ds?.inline;
     const dataList: Record<string, any>[] = Array.isArray(rawData) ? rawData : [];
 

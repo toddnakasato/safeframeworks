@@ -1,4 +1,5 @@
 import { HyperFormula } from "hyperformula";
+import { getDataSource } from "../../safecontracts/src/contracts";
 import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
 import { createSafeEvent } from "../../safecontracts/src/contracts";
 import type { SheetColumn } from "../../safecontracts/src/components/sheet";
@@ -111,7 +112,7 @@ export function createSafeSheet(container: HTMLElement, config: ConfigBase, onEv
     const skeletonCols = (metadata.skeletonCols as number) ?? (columns.length || SHEET_DEFAULTS.skeletonCols);
     const emptyMessage = (metadata.emptyMessage as string) ?? SHEET_DEFAULTS.emptyMessage;
 
-    const ds = Object.values(config.data ?? {})[0];
+    const ds = getDataSource(config);
     const raw = ds?.inline;
     const data: any[][] = Array.isArray(raw) ? (raw as any[][]) : [];
 

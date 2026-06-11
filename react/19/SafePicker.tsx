@@ -1,4 +1,5 @@
 import { useState, useMemo, useRef, useEffect } from "react";
+import { getDataSource } from "safecontracts";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
 import { createSafeEvent } from "safecontracts";
 import type { RowCell, RowDef } from "safecontracts";
@@ -101,7 +102,7 @@ export function SafePicker({ config, data, loading, error, onEvent, onRenderLog 
 
   const rows: RowDef[] = (metadata.rows as RowDef[]) ?? [];
   if (rows.length === 0) {
-    const schema = Object.values(config.data ?? {})[0]?.schema;
+    const schema = getDataSource(config)?.schema;
     if (schema?.fields) {
       const f = schema.fields.filter(f => f.visible !== false);
       if (f.length >= 2) rows.push([{ field: f[0].name, style: "label" }, { field: f[1].name, align: "end", style: "badge" }]);

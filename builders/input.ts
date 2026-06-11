@@ -1,4 +1,5 @@
 import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
+import { getDataSource } from "../../safecontracts/src/contracts";
 import { createSafeEvent } from "../../safecontracts/src/contracts";
 
 /*----------------------------------------------------------------------------------------------------
@@ -126,7 +127,7 @@ export function createSafeInput(container: HTMLElement, config: ConfigBase, onEv
     const metadata = config.metadata;
 
     // Self-extract record from config data (SafeRenderer does this for react)
-    const ds = Object.values(config.data ?? {})[0] as any;
+    const ds = getDataSource(config) as any;
     const rawData = ds?.inline;
     const record: Record<string, any> = (Array.isArray(rawData) ? rawData[0] : rawData) ?? {};
 

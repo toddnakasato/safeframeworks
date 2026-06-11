@@ -1,4 +1,5 @@
 import type { ConfigBase, OnSafeEvent, RowCell, RowDef } from "../../safecontracts/src/contracts";
+import { getDataSource } from "../../safecontracts/src/contracts";
 import { createSafeEvent } from "../../safecontracts/src/contracts";
 
 /*----------------------------------------------------------------------------------------------------
@@ -39,7 +40,7 @@ export function createSafeCard(container: HTMLElement, config: ConfigBase, onEve
     const backLabel = metadata.backLabel as string | undefined;
 
     // Self-extract record data from the first DataSource (contract: record).
-    const ds = Object.values(config.data ?? {})[0];
+    const ds = getDataSource(config);
     const raw = ds?.inline;
     const data: Record<string, any> = (Array.isArray(raw) ? raw[0] : raw) ?? {};
 
@@ -94,7 +95,7 @@ export function createSafeCard(container: HTMLElement, config: ConfigBase, onEve
     appendBack();
     if (header) root.appendChild(el("div", "header", header));
 
-    const resolvedSchema = Object.values(config.data ?? {})[0]?.schema;
+    const resolvedSchema = getDataSource(config)?.schema;
     const fields = resolvedSchema?.fields ?? [];
 
     for (const field of fields) {

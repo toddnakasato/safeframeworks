@@ -22,7 +22,7 @@
     ]
   },
   "data": {
-    "sheet-grouped-staff": {
+    "rows": {
       "name": "sheet-grouped-staff",
       "source": "file"
     }

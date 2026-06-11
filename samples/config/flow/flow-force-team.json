@@ -12,7 +12,7 @@
     ]
   },
   "data": {
-    "flow-team-network": {
+    "graph": {
       "name": "flow-team-network",
       "type": "record",
       "source": "file"

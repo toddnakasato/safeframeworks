@@ -1,4 +1,5 @@
 import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
+import { getDataSource } from "../../safecontracts/src/contracts";
 import { createSafeEvent } from "../../safecontracts/src/contracts";
 
 /*----------------------------------------------------------------------------------------------------
@@ -34,7 +35,7 @@ export function createSafeHeatmap(container: HTMLElement, config: ConfigBase, on
     const variant = (metadata.variant as string) ?? "default";
 
     // Self-extract list data from the first DataSource (contract: list).
-    const ds = Object.values(config.data ?? {})[0];
+    const ds = getDataSource(config);
     const raw = ds?.inline;
     const data: Record<string, any>[] = Array.isArray(raw) ? raw : [];
 

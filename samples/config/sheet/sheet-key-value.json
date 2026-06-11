@@ -14,7 +14,7 @@
     ]
   },
   "data": {
-    "sheet-metrics": {
+    "rows": {
       "name": "sheet-metrics",
       "source": "file"
     }

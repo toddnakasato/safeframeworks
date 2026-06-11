@@ -1,4 +1,5 @@
 import type { ConfigBase, OnSafeEvent, Field } from "../../safecontracts/src/contracts";
+import { getDataSource } from "../../safecontracts/src/contracts";
 import { createSafeEvent } from "../../safecontracts/src/contracts";
 import { fmtDate, fmtCurrency, fmtInt, fmtPercent, fmtStr } from "../../safecontracts/src/formatter";
 
@@ -56,7 +57,7 @@ export function createSafeTable(container: HTMLElement, config: ConfigBase, onEv
     const metadata = config.metadata;
 
     // Self-extract data + schema from the first datasource
-    const ds = Object.values(config.data ?? {})[0];
+    const ds = getDataSource(config);
     const schema = ds?.schema;
     const raw = ds?.inline;
     const data: Record<string, any>[] = Array.isArray(raw) ? raw : [];

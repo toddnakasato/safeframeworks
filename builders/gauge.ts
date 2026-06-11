@@ -1,4 +1,5 @@
 import * as d3 from "d3";
+import { getDataSource } from "../../safecontracts/src/contracts";
 import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
 import { createSafeEvent } from "../../safecontracts/src/contracts";
 
@@ -33,7 +34,7 @@ export function createSafeGauge(container: HTMLElement, config: ConfigBase, onEv
     const thresholds = (metadata.thresholds as [number, string][]) ?? [[60, "var(--sd-danger)"], [80, "var(--sd-warning)"], [100, "var(--sd-success)"]];
 
     // Self-extract record data from the first DataSource (contract: record).
-    const ds = Object.values(config.data ?? {})[0];
+    const ds = getDataSource(config);
     const raw = ds?.inline;
     const data: Record<string, any> = (Array.isArray(raw) ? raw[0] : raw) ?? {};
 

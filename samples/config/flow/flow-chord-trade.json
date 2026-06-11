@@ -12,7 +12,7 @@
     ]
   },
   "data": {
-    "flow-region-trade": {
+    "graph": {
       "name": "flow-region-trade",
       "type": "record",
       "source": "file"

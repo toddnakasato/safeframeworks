@@ -1,4 +1,5 @@
 import * as d3 from "d3";
+import { getDataSource } from "../../safecontracts/src/contracts";
 import { sankey as d3Sankey, sankeyLinkHorizontal } from "d3-sankey";
 import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
 import { createSafeEvent } from "../../safecontracts/src/contracts";
@@ -22,7 +23,7 @@ const HEIGHT = 350;
  ----------------------------------------------------------------------------------------------------*/
 
 export function flowData(config: ConfigBase): FlowData {
-    const ds = Object.values(config.data ?? {})[0];
+    const ds = getDataSource(config);
     const inline = ds?.inline as unknown as FlowData | undefined;
     return inline && Array.isArray(inline.nodes) ? inline : { nodes: [], links: [] };
 }

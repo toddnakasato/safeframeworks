@@ -1,4 +1,5 @@
 import { createElement, type IconNode } from "lucide";
+import { getDataSource } from "../../safecontracts/src/contracts";
 import * as lucide from "lucide";
 import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
 import { createSafeEvent, DAY_NAMES_SHORT } from "../../safecontracts/src/contracts";
@@ -193,7 +194,7 @@ function buildSelection(root: HTMLElement, config: ConfigBase, data: any[], onEv
 
 function buildColumns(root: HTMLElement, config: ConfigBase, data: any[], onEvent?: OnSafeEvent): void {
     const meta = config.metadata;
-    const schema = Object.values(config.data ?? {})[0]?.schema;
+    const schema = getDataSource(config)?.schema;
     const fields = (schema?.fields ?? []) as any[];
     const pageSize = (meta.pageSize as number) ?? LIST_DEFAULTS.pageSize;
     const numbers = meta.pageNumbers !== false;
@@ -573,7 +574,7 @@ function buildGantt(root: HTMLElement, config: ConfigBase, data: any[], onEvent?
 }
 
 export function createSafeList(container: HTMLElement, config: ConfigBase, onEvent?: OnSafeEvent): HTMLElement {
-    const raw = Object.values(config.data ?? {})[0]?.inline;
+    const raw = getDataSource(config)?.inline;
     const list: any[] = Array.isArray(raw) ? raw : [];
     const variant = (config.metadata.variant as string) ?? LIST_DEFAULTS.variant;
 

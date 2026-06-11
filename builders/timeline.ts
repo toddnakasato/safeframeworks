@@ -1,4 +1,5 @@
 import * as d3 from "d3";
+import { getDataSource } from "../../safecontracts/src/contracts";
 import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
 import { createSafeEvent } from "../../safecontracts/src/contracts";
 import { resolveColors } from "../../safecontracts/src/palette";
@@ -16,7 +17,7 @@ import { resolveColors } from "../../safecontracts/src/palette";
  ----------------------------------------------------------------------------------------------------*/
 
 export function timelineData(config: ConfigBase): Record<string, any>[] {
-    const ds = Object.values(config.data ?? {})[0];
+    const ds = getDataSource(config);
     const raw = ds?.inline;
     return Array.isArray(raw) ? raw : [];
 }

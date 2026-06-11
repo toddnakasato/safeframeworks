@@ -26,7 +26,7 @@
     "editable": false
   },
   "data": {
-    "sheet-people": {
+    "rows": {
       "name": "sheet-people",
       "source": "file"
     }

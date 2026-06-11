@@ -1,4 +1,5 @@
 import * as d3 from "d3";
+import { getDataSource } from "../../safecontracts/src/contracts";
 import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
 import { createSafeEvent } from "../../safecontracts/src/contracts";
 import { resolveColors } from "../../safecontracts/src/palette";
@@ -31,7 +32,7 @@ export function createSafeFunnel(container: HTMLElement, config: ConfigBase, onE
     const showPercent = metadata.showPercent !== false;
 
     // Self-extract list data from the first DataSource (contract: list).
-    const ds = Object.values(config.data ?? {})[0];
+    const ds = getDataSource(config);
     const raw = ds?.inline;
     const data: Record<string, any>[] = Array.isArray(raw) ? raw : [];
 

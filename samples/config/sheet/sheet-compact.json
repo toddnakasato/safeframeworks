@@ -31,7 +31,7 @@
     ]
   },
   "data": {
-    "sheet-dense-log": {
+    "rows": {
       "name": "sheet-dense-log",
       "source": "file"
     }

@@ -20,7 +20,7 @@
     ]
   },
   "data": {
-    "sheet-channel-traffic": {
+    "rows": {
       "name": "sheet-channel-traffic",
       "source": "file"
     }

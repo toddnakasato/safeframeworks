@@ -1,4 +1,5 @@
 import type { ConfigBase, OnSafeEvent, RowCell, RowDef } from "../../safecontracts/src/contracts";
+import { getDataSource } from "../../safecontracts/src/contracts";
 import { createSafeEvent } from "../../safecontracts/src/contracts";
 
 /*----------------------------------------------------------------------------------------------------
@@ -31,7 +32,7 @@ export function createSafePicker(container: HTMLElement, config: ConfigBase, onE
     const isCardGrid = metadata.variant === "card-grid";
 
     // Self-extract list from config data (SafeRenderer does this for react)
-    const ds = Object.values(config.data ?? {})[0] as any;
+    const ds = getDataSource(config) as any;
     const rawData = ds?.inline;
     const data: Record<string, any>[] = Array.isArray(rawData) ? rawData : [];
 
@@ -58,7 +59,7 @@ export function createSafePicker(container: HTMLElement, config: ConfigBase, onE
 
     const rows: RowDef[] = (metadata.rows as RowDef[]) ?? [];
     if (rows.length === 0) {
-        const schema = (Object.values(config.data ?? {})[0] as any)?.schema;
+        const schema = (getDataSource(config) as any)?.schema;
         if (schema?.fields) {
             const f = schema.fields.filter((x: any) => x.visible !== false);
             if (f.length >= 2) rows.push([{ field: f[0].name, style: "label" }, { field: f[1].name, align: "end", style: "badge" }]);

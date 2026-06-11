@@ -1,4 +1,5 @@
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
+import { getDataSource } from "safecontracts";
 import { createSafeEvent } from "safecontracts";
 import type { RowCell, RowDef } from "safecontracts";
 import { useRenderLog, type RenderLogFn } from "./hooks/useRenderLog";
@@ -80,7 +81,7 @@ export function SafeCard({ config, data, onEvent, onRenderLog }: SafeCardProps) 
     );
   }
 
-  const resolvedSchema = Object.values(config.data ?? {})[0]?.schema;
+  const resolvedSchema = getDataSource(config)?.schema;
   const fields = resolvedSchema?.fields ?? [];
 
   return (

@@ -1,4 +1,5 @@
 import { useState, useEffect, useMemo, useCallback } from "react";
+import { getDataSource } from "safecontracts";
 import type { ConfigBase, OnSafeEvent, Field } from "safecontracts";
 import { createSafeEvent } from "safecontracts";
 import { findHandlers } from "safecontracts";
@@ -60,7 +61,7 @@ function numericType(type: string): boolean {
 
 export function SafeTable({ config, data, onEvent }: SafeTableProps) {
   const { metadata } = config;
-  const schema = Object.values(config.data ?? {})[0]?.schema;
+  const schema = getDataSource(config)?.schema;
   const fields = (schema?.fields ?? []).filter((f) => f.visible !== false);
 
   const [sort, setSort] = useState<SortState>(() => ({

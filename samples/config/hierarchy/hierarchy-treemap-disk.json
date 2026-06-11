@@ -14,7 +14,7 @@
     ]
   },
   "data": {
-    "hierarchy-disk-usage": {
+    "nodes": {
       "name": "hierarchy-disk-usage",
       "type": "record",
       "source": "file"

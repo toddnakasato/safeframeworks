@@ -1,4 +1,5 @@
 import React from "react";
+import { getDataSource } from "safecontracts";
 import type { ReactNode } from "react";
 import type { ConfigBase, ConfigLayout, OnSafeEvent } from "safecontracts";
 import { SafeButton } from "./SafeButton";
@@ -31,7 +32,7 @@ import { SafeTree } from "./SafeTree";
 import { SafeHierarchy } from "./SafeHierarchy";
 
 function extractData(config: ConfigBase): { inline: any; list: any[]; record: Record<string, any> } {
-  const raw = Object.values(config.data ?? {})[0]?.inline;
+  const raw = getDataSource(config)?.inline;
   const list = Array.isArray(raw) ? raw : [];
   const record = (Array.isArray(raw) ? raw[0] : raw) ?? {};
   return { inline: raw, list, record };

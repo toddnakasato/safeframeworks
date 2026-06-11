@@ -1,4 +1,5 @@
 import { forwardRef, useCallback, useEffect, useImperativeHandle, useMemo, useRef, useState } from "react";
+import { getDataSource } from "safecontracts";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
 import { createSafeEvent } from "safecontracts";
 import type { EventShapeMap } from "safecontracts";
@@ -85,7 +86,7 @@ function renderConfig(
   }
 
   if (component === "card") {
-    if (fieldLabels && (Object.values(config.data ?? {})[0]?.schema?.fields.length ?? 0) > 0) {
+    if (fieldLabels && (getDataSource(config)?.schema?.fields.length ?? 0) > 0) {
       const resolved = {
         ...config,
         schema: {

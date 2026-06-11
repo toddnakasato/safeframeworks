@@ -33,7 +33,7 @@
     ]
   },
   "data": {
-    "sheet-region-sales": {
+    "rows": {
       "name": "sheet-region-sales",
       "source": "file"
     }

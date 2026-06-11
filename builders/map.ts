@@ -1,4 +1,5 @@
 import L from "leaflet";
+import { getDataSource } from "../../safecontracts/src/contracts";
 import "leaflet/dist/leaflet.css";
 import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
 import { createSafeEvent } from "../../safecontracts/src/contracts";
@@ -44,7 +45,7 @@ function createIcon(accent?: string, icon?: string): L.DivIcon {
 }
 
 export function mapData(config: ConfigBase): Record<string, any>[] {
-    const ds = Object.values(config.data ?? {})[0];
+    const ds = getDataSource(config);
     return Array.isArray(ds?.inline) ? ds.inline : [];
 }
 

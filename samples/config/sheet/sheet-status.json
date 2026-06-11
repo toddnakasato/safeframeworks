@@ -29,7 +29,7 @@
     ]
   },
   "data": {
-    "sheet-projects-status": {
+    "rows": {
       "name": "sheet-projects-status",
       "source": "file"
     }

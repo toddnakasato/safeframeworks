@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { getDataSource } from "safecontracts";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
 import { createSafeEvent, DAY_NAMES_SHORT, LIST_DEFAULTS, LIST_STATUS_ACCENTS } from "safecontracts";
 import * as Icons from "lucide-react";
@@ -182,7 +183,7 @@ function SelectionList({ config, data, onEvent }: { config: ConfigBase; data: an
 
 function ColumnsList({ config, data, onEvent }: { config: ConfigBase; data: any[]; onEvent?: OnSafeEvent }) {
     const meta = config.metadata;
-    const schema = Object.values(config.data ?? {})[0]?.schema;
+    const schema = getDataSource(config)?.schema;
     const fields = schema?.fields ?? [];
     const pageSize = (meta.pageSize as number) ?? LIST_DEFAULTS.pageSize;
     const numbers = meta.pageNumbers !== false;
@@ -555,7 +556,7 @@ function GanttList({ config, data, onEvent }: { config: ConfigBase; data: any[];
 }
 
 export function SafeList({ config, data, onEvent }: SafeListProps) {
-    const raw = data ?? (Object.values(config.data ?? {})[0]?.inline as any[] | undefined);
+    const raw = data ?? (getDataSource(config)?.inline as any[] | undefined);
     const list = Array.isArray(raw) ? raw : [];
     const variant = (config.metadata.variant as string) ?? LIST_DEFAULTS.variant;
 

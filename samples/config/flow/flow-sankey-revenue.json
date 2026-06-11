@@ -12,7 +12,7 @@
     ]
   },
   "data": {
-    "flow-revenue": {
+    "graph": {
       "name": "flow-revenue",
       "type": "record",
       "source": "file"

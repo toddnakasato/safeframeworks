@@ -12,7 +12,7 @@
     ]
   },
   "data": {
-    "hierarchy-budget": {
+    "nodes": {
       "name": "hierarchy-budget",
       "type": "record",
       "source": "file"

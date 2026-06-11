@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { getDataSource } from "safecontracts";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
 import { createSafeEvent } from "safecontracts";
 import { GRID_DEFAULTS } from "safecontracts/components/grid";
@@ -31,7 +32,7 @@ interface SafeGridProps {
 export function SafeGrid({ config, data, onEvent }: SafeGridProps) {
   const { metadata } = config;
   const D = GRID_DEFAULTS;
-  const schema = Object.values(config.data ?? {})[0]?.schema;
+  const schema = getDataSource(config)?.schema;
   const columns = (metadata.columns as string) ?? D.columns;
   const label = metadata.label as string | undefined;
   const collapsible = !!metadata.collapsible;

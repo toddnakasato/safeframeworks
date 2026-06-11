@@ -1,4 +1,5 @@
 import type { ConfigBase, Field, OnSafeEvent } from "../../safecontracts/src/contracts";
+import { getDataSource } from "../../safecontracts/src/contracts";
 import { createSafeInput } from "./input";
 
 /*----------------------------------------------------------------------------------------------------
@@ -90,7 +91,7 @@ function fieldToInputConfig(
 
 export function createSafeGrid(container: HTMLElement, config: ConfigBase, onEvent?: OnSafeEvent): HTMLElement {
     const metadata = config.metadata;
-    const ds = Object.values(config.data ?? {})[0] as any;
+    const ds = getDataSource(config) as any;
     const schema = ds?.schema;
     const raw = ds?.inline;
     const record: Record<string, any> = (Array.isArray(raw) ? raw[0] : raw) ?? {};

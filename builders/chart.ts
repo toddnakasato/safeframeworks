@@ -9,6 +9,7 @@ import {
     Filler, Legend, Tooltip,
 } from "chart.js";
 import type { ChartConfiguration } from "chart.js";
+import { getDataSource } from "../../safecontracts/src/contracts";
 import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
 import { createSafeEvent } from "../../safecontracts/src/contracts";
 import { resolveColors } from "../../safecontracts/src/palette";
@@ -43,7 +44,7 @@ function resolveCssColor(color: string): string {
 }
 
 export function chartData(config: ConfigBase): Record<string, any>[] {
-    const ds = Object.values(config.data ?? {})[0];
+    const ds = getDataSource(config);
     return Array.isArray(ds?.inline) ? ds.inline : [];
 }
 
