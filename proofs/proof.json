@@ -5,6 +5,7 @@
     "resolver": true,
     "handlers": true,
     "emissions": true,
+    "app": true,
     "builders": true,
     "react-19": true,
     "react-18": true,
@@ -18,5 +19,5 @@
     "astro-5": true,
     "lwc": true
   },
-  "timestamp": "2026-06-11T18:51:52.151Z"
+  "timestamp": "2026-06-11T19:07:25.680Z"
 }
