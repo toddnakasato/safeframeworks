@@ -3,9 +3,9 @@ import { getDataSource } from "safecontracts";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
 import { fireScene } from "safecontracts";
 import type { SceneEvent } from "safecontracts";
-import type { EventShapeMap } from "safecontracts";
+import type { EventShapeMap, EventHandler } from "safecontracts";
 import type { HandlerContext } from "safecontracts";
-import { createDispatcher } from "safecontracts";
+import { findHandlers, runHandler } from "safecontracts";
 import { SafeLayout } from "./SafeLayout";
 import { SafePicker } from "./SafePicker";
 import { SafeCard } from "./SafeCard";
@@ -133,8 +133,6 @@ export const SafeScene = forwardRef<SafeSceneHandle, SafeSceneProps>(function Sa
   const [error, setError] = useState<string | null>(null);
   const flatten = flattenFn ?? defaultFlatten;
 
-  const dispatcherRef = useRef(createDispatcher());
-
   // Update rows when initialData changes
   useEffect(() => {
     if (initialData) setRows(initialData);
@@ -160,12 +158,39 @@ export const SafeScene = forwardRef<SafeSceneHandle, SafeSceneProps>(function Sa
     }
   }, [onLog, flatten]);
 
-  // Mount dispatcher
+  // Run config handlers per their shape: once at mount, interval timers,
+  // and on-demand emit — using the contract primitives directly.
+  const handlersRef = useRef<EventHandler[]>([]);
+  const ctxRef = useRef<HandlerContext | null>(null);
+
   useEffect(() => {
     if (!serverCall || !shapes) return;
     const ctx: HandlerContext = { serverCall, writeState };
-    return dispatcherRef.current.mount(config, shapes, ctx);
+    const handlers: EventHandler[] = Array.isArray((config as any)?.eventHandlers) ? (config as any).eventHandlers : [];
+    handlersRef.current = handlers;
+    ctxRef.current = ctx;
+    const timers: any[] = [];
+    for (const [name, shape] of Object.entries(shapes)) {
+      const matches = findHandlers(handlers, name);
+      if (shape.fires === "once") {
+        for (const h of matches) { runHandler(h, null, ctx).catch(() => {}); }
+      } else if (shape.fires === "interval") {
+        for (const h of matches) {
+          const ms = (h as any).interval ?? shape.defaultInterval ?? 3000;
+          timers.push(setInterval(() => { runHandler(h, null, ctx).catch(() => {}); }, ms));
+        }
+      }
+    }
+    return () => { for (const t of timers) clearInterval(t); handlersRef.current = []; ctxRef.current = null; };
   }, [config, shapes, serverCall, writeState]);
+
+  const emitLocal = useCallback(async (name: string, payload: any) => {
+    const ctx = ctxRef.current;
+    if (!ctx) return;
+    for (const h of findHandlers(handlersRef.current, name)) {
+      await runHandler(h, payload, ctx);
+    }
+  }, []);
 
   // Handle events
   const handleEvent: OnSafeEvent = useCallback(
@@ -179,7 +204,7 @@ export const SafeScene = forwardRef<SafeSceneHandle, SafeSceneProps>(function Sa
         setLoading(true);
         setError(null);
         try {
-          await dispatcherRef.current.emit("select", { row, id: row.Id });
+          await emitLocal("select", { row, id: row.Id });
         } catch (e) {
           setError(String(e));
         } finally {
