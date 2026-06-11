@@ -1,6 +1,5 @@
 import type { ReactNode } from "react";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
-import { createSafeEvent } from "safecontracts";
 import { COLUMNS_DEFAULTS } from "safecontracts/components/columns";
 import { useRenderLog, type RenderLogFn } from "./hooks/useRenderLog";
 

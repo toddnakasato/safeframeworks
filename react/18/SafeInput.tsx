@@ -174,7 +174,7 @@ export function SafeInput({ config, data, field, onEvent }: SafeInputProps) {
   useEffect(() => { setIsEditing(!!metadata.forceEditMode); }, [metadata.forceEditMode]);
 
   const fireEvent = useCallback((name: string, payload: any) => {
-    onEvent?.(createSafeEvent("SafeInput", name, payload));
+    onEvent?.(createSafeEvent("input", name, payload));
   }, [onEvent]);
 
   function getDisplayValue(): string {

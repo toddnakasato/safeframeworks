@@ -96,7 +96,7 @@ export function SafeTable({ config, data, onEvent }: SafeTableProps) {
 
   const fire = useCallback(
     (eventName: string, payload: any) => {
-      if (onEvent) onEvent(createSafeEvent("SafeTable", eventName, payload));
+      if (onEvent) onEvent(createSafeEvent("table", eventName, payload));
     },
     [onEvent],
   );

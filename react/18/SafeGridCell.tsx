@@ -1,5 +1,4 @@
 import type { Field, ConfigBase, OnSafeEvent } from "safecontracts";
-import { createSafeEvent } from "safecontracts";
 import { SafeInput } from "./SafeInput";
 import { INPUT_DEFAULTS } from "safecontracts/components/input";
 

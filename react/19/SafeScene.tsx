@@ -198,7 +198,7 @@ export const SafeScene = forwardRef<SafeSceneHandle, SafeSceneProps>(function Sa
   // Expose emit to parent via ref (for CLI-driven transitions)
   useImperativeHandle(ref, () => ({
     emit: async (event: string, payload: any) => {
-      await handleEvent(createSafeEvent("SafeScene", event, payload));
+      await handleEvent(createSafeEvent("scene", event, payload));
     },
   }), [handleEvent]);
 

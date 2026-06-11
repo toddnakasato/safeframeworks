@@ -217,8 +217,8 @@ export function SafeStoryFlow({ config, renderStep, onEvent }: SafeStoryFlowProp
           story={story}
           activeStep={activeStep}
           renderStep={renderStep}
-          onStepClick={(step) => onEvent?.(createSafeEvent("flow", "step:click", { step }))}
-          onPlay={() => onEvent?.(createSafeEvent("flow", "story:play", { story: story.key, sequence: story.playSequence }))}
+          onStepClick={(step) => onEvent?.(createSafeEvent("story-flow", "step:click", { step }))}
+          onPlay={() => onEvent?.(createSafeEvent("story-flow", "story:play", { story: story.key, sequence: story.playSequence }))}
           orientation={orientation}
         />
       ))}

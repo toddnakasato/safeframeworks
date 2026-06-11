@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { getDataSource } from "safecontracts";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
-import { createSafeEvent } from "safecontracts";
 import { GRID_DEFAULTS } from "safecontracts/components/grid";
 import { SafeGridCell } from "./SafeGridCell";
 
