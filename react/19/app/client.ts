@@ -65,5 +65,11 @@ const ctx: DispatchContext = {
 };
 
 export async function dispatch(event: SafeEvent): Promise<HandlerResult[]> {
-  return dispatchEvent(event, ctx);
+  const results = await dispatchEvent(event, ctx);
+  for (const r of results) {
+    if (!r.ok) {
+      console.error(`[dispatch] handler failed — on: "${event.name}", handler file: "${event.handler}":`, r.error);
+    }
+  }
+  return results;
 }
