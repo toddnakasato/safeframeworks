@@ -1,6 +1,6 @@
 import React, { useState } from "react";
+import { fireTabs } from "../../builders/emit";
 import type { ConfigBase, SafeEvent } from "safecontracts";
-import { createSafeEvent } from "safecontracts";
 
 /*----------------------------------------------------------------------------------------------------
  *
@@ -37,7 +37,7 @@ export function SafeTabs({ config, onEvent }: Props) {
 
   const handleSelect = (key: string) => {
     setActive(key);
-    onEvent?.(createSafeEvent("tabs", "select", { key }));
+    fireTabs(onEvent, "select", { key });
   };
 
   const isVertical = position === "left" || position === "right";

@@ -1,6 +1,7 @@
 import { useState } from "react";
+import { fireCalendar } from "../../builders/emit";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
-import { createSafeEvent, MONTH_NAMES } from "safecontracts";
+import { MONTH_NAMES } from "safecontracts";
 
 /*----------------------------------------------------------------------------------------------------
  *
@@ -192,13 +193,13 @@ export function SafeCalendar({ config, onEvent }: SafeCalendarProps) {
     const d = new Date(viewYear, viewMonth + dir, 1);
     setViewYear(d.getFullYear());
     setViewMonth(d.getMonth());
-    onEvent?.(createSafeEvent("calendar", "navigate", {
+    fireCalendar(onEvent, "navigate", {
       year: d.getFullYear(), month: d.getMonth(), direction: dir,
-    }));
+    });
   };
 
   const fireSelect = (y: number, m: number, d: number) => {
-    onEvent?.(createSafeEvent("calendar", "select", { year: y, month: m, day: d }));
+    fireCalendar(onEvent, "select", { year: y, month: m, day: d });
   };
 
   if (variant === "grid") {

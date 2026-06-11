@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
+import { fireLayout } from "../../builders/emit";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
-import { createSafeEvent } from "safecontracts";
 import { useRenderLog, type RenderLogFn } from "./hooks/useRenderLog";
 
 /*----------------------------------------------------------------------------------------------------
@@ -55,7 +55,7 @@ export function SafeLayout({ config, regions, onEvent, onRenderLog }: SafeLayout
         borderRadius: "var(--sd-radius-md)", padding: "var(--sd-space-sm) var(--sd-space-lg)", cursor: "pointer", background: "transparent",
         marginBottom: "var(--sd-space-lg)",
       }}
-      onClick={() => onEvent?.(createSafeEvent("layout", "back", {}))}
+      onClick={() => fireLayout(onEvent, "back", {})}
     >
       {backLabel}
     </button>

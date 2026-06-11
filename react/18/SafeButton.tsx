@@ -1,6 +1,6 @@
 import { useState } from "react";
+import { fireButton } from "../../builders/emit";
 import type { ConfigBase, OnSafeEvent, SafeEventContext } from "safecontracts";
-import { createSafeEvent } from "safecontracts";
 import * as Icons from "lucide-react";
 
 /*----------------------------------------------------------------------------------------------------
@@ -59,8 +59,7 @@ function PaginationGroup({
   const go = (p: number) => {
     const clamped = Math.max(1, Math.min(totalPages, p));
     setPage(clamped);
-    onEvent?.(
-      createSafeEvent("button", "page", { page: clamped, totalPages }),
+    fireButton(onEvent, "page", { page: clamped, totalPages }),
     );
   };
 
@@ -194,8 +193,7 @@ function SingleButton({
 
   const handleClick = () => {
     if (disabled || loading) return;
-    onEvent?.(
-      createSafeEvent("button", eventName, undefined, {
+    fireButton(onEvent, eventName, undefined, {
         context: eventContext,
       }),
     );

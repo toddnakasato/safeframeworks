@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
+import { fireChat } from "../../builders/emit";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
-import { createSafeEvent } from "safecontracts";
 
 /*----------------------------------------------------------------------------------------------------
  *
@@ -63,11 +63,11 @@ export function SafeChat({ config, onEvent }: SafeChatProps) {
     if (!text) return;
     setMessages((prev) => [...prev, { role: "user", content: text, timestamp: now() }]);
     setInput("");
-    onEvent?.(createSafeEvent("chat", "send", { message: text }));
+    fireChat(onEvent, "send", { message: text });
   };
 
   const handleAction = (action: any) => {
-    onEvent?.(createSafeEvent("chat", "action", { label: action.label }));
+    fireChat(onEvent, "action", { label: action.label });
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {

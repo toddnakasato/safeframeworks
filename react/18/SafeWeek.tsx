@@ -1,6 +1,7 @@
 import { useState } from "react";
+import { fireWeek } from "../../builders/emit";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
-import { createSafeEvent, DAY_NAMES_SHORT, MONTH_NAMES } from "safecontracts";
+import { DAY_NAMES_SHORT, MONTH_NAMES } from "safecontracts";
 
 /*----------------------------------------------------------------------------------------------------
  *
@@ -195,14 +196,14 @@ export function SafeWeek({ config, onEvent }: SafeWeekProps) {
 
   const fireNavigate = (dir: number) => {
     setOffset((o) => o + dir);
-    onEvent?.(createSafeEvent("week", "navigate", { direction: dir }));
+    fireWeek(onEvent, "navigate", { direction: dir });
   };
 
   const fireSelect = (date: Date, hour: number) => {
-    onEvent?.(createSafeEvent("week", "select", {
+    fireWeek(onEvent, "select", {
       date: date.toISOString().split("T")[0],
       hour,
-    }));
+    });
   };
 
   const numDays = variant === "workweek" ? 5 : 7;

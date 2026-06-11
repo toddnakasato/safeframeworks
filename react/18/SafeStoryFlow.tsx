@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
+import { fireStoryFlow } from "../../builders/emit";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
-import { createSafeEvent } from "safecontracts";
 import type {
   StoryFlowNode,
   FlowStep,
@@ -217,8 +217,8 @@ export function SafeStoryFlow({ config, renderStep, onEvent }: SafeStoryFlowProp
           story={story}
           activeStep={activeStep}
           renderStep={renderStep}
-          onStepClick={(step) => onEvent?.(createSafeEvent("story-flow", "step:click", { step }))}
-          onPlay={() => onEvent?.(createSafeEvent("story-flow", "story:play", { story: story.key, sequence: story.playSequence }))}
+          onStepClick={(step) => fireStoryFlow(onEvent, "step:click", { step })}
+          onPlay={() => fireStoryFlow(onEvent, "story:play", { story: story.key, sequence: story.playSequence })}
           orientation={orientation}
         />
       ))}

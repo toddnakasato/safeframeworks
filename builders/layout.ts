@@ -1,5 +1,6 @@
 import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
-import { createSafeEvent, LAYOUT_VARIANTS } from "../../safecontracts/src/contracts";
+import { fireLayout } from "./emit";
+import { LAYOUT_VARIANTS } from "../../safecontracts/src/contracts";
 
 /*----------------------------------------------------------------------------------------------------
  *
@@ -37,7 +38,7 @@ export function createSafeLayout(container: HTMLElement, config: ConfigBase, onE
 
     if (backLabel) {
         const back = el("button", "layout-back", backLabel);
-        back.onclick = () => onEvent?.(createSafeEvent("layout", "back", {}));
+        back.onclick = () => fireLayout(onEvent, "back", {}));
         root.appendChild(back);
     }
 

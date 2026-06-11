@@ -1,6 +1,6 @@
 import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
+import { fireToggle } from "./emit";
 import { getDataSource } from "../../safecontracts/src/contracts";
-import { createSafeEvent } from "../../safecontracts/src/contracts";
 
 /*----------------------------------------------------------------------------------------------------
  *
@@ -77,7 +77,7 @@ export function createSafeToggle(container: HTMLElement, config: ConfigBase, onE
             const handleToggle = () => {
                 if (disabled) return;
                 checked = !checked;
-                onEvent?.(createSafeEvent("toggle", "change", { checked, label }));
+                fireToggle(onEvent, "change", { checked, label }));
                 render();
             };
             const labelEl = buildLabelEl();
@@ -99,7 +99,7 @@ export function createSafeToggle(container: HTMLElement, config: ConfigBase, onE
 
         const handleToggle = (key: string, label: string) => {
             states[key] = !states[key];
-            onEvent?.(createSafeEvent("toggle", "change", { key, checked: states[key], label }));
+            fireToggle(onEvent, "change", { key, checked: states[key], label }));
             render();
         };
 
@@ -138,13 +138,13 @@ export function createSafeToggle(container: HTMLElement, config: ConfigBase, onE
 
         const handleToggle = (key: string, label: string) => {
             states[key] = !states[key];
-            onEvent?.(createSafeEvent("toggle", "change", { key, checked: states[key], label }));
+            fireToggle(onEvent, "change", { key, checked: states[key], label }));
             render();
         };
 
         const handleExpand = (key: string) => {
             expanded[key] = !expanded[key];
-            onEvent?.(createSafeEvent("toggle", "expand", { key, expanded: expanded[key] }));
+            fireToggle(onEvent, "expand", { key, expanded: expanded[key] }));
             render();
         };
 

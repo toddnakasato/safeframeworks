@@ -1,6 +1,6 @@
 import type { ConfigBase, OnSafeEvent, Field } from "../../safecontracts/src/contracts";
+import { fireTable } from "./emit";
 import { getDataSource } from "../../safecontracts/src/contracts";
-import { createSafeEvent } from "../../safecontracts/src/contracts";
 import { fmtDate, fmtCurrency, fmtInt, fmtPercent, fmtStr } from "../../safecontracts/src/formatter";
 
 /*----------------------------------------------------------------------------------------------------
@@ -92,7 +92,7 @@ export function createSafeTable(container: HTMLElement, config: ConfigBase, onEv
     root.setAttribute("data-component", "table");
 
     const fire = (eventName: string, payload: any) => {
-        onEvent?.(createSafeEvent("table", eventName, payload));
+        fireTable(onEvent, eventName, payload));
     };
 
     if (data.length === 0) {

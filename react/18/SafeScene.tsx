@@ -1,7 +1,8 @@
 import { forwardRef, useCallback, useEffect, useImperativeHandle, useMemo, useRef, useState } from "react";
 import { getDataSource } from "safecontracts";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
-import { createSafeEvent } from "safecontracts";
+import { fireScene } from "../../builders/emit";
+import type { SceneEvent } from "../../builders/emit";
 import type { EventShapeMap } from "safecontracts";
 import type { HandlerContext } from "safecontracts";
 import { createDispatcher } from "safecontracts";
@@ -198,7 +199,7 @@ export const SafeScene = forwardRef<SafeSceneHandle, SafeSceneProps>(function Sa
   // Expose emit to parent via ref (for CLI-driven transitions)
   useImperativeHandle(ref, () => ({
     emit: async (event: string, payload: any) => {
-      await handleEvent(createSafeEvent("scene", event, payload));
+      await Promise.resolve(fireScene(handleEvent, event as SceneEvent, payload));
     },
   }), [handleEvent]);
 

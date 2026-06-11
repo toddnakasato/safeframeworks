@@ -11,7 +11,7 @@ import {
 import type { ChartConfiguration } from "chart.js";
 import { getDataSource } from "../../safecontracts/src/contracts";
 import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
-import { createSafeEvent } from "../../safecontracts/src/contracts";
+import { fireChart } from "./emit";
 import { resolveColors } from "../../safecontracts/src/palette";
 
 /*----------------------------------------------------------------------------------------------------
@@ -172,11 +172,11 @@ export function createSafeChart(canvas: HTMLCanvasElement, config: ConfigBase, o
             if (!onEvent || !elements?.length) return;
             const el = elements[0];
             const data = chartData(config);
-            onEvent(createSafeEvent("chart", "click", {
+            fireChart(onEvent, "click", {
                 index: el.index,
                 datasetIndex: el.datasetIndex,
                 row: data[el.index],
-            }));
+            });
         },
     };
     return new Chart(canvas, cfg);

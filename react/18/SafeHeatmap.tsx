@@ -1,5 +1,5 @@
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
-import { createSafeEvent } from "safecontracts";
+import { fireHeatmap } from "../../builders/emit";
 
 /*----------------------------------------------------------------------------------------------------
  *
@@ -64,7 +64,7 @@ export function SafeHeatmap({ config, data, onEvent }: SafeHeatmapProps) {
                 cursor: "default",
               }}
               title={label}
-              onClick={() => onEvent?.(createSafeEvent("heatmap", "cell:click", { index: i, value: val, data: d }))}
+              onClick={() => fireHeatmap(onEvent, "cell:click", { index: i, value: val, data: d })}
             />
           );
         })}

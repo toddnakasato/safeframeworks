@@ -1,6 +1,6 @@
 import { useState } from "react";
+import { fireToggle } from "../../builders/emit";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
-import { createSafeEvent } from "safecontracts";
 
 /*----------------------------------------------------------------------------------------------------
  *
@@ -64,7 +64,7 @@ function SingleSwitch({ config, onEvent }: SafeToggleProps) {
     if (disabled) return;
     const next = !checked;
     setChecked(next);
-    onEvent?.(createSafeEvent("toggle", "change", { checked: next, label }));
+    fireToggle(onEvent, "change", { checked: next, label });
   };
 
   const labelEl = label ? (
@@ -103,7 +103,7 @@ function TableToggle({ config, data, onEvent }: SafeToggleProps) {
   const handleToggle = (key: string, label: string) => {
     const next = !states[key];
     setStates((s) => ({ ...s, [key]: next }));
-    onEvent?.(createSafeEvent("toggle", "change", { key, checked: next, label }));
+    fireToggle(onEvent, "change", { key, checked: next, label });
   };
 
   return (
@@ -147,13 +147,13 @@ function ExpandableToggle({ config, data, onEvent }: SafeToggleProps) {
   const handleToggle = (key: string, label: string) => {
     const next = !states[key];
     setStates((s) => ({ ...s, [key]: next }));
-    onEvent?.(createSafeEvent("toggle", "change", { key, checked: next, label }));
+    fireToggle(onEvent, "change", { key, checked: next, label });
   };
 
   const handleExpand = (key: string) => {
     const next = !expanded[key];
     setExpanded((s) => ({ ...s, [key]: next }));
-    onEvent?.(createSafeEvent("toggle", "expand", { key, expanded: next }));
+    fireToggle(onEvent, "expand", { key, expanded: next });
   };
 
   return (

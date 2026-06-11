@@ -1,7 +1,7 @@
 import { useRef, useEffect } from "react";
+import { fireFunnel } from "../../builders/emit";
 import * as d3 from "d3";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
-import { createSafeEvent } from "safecontracts";
 import { resolveColors } from "safecontracts";
 
 /*----------------------------------------------------------------------------------------------------
@@ -61,7 +61,7 @@ export function SafeFunnel({ config, data, onEvent }: SafeFunnelProps) {
       const color = FUNNEL_COLORS[i % FUNNEL_COLORS.length];
 
       const g = svg.append("g").style("cursor", "pointer")
-        .on("click", () => onEvent?.(createSafeEvent("funnel", "select", { index: i, data: d })));
+        .on("click", () => fireFunnel(onEvent, "select", { index: i, data: d }));
 
       g.append("rect")
         .attr("x", x).attr("y", y)

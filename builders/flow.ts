@@ -1,8 +1,8 @@
 import * as d3 from "d3";
+import { fireFlow } from "./emit";
 import { getDataSource } from "../../safecontracts/src/contracts";
 import { sankey as d3Sankey, sankeyLinkHorizontal } from "d3-sankey";
 import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
-import { createSafeEvent } from "../../safecontracts/src/contracts";
 import type { FlowData, FlowNode } from "../../safecontracts/src/components/flow";
 import { FLOW_DEFAULTS } from "../../safecontracts/src/components/flow";
 import { resolveColors } from "../../safecontracts/src/palette";
@@ -37,11 +37,11 @@ function accentColor(node: FlowNode | undefined, idx: number, colors: string[], 
 }
 
 function nodeEvent(onEvent: OnSafeEvent | undefined, name: string | undefined) {
-    onEvent?.(createSafeEvent("flow", "node:click", { name }));
+    fireFlow(onEvent, "node:click", { name }));
 }
 
 function linkEvent(onEvent: OnSafeEvent | undefined, source: string | undefined, target: string | undefined, value: number) {
-    onEvent?.(createSafeEvent("flow", "link:click", { source, target, value }));
+    fireFlow(onEvent, "link:click", { source, target, value }));
 }
 
 /*----------------------------------------------------------------------------------------------------

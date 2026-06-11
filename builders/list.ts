@@ -1,8 +1,9 @@
 import { createElement, type IconNode } from "lucide";
+import { fireList } from "./emit";
 import { getDataSource } from "../../safecontracts/src/contracts";
 import * as lucide from "lucide";
 import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
-import { createSafeEvent, DAY_NAMES_SHORT } from "../../safecontracts/src/contracts";
+import { DAY_NAMES_SHORT } from "../../safecontracts/src/contracts";
 import { LIST_DEFAULTS, LIST_STATUS_ACCENTS } from "../../safecontracts/src/components/list";
 
 /*----------------------------------------------------------------------------------------------------
@@ -54,7 +55,7 @@ function makePager(state: PagerState, count: number, pageSize: number, onEvent: 
     const go = (p: number) => {
         const next = Math.max(1, Math.min(totalPages, p));
         state.page = next;
-        onEvent?.(createSafeEvent("list", "page", { page: next, totalPages }));
+        fireList(onEvent, "page", { page: next, totalPages }));
         rerender();
     };
     return { page, totalPages, slice, go };
@@ -123,7 +124,7 @@ function buildSimple(root: HTMLElement, config: ConfigBase, data: any[], onEvent
             const row = el("div", "list-item");
             row.tabIndex = 0;
             row.setAttribute("role", "listitem");
-            row.onclick = () => onEvent?.(createSafeEvent("list", "select", { index: i, label, item }));
+            row.onclick = () => fireList(onEvent, "select", { index: i, label, item }));
             if (withIcons && icon) {
                 const ic = el("span", "item-icon");
                 const g = iconGlyph(icon, 16);
@@ -159,10 +160,10 @@ function buildSelection(root: HTMLElement, config: ConfigBase, data: any[], onEv
     const toggle = (i: number, item: any) => {
         if (mode === "single") {
             single = i;
-            onEvent?.(createSafeEvent("list", "select", { index: i, item }));
+            fireList(onEvent, "select", { index: i, item }));
         } else {
             if (multi.has(i)) multi.delete(i); else multi.add(i);
-            onEvent?.(createSafeEvent("list", "toggle", { index: i, selected: multi.has(i), item }));
+            fireList(onEvent, "toggle", { index: i, selected: multi.has(i), item }));
         }
         render();
     };
@@ -215,7 +216,7 @@ function buildColumns(root: HTMLElement, config: ConfigBase, data: any[], onEven
             row.style.gridTemplateColumns = `repeat(${fields.length}, 1fr)`;
             row.tabIndex = 0;
             row.setAttribute("role", "listitem");
-            row.onclick = () => onEvent?.(createSafeEvent("list", "select", { index: i, item }));
+            row.onclick = () => fireList(onEvent, "select", { index: i, item }));
             for (const f of fields) row.appendChild(el("span", "item-cell", String(item[f.name] ?? "")));
             items.appendChild(row);
         });
@@ -245,7 +246,7 @@ function buildFiles(root: HTMLElement, config: ConfigBase, data: any[], onEvent?
             if (item.type != null) row.setAttribute("data-file-type", String(item.type));
             row.tabIndex = 0;
             row.setAttribute("role", "listitem");
-            row.onclick = () => onEvent?.(createSafeEvent("list", "select", { index: i, item }));
+            row.onclick = () => fireList(onEvent, "select", { index: i, item }));
             const ic = el("span", "item-icon");
             const g = iconGlyph(item[iconField], 18);
             if (g) ic.appendChild(g);
@@ -302,7 +303,7 @@ function buildActions(root: HTMLElement, config: ConfigBase, data: any[], onEven
             const btn = el("button", "item-action", String(item[actionField]));
             btn.onclick = (e) => {
                 e.stopPropagation();
-                onEvent?.(createSafeEvent("list", "action", { index: i, action: item[actionField], item }));
+                fireList(onEvent, "action", { index: i, action: item[actionField], item }));
             };
             row.appendChild(btn);
         }
@@ -347,7 +348,7 @@ function buildHierarchy(root: HTMLElement, config: ConfigBase, data: any[], onEv
 
     const toggleNode = (id: string) => {
         if (expanded.has(id)) expanded.delete(id); else expanded.add(id);
-        onEvent?.(createSafeEvent("list", "expand", { id, expanded: expanded.has(id) }));
+        fireList(onEvent, "expand", { id, expanded: expanded.has(id) }));
         render();
     };
 
@@ -368,7 +369,7 @@ function buildHierarchy(root: HTMLElement, config: ConfigBase, data: any[], onEv
             if (isGroup) row.setAttribute("aria-expanded", String(isOpen));
             row.onclick = () => isGroup
                 ? toggleNode(String(node.id))
-                : onEvent?.(createSafeEvent("list", "select", { id: node.id, item: node }));
+                : fireList(onEvent, "select", { id: node.id, item: node }));
             if (isGroup) {
                 const chev = el("span", "item-chevron");
                 if (isOpen) chev.setAttribute("data-expanded", "true");
@@ -412,14 +413,14 @@ function buildPropertyGrid(root: HTMLElement, config: ConfigBase, data: any[], o
 
     const toggleGroup = (id: string) => {
         if (expanded.has(id)) expanded.delete(id); else expanded.add(id);
-        onEvent?.(createSafeEvent("list", "expand", { id, expanded: expanded.has(id) }));
+        fireList(onEvent, "expand", { id, expanded: expanded.has(id) }));
         render();
     };
 
     // Commit without re-render so the edited input/select keeps focus.
     const commit = (id: string, value: unknown) => {
         values[id] = value;
-        onEvent?.(createSafeEvent("list", "change", { id, value }));
+        fireList(onEvent, "change", { id, value }));
     };
 
     function renderNode(node: any, level: number): HTMLElement {
@@ -496,7 +497,7 @@ function buildGantt(root: HTMLElement, config: ConfigBase, data: any[], onEvent?
 
     const navigate = (dir: number) => {
         offset += dir;
-        onEvent?.(createSafeEvent("list", "navigate", { direction: dir }));
+        fireList(onEvent, "navigate", { direction: dir }));
         render();
     };
 
@@ -550,7 +551,7 @@ function buildGantt(root: HTMLElement, config: ConfigBase, data: any[], onEvent?
         data.forEach((item, i) => {
             const intent = (item.accent as string) ?? "brand";
             const row = el("div", "gantt-row");
-            row.onclick = () => onEvent?.(createSafeEvent("list", "select", { index: i, item }));
+            row.onclick = () => fireList(onEvent, "select", { index: i, item }));
             row.appendChild(el("span", "gantt-row-label", String(item[labelField] ?? "")));
             const cells = el("span", "gantt-cells");
             cells.style.gridTemplateColumns = `repeat(${days}, 1fr)`;

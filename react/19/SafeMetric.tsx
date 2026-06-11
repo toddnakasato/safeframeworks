@@ -1,7 +1,7 @@
 import { useRef, useEffect } from "react";
+import { fireMetric } from "../../builders/emit";
 import gsap from "gsap";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
-import { createSafeEvent } from "safecontracts";
 import type { TrendDirection } from "safecontracts/components/metric";
 import { fmtCurrency, fmtInt, fmtPercent, fmtNumber } from "safecontracts";
 
@@ -129,7 +129,7 @@ export function SafeMetric({ config, data, onEvent }: SafeMetricProps) {
         textAlign: "center", gap: "var(--sd-space-sm)",
         ...(metadata.variant === "featured" ? { padding: "var(--sd-space-xl) 0" } : {}),
       }}
-      onClick={() => onEvent?.(createSafeEvent("metric", "click", { value, field: metadata.valueField }))}
+      onClick={() => fireMetric(onEvent, "click", { value, field: metadata.valueField })}
     >
       {metadata.title && (
         <span style={{ fontSize: "var(--sd-font-md)", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.08em", color: "var(--sd-text-muted)" }}>

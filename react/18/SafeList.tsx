@@ -1,7 +1,8 @@
 import { useState } from "react";
+import { fireList } from "../../builders/emit";
 import { getDataSource } from "safecontracts";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
-import { createSafeEvent, DAY_NAMES_SHORT, LIST_DEFAULTS, LIST_STATUS_ACCENTS } from "safecontracts";
+import { DAY_NAMES_SHORT, LIST_DEFAULTS, LIST_STATUS_ACCENTS } from "safecontracts";
 import * as Icons from "lucide-react";
 
 /*----------------------------------------------------------------------------------------------------
@@ -80,7 +81,7 @@ function usePager(count: number, pageSize: number, onEvent?: OnSafeEvent) {
     const go = (p: number) => {
         const next = Math.max(1, Math.min(totalPages, p));
         setPage(next);
-        onEvent?.(createSafeEvent("list", "page", { page: next, totalPages }));
+        fireList(onEvent, "page", { page: next, totalPages });
     };
     return { page: clamped, totalPages, slice, go };
 }
@@ -110,7 +111,7 @@ function SimpleList({ config, data, onEvent }: { config: ConfigBase; data: any[]
                     const description = typeof item === "object" ? item[descriptionField] : undefined;
                     const icon = typeof item === "object" ? item[iconField] : undefined;
                     return (
-                        <div key={i} data-role="list-item" tabIndex={0} role="listitem" onClick={() => onEvent?.(createSafeEvent("list", "select", { index: i, label, item }))}>
+                        <div key={i} data-role="list-item" tabIndex={0} role="listitem" onClick={() => fireList(onEvent, "select", { index: i, label, item })}>
                             {withIcons && icon && (
                                 <span data-role="item-icon">
                                     <IconGlyph name={icon} />
@@ -140,13 +141,13 @@ function SelectionList({ config, data, onEvent }: { config: ConfigBase; data: an
     const toggle = (i: number, item: any) => {
         if (mode === "single") {
             setSingle(i);
-            onEvent?.(createSafeEvent("list", "select", { index: i, item }));
+            fireList(onEvent, "select", { index: i, item });
         } else {
             setMulti((prev) => {
                 const next = new Set(prev);
                 if (next.has(i)) next.delete(i);
                 else next.add(i);
-                onEvent?.(createSafeEvent("list", "toggle", { index: i, selected: next.has(i), item }));
+                fireList(onEvent, "toggle", { index: i, selected: next.has(i), item });
                 return next;
             });
         }
@@ -206,7 +207,7 @@ function ColumnsList({ config, data, onEvent }: { config: ConfigBase; data: any[
                         style={{ gridTemplateColumns: `repeat(${fields.length}, 1fr)` }}
                         tabIndex={0}
                         role="listitem"
-                        onClick={() => onEvent?.(createSafeEvent("list", "select", { index: i, item }))}
+                        onClick={() => fireList(onEvent, "select", { index: i, item })}
                     >
                         {fields.map((f: any) => (
                             <span key={f.name} data-role="item-cell">
@@ -239,7 +240,7 @@ function FilesList({ config, data, onEvent }: { config: ConfigBase; data: any[];
                         data-file-type={item.type}
                         tabIndex={0}
                         role="listitem"
-                        onClick={() => onEvent?.(createSafeEvent("list", "select", { index: i, item }))}
+                        onClick={() => fireList(onEvent, "select", { index: i, item })}
                     >
                         <span data-role="item-icon">
                             <IconGlyph name={item[iconField]} size={18} />
@@ -294,7 +295,7 @@ function ActionsList({ config, data, onEvent }: { config: ConfigBase; data: any[
                                     data-role="item-action"
                                     onClick={(e) => {
                                         e.stopPropagation();
-                                        onEvent?.(createSafeEvent("list", "action", { index: i, action: item[actionField], item }));
+                                        fireList(onEvent, "action", { index: i, action: item[actionField], item });
                                     }}
                                 >
                                     {item[actionField]}
@@ -347,7 +348,7 @@ function HierarchyList({ config, data, onEvent }: { config: ConfigBase; data: an
             const next = new Set(prev);
             if (next.has(id)) next.delete(id);
             else next.add(id);
-            onEvent?.(createSafeEvent("list", "expand", { id, expanded: next.has(id) }));
+            fireList(onEvent, "expand", { id, expanded: next.has(id) });
             return next;
         });
     };
@@ -368,7 +369,7 @@ function HierarchyList({ config, data, onEvent }: { config: ConfigBase; data: an
                             tabIndex={0}
                             role={isGroup ? "button" : "listitem"}
                             aria-expanded={isGroup ? isOpen : undefined}
-                            onClick={() => (isGroup ? toggleNode(String(node.id)) : onEvent?.(createSafeEvent("list", "select", { id: node.id, item: node })))}
+                            onClick={() => (isGroup ? toggleNode(String(node.id)) : fireList(onEvent, "select", { id: node.id, item: node }))}
                         >
                             {isGroup ? (
                                 <span data-role="item-chevron" data-expanded={isOpen || undefined}>
@@ -411,14 +412,14 @@ function PropertyGrid({ config, data, onEvent }: { config: ConfigBase; data: any
             const next = new Set(prev);
             if (next.has(id)) next.delete(id);
             else next.add(id);
-            onEvent?.(createSafeEvent("list", "expand", { id, expanded: next.has(id) }));
+            fireList(onEvent, "expand", { id, expanded: next.has(id) });
             return next;
         });
     };
 
     const commit = (id: string, value: unknown) => {
         setValues((prev) => ({ ...prev, [id]: value }));
-        onEvent?.(createSafeEvent("list", "change", { id, value }));
+        fireList(onEvent, "change", { id, value });
     };
 
     const renderNode = (node: any, level: number): React.ReactNode => {
@@ -497,7 +498,7 @@ function GanttList({ config, data, onEvent }: { config: ConfigBase; data: any[];
 
     const navigate = (dir: number) => {
         setOffset((o) => o + dir);
-        onEvent?.(createSafeEvent("list", "navigate", { direction: dir }));
+        fireList(onEvent, "navigate", { direction: dir });
     };
 
     const inRange = (item: any, d: Date) => {
@@ -533,7 +534,7 @@ function GanttList({ config, data, onEvent }: { config: ConfigBase; data: any[];
                     {data.map((item, i) => {
                         const intent = (item.accent as string) ?? "brand";
                         return (
-                            <div key={i} data-role="gantt-row" onClick={() => onEvent?.(createSafeEvent("list", "select", { index: i, item }))}>
+                            <div key={i} data-role="gantt-row" onClick={() => fireList(onEvent, "select", { index: i, item })}>
                                 <span data-role="gantt-row-label">{item[labelField]}</span>
                                 <span data-role="gantt-cells" style={{ gridTemplateColumns: `repeat(${days}, 1fr)` }}>
                                     {dates.map((d, di) => (

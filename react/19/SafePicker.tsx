@@ -1,7 +1,7 @@
 import { useState, useMemo, useRef, useEffect } from "react";
+import { firePicker } from "../../builders/emit";
 import { getDataSource } from "safecontracts";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
-import { createSafeEvent } from "safecontracts";
 import type { RowCell, RowDef } from "safecontracts";
 import { useRenderLog, type RenderLogFn } from "./hooks/useRenderLog";
 
@@ -119,7 +119,7 @@ export function SafePicker({ config, data, loading, error, onEvent, onRenderLog 
       data-accent={accent}
       data-radius={radius}
       value={filterValue}
-      onChange={(e) => onEvent?.(createSafeEvent("picker", "filter", { field: filterField, value: e.target.value }))}
+      onChange={(e) => firePicker(onEvent, "filter", { field: filterField, value: e.target.value })}
     >
       <option value="">{metadata.filterLabel ?? "All"}</option>
       {filterOptions.map((v) => <option key={v} value={v}>{v}</option>)}
@@ -157,7 +157,7 @@ export function SafePicker({ config, data, loading, error, onEvent, onRenderLog 
           {filtered.map((row, i) => {
             const id = row.Id ?? row.id ?? String(i);
             return (
-              <div key={id} ref={i === 0 ? firstCardRef : undefined} data-role="card" data-surface="raised" data-radius={radius} onClick={() => onEvent?.(createSafeEvent("picker", "select", { row, index: i }))}>
+              <div key={id} ref={i === 0 ? firstCardRef : undefined} data-role="card" data-surface="raised" data-radius={radius} onClick={() => firePicker(onEvent, "select", { row, index: i })}>
                 {rows.map((rowDef: RowDef, ri: number) => (
                   <div key={ri} data-role="row" data-cells={rowDef.length}>
                     {rowDef.map((cell: RowCell, ci: number) => renderCell(cell, row, ci))}
@@ -182,7 +182,7 @@ export function SafePicker({ config, data, loading, error, onEvent, onRenderLog 
         {filtered.map((row, i) => {
           const id = row.Id ?? row.id ?? String(i);
           return (
-            <li key={id} ref={i === 0 ? firstRowRef : undefined} data-role="list-item" data-spacing={spacing} onClick={() => onEvent?.(createSafeEvent("picker", "select", { row, index: i }))}>
+            <li key={id} ref={i === 0 ? firstRowRef : undefined} data-role="list-item" data-spacing={spacing} onClick={() => firePicker(onEvent, "select", { row, index: i })}>
               {rows.map((rowDef: RowDef, ri: number) => (
                 <div key={ri} data-role="row" data-cells={rowDef.length}>
                   {rowDef.map((cell: RowCell, ci: number) => renderCell(cell, row, ci))}

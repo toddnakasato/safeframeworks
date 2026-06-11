@@ -1,7 +1,7 @@
 import * as d3 from "d3";
+import { fireGauge } from "./emit";
 import { getDataSource } from "../../safecontracts/src/contracts";
 import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
-import { createSafeEvent } from "../../safecontracts/src/contracts";
 
 /*----------------------------------------------------------------------------------------------------
  *
@@ -55,7 +55,7 @@ export function createSafeGauge(container: HTMLElement, config: ConfigBase, onEv
     const root = document.createElement("div");
     root.setAttribute("data-component", "gauge");
     root.setAttribute("data-variant", variant);
-    root.onclick = () => onEvent?.(createSafeEvent("gauge", "click", { value }));
+    root.onclick = () => fireGauge(onEvent, "click", { value }));
 
     const svgEl = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     svgEl.style.width = "100%";

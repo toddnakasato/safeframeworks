@@ -1,6 +1,6 @@
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
+import { fireCard } from "../../builders/emit";
 import { getDataSource } from "safecontracts";
-import { createSafeEvent } from "safecontracts";
 import type { RowCell, RowDef } from "safecontracts";
 import { useRenderLog, type RenderLogFn } from "./hooks/useRenderLog";
 
@@ -53,10 +53,10 @@ export function SafeCard({ config, data, onEvent, onRenderLog }: SafeCardProps) 
         data-radius={radius}
         data-spacing={spacing}
         data-accent={accent}
-        onClick={() => onEvent?.(createSafeEvent("card", "click", { data }))}
+        onClick={() => fireCard(onEvent, "click", { data })}
       >
         {backLabel && (
-          <div data-role="back" onClick={(e) => { e.stopPropagation(); onEvent?.(createSafeEvent("card", "back", {})); }}>
+          <div data-role="back" onClick={(e) => { e.stopPropagation(); fireCard(onEvent, "back", {}); }}>
             {backLabel}
           </div>
         )}
@@ -94,10 +94,10 @@ export function SafeCard({ config, data, onEvent, onRenderLog }: SafeCardProps) 
       data-spacing={spacing}
       data-accent={accent}
       data-density={density}
-      onClick={() => onEvent?.(createSafeEvent("card", "click", { data }))}
+      onClick={() => fireCard(onEvent, "click", { data })}
     >
       {backLabel && (
-        <div data-role="back" onClick={(e) => { e.stopPropagation(); onEvent?.(createSafeEvent("card", "back", {})); }}>
+        <div data-role="back" onClick={(e) => { e.stopPropagation(); fireCard(onEvent, "back", {}); }}>
           {backLabel}
         </div>
       )}

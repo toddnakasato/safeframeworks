@@ -1,7 +1,7 @@
 import { HyperFormula } from "hyperformula";
+import { fireSheet } from "./emit";
 import { getDataSource } from "../../safecontracts/src/contracts";
 import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
-import { createSafeEvent } from "../../safecontracts/src/contracts";
 import type { SheetColumn } from "../../safecontracts/src/components/sheet";
 import { SHEET_DEFAULTS, SHEET_STATUS_ACCENTS } from "../../safecontracts/src/components/sheet";
 
@@ -160,7 +160,7 @@ export function createSafeSheet(container: HTMLElement, config: ConfigBase, onEv
 
     const handleCellClick = (r: number, c: number) => {
         selectedCell = [r, c];
-        onEvent?.(createSafeEvent("sheet", "select", { row: r, col: c, value: getCellValue(r, c) }));
+        fireSheet(onEvent, "select", { row: r, col: c, value: getCellValue(r, c) }));
         render();
     };
 
@@ -189,7 +189,7 @@ export function createSafeSheet(container: HTMLElement, config: ConfigBase, onEv
             }
         } catch {}
         editingCell = null;
-        onEvent?.(createSafeEvent("sheet", "edit", { row: r, col: c, value: val }));
+        fireSheet(onEvent, "edit", { row: r, col: c, value: val }));
         render();
     };
 

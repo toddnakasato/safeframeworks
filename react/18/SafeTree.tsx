@@ -1,6 +1,6 @@
 import { useState, useMemo, useCallback } from "react";
+import { fireTree } from "../../builders/emit";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
-import { createSafeEvent } from "safecontracts";
 
 /*----------------------------------------------------------------------------------------------------
  *
@@ -184,12 +184,12 @@ export function SafeTree({ config, data, onEvent }: SafeTreeProps) {
       else next.add(id);
       return next;
     });
-    onEvent?.(createSafeEvent("tree", "expand", { id }));
+    fireTree(onEvent, "expand", { id });
   }, [onEvent]);
 
   const handleSelect = useCallback((node: TreeNode) => {
     setSelected(node.id);
-    onEvent?.(createSafeEvent("tree", "select", { id: node.id, record: node.record }));
+    fireTree(onEvent, "select", { id: node.id, record: node.record });
   }, [onEvent]);
 
   if (data.length === 0) {

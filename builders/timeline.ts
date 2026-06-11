@@ -1,7 +1,7 @@
 import * as d3 from "d3";
+import { fireTimeline } from "./emit";
 import { getDataSource } from "../../safecontracts/src/contracts";
 import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
-import { createSafeEvent } from "../../safecontracts/src/contracts";
 import { resolveColors } from "../../safecontracts/src/palette";
 
 /*----------------------------------------------------------------------------------------------------
@@ -67,7 +67,7 @@ export function createSafeTimeline(container: HTMLElement, config: ConfigBase, o
     }
 
     const fireSelect = (index: number, item: Record<string, any>) => {
-        onEvent?.(createSafeEvent("timeline", "select", { index, data: item }));
+        fireTimeline(onEvent, "select", { index, data: item }));
     };
 
     const root = el("div");

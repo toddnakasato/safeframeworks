@@ -1,7 +1,7 @@
 import { useRef, useEffect } from "react";
+import { fireGauge } from "../../builders/emit";
 import * as d3 from "d3";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
-import { createSafeEvent } from "safecontracts";
 
 /*----------------------------------------------------------------------------------------------------
  *
@@ -114,7 +114,7 @@ export function SafeGauge({ config, data, onEvent }: SafeGaugeProps) {
   }, [data, metadata]);
 
   return (
-    <div data-component="gauge" data-variant={variant} onClick={() => onEvent?.(createSafeEvent("gauge", "click", { value }))}>
+    <div data-component="gauge" data-variant={variant} onClick={() => fireGauge(onEvent, "click", { value })}>
       <svg ref={svgRef} style={{ width: "100%", maxWidth: 200, display: "block", margin: "0 auto" }} />
     </div>
   );

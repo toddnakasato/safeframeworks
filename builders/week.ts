@@ -1,5 +1,6 @@
 import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
-import { createSafeEvent, DAY_NAMES_SHORT, MONTH_NAMES } from "../../safecontracts/src/contracts";
+import { fireWeek } from "./emit";
+import { DAY_NAMES_SHORT, MONTH_NAMES } from "../../safecontracts/src/contracts";
 
 /*----------------------------------------------------------------------------------------------------
  *
@@ -91,12 +92,12 @@ export function createSafeWeek(container: HTMLElement, config: ConfigBase, onEve
 
     const fireNavigate = (dir: number) => {
         offset += dir;
-        onEvent?.(createSafeEvent("week", "navigate", { direction: dir }));
+        fireWeek(onEvent, "navigate", { direction: dir }));
         render();
     };
 
     const fireSelect = (date: Date, hour: number) => {
-        onEvent?.(createSafeEvent("week", "select", { date: date.toISOString().split("T")[0], hour }));
+        fireWeek(onEvent, "select", { date: date.toISOString().split("T")[0], hour }));
     };
 
     function buildGrid(dates: Date[]): HTMLElement {

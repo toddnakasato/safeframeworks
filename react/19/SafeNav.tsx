@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect, type ReactNode } from "react";
+import { fireNav } from "../../builders/emit";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
-import { createSafeEvent } from "safecontracts";
 import * as Icons from "lucide-react";
 import { createSafeNav } from "../../builders/nav";
 
@@ -71,7 +71,7 @@ function NavClassic({ config, onEvent }: SafeNavProps) {
 
   const fire = (key: string) => {
     setActive(key);
-    onEvent?.(createSafeEvent("nav", "navigate", { key, value: key }, { context: { path: key } }));
+    fireNav(onEvent, "navigate", { key, value: key }, { context: { path: key } });
   };
 
   const renderItem = (key: string, child: ConfigBase, depth = 0): ReactNode => {

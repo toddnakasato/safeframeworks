@@ -1,7 +1,7 @@
 import { useRef, useEffect, useMemo } from "react";
+import { fireTimeline } from "../../builders/emit";
 import * as d3 from "d3";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
-import { createSafeEvent } from "safecontracts";
 import { resolveColors } from "safecontracts";
 
 /*----------------------------------------------------------------------------------------------------
@@ -91,7 +91,7 @@ export function SafeTimeline({ config, data, onEvent }: SafeTimelineProps) {
           .attr("cx", cx).attr("cy", 80).attr("r", 6)
           .attr("fill", color).attr("stroke", "var(--sd-surface)").attr("stroke-width", 2)
           .style("cursor", "pointer")
-          .on("click", () => onEvent?.(createSafeEvent("timeline", "select", { index: i, data: d })));
+          .on("click", () => fireTimeline(onEvent, "select", { index: i, data: d }));
 
         svg.append("line")
           .attr("x1", cx).attr("y1", 80)
@@ -157,7 +157,7 @@ export function SafeTimeline({ config, data, onEvent }: SafeTimelineProps) {
             .attr("cx", cx).attr("cy", y + laneHeight / 2).attr("r", 8)
             .attr("fill", color).attr("stroke", "var(--sd-surface)").attr("stroke-width", 2)
             .style("cursor", "pointer")
-            .on("click", () => onEvent?.(createSafeEvent("timeline", "select", { index: ei, data: d })));
+            .on("click", () => fireTimeline(onEvent, "select", { index: ei, data: d }));
 
           if (icon) {
             svg.append("text")
@@ -228,7 +228,7 @@ export function SafeTimeline({ config, data, onEvent }: SafeTimelineProps) {
           .attr("width", 0).attr("height", rowH - 12)
           .attr("rx", 4).attr("fill", color).attr("opacity", 0.85)
           .style("cursor", "pointer")
-          .on("click", () => onEvent?.(createSafeEvent("timeline", "select", { index: i, data: d })))
+          .on("click", () => fireTimeline(onEvent, "select", { index: i, data: d }))
           .transition().duration(600).delay(i * 50)
           .attr("width", barW);
       });
@@ -265,7 +265,7 @@ export function SafeTimeline({ config, data, onEvent }: SafeTimelineProps) {
 
           return (
             <div key={i} data-role="alt-row" data-side={isLeft ? "left" : "right"}
-              onClick={() => onEvent?.(createSafeEvent("timeline", "select", { index: i, data: item }))}>
+              onClick={() => fireTimeline(onEvent, "select", { index: i, data: item })}>
               <div data-role="alt-dot" style={{ background: color }} />
               <div data-role="alt-content">
                 <div data-role="date">{String(item[dateField])}</div>
@@ -289,7 +289,7 @@ export function SafeTimeline({ config, data, onEvent }: SafeTimelineProps) {
         const desc = descriptionField ? String(item[descriptionField] ?? "") : "";
 
         return (
-          <div key={i} data-role="event" onClick={() => onEvent?.(createSafeEvent("timeline", "select", { index: i, data: item }))}>
+          <div key={i} data-role="event" onClick={() => fireTimeline(onEvent, "select", { index: i, data: item })}>
             <div data-role="marker">
               {icon ? <span data-role="icon">{icon}</span> : <span data-role="dot" style={{ background: color }} />}
               {i < sorted.length - 1 && <span data-role="line" />}

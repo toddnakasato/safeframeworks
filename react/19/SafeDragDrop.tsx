@@ -1,6 +1,6 @@
 import { useState, useCallback, useRef } from "react";
+import { fireDragDrop } from "../../builders/emit";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
-import { createSafeEvent } from "safecontracts";
 
 /*----------------------------------------------------------------------------------------------------
  *
@@ -41,12 +41,12 @@ function GenericDragDrop({
     setDragging(id);
     e.dataTransfer.setData("application/json", JSON.stringify(item));
     e.dataTransfer.effectAllowed = "move";
-    onEvent?.(createSafeEvent("drag-drop", "drag-start", { id, item }));
+    fireDragDrop(onEvent, "drag-start", { id, item });
   };
 
   const handleDragEnd = () => {
     setDragging(null);
-    onEvent?.(createSafeEvent("drag-drop", "drag-end", null));
+    fireDragDrop(onEvent, "drag-end", null);
   };
 
   const handleDrop = (zone: string) => (e: React.DragEvent) => {
@@ -54,7 +54,7 @@ function GenericDragDrop({
     setOverZone(null);
     try {
       const item = JSON.parse(e.dataTransfer.getData("application/json"));
-      onEvent?.(createSafeEvent("drag-drop", "drop", { zone, item }));
+      fireDragDrop(onEvent, "drop", { zone, item });
     } catch {}
   };
 
@@ -122,7 +122,7 @@ function FileDragDrop({
         size: f.size,
         type: f.type,
       }));
-      onEvent?.(createSafeEvent("drag-drop", "file-drop", { files: list }));
+      fireDragDrop(onEvent, "file-drop", { files: list });
     },
     [onEvent],
   );
@@ -187,12 +187,12 @@ function PaletteDragDrop({
     setDragging(item.id);
     e.dataTransfer.setData("application/json", JSON.stringify(item));
     e.dataTransfer.effectAllowed = "copy";
-    onEvent?.(createSafeEvent("drag-drop", "drag-start", { item }));
+    fireDragDrop(onEvent, "drag-start", { item });
   };
 
   const handleDragEnd = () => {
     setDragging(null);
-    onEvent?.(createSafeEvent("drag-drop", "drag-end", null));
+    fireDragDrop(onEvent, "drag-end", null);
   };
 
   const handleDrop = (sectionId: string) => (e: React.DragEvent) => {
@@ -200,7 +200,7 @@ function PaletteDragDrop({
     setOverSection(null);
     try {
       const item = JSON.parse(e.dataTransfer.getData("application/json"));
-      onEvent?.(createSafeEvent("drag-drop", "drop", { section: sectionId, item }));
+      fireDragDrop(onEvent, "drop", { section: sectionId, item });
     } catch {}
   };
 

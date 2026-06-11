@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect, useCallback } from "react";
+import { fireInput } from "../../builders/emit";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
-import { createSafeEvent } from "safecontracts";
 import type { InputType, InputOption, LookupRecord, DisplayFormat } from "safecontracts/components/input";
 import { INPUT_DEFAULTS } from "safecontracts/components/input";
 import Editor from "@monaco-editor/react";
@@ -174,7 +174,7 @@ export function SafeInput({ config, data, field, onEvent }: SafeInputProps) {
   useEffect(() => { setIsEditing(!!metadata.forceEditMode); }, [metadata.forceEditMode]);
 
   const fireEvent = useCallback((name: string, payload: any) => {
-    onEvent?.(createSafeEvent("input", name, payload));
+    fireInput(onEvent, name, payload);
   }, [onEvent]);
 
   function getDisplayValue(): string {
