@@ -1,11 +1,10 @@
 {
-  "ok": false,
+  "ok": true,
   "targets": {
     "contracts": true,
     "resolver": true,
     "handlers": true,
     "emissions": true,
-    "app": false,
     "builders": true,
     "react-19": true,
     "react-18": true,
@@ -19,5 +18,5 @@
     "astro-5": true,
     "lwc": true
   },
-  "timestamp": "2026-06-11T18:32:13.996Z"
+  "timestamp": "2026-06-11T18:51:52.151Z"
 }
