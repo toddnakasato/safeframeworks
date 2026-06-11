@@ -1,4 +1,5 @@
 import type { ConfigBase, OnSafeEvent, Field } from "../../safecontracts/src/contracts";
+import { el } from "./util";
 import { fireTable } from "../../safecontracts/src/contracts-emit";
 import type { TableEvent } from "../../safecontracts/src/contracts-emit";
 import { getDataSource } from "../../safecontracts/src/contracts";
@@ -39,13 +40,6 @@ function formatValue(value: any, field: Field): string {
 
 function numericType(type: string): boolean {
     return type === "currency" || type === "number" || type === "percent";
-}
-
-function el(tag: string, role?: string, text?: string): HTMLElement {
-    const e = document.createElement(tag);
-    if (role) e.setAttribute("data-role", role);
-    if (text != null) e.textContent = text;
-    return e;
 }
 
 /*----------------------------------------------------------------------------------------------------

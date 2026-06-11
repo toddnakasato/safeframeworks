@@ -1,4 +1,5 @@
 import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
+import { el } from "./util";
 import { fireChat } from "../../safecontracts/src/contracts-emit";
 
 /*----------------------------------------------------------------------------------------------------
@@ -21,13 +22,6 @@ interface Message {
 
 function now(): string {
     return new Date().toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit" });
-}
-
-function el(tag: string, role?: string, text?: string): HTMLElement {
-    const e = document.createElement(tag);
-    if (role) e.setAttribute("data-role", role);
-    if (text != null) e.textContent = text;
-    return e;
 }
 
 /*----------------------------------------------------------------------------------------------------

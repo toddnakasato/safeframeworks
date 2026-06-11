@@ -1,4 +1,5 @@
 import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
+import { el } from "./util";
 import { fireCalendar } from "../../safecontracts/src/contracts-emit";
 import { MONTH_NAMES } from "../../safecontracts/src/contracts";
 
@@ -47,13 +48,6 @@ function generateDays(year: number, month: number, weekStart: string): (number |
     for (let i = 0; i < first; i++) days.push(null);
     for (let d = 1; d <= total; d++) days.push(d);
     return days;
-}
-
-function el(tag: string, role?: string, text?: string): HTMLElement {
-    const e = document.createElement(tag);
-    if (role) e.setAttribute("data-role", role);
-    if (text != null) e.textContent = text;
-    return e;
 }
 
 /*----------------------------------------------------------------------------------------------------

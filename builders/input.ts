@@ -1,4 +1,5 @@
 import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
+import { el } from "./util";
 import { fireInput } from "../../safecontracts/src/contracts-emit";
 import type { InputEvent } from "../../safecontracts/src/contracts-emit";
 import { getDataSource } from "../../safecontracts/src/contracts";
@@ -109,13 +110,6 @@ function formatDisplay(value: any, format: string | undefined, locale: string, c
         case "factor-rate": return fmtFactorRate(value, decimals);
         default: return String(value ?? "");
     }
-}
-
-function el(tag: string, role?: string, text?: string): HTMLElement {
-    const e = document.createElement(tag);
-    if (role) e.setAttribute("data-role", role);
-    if (text != null) e.textContent = text;
-    return e;
 }
 
 /*----------------------------------------------------------------------------------------------------

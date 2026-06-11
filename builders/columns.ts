@@ -1,4 +1,5 @@
 import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
+import { el } from "./util";
 import { COLUMNS_DEFAULTS } from "../../safecontracts/src/components/columns";
 
 /*----------------------------------------------------------------------------------------------------
@@ -12,13 +13,6 @@ import { COLUMNS_DEFAULTS } from "../../safecontracts/src/components/columns";
  * Helpers
  *
  ----------------------------------------------------------------------------------------------------*/
-
-function el(tag: string, role?: string, text?: string): HTMLElement {
-    const e = document.createElement(tag);
-    if (role) e.setAttribute("data-role", role);
-    if (text != null) e.textContent = text;
-    return e;
-}
 
 /*----------------------------------------------------------------------------------------------------
  *

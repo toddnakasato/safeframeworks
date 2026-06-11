@@ -1,4 +1,5 @@
 import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
+import { el } from "./util";
 import { fireWeek } from "../../safecontracts/src/contracts-emit";
 import { DAY_NAMES_SHORT, MONTH_NAMES } from "../../safecontracts/src/contracts";
 
@@ -57,13 +58,6 @@ function formatDateRange(dates: Date[]): string {
         return `${MONTH_NAMES[s.getMonth()]} ${s.getDate()}-${e.getDate()}, ${s.getFullYear()}`;
     }
     return `${MONTH_NAMES[s.getMonth()]} ${s.getDate()} - ${MONTH_NAMES[e.getMonth()]} ${e.getDate()}, ${s.getFullYear()}`;
-}
-
-function el(tag: string, role?: string, text?: string): HTMLElement {
-    const e = document.createElement(tag);
-    if (role) e.setAttribute("data-role", role);
-    if (text != null) e.textContent = text;
-    return e;
 }
 
 /*----------------------------------------------------------------------------------------------------

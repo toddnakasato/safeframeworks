@@ -1,4 +1,5 @@
 import * as d3 from "d3";
+import { el } from "./util";
 import { fireTimeline } from "../../safecontracts/src/contracts-emit";
 import { getDataSource } from "../../safecontracts/src/contracts";
 import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
@@ -25,13 +26,6 @@ export function timelineData(config: ConfigBase): Record<string, any>[] {
 function getCategoryColor(categories: string[], cat: string, colors: string[]): string {
     const idx = categories.indexOf(cat);
     return colors[idx % colors.length];
-}
-
-function el(tag: string, role?: string, text?: string): HTMLElement {
-    const e = document.createElement(tag);
-    if (role) e.setAttribute("data-role", role);
-    if (text != null) e.textContent = text;
-    return e;
 }
 
 /*----------------------------------------------------------------------------------------------------

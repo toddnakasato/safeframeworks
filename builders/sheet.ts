@@ -1,4 +1,5 @@
 import { HyperFormula } from "hyperformula";
+import { el } from "./util";
 import { fireSheet } from "../../safecontracts/src/contracts-emit";
 import { getDataSource } from "../../safecontracts/src/contracts";
 import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
@@ -35,13 +36,6 @@ function formatValue(val: any, col?: SheetColumn): string {
     if (fmt === "percent" && typeof val === "number") return `${(val * 100).toFixed(dec)}%`;
     if (fmt === "number" && typeof val === "number") return val.toLocaleString(undefined, { minimumFractionDigits: dec, maximumFractionDigits: dec });
     return String(val);
-}
-
-function el(tag: string, role?: string, text?: string): HTMLElement {
-    const e = document.createElement(tag);
-    if (role) e.setAttribute("data-role", role);
-    if (text != null) e.textContent = text;
-    return e;
 }
 
 function statusAccent(val: any, overrides?: Record<string, string>): string {

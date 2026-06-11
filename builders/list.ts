@@ -1,4 +1,5 @@
 import { createElement, type IconNode } from "lucide";
+import { el } from "./util";
 import { fireList } from "../../safecontracts/src/contracts-emit";
 import { getDataSource } from "../../safecontracts/src/contracts";
 import * as lucide from "lucide";
@@ -34,13 +35,6 @@ function iconGlyph(name: string | undefined, size: number): Node | null {
     svg.setAttribute("width", String(size));
     svg.setAttribute("height", String(size));
     return svg;
-}
-
-function el(tag: string, role?: string, text?: string): HTMLElement {
-    const e = document.createElement(tag);
-    if (role) e.setAttribute("data-role", role);
-    if (text != null) e.textContent = text;
-    return e;
 }
 
 function fieldOf(meta: Record<string, unknown>, key: string, fallback: string): string {
