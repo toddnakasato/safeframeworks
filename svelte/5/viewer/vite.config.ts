@@ -1,9 +1,10 @@
 import { defineConfig } from "vite";
 import { svelte } from "@sveltejs/vite-plugin-svelte";
 import path from "path";
+import { viewerStyles } from "../../../viewer-styles-plugin";
 
 export default defineConfig({
-  plugins: [svelte()],
+  plugins: [svelte(), viewerStyles()],
   server: { port: 1432, strictPort: true },
   build: { outDir: "dist", emptyOutDir: true },
   resolve: {

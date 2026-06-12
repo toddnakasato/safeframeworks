@@ -12,26 +12,48 @@ import type { SafeEvent } from "safecontracts";
 const STYLES = ["vanilla", "tailwind", "tailwind-daisy", "material"] as const;
 const COMPONENT_NAMES = Object.keys(SAMPLES).sort();
 
-/** Load a safestyles CSS file dynamically. */
-function loadStyle(name: string) {
-  const existing = document.getElementById("safestyle-link");
-  if (existing) existing.remove();
+// Themes per implementation — discovered from safestyles at build time
+// (public/styles symlinks to safestyles/implementations).
+const THEME_FILES = import.meta.glob("../public/styles/*/themes/*.css", { query: "?url" });
+const THEMES: Record<string, string[]> = {};
+for (const path of Object.keys(THEME_FILES)) {
+  const m = path.match(/styles\/([^/]+)\/themes\/([^/]+)\.css$/);
+  if (!m) continue;
+  (THEMES[m[1]] ??= []).push(m[2]);
+}
+for (const k of Object.keys(THEMES)) THEMES[k].sort((a, b) => a === "default" ? -1 : b === "default" ? 1 : a.localeCompare(b));
+
+/** Load a safestyles implementation + theme dynamically. */
+function loadStyle(name: string, theme: string) {
+  document.getElementById("safestyle-link")?.remove();
+  document.getElementById("safestyle-theme")?.remove();
   const link = document.createElement("link");
   link.id = "safestyle-link";
   link.rel = "stylesheet";
   link.href = `/styles/${name}/components.css`;
   document.head.appendChild(link);
+  const themeLink = document.createElement("link");
+  themeLink.id = "safestyle-theme";
+  themeLink.rel = "stylesheet";
+  themeLink.href = `/styles/${name}/themes/${theme}.css`;
+  document.head.appendChild(themeLink);
 }
 
 export default function App() {
   const [activeStyle, setActiveStyle] = useState<string>("vanilla");
+  const [activeTheme, setActiveTheme] = useState<string>("default");
   const [activeComponent, setActiveComponent] = useState<string | null>(null);
   const [activeVariation, setActiveVariation] = useState<string | null>(null);
   const [events, setEvents] = useState<SafeEvent[]>([]);
 
   useEffect(() => {
-    loadStyle(activeStyle);
-  }, [activeStyle]);
+    loadStyle(activeStyle, activeTheme);
+  }, [activeStyle, activeTheme]);
+
+  const selectStyle = (s: string) => {
+    setActiveStyle(s);
+    setActiveTheme("default");
+  };
 
   const handleEvent = (event: SafeEvent) => {
     setEvents(prev => [event, ...prev].slice(0, 20));
@@ -77,9 +99,16 @@ export default function App() {
         <div style={{ padding: 12, borderBottom: "1px solid var(--sd-border, #e5e7eb)" }}>
           <div style={{ fontSize: 11, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.05em", color: "#6b7280", marginBottom: 8 }}>Style</div>
           {STYLES.map(s => (
-            <button key={s} onClick={() => setActiveStyle(s)} style={itemStyle(s === activeStyle)}>
-              {s}
-            </button>
+            <div key={s}>
+              <button onClick={() => selectStyle(s)} style={itemStyle(s === activeStyle)}>
+                {s}
+              </button>
+              {s === activeStyle && (THEMES[s] ?? []).map(t => (
+                <button key={t} onClick={() => setActiveTheme(t)} style={itemStyle(t === activeTheme, 1)}>
+                  {t}
+                </button>
+              ))}
+            </div>
           ))}
         </div>
 
@@ -107,7 +136,7 @@ export default function App() {
       {/* Main area */}
       <div style={{ flex: 1, overflow: "auto", padding: 24 }}>
         <div style={{ fontSize: 14, fontWeight: 600, marginBottom: 16, color: "#1a1a1a" }}>
-          react/19 — {activeStyle}
+          react/19 — {activeStyle}{activeTheme !== "default" ? `/${activeTheme}` : ""}
           {activeComponent && <span style={{ fontWeight: 400, color: "#6b7280" }}> — {activeVariation ?? activeComponent}</span>}
         </div>
 

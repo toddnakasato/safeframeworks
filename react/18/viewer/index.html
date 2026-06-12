@@ -6,6 +6,32 @@
   <title>safeframeworks — react/19 viewer</title>
 </head>
 <body>
+    <script>
+      /* Fail visibly + report verdict — the safeapp contract, viewer flavor.
+         Errors land in the DOM (never a white screen) and POST to the vite
+         plugin's /__verdict sink -> runtime/render.json for proofs. */
+      function sendVerdict(v) {
+        try { fetch("/__verdict", { method: "POST", body: JSON.stringify(Object.assign({}, v, { ts: new Date().toISOString() })) }).catch(function () {}); } catch (e) {}
+      }
+      function showFatal(msg) {
+        var el = document.getElementById("root") || document.body;
+        if (el) el.innerHTML = '<pre style="padding:16px;color:#b91c1c;white-space:pre-wrap;font:12px monospace">VIEWER ERROR\n\n' + String(msg) + "</pre>";
+        sendVerdict({ ok: false, error: String(msg) });
+      }
+      window.onerror = function (m, s, l) { showFatal(m + "\n  at " + s + ":" + l); };
+      window.addEventListener("unhandledrejection", function (e) {
+        showFatal("Unhandled rejection: " + ((e.reason && e.reason.stack) || e.reason));
+      });
+      window.addEventListener("load", function () {
+        setTimeout(function () {
+          var root = document.getElementById("root") || document.body;
+          var nodes = root ? root.querySelectorAll("*").length : 0;
+          if (nodes > 0) sendVerdict({ ok: true, nodes: nodes });
+          else showFatal("zero nodes after load — viewer failed to mount");
+        }, 2000);
+      });
+    </script>
+
   <div id="root"></div>
   <script type="module" src="/src/main.tsx"></script>
 </body>

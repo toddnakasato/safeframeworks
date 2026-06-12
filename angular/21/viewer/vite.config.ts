@@ -1,9 +1,10 @@
 import { defineConfig } from "vite";
 import angular from "@analogjs/vite-plugin-angular";
 import path from "path";
+import { viewerStyles } from "../../../viewer-styles-plugin";
 
 export default defineConfig({
-  plugins: [angular()],
+  plugins: [angular(), viewerStyles()],
   server: { port: 1439, strictPort: true },
   build: { outDir: "dist", emptyOutDir: true },
   resolve: {
