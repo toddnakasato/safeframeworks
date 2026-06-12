@@ -146,7 +146,7 @@ export function createSafeGrid(container: HTMLElement, config: ConfigBase, onEve
             body.style.gridTemplateColumns = columns.replace(/1fr/g, "minmax(0, 1fr)");
 
             for (const field of fields) {
-                const cell = el("div", { "data-component": "grid-cell", "data-field-type": field.type });
+                const cell = el("div", { "data-role": "grid-cell", "data-field-type": field.type });
                 const cl = el("div", { "data-role": "label" });
                 cl.textContent = field.label;
                 cell.appendChild(cl);

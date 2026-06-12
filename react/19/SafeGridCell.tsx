@@ -79,7 +79,7 @@ export function SafeGridCell({ field, value, locale, currency, timezone, emptyVa
   const data = { [field.name]: value };
 
   return (
-    <div data-component="grid-cell" data-field-type={field.type}>
+    <div data-role="grid-cell" data-field-type={field.type}>
       <div data-role="label">{field.label}</div>
       <div data-role="input">
         <SafeInput config={inputConfig} data={data} field={field.name} onEvent={onEvent} />
