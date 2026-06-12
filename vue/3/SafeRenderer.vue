@@ -88,7 +88,7 @@ const gridStyle = computed(() => {
 
   <template v-else>
     <component :is="impl" :config="plan.config" :onEvent="stamped" />
-    <div v-if="plan.children.length > 0" data-role="children">
+    <div v-if="plan.childMode !== 'component' && plan.children.length > 0" data-role="children">
       <SafeRenderer v-for="c in plan.children" :key="c.key" :plan="c.plan" :onEvent="props.onEvent" />
     </div>
   </template>

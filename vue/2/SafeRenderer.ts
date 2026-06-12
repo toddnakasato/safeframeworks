@@ -81,7 +81,7 @@ const SafeRenderer = Vue.extend({
       return h("div", { attrs: { "data-component": "columns" }, style: { display: "grid", gridTemplateColumns: columns, gap: "var(--sd-space-md)" } }, childNodes("data-child"));
     }
     const leaf = h(LEAVES[plan.component], { props: { config: plan.config, onEvent: this.stamped } });
-    if (plan.children.length === 0) return leaf;
+    if (plan.childMode === "component" || plan.children.length === 0) return leaf;
     return h("div", [leaf, h("div", { attrs: { "data-role": "children" } }, childNodes("data-child"))]);
   },
 });

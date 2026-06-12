@@ -74,7 +74,7 @@ const KNOWN = new Set([...Object.keys(LEAVES), "layout", "columns"]);
 
     <ng-container *ngIf="p && p.kind === 'component' && p.component !== 'layout' && p.component !== 'columns'">
       <ng-container *ngComponentOutlet="impl; inputs: implInputs"></ng-container>
-      <div *ngIf="p.children.length > 0" data-role="children">
+      <div *ngIf="p.childMode !== 'component' && p.children.length > 0" data-role="children">
         <safe-renderer *ngFor="let c of p.children" [plan]="c.plan" [onEvent]="onEvent"></safe-renderer>
       </div>
     </ng-container>

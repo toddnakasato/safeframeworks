@@ -69,7 +69,7 @@
   </div>
 {:else}
   <svelte:component this={LEAVES[p.component]} config={p.config} onEvent={stamped} />
-  {#if p.children.length > 0}
+  {#if p.childMode !== "component" && p.children.length > 0}
     <div data-role="children">
       {#each p.children as c (c.key)}
         <svelte:self plan={c.plan} {onEvent} />
