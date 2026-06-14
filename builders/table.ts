@@ -4,6 +4,8 @@ import { fireTable } from "../../safecontracts/src/contracts-emit";
 import type { TableEvent } from "../../safecontracts/src/contracts-emit";
 import { getDataSource } from "../../safecontracts/src/contracts";
 import { fmtDate, fmtCurrency, fmtInt, fmtPercent, fmtStr } from "../../safecontracts/src/formatter";
+import { sortBy, paginate } from "../../safecontracts/src/contracts-operations";
+import type { SortDir } from "../../safecontracts/src/contracts-operations";
 
 /*----------------------------------------------------------------------------------------------------
  *
@@ -11,7 +13,7 @@ import { fmtDate, fmtCurrency, fmtInt, fmtPercent, fmtStr } from "../../safecont
  *
  ----------------------------------------------------------------------------------------------------*/
 
-type SortDir = "asc" | "desc";
+// SortDir imported from contracts-operations
 
 /*----------------------------------------------------------------------------------------------------
  *
@@ -115,16 +117,7 @@ export function createSafeTable(container: HTMLElement, config: ConfigBase, onEv
     function getSorted(): Record<string, any>[] {
         const source = localOrder ?? data;
         if (!sortField) return source;
-        const dir = sortDir === "asc" ? 1 : -1;
-        return [...source].sort((a, b) => {
-            const av = a[sortField];
-            const bv = b[sortField];
-            if (av == null && bv == null) return 0;
-            if (av == null) return 1;
-            if (bv == null) return -1;
-            if (typeof av === "number" && typeof bv === "number") return (av - bv) * dir;
-            return String(av).localeCompare(String(bv)) * dir;
-        });
+        return sortBy(source, sortField, sortDir);
     }
 
     function handleSort(field: Field) {
@@ -148,8 +141,9 @@ export function createSafeTable(container: HTMLElement, config: ConfigBase, onEv
         root.replaceChildren();
 
         const sorted = getSorted();
-        const paged = pageSize ? sorted.slice(page * pageSize, page * pageSize + pageSize) : sorted;
-        const totalPages = pageSize ? Math.ceil(sorted.length / pageSize) : 1;
+        const pg = paginate(sorted, page + 1, pageSize); // table uses 0-indexed page internally
+        const paged = pg.items;
+        const totalPages = pg.totalPages;
 
         const scroll = el("div", "scroll");
         const table = el("table", "table");
