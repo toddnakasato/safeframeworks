@@ -66,6 +66,7 @@ function buildSingleButton(config: ConfigBase, onEvent?: OnSafeEvent): HTMLEleme
     const size = (metadata.size as string) ?? "md";
     const fullWidth = !!metadata.fullWidth;
     const eventName = (metadata.eventName as string) ?? "click";
+    const eventContext = metadata.eventContext as Record<string, any> | undefined;
     const selected = !!metadata.selected;
     const status = metadata.status as string | undefined;
 
@@ -80,7 +81,7 @@ function buildSingleButton(config: ConfigBase, onEvent?: OnSafeEvent): HTMLEleme
 
     btn.onclick = () => {
         if (disabled || loading) return;
-        fireButton(onEvent, eventName as ButtonEvent, null, { instanceId }); // config-driven name; validated by prove build
+        fireButton(onEvent, eventName as ButtonEvent, null, { instanceId, context: eventContext }); // config-driven name; validated by prove build
     };
 
     if (loading) btn.appendChild(el("span", { "data-role": "spinner" }));
