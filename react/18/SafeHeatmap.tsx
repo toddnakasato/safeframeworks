@@ -1,74 +1,21 @@
+import { useRef, useEffect } from "react";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
-import { fireHeatmap } from "safecontracts";
+import { createSafeHeatmap } from "../../builders/heatmap";
 
-/*----------------------------------------------------------------------------------------------------
- *
- * Properties
- *
- ----------------------------------------------------------------------------------------------------*/
-
-export interface SafeHeatmapProps {
+interface SafeHeatmapProps {
   config: ConfigBase;
-  data: Record<string, any>[];
   onEvent?: OnSafeEvent;
 }
 
-/*----------------------------------------------------------------------------------------------------
- *
- * Helpers
- *
- ----------------------------------------------------------------------------------------------------*/
+export function SafeHeatmap({ config, onEvent }: SafeHeatmapProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
 
-/*----------------------------------------------------------------------------------------------------
- *
- * Implementation
- *
- ----------------------------------------------------------------------------------------------------*/
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+    const root = createSafeHeatmap(container, config, onEvent);
+    return () => { root.remove(); };
+  }, [config, onEvent]);
 
-export function SafeHeatmap({ config, data, onEvent }: SafeHeatmapProps) {
-  const { metadata } = config;
-  const cols = (metadata.columns as number) ?? 7;
-  const valueField = metadata.valueField as string;
-  const labelField = metadata.labelField as string | undefined;
-  const variant = (metadata.variant as string) ?? "default";
-
-  const values = data.map((d) => Number(d[valueField]) || 0);
-  const minVal = (metadata.minValue as number) ?? Math.min(...values);
-  const maxVal = (metadata.maxValue as number) ?? Math.max(...values);
-
-  const gap = variant === "compact" ? 2 : variant === "dense" ? 1 : 4;
-
-  return (
-    <div data-component="heatmap" data-variant={variant} style={{ width: "100%" }}>
-      {metadata.title && <div data-role="title">{metadata.title as string}</div>}
-      <div
-        data-role="grid"
-        style={{
-          display: "grid",
-          gridTemplateColumns: `repeat(${cols}, 1fr)`,
-          gap,
-        }}
-      >
-        {data.map((d, i) => {
-          const val = Number(d[valueField]) || 0;
-          const t = maxVal === minVal ? 0 : (val - minVal) / (maxVal - minVal);
-          const label = labelField ? String(d[labelField] ?? "") : String(val);
-          return (
-            <div
-              key={i}
-              data-role="cell"
-              style={{
-                aspectRatio: "1",
-                borderRadius: "var(--sd-radius-sm)",
-                background: `color-mix(in srgb, var(--sd-accent) ${Math.round((t * 0.85 + 0.05) * 100)}%, transparent)`,
-                cursor: "default",
-              }}
-              title={label}
-              onClick={() => fireHeatmap(onEvent, "cell:click", { index: i, value: val, data: d })}
-            />
-          );
-        })}
-      </div>
-    </div>
-  );
+  return <div ref={containerRef} />;
 }
