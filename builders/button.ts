@@ -52,6 +52,7 @@ function iconSpan(role: string, icon: string): HTMLElement {
 
 function buildSingleButton(config: ConfigBase, onEvent?: OnSafeEvent): HTMLElement {
     const metadata = config.metadata;
+    const instanceId = metadata?.name as string | undefined;
     const variant = (metadata.variant as string) ?? "primary";
     const label = metadata.label as string | undefined;
     const icon = metadata.icon as string | undefined;
@@ -113,6 +114,7 @@ function buildSingleButton(config: ConfigBase, onEvent?: OnSafeEvent): HTMLEleme
 
 function buildPaginationGroup(config: ConfigBase, onEvent?: OnSafeEvent): HTMLElement {
     const metadata = config.metadata;
+    const instanceId = metadata?.name as string | undefined;
     const totalPages = (metadata.totalPages as number) ?? 1;
     const initialPage = (metadata.currentPage as number) ?? 1;
     const showFirstLast = metadata.showFirstLast !== false;
@@ -188,7 +190,6 @@ function buildButton(config: ConfigBase, onEvent?: OnSafeEvent): HTMLElement {
 }
 
 export function createSafeButton(container: HTMLElement, config: ConfigBase, onEvent?: OnSafeEvent): HTMLElement {
-    const instanceId = config.metadata?.name as string | undefined;
     const root = buildButton(config, onEvent);
     container.appendChild(root);
     return root;
