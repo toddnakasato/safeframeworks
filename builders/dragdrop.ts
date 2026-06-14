@@ -22,6 +22,7 @@ import { getDataSource } from "../../safecontracts/src/contracts";
  ----------------------------------------------------------------------------------------------------*/
 
 function buildGeneric(root: HTMLElement, config: ConfigBase, items: Record<string, any>[], onEvent?: OnSafeEvent): void {
+    const instanceId = config.metadata?.name as string | undefined;
     const dropLabel = (config.metadata.dropLabel as string) ?? "Drop here";
     const dropDesc = (config.metadata.dropDescription as string) ?? "Drag an item to this zone";
 
@@ -71,6 +72,7 @@ function buildGeneric(root: HTMLElement, config: ConfigBase, items: Record<strin
 }
 
 function buildFile(root: HTMLElement, config: ConfigBase, onEvent?: OnSafeEvent): void {
+    const instanceId = config.metadata?.name as string | undefined;
     const dropLabel = (config.metadata.dropLabel as string) ?? "Drop files here";
     const dropDesc = (config.metadata.dropDescription as string) ?? "or click to browse";
     const accept = (config.metadata.accept as string) ?? "";
@@ -112,6 +114,7 @@ function buildFile(root: HTMLElement, config: ConfigBase, onEvent?: OnSafeEvent)
 }
 
 function buildPalette(root: HTMLElement, config: ConfigBase, onEvent?: OnSafeEvent): void {
+    const instanceId = config.metadata?.name as string | undefined;
     const categories = (config.metadata.categories as any[]) ?? [];
     const sections = (config.metadata.sections as any[]) ?? [{ id: "main", label: "Main" }];
 

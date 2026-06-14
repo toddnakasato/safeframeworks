@@ -41,7 +41,7 @@ function fieldOf(meta: Record<string, unknown>, key: string, fallback: string): 
     return (meta[key] as string) ?? fallback;
 }
 
-function makePager(state: PagerState, count: number, pageSize: number, onEvent: OnSafeEvent | undefined, rerender: () => void) {
+function makePager(state: PagerState, count: number, pageSize: number, onEvent: OnSafeEvent | undefined, rerender: () => void, instanceId?: string) {
     const totalPages = pageSize > 0 ? Math.max(1, Math.ceil(count / pageSize)) : 1;
     const page = Math.min(state.page, totalPages);
     const slice = <T,>(items: T[]): T[] =>
@@ -94,6 +94,7 @@ function buildPager(page: number, totalPages: number, numbers: boolean, go: (p: 
  ----------------------------------------------------------------------------------------------------*/
 
 function buildSimple(root: HTMLElement, config: ConfigBase, data: any[], onEvent?: OnSafeEvent): void {
+    const instanceId = config.metadata?.name as string | undefined;
     const meta = config.metadata;
     const direction = (meta.direction as string) ?? LIST_DEFAULTS.direction;
     const labelField = fieldOf(meta, "labelField", "label");
@@ -109,7 +110,7 @@ function buildSimple(root: HTMLElement, config: ConfigBase, data: any[], onEvent
 
     function render() {
         root.replaceChildren();
-        const { page, totalPages, slice, go } = makePager(state, data.length, pageSize, onEvent, render);
+        const { page, totalPages, slice, go } = makePager(state, data.length, pageSize, onEvent, render, instanceId);
         const items = el("div", "list-items");
         slice(data).forEach((item, i) => {
             const label = typeof item === "string" ? item : item[labelField];
@@ -139,6 +140,7 @@ function buildSimple(root: HTMLElement, config: ConfigBase, data: any[], onEvent
 }
 
 function buildSelection(root: HTMLElement, config: ConfigBase, data: any[], onEvent?: OnSafeEvent): void {
+    const instanceId = config.metadata?.name as string | undefined;
     const meta = config.metadata;
     const mode = (meta.selectionMode as string) ?? LIST_DEFAULTS.selectionMode;
     const labelField = fieldOf(meta, "labelField", "label");
@@ -188,6 +190,7 @@ function buildSelection(root: HTMLElement, config: ConfigBase, data: any[], onEv
 }
 
 function buildColumns(root: HTMLElement, config: ConfigBase, data: any[], onEvent?: OnSafeEvent): void {
+    const instanceId = config.metadata?.name as string | undefined;
     const meta = config.metadata;
     const schema = getDataSource(config)?.schema;
     const fields = (schema?.fields ?? []) as any[];
@@ -199,7 +202,7 @@ function buildColumns(root: HTMLElement, config: ConfigBase, data: any[], onEven
 
     function render() {
         root.replaceChildren();
-        const { page, totalPages, slice, go } = makePager(state, data.length, pageSize, onEvent, render);
+        const { page, totalPages, slice, go } = makePager(state, data.length, pageSize, onEvent, render, instanceId);
         const header = el("div", "list-header");
         header.style.gridTemplateColumns = `repeat(${fields.length}, 1fr)`;
         for (const f of fields) header.appendChild(el("span", "header-cell", String(f.label ?? f.name)));
@@ -222,6 +225,7 @@ function buildColumns(root: HTMLElement, config: ConfigBase, data: any[], onEven
 }
 
 function buildFiles(root: HTMLElement, config: ConfigBase, data: any[], onEvent?: OnSafeEvent): void {
+    const instanceId = config.metadata?.name as string | undefined;
     const meta = config.metadata;
     const labelField = fieldOf(meta, "labelField", "name");
     const iconField = fieldOf(meta, "iconField", "icon");
@@ -233,7 +237,7 @@ function buildFiles(root: HTMLElement, config: ConfigBase, data: any[], onEvent?
 
     function render() {
         root.replaceChildren();
-        const { page, totalPages, slice, go } = makePager(state, data.length, pageSize, onEvent, render);
+        const { page, totalPages, slice, go } = makePager(state, data.length, pageSize, onEvent, render, instanceId);
         const items = el("div", "list-items");
         slice(data).forEach((item, i) => {
             const row = el("div", "list-item");
@@ -260,6 +264,7 @@ function buildFiles(root: HTMLElement, config: ConfigBase, data: any[], onEvent?
 }
 
 function buildActions(root: HTMLElement, config: ConfigBase, data: any[], onEvent?: OnSafeEvent): void {
+    const instanceId = config.metadata?.name as string | undefined;
     const meta = config.metadata;
     const labelField = fieldOf(meta, "labelField", "title");
     const iconField = fieldOf(meta, "iconField", "icon");
@@ -329,6 +334,7 @@ function collectGroupIds(nodes: any[]): string[] {
 }
 
 function buildHierarchy(root: HTMLElement, config: ConfigBase, data: any[], onEvent?: OnSafeEvent): void {
+    const instanceId = config.metadata?.name as string | undefined;
     const meta = config.metadata;
     const labelField = fieldOf(meta, "labelField", "name");
     const iconField = fieldOf(meta, "iconField", "icon");
@@ -349,7 +355,7 @@ function buildHierarchy(root: HTMLElement, config: ConfigBase, data: any[], onEv
     function render() {
         root.replaceChildren();
         const flat = flattenTree(data, expanded);
-        const { page, totalPages, slice, go } = makePager(state, flat.length, pageSize, onEvent, render);
+        const { page, totalPages, slice, go } = makePager(state, flat.length, pageSize, onEvent, render, instanceId);
         const items = el("div", "list-items");
         for (const node of slice(flat)) {
             const isGroup = !!node.children?.length;
@@ -391,6 +397,7 @@ function buildHierarchy(root: HTMLElement, config: ConfigBase, data: any[], onEv
 }
 
 function buildPropertyGrid(root: HTMLElement, config: ConfigBase, data: any[], onEvent?: OnSafeEvent): void {
+    const instanceId = config.metadata?.name as string | undefined;
     const expanded = new Set<string>(
         data.filter((g) => g.children?.length).map((g) => String(g.id)),
     );
@@ -477,6 +484,7 @@ function buildPropertyGrid(root: HTMLElement, config: ConfigBase, data: any[], o
 }
 
 function buildGantt(root: HTMLElement, config: ConfigBase, data: any[], onEvent?: OnSafeEvent): void {
+    const instanceId = config.metadata?.name as string | undefined;
     const meta = config.metadata;
     const title = (meta.title as string) ?? LIST_DEFAULTS.ganttTitle;
     const days = (meta.days as number) ?? LIST_DEFAULTS.ganttDays;
