@@ -6,6 +6,7 @@ import * as lucide from "lucide";
 import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
 import { DAY_NAMES_SHORT } from "../../safecontracts/src/contracts";
 import { LIST_DEFAULTS, LIST_STATUS_ACCENTS } from "../../safecontracts/src/components/list";
+import { paginate } from "../../safecontracts/src/contracts-operations";
 
 /*----------------------------------------------------------------------------------------------------
  *
@@ -42,14 +43,15 @@ function fieldOf(meta: Record<string, unknown>, key: string, fallback: string): 
 }
 
 function makePager(state: PagerState, count: number, pageSize: number, onEvent: OnSafeEvent | undefined, rerender: () => void, instanceId?: string) {
-    const totalPages = pageSize > 0 ? Math.max(1, Math.ceil(count / pageSize)) : 1;
-    const page = Math.min(state.page, totalPages);
-    const slice = <T,>(items: T[]): T[] =>
-        pageSize > 0 ? items.slice((page - 1) * pageSize, page * pageSize) : items;
+    // Use contract paginate for totalPages and page clamping
+    const dummy = paginate(Array(count), state.page, pageSize);
+    const totalPages = dummy.totalPages;
+    const page = dummy.page;
+    const slice = <T,>(items: T[]): T[] => paginate(items, page, pageSize).items;
     const go = (p: number) => {
-        const next = Math.max(1, Math.min(totalPages, p));
-        state.page = next;
-        fireList(onEvent, "page", { page: next, totalPages }, { instanceId });
+        const clamped = paginate(Array(count), p, pageSize);
+        state.page = clamped.page;
+        fireList(onEvent, "page", { page: clamped.page, totalPages }, { instanceId });
         rerender();
     };
     return { page, totalPages, slice, go };
