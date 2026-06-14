@@ -161,6 +161,7 @@ export function buildChartConfig(config: ConfigBase): ChartConfiguration {
 }
 
 export function createSafeChart(canvas: HTMLCanvasElement, config: ConfigBase, onEvent?: OnSafeEvent): Chart {
+    const instanceId = config.metadata?.name as string | undefined;
     const metadata = config.metadata;
     canvas.setAttribute("data-component", "chart");
     canvas.setAttribute("data-variant", (metadata.variant as string) ?? "default");
@@ -176,7 +177,7 @@ export function createSafeChart(canvas: HTMLCanvasElement, config: ConfigBase, o
                 index: el.index,
                 datasetIndex: el.datasetIndex,
                 row: data[el.index],
-            });
+            }, { instanceId });
         },
     };
     return new Chart(canvas, cfg);

@@ -22,6 +22,7 @@ import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts"
  ----------------------------------------------------------------------------------------------------*/
 
 export function createSafeGauge(container: HTMLElement, config: ConfigBase, onEvent?: OnSafeEvent): HTMLElement {
+    const instanceId = config.metadata?.name as string | undefined;
     const metadata = config.metadata;
     const variant = (metadata.variant as string) ?? "default";
     const valueField = metadata.valueField as string;
@@ -55,7 +56,7 @@ export function createSafeGauge(container: HTMLElement, config: ConfigBase, onEv
     const root = document.createElement("div");
     root.setAttribute("data-component", "gauge");
     root.setAttribute("data-variant", variant);
-    root.onclick = () => fireGauge(onEvent, "click", { value });
+    root.onclick = () => fireGauge(onEvent, "click", { value }, { instanceId });
 
     const svgEl = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     svgEl.style.width = "100%";

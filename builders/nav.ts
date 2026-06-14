@@ -43,6 +43,7 @@ function el(tag: string, attrs: Record<string, string> = {}): HTMLElement {
  ----------------------------------------------------------------------------------------------------*/
 
 export function createSafeNav(container: HTMLElement, config: ConfigBase, onEvent?: OnSafeEvent): HTMLElement {
+    const instanceId = config.metadata?.name as string | undefined;
     const metadata = config.metadata;
     const title = metadata.title as string | undefined;
     const subtitle = metadata.subtitle as string | undefined;
@@ -89,7 +90,7 @@ export function createSafeNav(container: HTMLElement, config: ConfigBase, onEven
 
     const fire = (key: string) => {
         active = key;
-        fireNav(onEvent, "navigate", { key, value: key }, { context: { path: key } });
+        fireNav(onEvent, "navigate", { key, value: key }, { instanceId, context: { path: key } });
         render();
     };
 

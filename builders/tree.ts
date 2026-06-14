@@ -68,6 +68,7 @@ function el(tag: string, attrs: Record<string, string> = {}): HTMLElement {
  ----------------------------------------------------------------------------------------------------*/
 
 export function createSafeTree(container: HTMLElement, config: ConfigBase, onEvent?: OnSafeEvent): HTMLElement {
+    const instanceId = config.metadata?.name as string | undefined;
     const metadata = config.metadata;
     const variant = (metadata.variant as string) ?? "default";
     const spacing = (metadata.spacing as string) ?? "normal";
@@ -119,13 +120,13 @@ export function createSafeTree(container: HTMLElement, config: ConfigBase, onEve
     const handleToggle = (id: string) => {
         if (expanded.has(id)) expanded.delete(id);
         else expanded.add(id);
-        fireTree(onEvent, "expand", { id });
+        fireTree(onEvent, "expand", { id }, { instanceId });
         render();
     };
 
     const handleSelect = (node: TreeNode) => {
         selected = node.id;
-        fireTree(onEvent, "select", { id: node.id, record: node.record });
+        fireTree(onEvent, "select", { id: node.id, record: node.record }, { instanceId });
         render();
     };
 

@@ -61,6 +61,7 @@ export function createSafeMap(
     data: Record<string, any>[],
     onEvent?: OnSafeEvent,
 ): L.Map {
+    const instanceId = config.metadata?.name as string | undefined;
     const metadata = config.metadata;
     const variant = (metadata.variant as string) ?? "default";
     const latField = (metadata.latField as string) ?? "lat";

@@ -67,6 +67,7 @@ function formatDateRange(dates: Date[]): string {
  ----------------------------------------------------------------------------------------------------*/
 
 export function createSafeWeek(container: HTMLElement, config: ConfigBase, onEvent?: OnSafeEvent): HTMLElement {
+    const instanceId = config.metadata?.name as string | undefined;
     const metadata = config.metadata;
     const variant = (metadata.variant as string) ?? "full";
     const showNav = metadata.showNavigation !== false;
@@ -86,12 +87,12 @@ export function createSafeWeek(container: HTMLElement, config: ConfigBase, onEve
 
     const fireNavigate = (dir: number) => {
         offset += dir;
-        fireWeek(onEvent, "navigate", { direction: dir });
+        fireWeek(onEvent, "navigate", { direction: dir }, { instanceId });
         render();
     };
 
     const fireSelect = (date: Date, hour: number) => {
-        fireWeek(onEvent, "select", { date: date.toISOString().split("T")[0], hour });
+        fireWeek(onEvent, "select", { date: date.toISOString().split("T")[0], hour }, { instanceId });
     };
 
     function buildGrid(dates: Date[]): HTMLElement {

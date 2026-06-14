@@ -37,11 +37,11 @@ function accentColor(node: FlowNode | undefined, idx: number, colors: string[], 
 }
 
 function nodeEvent(onEvent: OnSafeEvent | undefined, name: string | undefined) {
-    fireFlow(onEvent, "node:click", { name });
+    fireFlow(onEvent, "node:click", { name }, { instanceId });
 }
 
 function linkEvent(onEvent: OnSafeEvent | undefined, source: string | undefined, target: string | undefined, value: number) {
-    fireFlow(onEvent, "link:click", { source, target, value });
+    fireFlow(onEvent, "link:click", { source, target, value }, { instanceId });
 }
 
 /*----------------------------------------------------------------------------------------------------
@@ -315,6 +315,7 @@ export function renderSafeFlow(
     data: FlowData,
     onEvent?: OnSafeEvent,
 ): void {
+    const instanceId = config.metadata?.name as string | undefined;
     const metadata = config.metadata;
     const variant = (metadata.variant as string) ?? FLOW_DEFAULTS.variant;
 

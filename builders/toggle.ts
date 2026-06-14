@@ -35,6 +35,7 @@ function buildSwitchTrack(checked: boolean, disabled: boolean | undefined, onTog
  ----------------------------------------------------------------------------------------------------*/
 
 export function createSafeToggle(container: HTMLElement, config: ConfigBase, onEvent?: OnSafeEvent): HTMLElement {
+    const instanceId = config.metadata?.name as string | undefined;
     const metadata = config.metadata;
     const variant = (metadata.variant as string) ?? "switch";
 
@@ -71,7 +72,7 @@ export function createSafeToggle(container: HTMLElement, config: ConfigBase, onE
             const handleToggle = () => {
                 if (disabled) return;
                 checked = !checked;
-                fireToggle(onEvent, "change", { checked, label });
+                fireToggle(onEvent, "change", { checked, label }, { instanceId });
                 render();
             };
             const labelEl = buildLabelEl();
@@ -93,7 +94,7 @@ export function createSafeToggle(container: HTMLElement, config: ConfigBase, onE
 
         const handleToggle = (key: string, label: string) => {
             states[key] = !states[key];
-            fireToggle(onEvent, "change", { key, checked: states[key], label });
+            fireToggle(onEvent, "change", { key, checked: states[key], label }, { instanceId });
             render();
         };
 
@@ -132,13 +133,13 @@ export function createSafeToggle(container: HTMLElement, config: ConfigBase, onE
 
         const handleToggle = (key: string, label: string) => {
             states[key] = !states[key];
-            fireToggle(onEvent, "change", { key, checked: states[key], label });
+            fireToggle(onEvent, "change", { key, checked: states[key], label }, { instanceId });
             render();
         };
 
         const handleExpand = (key: string) => {
             expanded[key] = !expanded[key];
-            fireToggle(onEvent, "expand", { key, expanded: expanded[key] });
+            fireToggle(onEvent, "expand", { key, expanded: expanded[key] }, { instanceId });
             render();
         };
 

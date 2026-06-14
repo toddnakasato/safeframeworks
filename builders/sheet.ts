@@ -84,6 +84,7 @@ function fillCell(td: HTMLElement, val: any, col: SheetColumn | undefined, rows:
  ----------------------------------------------------------------------------------------------------*/
 
 export function createSafeSheet(container: HTMLElement, config: ConfigBase, onEvent?: OnSafeEvent): HTMLElement {
+    const instanceId = config.metadata?.name as string | undefined;
     const metadata = config.metadata;
     const variant = (metadata.variant as string) ?? SHEET_DEFAULTS.variant;
     const surface = (metadata.surface as string) ?? "base";
@@ -154,7 +155,7 @@ export function createSafeSheet(container: HTMLElement, config: ConfigBase, onEv
 
     const handleCellClick = (r: number, c: number) => {
         selectedCell = [r, c];
-        fireSheet(onEvent, "select", { row: r, col: c, value: getCellValue(r, c) });
+        fireSheet(onEvent, "select", { row: r, col: c, value: getCellValue(r, c) }, { instanceId });
         render();
     };
 
@@ -183,7 +184,7 @@ export function createSafeSheet(container: HTMLElement, config: ConfigBase, onEv
             }
         } catch {}
         editingCell = null;
-        fireSheet(onEvent, "edit", { row: r, col: c, value: val });
+        fireSheet(onEvent, "edit", { row: r, col: c, value: val }, { instanceId });
         render();
     };
 

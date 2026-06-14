@@ -119,6 +119,7 @@ function formatDisplay(value: any, format: string | undefined, locale: string, c
  ----------------------------------------------------------------------------------------------------*/
 
 export function createSafeInput(container: HTMLElement, config: ConfigBase, onEvent?: OnSafeEvent): HTMLElement {
+    const instanceId = config.metadata?.name as string | undefined;
     const metadata = config.metadata;
 
     // Self-extract record from config data (SafeRenderer does this for react)
@@ -203,7 +204,7 @@ export function createSafeInput(container: HTMLElement, config: ConfigBase, onEv
     root.setAttribute("data-valign", valign);
 
     const fireEvent = (name: string, payload: any) => {
-        fireInput(onEvent, name as InputEvent, payload);
+        fireInput(onEvent, name as InputEvent, payload, { instanceId });
     };
 
     function getDisplayValue(): string {

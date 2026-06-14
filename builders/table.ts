@@ -49,6 +49,7 @@ function numericType(type: string): boolean {
  ----------------------------------------------------------------------------------------------------*/
 
 export function createSafeTable(container: HTMLElement, config: ConfigBase, onEvent?: OnSafeEvent): HTMLElement {
+    const instanceId = config.metadata?.name as string | undefined;
     const metadata = config.metadata;
 
     // Self-extract data + schema from the first datasource
@@ -87,7 +88,7 @@ export function createSafeTable(container: HTMLElement, config: ConfigBase, onEv
     root.setAttribute("data-component", "table");
 
     const fire = (eventName: string, payload: any) => {
-        fireTable(onEvent, eventName as TableEvent, payload);
+        fireTable(onEvent, eventName as TableEvent, payload, { instanceId });
     };
 
     if (data.length === 0) {

@@ -23,6 +23,7 @@ import { resolveColors } from "../../safecontracts/src/palette";
  ----------------------------------------------------------------------------------------------------*/
 
 export function createSafeFunnel(container: HTMLElement, config: ConfigBase, onEvent?: OnSafeEvent): HTMLElement {
+    const instanceId = config.metadata?.name as string | undefined;
     const metadata = config.metadata;
     const FUNNEL_COLORS = resolveColors(metadata);
     const variant = (metadata.variant as string) ?? "default";

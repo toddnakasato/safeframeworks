@@ -22,6 +22,7 @@ import { getDataSource } from "../../safecontracts/src/contracts";
  ----------------------------------------------------------------------------------------------------*/
 
 export function createSafeCard(container: HTMLElement, config: ConfigBase, onEvent?: OnSafeEvent): HTMLElement {
+    const instanceId = config.metadata?.name as string | undefined;
     const metadata = config.metadata;
     const rows = metadata.rows as RowDef[] | undefined;
     const accent = (metadata.accent as string) ?? "brand";
@@ -45,14 +46,14 @@ export function createSafeCard(container: HTMLElement, config: ConfigBase, onEve
     root.setAttribute("data-radius", radius);
     root.setAttribute("data-spacing", spacing);
     root.setAttribute("data-accent", accent);
-    root.onclick = () => fireCard(onEvent, "click", { data });
+    root.onclick = () => fireCard(onEvent, "click", { data }, { instanceId });
 
     const appendBack = () => {
         if (!backLabel) return;
         const back = el("div", "back", backLabel);
         back.onclick = (e) => {
             e.stopPropagation();
-            fireCard(onEvent, "back", {});
+            fireCard(onEvent, "back", {}, { instanceId });
         };
         root.appendChild(back);
     };

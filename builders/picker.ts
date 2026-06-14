@@ -22,6 +22,7 @@ import { getDataSource } from "../../safecontracts/src/contracts";
  ----------------------------------------------------------------------------------------------------*/
 
 export function createSafePicker(container: HTMLElement, config: ConfigBase, onEvent?: OnSafeEvent): HTMLElement {
+    const instanceId = config.metadata?.name as string | undefined;
     const metadata = config.metadata;
     const isCardGrid = metadata.variant === "card-grid";
 
@@ -97,7 +98,7 @@ export function createSafePicker(container: HTMLElement, config: ConfigBase, onE
             select.value = filterValue;
             select.addEventListener("change", () => {
                 filterValue = select.value;
-                firePicker(onEvent, "filter", { field: filterField, value: select.value });
+                firePicker(onEvent, "filter", { field: filterField, value: select.value }, { instanceId });
                 renderResults();
             });
             form.appendChild(select);
@@ -189,13 +190,13 @@ export function createSafePicker(container: HTMLElement, config: ConfigBase, onE
                 const card = el("div", "card");
                 card.setAttribute("data-surface", "raised");
                 card.setAttribute("data-radius", radius);
-                card.onclick = () => firePicker(onEvent, "select", { row, index: i });
+                card.onclick = () => firePicker(onEvent, "select", { row, index: i }, { instanceId });
                 buildRows(card, row);
                 results.appendChild(card);
             } else {
                 const li = el("li", "list-item");
                 li.setAttribute("data-spacing", spacing);
-                li.onclick = () => firePicker(onEvent, "select", { row, index: i });
+                li.onclick = () => firePicker(onEvent, "select", { row, index: i }, { instanceId });
                 buildRows(li, row);
                 results.appendChild(li);
             }

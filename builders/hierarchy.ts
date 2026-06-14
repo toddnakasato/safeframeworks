@@ -218,6 +218,7 @@ function renderIcicle(svgEl: SVGSVGElement, root: d3.HierarchyNode<any>, metadat
 }
 
 export function createSafeHierarchy(container: HTMLElement, config: ConfigBase, onEvent?: OnSafeEvent): HTMLElement {
+    const instanceId = config.metadata?.name as string | undefined;
     const metadata = config.metadata;
     const variant = (metadata.variant as string) ?? HIERARCHY_DEFAULTS.variant;
 

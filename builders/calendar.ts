@@ -57,6 +57,7 @@ function generateDays(year: number, month: number, weekStart: string): (number |
  ----------------------------------------------------------------------------------------------------*/
 
 export function createSafeCalendar(container: HTMLElement, config: ConfigBase, onEvent?: OnSafeEvent): HTMLElement {
+    const instanceId = config.metadata?.name as string | undefined;
     const metadata = config.metadata;
     const variant = (metadata.variant as string) ?? "grid";
     const size = (metadata.size as string) ?? "default";
@@ -84,12 +85,12 @@ export function createSafeCalendar(container: HTMLElement, config: ConfigBase, o
         viewMonth = d.getMonth();
         fireCalendar(onEvent, "navigate", {
             year: d.getFullYear(), month: d.getMonth(), direction: dir,
-        });
+        }, { instanceId });
         render();
     };
 
     const fireSelect = (y: number, m: number, d: number) => {
-        fireCalendar(onEvent, "select", { year: y, month: m, day: d });
+        fireCalendar(onEvent, "select", { year: y, month: m, day: d }, { instanceId });
     };
 
     function buildMonthGrid(

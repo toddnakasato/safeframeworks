@@ -22,6 +22,7 @@ import { getDataSource } from "../../safecontracts/src/contracts";
  ----------------------------------------------------------------------------------------------------*/
 
 export function createSafeHeatmap(container: HTMLElement, config: ConfigBase, onEvent?: OnSafeEvent): HTMLElement {
+    const instanceId = config.metadata?.name as string | undefined;
     const metadata = config.metadata;
     const cols = (metadata.columns as number) ?? 7;
     const valueField = metadata.valueField as string;
@@ -61,7 +62,7 @@ export function createSafeHeatmap(container: HTMLElement, config: ConfigBase, on
         cell.style.background = `color-mix(in srgb, var(--sd-accent) ${Math.round((t * 0.85 + 0.05) * 100)}%, transparent)`;
         cell.style.cursor = "default";
         cell.title = label;
-        cell.onclick = () => fireHeatmap(onEvent, "cell:click", { index: i, value: val, data: d });
+        cell.onclick = () => fireHeatmap(onEvent, "cell:click", { index: i, value: val, data: d }, { instanceId });
         grid.appendChild(cell);
     });
 

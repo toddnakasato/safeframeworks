@@ -27,6 +27,7 @@ interface TabItem {
  ----------------------------------------------------------------------------------------------------*/
 
 export function createSafeTabs(container: HTMLElement, config: ConfigBase, onEvent?: OnSafeEvent): HTMLElement {
+    const instanceId = config.metadata?.name as string | undefined;
     const { metadata, children } = config;
     const tabs: TabItem[] = (metadata.tabs as TabItem[]) ?? [];
     const variant = (metadata.variant as string) ?? "default";
@@ -68,7 +69,7 @@ export function createSafeTabs(container: HTMLElement, config: ConfigBase, onEve
             if (active === tab.key) btn.setAttribute("data-active", "");
             btn.onclick = () => {
                 active = tab.key;
-                fireTabs(onEvent, "select", { key: tab.key });
+                fireTabs(onEvent, "select", { key: tab.key }, { instanceId });
                 render();
             };
             btn.style.display = "flex";

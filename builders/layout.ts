@@ -22,6 +22,7 @@ import { LAYOUT_VARIANTS } from "../../safecontracts/src/contracts";
  ----------------------------------------------------------------------------------------------------*/
 
 export function createSafeLayout(container: HTMLElement, config: ConfigBase, onEvent?: OnSafeEvent): HTMLElement {
+    const instanceId = config.metadata?.name as string | undefined;
     const metadata = config.metadata;
     const variant = (metadata.variant as string) ?? "single";
     const backLabel = metadata.backLabel as string | undefined;
@@ -32,7 +33,7 @@ export function createSafeLayout(container: HTMLElement, config: ConfigBase, onE
 
     if (backLabel) {
         const back = el("button", "layout-back", backLabel);
-        back.onclick = () => fireLayout(onEvent, "back", {});
+        back.onclick = () => fireLayout(onEvent, "back", {}, { instanceId });
         root.appendChild(back);
     }
 

@@ -35,6 +35,7 @@ function getCategoryColor(categories: string[], cat: string, colors: string[]): 
  ----------------------------------------------------------------------------------------------------*/
 
 export function createSafeTimeline(container: HTMLElement, config: ConfigBase, onEvent?: OnSafeEvent): HTMLElement {
+    const instanceId = config.metadata?.name as string | undefined;
     const metadata = config.metadata;
     const COLORS = resolveColors(metadata);
     const variant = (metadata.variant as string) ?? "default";
@@ -61,7 +62,7 @@ export function createSafeTimeline(container: HTMLElement, config: ConfigBase, o
     }
 
     const fireSelect = (index: number, item: Record<string, any>) => {
-        fireTimeline(onEvent, "select", { index, data: item });
+        fireTimeline(onEvent, "select", { index, data: item }, { instanceId });
     };
 
     const root = el("div");
