@@ -2,6 +2,7 @@ import type { ConfigBase, OnSafeEvent, RowCell, RowDef } from "../../safecontrac
 import { el } from "./util";
 import { firePicker } from "../../safecontracts/src/contracts-emit";
 import { getDataSource } from "../../safecontracts/src/contracts";
+import { filterBy } from "../../safecontracts/src/contracts-operations";
 
 /*----------------------------------------------------------------------------------------------------
  *
@@ -139,13 +140,7 @@ export function createSafePicker(container: HTMLElement, config: ConfigBase, onE
             result = result.filter((row) => String(row[filterField] ?? "") === filterValue);
         }
         if (search.trim()) {
-            const q = search.toLowerCase();
-            result = result.filter((row) =>
-                searchFields.some((f: string) => {
-                    const v = row[f];
-                    return v != null && String(v).toLowerCase().includes(q);
-                }),
-            );
+            result = filterBy(result, search, searchFields);
         }
         return result;
     }

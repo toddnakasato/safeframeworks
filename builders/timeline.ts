@@ -3,6 +3,7 @@ import { el } from "./util";
 import { fireTimeline } from "../../safecontracts/src/contracts-emit";
 import { getDataSource } from "../../safecontracts/src/contracts";
 import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
+import { sortBy } from "../../safecontracts/src/contracts-operations";
 import { resolveColors } from "../../safecontracts/src/palette";
 
 /*----------------------------------------------------------------------------------------------------
@@ -48,11 +49,7 @@ export function createSafeTimeline(container: HTMLElement, config: ConfigBase, o
     const sortDir = (metadata.sortDir as string) ?? "desc";
 
     const data = timelineData(config);
-    const sorted = [...data].sort((a, b) => {
-        const da = new Date(a[dateField]).getTime();
-        const db = new Date(b[dateField]).getTime();
-        return sortDir === "asc" ? da - db : db - da;
-    });
+    const sorted = sortBy(data, dateField, (sortDir === "asc" ? "asc" : "desc"));
 
     const categories: string[] = [];
     if (categoryField) {
