@@ -1,0 +1,12 @@
+{
+  "ok": true,
+  "folder": "configs",
+  "total": 19,
+  "passed": 19,
+  "failed": 0,
+  "products": [
+    "proof",
+    "crutchtools"
+  ],
+  "failures": []
+}

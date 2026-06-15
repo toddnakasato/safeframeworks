@@ -1,0 +1,58 @@
+{
+  "component": "table",
+  "metadata": {
+    "variant": "default",
+    "spacing": "compact",
+    "headerStyle": "bold",
+    "rowDivider": "thin",
+    "pageSize": 10,
+    "sortable": true,
+    "selectable": true,
+    "selectionMode": "multi"
+  },
+  "data": {
+    "rows": {
+      "name": "contacts",
+      "type": "list",
+      "source": "file",
+      "format": "csv",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "label": "ID",
+            "type": "number"
+          },
+          {
+            "name": "name",
+            "label": "Name",
+            "type": "text"
+          },
+          {
+            "name": "title",
+            "label": "Title",
+            "type": "text"
+          },
+          {
+            "name": "email",
+            "label": "Email",
+            "type": "text"
+          },
+          {
+            "name": "phone",
+            "label": "Phone",
+            "type": "text"
+          },
+          {
+            "name": "status",
+            "label": "Status",
+            "type": "text"
+          }
+        ]
+      }
+    }
+  },
+  "eventHandler": {
+    "handler": "table"
+  }
+}

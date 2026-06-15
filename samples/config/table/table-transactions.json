@@ -1,0 +1,57 @@
+{
+  "component": "table",
+  "metadata": {
+    "variant": "default",
+    "spacing": "normal",
+    "headerStyle": "uppercase",
+    "rowDivider": "thin",
+    "zebra": "even",
+    "pageSize": 10,
+    "sortable": true
+  },
+  "data": {
+    "rows": {
+      "name": "transactions",
+      "type": "list",
+      "source": "file",
+      "format": "parquet",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "label": "ID",
+            "type": "number"
+          },
+          {
+            "name": "transaction_id",
+            "label": "Transaction",
+            "type": "text"
+          },
+          {
+            "name": "method",
+            "label": "Method",
+            "type": "text"
+          },
+          {
+            "name": "amount",
+            "label": "Amount",
+            "type": "currency"
+          },
+          {
+            "name": "status",
+            "label": "Status",
+            "type": "text"
+          },
+          {
+            "name": "transaction_date",
+            "label": "Date",
+            "type": "date"
+          }
+        ]
+      }
+    }
+  },
+  "eventHandler": {
+    "handler": "table"
+  }
+}

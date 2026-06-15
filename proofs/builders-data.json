@@ -1,0 +1,142 @@
+{
+  "ok": true,
+  "checked": 22,
+  "components": {
+    "generate": {
+      "ok": true,
+      "checks": [
+        {
+          "name": "generate_transactions_parquet",
+          "ok": true,
+          "evidence": "50 rows: id, transaction_id, method, amount, status, transaction_date"
+        },
+        {
+          "name": "generate_contacts_csv",
+          "ok": true,
+          "evidence": "50 rows: id, name, title, email, phone, status"
+        },
+        {
+          "name": "generate_events_json",
+          "ok": true,
+          "evidence": "50 rows: id, event_type, user_id, path, duration_ms, event_time"
+        }
+      ]
+    },
+    "schema": {
+      "ok": true,
+      "checks": [
+        {
+          "name": "schema_transactions_parquet",
+          "ok": true,
+          "evidence": "columns: id, transaction_id, method, amount, status, transaction_date"
+        },
+        {
+          "name": "schema_contacts_csv",
+          "ok": true,
+          "evidence": "columns: id, name, title, email, phone, status"
+        },
+        {
+          "name": "schema_events_json",
+          "ok": true,
+          "evidence": "columns: id, event_type, user_id, path, duration_ms, event_time"
+        },
+        {
+          "name": "cross_format_count",
+          "ok": true,
+          "evidence": "all 50: parquet=50, csv=50, json=50"
+        }
+      ]
+    },
+    "pagination": {
+      "ok": true,
+      "checks": [
+        {
+          "name": "paginate_transactions_page1",
+          "ok": true,
+          "evidence": "10 items, page 1/5, first id=1"
+        },
+        {
+          "name": "paginate_transactions_page5",
+          "ok": true,
+          "evidence": "10 items, page 5/5, last id=50"
+        },
+        {
+          "name": "paginate_contacts_page1",
+          "ok": true,
+          "evidence": "10 items, page 1/5, first id=1"
+        },
+        {
+          "name": "paginate_contacts_page5",
+          "ok": true,
+          "evidence": "10 items, page 5/5, last id=50"
+        },
+        {
+          "name": "paginate_events_page1",
+          "ok": true,
+          "evidence": "10 items, page 1/5, first id=1"
+        },
+        {
+          "name": "paginate_events_page5",
+          "ok": true,
+          "evidence": "10 items, page 5/5, last id=50"
+        },
+        {
+          "name": "paginate_clamp",
+          "ok": true,
+          "evidence": "page 99 clamped to 5"
+        },
+        {
+          "name": "paginate_disabled",
+          "ok": true,
+          "evidence": "all 50, 1 page"
+        }
+      ]
+    },
+    "sort": {
+      "ok": true,
+      "checks": [
+        {
+          "name": "sort_transactions_amount_asc",
+          "ok": true,
+          "evidence": "first=132.39, last=49857.52"
+        },
+        {
+          "name": "sort_contacts_name_asc",
+          "ok": true,
+          "evidence": "first=\"Contact 1\""
+        },
+        {
+          "name": "sort_events_duration_desc",
+          "ok": true,
+          "evidence": "first=1887, last=46"
+        },
+        {
+          "name": "sort_then_paginate",
+          "ok": true,
+          "evidence": "desc page 1: ids 50..41"
+        }
+      ]
+    },
+    "datasource_schema": {
+      "ok": true,
+      "checks": [
+        {
+          "name": "datasource_transactions",
+          "ok": true,
+          "evidence": "schema exact match: id, transaction_id, method, amount, status, transaction_date"
+        },
+        {
+          "name": "datasource_contacts",
+          "ok": true,
+          "evidence": "schema exact match: id, name, title, email, phone, status"
+        },
+        {
+          "name": "datasource_events",
+          "ok": true,
+          "evidence": "schema exact match: id, event_type, user_id, path, duration_ms, event_time"
+        }
+      ]
+    }
+  },
+  "timestamp": "2026-06-15T08:57:42.315Z"
+}

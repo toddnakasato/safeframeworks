@@ -1,0 +1,57 @@
+{
+  "component": "table",
+  "metadata": {
+    "variant": "default",
+    "spacing": "compact",
+    "headerStyle": "uppercase",
+    "rowDivider": "none",
+    "zebra": "odd",
+    "pageSize": 10,
+    "sortable": true
+  },
+  "data": {
+    "rows": {
+      "name": "events",
+      "type": "list",
+      "source": "file",
+      "format": "json",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "label": "ID",
+            "type": "number"
+          },
+          {
+            "name": "event_type",
+            "label": "Event",
+            "type": "text"
+          },
+          {
+            "name": "user_id",
+            "label": "User",
+            "type": "text"
+          },
+          {
+            "name": "path",
+            "label": "Path",
+            "type": "text"
+          },
+          {
+            "name": "duration_ms",
+            "label": "Duration (ms)",
+            "type": "number"
+          },
+          {
+            "name": "event_time",
+            "label": "Time",
+            "type": "date"
+          }
+        ]
+      }
+    }
+  },
+  "eventHandler": {
+    "handler": "table"
+  }
+}

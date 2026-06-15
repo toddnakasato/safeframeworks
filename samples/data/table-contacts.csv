@@ -1,0 +1,51 @@
+id,name,title,email,phone,status
+1,Contact 1,CTO,contact1@company.com,555-1001,Inactive
+2,Contact 2,VP Sales,contact2@company.com,555-1002,Lead
+3,Contact 3,Manager,contact3@company.com,555-1003,Active
+4,Contact 4,Analyst,contact4@company.com,555-1004,Inactive
+5,Contact 5,CEO,contact5@company.com,555-1005,Lead
+6,Contact 6,CTO,contact6@company.com,555-1006,Active
+7,Contact 7,VP Sales,contact7@company.com,555-1007,Inactive
+8,Contact 8,Manager,contact8@company.com,555-1008,Lead
+9,Contact 9,Analyst,contact9@company.com,555-1009,Active
+10,Contact 10,CEO,contact10@company.com,555-1010,Inactive
+11,Contact 11,CTO,contact11@company.com,555-1011,Lead
+12,Contact 12,VP Sales,contact12@company.com,555-1012,Active
+13,Contact 13,Manager,contact13@company.com,555-1013,Inactive
+14,Contact 14,Analyst,contact14@company.com,555-1014,Lead
+15,Contact 15,CEO,contact15@company.com,555-1015,Active
+16,Contact 16,CTO,contact16@company.com,555-1016,Inactive
+17,Contact 17,VP Sales,contact17@company.com,555-1017,Lead
+18,Contact 18,Manager,contact18@company.com,555-1018,Active
+19,Contact 19,Analyst,contact19@company.com,555-1019,Inactive
+20,Contact 20,CEO,contact20@company.com,555-1020,Lead
+21,Contact 21,CTO,contact21@company.com,555-1021,Active
+22,Contact 22,VP Sales,contact22@company.com,555-1022,Inactive
+23,Contact 23,Manager,contact23@company.com,555-1023,Lead
+24,Contact 24,Analyst,contact24@company.com,555-1024,Active
+25,Contact 25,CEO,contact25@company.com,555-1025,Inactive
+26,Contact 26,CTO,contact26@company.com,555-1026,Lead
+27,Contact 27,VP Sales,contact27@company.com,555-1027,Active
+28,Contact 28,Manager,contact28@company.com,555-1028,Inactive
+29,Contact 29,Analyst,contact29@company.com,555-1029,Lead
+30,Contact 30,CEO,contact30@company.com,555-1030,Active
+31,Contact 31,CTO,contact31@company.com,555-1031,Inactive
+32,Contact 32,VP Sales,contact32@company.com,555-1032,Lead
+33,Contact 33,Manager,contact33@company.com,555-1033,Active
+34,Contact 34,Analyst,contact34@company.com,555-1034,Inactive
+35,Contact 35,CEO,contact35@company.com,555-1035,Lead
+36,Contact 36,CTO,contact36@company.com,555-1036,Active
+37,Contact 37,VP Sales,contact37@company.com,555-1037,Inactive
+38,Contact 38,Manager,contact38@company.com,555-1038,Lead
+39,Contact 39,Analyst,contact39@company.com,555-1039,Active
+40,Contact 40,CEO,contact40@company.com,555-1040,Inactive
+41,Contact 41,CTO,contact41@company.com,555-1041,Lead
+42,Contact 42,VP Sales,contact42@company.com,555-1042,Active
+43,Contact 43,Manager,contact43@company.com,555-1043,Inactive
+44,Contact 44,Analyst,contact44@company.com,555-1044,Lead
+45,Contact 45,CEO,contact45@company.com,555-1045,Active
+46,Contact 46,CTO,contact46@company.com,555-1046,Inactive
+47,Contact 47,VP Sales,contact47@company.com,555-1047,Lead
+48,Contact 48,Manager,contact48@company.com,555-1048,Active
+49,Contact 49,Analyst,contact49@company.com,555-1049,Inactive
+50,Contact 50,CEO,contact50@company.com,555-1050,Lead
