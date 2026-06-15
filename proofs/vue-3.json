@@ -7,7 +7,7 @@
     "layout": {
       "ok": true,
       "impl": "vue/3/SafeLayout.vue",
-      "via": "builder: builders/layout.ts",
+      "via": "builder: builders/layout.ts, builders/render.ts",
       "checks": {
         "contract": "pass",
         "impl": "pass",

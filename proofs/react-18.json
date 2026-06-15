@@ -7,7 +7,7 @@
     "layout": {
       "ok": true,
       "impl": "react/18/SafeLayout.tsx",
-      "via": "native",
+      "via": "builder: builders/layout.ts",
       "checks": {
         "contract": "pass",
         "impl": "pass",
@@ -35,7 +35,7 @@
     "card": {
       "ok": true,
       "impl": "react/18/SafeCard.tsx",
-      "via": "native",
+      "via": "builder: builders/card.ts",
       "checks": {
         "contract": "pass",
         "impl": "pass",
@@ -49,7 +49,7 @@
     "button": {
       "ok": true,
       "impl": "react/18/SafeButton.tsx",
-      "via": "native",
+      "via": "builder: builders/button.ts",
       "checks": {
         "contract": "pass",
         "impl": "pass",
@@ -63,7 +63,7 @@
     "table": {
       "ok": true,
       "impl": "react/18/SafeTable.tsx",
-      "via": "native",
+      "via": "builder: builders/table.ts",
       "checks": {
         "contract": "pass",
         "impl": "pass",
@@ -77,7 +77,7 @@
     "tree": {
       "ok": true,
       "impl": "react/18/SafeTree.tsx",
-      "via": "native",
+      "via": "builder: builders/tree.ts",
       "checks": {
         "contract": "pass",
         "impl": "pass",
@@ -119,7 +119,7 @@
     "heatmap": {
       "ok": true,
       "impl": "react/18/SafeHeatmap.tsx",
-      "via": "native",
+      "via": "builder: builders/heatmap.ts",
       "checks": {
         "contract": "pass",
         "impl": "pass",
@@ -133,7 +133,7 @@
     "gauge": {
       "ok": true,
       "impl": "react/18/SafeGauge.tsx",
-      "via": "native",
+      "via": "builder: builders/gauge.ts",
       "checks": {
         "contract": "pass",
         "impl": "pass",
@@ -147,7 +147,7 @@
     "funnel": {
       "ok": true,
       "impl": "react/18/SafeFunnel.tsx",
-      "via": "native",
+      "via": "builder: builders/funnel.ts",
       "checks": {
         "contract": "pass",
         "impl": "pass",
@@ -189,7 +189,7 @@
     "timeline": {
       "ok": true,
       "impl": "react/18/SafeTimeline.tsx",
-      "via": "native",
+      "via": "builder: builders/timeline.ts",
       "checks": {
         "contract": "pass",
         "impl": "pass",
@@ -217,7 +217,7 @@
     "calendar": {
       "ok": true,
       "impl": "react/18/SafeCalendar.tsx",
-      "via": "native",
+      "via": "builder: builders/calendar.ts",
       "checks": {
         "contract": "pass",
         "impl": "pass",
@@ -231,7 +231,7 @@
     "toggle": {
       "ok": true,
       "impl": "react/18/SafeToggle.tsx",
-      "via": "native",
+      "via": "builder: builders/toggle.ts",
       "checks": {
         "contract": "pass",
         "impl": "pass",
@@ -245,7 +245,7 @@
     "week": {
       "ok": true,
       "impl": "react/18/SafeWeek.tsx",
-      "via": "native",
+      "via": "builder: builders/week.ts",
       "checks": {
         "contract": "pass",
         "impl": "pass",
@@ -259,7 +259,7 @@
     "chat": {
       "ok": true,
       "impl": "react/18/SafeChat.tsx",
-      "via": "native",
+      "via": "builder: builders/chat.ts",
       "checks": {
         "contract": "pass",
         "impl": "pass",
@@ -273,7 +273,7 @@
     "tabs": {
       "ok": true,
       "impl": "react/18/SafeTabs.tsx",
-      "via": "native",
+      "via": "builder: builders/tabs.ts",
       "checks": {
         "contract": "pass",
         "impl": "pass",
@@ -301,7 +301,7 @@
     "drag-drop": {
       "ok": true,
       "impl": "react/18/SafeDragDrop.tsx",
-      "via": "native",
+      "via": "builder: builders/dragdrop.ts",
       "checks": {
         "contract": "pass",
         "impl": "pass",
@@ -329,7 +329,7 @@
     "input": {
       "ok": true,
       "impl": "react/18/SafeInput.tsx",
-      "via": "native",
+      "via": "builder: builders/input.ts",
       "checks": {
         "contract": "pass",
         "impl": "pass",
@@ -343,7 +343,7 @@
     "picker": {
       "ok": true,
       "impl": "react/18/SafePicker.tsx",
-      "via": "native",
+      "via": "builder: builders/picker.ts",
       "checks": {
         "contract": "pass",
         "impl": "pass",
@@ -371,7 +371,7 @@
     "list": {
       "ok": true,
       "impl": "react/18/SafeList.tsx",
-      "via": "native",
+      "via": "builder: builders/list.ts",
       "checks": {
         "contract": "pass",
         "impl": "pass",

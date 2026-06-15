@@ -5,6 +5,9 @@
     "resolver": true,
     "handlers": true,
     "emissions": true,
+    "operations": true,
+    "lifecycle": true,
+    "configs": true,
     "app": true,
     "styles": true,
     "builders": true,
@@ -20,5 +23,5 @@
     "astro-5": true,
     "lwc": true
   },
-  "timestamp": "2026-06-12T18:10:45.038Z"
+  "timestamp": "2026-06-15T18:38:59.923Z"
 }

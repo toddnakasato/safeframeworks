@@ -7,7 +7,7 @@
     "layout": {
       "ok": true,
       "impl": "angular/21/SafeLayout.ts",
-      "via": "builder: builders/layout.ts",
+      "via": "builder: builders/layout.ts, builders/render.ts",
       "checks": {
         "contract": "pass",
         "impl": "pass",
