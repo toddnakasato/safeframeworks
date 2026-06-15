@@ -40,87 +40,95 @@ const el = (tag: string, text?: string): HTMLElement => {
 
 /**
  * Render any ConfigBase to a DOM element using the shared builders.
- * This is the universal renderChild callback for layout and other containers.
+ * Stamps the eventHandler.handler on onEvent before passing to child builders —
+ * same logic as SafeRenderer's stampedOnEvent.
  */
 export function renderConfigToDom(config: ConfigBase, onEvent?: OnSafeEvent): HTMLElement {
     const component = config.component ?? (config.metadata?.component as string);
     const container = document.createElement("div");
 
+    // Stamp handler — same logic as SafeRenderer lines 62-77
+    const handler = config.eventHandler?.handler;
+    const stampedOnEvent: OnSafeEvent | undefined =
+        onEvent && handler
+            ? (event) => onEvent({ ...event, handler })
+            : onEvent;
+
     switch (component) {
         case "layout":
-            createSafeLayout(container, config, onEvent, renderConfigToDom);
+            createSafeLayout(container, config, stampedOnEvent, renderConfigToDom);
             break;
         case "button":
-            createSafeButton(container, config, onEvent);
+            createSafeButton(container, config, stampedOnEvent);
             break;
         case "calendar":
-            createSafeCalendar(container, config, onEvent);
+            createSafeCalendar(container, config, stampedOnEvent);
             break;
         case "callout":
-            createSafeCallout(container, config, onEvent);
+            createSafeCallout(container, config, stampedOnEvent);
             break;
         case "card":
-            createSafeCard(container, config, onEvent);
+            createSafeCard(container, config, stampedOnEvent);
             break;
         case "chat":
-            createSafeChat(container, config, onEvent);
+            createSafeChat(container, config, stampedOnEvent);
             break;
         case "columns":
-            createSafeColumns(container, config, onEvent);
+            createSafeColumns(container, config, stampedOnEvent);
             break;
         case "drag-drop":
-            createSafeDragDrop(container, config, onEvent);
+            createSafeDragDrop(container, config, stampedOnEvent);
             break;
         case "funnel":
-            createSafeFunnel(container, config, onEvent);
+            createSafeFunnel(container, config, stampedOnEvent);
             break;
         case "gauge":
-            createSafeGauge(container, config, onEvent);
+            createSafeGauge(container, config, stampedOnEvent);
             break;
         case "grid":
-            createSafeGrid(container, config, onEvent);
+            createSafeGrid(container, config, stampedOnEvent);
             break;
         case "heatmap":
-            createSafeHeatmap(container, config, onEvent);
+            createSafeHeatmap(container, config, stampedOnEvent);
             break;
         case "hierarchy":
-            createSafeHierarchy(container, config, onEvent);
+            createSafeHierarchy(container, config, stampedOnEvent);
             break;
         case "input":
-            createSafeInput(container, config, onEvent);
+            createSafeInput(container, config, stampedOnEvent);
             break;
         case "list":
-            createSafeList(container, config, onEvent);
+            createSafeList(container, config, stampedOnEvent);
             break;
         case "metric":
-            createSafeMetric(container, config, onEvent);
+            createSafeMetric(container, config, stampedOnEvent);
             break;
         case "nav":
-            createSafeNav(container, config, onEvent);
+            createSafeNav(container, config, stampedOnEvent);
             break;
         case "picker":
-            createSafePicker(container, config, onEvent);
+            createSafePicker(container, config, stampedOnEvent);
             break;
         case "sheet":
-            createSafeSheet(container, config, onEvent);
+            createSafeSheet(container, config, stampedOnEvent);
             break;
         case "table":
-            createSafeTable(container, config, onEvent);
+            createSafeTable(container, config, stampedOnEvent);
             break;
         case "tabs":
-            createSafeTabs(container, config, onEvent);
+            createSafeTabs(container, config, stampedOnEvent);
             break;
         case "timeline":
-            createSafeTimeline(container, config, onEvent);
+            createSafeTimeline(container, config, stampedOnEvent);
             break;
         case "toggle":
-            createSafeToggle(container, config, onEvent);
+            createSafeToggle(container, config, stampedOnEvent);
             break;
         case "tree":
-            createSafeTree(container, config, onEvent);
+            createSafeTree(container, config, stampedOnEvent);
             break;
         case "week":
-            createSafeWeek(container, config, onEvent);
+            createSafeWeek(container, config, stampedOnEvent);
             break;
         default:
             container.appendChild(el("div", `Unknown component: ${component}`));
