@@ -19,6 +19,11 @@ import { SafeGrid } from "./SafeGrid";
 import { SafeHeatmap } from "./SafeHeatmap";
 import { SafeInput } from "./SafeInput";
 import { SafeLayout } from "./SafeLayout";
+import type { RenderChild } from "../../builders/layout";
+import { renderConfigToDom } from "../../builders/render";
+
+// Universal DOM render callback — stamps handler before rendering children
+const renderChild: RenderChild = renderConfigToDom;
 import { SafeList } from "./SafeList";
 import { SafeMap } from "./SafeMap";
 import { SafeNav } from "./SafeNav";
@@ -79,11 +84,7 @@ export function renderConfigBase(config: ConfigBase, onEvent?: OnSafeEvent, ctx?
     // --- Container components (recurse into children) ---
 
     if (component === "layout") {
-        const regions: Record<string, ReactNode> = {};
-        for (const [key, child] of Object.entries(config.children ?? {})) {
-            regions[key] = renderConfigBase(child, stampedOnEvent, childCtx());
-        }
-        return <SafeLayout config={config} regions={regions} onEvent={stampedOnEvent} />;
+        return <SafeLayout config={config} onEvent={stampedOnEvent} renderChild={renderChild} />;
     }
 
     if (component === "columns") {
