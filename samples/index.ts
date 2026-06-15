@@ -9,6 +9,9 @@
  * data/<name>.json attached as inline so renderers receive resolved values.
  */
 import type { ConfigBase, DataSource } from "../../safecontracts/src/contracts";
+import { execSync } from "node:child_process";
+import { existsSync } from "node:fs";
+import { join, dirname } from "node:path";
 
 import buttonDangerConfig from "./config/button/button-danger.json";
 import buttonDisabledConfig from "./config/button/button-disabled.json";
@@ -182,14 +185,69 @@ const SAMPLE_STATE: Record<string, any> = {
     "card-state": { title: "State Card — value resolved from state[\"card-state\"]" },
 };
 
+const SAMPLES_DIR = dirname(new URL(import.meta.url).pathname);
+const DATA_DIR = join(SAMPLES_DIR, "data");
+
+/** Read a file via duckdb and return JSON rows. */
+function readFileViaDuck(name: string, format?: string): unknown | null {
+    const extensions: Record<string, string> = {
+        parquet: ".parquet",
+        csv: ".csv",
+        json: ".json",
+        ndjson: ".ndjson",
+    };
+
+    // Try explicit format first, then all extensions
+    const formatsToTry = format ? [format] : ["json", "parquet", "csv", "ndjson"];
+
+    for (const fmt of formatsToTry) {
+        const ext = extensions[fmt] ?? `.${fmt}`;
+        const filePath = join(DATA_DIR, `${name}${ext}`);
+        if (!existsSync(filePath)) continue;
+
+        // JSON files: import directly (no duckdb needed)
+        if (fmt === "json") {
+            try {
+                const { readFileSync } = require("node:fs");
+                return JSON.parse(readFileSync(filePath, "utf-8"));
+            } catch { continue; }
+        }
+
+        // Parquet, CSV, NDJSON: read via duckdb
+        const reader = fmt === "parquet" ? `read_parquet('${filePath}')`
+            : fmt === "csv" ? `read_csv('${filePath}', header=true)`
+            : fmt === "ndjson" ? `read_ndjson('${filePath}')`
+            : `read_json('${filePath}')`;
+
+        try {
+            const out = execSync(`duckdb -json -c "SELECT * FROM ${reader}"`, {
+                encoding: "utf-8",
+                timeout: 10_000,
+            }).trim();
+            return JSON.parse(out);
+        } catch { continue; }
+    }
+
+    return null;
+}
+
 /** Resolve source references by attaching values as inline.
- *  file → DATA_FILES[name], state → SAMPLE_STATE[name] (mirrors resolveDataSources). */
+ *  file → read from data/ (parquet, csv, json, ndjson via duckdb).
+ *  state → SAMPLE_STATE[name]. */
 function resolveData(config: ConfigBase): ConfigBase {
     if (!config.data) return config;
     const data: Record<string, DataSource> = {};
     for (const [key, ds] of Object.entries(config.data)) {
-        if (ds.source === "file" && ds.name in DATA_FILES) {
-            data[key] = { ...ds, inline: DATA_FILES[ds.name] as DataSource["inline"] };
+        if (ds.source === "file") {
+            // Try DATA_FILES first (legacy JSON), then disk read
+            const resolved = (ds.name in DATA_FILES)
+                ? DATA_FILES[ds.name]
+                : readFileViaDuck(ds.name, (ds as any).format);
+            if (resolved !== null) {
+                data[key] = { ...ds, inline: resolved as DataSource["inline"] };
+            } else {
+                data[key] = ds;
+            }
         } else if (ds.source === "state" && ds.name in SAMPLE_STATE) {
             data[key] = { ...ds, inline: SAMPLE_STATE[ds.name] as DataSource["inline"] };
         } else {
