@@ -2,7 +2,7 @@
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
 import { defineComponent, type PropType } from 'vue';
 import { createSafeLayout } from '../../builders/layout';
-import { renderConfigToDom } from '../../builders/render';
+import { buildComponent } from '../../builders/render';
 
 export default defineComponent({
   name: 'SafeLayout',
@@ -15,7 +15,7 @@ export default defineComponent({
   },
   mounted() {
     const el = this.$refs.layoutContainer as HTMLElement;
-    if (el) this.root = createSafeLayout(el, this.config, this.onEvent, renderConfigToDom);
+    if (el) this.root = createSafeLayout(el, this.config, this.onEvent, buildComponent);
   },
   beforeDestroy() {
     this.root?.remove();

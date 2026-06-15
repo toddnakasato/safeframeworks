@@ -2,7 +2,7 @@
   import { onMount, onDestroy } from 'svelte';
   import type { ConfigBase, OnSafeEvent } from 'safecontracts';
   import { createSafeLayout } from '../../builders/layout';
-  import { renderConfigToDom } from '../../builders/render';
+  import { buildComponent } from '../../builders/render';
 
   let { config, onEvent }: { config: ConfigBase; onEvent?: OnSafeEvent } = $props();
 
@@ -10,7 +10,7 @@
   let root: HTMLElement | null = null;
 
   onMount(() => {
-    root = createSafeLayout(container, config, onEvent, renderConfigToDom);
+    root = createSafeLayout(container, config, onEvent, buildComponent);
   });
 
   onDestroy(() => {

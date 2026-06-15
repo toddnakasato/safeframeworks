@@ -1,7 +1,7 @@
 import { Component, Input, ElementRef, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
 import { createSafeLayout } from '../../builders/layout';
-import { renderConfigToDom } from '../../builders/render';
+import { buildComponent } from '../../builders/render';
 
 @Component({
   selector: 'safe-layout',
@@ -15,7 +15,7 @@ export class SafeLayoutComponent implements AfterViewInit, OnDestroy {
   private root: HTMLElement | null = null;
 
   ngAfterViewInit() {
-    this.root = createSafeLayout(this.containerRef.nativeElement, this.config, this.onEvent, renderConfigToDom);
+    this.root = createSafeLayout(this.containerRef.nativeElement, this.config, this.onEvent, buildComponent);
   }
 
   ngOnDestroy() {

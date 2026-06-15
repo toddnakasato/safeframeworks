@@ -98,7 +98,7 @@
         {
           "name": "sort_transactions_amount_asc",
           "ok": true,
-          "evidence": "first=132.39, last=49857.52"
+          "evidence": "first=2030.12, last=49590.28"
         },
         {
           "name": "sort_contacts_name_asc",
@@ -108,7 +108,7 @@
         {
           "name": "sort_events_duration_desc",
           "ok": true,
-          "evidence": "first=1887, last=46"
+          "evidence": "first=1988, last=55"
         },
         {
           "name": "sort_then_paginate",
@@ -138,5 +138,5 @@
       ]
     }
   },
-  "timestamp": "2026-06-15T08:57:42.315Z"
+  "timestamp": "2026-06-15T12:00:04.112Z"
 }

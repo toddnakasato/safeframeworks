@@ -3,7 +3,7 @@
  *
  * Given a ConfigBase, dispatches to the correct createSafe* builder.
  * Used by createSafeLayout's renderChild callback to recursively
- * render children into regions. Framework-free.
+ * build children into regions. Framework-free.
  */
 import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
 import { createSafeButton } from "./button";
@@ -43,7 +43,7 @@ const el = (tag: string, text?: string): HTMLElement => {
  * Stamps the eventHandler.handler on onEvent before passing to child builders —
  * same logic as SafeRenderer's stampedOnEvent.
  */
-export function renderConfigToDom(config: ConfigBase, onEvent?: OnSafeEvent): HTMLElement {
+export function buildComponent(config: ConfigBase, onEvent?: OnSafeEvent): HTMLElement {
     const component = config.component ?? (config.metadata?.component as string);
     const container = document.createElement("div");
 
@@ -56,7 +56,7 @@ export function renderConfigToDom(config: ConfigBase, onEvent?: OnSafeEvent): HT
 
     switch (component) {
         case "layout":
-            createSafeLayout(container, config, stampedOnEvent, renderConfigToDom);
+            createSafeLayout(container, config, stampedOnEvent, buildComponent);
             break;
         case "button":
             createSafeButton(container, config, stampedOnEvent);

@@ -2,14 +2,14 @@
 import { ref, onMounted, onBeforeUnmount } from 'vue';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
 import { createSafeLayout } from '../../builders/layout';
-import { renderConfigToDom } from '../../builders/render';
+import { buildComponent } from '../../builders/render';
 
 const props = defineProps<{ config: ConfigBase; onEvent?: OnSafeEvent }>();
 const containerRef = ref<HTMLElement | null>(null);
 let root: HTMLElement | null = null;
 
 onMounted(() => {
-  if (containerRef.value) root = createSafeLayout(containerRef.value, props.config, props.onEvent, renderConfigToDom);
+  if (containerRef.value) root = createSafeLayout(containerRef.value, props.config, props.onEvent, buildComponent);
 });
 
 onBeforeUnmount(() => {
