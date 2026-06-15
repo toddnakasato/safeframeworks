@@ -11,5 +11,8 @@ export { fmtDate, fmtCurrency, fmtInt, fmtPercent, fmtStr, fmtNumber } from "../
 export { resolveColors } from "../../../safecontracts/src/palette";
 export type { ResolverContext, DataResolverContext } from "../../../safecontracts/src/resolver";
 export { resolveDataSources } from "../../../safecontracts/src/resolver";
+export { resolveSignals } from "../../../safecontracts/src/resolver-signals";
+export type { SceneSignals } from "../../../safecontracts/src/contracts-signals";
+export { LAYOUT_VARIANTS } from "../../../safecontracts/src/contracts-registry";
 export type { ConfigResolver } from "../../../safecontracts/src/resolver-layout";
 export { resolveConfigLayout } from "../../../safecontracts/src/resolver-layout";

@@ -1,0 +1,77 @@
+{
+  "ok": true,
+  "checked": 11,
+  "components": {
+    "resolve": {
+      "ok": true,
+      "checks": [
+        {
+          "name": "resolve_script",
+          "ok": true,
+          "evidence": "resolved 33 data files (298 total rows) → /Users/toddnakasato/Documents/FF/VSCODE/FFPROD/safeconfig/safeframeworks/samples/data-resolved.ts"
+        },
+        {
+          "name": "data_resolved_exists",
+          "ok": true,
+          "evidence": "/Users/toddnakasato/Documents/FF/VSCODE/FFPROD/safeconfig/safeframeworks/samples/data-resolved.ts"
+        }
+      ]
+    },
+    "data": {
+      "ok": true,
+      "checks": [
+        {
+          "name": "transactions_count",
+          "ok": true,
+          "evidence": "50 rows (source: parquet)"
+        },
+        {
+          "name": "transactions_schema",
+          "ok": true,
+          "evidence": "columns match: id, transaction_id, method, amount, status, transaction_date"
+        },
+        {
+          "name": "contacts_count",
+          "ok": true,
+          "evidence": "50 rows (source: csv)"
+        },
+        {
+          "name": "contacts_schema",
+          "ok": true,
+          "evidence": "columns match: id, name, title, email, phone, status"
+        },
+        {
+          "name": "events_count",
+          "ok": true,
+          "evidence": "50 rows (source: json)"
+        },
+        {
+          "name": "events_schema",
+          "ok": true,
+          "evidence": "columns match: id, event_type, user_id, path, duration_ms, event_time"
+        }
+      ]
+    },
+    "sources": {
+      "ok": true,
+      "checks": [
+        {
+          "name": "source_parquet",
+          "ok": true,
+          "evidence": "transactions.parquet exists on disk"
+        },
+        {
+          "name": "source_csv",
+          "ok": true,
+          "evidence": "contacts.csv exists on disk"
+        },
+        {
+          "name": "source_json",
+          "ok": true,
+          "evidence": "events.json exists on disk"
+        }
+      ]
+    }
+  },
+  "timestamp": "2026-06-15T09:19:22.685Z"
+}
