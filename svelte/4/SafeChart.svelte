@@ -1,5 +1,6 @@
 <script lang="ts">
-  import { onMount, onDestroy } from 'svelte';
+  import { onDestroy } from 'svelte';
+  import { afterUpdate } from 'svelte';
   import type { Chart } from 'chart.js';
   import type { ConfigBase, OnSafeEvent } from 'safecontracts';
   import { createSafeChart } from '../../builders/chart';
@@ -10,7 +11,8 @@
   let canvas: HTMLCanvasElement;
   let chart: Chart | null = null;
 
-  onMount(() => {
+  afterUpdate(() => {
+    chart?.destroy();
     chart = createSafeChart(canvas, config, onEvent);
   });
 

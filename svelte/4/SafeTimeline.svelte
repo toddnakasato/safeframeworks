@@ -1,5 +1,6 @@
 <script lang="ts">
-  import { onMount, onDestroy } from 'svelte';
+  import { onDestroy } from 'svelte';
+  import { afterUpdate } from 'svelte';
   import type { ConfigBase, OnSafeEvent } from 'safecontracts';
   import { createSafeTimeline } from '../../builders/timeline';
 
@@ -9,7 +10,9 @@
   let container: HTMLElement;
   let root: HTMLElement | null = null;
 
-  onMount(() => {
+  afterUpdate(() => {
+    root?.remove();
+    container.innerHTML = '';
     root = createSafeTimeline(container, config, onEvent);
   });
 

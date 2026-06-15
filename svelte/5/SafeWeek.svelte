@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { onMount, onDestroy } from 'svelte';
   import type { ConfigBase, OnSafeEvent } from 'safecontracts';
   import { createSafeWeek } from '../../builders/week';
 
@@ -8,13 +7,10 @@
   let container: HTMLElement;
   let root: HTMLElement | null = null;
 
-  onMount(() => {
+  $effect(() => {
+    container.innerHTML = '';
     root = createSafeWeek(container, config, onEvent);
-  });
-
-  onDestroy(() => {
-    root?.remove();
-    root = null;
+    return () => { root?.remove(); root = null; };
   });
 </script>
 

@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { onMount, onDestroy } from 'svelte';
   import type { ConfigBase, OnSafeEvent } from 'safecontracts';
   import { createSafeHierarchy } from '../../builders/hierarchy';
 
@@ -8,10 +7,11 @@
   let container: HTMLElement;
   let root: HTMLElement | null = null;
 
-  onMount(() => {
+  $effect(() => {
+    container.innerHTML = '';
     root = createSafeHierarchy(container, config, onEvent);
+    return () => { root?.remove(); root = null; };
   });
-  onDestroy(() => { root?.remove(); root = null; });
 </script>
 
 <div bind:this={container}></div>

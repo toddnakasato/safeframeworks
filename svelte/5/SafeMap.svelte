@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { onMount, onDestroy } from 'svelte';
   import type * as L from 'leaflet';
   import type { ConfigBase, OnSafeEvent } from 'safecontracts';
   import { createSafeMap, mapData } from '../../builders/map';
@@ -9,13 +8,10 @@
   let container: HTMLElement;
   let map: L.Map | null = null;
 
-  onMount(() => {
-    map = createSafeMap(container, config, mapData(config), onEvent);
-  });
-
-  onDestroy(() => {
+  $effect(() => {
     map?.remove();
-    map = null;
+    map = createSafeMap(container, config, mapData(config), onEvent);
+    return () => { map?.remove(); map = null; };
   });
 </script>
 

@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
   import type { ConfigBase, OnSafeEvent } from 'safecontracts';
   import { renderSafeFlow, flowData } from '../../builders/flow';
 
@@ -7,7 +6,8 @@
 
   let svg: SVGSVGElement;
 
-  onMount(() => {
+  $effect(() => {
+    svg.innerHTML = '';
     renderSafeFlow(svg, config, flowData(config), onEvent);
   });
 </script>

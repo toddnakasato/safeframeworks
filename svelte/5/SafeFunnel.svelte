@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { onMount, onDestroy } from 'svelte';
   import type { ConfigBase, OnSafeEvent } from 'safecontracts';
   import { createSafeFunnel } from '../../builders/funnel';
 
@@ -8,13 +7,10 @@
   let container: HTMLElement;
   let root: HTMLElement | null = null;
 
-  onMount(() => {
+  $effect(() => {
+    container.innerHTML = '';
     root = createSafeFunnel(container, config, onEvent);
-  });
-
-  onDestroy(() => {
-    root?.remove();
-    root = null;
+    return () => { root?.remove(); root = null; };
   });
 </script>
 
