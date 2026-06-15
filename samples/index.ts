@@ -90,8 +90,11 @@ import sheetSkeletonConfig from "./config/sheet/sheet-skeleton.json";
 import sheetSpreadsheetConfig from "./config/sheet/sheet-spreadsheet.json";
 import sheetStatusConfig from "./config/sheet/sheet-status.json";
 import sheetStripedConfig from "./config/sheet/sheet-striped.json";
-import table1Config from "./config/table/table1.json";
-import table2Config from "./config/table/table2.json";
+import tableBasicConfig from "./config/table/table-basic.json";
+import tableRowNumbersConfig from "./config/table/table-row-numbers.json";
+import tableTransactionsConfig from "./config/table/table-transactions.json";
+import tableContactsConfig from "./config/table/table-contacts.json";
+import tableEventsConfig from "./config/table/table-events.json";
 import tabs1Config from "./config/tabs/tabs1.json";
 import tabs2Config from "./config/tabs/tabs2.json";
 import timeline1Config from "./config/timeline/timeline1.json";
@@ -319,8 +322,11 @@ export const SAMPLES: Record<string, Record<string, ConfigBase>> = {
         "sheet-striped": resolveData(sheetStripedConfig as unknown as ConfigBase),
     },
     table: {
-        "table1": resolveData(table1Config as unknown as ConfigBase),
-        "table2": resolveData(table2Config as unknown as ConfigBase),
+        "table-basic": resolveData(tableBasicConfig as unknown as ConfigBase),
+        "table-row-numbers": resolveData(tableRowNumbersConfig as unknown as ConfigBase),
+        "table-transactions": resolveData(tableTransactionsConfig as unknown as ConfigBase),
+        "table-contacts": resolveData(tableContactsConfig as unknown as ConfigBase),
+        "table-events": resolveData(tableEventsConfig as unknown as ConfigBase),
     },
     tabs: {
         "tabs1": resolveData(tabs1Config as unknown as ConfigBase),
