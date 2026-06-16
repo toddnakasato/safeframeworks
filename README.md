@@ -1,21 +1,7 @@
 # safeframeworks
 
-Framework-specific renderers for safecomponents contracts.
+The blocks. 27 components × 8 framework targets.
 
-Each framework directory imports types, resolver, dispatcher, and Intent from safecomponents (the contract) and provides its own component implementations.
+Imports types and resolvers from safecontracts (the law). Outputs data-* attributes and SafeEvents. No decisions.
 
-## Structure
-
-```
-safeframeworks/
-  react/       — re-exports safecomponents (React reference implementation)
-  angular/     — future
-  vue/         — future
-  svelte/      — future
-  astro/       — future
-```
-
-## How it works
-
-safeapp reads `config.json` `renderer.framework` and imports the matching renderer.
-safecomponents defines the contract. safeframeworks provides the mirror.
+See [SAFEFRAMEWORKS.md](../docs/SAFEFRAMEWORKS.md) for full documentation.
