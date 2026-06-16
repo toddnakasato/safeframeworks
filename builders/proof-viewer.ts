@@ -57,7 +57,7 @@ export function createSafeProofViewer(
 
     const style = document.createElement("style");
     style.textContent = `
-        .pv { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; padding: 12px; width: 96vw; max-width: 96vw; box-sizing: border-box; }
+        .pv { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; padding: 12px; width: 100%; box-sizing: border-box; }
         .pv .pv-hdr { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; flex-wrap: wrap; }
         .pv .pv-title { font-size: 15px; font-weight: 600; }
         .pv .pv-badge { font-size: 10px; padding: 2px 6px; border-radius: 3px; background: #e5e7eb; }
