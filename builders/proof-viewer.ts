@@ -1,40 +1,37 @@
 /**
- * builders/proof-viewer.ts — dev-only component for the safeframeworks workbench.
+ * builders/proof-viewer.ts — dev-only FRRR workbench for safeframeworks.
  *
- * Shows the full FRR chain for a component: every event it fires, the handler
- * that routes it, the CLI command that responds, and the proof result.
- * Prove buttons fire real events through the real dispatch engine.
+ * Shows the full Fire, Route, Reply, Respond chain per event.
+ * All data comes from real sources — nothing faked.
  *
- * Reads from:
- *   - COMPONENT_EVENTS (safecontracts) — what events exist
- *   - COMPONENT_FIRE_SHAPES (safecontracts) — payload shape per event
- *   - events/prove-{component}.json (safeframeworks) — handler routing config
- *   - proofs/fire-shapes-{component}.json (safeframeworks) — last proof result
+ *   Fire:    COMPONENT_EVENTS + COMPONENT_FIRE_SHAPES (safecontracts)
+ *   Route:   events/prove-{component}.json (safeframeworks, real handler file)
+ *   Reply:   actual safedesk CLI output (live, via safecli_run)
+ *   Respond: proof file on disk (safeframeworks/proofs/)
  *
- * config.metadata.target — the component type to inspect (e.g. "table")
+ * config.metadata.target — the component type to inspect
  */
-import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
+import type { ConfigBase, OnSafeEvent, EventHandler } from "../../safecontracts/src/contracts";
 import { COMPONENT_EVENTS, COMPONENT_FIRE_SHAPES } from "../../safecontracts/src/contracts";
 
-/** Invoke safedesk via Tauri. */
+async function invoke<T>(cmd: string, args?: Record<string, any>): Promise<T> {
+    const { invoke: tauriInvoke } = await import("@tauri-apps/api/core");
+    return tauriInvoke<T>(cmd, args);
+}
+
+async function readJsonFile(path: string): Promise<any> {
+    try {
+        const raw = await invoke<string>("read_file_content", { path });
+        return JSON.parse(raw);
+    } catch { return null; }
+}
+
 async function runCli(args: string[]): Promise<any> {
     try {
-        const { invoke } = await import("@tauri-apps/api/core");
         const out = await invoke<string>("safecli_run", { name: "safedesk", args });
         return JSON.parse(out);
     } catch (e: any) {
         return { ok: false, error: e?.message ?? String(e) };
-    }
-}
-
-/** Read a file via Tauri invoke. */
-async function readFile(path: string): Promise<any> {
-    try {
-        const { invoke } = await import("@tauri-apps/api/core");
-        const raw = await invoke<string>("read_file_content", { path });
-        return JSON.parse(raw);
-    } catch {
-        return null;
     }
 }
 
@@ -48,228 +45,271 @@ function el(tag: string, cls?: string, text?: string): HTMLElement {
 export function createSafeProofViewer(
     container: HTMLElement,
     config: ConfigBase,
-    onEvent?: OnSafeEvent,
+    _onEvent?: OnSafeEvent,
 ): HTMLElement {
     const target = (config.metadata?.target as string) ?? "";
     const events = COMPONENT_EVENTS[target] ?? [];
     const shapes = COMPONENT_FIRE_SHAPES[target] ?? {};
 
-    const root = el("div", "proof-viewer");
+    const root = el("div", "pv");
     root.setAttribute("data-component", "proof-viewer");
     root.setAttribute("data-target", target);
 
-    // --- Styles ---
     const style = document.createElement("style");
     style.textContent = `
-        .proof-viewer { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; padding: 16px; max-width: 960px; }
-        .proof-viewer .pv-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; flex-wrap: wrap; }
-        .proof-viewer .pv-title { font-size: 16px; font-weight: 600; }
-        .proof-viewer .pv-badge { font-size: 11px; padding: 2px 8px; border-radius: 4px; background: #e5e7eb; color: #374151; }
-        .proof-viewer .pv-btn { padding: 3px 10px; border: 1px solid #d1d5db; border-radius: 4px; background: #fff; cursor: pointer; font-size: 11px; }
-        .proof-viewer .pv-btn:hover { background: #f3f4f6; }
-        .proof-viewer .pv-btn:disabled { opacity: 0.5; cursor: default; }
-        .proof-viewer .pv-btn-primary { background: #1e40af; color: #fff; border-color: #1e40af; }
-        .proof-viewer .pv-btn-primary:hover { background: #1d4ed8; }
-        .proof-viewer .pv-table { width: 100%; border-collapse: collapse; }
-        .proof-viewer .pv-table th { text-align: left; padding: 6px 8px; border-bottom: 2px solid #e5e7eb; font-size: 11px; text-transform: uppercase; color: #6b7280; }
-        .proof-viewer .pv-table td { padding: 6px 8px; border-bottom: 1px solid #f3f4f6; font-size: 12px; }
-        .proof-viewer .pv-table tr:hover { background: #f9fafb; }
-        .proof-viewer .pv-pass { color: #059669; font-weight: 600; }
-        .proof-viewer .pv-fail { color: #dc2626; font-weight: 600; }
-        .proof-viewer .pv-pending { color: #9ca3af; }
-        .proof-viewer .pv-mono { font-family: "SF Mono", monospace; font-size: 10px; color: #6b7280; }
-        .proof-viewer .pv-expand { display: none; }
-        .proof-viewer .pv-expand.open { display: table-row; }
-        .proof-viewer .pv-expand td { padding: 8px 8px 8px 24px; background: #f9fafb; border-bottom: 1px solid #e5e7eb; }
-        .proof-viewer .pv-ts { font-size: 11px; color: #9ca3af; }
-        .proof-viewer .pv-section { font-size: 10px; font-weight: 600; text-transform: uppercase; color: #9ca3af; margin-top: 4px; margin-bottom: 2px; }
-        .proof-viewer .pv-empty { color: #9ca3af; padding: 16px; text-align: center; }
+        .pv { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; padding: 12px; width: 96vw; max-width: 96vw; box-sizing: border-box; }
+        .pv .pv-hdr { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; flex-wrap: wrap; }
+        .pv .pv-title { font-size: 15px; font-weight: 600; }
+        .pv .pv-badge { font-size: 10px; padding: 2px 6px; border-radius: 3px; background: #e5e7eb; }
+        .pv .pv-btn { padding: 3px 8px; border: 1px solid #d1d5db; border-radius: 3px; background: #fff; cursor: pointer; font-size: 10px; white-space: nowrap; }
+        .pv .pv-btn:hover { background: #f3f4f6; }
+        .pv .pv-btn:disabled { opacity: 0.5; }
+        .pv .pv-btn-p { background: #1e40af; color: #fff; border-color: #1e40af; }
+        .pv .pv-btn-p:hover { background: #1d4ed8; }
+        .pv table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+        .pv th { text-align: left; padding: 5px 6px; border-bottom: 2px solid #e5e7eb; font-size: 10px; text-transform: uppercase; color: #6b7280; }
+        .pv td { padding: 5px 6px; border-bottom: 1px solid #f3f4f6; font-size: 11px; vertical-align: top; overflow: hidden; text-overflow: ellipsis; }
+        .pv tr:hover { background: #f9fafb; }
+        .pv .m { font-family: "SF Mono", ui-monospace, monospace; font-size: 10px; color: #6b7280; white-space: pre-wrap; word-break: break-all; }
+        .pv .pass { color: #059669; font-weight: 600; }
+        .pv .fail { color: #dc2626; font-weight: 600; }
+        .pv .pend { color: #9ca3af; }
+        .pv .ts { font-size: 10px; color: #9ca3af; }
+        .pv .exp { display: none; }
+        .pv .exp.open { display: table-row; }
+        .pv .exp td { background: #f9fafb; border-bottom: 1px solid #e5e7eb; padding: 8px; }
+        .pv .empty { color: #9ca3af; padding: 16px; text-align: center; }
+        .pv col.c-ev { width: 10%; } .pv col.c-fire { width: 18%; } .pv col.c-route { width: 22%; }
+        .pv col.c-reply { width: 20%; } .pv col.c-respond { width: 14%; } .pv col.c-status { width: 8%; } .pv col.c-btn { width: 8%; }
     `;
     root.appendChild(style);
 
-    // --- Header ---
-    const header = el("div", "pv-header");
-    header.appendChild(el("span", "pv-title", `${target} events`));
-    header.appendChild(el("span", "pv-badge", `${events.length} events`));
+    // Header
+    const hdr = el("div", "pv-hdr");
+    hdr.appendChild(el("span", "pv-title", `${target} FRRR`));
+    hdr.appendChild(el("span", "pv-badge", `${events.length} events`));
+    const proveAllBtn = el("button", "pv-btn pv-btn-p", "Prove All") as HTMLButtonElement;
+    const tsEl = el("span", "ts");
+    hdr.appendChild(proveAllBtn);
+    hdr.appendChild(tsEl);
+    root.appendChild(hdr);
 
-    const proveAllBtn = el("button", "pv-btn pv-btn-primary", "Prove All") as HTMLButtonElement;
-    const tsEl = el("span", "pv-ts");
-    header.appendChild(proveAllBtn);
-    header.appendChild(tsEl);
-    root.appendChild(header);
-
-    if (events.length === 0) {
-        root.appendChild(el("div", "pv-empty", target ? `${target} has no declared events` : "Set metadata.target to a component type"));
+    if (!events.length) {
+        root.appendChild(el("div", "empty", target ? `${target}: no events` : "Set metadata.target"));
         container.appendChild(root);
         return root;
     }
 
-    // --- Table ---
-    const table = document.createElement("table");
-    table.className = "pv-table";
-    const thead = document.createElement("thead");
-    const headRow = document.createElement("tr");
-    for (const label of ["Event", "Fire", "Route", "Reply", "Respond", "Status", ""]) {
-        headRow.appendChild(el("th", undefined, label));
+    // Table
+    const tbl = document.createElement("table");
+    const colgroup = document.createElement("colgroup");
+    for (const cls of ["c-ev", "c-fire", "c-route", "c-reply", "c-respond", "c-status", "c-btn"]) {
+        const col = document.createElement("col");
+        col.className = cls;
+        colgroup.appendChild(col);
     }
-    thead.appendChild(headRow);
-    table.appendChild(thead);
+    tbl.appendChild(colgroup);
+
+    const thead = document.createElement("thead");
+    const hr = document.createElement("tr");
+    for (const l of ["Event", "Fire", "Route", "Reply", "Respond", "Status", ""]) hr.appendChild(el("th", undefined, l));
+    thead.appendChild(hr);
+    tbl.appendChild(thead);
 
     const tbody = document.createElement("tbody");
 
+    // State per row — stores live reply data
+    const rowState: Record<string, { replyTd: HTMLElement; respondTd: HTMLElement; statusTd: HTMLElement; proveBtn: HTMLButtonElement }> = {};
+
     for (const eventName of events) {
         const shape = shapes[eventName];
-
-        // --- Main row ---
         const tr = document.createElement("tr");
         tr.setAttribute("data-event", eventName);
         tr.style.cursor = "pointer";
 
-        // Event name
+        // Event
         tr.appendChild(el("td", undefined, eventName));
 
-        // Fire — payload shape
-        const fireTd = el("td", "pv-mono");
+        // Fire — real shape from COMPONENT_FIRE_SHAPES
+        const fireTd = el("td", "m");
         if (shape) {
-            const parts: string[] = [];
-            if (shape.data) parts.push(Object.keys(shape.data).join(", "));
-            if (shape.context) parts.push(`ctx: ${Object.keys(shape.context).join(", ")}`);
-            fireTd.textContent = parts.join(" ") || "—";
-        } else {
-            fireTd.textContent = "no shape";
-        }
+            const lines: string[] = [];
+            if (shape.data) for (const [k, v] of Object.entries(shape.data)) lines.push(`data.${k}: ${v}`);
+            if (shape.context) for (const [k, v] of Object.entries(shape.context)) lines.push(`ctx.${k}: ${v}`);
+            fireTd.textContent = lines.join("\n") || "—";
+        } else fireTd.textContent = "no shape declared";
         tr.appendChild(fireTd);
 
-        // Route — handler + action
-        const routeTd = el("td", "pv-mono", `prove-${target} → prove fire-shapes`);
+        // Route — placeholder, filled from handler file on mount
+        const routeTd = el("td", "m", "loading...");
         tr.appendChild(routeTd);
 
-        // Reply — what comes back
-        const replyTd = el("td", "pv-mono", "{ ok, total, passed }");
+        // Reply — filled after prove runs
+        const replyTd = el("td", "m pend", "—");
         tr.appendChild(replyTd);
 
-        // Respond — what file changes
-        const respondTd = el("td", "pv-mono", `proofs/fire-shapes-${target}.json`);
+        // Respond — filled after prove runs
+        const respondTd = el("td", "m pend", "—");
         tr.appendChild(respondTd);
 
-        // Status cell
-        const statusTd = el("td", "pv-pending", "—");
+        // Status
+        const statusTd = el("td", "pend", "—");
         tr.appendChild(statusTd);
 
         // Prove button
         const btnTd = document.createElement("td");
         const proveBtn = el("button", "pv-btn", "Prove") as HTMLButtonElement;
+        btnTd.appendChild(proveBtn);
+        tr.appendChild(btnTd);
+
+        rowState[eventName] = { replyTd, respondTd, statusTd, proveBtn };
+
+        // Single event prove
         proveBtn.onclick = async (e) => {
             e.stopPropagation();
             proveBtn.textContent = "...";
             proveBtn.disabled = true;
             const result = await runCli(["prove", "fire-shapes", "--component", target]);
-            if (result.ok) {
-                statusTd.className = "pv-pass";
-                statusTd.textContent = "✓ pass";
-                proveBtn.textContent = "✓";
-            } else {
-                const failed = (result.checks ?? []).some((c: any) => c.name?.includes(eventName) && c.status === "fail");
-                statusTd.className = failed ? "pv-fail" : "pv-pass";
-                statusTd.textContent = failed ? "✗ fail" : "✓ pass";
-                proveBtn.textContent = failed ? "✗" : "✓";
-            }
+            updateRow(eventName, result);
             proveBtn.disabled = false;
         };
-        btnTd.appendChild(proveBtn);
-        tr.appendChild(btnTd);
 
         tbody.appendChild(tr);
 
-        // --- Expand row (click to toggle) ---
-        const expandRow = document.createElement("tr");
-        expandRow.className = "pv-expand";
-        const expandTd = document.createElement("td");
-        expandTd.colSpan = 7;
+        // Expand row — full FRRR detail, filled on mount
+        const expRow = document.createElement("tr");
+        expRow.className = "exp";
+        expRow.setAttribute("data-expand-for", eventName);
+        const expTd = document.createElement("td");
+        expTd.colSpan = 7;
+        expTd.className = "m";
+        expTd.textContent = "loading...";
+        expRow.appendChild(expTd);
+        tbody.appendChild(expRow);
 
-        const pre = document.createElement("pre");
-        pre.className = "pv-mono";
-        const lines: string[] = [];
-
-        // Fire detail
-        lines.push("FIRE");
-        if (shape?.data) {
-            for (const [k, v] of Object.entries(shape.data)) lines.push(`  data.${k}: ${v}`);
-        }
-        if (shape?.context) {
-            for (const [k, v] of Object.entries(shape.context)) lines.push(`  context.${k}: ${v}`);
-        }
-
-        // Route detail
-        lines.push("");
-        lines.push("ROUTE");
-        lines.push(`  handler: prove-${target}`);
-        lines.push(`  on: ${eventName}`);
-        lines.push(`  domain: prove`);
-        lines.push(`  action: fire-shapes`);
-        lines.push(`  args: { component: "${target}" }`);
-
-        // Reply detail
-        lines.push("");
-        lines.push("REPLY");
-        lines.push(`  returns: { ok: boolean, total: number, passed: number }`);
-        lines.push(`  bind: none (proof only)`);
-
-        // Respond detail
-        lines.push("");
-        lines.push("RESPOND");
-        lines.push(`  writes: safeframeworks/proofs/fire-shapes-${target}.json`);
-        lines.push(`  watcher: fs-change → re-render`);
-        pre.textContent = lines.join("\n");
-        expandTd.appendChild(pre);
-        expandRow.appendChild(expandTd);
-        tbody.appendChild(expandRow);
-
-        tr.onclick = () => expandRow.classList.toggle("open");
+        tr.onclick = () => expRow.classList.toggle("open");
     }
 
-    table.appendChild(tbody);
-    root.appendChild(table);
+    tbl.appendChild(tbody);
+    root.appendChild(tbl);
 
-    // --- Prove All handler ---
+    // --- Update a row from real proof result ---
+    function updateRow(eventName: string, result: any) {
+        const rs = rowState[eventName];
+        if (!rs) return;
+
+        // Reply — actual CLI response
+        const checks = result.checks ?? [];
+        const eventChecks = checks.filter((c: any) => c.name?.includes(eventName));
+        const allPass = eventChecks.length > 0 && eventChecks.every((c: any) => c.status === "pass");
+        const anyFail = eventChecks.some((c: any) => c.status === "fail");
+
+        rs.replyTd.className = "m";
+        rs.replyTd.textContent = eventChecks.length > 0
+            ? eventChecks.map((c: any) => `${c.status === "pass" ? "✓" : "✗"} ${c.name}`).join("\n")
+            : `ok: ${result.ok}, total: ${result.total}, passed: ${result.passed}`;
+
+        // Respond — proof file written
+        rs.respondTd.className = "m";
+        rs.respondTd.textContent = `proofs/fire-shapes-${target}.json\nts: ${result.ts ?? "—"}`;
+
+        // Status
+        rs.statusTd.className = anyFail ? "fail" : allPass ? "pass" : "pend";
+        rs.statusTd.textContent = anyFail ? "✗ fail" : allPass ? "✓ pass" : "—";
+        rs.proveBtn.textContent = anyFail ? "✗" : allPass ? "✓" : "Prove";
+    }
+
+    // --- Update all rows ---
+    function updateAll(result: any) {
+        for (const eventName of events) updateRow(eventName, result);
+        tsEl.textContent = result.ts ? `Last: ${result.ts}` : "";
+    }
+
+    // --- Prove All ---
     proveAllBtn.onclick = async () => {
         proveAllBtn.textContent = "Running...";
         proveAllBtn.disabled = true;
         const result = await runCli(["prove", "fire-shapes", "--component", target]);
-        proveAllBtn.textContent = result.ok ? `✓ ${result.passed ?? 0}/${result.total ?? 0}` : `✗ ${result.failed ?? 0} failed`;
+        proveAllBtn.textContent = result.ok ? `✓ ${result.passed}/${result.total}` : `✗ ${result.failed} failed`;
         proveAllBtn.disabled = false;
-        tsEl.textContent = result.ts ? `Last: ${result.ts}` : "";
-
-        // Update all status cells from checks
-        const checks = result.checks ?? [];
-        const rows = tbody.querySelectorAll("tr[data-event]");
-        rows.forEach((row: Element) => {
-            const ev = row.getAttribute("data-event");
-            const cell = row.querySelector("td:nth-child(6)");
-            if (!cell || !ev) return;
-            const eventChecks = checks.filter((c: any) => c.name?.includes(ev));
-            const failed = eventChecks.some((c: any) => c.status === "fail");
-            cell.className = eventChecks.length === 0 ? "pv-pending" : failed ? "pv-fail" : "pv-pass";
-            cell.textContent = eventChecks.length === 0 ? "—" : failed ? "✗ fail" : "✓ pass";
-        });
+        updateAll(result);
     };
 
-    // --- Load last proof result on mount ---
-    readFile(`proofs/fire-shapes-${target}.json`).then((proof: any) => {
-        if (!proof) return;
-        tsEl.textContent = proof.ts ? `Last: ${proof.ts}` : "";
-        const checks = proof.checks ?? [];
-        const rows = tbody.querySelectorAll("tr[data-event]");
-        rows.forEach((row: Element) => {
-            const ev = row.getAttribute("data-event");
-            const cell = row.querySelector("td:nth-child(6)");
-            if (!cell || !ev) return;
-            const eventChecks = checks.filter((c: any) => c.name?.includes(ev));
-            const failed = eventChecks.some((c: any) => c.status === "fail");
-            cell.className = eventChecks.length === 0 ? "pv-pending" : failed ? "pv-fail" : "pv-pass";
-            cell.textContent = eventChecks.length === 0 ? "—" : failed ? "✗ fail" : "✓ pass";
-        });
-    });
+    // --- On mount: load real handler file + last proof ---
+    (async () => {
+        // Load real handler file for Route column
+        const handlerFile = await readJsonFile(`events/prove-${target}.json`);
+        const handlers: EventHandler[] = handlerFile?.handlers ?? [];
+
+        for (const eventName of events) {
+            const rs = rowState[eventName];
+            const handler = handlers.find((h: any) => h.on === eventName);
+
+            // Route column — real handler config
+            if (handler && rs) {
+                const h = handler as any;
+                const lines: string[] = [];
+                lines.push(`handler: prove-${target}`);
+                lines.push(`on: ${h.on}`);
+                lines.push(`domain: ${h.domain}`);
+                lines.push(`action: ${h.action}`);
+                if (h.payload) {
+                    for (const [src, tgt] of Object.entries(h.payload)) {
+                        lines.push(`payload: ${src} → ${tgt}`);
+                    }
+                }
+                if (h.args) lines.push(`args: ${JSON.stringify(h.args)}`);
+                lines.push(`cli: safedesk ${h.domain} ${h.action} --component ${h.args?.component ?? target}`);
+                rs.replyTd.parentElement?.querySelector("td:nth-child(3)")?.replaceChildren();
+                const routeTd = rs.replyTd.parentElement?.querySelector("td:nth-child(3)");
+                if (routeTd) {
+                    routeTd.className = "m";
+                    routeTd.textContent = lines.join("\n");
+                }
+            }
+
+            // Expand row — full FRRR detail from real sources
+            const expTd = tbody.querySelector(`tr[data-expand-for="${eventName}"] td`);
+            if (expTd) {
+                const shape = shapes[eventName];
+                const h = handler as any;
+                const lines: string[] = [];
+
+                lines.push("FIRE");
+                if (shape?.data) for (const [k, v] of Object.entries(shape.data)) lines.push(`  data.${k}: ${v}`);
+                if (shape?.context) for (const [k, v] of Object.entries(shape.context)) lines.push(`  ctx.${k}: ${v}`);
+                if (!shape) lines.push("  (no shape declared)");
+
+                lines.push("\nROUTE");
+                if (h) {
+                    lines.push(`  handler: prove-${target}`);
+                    lines.push(`  on: ${h.on}`);
+                    lines.push(`  domain: ${h.domain}`);
+                    lines.push(`  action: ${h.action}`);
+                    if (h.payload) for (const [s, t] of Object.entries(h.payload)) lines.push(`  payload: ${s} → ${t}`);
+                    if (h.args) lines.push(`  args: ${JSON.stringify(h.args)}`);
+                    lines.push(`  cli: safedesk ${h.domain} ${h.action} --component ${h.args?.component ?? target}`);
+                } else {
+                    lines.push("  (no handler matched)");
+                }
+
+                lines.push("\nREPLY");
+                if (h?.returns) lines.push(`  returns: ${JSON.stringify(h.returns)}`);
+                if (h && (h as any).bind) lines.push(`  bind: ${JSON.stringify((h as any).bind)}`);
+                else lines.push("  bind: none");
+
+                lines.push("\nRESPOND");
+                lines.push(`  writes: safeframeworks/proofs/fire-shapes-${target}.json`);
+                lines.push("  watcher: fs-change → proof-viewer re-reads status");
+
+                expTd.textContent = lines.join("\n");
+            }
+        }
+
+        // Load last proof result
+        const lastProof = await readJsonFile(`proofs/fire-shapes-${target}.json`);
+        if (lastProof) updateAll(lastProof);
+    })();
 
     container.appendChild(root);
     return root;
