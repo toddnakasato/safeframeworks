@@ -109,7 +109,7 @@ export function createSafeProofViewer(
     table.className = "pv-table";
     const thead = document.createElement("thead");
     const headRow = document.createElement("tr");
-    for (const label of ["Event", "Fire Shape", "Route", "Status", ""]) {
+    for (const label of ["Event", "Fire", "Route", "Reply", "Respond", "Status", ""]) {
         headRow.appendChild(el("th", undefined, label));
     }
     thead.appendChild(headRow);
@@ -128,21 +128,29 @@ export function createSafeProofViewer(
         // Event name
         tr.appendChild(el("td", undefined, eventName));
 
-        // Fire shape summary
-        const shapeTd = el("td", "pv-mono");
+        // Fire — payload shape
+        const fireTd = el("td", "pv-mono");
         if (shape) {
             const parts: string[] = [];
-            if (shape.data) parts.push(`data: { ${Object.keys(shape.data).join(", ")} }`);
-            if (shape.context) parts.push(`ctx: { ${Object.keys(shape.context).join(", ")} }`);
-            shapeTd.textContent = parts.join("  ") || "—";
+            if (shape.data) parts.push(Object.keys(shape.data).join(", "));
+            if (shape.context) parts.push(`ctx: ${Object.keys(shape.context).join(", ")}`);
+            fireTd.textContent = parts.join(" ") || "—";
         } else {
-            shapeTd.textContent = "no shape";
+            fireTd.textContent = "no shape";
         }
-        tr.appendChild(shapeTd);
+        tr.appendChild(fireTd);
 
-        // Route — shows "prove-{component} → prove fire-shapes" (loaded from handler file)
+        // Route — handler + action
         const routeTd = el("td", "pv-mono", `prove-${target} → prove fire-shapes`);
         tr.appendChild(routeTd);
+
+        // Reply — what comes back
+        const replyTd = el("td", "pv-mono", "{ ok, total, passed }");
+        tr.appendChild(replyTd);
+
+        // Respond — what file changes
+        const respondTd = el("td", "pv-mono", `proofs/fire-shapes-${target}.json`);
+        tr.appendChild(respondTd);
 
         // Status cell
         const statusTd = el("td", "pv-pending", "—");
@@ -177,7 +185,7 @@ export function createSafeProofViewer(
         const expandRow = document.createElement("tr");
         expandRow.className = "pv-expand";
         const expandTd = document.createElement("td");
-        expandTd.colSpan = 5;
+        expandTd.colSpan = 7;
 
         const pre = document.createElement("pre");
         pre.className = "pv-mono";
@@ -201,12 +209,17 @@ export function createSafeProofViewer(
         lines.push(`  action: fire-shapes`);
         lines.push(`  args: { component: "${target}" }`);
 
+        // Reply detail
+        lines.push("");
+        lines.push("REPLY");
+        lines.push(`  returns: { ok: boolean, total: number, passed: number }`);
+        lines.push(`  bind: none (proof only)`);
+
         // Respond detail
         lines.push("");
         lines.push("RESPOND");
-        lines.push(`  cli: safedesk prove fire-shapes --component ${target}`);
         lines.push(`  writes: safeframeworks/proofs/fire-shapes-${target}.json`);
-
+        lines.push(`  watcher: fs-change → re-render`);
         pre.textContent = lines.join("\n");
         expandTd.appendChild(pre);
         expandRow.appendChild(expandTd);
@@ -232,7 +245,7 @@ export function createSafeProofViewer(
         const rows = tbody.querySelectorAll("tr[data-event]");
         rows.forEach((row: Element) => {
             const ev = row.getAttribute("data-event");
-            const cell = row.querySelector("td:nth-child(4)");
+            const cell = row.querySelector("td:nth-child(6)");
             if (!cell || !ev) return;
             const eventChecks = checks.filter((c: any) => c.name?.includes(ev));
             const failed = eventChecks.some((c: any) => c.status === "fail");
@@ -249,7 +262,7 @@ export function createSafeProofViewer(
         const rows = tbody.querySelectorAll("tr[data-event]");
         rows.forEach((row: Element) => {
             const ev = row.getAttribute("data-event");
-            const cell = row.querySelector("td:nth-child(4)");
+            const cell = row.querySelector("td:nth-child(6)");
             if (!cell || !ev) return;
             const eventChecks = checks.filter((c: any) => c.name?.includes(ev));
             const failed = eventChecks.some((c: any) => c.status === "fail");
