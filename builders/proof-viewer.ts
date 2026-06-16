@@ -140,8 +140,9 @@ export function createSafeProofViewer(
         } else fireTd.textContent = "no shape declared";
         tr.appendChild(fireTd);
 
-        // Route — placeholder, filled from handler file on mount
-        const routeTd = el("td", "m", "loading...");
+        // Route — known statically from handler naming convention, enriched on mount
+        const routeTd = el("td", "m");
+        routeTd.textContent = `handler: prove-${target}\non: ${eventName}\ncli: safedesk prove fire-shapes --component ${target}`;
         tr.appendChild(routeTd);
 
         // Reply — filled after prove runs
