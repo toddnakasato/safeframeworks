@@ -1,0 +1,61 @@
+{
+  "name": "prove-story-flow",
+  "handlers": [
+    {
+      "on": "select-node",
+      "target": "runtime",
+      "domain": "prove",
+      "action": "fire-shapes",
+      "args": {
+        "component": "story-flow"
+      },
+      "returns": {
+        "ok": "boolean",
+        "total": "number",
+        "passed": "number"
+      }
+    },
+    {
+      "on": "navigate",
+      "target": "runtime",
+      "domain": "prove",
+      "action": "fire-shapes",
+      "args": {
+        "component": "story-flow"
+      },
+      "returns": {
+        "ok": "boolean",
+        "total": "number",
+        "passed": "number"
+      }
+    },
+    {
+      "on": "step:click",
+      "target": "runtime",
+      "domain": "prove",
+      "action": "fire-shapes",
+      "args": {
+        "component": "story-flow"
+      },
+      "returns": {
+        "ok": "boolean",
+        "total": "number",
+        "passed": "number"
+      }
+    },
+    {
+      "on": "story:play",
+      "target": "runtime",
+      "domain": "prove",
+      "action": "fire-shapes",
+      "args": {
+        "component": "story-flow"
+      },
+      "returns": {
+        "ok": "boolean",
+        "total": "number",
+        "passed": "number"
+      }
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "name": "prove-flow",
+  "handlers": [
+    {
+      "on": "node:click",
+      "target": "runtime",
+      "domain": "prove",
+      "action": "fire-shapes",
+      "args": {
+        "component": "flow"
+      },
+      "returns": {
+        "ok": "boolean",
+        "total": "number",
+        "passed": "number"
+      }
+    },
+    {
+      "on": "link:click",
+      "target": "runtime",
+      "domain": "prove",
+      "action": "fire-shapes",
+      "args": {
+        "component": "flow"
+      },
+      "returns": {
+        "ok": "boolean",
+        "total": "number",
+        "passed": "number"
+      }
+    }
+  ]
+}

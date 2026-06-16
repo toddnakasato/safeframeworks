@@ -1,0 +1,19 @@
+{
+  "name": "prove-heatmap",
+  "handlers": [
+    {
+      "on": "cell:click",
+      "target": "runtime",
+      "domain": "prove",
+      "action": "fire-shapes",
+      "args": {
+        "component": "heatmap"
+      },
+      "returns": {
+        "ok": "boolean",
+        "total": "number",
+        "passed": "number"
+      }
+    }
+  ]
+}

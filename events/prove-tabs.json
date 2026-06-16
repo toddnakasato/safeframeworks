@@ -1,0 +1,19 @@
+{
+  "name": "prove-tabs",
+  "handlers": [
+    {
+      "on": "select",
+      "target": "runtime",
+      "domain": "prove",
+      "action": "fire-shapes",
+      "args": {
+        "component": "tabs"
+      },
+      "returns": {
+        "ok": "boolean",
+        "total": "number",
+        "passed": "number"
+      }
+    }
+  ]
+}

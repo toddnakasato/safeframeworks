@@ -1,0 +1,75 @@
+{
+  "name": "prove-input",
+  "handlers": [
+    {
+      "on": "change",
+      "target": "runtime",
+      "domain": "prove",
+      "action": "fire-shapes",
+      "args": {
+        "component": "input"
+      },
+      "returns": {
+        "ok": "boolean",
+        "total": "number",
+        "passed": "number"
+      }
+    },
+    {
+      "on": "editmode",
+      "target": "runtime",
+      "domain": "prove",
+      "action": "fire-shapes",
+      "args": {
+        "component": "input"
+      },
+      "returns": {
+        "ok": "boolean",
+        "total": "number",
+        "passed": "number"
+      }
+    },
+    {
+      "on": "canceledit",
+      "target": "runtime",
+      "domain": "prove",
+      "action": "fire-shapes",
+      "args": {
+        "component": "input"
+      },
+      "returns": {
+        "ok": "boolean",
+        "total": "number",
+        "passed": "number"
+      }
+    },
+    {
+      "on": "textinput",
+      "target": "runtime",
+      "domain": "prove",
+      "action": "fire-shapes",
+      "args": {
+        "component": "input"
+      },
+      "returns": {
+        "ok": "boolean",
+        "total": "number",
+        "passed": "number"
+      }
+    },
+    {
+      "on": "navigate",
+      "target": "runtime",
+      "domain": "prove",
+      "action": "fire-shapes",
+      "args": {
+        "component": "input"
+      },
+      "returns": {
+        "ok": "boolean",
+        "total": "number",
+        "passed": "number"
+      }
+    }
+  ]
+}

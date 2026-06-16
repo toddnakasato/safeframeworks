@@ -1,0 +1,19 @@
+{
+  "name": "prove-gauge",
+  "handlers": [
+    {
+      "on": "click",
+      "target": "runtime",
+      "domain": "prove",
+      "action": "fire-shapes",
+      "args": {
+        "component": "gauge"
+      },
+      "returns": {
+        "ok": "boolean",
+        "total": "number",
+        "passed": "number"
+      }
+    }
+  ]
+}

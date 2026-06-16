@@ -1,0 +1,19 @@
+{
+  "name": "prove-nav",
+  "handlers": [
+    {
+      "on": "navigate",
+      "target": "runtime",
+      "domain": "prove",
+      "action": "fire-shapes",
+      "args": {
+        "component": "nav"
+      },
+      "returns": {
+        "ok": "boolean",
+        "total": "number",
+        "passed": "number"
+      }
+    }
+  ]
+}

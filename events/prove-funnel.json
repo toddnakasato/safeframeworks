@@ -1,0 +1,19 @@
+{
+  "name": "prove-funnel",
+  "handlers": [
+    {
+      "on": "select",
+      "target": "runtime",
+      "domain": "prove",
+      "action": "fire-shapes",
+      "args": {
+        "component": "funnel"
+      },
+      "returns": {
+        "ok": "boolean",
+        "total": "number",
+        "passed": "number"
+      }
+    }
+  ]
+}

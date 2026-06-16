@@ -1,5 +1,13 @@
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 
+
+#[tauri::command]
+fn read_file_content(path: String) -> Result<String, String> {
+    let cwd = std::env::current_dir().unwrap_or_default();
+    let p = cwd.join(&path);
+    std::fs::read_to_string(&p).map_err(|e| e.to_string())
+}
+
 #[tauri::command]
 fn safecli_run(name: String, args: Vec<String>) -> Result<String, String> {
     let home = dirs::home_dir().unwrap_or_default();
@@ -28,7 +36,7 @@ pub fn run() {
       }
       Ok(())
     })
-    .invoke_handler(tauri::generate_handler![safecli_run])
+    .invoke_handler(tauri::generate_handler![safecli_run, read_file_content])
         .run(tauri::generate_context!())
     .expect("error while running tauri application");
 }

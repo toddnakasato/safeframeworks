@@ -1,0 +1,61 @@
+{
+  "ok": true,
+  "component": "table",
+  "total": 9,
+  "passed": 9,
+  "failed": 0,
+  "groups": {
+    "coverage": 9,
+    "data-keys": 0,
+    "context-keys": 0
+  },
+  "checks": [
+    {
+      "group": "coverage",
+      "name": "table: has COMPONENT_FIRE_SHAPES entry",
+      "status": "pass"
+    },
+    {
+      "group": "coverage",
+      "name": "table/select: shape declared",
+      "status": "pass"
+    },
+    {
+      "group": "coverage",
+      "name": "table/sort: shape declared",
+      "status": "pass"
+    },
+    {
+      "group": "coverage",
+      "name": "table/row:click: shape declared",
+      "status": "pass"
+    },
+    {
+      "group": "coverage",
+      "name": "table/row:select: shape declared",
+      "status": "pass"
+    },
+    {
+      "group": "coverage",
+      "name": "table/row:hover: shape declared",
+      "status": "pass"
+    },
+    {
+      "group": "coverage",
+      "name": "table/row:leave: shape declared",
+      "status": "pass"
+    },
+    {
+      "group": "coverage",
+      "name": "table/cell:click: shape declared",
+      "status": "pass"
+    },
+    {
+      "group": "coverage",
+      "name": "table/page: shape declared",
+      "status": "pass"
+    }
+  ],
+  "failures": [],
+  "ts": "2026-06-16T12:21:30.254Z"
+}

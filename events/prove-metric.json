@@ -1,0 +1,19 @@
+{
+  "name": "prove-metric",
+  "handlers": [
+    {
+      "on": "click",
+      "target": "runtime",
+      "domain": "prove",
+      "action": "fire-shapes",
+      "args": {
+        "component": "metric"
+      },
+      "returns": {
+        "ok": "boolean",
+        "total": "number",
+        "passed": "number"
+      }
+    }
+  ]
+}

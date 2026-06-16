@@ -1,0 +1,19 @@
+{
+  "name": "prove-layout",
+  "handlers": [
+    {
+      "on": "back",
+      "target": "runtime",
+      "domain": "prove",
+      "action": "fire-shapes",
+      "args": {
+        "component": "layout"
+      },
+      "returns": {
+        "ok": "boolean",
+        "total": "number",
+        "passed": "number"
+      }
+    }
+  ]
+}
