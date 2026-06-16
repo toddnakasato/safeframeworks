@@ -77,9 +77,11 @@ export function createSafeTable(container: HTMLElement, config: ConfigBase, onEv
     const reorderable = !!metadata.reorderable;
     const pageSize = (metadata.pageSize as number) ?? 0;
 
-    // Internal state (react useState equivalents)
-    let sortField = (metadata.defaultSort as string) ?? "";
-    let sortDir: SortDir = (metadata.defaultSortDir as SortDir) ?? "asc";
+    // Internal state
+    let sortFields: { field: string; dir: SortDir }[] = [];
+    if ((metadata.defaultSort as string)) {
+        sortFields = [{ field: metadata.defaultSort as string, dir: (metadata.defaultSortDir as SortDir) ?? "asc" }];
+    }
     let page = 0;
     const selected = new Set<string>();
     let dragIdx: number | null = null;
@@ -116,17 +118,31 @@ export function createSafeTable(container: HTMLElement, config: ConfigBase, onEv
 
     function getSorted(): Record<string, any>[] {
         const source = localOrder ?? data;
-        if (!sortField) return source;
-        return sortBy(source, sortField, sortDir);
+        if (sortFields.length === 0) return source;
+        // Apply sorts in reverse priority (last = primary)
+        let result = [...source];
+        for (let i = sortFields.length - 1; i >= 0; i--) {
+            result = sortBy(result, sortFields[i].field, sortFields[i].dir);
+        }
+        return result;
     }
 
     function handleSort(field: Field) {
         if (!field.sortable) return;
-        const dir: SortDir = sortField === field.name && sortDir === "asc" ? "desc" : "asc";
-        sortField = field.name;
-        sortDir = dir;
+        const existing = sortFields.findIndex(s => s.field === field.name);
+        if (existing >= 0) {
+            // Toggle direction or remove
+            const current = sortFields[existing];
+            if (current.dir === "asc") {
+                sortFields[existing] = { field: field.name, dir: "desc" };
+            } else {
+                sortFields.splice(existing, 1);
+            }
+        } else {
+            sortFields.push({ field: field.name, dir: "asc" });
+        }
         page = 0;
-        fire("sort", { field: field.name, dir });
+        fire("sort", { fields: [...sortFields], field: field.name, dir: sortFields.find(s => s.field === field.name)?.dir ?? "asc" });
         render();
     }
 
@@ -179,9 +195,11 @@ export function createSafeTable(container: HTMLElement, config: ConfigBase, onEv
         for (const field of fields) {
             const th = el("th", "column-header", field.label);
             if (field.sortable) th.setAttribute("data-sortable", "true");
-            if (sortField === field.name) {
-                th.setAttribute("data-sorted", sortDir);
-                const ind = el("span", "sort-indicator", sortDir === "asc" ? "↑" : "↓");
+            const sortEntry = sortFields.find(s => s.field === field.name);
+            if (sortEntry) {
+                th.setAttribute("data-sorted", sortEntry.dir);
+                const sortIndex = sortFields.length > 1 ? `${sortFields.indexOf(sortEntry) + 1}` : "";
+                const ind = el("span", "sort-indicator", `${sortEntry.dir === "asc" ? "↑" : "↓"}${sortIndex}`);
                 th.appendChild(ind);
             }
             if (numericType(field.type)) th.setAttribute("data-align", "right");
@@ -250,6 +268,12 @@ export function createSafeTable(container: HTMLElement, config: ConfigBase, onEv
                 }
                 fire("row:click", { row, index: globalIndex });
             };
+            tr.onmouseenter = () => {
+                fire("row:hover", { row, index: globalIndex });
+            };
+            tr.onmouseleave = () => {
+                fire("row:leave", { row, index: globalIndex });
+            };
 
             if (reorderable) {
                 const td = el("td", "drag-handle", "⠿");
@@ -273,10 +297,15 @@ export function createSafeTable(container: HTMLElement, config: ConfigBase, onEv
                 td.appendChild(cb);
                 tr.appendChild(td);
             }
-            for (const field of fields) {
+            for (let colIndex = 0; colIndex < fields.length; colIndex++) {
+                const field = fields[colIndex];
                 const td = el("td", "cell", formatValue(row[field.name], field));
                 td.setAttribute("data-type", field.type);
                 if (numericType(field.type)) td.setAttribute("data-align", "right");
+                td.onclick = (e) => {
+                    e.stopPropagation();
+                    fire("cell:click", { row, field: field.name, value: row[field.name], rowIndex: globalIndex, colIndex });
+                };
                 tr.appendChild(td);
             }
             tbody.appendChild(tr);
