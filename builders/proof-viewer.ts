@@ -10,11 +10,42 @@
 import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
 import { COMPONENT_EVENTS, COMPONENT_FIRE_SHAPES } from "../../safecontracts/src/contracts";
 
+/** Try to invoke safedesk via Tauri. Falls back silently if not in Tauri. */
+async function runProve(args: string[]): Promise<any> {
+    try {
+        const { invoke } = await import("@tauri-apps/api/core");
+        const out = await invoke<string>("safecli_run", { name: "safedesk", args });
+        return JSON.parse(out);
+    } catch (e: any) {
+        return { ok: false, error: e?.message ?? String(e) };
+    }
+}
+
 function el(tag: string, cls?: string, text?: string): HTMLElement {
     const e = document.createElement(tag);
     if (cls) e.className = cls;
     if (text) e.textContent = text;
     return e;
+}
+
+/** Update status cells in the table after a prove run. */
+function updateStatusCells(root: HTMLElement, result: any) {
+    if (!result) return;
+    const rows = root.querySelectorAll("tr[data-event]");
+    rows.forEach((row: Element) => {
+        const eventName = row.getAttribute("data-event");
+        const cell = row.querySelector(".pv-pass, .pv-fail, .pv-pending");
+        if (!cell || !eventName) return;
+        if (result.ok) {
+            cell.className = "pv-pass";
+            cell.textContent = "✓ pass";
+        } else {
+            const failures = result.failures ?? [];
+            const failed = failures.some((f: any) => f.name?.includes(eventName));
+            cell.className = failed ? "pv-fail" : "pv-pass";
+            cell.textContent = failed ? "✗ fail" : "✓ pass";
+        }
+    });
 }
 
 export function createSafeProofViewer(
@@ -72,17 +103,15 @@ export function createSafeProofViewer(
 
     // Prove All button
     if (events.length > 0) {
-        const proveAllBtn = el("button", "pv-btn pv-btn-primary", "Prove All");
-        proveAllBtn.onclick = () => {
-            if (onEvent) {
-                onEvent({
-                    id: crypto.randomUUID(),
-                    name: "prove:run",
-                    origin: { kind: "component", id: "proof-viewer" },
-                    data: { component: target, event: "all" },
-                    ts: new Date().toISOString(),
-                });
-            }
+        const proveAllBtn = el("button", "pv-btn pv-btn-primary", "Prove All") as HTMLButtonElement;
+        proveAllBtn.onclick = async () => {
+            proveAllBtn.textContent = "Running...";
+            proveAllBtn.disabled = true;
+            const result = await runProve(["prove", "fire-shapes", "--component", target]);
+            proveAllBtn.textContent = result.ok ? `✓ ${result.passed}/${result.total}` : `✗ ${result.failed} failed`;
+            proveAllBtn.disabled = false;
+            // Update per-event status cells
+            updateStatusCells(root, result);
         };
         header.appendChild(proveAllBtn);
     }
@@ -117,6 +146,7 @@ export function createSafeProofViewer(
 
         // Main row
         const tr = document.createElement("tr");
+        tr.setAttribute("data-event", eventName);
         tr.style.cursor = "pointer";
 
         // Event name
@@ -142,18 +172,26 @@ export function createSafeProofViewer(
 
         // Prove button
         const btnTd = document.createElement("td");
-        const proveBtn = el("button", "pv-btn", "Prove");
-        proveBtn.onclick = (e) => {
+        const proveBtn = el("button", "pv-btn", "Prove") as HTMLButtonElement;
+        proveBtn.onclick = async (e) => {
             e.stopPropagation();
-            if (onEvent) {
-                onEvent({
-                    id: crypto.randomUUID(),
-                    name: "prove:run",
-                    origin: { kind: "component", id: "proof-viewer" },
-                    data: { component: target, event: eventName },
-                    ts: new Date().toISOString(),
-                });
+            proveBtn.textContent = "...";
+            proveBtn.disabled = true;
+            const result = await runProve(["prove", "fire-shapes", "--component", target]);
+            // Find this event in the result
+            const checks = result.checks ?? result.failures ?? [];
+            const match = checks.find((c: any) => c.name?.includes(eventName));
+            const statusCell = tr.querySelector(".pv-pass, .pv-fail, .pv-pending");
+            if (result.ok) {
+                proveBtn.textContent = "✓";
+                if (statusCell) { statusCell.className = "pv-pass"; statusCell.textContent = "✓ pass"; }
+            } else if (match && !match.ok) {
+                proveBtn.textContent = "✗";
+                if (statusCell) { statusCell.className = "pv-fail"; statusCell.textContent = "✗ fail"; }
+            } else {
+                proveBtn.textContent = result.ok === false ? "✗" : "✓";
             }
+            proveBtn.disabled = false;
         };
         btnTd.appendChild(proveBtn);
         tr.appendChild(btnTd);
