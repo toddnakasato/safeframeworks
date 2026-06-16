@@ -31,6 +31,7 @@ import { createSafeTimeline } from "./timeline";
 import { createSafeToggle } from "./toggle";
 import { createSafeTree } from "./tree";
 import { createSafeWeek } from "./week";
+import { createSafeProofViewer } from "./proof-viewer";
 
 const el = (tag: string, text?: string): HTMLElement => {
     const e = document.createElement(tag);
@@ -129,6 +130,9 @@ export function buildComponent(config: ConfigBase, onEvent?: OnSafeEvent): HTMLE
             break;
         case "week":
             createSafeWeek(container, config, stampedOnEvent);
+            break;
+        case "proof-viewer":
+            createSafeProofViewer(container, config, stampedOnEvent);
             break;
         default:
             container.appendChild(el("div", `Unknown component: ${component}`));
