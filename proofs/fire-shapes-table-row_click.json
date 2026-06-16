@@ -1,0 +1,27 @@
+{
+  "ok": true,
+  "component": "table",
+  "event": "row:click",
+  "total": 2,
+  "passed": 2,
+  "failed": 0,
+  "groups": {
+    "coverage": 2,
+    "data-keys": 0,
+    "context-keys": 0
+  },
+  "checks": [
+    {
+      "group": "coverage",
+      "name": "table: has COMPONENT_FIRE_SHAPES entry",
+      "status": "pass"
+    },
+    {
+      "group": "coverage",
+      "name": "table/row:click: shape declared",
+      "status": "pass"
+    }
+  ],
+  "failures": [],
+  "ts": "2026-06-16T12:56:48.255Z"
+}

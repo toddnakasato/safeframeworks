@@ -142,15 +142,16 @@ export function createSafeProofViewer(
 
         // Route — known statically from handler naming convention, enriched on mount
         const routeTd = el("td", "m");
-        routeTd.textContent = `handler: prove-${target}\non: ${eventName}\ncli: safedesk prove fire-shapes --component ${target}`;
+        routeTd.textContent = `handler: prove-${target}\non: ${eventName}\ncli: safedesk prove fire-shapes --component ${target} --event ${eventName}`;
         tr.appendChild(routeTd);
 
         // Reply — filled after prove runs
         const replyTd = el("td", "m pend", "—");
         tr.appendChild(replyTd);
 
-        // Respond — filled after prove runs
-        const respondTd = el("td", "m pend", "—");
+        // Respond — proof file path per event
+        const evSuffix = eventName.replace(":", "_");
+        const respondTd = el("td", "m pend", `proofs/fire-shapes-${target}-${evSuffix}.json`);
         tr.appendChild(respondTd);
 
         // Status
@@ -170,7 +171,7 @@ export function createSafeProofViewer(
             e.stopPropagation();
             proveBtn.textContent = "...";
             proveBtn.disabled = true;
-            const result = await runCli(["prove", "fire-shapes", "--component", target]);
+            const result = await runCli(["prove", "fire-shapes", "--component", target, "--event", eventName]);
             updateRow(eventName, result);
             proveBtn.disabled = false;
         };
@@ -208,11 +209,12 @@ export function createSafeProofViewer(
         rs.replyTd.className = "m";
         rs.replyTd.textContent = eventChecks.length > 0
             ? eventChecks.map((c: any) => `${c.status === "pass" ? "✓" : "✗"} ${c.name}`).join("\n")
-            : `ok: ${result.ok}, total: ${result.total}, passed: ${result.passed}`;
+            : `ok: ${result.ok}\ntotal: ${result.total}\npassed: ${result.passed}\nfailed: ${result.failed}`;
 
-        // Respond — proof file written
+        // Respond — proof file written + timestamp
+        const evSuffix = eventName.replace(":", "_");
         rs.respondTd.className = "m";
-        rs.respondTd.textContent = `proofs/fire-shapes-${target}.json\nts: ${result.ts ?? "—"}`;
+        rs.respondTd.textContent = `proofs/fire-shapes-${target}-${evSuffix}.json\nts: ${result.ts ?? "—"}`;
 
         // Status
         rs.statusTd.className = anyFail ? "fail" : allPass ? "pass" : "pend";
@@ -289,7 +291,7 @@ export function createSafeProofViewer(
                     lines.push(`  action: ${h.action}`);
                     if (h.payload) for (const [s, t] of Object.entries(h.payload)) lines.push(`  payload: ${s} → ${t}`);
                     if (h.args) lines.push(`  args: ${JSON.stringify(h.args)}`);
-                    lines.push(`  cli: safedesk ${h.domain} ${h.action} --component ${h.args?.component ?? target}`);
+                    lines.push(`  cli: safedesk ${h.domain} ${h.action} --component ${h.args?.component ?? target} --event ${eventName}`);
                 } else {
                     lines.push("  (no handler matched)");
                 }
@@ -300,7 +302,7 @@ export function createSafeProofViewer(
                 else lines.push("  bind: none");
 
                 lines.push("\nRESPOND");
-                lines.push(`  writes: safeframeworks/proofs/fire-shapes-${target}.json`);
+                lines.push(`  writes: safeframeworks/proofs/fire-shapes-${target}-${eventName.replace(":", "_")}.json`);
                 lines.push("  watcher: fs-change → proof-viewer re-reads status");
 
                 expTd.textContent = lines.join("\n");
