@@ -1,5 +1,12 @@
 <script>
-  import { SAMPLES } from "../../../../samples";
+  import { SAMPLES } from '../../../../samples';
+    import { createSafeProofViewer } from '../../../../builders/proof-viewer';
+
+  function proofMount(node, comp) {
+    node.innerHTML = '';
+    createSafeProofViewer(node, { component: 'proof-viewer', metadata: { target: comp } });
+    return { update(newComp) { node.innerHTML = ''; createSafeProofViewer(node, { component: 'proof-viewer', metadata: { target: newComp } }); } };
+  }
   import SafeLayout from "../../SafeLayout.svelte";
   import SafeColumns from "../../SafeColumns.svelte";
   import SafeCard from "../../SafeCard.svelte";
@@ -80,6 +87,7 @@
           <div class="component-body">
             <svelte:component this={comps[comp]} config={SAMPLES[comp][v]} />
           </div>
+          <div style="border-top: 1px solid var(--sd-border, #e5e7eb)" use:proofMount={comp}></div>
         </div>
       {/each}
     {/each}

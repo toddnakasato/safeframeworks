@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewChecked, ElementRef } from '@angular/core';
 import { SAMPLES } from '../../../../samples';
+import { createSafeProofViewer } from '../../../../builders/proof-viewer';
 import { NgFor, NgIf } from '@angular/common';
 import { SafeLayoutComponent } from '../../SafeLayout';
 import { SafeColumnsComponent } from '../../SafeColumns';
@@ -289,7 +290,9 @@ import { SafeNavComponent } from '../../SafeNav';
     .component-body { padding: 16px; }
   `]
 })
-export class AppComponent {
+export class AppComponent implements AfterViewChecked {
+  constructor(private el: ElementRef) {}
+
   styles = ['vanilla', 'tailwind', 'tailwind-daisy', 'material'];
   activeStyle = 'vanilla';
   activeComponent: string | null = null;
@@ -329,5 +332,21 @@ export class AppComponent {
     this.activeStyle = s;
     const link = document.getElementById('safestyle-link');
     if (link) link.setAttribute('href', '/styles/' + s + '/components.css');
+  }
+
+  ngAfterViewChecked() {
+    const cards = this.el.nativeElement.querySelectorAll('.component-card');
+    cards.forEach((card: HTMLElement) => {
+      if (card.querySelector('.proof-viewer')) return;
+      const body = card.querySelector('.component-body');
+      if (!body) return;
+      const compEl = body.querySelector('[data-component]');
+      const comp = compEl?.getAttribute('data-component');
+      if (!comp) return;
+      const panel = document.createElement('div');
+      panel.style.borderTop = '1px solid var(--sd-border, #e5e7eb)';
+      createSafeProofViewer(panel, { component: 'proof-viewer', metadata: { target: comp } } as any);
+      card.appendChild(panel);
+    });
   }
 }

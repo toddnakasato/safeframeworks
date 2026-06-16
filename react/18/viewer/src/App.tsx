@@ -120,6 +120,9 @@ export default function App() {
               <div style={{ padding: 16 }}>
                 {renderConfigBase(SAMPLES[comp][v], handleEvent)}
               </div>
+              <div style={{ borderTop: "1px solid var(--sd-border, #e5e7eb)" }}>
+                {renderConfigBase({ component: "proof-viewer", metadata: { target: comp } } as any, handleEvent)}
+              </div>
             </div>
           ))}
         </div>

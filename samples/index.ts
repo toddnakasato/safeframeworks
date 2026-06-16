@@ -111,9 +111,6 @@ import week1Config from "./config/week/week1.json";
 import week2Config from "./config/week/week2.json";
 import week3Config from "./config/week/week3.json";
 
-import proofViewerTableConfig from "./config/proof-viewer/proof-viewer-table.json";
-import proofViewerNavConfig from "./config/proof-viewer/proof-viewer-nav.json";
-
 import cardInfoData from "./data/card-info.json";
 import chartSeriesData from "./data/chart-series.json";
 import dragDropItemsData from "./data/drag-drop-items.json";
@@ -361,9 +358,5 @@ export const SAMPLES: Record<string, Record<string, ConfigBase>> = {
         "week1": resolveData(week1Config as unknown as ConfigBase),
         "week2": resolveData(week2Config as unknown as ConfigBase),
         "week3": resolveData(week3Config as unknown as ConfigBase),
-    },
-    "proof-viewer": {
-        "proof-viewer-table": resolveData(proofViewerTableConfig as unknown as ConfigBase),
-        "proof-viewer-nav": resolveData(proofViewerNavConfig as unknown as ConfigBase),
     },
 };

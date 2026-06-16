@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue';
 import { SAMPLES } from '../../../../samples';
+import { createSafeProofViewer } from '../../../../builders/proof-viewer';
 import SafeLayout from '../../SafeLayout.vue';
 import SafeColumns from '../../SafeColumns.vue';
 import SafeCard from '../../SafeCard.vue';
@@ -60,6 +61,14 @@ function variationsToShow(comp) {
   const vs = Object.keys(SAMPLES[comp] ?? {}).sort();
   return activeVariation.value ? vs.filter(v => v === activeVariation.value) : vs;
 }
+
+function mountProof(el, comp) {
+  if (!el || el.dataset.mounted === comp) return;
+  el.innerHTML = '';
+  el.dataset.mounted = comp;
+  el.style.borderTop = '1px solid var(--sd-border, #e5e7eb)';
+  createSafeProofViewer(el, { component: 'proof-viewer', metadata: { target: comp } });
+}
 </script>
 
 <template>
@@ -86,6 +95,7 @@ function variationsToShow(comp) {
           <div class="component-body">
             <component :is="comps[comp]" :config="SAMPLES[comp][v]" />
           </div>
+          <div class="proof-panel" :ref="(el: any) => mountProof(el, comp)"></div>
         </div>
       </template>
     </div>
