@@ -1,13 +1,14 @@
 {
   "ok": true,
   "folder": "configs",
-  "total": 35,
-  "passed": 35,
+  "total": 51,
+  "passed": 51,
   "failed": 0,
   "products": [
     "proof",
     "fora",
-    "crutchtools"
+    "crutchtools",
+    "dominion"
   ],
   "failures": []
 }
