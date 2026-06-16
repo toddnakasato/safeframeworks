@@ -108,13 +108,17 @@ export function createSafeProofViewer(
             proveAllBtn.textContent = "Running...";
             proveAllBtn.disabled = true;
             const result = await runProve(["prove", "fire-shapes", "--component", target]);
-            proveAllBtn.textContent = result.ok ? `✓ ${result.passed}/${result.total}` : `✗ ${result.failed} failed`;
+            proveAllBtn.textContent = result.ok ? `✓ ${result.passed ?? 0}/${result.total ?? 0}` : `✗ ${result.failed ?? 0} failed`;
             proveAllBtn.disabled = false;
-            // Update per-event status cells
             updateStatusCells(root, result);
+            // Update timestamp
+            const tsEl = root.querySelector(".pv-ts");
+            if (tsEl && result.ts) tsEl.textContent = `Last proved: ${result.ts}`;
         };
         header.appendChild(proveAllBtn);
     }
+    const tsEl = el("span", "pv-ts pv-shape");
+    header.appendChild(tsEl);
     root.appendChild(header);
 
     if (events.length === 0) {
