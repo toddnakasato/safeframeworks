@@ -8,19 +8,11 @@ import { resolveColors } from "../../safecontracts/src/palette";
 import { applyIntent, readRecord } from "../utils/util";
 
 /*----------------------------------------------------------------------------------------------------
- *
- * Properties
- *
- ----------------------------------------------------------------------------------------------------*/
-
-const WIDTH = 600;
-const HEIGHT = 350;
-
-/*----------------------------------------------------------------------------------------------------
- *
- * Helpers
- *
- ----------------------------------------------------------------------------------------------------*/
+ /*----------------------------------------------------------------------------------------------------
+  *
+  * Implementation
+  *
+  ----------------------------------------------------------------------------------------------------*/
 
 export function flowData(config: ConfigBase): FlowData {
     const inline = readRecord(config) as unknown as FlowData;
@@ -50,6 +42,8 @@ function linkEvent(ctx: SafeFireContext, source: string | undefined, target: str
  ----------------------------------------------------------------------------------------------------*/
 
 function renderSankey(svgEl: SVGSVGElement, data: FlowData, metadata: Record<string, any>, ctx: SafeFireContext): void {
+    const WIDTH = (metadata.width as number) ?? 600;
+    const HEIGHT = (metadata.height as number) ?? 350;
     const COLORS = resolveColors(metadata);
     const nodeWidth = (metadata.nodeWidth as number) ?? FLOW_DEFAULTS.nodeWidth;
     const nodePadding = (metadata.nodePadding as number) ?? FLOW_DEFAULTS.nodePadding;
@@ -114,6 +108,8 @@ function renderSankey(svgEl: SVGSVGElement, data: FlowData, metadata: Record<str
 }
 
 function renderChord(svgEl: SVGSVGElement, data: FlowData, metadata: Record<string, any>, ctx: SafeFireContext): void {
+    const WIDTH = (metadata.width as number) ?? 600;
+    const HEIGHT = (metadata.height as number) ?? 350;
     const COLORS = resolveColors(metadata);
     const linkOpacity = (metadata.linkOpacity as number) ?? FLOW_DEFAULTS.linkOpacity;
     const showLabels = (metadata.showLabels as boolean) ?? FLOW_DEFAULTS.showLabels;
@@ -180,6 +176,8 @@ function renderChord(svgEl: SVGSVGElement, data: FlowData, metadata: Record<stri
 }
 
 function renderForce(svgEl: SVGSVGElement, data: FlowData, metadata: Record<string, any>, ctx: SafeFireContext): void {
+    const WIDTH = (metadata.width as number) ?? 600;
+    const HEIGHT = (metadata.height as number) ?? 350;
     const COLORS = resolveColors(metadata);
     const linkOpacity = (metadata.linkOpacity as number) ?? FLOW_DEFAULTS.linkOpacity;
     const showLabels = (metadata.showLabels as boolean) ?? FLOW_DEFAULTS.showLabels;
@@ -251,6 +249,8 @@ function renderForce(svgEl: SVGSVGElement, data: FlowData, metadata: Record<stri
 }
 
 function renderArc(svgEl: SVGSVGElement, data: FlowData, metadata: Record<string, any>, ctx: SafeFireContext): void {
+    const WIDTH = (metadata.width as number) ?? 600;
+    const HEIGHT = (metadata.height as number) ?? 350;
     const COLORS = resolveColors(metadata);
     const linkOpacity = (metadata.linkOpacity as number) ?? FLOW_DEFAULTS.linkOpacity;
     const showLabels = (metadata.showLabels as boolean) ?? FLOW_DEFAULTS.showLabels;
@@ -314,6 +314,8 @@ export function renderSafeFlow(
     data: FlowData,
     ctx: SafeFireContext,
 ): void {
+    const WIDTH = (metadata.width as number) ?? 600;
+    const HEIGHT = (metadata.height as number) ?? 350;
     const metadata = config.metadata;
     // External paint state (resolved from state.json by host)
     const _selectedNode = metadata.selectedNode ?? null;
