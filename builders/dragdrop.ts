@@ -4,21 +4,26 @@ import type { SafeFireContext } from "../../safecontracts/src/contracts";
 
 /*----------------------------------------------------------------------------------------------------
  *
- * Properties
- *
- ----------------------------------------------------------------------------------------------------*/
-
-/*----------------------------------------------------------------------------------------------------
- *
- * Helpers
- *
- ----------------------------------------------------------------------------------------------------*/
-
-/*----------------------------------------------------------------------------------------------------
- *
  * Implementation
  *
  ----------------------------------------------------------------------------------------------------*/
+export function createSafeDragDrop(container: HTMLElement, config: ConfigBase, ctx: SafeFireContext): HTMLElement {
+    const variant = (config.metadata.variant as string) ?? "generic";
+
+    // Self-extract list from config data (SafeRenderer does this for react)
+    const dataList: Record<string, any>[] = readList(config);
+
+    const root = el("div");
+    root.setAttribute("data-component", "drag-drop");
+    applyIntent(root, config.metadata);
+
+    if (variant === "file") buildFile(root, config, ctx);
+    else if (variant === "palette") buildPalette(root, config, ctx);
+    else buildGeneric(root, config, dataList, ctx);
+
+    container.appendChild(root);
+    return root;
+}
 
 function buildGeneric(root: HTMLElement, config: ConfigBase, items: Record<string, any>[], ctx: SafeFireContext): void {
     const dropLabel = (config.metadata.dropLabel as string) ?? "Drop here";
@@ -162,22 +167,4 @@ function buildPalette(root: HTMLElement, config: ConfigBase, ctx: SafeFireContex
     }
 
     root.append(sidebar, sectionsEl);
-}
-
-export function createSafeDragDrop(container: HTMLElement, config: ConfigBase, ctx: SafeFireContext): HTMLElement {
-    const variant = (config.metadata.variant as string) ?? "generic";
-
-    // Self-extract list from config data (SafeRenderer does this for react)
-    const dataList: Record<string, any>[] = readList(config);
-
-    const root = el("div");
-    root.setAttribute("data-component", "drag-drop");
-    applyIntent(root, config.metadata);
-
-    if (variant === "file") buildFile(root, config, ctx);
-    else if (variant === "palette") buildPalette(root, config, ctx);
-    else buildGeneric(root, config, dataList, ctx);
-
-    container.appendChild(root);
-    return root;
 }

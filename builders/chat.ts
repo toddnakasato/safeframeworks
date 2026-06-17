@@ -2,16 +2,13 @@ import type { ConfigBase } from "../../safecontracts/src/contracts";
 import { el, readList } from "../utils/util";
 import type { SafeFireContext } from "../../safecontracts/src/contracts";
 import type { ChatMessage } from "../../safecontracts/src/components/chat";
+import { nowTime } from "../../safecontracts/src/contracts-date";
 
 /*----------------------------------------------------------------------------------------------------
  *
- * Helpers
+ * Implementation
  *
  ----------------------------------------------------------------------------------------------------*/
-
-function now(): string {
-    return new Date().toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit" });
-}
 
 /*----------------------------------------------------------------------------------------------------
  *
@@ -29,7 +26,7 @@ export function createSafeChat(container: HTMLElement, config: ConfigBase, ctx: 
     const messages: ChatMessage[] = initial.map((m: any) => ({
         role: m.role ?? "assistant",
         content: m.content ?? "",
-        timestamp: m.timestamp ?? now(),
+        timestamp: m.timestamp ?? nowTime(),
     }));
 
     const root = el("div");
@@ -68,7 +65,7 @@ export function createSafeChat(container: HTMLElement, config: ConfigBase, ctx: 
     const handleSend = () => {
         const text = input.value.trim();
         if (!text) return;
-        messages.push({ role: "user", content: text, timestamp: now() });
+        messages.push({ role: "user", content: text, timestamp: nowTime() });
         input.value = "";
         sendBtn.disabled = true;
         renderMessages();

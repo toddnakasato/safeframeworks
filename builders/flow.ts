@@ -8,7 +8,6 @@ import { resolveColors } from "../../safecontracts/src/palette";
 import { applyIntent, readRecord } from "../utils/util";
 
 /*----------------------------------------------------------------------------------------------------
- /*----------------------------------------------------------------------------------------------------
   *
   * Implementation
   *
@@ -63,7 +62,10 @@ function renderSankey(svgEl: SVGSVGElement, data: FlowData, metadata: Record<str
         .nodeId((d: any) => d.index)
         .nodeWidth(nodeWidth)
         .nodePadding(nodePadding)
-        .extent([[8, 8], [WIDTH - 8, HEIGHT - 8]]);
+        .extent([
+            [8, 8],
+            [WIDTH - 8, HEIGHT - 8]
+        ]);
 
     const graph = sankeyGen({ nodes: nodes as any, links: links as any });
 
@@ -129,9 +131,7 @@ function renderChord(svgEl: SVGSVGElement, data: FlowData, metadata: Record<stri
     const outerRadius = Math.min(WIDTH, HEIGHT) / 2 - (showLabels ? 42 : 12);
     const innerRadius = outerRadius - 12;
 
-    const chords = d3.chordDirected()
-        .padAngle(0.04)
-        .sortSubgroups(d3.descending)(matrix);
+    const chords = d3.chordDirected().padAngle(0.04).sortSubgroups(d3.descending)(matrix);
 
     const g = svg.append("g").attr("transform", `translate(${WIDTH / 2},${HEIGHT / 2})`);
 
@@ -190,19 +190,22 @@ function renderForce(svgEl: SVGSVGElement, data: FlowData, metadata: Record<stri
     const groups = [...new Set(data.nodes.map((n) => n.group).filter(Boolean))] as string[];
     const groupIdx = new Map(groups.map((gName, i) => [gName, i]));
     const colorFor = (n: FlowNode, i: number) =>
-        n.accent ? accentColor(n, i, COLORS, svgEl)
-        : n.group ? COLORS[(groupIdx.get(n.group) ?? 0) % COLORS.length]
-        : COLORS[i % COLORS.length];
+        n.accent ? accentColor(n, i, COLORS, svgEl) : n.group ? COLORS[(groupIdx.get(n.group) ?? 0) % COLORS.length] : COLORS[i % COLORS.length];
 
     const nodes = data.nodes.map((n, i) => ({ ...n, index: i }));
-    const links = data.links
-        .filter((l) => nodes.some((n) => n.name === l.source) && nodes.some((n) => n.name === l.target))
-        .map((l) => ({ ...l }));
+    const links = data.links.filter((l) => nodes.some((n) => n.name === l.source) && nodes.some((n) => n.name === l.target)).map((l) => ({ ...l }));
 
     const maxValue = Math.max(...links.map((l) => l.value), 1);
 
-    const sim = d3.forceSimulation(nodes as any)
-        .force("link", d3.forceLink(links as any).id((d: any) => d.name).distance(linkDistance))
+    const sim = d3
+        .forceSimulation(nodes as any)
+        .force(
+            "link",
+            d3
+                .forceLink(links as any)
+                .id((d: any) => d.name)
+                .distance(linkDistance)
+        )
         .force("charge", d3.forceManyBody().strength(-180))
         .force("center", d3.forceCenter(WIDTH / 2, HEIGHT / 2))
         .force("collide", d3.forceCollide(nodeRadius + 4))
@@ -261,7 +264,10 @@ function renderArc(svgEl: SVGSVGElement, data: FlowData, metadata: Record<string
 
     const margin = 40;
     const baseline = HEIGHT - (showLabels ? 70 : 30);
-    const x = d3.scalePoint(data.nodes.map((n) => n.name), [margin, WIDTH - margin]);
+    const x = d3.scalePoint(
+        data.nodes.map((n) => n.name),
+        [margin, WIDTH - margin]
+    );
     const maxValue = Math.max(...data.links.map((l) => l.value), 1);
 
     svg.append("g")
@@ -308,12 +314,7 @@ function renderArc(svgEl: SVGSVGElement, data: FlowData, metadata: Record<string
     }
 }
 
-export function renderSafeFlow(
-    svgEl: SVGSVGElement,
-    config: ConfigBase,
-    data: FlowData,
-    ctx: SafeFireContext,
-): void {
+export function renderSafeFlow(svgEl: SVGSVGElement, config: ConfigBase, data: FlowData, ctx: SafeFireContext): void {
     const WIDTH = (metadata.width as number) ?? 600;
     const HEIGHT = (metadata.height as number) ?? 350;
     const metadata = config.metadata;
