@@ -1,6 +1,6 @@
-import type { ConfigBase, OnSafeEvent, RowCell, RowDef } from "../../safecontracts/src/contracts";
+import type { ConfigBase, RowCell, RowDef } from "../../safecontracts/src/contracts";
 import { el } from "./util";
-import { fireWithPayload } from "./payload-delegate";
+import type { SafeFireContext } from "../../safecontracts/src/contracts";
 import { getDataSource } from "../../safecontracts/src/contracts";
 import { filterBy } from "../../safecontracts/src/contracts-operations";
 
@@ -22,8 +22,7 @@ import { filterBy } from "../../safecontracts/src/contracts-operations";
  *
  ----------------------------------------------------------------------------------------------------*/
 
-export function createSafePicker(container: HTMLElement, config: ConfigBase, onEvent?: OnSafeEvent): HTMLElement {
-    const instanceId = config.metadata?.name as string | undefined;
+export function createSafePicker(container: HTMLElement, config: ConfigBase, ctx: SafeFireContext): HTMLElement {
     const metadata = config.metadata;
     const isCardGrid = metadata.variant === "card-grid";
 
@@ -99,7 +98,7 @@ export function createSafePicker(container: HTMLElement, config: ConfigBase, onE
             select.value = filterValue;
             select.addEventListener("change", () => {
                 filterValue = select.value;
-                fireWithPayload(onEvent, "picker", "filter", { field: filterField, value: select.value }, { instanceId });
+                ctx.fire("filter", { field: filterField, value: select.value }, { instanceId });
                 renderResults();
             });
             form.appendChild(select);
@@ -185,13 +184,13 @@ export function createSafePicker(container: HTMLElement, config: ConfigBase, onE
                 const card = el("div", "card");
                 card.setAttribute("data-surface", "raised");
                 card.setAttribute("data-radius", radius);
-                card.onclick = () => fireWithPayload(onEvent, "picker", "select", { row, index: i }, { instanceId });
+                card.onclick = () => ctx.fire("select", { row, index: i }, { instanceId });
                 buildRows(card, row);
                 results.appendChild(card);
             } else {
                 const li = el("li", "list-item");
                 li.setAttribute("data-spacing", spacing);
-                li.onclick = () => fireWithPayload(onEvent, "picker", "select", { row, index: i }, { instanceId });
+                li.onclick = () => ctx.fire("select", { row, index: i }, { instanceId });
                 buildRows(li, row);
                 results.appendChild(li);
             }

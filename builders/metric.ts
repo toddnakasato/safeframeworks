@@ -1,6 +1,6 @@
 import { el } from "./util";
-import { fireWithPayload } from "./payload-delegate";
-import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
+import type { SafeFireContext } from "../../safecontracts/src/contracts";
+import type { ConfigBase } from "../../safecontracts/src/contracts";
 import { fmtCurrency, fmtInt, fmtPercent } from "../../safecontracts/src/formatter";
 import { readRecord } from "../../safecontracts/src/contracts-data";
 
@@ -22,8 +22,7 @@ function trendIcon(dir: string): string {
     return "→";
 }
 
-export function createSafeMetric(container: HTMLElement, config: ConfigBase, onEvent?: OnSafeEvent): HTMLElement {
-    const instanceId = config.metadata?.name as string | undefined;
+export function createSafeMetric(container: HTMLElement, config: ConfigBase, ctx: SafeFireContext): HTMLElement {
     const metadata = config.metadata;
     const data = readRecord(config);
     const value = Number(data[metadata.valueField]) || 0;
@@ -69,7 +68,7 @@ export function createSafeMetric(container: HTMLElement, config: ConfigBase, onE
         }
     }
 
-    root.onclick = () => fireWithPayload(onEvent, "metric", "click", { value, field: metadata.valueField }, { instanceId });
+    root.onclick = () => ctx.fire("click", { value, field: metadata.valueField }, { instanceId });
 
     container.appendChild(root);
     return root;

@@ -1,8 +1,8 @@
 import { HyperFormula } from "hyperformula";
 import { el } from "./util";
-import { fireWithPayload } from "./payload-delegate";
+import type { SafeFireContext } from "../../safecontracts/src/contracts";
 import { getDataSource } from "../../safecontracts/src/contracts";
-import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
+import type { ConfigBase } from "../../safecontracts/src/contracts";
 import type { SheetColumn } from "../../safecontracts/src/components/sheet";
 import { SHEET_DEFAULTS, SHEET_STATUS_ACCENTS } from "../../safecontracts/src/components/sheet";
 
@@ -83,8 +83,7 @@ function fillCell(td: HTMLElement, val: any, col: SheetColumn | undefined, rows:
  *
  ----------------------------------------------------------------------------------------------------*/
 
-export function createSafeSheet(container: HTMLElement, config: ConfigBase, onEvent?: OnSafeEvent): HTMLElement {
-    const instanceId = config.metadata?.name as string | undefined;
+export function createSafeSheet(container: HTMLElement, config: ConfigBase, ctx: SafeFireContext): HTMLElement {
     const metadata = config.metadata;
     const variant = (metadata.variant as string) ?? SHEET_DEFAULTS.variant;
     const surface = (metadata.surface as string) ?? "base";
@@ -155,7 +154,7 @@ export function createSafeSheet(container: HTMLElement, config: ConfigBase, onEv
 
     const handleCellClick = (r: number, c: number) => {
         selectedCell = [r, c];
-        fireWithPayload(onEvent, "sheet", "select", { row: r, col: c, value: getCellValue(r, c) }, { instanceId });
+        ctx.fire("select", { row: r, col: c, value: getCellValue(r, c) }, { instanceId });
         render();
     };
 
@@ -184,7 +183,7 @@ export function createSafeSheet(container: HTMLElement, config: ConfigBase, onEv
             }
         } catch {}
         editingCell = null;
-        fireWithPayload(onEvent, "sheet", "edit", { row: r, col: c, value: val }, { instanceId });
+        ctx.fire("edit", { row: r, col: c, value: val }, { instanceId });
         render();
     };
 

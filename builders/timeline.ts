@@ -1,8 +1,8 @@
 import * as d3 from "d3";
 import { el } from "./util";
-import { fireWithPayload } from "./payload-delegate";
+import type { SafeFireContext } from "../../safecontracts/src/contracts";
 import { getDataSource } from "../../safecontracts/src/contracts";
-import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
+import type { ConfigBase } from "../../safecontracts/src/contracts";
 import { sortBy } from "../../safecontracts/src/contracts-operations";
 import { resolveColors } from "../../safecontracts/src/palette";
 
@@ -35,8 +35,7 @@ function getCategoryColor(categories: string[], cat: string, colors: string[]): 
  *
  ----------------------------------------------------------------------------------------------------*/
 
-export function createSafeTimeline(container: HTMLElement, config: ConfigBase, onEvent?: OnSafeEvent): HTMLElement {
-    const instanceId = config.metadata?.name as string | undefined;
+export function createSafeTimeline(container: HTMLElement, config: ConfigBase, ctx: SafeFireContext): HTMLElement {
     const metadata = config.metadata;
     const COLORS = resolveColors(metadata);
     const variant = (metadata.variant as string) ?? "default";
@@ -59,7 +58,7 @@ export function createSafeTimeline(container: HTMLElement, config: ConfigBase, o
     }
 
     const fireSelect = (index: number, item: Record<string, any>) => {
-        fireWithPayload(onEvent, "timeline", "select", { index, data: item }, { instanceId });
+        ctx.fire("select", { index, data: item }, { instanceId });
     };
 
     const root = el("div");

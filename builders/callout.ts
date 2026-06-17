@@ -1,4 +1,4 @@
-import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
+import type { ConfigBase, SafeFireContext } from "../../safecontracts/src/contracts";
 
 /*----------------------------------------------------------------------------------------------------
  *
@@ -24,7 +24,7 @@ function el(tag: string, attrs: Record<string, string> = {}): HTMLElement {
  *
  ----------------------------------------------------------------------------------------------------*/
 
-export function createSafeCallout(container: HTMLElement, config: ConfigBase, onEvent?: OnSafeEvent): HTMLElement {
+export function createSafeCallout(container: HTMLElement, config: ConfigBase, ctx?: SafeFireContext): HTMLElement {
     const metadata = config.metadata;
     const variant = (metadata.variant as string) ?? "insight";
     const message = (metadata.message as string) ?? "";

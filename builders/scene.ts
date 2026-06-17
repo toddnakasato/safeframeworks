@@ -1,5 +1,5 @@
-import { fireWithPayload } from "./payload-delegate";
-import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
+import type { SafeFireContext } from "../../safecontracts/src/contracts";
+import type { ConfigBase } from "../../safecontracts/src/contracts";
 
 /**
  * createSafeScene — renders a ConfigBase's children. No state management.
@@ -9,19 +9,18 @@ import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts"
 export function createSafeScene(
     container: HTMLElement,
     config: ConfigBase,
-    onEvent?: OnSafeEvent,
-    renderChild?: (container: HTMLElement, child: ConfigBase, onEvent?: OnSafeEvent) => void
+    ctx: SafeFireContext,
+    renderChild?: (container: HTMLElement, child: ConfigBase, ctx: SafeFireContext) => void
 ): HTMLElement {
-    const instanceId = config.metadata?.name as string | undefined;
 
     const root = document.createElement("div");
     root.setAttribute("data-component", "scene");
     if (instanceId) root.setAttribute("data-name", instanceId);
 
     // Wrap onEvent to intercept and re-fire as scene events
-    const handleEvent: OnSafeEvent = (event) => {
+    const handleEvent = (event) => {
         if (event.name === "select" || event.name === "back" || event.name === "filter") {
-            fireWithPayload(onEvent, "scene", event.name, event.data ?? {}, { instanceId });
+            ctx.fire(event.name, event.data ?? {}, { instanceId });
         } else if (onEvent) {
             onEvent(event);
         }

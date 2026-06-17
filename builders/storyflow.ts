@@ -1,5 +1,5 @@
-import { fireWithPayload } from "./payload-delegate";
-import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
+import type { SafeFireContext } from "../../safecontracts/src/contracts";
+import type { ConfigBase } from "../../safecontracts/src/contracts";
 
 /**
  * createSafeStoryFlow — renders a sequence of scenes. No state management.
@@ -9,20 +9,19 @@ import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts"
 export function createSafeStoryFlow(
     container: HTMLElement,
     config: ConfigBase,
-    onEvent?: OnSafeEvent,
-    renderChild?: (container: HTMLElement, child: ConfigBase, onEvent?: OnSafeEvent) => void
+    ctx: SafeFireContext,
+    renderChild?: (container: HTMLElement, child: ConfigBase, ctx: SafeFireContext) => void
 ): HTMLElement {
-    const instanceId = config.metadata?.name as string | undefined;
 
     const root = document.createElement("div");
     root.setAttribute("data-component", "story-flow");
     if (instanceId) root.setAttribute("data-name", instanceId);
 
     // Wrap onEvent to intercept and re-fire as story-flow events
-    const handleEvent: OnSafeEvent = (event) => {
+    const handleEvent = (event) => {
         const storyEvents = ["select-node", "navigate", "step:click", "story:play"];
         if (storyEvents.includes(event.name)) {
-            fireWithPayload(onEvent, "story-flow", event.name, event.data ?? {}, { instanceId });
+            ctx.fire(event.name, event.data ?? {}, { instanceId });
         } else if (onEvent) {
             onEvent(event);
         }

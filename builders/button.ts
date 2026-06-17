@@ -1,7 +1,7 @@
 import { createElement, type IconNode } from "lucide";
-import { fireWithPayload } from "./payload-delegate";
+import type { SafeFireContext } from "../../safecontracts/src/contracts";
 import * as lucide from "lucide";
-import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
+import type { ConfigBase } from "../../safecontracts/src/contracts";
 
 /*----------------------------------------------------------------------------------------------------
  *
@@ -49,7 +49,7 @@ function iconSpan(role: string, icon: string): HTMLElement {
  *
  ----------------------------------------------------------------------------------------------------*/
 
-function buildSingleButton(config: ConfigBase, onEvent?: OnSafeEvent): HTMLElement {
+function buildSingleButton(config: ConfigBase, ctx: SafeFireContext): HTMLElement {
     const metadata = config.metadata;
     const instanceId = metadata?.name as string | undefined;
     const variant = (metadata.variant as string) ?? "primary";
@@ -80,7 +80,7 @@ function buildSingleButton(config: ConfigBase, onEvent?: OnSafeEvent): HTMLEleme
 
     btn.onclick = () => {
         if (disabled || loading) return;
-        fireWithPayload(onEvent, "button", eventName, null, { instanceId, context: eventContext }); // config-driven name; validated by prove build
+        ctx.fire(eventName, null, { instanceId, context: eventContext }); // config-driven name; validated by prove build
     };
 
     if (loading) btn.appendChild(el("span", { "data-role": "spinner" }));
@@ -112,7 +112,7 @@ function buildSingleButton(config: ConfigBase, onEvent?: OnSafeEvent): HTMLEleme
     return btn;
 }
 
-function buildPaginationGroup(config: ConfigBase, onEvent?: OnSafeEvent): HTMLElement {
+function buildPaginationGroup(config: ConfigBase, ctx: SafeFireContext): HTMLElement {
     const metadata = config.metadata;
     const instanceId = metadata?.name as string | undefined;
     const totalPages = (metadata.totalPages as number) ?? 1;
@@ -127,7 +127,7 @@ function buildPaginationGroup(config: ConfigBase, onEvent?: OnSafeEvent): HTMLEl
 
     const go = (p: number) => {
         page = Math.max(1, Math.min(totalPages, p));
-        fireWithPayload(onEvent, "button", "page", { page, totalPages }, { instanceId });
+        ctx.fire("page", { page, totalPages }, { instanceId });
         render();
     };
 
@@ -155,7 +155,7 @@ function buildPaginationGroup(config: ConfigBase, onEvent?: OnSafeEvent): HTMLEl
     return root;
 }
 
-function buildButtonGroup(config: ConfigBase, onEvent?: OnSafeEvent): HTMLElement {
+function buildButtonGroup(config: ConfigBase, ctx: SafeFireContext): HTMLElement {
     const metadata = config.metadata;
     const groupVariant = (metadata.groupVariant as string) ?? "toolbar";
     const groupDirection = (metadata.groupDirection as string) ?? "horizontal";
@@ -182,14 +182,14 @@ function buildButtonGroup(config: ConfigBase, onEvent?: OnSafeEvent): HTMLElemen
     return root;
 }
 
-function buildButton(config: ConfigBase, onEvent?: OnSafeEvent): HTMLElement {
+function buildButton(config: ConfigBase, ctx: SafeFireContext): HTMLElement {
     const hasChildren = config.children && Object.keys(config.children).length > 0;
     const hasGroupVariant = !!config.metadata.groupVariant;
     if (hasChildren || hasGroupVariant) return buildButtonGroup(config, onEvent);
     return buildSingleButton(config, onEvent);
 }
 
-export function createSafeButton(container: HTMLElement, config: ConfigBase, onEvent?: OnSafeEvent): HTMLElement {
+export function createSafeButton(container: HTMLElement, config: ConfigBase, ctx: SafeFireContext): HTMLElement {
     const root = buildButton(config, onEvent);
     container.appendChild(root);
     return root;

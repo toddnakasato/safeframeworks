@@ -1,5 +1,5 @@
-import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
-import { fireWithPayload } from "./payload-delegate";
+import type { ConfigBase } from "../../safecontracts/src/contracts";
+import type { SafeFireContext } from "../../safecontracts/src/contracts";
 
 /*----------------------------------------------------------------------------------------------------
  *
@@ -26,8 +26,7 @@ interface TabItem {
  *
  ----------------------------------------------------------------------------------------------------*/
 
-export function createSafeTabs(container: HTMLElement, config: ConfigBase, onEvent?: OnSafeEvent): HTMLElement {
-    const instanceId = config.metadata?.name as string | undefined;
+export function createSafeTabs(container: HTMLElement, config: ConfigBase, ctx: SafeFireContext): HTMLElement {
     const { metadata, children } = config;
     const tabs: TabItem[] = (metadata.tabs as TabItem[]) ?? [];
     const variant = (metadata.variant as string) ?? "default";
@@ -69,7 +68,7 @@ export function createSafeTabs(container: HTMLElement, config: ConfigBase, onEve
             if (active === tab.key) btn.setAttribute("data-active", "");
             btn.onclick = () => {
                 active = tab.key;
-                fireWithPayload(onEvent, "tabs", "select", { key: tab.key }, { instanceId });
+                ctx.fire("select", { key: tab.key }, { instanceId });
                 render();
             };
             btn.style.display = "flex";

@@ -1,5 +1,5 @@
-import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
-import { fireWithPayload } from "./payload-delegate";
+import type { ConfigBase } from "../../safecontracts/src/contracts";
+import type { SafeFireContext } from "../../safecontracts/src/contracts";
 import { getDataSource } from "../../safecontracts/src/contracts";
 
 /*----------------------------------------------------------------------------------------------------
@@ -67,8 +67,7 @@ function el(tag: string, attrs: Record<string, string> = {}): HTMLElement {
  *
  ----------------------------------------------------------------------------------------------------*/
 
-export function createSafeTree(container: HTMLElement, config: ConfigBase, onEvent?: OnSafeEvent): HTMLElement {
-    const instanceId = config.metadata?.name as string | undefined;
+export function createSafeTree(container: HTMLElement, config: ConfigBase, ctx: SafeFireContext): HTMLElement {
     const metadata = config.metadata;
     const variant = (metadata.variant as string) ?? "default";
     const spacing = (metadata.spacing as string) ?? "normal";
@@ -120,13 +119,13 @@ export function createSafeTree(container: HTMLElement, config: ConfigBase, onEve
     const handleToggle = (id: string) => {
         if (expanded.has(id)) expanded.delete(id);
         else expanded.add(id);
-        fireWithPayload(onEvent, "tree", "expand", { id }, { instanceId });
+        ctx.fire("expand", { id }, { instanceId });
         render();
     };
 
     const handleSelect = (node: TreeNode) => {
         selected = node.id;
-        fireWithPayload(onEvent, "tree", "select", { id: node.id, record: node.record }, { instanceId });
+        ctx.fire("select", { id: node.id, record: node.record }, { instanceId });
         render();
     };
 

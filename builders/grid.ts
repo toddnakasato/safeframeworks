@@ -1,4 +1,4 @@
-import type { ConfigBase, Field, OnSafeEvent } from "../../safecontracts/src/contracts";
+import type { ConfigBase, Field, SafeFireContext } from "../../safecontracts/src/contracts";
 import { getDataSource } from "../../safecontracts/src/contracts";
 import { createSafeInput } from "./input";
 
@@ -89,7 +89,7 @@ function fieldToInputConfig(
  *
  ----------------------------------------------------------------------------------------------------*/
 
-export function createSafeGrid(container: HTMLElement, config: ConfigBase, onEvent?: OnSafeEvent): HTMLElement {
+export function createSafeGrid(container: HTMLElement, config: ConfigBase, ctx?: SafeFireContext): HTMLElement {
     const metadata = config.metadata;
     const ds = getDataSource(config) as any;
     const schema = ds?.schema;

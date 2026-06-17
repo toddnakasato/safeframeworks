@@ -10,8 +10,8 @@ import {
 } from "chart.js";
 import type { ChartConfiguration } from "chart.js";
 import { getDataSource } from "../../safecontracts/src/contracts";
-import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
-import { fireWithPayload } from "./payload-delegate";
+import type { ConfigBase } from "../../safecontracts/src/contracts";
+import type { SafeFireContext } from "../../safecontracts/src/contracts";
 import { resolveColors } from "../../safecontracts/src/palette";
 
 /*----------------------------------------------------------------------------------------------------
@@ -160,8 +160,7 @@ export function buildChartConfig(config: ConfigBase): ChartConfiguration {
     };
 }
 
-export function createSafeChart(canvas: HTMLCanvasElement, config: ConfigBase, onEvent?: OnSafeEvent): Chart {
-    const instanceId = config.metadata?.name as string | undefined;
+export function createSafeChart(canvas: HTMLCanvasElement, config: ConfigBase, ctx: SafeFireContext): Chart {
     const metadata = config.metadata;
     canvas.setAttribute("data-component", "chart");
     canvas.setAttribute("data-variant", (metadata.variant as string) ?? "default");
@@ -173,7 +172,7 @@ export function createSafeChart(canvas: HTMLCanvasElement, config: ConfigBase, o
             if (!onEvent || !elements?.length) return;
             const el = elements[0];
             const data = chartData(config);
-            fireWithPayload(onEvent, "chart", "click", {
+            ctx.fire("click", {
                 index: el.index,
                 datasetIndex: el.datasetIndex,
                 row: data[el.index],

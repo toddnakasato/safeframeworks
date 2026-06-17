@@ -1,4 +1,4 @@
-import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
+import type { ConfigBase, SafeFireContext } from "../../safecontracts/src/contracts";
 import { el } from "./util";
 import { COLUMNS_DEFAULTS } from "../../safecontracts/src/components/columns";
 
@@ -20,7 +20,7 @@ import { COLUMNS_DEFAULTS } from "../../safecontracts/src/components/columns";
  *
  ----------------------------------------------------------------------------------------------------*/
 
-export function createSafeColumns(container: HTMLElement, config: ConfigBase, _onEvent?: OnSafeEvent): HTMLElement {
+export function createSafeColumns(container: HTMLElement, config: ConfigBase, _ctx?: SafeFireContext): HTMLElement {
     const metadata = config.metadata;
     const D = COLUMNS_DEFAULTS;
     const totalColumns = (metadata.totalColumns as number) ?? D.totalColumns;

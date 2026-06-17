@@ -1,6 +1,6 @@
-import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
+import type { ConfigBase } from "../../safecontracts/src/contracts";
 import { el } from "./util";
-import { fireWithPayload } from "./payload-delegate";
+import type { SafeFireContext } from "../../safecontracts/src/contracts";
 import { DAY_NAMES_SHORT, MONTH_NAMES } from "../../safecontracts/src/contracts";
 
 /*----------------------------------------------------------------------------------------------------
@@ -66,8 +66,7 @@ function formatDateRange(dates: Date[]): string {
  *
  ----------------------------------------------------------------------------------------------------*/
 
-export function createSafeWeek(container: HTMLElement, config: ConfigBase, onEvent?: OnSafeEvent): HTMLElement {
-    const instanceId = config.metadata?.name as string | undefined;
+export function createSafeWeek(container: HTMLElement, config: ConfigBase, ctx: SafeFireContext): HTMLElement {
     const metadata = config.metadata;
     const variant = (metadata.variant as string) ?? "full";
     const showNav = metadata.showNavigation !== false;
@@ -87,12 +86,12 @@ export function createSafeWeek(container: HTMLElement, config: ConfigBase, onEve
 
     const fireNavigate = (dir: number) => {
         offset += dir;
-        fireWithPayload(onEvent, "week", "navigate", { direction: dir }, { instanceId });
+        ctx.fire("navigate", { direction: dir }, { instanceId });
         render();
     };
 
     const fireSelect = (date: Date, hour: number) => {
-        fireWithPayload(onEvent, "week", "select", { date: date.toISOString().split("T")[0], hour }, { instanceId });
+        ctx.fire("select", { date: date.toISOString().split("T")[0], hour }, { instanceId });
     };
 
     function buildGrid(dates: Date[]): HTMLElement {

@@ -1,7 +1,7 @@
 import * as d3 from "d3";
-import { fireWithPayload } from "./payload-delegate";
+import type { SafeFireContext } from "../../safecontracts/src/contracts";
 import { getDataSource } from "../../safecontracts/src/contracts";
-import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
+import type { ConfigBase } from "../../safecontracts/src/contracts";
 import { HIERARCHY_DEFAULTS } from "../../safecontracts/src/components/hierarchy";
 import { resolveColors } from "../../safecontracts/src/palette";
 
@@ -60,7 +60,7 @@ function tagTopLevel(root: d3.HierarchyNode<any>): void {
  *
  ----------------------------------------------------------------------------------------------------*/
 
-function renderTreemap(svgEl: SVGSVGElement, root: d3.HierarchyNode<any>, metadata: Record<string, any>, onEvent?: OnSafeEvent): void {
+function renderTreemap(svgEl: SVGSVGElement, root: d3.HierarchyNode<any>, metadata: Record<string, any>, ctx: SafeFireContext): void {
     const COLORS = resolveColors(metadata);
     const labelField = (metadata.labelField as string) ?? HIERARCHY_DEFAULTS.labelField;
     const valueField = (metadata.valueField as string) ?? HIERARCHY_DEFAULTS.valueField;
@@ -75,7 +75,7 @@ function renderTreemap(svgEl: SVGSVGElement, root: d3.HierarchyNode<any>, metada
     const cells = svg.append("g").selectAll("g").data(leaves).join("g")
         .attr("transform", (d: any) => `translate(${d.x0},${d.y0})`)
         .style("cursor", "pointer")
-        .on("click", (_, d: any) => fireWithPayload(onEvent, "hierarchy", "select", { data: d.data, value: d.value }));
+        .on("click", (_, d: any) => ctx.fire("select", { data: d.data, value: d.value }));
 
     cells.append("rect")
         .attr("width", (d: any) => Math.max(0, d.x1 - d.x0))
@@ -104,7 +104,7 @@ function renderTreemap(svgEl: SVGSVGElement, root: d3.HierarchyNode<any>, metada
     });
 }
 
-function renderSunburst(svgEl: SVGSVGElement, root: d3.HierarchyNode<any>, metadata: Record<string, any>, onEvent?: OnSafeEvent): void {
+function renderSunburst(svgEl: SVGSVGElement, root: d3.HierarchyNode<any>, metadata: Record<string, any>, ctx: SafeFireContext): void {
     const COLORS = resolveColors(metadata);
     const labelField = (metadata.labelField as string) ?? HIERARCHY_DEFAULTS.labelField;
     const accentField = (metadata.accentField as string) ?? HIERARCHY_DEFAULTS.accentField;
@@ -130,7 +130,7 @@ function renderSunburst(svgEl: SVGSVGElement, root: d3.HierarchyNode<any>, metad
         .attr("fill", (d: any, i: number) => accentFill(d, i, COLORS, svgEl, accentField))
         .attr("opacity", (d: any) => 1 - (d.depth - 1) * 0.18)
         .style("cursor", "pointer")
-        .on("click", (_, d: any) => fireWithPayload(onEvent, "hierarchy", "select", { data: d.data, value: d.value }));
+        .on("click", (_, d: any) => ctx.fire("select", { data: d.data, value: d.value }));
 
     if (showValues) {
         g.selectAll("text")
@@ -149,7 +149,7 @@ function renderSunburst(svgEl: SVGSVGElement, root: d3.HierarchyNode<any>, metad
     }
 }
 
-function renderPack(svgEl: SVGSVGElement, root: d3.HierarchyNode<any>, metadata: Record<string, any>, onEvent?: OnSafeEvent): void {
+function renderPack(svgEl: SVGSVGElement, root: d3.HierarchyNode<any>, metadata: Record<string, any>, ctx: SafeFireContext): void {
     const COLORS = resolveColors(metadata);
     const labelField = (metadata.labelField as string) ?? HIERARCHY_DEFAULTS.labelField;
     const accentField = (metadata.accentField as string) ?? HIERARCHY_DEFAULTS.accentField;
@@ -169,7 +169,7 @@ function renderPack(svgEl: SVGSVGElement, root: d3.HierarchyNode<any>, metadata:
         .attr("stroke", (d: any) => d.children ? "var(--sd-border)" : "none")
         .attr("opacity", (d: any) => d.children ? 0.6 : 0.85)
         .style("cursor", "pointer")
-        .on("click", (_, d: any) => fireWithPayload(onEvent, "hierarchy", "select", { data: d.data, value: d.value }));
+        .on("click", (_, d: any) => ctx.fire("select", { data: d.data, value: d.value }));
 
     g.selectAll("text")
         .data(nodes.filter((d: any) => !d.children && d.r > 16))
@@ -183,7 +183,7 @@ function renderPack(svgEl: SVGSVGElement, root: d3.HierarchyNode<any>, metadata:
         .text((d: any) => String(d.data[labelField] ?? "").slice(0, Math.floor(d.r / 3.2)));
 }
 
-function renderIcicle(svgEl: SVGSVGElement, root: d3.HierarchyNode<any>, metadata: Record<string, any>, onEvent?: OnSafeEvent): void {
+function renderIcicle(svgEl: SVGSVGElement, root: d3.HierarchyNode<any>, metadata: Record<string, any>, ctx: SafeFireContext): void {
     const COLORS = resolveColors(metadata);
     const labelField = (metadata.labelField as string) ?? HIERARCHY_DEFAULTS.labelField;
     const accentField = (metadata.accentField as string) ?? HIERARCHY_DEFAULTS.accentField;
@@ -197,7 +197,7 @@ function renderIcicle(svgEl: SVGSVGElement, root: d3.HierarchyNode<any>, metadat
     const cells = svg.append("g").selectAll("g").data(nodes).join("g")
         .attr("transform", (d: any) => `translate(${d.y0},${d.x0})`)
         .style("cursor", "pointer")
-        .on("click", (_, d: any) => fireWithPayload(onEvent, "hierarchy", "select", { data: d.data, value: d.value }));
+        .on("click", (_, d: any) => ctx.fire("select", { data: d.data, value: d.value }));
 
     cells.append("rect")
         .attr("width", (d: any) => Math.max(0, d.y1 - d.y0))
@@ -217,8 +217,7 @@ function renderIcicle(svgEl: SVGSVGElement, root: d3.HierarchyNode<any>, metadat
         .text((d: any) => String(d.data[labelField] ?? "").slice(0, Math.floor((d.y1 - d.y0) / 7)));
 }
 
-export function createSafeHierarchy(container: HTMLElement, config: ConfigBase, onEvent?: OnSafeEvent): HTMLElement {
-    const instanceId = config.metadata?.name as string | undefined;
+export function createSafeHierarchy(container: HTMLElement, config: ConfigBase, ctx: SafeFireContext): HTMLElement {
     const metadata = config.metadata;
     const variant = (metadata.variant as string) ?? HIERARCHY_DEFAULTS.variant;
 

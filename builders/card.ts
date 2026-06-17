@@ -1,6 +1,6 @@
-import type { ConfigBase, OnSafeEvent, RowCell, RowDef } from "../../safecontracts/src/contracts";
+import type { ConfigBase, RowCell, RowDef } from "../../safecontracts/src/contracts";
 import { el } from "./util";
-import { fireWithPayload } from "./payload-delegate";
+import type { SafeFireContext } from "../../safecontracts/src/contracts";
 import { getDataSource } from "../../safecontracts/src/contracts";
 
 /*----------------------------------------------------------------------------------------------------
@@ -21,8 +21,7 @@ import { getDataSource } from "../../safecontracts/src/contracts";
  *
  ----------------------------------------------------------------------------------------------------*/
 
-export function createSafeCard(container: HTMLElement, config: ConfigBase, onEvent?: OnSafeEvent): HTMLElement {
-    const instanceId = config.metadata?.name as string | undefined;
+export function createSafeCard(container: HTMLElement, config: ConfigBase, ctx: SafeFireContext): HTMLElement {
     const metadata = config.metadata;
     const rows = metadata.rows as RowDef[] | undefined;
     const accent = (metadata.accent as string) ?? "brand";
@@ -46,14 +45,14 @@ export function createSafeCard(container: HTMLElement, config: ConfigBase, onEve
     root.setAttribute("data-radius", radius);
     root.setAttribute("data-spacing", spacing);
     root.setAttribute("data-accent", accent);
-    root.onclick = () => fireWithPayload(onEvent, "card", "click", { data }, { instanceId });
+    root.onclick = () => ctx.fire("click", { data }, { instanceId });
 
     const appendBack = () => {
         if (!backLabel) return;
         const back = el("div", "back", backLabel);
         back.onclick = (e) => {
             e.stopPropagation();
-            fireWithPayload(onEvent, "card", "back", {}, { instanceId });
+            ctx.fire("back", {}, { instanceId });
         };
         root.appendChild(back);
     };

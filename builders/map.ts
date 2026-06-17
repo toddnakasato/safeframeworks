@@ -1,8 +1,8 @@
 import L from "leaflet";
-import { fireWithPayload } from "./payload-delegate";
+import type { SafeFireContext } from "../../safecontracts/src/contracts";
 import { getDataSource } from "../../safecontracts/src/contracts";
 import "leaflet/dist/leaflet.css";
-import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
+import type { ConfigBase } from "../../safecontracts/src/contracts";
 
 /*----------------------------------------------------------------------------------------------------
  *
@@ -59,9 +59,8 @@ export function createSafeMap(
     container: HTMLElement,
     config: ConfigBase,
     data: Record<string, any>[],
-    onEvent?: OnSafeEvent,
+    ctx: SafeFireContext,
 ): L.Map {
-    const instanceId = config.metadata?.name as string | undefined;
     const metadata = config.metadata;
     const variant = (metadata.variant as string) ?? "default";
     const latField = (metadata.latField as string) ?? "lat";
@@ -112,7 +111,7 @@ export function createSafeMap(
             marker.bindPopup(popupHtml);
         }
 
-        marker.on("click", () => fireWithPayload(onEvent, "map", "select", { index: i, data: d, lat, lng }));
+        marker.on("click", () => ctx.fire("select", { index: i, data: d, lat, lng }));
         allLayers.push(marker);
         pathPoints.push([lat, lng]);
 

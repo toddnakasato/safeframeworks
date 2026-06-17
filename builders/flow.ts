@@ -1,8 +1,8 @@
 import * as d3 from "d3";
-import { fireWithPayload } from "./payload-delegate";
+import type { SafeFireContext } from "../../safecontracts/src/contracts";
 import { getDataSource } from "../../safecontracts/src/contracts";
 import { sankey as d3Sankey, sankeyLinkHorizontal } from "d3-sankey";
-import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
+import type { ConfigBase } from "../../safecontracts/src/contracts";
 import type { FlowData, FlowNode } from "../../safecontracts/src/components/flow";
 import { FLOW_DEFAULTS } from "../../safecontracts/src/components/flow";
 import { resolveColors } from "../../safecontracts/src/palette";
@@ -36,12 +36,12 @@ function accentColor(node: FlowNode | undefined, idx: number, colors: string[], 
     return colors[idx % colors.length];
 }
 
-function nodeEvent(onEvent: OnSafeEvent | undefined, name: string | undefined, instanceId?: string) {
-    fireWithPayload(onEvent, "flow", "node:click", { name }, { instanceId });
+function nodeEvent(ctx: SafeFireContext, name: string | undefined, instanceId?: string) {
+    ctx.fire("node:click", { name }, { instanceId });
 }
 
-function linkEvent(onEvent: OnSafeEvent | undefined, source: string | undefined, target: string | undefined, value: number, instanceId?: string) {
-    fireWithPayload(onEvent, "flow", "link:click", { source, target, value }, { instanceId });
+function linkEvent(ctx: SafeFireContext, source: string | undefined, target: string | undefined, value: number, instanceId?: string) {
+    ctx.fire("link:click", { source, target, value }, { instanceId });
 }
 
 /*----------------------------------------------------------------------------------------------------
@@ -50,7 +50,7 @@ function linkEvent(onEvent: OnSafeEvent | undefined, source: string | undefined,
  *
  ----------------------------------------------------------------------------------------------------*/
 
-function renderSankey(svgEl: SVGSVGElement, data: FlowData, metadata: Record<string, any>, onEvent?: OnSafeEvent): void {
+function renderSankey(svgEl: SVGSVGElement, data: FlowData, metadata: Record<string, any>, ctx: SafeFireContext): void {
     const COLORS = resolveColors(metadata);
     const nodeWidth = (metadata.nodeWidth as number) ?? FLOW_DEFAULTS.nodeWidth;
     const nodePadding = (metadata.nodePadding as number) ?? FLOW_DEFAULTS.nodePadding;
@@ -114,7 +114,7 @@ function renderSankey(svgEl: SVGSVGElement, data: FlowData, metadata: Record<str
     }
 }
 
-function renderChord(svgEl: SVGSVGElement, data: FlowData, metadata: Record<string, any>, onEvent?: OnSafeEvent): void {
+function renderChord(svgEl: SVGSVGElement, data: FlowData, metadata: Record<string, any>, ctx: SafeFireContext): void {
     const COLORS = resolveColors(metadata);
     const linkOpacity = (metadata.linkOpacity as number) ?? FLOW_DEFAULTS.linkOpacity;
     const showLabels = (metadata.showLabels as boolean) ?? FLOW_DEFAULTS.showLabels;
@@ -180,7 +180,7 @@ function renderChord(svgEl: SVGSVGElement, data: FlowData, metadata: Record<stri
     }
 }
 
-function renderForce(svgEl: SVGSVGElement, data: FlowData, metadata: Record<string, any>, onEvent?: OnSafeEvent): void {
+function renderForce(svgEl: SVGSVGElement, data: FlowData, metadata: Record<string, any>, ctx: SafeFireContext): void {
     const COLORS = resolveColors(metadata);
     const linkOpacity = (metadata.linkOpacity as number) ?? FLOW_DEFAULTS.linkOpacity;
     const showLabels = (metadata.showLabels as boolean) ?? FLOW_DEFAULTS.showLabels;
@@ -251,7 +251,7 @@ function renderForce(svgEl: SVGSVGElement, data: FlowData, metadata: Record<stri
     }
 }
 
-function renderArc(svgEl: SVGSVGElement, data: FlowData, metadata: Record<string, any>, onEvent?: OnSafeEvent): void {
+function renderArc(svgEl: SVGSVGElement, data: FlowData, metadata: Record<string, any>, ctx: SafeFireContext): void {
     const COLORS = resolveColors(metadata);
     const linkOpacity = (metadata.linkOpacity as number) ?? FLOW_DEFAULTS.linkOpacity;
     const showLabels = (metadata.showLabels as boolean) ?? FLOW_DEFAULTS.showLabels;
@@ -313,9 +313,8 @@ export function renderSafeFlow(
     svgEl: SVGSVGElement,
     config: ConfigBase,
     data: FlowData,
-    onEvent?: OnSafeEvent,
+    ctx: SafeFireContext,
 ): void {
-    const instanceId = config.metadata?.name as string | undefined;
     const metadata = config.metadata;
     const variant = (metadata.variant as string) ?? FLOW_DEFAULTS.variant;
 

@@ -1,13 +1,13 @@
-import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
+import type { ConfigBase } from "../../safecontracts/src/contracts";
 import { el } from "./util";
-import { fireWithPayload } from "./payload-delegate";
+import type { SafeFireContext } from "../../safecontracts/src/contracts";
 import { LAYOUT_VARIANTS } from "../../safecontracts/src/contracts";
 
 /**
  * Render callback — the host provides this so the layout builder
  * can render any child ConfigBase into a DOM element.
  */
-export type RenderChild = (config: ConfigBase, onEvent?: OnSafeEvent) => HTMLElement;
+export type RenderChild = (config: ConfigBase, ctx?: SafeFireContext) => HTMLElement;
 
 /**
  * Create a layout component. Regions are determined by the variant.
@@ -16,10 +16,9 @@ export type RenderChild = (config: ConfigBase, onEvent?: OnSafeEvent) => HTMLEle
 export function createSafeLayout(
     container: HTMLElement,
     config: ConfigBase,
-    onEvent?: OnSafeEvent,
+    onEvent?: SafeFireContext,
     renderChild?: RenderChild,
 ): HTMLElement {
-    const instanceId = config.metadata?.name as string | undefined;
     const metadata = config.metadata;
     const variant = (metadata.variant as string) ?? "single";
     const columns = metadata.columns as string | undefined;
@@ -46,7 +45,7 @@ export function createSafeLayout(
 
     if (backLabel) {
         const back = el("button", "layout-back", backLabel);
-        back.onclick = () => fireWithPayload(onEvent, "layout", "back", {}, { instanceId });
+        back.onclick = () => ctx.fire("back", {}, { instanceId });
         root.appendChild(back);
     }
 

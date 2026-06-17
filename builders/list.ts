@@ -1,9 +1,9 @@
 import { createElement, type IconNode } from "lucide";
 import { el } from "./util";
-import { fireWithPayload } from "./payload-delegate";
+import type { SafeFireContext } from "../../safecontracts/src/contracts";
 import { getDataSource } from "../../safecontracts/src/contracts";
 import * as lucide from "lucide";
-import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
+import type { ConfigBase } from "../../safecontracts/src/contracts";
 import { DAY_NAMES_SHORT } from "../../safecontracts/src/contracts";
 import { LIST_DEFAULTS, LIST_STATUS_ACCENTS } from "../../safecontracts/src/components/list";
 import { paginate } from "../../safecontracts/src/contracts-operations";
@@ -42,7 +42,7 @@ function fieldOf(meta: Record<string, unknown>, key: string, fallback: string): 
     return (meta[key] as string) ?? fallback;
 }
 
-function makePager(state: PagerState, count: number, pageSize: number, onEvent: OnSafeEvent | undefined, rerender: () => void, instanceId?: string) {
+function makePager(state: PagerState, count: number, pageSize: number, ctx: SafeFireContext, rerender: () => void, instanceId?: string) {
     // Use contract paginate for totalPages and page clamping
     const dummy = paginate(Array(count), state.page, pageSize);
     const totalPages = dummy.totalPages;
@@ -51,7 +51,7 @@ function makePager(state: PagerState, count: number, pageSize: number, onEvent: 
     const go = (p: number) => {
         const clamped = paginate(Array(count), p, pageSize);
         state.page = clamped.page;
-        fireWithPayload(onEvent, "list", "page", { page: clamped.page, totalPages }, { instanceId });
+        ctx.fire("page", { page: clamped.page, totalPages }, { instanceId });
         rerender();
     };
     return { page, totalPages, slice, go };
@@ -95,8 +95,7 @@ function buildPager(page: number, totalPages: number, numbers: boolean, go: (p: 
  *
  ----------------------------------------------------------------------------------------------------*/
 
-function buildSimple(root: HTMLElement, config: ConfigBase, data: any[], onEvent?: OnSafeEvent): void {
-    const instanceId = config.metadata?.name as string | undefined;
+function buildSimple(root: HTMLElement, config: ConfigBase, data: any[], ctx: SafeFireContext): void {
     const meta = config.metadata;
     const direction = (meta.direction as string) ?? LIST_DEFAULTS.direction;
     const labelField = fieldOf(meta, "labelField", "label");
@@ -121,7 +120,7 @@ function buildSimple(root: HTMLElement, config: ConfigBase, data: any[], onEvent
             const row = el("div", "list-item");
             row.tabIndex = 0;
             row.setAttribute("role", "listitem");
-            row.onclick = () => fireWithPayload(onEvent, "list", "select", { index: i, label, item }, { instanceId });
+            row.onclick = () => ctx.fire("select", { index: i, label, item }, { instanceId });
             if (withIcons && icon) {
                 const ic = el("span", "item-icon");
                 const g = iconGlyph(icon, 16);
@@ -141,8 +140,7 @@ function buildSimple(root: HTMLElement, config: ConfigBase, data: any[], onEvent
     render();
 }
 
-function buildSelection(root: HTMLElement, config: ConfigBase, data: any[], onEvent?: OnSafeEvent): void {
-    const instanceId = config.metadata?.name as string | undefined;
+function buildSelection(root: HTMLElement, config: ConfigBase, data: any[], ctx: SafeFireContext): void {
     const meta = config.metadata;
     const mode = (meta.selectionMode as string) ?? LIST_DEFAULTS.selectionMode;
     const labelField = fieldOf(meta, "labelField", "label");
@@ -158,10 +156,10 @@ function buildSelection(root: HTMLElement, config: ConfigBase, data: any[], onEv
     const toggle = (i: number, item: any) => {
         if (mode === "single") {
             single = i;
-            fireWithPayload(onEvent, "list", "select", { index: i, item }, { instanceId });
+            ctx.fire("select", { index: i, item }, { instanceId });
         } else {
             if (multi.has(i)) multi.delete(i); else multi.add(i);
-            fireWithPayload(onEvent, "list", "toggle", { index: i, selected: multi.has(i), item }, { instanceId });
+            ctx.fire("toggle", { index: i, selected: multi.has(i), item }, { instanceId });
         }
         render();
     };
@@ -191,8 +189,7 @@ function buildSelection(root: HTMLElement, config: ConfigBase, data: any[], onEv
     render();
 }
 
-function buildColumns(root: HTMLElement, config: ConfigBase, data: any[], onEvent?: OnSafeEvent): void {
-    const instanceId = config.metadata?.name as string | undefined;
+function buildColumns(root: HTMLElement, config: ConfigBase, data: any[], ctx: SafeFireContext): void {
     const meta = config.metadata;
     const schema = getDataSource(config)?.schema;
     const fields = (schema?.fields ?? []) as any[];
@@ -215,7 +212,7 @@ function buildColumns(root: HTMLElement, config: ConfigBase, data: any[], onEven
             row.style.gridTemplateColumns = `repeat(${fields.length}, 1fr)`;
             row.tabIndex = 0;
             row.setAttribute("role", "listitem");
-            row.onclick = () => fireWithPayload(onEvent, "list", "select", { index: i, item }, { instanceId });
+            row.onclick = () => ctx.fire("select", { index: i, item }, { instanceId });
             for (const f of fields) row.appendChild(el("span", "item-cell", String(item[f.name] ?? "")));
             items.appendChild(row);
         });
@@ -226,8 +223,7 @@ function buildColumns(root: HTMLElement, config: ConfigBase, data: any[], onEven
     render();
 }
 
-function buildFiles(root: HTMLElement, config: ConfigBase, data: any[], onEvent?: OnSafeEvent): void {
-    const instanceId = config.metadata?.name as string | undefined;
+function buildFiles(root: HTMLElement, config: ConfigBase, data: any[], ctx: SafeFireContext): void {
     const meta = config.metadata;
     const labelField = fieldOf(meta, "labelField", "name");
     const iconField = fieldOf(meta, "iconField", "icon");
@@ -246,7 +242,7 @@ function buildFiles(root: HTMLElement, config: ConfigBase, data: any[], onEvent?
             if (item.type != null) row.setAttribute("data-file-type", String(item.type));
             row.tabIndex = 0;
             row.setAttribute("role", "listitem");
-            row.onclick = () => fireWithPayload(onEvent, "list", "select", { index: i, item }, { instanceId });
+            row.onclick = () => ctx.fire("select", { index: i, item }, { instanceId });
             const ic = el("span", "item-icon");
             const g = iconGlyph(item[iconField], 18);
             if (g) ic.appendChild(g);
@@ -265,8 +261,7 @@ function buildFiles(root: HTMLElement, config: ConfigBase, data: any[], onEvent?
     render();
 }
 
-function buildActions(root: HTMLElement, config: ConfigBase, data: any[], onEvent?: OnSafeEvent): void {
-    const instanceId = config.metadata?.name as string | undefined;
+function buildActions(root: HTMLElement, config: ConfigBase, data: any[], ctx: SafeFireContext): void {
     const meta = config.metadata;
     const labelField = fieldOf(meta, "labelField", "title");
     const iconField = fieldOf(meta, "iconField", "icon");
@@ -304,7 +299,7 @@ function buildActions(root: HTMLElement, config: ConfigBase, data: any[], onEven
             const btn = el("button", "item-action", String(item[actionField]));
             btn.onclick = (e) => {
                 e.stopPropagation();
-                fireWithPayload(onEvent, "list", "action", { index: i, action: item[actionField], item }, { instanceId });
+                ctx.fire("action", { index: i, action: item[actionField], item }, { instanceId });
             };
             row.appendChild(btn);
         }
@@ -335,8 +330,7 @@ function collectGroupIds(nodes: any[]): string[] {
     return out;
 }
 
-function buildHierarchy(root: HTMLElement, config: ConfigBase, data: any[], onEvent?: OnSafeEvent): void {
-    const instanceId = config.metadata?.name as string | undefined;
+function buildHierarchy(root: HTMLElement, config: ConfigBase, data: any[], ctx: SafeFireContext): void {
     const meta = config.metadata;
     const labelField = fieldOf(meta, "labelField", "name");
     const iconField = fieldOf(meta, "iconField", "icon");
@@ -350,7 +344,7 @@ function buildHierarchy(root: HTMLElement, config: ConfigBase, data: any[], onEv
 
     const toggleNode = (id: string) => {
         if (expanded.has(id)) expanded.delete(id); else expanded.add(id);
-        fireWithPayload(onEvent, "list", "expand", { id, expanded: expanded.has(id) }, { instanceId });
+        ctx.fire("expand", { id, expanded: expanded.has(id) }, { instanceId });
         render();
     };
 
@@ -371,7 +365,7 @@ function buildHierarchy(root: HTMLElement, config: ConfigBase, data: any[], onEv
             if (isGroup) row.setAttribute("aria-expanded", String(isOpen));
             row.onclick = () => isGroup
                 ? toggleNode(String(node.id))
-                : fireWithPayload(onEvent, "list", "select", { id: node.id, item: node }, { instanceId });
+                : ctx.fire("select", { id: node.id, item: node }, { instanceId });
             if (isGroup) {
                 const chev = el("span", "item-chevron");
                 if (isOpen) chev.setAttribute("data-expanded", "true");
@@ -398,8 +392,7 @@ function buildHierarchy(root: HTMLElement, config: ConfigBase, data: any[], onEv
     render();
 }
 
-function buildPropertyGrid(root: HTMLElement, config: ConfigBase, data: any[], onEvent?: OnSafeEvent): void {
-    const instanceId = config.metadata?.name as string | undefined;
+function buildPropertyGrid(root: HTMLElement, config: ConfigBase, data: any[], ctx: SafeFireContext): void {
     const expanded = new Set<string>(
         data.filter((g) => g.children?.length).map((g) => String(g.id)),
     );
@@ -416,14 +409,14 @@ function buildPropertyGrid(root: HTMLElement, config: ConfigBase, data: any[], o
 
     const toggleGroup = (id: string) => {
         if (expanded.has(id)) expanded.delete(id); else expanded.add(id);
-        fireWithPayload(onEvent, "list", "expand", { id, expanded: expanded.has(id) }, { instanceId });
+        ctx.fire("expand", { id, expanded: expanded.has(id) }, { instanceId });
         render();
     };
 
     // Commit without re-render so the edited input/select keeps focus.
     const commit = (id: string, value: unknown) => {
         values[id] = value;
-        fireWithPayload(onEvent, "list", "change", { id, value }, { instanceId });
+        ctx.fire("change", { id, value }, { instanceId });
     };
 
     function renderNode(node: any, level: number): HTMLElement {
@@ -485,8 +478,7 @@ function buildPropertyGrid(root: HTMLElement, config: ConfigBase, data: any[], o
     render();
 }
 
-function buildGantt(root: HTMLElement, config: ConfigBase, data: any[], onEvent?: OnSafeEvent): void {
-    const instanceId = config.metadata?.name as string | undefined;
+function buildGantt(root: HTMLElement, config: ConfigBase, data: any[], ctx: SafeFireContext): void {
     const meta = config.metadata;
     const title = (meta.title as string) ?? LIST_DEFAULTS.ganttTitle;
     const days = (meta.days as number) ?? LIST_DEFAULTS.ganttDays;
@@ -501,7 +493,7 @@ function buildGantt(root: HTMLElement, config: ConfigBase, data: any[], onEvent?
 
     const navigate = (dir: number) => {
         offset += dir;
-        fireWithPayload(onEvent, "list", "navigate", { direction: dir }, { instanceId });
+        ctx.fire("navigate", { direction: dir }, { instanceId });
         render();
     };
 
@@ -555,7 +547,7 @@ function buildGantt(root: HTMLElement, config: ConfigBase, data: any[], onEvent?
         data.forEach((item, i) => {
             const intent = (item.accent as string) ?? "brand";
             const row = el("div", "gantt-row");
-            row.onclick = () => fireWithPayload(onEvent, "list", "select", { index: i, item }, { instanceId });
+            row.onclick = () => ctx.fire("select", { index: i, item }, { instanceId });
             row.appendChild(el("span", "gantt-row-label", String(item[labelField] ?? "")));
             const cells = el("span", "gantt-cells");
             cells.style.gridTemplateColumns = `repeat(${days}, 1fr)`;
@@ -578,8 +570,7 @@ function buildGantt(root: HTMLElement, config: ConfigBase, data: any[], onEvent?
     render();
 }
 
-export function createSafeList(container: HTMLElement, config: ConfigBase, onEvent?: OnSafeEvent): HTMLElement {
-    const instanceId = config.metadata?.name as string | undefined;
+export function createSafeList(container: HTMLElement, config: ConfigBase, ctx: SafeFireContext): HTMLElement {
     const raw = getDataSource(config)?.inline;
     const list: any[] = Array.isArray(raw) ? raw : [];
     const variant = (config.metadata.variant as string) ?? LIST_DEFAULTS.variant;

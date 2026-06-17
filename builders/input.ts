@@ -1,6 +1,6 @@
-import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
+import type { ConfigBase } from "../../safecontracts/src/contracts";
 import { el } from "./util";
-import { fireWithPayload } from "./payload-delegate";
+import type { SafeFireContext } from "../../safecontracts/src/contracts";
 import { getDataSource } from "../../safecontracts/src/contracts";
 
 /*----------------------------------------------------------------------------------------------------
@@ -117,8 +117,7 @@ function formatDisplay(value: any, format: string | undefined, locale: string, c
  *
  ----------------------------------------------------------------------------------------------------*/
 
-export function createSafeInput(container: HTMLElement, config: ConfigBase, onEvent?: OnSafeEvent): HTMLElement {
-    const instanceId = config.metadata?.name as string | undefined;
+export function createSafeInput(container: HTMLElement, config: ConfigBase, ctx: SafeFireContext): HTMLElement {
     const metadata = config.metadata;
 
     // Self-extract record from config data (SafeRenderer does this for react)
@@ -203,7 +202,7 @@ export function createSafeInput(container: HTMLElement, config: ConfigBase, onEv
     root.setAttribute("data-valign", valign);
 
     const fireEvent = (name: string, payload: any) => {
-        fireWithPayload(onEvent, "input", name, payload, { instanceId });
+        ctx.fire(name, payload, { instanceId });
     };
 
     function getDisplayValue(): string {

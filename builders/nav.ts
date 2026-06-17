@@ -1,7 +1,7 @@
 import { createElement, ChevronDown, Dot, type IconNode } from "lucide";
-import { fireWithPayload } from "./payload-delegate";
+import type { SafeFireContext } from "../../safecontracts/src/contracts";
 import * as lucide from "lucide";
-import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
+import type { ConfigBase } from "../../safecontracts/src/contracts";
 
 /*----------------------------------------------------------------------------------------------------
  *
@@ -42,8 +42,7 @@ function el(tag: string, attrs: Record<string, string> = {}): HTMLElement {
  *
  ----------------------------------------------------------------------------------------------------*/
 
-export function createSafeNav(container: HTMLElement, config: ConfigBase, onEvent?: OnSafeEvent): HTMLElement {
-    const instanceId = config.metadata?.name as string | undefined;
+export function createSafeNav(container: HTMLElement, config: ConfigBase, ctx: SafeFireContext): HTMLElement {
     const metadata = config.metadata;
     const title = metadata.title as string | undefined;
     const subtitle = metadata.subtitle as string | undefined;
@@ -90,7 +89,7 @@ export function createSafeNav(container: HTMLElement, config: ConfigBase, onEven
 
     const fire = (key: string) => {
         active = key;
-        fireWithPayload(onEvent, "nav", "navigate", { key, value: key }, { instanceId, context: { path: key } });
+        ctx.fire("navigate", { key, value: key }, { instanceId, context: { path: key } });
         render();
     };
 

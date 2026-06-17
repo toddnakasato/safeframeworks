@@ -1,7 +1,7 @@
 import * as d3 from "d3";
-import { fireWithPayload } from "./payload-delegate";
+import type { SafeFireContext } from "../../safecontracts/src/contracts";
 import { getDataSource } from "../../safecontracts/src/contracts";
-import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
+import type { ConfigBase } from "../../safecontracts/src/contracts";
 import { resolveColors } from "../../safecontracts/src/palette";
 
 /*----------------------------------------------------------------------------------------------------
@@ -22,8 +22,7 @@ import { resolveColors } from "../../safecontracts/src/palette";
  *
  ----------------------------------------------------------------------------------------------------*/
 
-export function createSafeFunnel(container: HTMLElement, config: ConfigBase, onEvent?: OnSafeEvent): HTMLElement {
-    const instanceId = config.metadata?.name as string | undefined;
+export function createSafeFunnel(container: HTMLElement, config: ConfigBase, ctx: SafeFireContext): HTMLElement {
     const metadata = config.metadata;
     const FUNNEL_COLORS = resolveColors(metadata);
     const variant = (metadata.variant as string) ?? "default";
@@ -69,7 +68,7 @@ export function createSafeFunnel(container: HTMLElement, config: ConfigBase, onE
         const color = FUNNEL_COLORS[i % FUNNEL_COLORS.length];
 
         const g = svg.append("g").style("cursor", "pointer")
-            .on("click", () => fireWithPayload(onEvent, "funnel", "select", { index: i, data: d }));
+            .on("click", () => ctx.fire("select", { index: i, data: d }));
 
         g.append("rect")
             .attr("x", x).attr("y", y)

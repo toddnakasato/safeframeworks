@@ -1,6 +1,6 @@
-import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
+import type { ConfigBase } from "../../safecontracts/src/contracts";
 import { el } from "./util";
-import { fireWithPayload } from "./payload-delegate";
+import type { SafeFireContext } from "../../safecontracts/src/contracts";
 import { getDataSource } from "../../safecontracts/src/contracts";
 
 /*----------------------------------------------------------------------------------------------------
@@ -21,8 +21,7 @@ import { getDataSource } from "../../safecontracts/src/contracts";
  *
  ----------------------------------------------------------------------------------------------------*/
 
-function buildGeneric(root: HTMLElement, config: ConfigBase, items: Record<string, any>[], onEvent?: OnSafeEvent): void {
-    const instanceId = config.metadata?.name as string | undefined;
+function buildGeneric(root: HTMLElement, config: ConfigBase, items: Record<string, any>[], ctx: SafeFireContext): void {
     const dropLabel = (config.metadata.dropLabel as string) ?? "Drop here";
     const dropDesc = (config.metadata.dropDescription as string) ?? "Drag an item to this zone";
 
@@ -35,11 +34,11 @@ function buildGeneric(root: HTMLElement, config: ConfigBase, items: Record<strin
             node.setAttribute("data-dragging", "true");
             e.dataTransfer!.setData("application/json", JSON.stringify(item));
             e.dataTransfer!.effectAllowed = "move";
-            fireWithPayload(onEvent, "drag-drop", "drag-start", { id, item }, { instanceId });
+            ctx.fire("drag-start", { id, item }, { instanceId });
         });
         node.addEventListener("dragend", () => {
             node.removeAttribute("data-dragging");
-            fireWithPayload(onEvent, "drag-drop", "drag-end", null, { instanceId });
+            ctx.fire("drag-end", null, { instanceId });
         });
         if (item.icon) node.appendChild(el("span", "drag-icon", item.icon as string));
         if (item.type) node.appendChild(el("span", "drag-type", item.type as string));
@@ -54,7 +53,7 @@ function buildGeneric(root: HTMLElement, config: ConfigBase, items: Record<strin
         zone.removeAttribute("data-over");
         try {
             const item = JSON.parse(e.dataTransfer!.getData("application/json"));
-            fireWithPayload(onEvent, "drag-drop", "drop", { zone: "primary", item }, { instanceId });
+            ctx.fire("drop", { zone: "primary", item }, { instanceId });
         } catch {}
     });
     zone.addEventListener("dragover", (e: DragEvent) => {
@@ -71,8 +70,7 @@ function buildGeneric(root: HTMLElement, config: ConfigBase, items: Record<strin
     root.append(source, targets);
 }
 
-function buildFile(root: HTMLElement, config: ConfigBase, onEvent?: OnSafeEvent): void {
-    const instanceId = config.metadata?.name as string | undefined;
+function buildFile(root: HTMLElement, config: ConfigBase, ctx: SafeFireContext): void {
     const dropLabel = (config.metadata.dropLabel as string) ?? "Drop files here";
     const dropDesc = (config.metadata.dropDescription as string) ?? "or click to browse";
     const accept = (config.metadata.accept as string) ?? "";
@@ -80,7 +78,7 @@ function buildFile(root: HTMLElement, config: ConfigBase, onEvent?: OnSafeEvent)
 
     const fireFiles = (files: FileList | File[]) => {
         const list = Array.from(files).map((f) => ({ name: f.name, size: f.size, type: f.type }));
-        fireWithPayload(onEvent, "drag-drop", "file-drop", { files: list }, { instanceId });
+        ctx.fire("file-drop", { files: list }, { instanceId });
     };
 
     const zone = el("div", "file-zone");
@@ -113,8 +111,7 @@ function buildFile(root: HTMLElement, config: ConfigBase, onEvent?: OnSafeEvent)
     root.appendChild(zone);
 }
 
-function buildPalette(root: HTMLElement, config: ConfigBase, onEvent?: OnSafeEvent): void {
-    const instanceId = config.metadata?.name as string | undefined;
+function buildPalette(root: HTMLElement, config: ConfigBase, ctx: SafeFireContext): void {
     const categories = (config.metadata.categories as any[]) ?? [];
     const sections = (config.metadata.sections as any[]) ?? [{ id: "main", label: "Main" }];
 
@@ -130,11 +127,11 @@ function buildPalette(root: HTMLElement, config: ConfigBase, onEvent?: OnSafeEve
                 node.setAttribute("data-dragging", "true");
                 e.dataTransfer!.setData("application/json", JSON.stringify(item));
                 e.dataTransfer!.effectAllowed = "copy";
-                fireWithPayload(onEvent, "drag-drop", "drag-start", { item }, { instanceId });
+                ctx.fire("drag-start", { item }, { instanceId });
             });
             node.addEventListener("dragend", () => {
                 node.removeAttribute("data-dragging");
-                fireWithPayload(onEvent, "drag-drop", "drag-end", null, { instanceId });
+                ctx.fire("drag-end", null, { instanceId });
             });
             if (item.icon) node.appendChild(el("span", "drag-icon", item.icon));
             node.appendChild(el("span", "drag-label", item.label));
@@ -152,7 +149,7 @@ function buildPalette(root: HTMLElement, config: ConfigBase, onEvent?: OnSafeEve
             secEl.removeAttribute("data-over");
             try {
                 const item = JSON.parse(e.dataTransfer!.getData("application/json"));
-                fireWithPayload(onEvent, "drag-drop", "drop", { section: sec.id, item }, { instanceId });
+                ctx.fire("drop", { section: sec.id, item }, { instanceId });
             } catch {}
         });
         secEl.addEventListener("dragover", (e: DragEvent) => {
@@ -168,8 +165,7 @@ function buildPalette(root: HTMLElement, config: ConfigBase, onEvent?: OnSafeEve
     root.append(sidebar, sectionsEl);
 }
 
-export function createSafeDragDrop(container: HTMLElement, config: ConfigBase, onEvent?: OnSafeEvent): HTMLElement {
-    const instanceId = config.metadata?.name as string | undefined;
+export function createSafeDragDrop(container: HTMLElement, config: ConfigBase, ctx: SafeFireContext): HTMLElement {
     const variant = (config.metadata.variant as string) ?? "generic";
 
     // Self-extract list from config data (SafeRenderer does this for react)

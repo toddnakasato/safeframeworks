@@ -1,6 +1,6 @@
-import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
+import type { ConfigBase } from "../../safecontracts/src/contracts";
 import { el } from "./util";
-import { fireWithPayload } from "./payload-delegate";
+import type { SafeFireContext } from "../../safecontracts/src/contracts";
 
 /*----------------------------------------------------------------------------------------------------
  *
@@ -30,8 +30,7 @@ function now(): string {
  *
  ----------------------------------------------------------------------------------------------------*/
 
-export function createSafeChat(container: HTMLElement, config: ConfigBase, onEvent?: OnSafeEvent): HTMLElement {
-    const instanceId = config.metadata?.name as string | undefined;
+export function createSafeChat(container: HTMLElement, config: ConfigBase, ctx: SafeFireContext): HTMLElement {
     const metadata = config.metadata;
     const title = (metadata.title as string) ?? "Chat";
     const placeholder = (metadata.placeholder as string) ?? "Type a message...";
@@ -84,7 +83,7 @@ export function createSafeChat(container: HTMLElement, config: ConfigBase, onEve
         input.value = "";
         sendBtn.disabled = true;
         renderMessages();
-        fireWithPayload(onEvent, "chat", "send", { message: text }, { instanceId });
+        ctx.fire("send", { message: text }, { instanceId });
     };
 
     input.addEventListener("input", () => {
@@ -105,7 +104,7 @@ export function createSafeChat(container: HTMLElement, config: ConfigBase, onEve
         const actions = el("div", "chat-actions");
         for (const action of quickActions) {
             const btn = el("button", "chat-action");
-            btn.onclick = () => fireWithPayload(onEvent, "chat", "action", { label: action.label }, { instanceId });
+            btn.onclick = () => ctx.fire("action", { label: action.label }, { instanceId });
             if (action.icon) btn.appendChild(el("span", "chat-action-icon", action.icon));
             const text = el("div", "chat-action-text");
             text.appendChild(el("span", "chat-action-label", action.label));

@@ -1,6 +1,6 @@
-import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
+import type { ConfigBase } from "../../safecontracts/src/contracts";
 import { el } from "./util";
-import { fireWithPayload } from "./payload-delegate";
+import type { SafeFireContext } from "../../safecontracts/src/contracts";
 import { getDataSource } from "../../safecontracts/src/contracts";
 
 /*----------------------------------------------------------------------------------------------------
@@ -34,8 +34,7 @@ function buildSwitchTrack(checked: boolean, disabled: boolean | undefined, onTog
  *
  ----------------------------------------------------------------------------------------------------*/
 
-export function createSafeToggle(container: HTMLElement, config: ConfigBase, onEvent?: OnSafeEvent): HTMLElement {
-    const instanceId = config.metadata?.name as string | undefined;
+export function createSafeToggle(container: HTMLElement, config: ConfigBase, ctx: SafeFireContext): HTMLElement {
     const metadata = config.metadata;
     const variant = (metadata.variant as string) ?? "switch";
 
@@ -72,7 +71,7 @@ export function createSafeToggle(container: HTMLElement, config: ConfigBase, onE
             const handleToggle = () => {
                 if (disabled) return;
                 checked = !checked;
-                fireWithPayload(onEvent, "toggle", "change", { checked, label }, { instanceId });
+                ctx.fire("change", { checked, label }, { instanceId });
                 render();
             };
             const labelEl = buildLabelEl();
@@ -94,7 +93,7 @@ export function createSafeToggle(container: HTMLElement, config: ConfigBase, onE
 
         const handleToggle = (key: string, label: string) => {
             states[key] = !states[key];
-            fireWithPayload(onEvent, "toggle", "change", { key, checked: states[key], label }, { instanceId });
+            ctx.fire("change", { key, checked: states[key], label }, { instanceId });
             render();
         };
 
@@ -133,13 +132,13 @@ export function createSafeToggle(container: HTMLElement, config: ConfigBase, onE
 
         const handleToggle = (key: string, label: string) => {
             states[key] = !states[key];
-            fireWithPayload(onEvent, "toggle", "change", { key, checked: states[key], label }, { instanceId });
+            ctx.fire("change", { key, checked: states[key], label }, { instanceId });
             render();
         };
 
         const handleExpand = (key: string) => {
             expanded[key] = !expanded[key];
-            fireWithPayload(onEvent, "toggle", "expand", { key, expanded: expanded[key] }, { instanceId });
+            ctx.fire("expand", { key, expanded: expanded[key] }, { instanceId });
             render();
         };
 
