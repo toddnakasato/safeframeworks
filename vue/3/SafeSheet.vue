@@ -19,6 +19,7 @@ onMounted(() => {
 onBeforeUnmount(() => {
   root?.remove();
   root = null;
+  }
 });
 </script>
 

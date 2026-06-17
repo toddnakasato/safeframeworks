@@ -14,6 +14,7 @@ onMounted(() => {
   if (containerRef.value) {
     const _ctx = createSafeFireContext(props.config, props.onEvent, buildPayloadViaCli);
     root = createSafeLayout(containerRef.value, props.config, _ctx, buildComponent);
+  }
 });
 
 onBeforeUnmount(() => {
