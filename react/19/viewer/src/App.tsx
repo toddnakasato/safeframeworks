@@ -102,12 +102,16 @@ export default function App() {
   };
 
   // EPRPP: event → safedesk paint apply → writes state.json → watcher fires → re-render
+  // cssOnly events (hover, leave) are painted by CSS :hover — no file cycle needed
   const handleEvent = useCallback(async (event: SafeEvent) => {
     console.log("[event]", event.origin?.id, event.name, event.data);
     // Push to proof-viewer Events tabs
     document.querySelectorAll("[data-component='proof-viewer']").forEach((pv) => {
       if ((pv as any).pushEvent) (pv as any).pushEvent(event);
     });
+    // Skip file cycle for transient CSS-only events
+    const cssOnlyEvents = new Set(["row:hover", "row:leave", "hover"]);
+    if (cssOnlyEvents.has(event.name)) return;
     // Call safedesk paint apply — writes state.json
     const component = (event as any).component ?? event.origin?.id ?? "";
     try {
