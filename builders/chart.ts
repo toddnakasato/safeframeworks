@@ -182,6 +182,16 @@ export function createSafeChart(canvas: HTMLCanvasElement, config: ConfigBase, c
                 row: data[el.index],
             });
         },
+        onHover: (_event: any, elements: any[]) => {
+            if (elements.length > 0) {
+                const el = elements[0];
+                ctx.fire("hover", {
+                    index: el.index,
+                    datasetIndex: el.datasetIndex,
+                    row: data[el.index],
+                });
+            }
+        },
     };
     return new Chart(canvas, cfg);
 }
