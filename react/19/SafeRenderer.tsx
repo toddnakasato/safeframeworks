@@ -1,7 +1,8 @@
-import React from "react";
+import { useState, useEffect, useRef } from "react";
 import { getDataSource } from "safecontracts";
 import type { ReactNode } from "react";
 import type { ConfigBase, ConfigLayout, OnSafeEvent } from "safecontracts";
+import { buildComponent } from "../../utils/render";
 import { SafeButton } from "./SafeButton";
 import { SafeCalendar } from "./SafeCalendar";
 import { SafeCallout } from "./SafeCallout";
@@ -51,6 +52,19 @@ function extractData(config: ConfigBase): { inline: any; list: any[]; record: Re
 export interface RenderContext {
     parentContext?: { parent: string; path: string };
     handler?: string;
+}
+
+/** Dev-only bridge — mounts proof-viewer via buildComponent (DOM builder). */
+function ProofViewerBridge({ config, onEvent }: { config: ConfigBase; onEvent?: OnSafeEvent }) {
+    const containerRef = useRef<HTMLDivElement>(null);
+    useEffect(() => {
+        const container = containerRef.current;
+        if (!container) return;
+        const root = buildComponent(config, onEvent);
+        container.appendChild(root);
+        return () => { root.remove(); };
+    }, [config, onEvent]);
+    return <div ref={containerRef} />;
 }
 
 /*----------------------------------------------------------------------------------------------------
@@ -219,6 +233,11 @@ export function renderConfigBase(config: ConfigBase, onEvent?: OnSafeEvent, ctx?
 
     if (component === "nav") {
         return <SafeNav config={config} onEvent={stampedOnEvent} />;
+    }
+
+    // --- Dev-only components (rendered via buildComponent) ---
+    if (component === "proof-viewer") {
+        return <ProofViewerBridge config={config} onEvent={stampedOnEvent} />;
     }
 
     // --- Unknown ---
