@@ -214,22 +214,34 @@ export function createSafeProofViewer(
 
     // ==================== EVENTS TAB ====================
 
-    for (const eventName of events) {
-        const shape = shapes[eventName];
-        const row = el("div", "ev-row");
-        row.appendChild(el("span", "ev-name", eventName));
-        const shapeEl = el("div", "ev-shape m");
-        if (shape) {
-            const lines: string[] = [];
-            if (shape.data) for (const [k, v] of Object.entries(shape.data)) lines.push(`data.${k}: ${v}`);
-            if (shape.context) for (const [k, v] of Object.entries(shape.context)) lines.push(`ctx.${k}: ${v}`);
-            shapeEl.textContent = lines.join("\n") || "—";
-        } else {
-            shapeEl.textContent = "no payload shape declared";
+    const eventsLog = el("div", "pv-events-log");
+    const eventsEmpty = el("div", "empty", "Interact with the component to see events");
+    eventsPanel.appendChild(eventsEmpty);
+    eventsPanel.appendChild(eventsLog);
+
+    // Capture live events — wire into _onEvent
+    const originalOnEvent = _onEvent;
+    const capturedEvents: any[] = [];
+    const wrappedOnEvent: OnSafeEvent = (event) => {
+        // Only capture events from this target component
+        if (event.origin?.id === target || (event as any).component === target) {
+            capturedEvents.push(event);
+            eventsEmpty.style.display = "none";
+            const entry = el("div", "ev-row");
+            const nameEl = el("span", "ev-name", `${event.name}`);
+            const dataEl = el("div", "ev-shape m", event.data ? JSON.stringify(event.data) : "—");
+            const tsEl2 = el("span", "ts", new Date().toLocaleTimeString());
+            entry.appendChild(tsEl2);
+            entry.appendChild(nameEl);
+            entry.appendChild(dataEl);
+            eventsLog.insertBefore(entry, eventsLog.firstChild);
+            // Keep max 50
+            while (eventsLog.children.length > 50) eventsLog.removeChild(eventsLog.lastChild!);
         }
-        row.appendChild(shapeEl);
-        eventsPanel.appendChild(row);
-    }
+        originalOnEvent?.(event);
+    };
+    // Expose wrappedOnEvent so the host can use it
+    (root as any).__proofViewerOnEvent = wrappedOnEvent;
 
     root.appendChild(proofsPanel);
     root.appendChild(eventsPanel);
