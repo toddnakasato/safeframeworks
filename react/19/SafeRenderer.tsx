@@ -21,7 +21,6 @@ import { SafeHeatmap } from "./SafeHeatmap";
 import { SafeInput } from "./SafeInput";
 import { SafeLayout } from "./SafeLayout";
 import type { RenderChild } from "../../builders/layout";
-import { buildComponent } from "../../utils/render";
 
 // Universal DOM render callback — stamps handler before rendering children
 const renderChild: RenderChild = buildComponent;
