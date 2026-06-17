@@ -1,5 +1,4 @@
-import { fireStoryFlow } from "../../safecontracts/src/contracts-emit";
-import type { StoryFlowEvent } from "../../safecontracts/src/contracts-emit";
+import { fireWithPayload } from "./payload-delegate";
 import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
 
 /**
@@ -23,7 +22,7 @@ export function createSafeStoryFlow(
     const handleEvent: OnSafeEvent = (event) => {
         const storyEvents = ["select-node", "navigate", "step:click", "story:play"];
         if (storyEvents.includes(event.name)) {
-            fireStoryFlow(onEvent, event.name as StoryFlowEvent, event.data ?? {}, { instanceId });
+            fireWithPayload(onEvent, "story-flow", event.name, event.data ?? {}, { instanceId });
         } else if (onEvent) {
             onEvent(event);
         }

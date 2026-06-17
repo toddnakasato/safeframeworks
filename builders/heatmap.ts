@@ -1,6 +1,6 @@
 import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
 import { el } from "./util";
-import { fireHeatmap } from "../../safecontracts/src/contracts-emit";
+import { fireWithPayload } from "./payload-delegate";
 import { getDataSource } from "../../safecontracts/src/contracts";
 
 /*----------------------------------------------------------------------------------------------------
@@ -62,7 +62,7 @@ export function createSafeHeatmap(container: HTMLElement, config: ConfigBase, on
         cell.style.background = `color-mix(in srgb, var(--sd-accent) ${Math.round((t * 0.85 + 0.05) * 100)}%, transparent)`;
         cell.style.cursor = "default";
         cell.title = label;
-        cell.onclick = () => fireHeatmap(onEvent, "cell:click", { index: i, value: val, data: d }, { instanceId });
+        cell.onclick = () => fireWithPayload(onEvent, "heatmap", "cell:click", { index: i, value: val, data: d }, { instanceId });
         grid.appendChild(cell);
     });
 

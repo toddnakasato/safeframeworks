@@ -1,5 +1,5 @@
 import * as d3 from "d3";
-import { fireFlow } from "../../safecontracts/src/contracts-emit";
+import { fireWithPayload } from "./payload-delegate";
 import { getDataSource } from "../../safecontracts/src/contracts";
 import { sankey as d3Sankey, sankeyLinkHorizontal } from "d3-sankey";
 import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
@@ -37,11 +37,11 @@ function accentColor(node: FlowNode | undefined, idx: number, colors: string[], 
 }
 
 function nodeEvent(onEvent: OnSafeEvent | undefined, name: string | undefined, instanceId?: string) {
-    fireFlow(onEvent, "node:click", { name }, { instanceId });
+    fireWithPayload(onEvent, "flow", "node:click", { name }, { instanceId });
 }
 
 function linkEvent(onEvent: OnSafeEvent | undefined, source: string | undefined, target: string | undefined, value: number, instanceId?: string) {
-    fireFlow(onEvent, "link:click", { source, target, value }, { instanceId });
+    fireWithPayload(onEvent, "flow", "link:click", { source, target, value }, { instanceId });
 }
 
 /*----------------------------------------------------------------------------------------------------

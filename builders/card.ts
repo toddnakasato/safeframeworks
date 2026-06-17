@@ -1,6 +1,6 @@
 import type { ConfigBase, OnSafeEvent, RowCell, RowDef } from "../../safecontracts/src/contracts";
 import { el } from "./util";
-import { fireCard } from "../../safecontracts/src/contracts-emit";
+import { fireWithPayload } from "./payload-delegate";
 import { getDataSource } from "../../safecontracts/src/contracts";
 
 /*----------------------------------------------------------------------------------------------------
@@ -46,14 +46,14 @@ export function createSafeCard(container: HTMLElement, config: ConfigBase, onEve
     root.setAttribute("data-radius", radius);
     root.setAttribute("data-spacing", spacing);
     root.setAttribute("data-accent", accent);
-    root.onclick = () => fireCard(onEvent, "click", { data }, { instanceId });
+    root.onclick = () => fireWithPayload(onEvent, "card", "click", { data }, { instanceId });
 
     const appendBack = () => {
         if (!backLabel) return;
         const back = el("div", "back", backLabel);
         back.onclick = (e) => {
             e.stopPropagation();
-            fireCard(onEvent, "back", {}, { instanceId });
+            fireWithPayload(onEvent, "card", "back", {}, { instanceId });
         };
         root.appendChild(back);
     };

@@ -1,6 +1,6 @@
 import { HyperFormula } from "hyperformula";
 import { el } from "./util";
-import { fireSheet } from "../../safecontracts/src/contracts-emit";
+import { fireWithPayload } from "./payload-delegate";
 import { getDataSource } from "../../safecontracts/src/contracts";
 import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
 import type { SheetColumn } from "../../safecontracts/src/components/sheet";
@@ -155,7 +155,7 @@ export function createSafeSheet(container: HTMLElement, config: ConfigBase, onEv
 
     const handleCellClick = (r: number, c: number) => {
         selectedCell = [r, c];
-        fireSheet(onEvent, "select", { row: r, col: c, value: getCellValue(r, c) }, { instanceId });
+        fireWithPayload(onEvent, "sheet", "select", { row: r, col: c, value: getCellValue(r, c) }, { instanceId });
         render();
     };
 
@@ -184,7 +184,7 @@ export function createSafeSheet(container: HTMLElement, config: ConfigBase, onEv
             }
         } catch {}
         editingCell = null;
-        fireSheet(onEvent, "edit", { row: r, col: c, value: val }, { instanceId });
+        fireWithPayload(onEvent, "sheet", "edit", { row: r, col: c, value: val }, { instanceId });
         render();
     };
 

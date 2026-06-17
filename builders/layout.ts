@@ -1,6 +1,6 @@
 import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
 import { el } from "./util";
-import { fireLayout } from "../../safecontracts/src/contracts-emit";
+import { fireWithPayload } from "./payload-delegate";
 import { LAYOUT_VARIANTS } from "../../safecontracts/src/contracts";
 
 /**
@@ -46,7 +46,7 @@ export function createSafeLayout(
 
     if (backLabel) {
         const back = el("button", "layout-back", backLabel);
-        back.onclick = () => fireLayout(onEvent, "back", {}, { instanceId });
+        back.onclick = () => fireWithPayload(onEvent, "layout", "back", {}, { instanceId });
         root.appendChild(back);
     }
 

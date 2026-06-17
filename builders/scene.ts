@@ -1,5 +1,4 @@
-import { fireScene } from "../../safecontracts/src/contracts-emit";
-import type { SceneEvent } from "../../safecontracts/src/contracts-emit";
+import { fireWithPayload } from "./payload-delegate";
 import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
 
 /**
@@ -22,7 +21,7 @@ export function createSafeScene(
     // Wrap onEvent to intercept and re-fire as scene events
     const handleEvent: OnSafeEvent = (event) => {
         if (event.name === "select" || event.name === "back" || event.name === "filter") {
-            fireScene(onEvent, event.name as SceneEvent, event.data ?? {}, { instanceId });
+            fireWithPayload(onEvent, "scene", event.name, event.data ?? {}, { instanceId });
         } else if (onEvent) {
             onEvent(event);
         }

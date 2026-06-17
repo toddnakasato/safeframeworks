@@ -1,5 +1,5 @@
 import { createElement, ChevronDown, Dot, type IconNode } from "lucide";
-import { fireNav } from "../../safecontracts/src/contracts-emit";
+import { fireWithPayload } from "./payload-delegate";
 import * as lucide from "lucide";
 import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
 
@@ -90,7 +90,7 @@ export function createSafeNav(container: HTMLElement, config: ConfigBase, onEven
 
     const fire = (key: string) => {
         active = key;
-        fireNav(onEvent, "navigate", { key, value: key }, { instanceId, context: { path: key } });
+        fireWithPayload(onEvent, "nav", "navigate", { key, value: key }, { instanceId, context: { path: key } });
         render();
     };
 

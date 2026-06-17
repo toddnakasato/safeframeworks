@@ -1,5 +1,5 @@
 import L from "leaflet";
-import { fireMap } from "../../safecontracts/src/contracts-emit";
+import { fireWithPayload } from "./payload-delegate";
 import { getDataSource } from "../../safecontracts/src/contracts";
 import "leaflet/dist/leaflet.css";
 import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
@@ -112,7 +112,7 @@ export function createSafeMap(
             marker.bindPopup(popupHtml);
         }
 
-        marker.on("click", () => fireMap(onEvent, "select", { index: i, data: d, lat, lng }));
+        marker.on("click", () => fireWithPayload(onEvent, "map", "select", { index: i, data: d, lat, lng }));
         allLayers.push(marker);
         pathPoints.push([lat, lng]);
 

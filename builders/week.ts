@@ -1,6 +1,6 @@
 import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
 import { el } from "./util";
-import { fireWeek } from "../../safecontracts/src/contracts-emit";
+import { fireWithPayload } from "./payload-delegate";
 import { DAY_NAMES_SHORT, MONTH_NAMES } from "../../safecontracts/src/contracts";
 
 /*----------------------------------------------------------------------------------------------------
@@ -87,12 +87,12 @@ export function createSafeWeek(container: HTMLElement, config: ConfigBase, onEve
 
     const fireNavigate = (dir: number) => {
         offset += dir;
-        fireWeek(onEvent, "navigate", { direction: dir }, { instanceId });
+        fireWithPayload(onEvent, "week", "navigate", { direction: dir }, { instanceId });
         render();
     };
 
     const fireSelect = (date: Date, hour: number) => {
-        fireWeek(onEvent, "select", { date: date.toISOString().split("T")[0], hour }, { instanceId });
+        fireWithPayload(onEvent, "week", "select", { date: date.toISOString().split("T")[0], hour }, { instanceId });
     };
 
     function buildGrid(dates: Date[]): HTMLElement {

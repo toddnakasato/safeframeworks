@@ -1,6 +1,6 @@
 import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
 import { el } from "./util";
-import { fireToggle } from "../../safecontracts/src/contracts-emit";
+import { fireWithPayload } from "./payload-delegate";
 import { getDataSource } from "../../safecontracts/src/contracts";
 
 /*----------------------------------------------------------------------------------------------------
@@ -72,7 +72,7 @@ export function createSafeToggle(container: HTMLElement, config: ConfigBase, onE
             const handleToggle = () => {
                 if (disabled) return;
                 checked = !checked;
-                fireToggle(onEvent, "change", { checked, label }, { instanceId });
+                fireWithPayload(onEvent, "toggle", "change", { checked, label }, { instanceId });
                 render();
             };
             const labelEl = buildLabelEl();
@@ -94,7 +94,7 @@ export function createSafeToggle(container: HTMLElement, config: ConfigBase, onE
 
         const handleToggle = (key: string, label: string) => {
             states[key] = !states[key];
-            fireToggle(onEvent, "change", { key, checked: states[key], label }, { instanceId });
+            fireWithPayload(onEvent, "toggle", "change", { key, checked: states[key], label }, { instanceId });
             render();
         };
 
@@ -133,13 +133,13 @@ export function createSafeToggle(container: HTMLElement, config: ConfigBase, onE
 
         const handleToggle = (key: string, label: string) => {
             states[key] = !states[key];
-            fireToggle(onEvent, "change", { key, checked: states[key], label }, { instanceId });
+            fireWithPayload(onEvent, "toggle", "change", { key, checked: states[key], label }, { instanceId });
             render();
         };
 
         const handleExpand = (key: string) => {
             expanded[key] = !expanded[key];
-            fireToggle(onEvent, "expand", { key, expanded: expanded[key] }, { instanceId });
+            fireWithPayload(onEvent, "toggle", "expand", { key, expanded: expanded[key] }, { instanceId });
             render();
         };
 

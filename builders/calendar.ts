@@ -1,6 +1,6 @@
 import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
 import { el } from "./util";
-import { fireCalendar } from "../../safecontracts/src/contracts-emit";
+import { fireWithPayload } from "./payload-delegate";
 import { MONTH_NAMES } from "../../safecontracts/src/contracts";
 
 /*----------------------------------------------------------------------------------------------------
@@ -83,14 +83,14 @@ export function createSafeCalendar(container: HTMLElement, config: ConfigBase, o
         const d = new Date(viewYear, viewMonth + dir, 1);
         viewYear = d.getFullYear();
         viewMonth = d.getMonth();
-        fireCalendar(onEvent, "navigate", {
+        fireWithPayload(onEvent, "calendar", "navigate", {
             year: d.getFullYear(), month: d.getMonth(), direction: dir,
         }, { instanceId });
         render();
     };
 
     const fireSelect = (y: number, m: number, d: number) => {
-        fireCalendar(onEvent, "select", { year: y, month: m, day: d }, { instanceId });
+        fireWithPayload(onEvent, "calendar", "select", { year: y, month: m, day: d }, { instanceId });
     };
 
     function buildMonthGrid(

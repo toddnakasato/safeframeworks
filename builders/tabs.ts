@@ -1,5 +1,5 @@
 import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
-import { fireTabs } from "../../safecontracts/src/contracts-emit";
+import { fireWithPayload } from "./payload-delegate";
 
 /*----------------------------------------------------------------------------------------------------
  *
@@ -69,7 +69,7 @@ export function createSafeTabs(container: HTMLElement, config: ConfigBase, onEve
             if (active === tab.key) btn.setAttribute("data-active", "");
             btn.onclick = () => {
                 active = tab.key;
-                fireTabs(onEvent, "select", { key: tab.key }, { instanceId });
+                fireWithPayload(onEvent, "tabs", "select", { key: tab.key }, { instanceId });
                 render();
             };
             btn.style.display = "flex";

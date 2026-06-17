@@ -1,7 +1,6 @@
 import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
 import { el } from "./util";
-import { fireInput } from "../../safecontracts/src/contracts-emit";
-import type { InputEvent } from "../../safecontracts/src/contracts-emit";
+import { fireWithPayload } from "./payload-delegate";
 import { getDataSource } from "../../safecontracts/src/contracts";
 
 /*----------------------------------------------------------------------------------------------------
@@ -204,7 +203,7 @@ export function createSafeInput(container: HTMLElement, config: ConfigBase, onEv
     root.setAttribute("data-valign", valign);
 
     const fireEvent = (name: string, payload: any) => {
-        fireInput(onEvent, name as InputEvent, payload, { instanceId });
+        fireWithPayload(onEvent, "input", name, payload, { instanceId });
     };
 
     function getDisplayValue(): string {

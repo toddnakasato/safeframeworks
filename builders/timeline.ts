@@ -1,6 +1,6 @@
 import * as d3 from "d3";
 import { el } from "./util";
-import { fireTimeline } from "../../safecontracts/src/contracts-emit";
+import { fireWithPayload } from "./payload-delegate";
 import { getDataSource } from "../../safecontracts/src/contracts";
 import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
 import { sortBy } from "../../safecontracts/src/contracts-operations";
@@ -59,7 +59,7 @@ export function createSafeTimeline(container: HTMLElement, config: ConfigBase, o
     }
 
     const fireSelect = (index: number, item: Record<string, any>) => {
-        fireTimeline(onEvent, "select", { index, data: item }, { instanceId });
+        fireWithPayload(onEvent, "timeline", "select", { index, data: item }, { instanceId });
     };
 
     const root = el("div");

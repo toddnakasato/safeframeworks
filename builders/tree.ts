@@ -1,5 +1,5 @@
 import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
-import { fireTree } from "../../safecontracts/src/contracts-emit";
+import { fireWithPayload } from "./payload-delegate";
 import { getDataSource } from "../../safecontracts/src/contracts";
 
 /*----------------------------------------------------------------------------------------------------
@@ -120,13 +120,13 @@ export function createSafeTree(container: HTMLElement, config: ConfigBase, onEve
     const handleToggle = (id: string) => {
         if (expanded.has(id)) expanded.delete(id);
         else expanded.add(id);
-        fireTree(onEvent, "expand", { id }, { instanceId });
+        fireWithPayload(onEvent, "tree", "expand", { id }, { instanceId });
         render();
     };
 
     const handleSelect = (node: TreeNode) => {
         selected = node.id;
-        fireTree(onEvent, "select", { id: node.id, record: node.record }, { instanceId });
+        fireWithPayload(onEvent, "tree", "select", { id: node.id, record: node.record }, { instanceId });
         render();
     };
 

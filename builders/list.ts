@@ -1,6 +1,6 @@
 import { createElement, type IconNode } from "lucide";
 import { el } from "./util";
-import { fireList } from "../../safecontracts/src/contracts-emit";
+import { fireWithPayload } from "./payload-delegate";
 import { getDataSource } from "../../safecontracts/src/contracts";
 import * as lucide from "lucide";
 import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
@@ -51,7 +51,7 @@ function makePager(state: PagerState, count: number, pageSize: number, onEvent: 
     const go = (p: number) => {
         const clamped = paginate(Array(count), p, pageSize);
         state.page = clamped.page;
-        fireList(onEvent, "page", { page: clamped.page, totalPages }, { instanceId });
+        fireWithPayload(onEvent, "list", "page", { page: clamped.page, totalPages }, { instanceId });
         rerender();
     };
     return { page, totalPages, slice, go };
@@ -121,7 +121,7 @@ function buildSimple(root: HTMLElement, config: ConfigBase, data: any[], onEvent
             const row = el("div", "list-item");
             row.tabIndex = 0;
             row.setAttribute("role", "listitem");
-            row.onclick = () => fireList(onEvent, "select", { index: i, label, item }, { instanceId });
+            row.onclick = () => fireWithPayload(onEvent, "list", "select", { index: i, label, item }, { instanceId });
             if (withIcons && icon) {
                 const ic = el("span", "item-icon");
                 const g = iconGlyph(icon, 16);
@@ -158,10 +158,10 @@ function buildSelection(root: HTMLElement, config: ConfigBase, data: any[], onEv
     const toggle = (i: number, item: any) => {
         if (mode === "single") {
             single = i;
-            fireList(onEvent, "select", { index: i, item }, { instanceId });
+            fireWithPayload(onEvent, "list", "select", { index: i, item }, { instanceId });
         } else {
             if (multi.has(i)) multi.delete(i); else multi.add(i);
-            fireList(onEvent, "toggle", { index: i, selected: multi.has(i), item }, { instanceId });
+            fireWithPayload(onEvent, "list", "toggle", { index: i, selected: multi.has(i), item }, { instanceId });
         }
         render();
     };
@@ -215,7 +215,7 @@ function buildColumns(root: HTMLElement, config: ConfigBase, data: any[], onEven
             row.style.gridTemplateColumns = `repeat(${fields.length}, 1fr)`;
             row.tabIndex = 0;
             row.setAttribute("role", "listitem");
-            row.onclick = () => fireList(onEvent, "select", { index: i, item }, { instanceId });
+            row.onclick = () => fireWithPayload(onEvent, "list", "select", { index: i, item }, { instanceId });
             for (const f of fields) row.appendChild(el("span", "item-cell", String(item[f.name] ?? "")));
             items.appendChild(row);
         });
@@ -246,7 +246,7 @@ function buildFiles(root: HTMLElement, config: ConfigBase, data: any[], onEvent?
             if (item.type != null) row.setAttribute("data-file-type", String(item.type));
             row.tabIndex = 0;
             row.setAttribute("role", "listitem");
-            row.onclick = () => fireList(onEvent, "select", { index: i, item }, { instanceId });
+            row.onclick = () => fireWithPayload(onEvent, "list", "select", { index: i, item }, { instanceId });
             const ic = el("span", "item-icon");
             const g = iconGlyph(item[iconField], 18);
             if (g) ic.appendChild(g);
@@ -304,7 +304,7 @@ function buildActions(root: HTMLElement, config: ConfigBase, data: any[], onEven
             const btn = el("button", "item-action", String(item[actionField]));
             btn.onclick = (e) => {
                 e.stopPropagation();
-                fireList(onEvent, "action", { index: i, action: item[actionField], item }, { instanceId });
+                fireWithPayload(onEvent, "list", "action", { index: i, action: item[actionField], item }, { instanceId });
             };
             row.appendChild(btn);
         }
@@ -350,7 +350,7 @@ function buildHierarchy(root: HTMLElement, config: ConfigBase, data: any[], onEv
 
     const toggleNode = (id: string) => {
         if (expanded.has(id)) expanded.delete(id); else expanded.add(id);
-        fireList(onEvent, "expand", { id, expanded: expanded.has(id) }, { instanceId });
+        fireWithPayload(onEvent, "list", "expand", { id, expanded: expanded.has(id) }, { instanceId });
         render();
     };
 
@@ -371,7 +371,7 @@ function buildHierarchy(root: HTMLElement, config: ConfigBase, data: any[], onEv
             if (isGroup) row.setAttribute("aria-expanded", String(isOpen));
             row.onclick = () => isGroup
                 ? toggleNode(String(node.id))
-                : fireList(onEvent, "select", { id: node.id, item: node }, { instanceId });
+                : fireWithPayload(onEvent, "list", "select", { id: node.id, item: node }, { instanceId });
             if (isGroup) {
                 const chev = el("span", "item-chevron");
                 if (isOpen) chev.setAttribute("data-expanded", "true");
@@ -416,14 +416,14 @@ function buildPropertyGrid(root: HTMLElement, config: ConfigBase, data: any[], o
 
     const toggleGroup = (id: string) => {
         if (expanded.has(id)) expanded.delete(id); else expanded.add(id);
-        fireList(onEvent, "expand", { id, expanded: expanded.has(id) }, { instanceId });
+        fireWithPayload(onEvent, "list", "expand", { id, expanded: expanded.has(id) }, { instanceId });
         render();
     };
 
     // Commit without re-render so the edited input/select keeps focus.
     const commit = (id: string, value: unknown) => {
         values[id] = value;
-        fireList(onEvent, "change", { id, value }, { instanceId });
+        fireWithPayload(onEvent, "list", "change", { id, value }, { instanceId });
     };
 
     function renderNode(node: any, level: number): HTMLElement {
@@ -501,7 +501,7 @@ function buildGantt(root: HTMLElement, config: ConfigBase, data: any[], onEvent?
 
     const navigate = (dir: number) => {
         offset += dir;
-        fireList(onEvent, "navigate", { direction: dir }, { instanceId });
+        fireWithPayload(onEvent, "list", "navigate", { direction: dir }, { instanceId });
         render();
     };
 
@@ -555,7 +555,7 @@ function buildGantt(root: HTMLElement, config: ConfigBase, data: any[], onEvent?
         data.forEach((item, i) => {
             const intent = (item.accent as string) ?? "brand";
             const row = el("div", "gantt-row");
-            row.onclick = () => fireList(onEvent, "select", { index: i, item }, { instanceId });
+            row.onclick = () => fireWithPayload(onEvent, "list", "select", { index: i, item }, { instanceId });
             row.appendChild(el("span", "gantt-row-label", String(item[labelField] ?? "")));
             const cells = el("span", "gantt-cells");
             cells.style.gridTemplateColumns = `repeat(${days}, 1fr)`;

@@ -1,6 +1,6 @@
 import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
 import { el } from "./util";
-import { fireChat } from "../../safecontracts/src/contracts-emit";
+import { fireWithPayload } from "./payload-delegate";
 
 /*----------------------------------------------------------------------------------------------------
  *
@@ -84,7 +84,7 @@ export function createSafeChat(container: HTMLElement, config: ConfigBase, onEve
         input.value = "";
         sendBtn.disabled = true;
         renderMessages();
-        fireChat(onEvent, "send", { message: text }, { instanceId });
+        fireWithPayload(onEvent, "chat", "send", { message: text }, { instanceId });
     };
 
     input.addEventListener("input", () => {
@@ -105,7 +105,7 @@ export function createSafeChat(container: HTMLElement, config: ConfigBase, onEve
         const actions = el("div", "chat-actions");
         for (const action of quickActions) {
             const btn = el("button", "chat-action");
-            btn.onclick = () => fireChat(onEvent, "action", { label: action.label }, { instanceId });
+            btn.onclick = () => fireWithPayload(onEvent, "chat", "action", { label: action.label }, { instanceId });
             if (action.icon) btn.appendChild(el("span", "chat-action-icon", action.icon));
             const text = el("div", "chat-action-text");
             text.appendChild(el("span", "chat-action-label", action.label));

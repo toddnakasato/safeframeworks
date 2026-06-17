@@ -1,5 +1,5 @@
 import { el } from "./util";
-import { fireMetric } from "../../safecontracts/src/contracts-emit";
+import { fireWithPayload } from "./payload-delegate";
 import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
 import { fmtCurrency, fmtInt, fmtPercent } from "../../safecontracts/src/formatter";
 import { readRecord } from "../../safecontracts/src/contracts-data";
@@ -69,7 +69,7 @@ export function createSafeMetric(container: HTMLElement, config: ConfigBase, onE
         }
     }
 
-    root.onclick = () => fireMetric(onEvent, "click", { value, field: metadata.valueField }, { instanceId });
+    root.onclick = () => fireWithPayload(onEvent, "metric", "click", { value, field: metadata.valueField }, { instanceId });
 
     container.appendChild(root);
     return root;
