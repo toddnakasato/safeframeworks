@@ -175,7 +175,7 @@ export function createSafeDragDrop(container: HTMLElement, config: ConfigBase, c
 
     const root = el("div");
     root.setAttribute("data-component", "drag-drop");
-    applyIntent(root, metadata);
+    applyIntent(root, config.metadata);
     root.setAttribute("data-variant", variant);
 
     if (variant === "file") buildFile(root, config, ctx);

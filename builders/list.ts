@@ -577,12 +577,12 @@ export function createSafeList(container: HTMLElement, config: ConfigBase, ctx: 
 
     const root = el("div");
     root.setAttribute("data-component", "list");
-    applyIntent(root, metadata);
-    applyPaintState(root, metadata, "list");
+    applyIntent(root, config.metadata);
+    applyPaintState(root, config.metadata, "list");
 
     // External paint state (resolved from state.json by host)
-    const _selectedItem = metadata.selectedItem ?? null;
-    const _expanded = metadata.expanded ?? null;
+    const _selectedItem = config.metadata.selectedItem ?? null;
+    const _expanded = config.metadata.expanded ?? null;
 
     // Paint intent attributes
     if (_selectedItem != null) root.setAttribute("data-selected-item", String(_selectedItem));
