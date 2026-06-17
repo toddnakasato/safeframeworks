@@ -205,14 +205,14 @@ export function createSafeProofViewer(
         // Run all 4 commands in parallel
         const [shapesResult, dumbResult, complianceResult, reconcileResult] = await Promise.all([
             runCli(["prove", "payload-shapes", "--component", target]),
-            runCli(["prove", "builders-dumb"]),
+            runCli(["prove", "builder-dumb"]),
             runCli(["prove", "framework-compliance"]),
             runCli(["prove", "builder-reconcile"]),
         ]);
 
         const resultMap: Record<string, any> = {
             "payload-shapes": shapesResult,
-            "builders-dumb": dumbResult,
+            "builder-dumb": dumbResult,
             "framework-compliance": complianceResult,
             "builder-reconcile": reconcileResult,
         };
