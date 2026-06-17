@@ -301,59 +301,58 @@ export function createSafeProofViewer(
         root.appendChild(overlay);
     }
 
-    // Compute paint delta
-    function computeDelta(event: any): { file: string; delta: string } {
+    // Compute paint delta — shows ConfigBase metadata intent change
+    function computeDelta(event: any): { intent: string; delta: string } {
         const name = event.name ?? "";
         const data = event.data ?? {};
 
-        // Infer file and delta from event type
         if (name === "sort") {
-            return { file: "data.json", delta: `Δ rows: re-sorted by ${data.field ?? "?"} ${data.dir ?? "asc"}` };
+            return { intent: "metadata.sortField", delta: `Δ metadata.sortField: ${data.field ?? "?"}\nΔ metadata.sortDir: ${data.dir ?? "asc"}` };
         }
         if (name === "page") {
             const prev = lastState.currentPage ?? 1;
             const next = data.page ?? 1;
             lastState.currentPage = next;
-            return { file: "state.json", delta: `Δ currentPage: ${prev} → ${next}` };
+            return { intent: "metadata.currentPage", delta: `Δ metadata.currentPage: ${prev} → ${next}` };
         }
         if (name === "row:hover") {
             const prev = lastState.hoverRow ?? "null";
             lastState.hoverRow = data.index;
-            return { file: "state.json", delta: `Δ hoverRow: ${prev} → ${data.index}` };
+            return { intent: "metadata.hoverRow", delta: `Δ metadata.hoverRow: ${prev} → ${data.index}` };
         }
         if (name === "row:leave") {
             const prev = lastState.hoverRow ?? "null";
             lastState.hoverRow = null;
-            return { file: "state.json", delta: `Δ hoverRow: ${prev} → null` };
+            return { intent: "metadata.hoverRow", delta: `Δ metadata.hoverRow: ${prev} → null` };
         }
         if (name === "row:click" || name === "select") {
             const prev = lastState.selectedRow ?? "null";
             lastState.selectedRow = data.index;
-            return { file: "state.json", delta: `Δ selectedRow: ${prev} → ${data.index}` };
+            return { intent: "metadata.selectedRow", delta: `Δ metadata.selectedRow: ${prev} → ${data.index}` };
         }
         if (name === "row:select") {
             const prev = JSON.stringify(lastState.selected ?? []);
             lastState.selected = data.selected;
-            return { file: "state.json", delta: `Δ selected: ${prev} → ${JSON.stringify(data.selected ?? [])}` };
+            return { intent: "metadata.selected", delta: `Δ metadata.selected: ${prev} → ${JSON.stringify(data.selected ?? [])}` };
         }
         if (name === "cell:click" || name === "cell:dblclick") {
-            return { file: "state.json", delta: `Δ editCell: null → {${data.index},${data.field}}` };
+            return { intent: "metadata.editCell", delta: `Δ metadata.editCell: null → {${data.index},${data.field}}` };
         }
         if (name === "cell:edit") {
-            return { file: "data.json", delta: `Δ row[${data.index}].${data.field}: ${data.previous ?? "?"} → ${data.value ?? "?"}` };
+            return { intent: "metadata.rows", delta: `Δ metadata.rows[${data.index}].${data.field}: ${data.previous ?? "?"} → ${data.value ?? "?"}` };
         }
         if (name === "column:resize") {
-            return { file: "state.json", delta: `Δ colWidth.${data.field}: → ${data.width}px` };
+            return { intent: "metadata.colWidths", delta: `Δ metadata.colWidths.${data.field}: → ${data.width}px` };
         }
         if (name === "filter") {
-            return { file: "data.json", delta: `Δ rows: filtered ${data.field} ${data.operator ?? "eq"} ${data.value}` };
+            return { intent: "metadata.rows", delta: `Δ metadata.rows: filtered ${data.field} ${data.operator ?? "eq"} ${data.value}` };
         }
         if (name === "reorder") {
-            return { file: "data.json", delta: `Δ rows: reordered` };
+            return { intent: "metadata.rows", delta: `Δ metadata.rows: reordered` };
         }
         // Generic fallback
         const key = name.replace(":", "_");
-        return { file: "state.json", delta: `Δ ${key}: updated` };
+        return { intent: `metadata.${key}`, delta: `Δ metadata.${key}: updated` };
     }
 
     // Public method — host calls this to push events into the Events tab
@@ -395,12 +394,12 @@ export function createSafeProofViewer(
         procTd.textContent = `safedesk data\n  ${name.replace(":", "-")}\n  --component ${target}\n  ${coordArgs}`;
         tr.appendChild(procTd);
 
-        // Paint column — file + delta
-        const { file, delta } = computeDelta(event);
+        // Paint column — ConfigBase metadata intent delta
+        const { intent, delta } = computeDelta(event);
         const paintTd = el("td", "ev-mono");
-        const fileEl = el("div", undefined, file);
+        const intentEl = el("div", undefined, intent);
         const deltaEl = el("div", "ev-delta", delta);
-        paintTd.appendChild(fileEl);
+        paintTd.appendChild(intentEl);
         paintTd.appendChild(deltaEl);
         tr.appendChild(paintTd);
 
