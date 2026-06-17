@@ -1,6 +1,6 @@
 import { Component, AfterViewChecked, ElementRef } from '@angular/core';
 import { SAMPLES } from '../../../../samples';
-import { createSafeProofViewer } from '../../../../builders/proof-viewer';
+import { createSafeProofViewer } from '../../../../dev/proof-viewer';
 import { NgFor, NgIf } from '@angular/common';
 import { SafeLayoutComponent } from '../../SafeLayout';
 import { SafeColumnsComponent } from '../../SafeColumns';

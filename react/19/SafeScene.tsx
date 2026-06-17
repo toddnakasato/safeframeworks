@@ -2,7 +2,7 @@ import { useRef, useEffect, useCallback } from "react";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
 import { createSafeScene } from "../../builders/scene";
 import { createSafeFireContext } from "safecontracts";
-import { buildPayloadViaCli } from "../../builders/payload-delegate";
+import { buildPayloadViaCli } from "../../utils/payload-delegate";
 
 interface SafeSceneProps {
   config: ConfigBase;

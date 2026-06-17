@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue';
 import { SAMPLES } from '../../../../samples';
-import { createSafeProofViewer } from '../../../../builders/proof-viewer';
+import { createSafeProofViewer } from '../../../../dev/proof-viewer';
 import SafeLayout from '../../SafeLayout.vue';
 import SafeColumns from '../../SafeColumns.vue';
 import SafeCard from '../../SafeCard.vue';

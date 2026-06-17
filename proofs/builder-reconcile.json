@@ -1,0 +1,2863 @@
+{
+  "ok": true,
+  "total": 567,
+  "passed": 567,
+  "failed": 0,
+  "summary": {
+    "registry": 27,
+    "builders": 30,
+    "builderComponents": 30,
+    "knownExtensions": [
+      "metric",
+      "scene",
+      "story-flow"
+    ],
+    "frameworkTargets": 8
+  },
+  "groups": {
+    "registry-has-builder": 27,
+    "builder-has-registry": 30,
+    "builder-has-wrapper": 240,
+    "no-stranded-wrapper": 240,
+    "no-stranded-builder": 30
+  },
+  "checks": [
+    {
+      "group": "registry-has-builder",
+      "name": "registry → builder: layout",
+      "status": "pass"
+    },
+    {
+      "group": "registry-has-builder",
+      "name": "registry → builder: columns",
+      "status": "pass"
+    },
+    {
+      "group": "registry-has-builder",
+      "name": "registry → builder: card",
+      "status": "pass"
+    },
+    {
+      "group": "registry-has-builder",
+      "name": "registry → builder: button",
+      "status": "pass"
+    },
+    {
+      "group": "registry-has-builder",
+      "name": "registry → builder: table",
+      "status": "pass"
+    },
+    {
+      "group": "registry-has-builder",
+      "name": "registry → builder: tree",
+      "status": "pass"
+    },
+    {
+      "group": "registry-has-builder",
+      "name": "registry → builder: sheet",
+      "status": "pass"
+    },
+    {
+      "group": "registry-has-builder",
+      "name": "registry → builder: chart",
+      "status": "pass"
+    },
+    {
+      "group": "registry-has-builder",
+      "name": "registry → builder: heatmap",
+      "status": "pass"
+    },
+    {
+      "group": "registry-has-builder",
+      "name": "registry → builder: gauge",
+      "status": "pass"
+    },
+    {
+      "group": "registry-has-builder",
+      "name": "registry → builder: funnel",
+      "status": "pass"
+    },
+    {
+      "group": "registry-has-builder",
+      "name": "registry → builder: flow",
+      "status": "pass"
+    },
+    {
+      "group": "registry-has-builder",
+      "name": "registry → builder: hierarchy",
+      "status": "pass"
+    },
+    {
+      "group": "registry-has-builder",
+      "name": "registry → builder: timeline",
+      "status": "pass"
+    },
+    {
+      "group": "registry-has-builder",
+      "name": "registry → builder: map",
+      "status": "pass"
+    },
+    {
+      "group": "registry-has-builder",
+      "name": "registry → builder: calendar",
+      "status": "pass"
+    },
+    {
+      "group": "registry-has-builder",
+      "name": "registry → builder: toggle",
+      "status": "pass"
+    },
+    {
+      "group": "registry-has-builder",
+      "name": "registry → builder: week",
+      "status": "pass"
+    },
+    {
+      "group": "registry-has-builder",
+      "name": "registry → builder: chat",
+      "status": "pass"
+    },
+    {
+      "group": "registry-has-builder",
+      "name": "registry → builder: tabs",
+      "status": "pass"
+    },
+    {
+      "group": "registry-has-builder",
+      "name": "registry → builder: callout",
+      "status": "pass"
+    },
+    {
+      "group": "registry-has-builder",
+      "name": "registry → builder: drag-drop",
+      "status": "pass"
+    },
+    {
+      "group": "registry-has-builder",
+      "name": "registry → builder: grid",
+      "status": "pass"
+    },
+    {
+      "group": "registry-has-builder",
+      "name": "registry → builder: input",
+      "status": "pass"
+    },
+    {
+      "group": "registry-has-builder",
+      "name": "registry → builder: picker",
+      "status": "pass"
+    },
+    {
+      "group": "registry-has-builder",
+      "name": "registry → builder: nav",
+      "status": "pass"
+    },
+    {
+      "group": "registry-has-builder",
+      "name": "registry → builder: list",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-registry",
+      "name": "builder → registry: funnel",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-registry",
+      "name": "builder → registry: callout",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-registry",
+      "name": "builder → registry: week",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-registry",
+      "name": "builder → registry: table",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-registry",
+      "name": "builder → registry: nav",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-registry",
+      "name": "builder → registry: input",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-registry",
+      "name": "builder → registry: button",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-registry",
+      "name": "builder → registry: sheet",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-registry",
+      "name": "builder → registry: chat",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-registry",
+      "name": "builder → registry: columns",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-registry",
+      "name": "builder → registry: metric",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-registry",
+      "name": "builder → registry: story-flow",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-registry",
+      "name": "builder → registry: calendar",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-registry",
+      "name": "builder → registry: card",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-registry",
+      "name": "builder → registry: map",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-registry",
+      "name": "builder → registry: hierarchy",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-registry",
+      "name": "builder → registry: flow",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-registry",
+      "name": "builder → registry: chart",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-registry",
+      "name": "builder → registry: scene",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-registry",
+      "name": "builder → registry: drag-drop",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-registry",
+      "name": "builder → registry: layout",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-registry",
+      "name": "builder → registry: tabs",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-registry",
+      "name": "builder → registry: list",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-registry",
+      "name": "builder → registry: timeline",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-registry",
+      "name": "builder → registry: tree",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-registry",
+      "name": "builder → registry: gauge",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-registry",
+      "name": "builder → registry: picker",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-registry",
+      "name": "builder → registry: grid",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-registry",
+      "name": "builder → registry: heatmap",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-registry",
+      "name": "builder → registry: toggle",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "react/18: wrapper for funnel",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "react/18: wrapper for callout",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "react/18: wrapper for week",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "react/18: wrapper for table",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "react/18: wrapper for nav",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "react/18: wrapper for input",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "react/18: wrapper for button",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "react/18: wrapper for sheet",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "react/18: wrapper for chat",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "react/18: wrapper for columns",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "react/18: wrapper for metric",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "react/18: wrapper for storyflow",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "react/18: wrapper for calendar",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "react/18: wrapper for card",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "react/18: wrapper for map",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "react/18: wrapper for hierarchy",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "react/18: wrapper for flow",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "react/18: wrapper for chart",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "react/18: wrapper for scene",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "react/18: wrapper for dragdrop",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "react/18: wrapper for layout",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "react/18: wrapper for tabs",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "react/18: wrapper for list",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "react/18: wrapper for timeline",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "react/18: wrapper for tree",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "react/18: wrapper for gauge",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "react/18: wrapper for picker",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "react/18: wrapper for grid",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "react/18: wrapper for heatmap",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "react/18: wrapper for toggle",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "react/18: dragdrop has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "react/18: picker has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "react/18: callout has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "react/18: chat has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "react/18: flow has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "react/18: sheet has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "react/18: layout has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "react/18: chart has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "react/18: heatmap has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "react/18: toggle has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "react/18: button has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "react/18: storyflow has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "react/18: timeline has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "react/18: calendar has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "react/18: tree has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "react/18: gauge has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "react/18: input has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "react/18: columns has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "react/18: scene has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "react/18: hierarchy has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "react/18: funnel has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "react/18: map has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "react/18: list has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "react/18: grid has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "react/18: table has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "react/18: nav has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "react/18: card has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "react/18: tabs has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "react/18: week has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "react/18: metric has builder",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "react/19: wrapper for funnel",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "react/19: wrapper for callout",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "react/19: wrapper for week",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "react/19: wrapper for table",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "react/19: wrapper for nav",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "react/19: wrapper for input",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "react/19: wrapper for button",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "react/19: wrapper for sheet",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "react/19: wrapper for chat",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "react/19: wrapper for columns",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "react/19: wrapper for metric",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "react/19: wrapper for storyflow",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "react/19: wrapper for calendar",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "react/19: wrapper for card",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "react/19: wrapper for map",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "react/19: wrapper for hierarchy",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "react/19: wrapper for flow",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "react/19: wrapper for chart",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "react/19: wrapper for scene",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "react/19: wrapper for dragdrop",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "react/19: wrapper for layout",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "react/19: wrapper for tabs",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "react/19: wrapper for list",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "react/19: wrapper for timeline",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "react/19: wrapper for tree",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "react/19: wrapper for gauge",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "react/19: wrapper for picker",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "react/19: wrapper for grid",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "react/19: wrapper for heatmap",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "react/19: wrapper for toggle",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "react/19: dragdrop has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "react/19: picker has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "react/19: callout has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "react/19: chat has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "react/19: flow has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "react/19: sheet has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "react/19: layout has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "react/19: chart has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "react/19: heatmap has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "react/19: toggle has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "react/19: button has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "react/19: storyflow has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "react/19: timeline has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "react/19: calendar has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "react/19: tree has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "react/19: gauge has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "react/19: input has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "react/19: columns has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "react/19: scene has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "react/19: hierarchy has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "react/19: funnel has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "react/19: map has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "react/19: list has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "react/19: grid has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "react/19: table has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "react/19: nav has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "react/19: card has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "react/19: tabs has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "react/19: week has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "react/19: metric has builder",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "angular/21: wrapper for funnel",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "angular/21: wrapper for callout",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "angular/21: wrapper for week",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "angular/21: wrapper for table",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "angular/21: wrapper for nav",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "angular/21: wrapper for input",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "angular/21: wrapper for button",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "angular/21: wrapper for sheet",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "angular/21: wrapper for chat",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "angular/21: wrapper for columns",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "angular/21: wrapper for metric",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "angular/21: wrapper for storyflow",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "angular/21: wrapper for calendar",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "angular/21: wrapper for card",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "angular/21: wrapper for map",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "angular/21: wrapper for hierarchy",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "angular/21: wrapper for flow",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "angular/21: wrapper for chart",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "angular/21: wrapper for scene",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "angular/21: wrapper for dragdrop",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "angular/21: wrapper for layout",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "angular/21: wrapper for tabs",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "angular/21: wrapper for list",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "angular/21: wrapper for timeline",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "angular/21: wrapper for tree",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "angular/21: wrapper for gauge",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "angular/21: wrapper for picker",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "angular/21: wrapper for grid",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "angular/21: wrapper for heatmap",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "angular/21: wrapper for toggle",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "angular/21: gauge has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "angular/21: metric has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "angular/21: tabs has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "angular/21: list has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "angular/21: button has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "angular/21: grid has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "angular/21: tree has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "angular/21: timeline has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "angular/21: dragdrop has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "angular/21: flow has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "angular/21: hierarchy has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "angular/21: funnel has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "angular/21: heatmap has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "angular/21: scene has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "angular/21: chart has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "angular/21: calendar has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "angular/21: sheet has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "angular/21: toggle has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "angular/21: picker has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "angular/21: storyflow has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "angular/21: chat has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "angular/21: callout has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "angular/21: card has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "angular/21: input has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "angular/21: layout has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "angular/21: table has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "angular/21: map has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "angular/21: nav has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "angular/21: columns has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "angular/21: week has builder",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "angular/22: wrapper for funnel",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "angular/22: wrapper for callout",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "angular/22: wrapper for week",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "angular/22: wrapper for table",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "angular/22: wrapper for nav",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "angular/22: wrapper for input",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "angular/22: wrapper for button",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "angular/22: wrapper for sheet",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "angular/22: wrapper for chat",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "angular/22: wrapper for columns",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "angular/22: wrapper for metric",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "angular/22: wrapper for storyflow",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "angular/22: wrapper for calendar",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "angular/22: wrapper for card",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "angular/22: wrapper for map",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "angular/22: wrapper for hierarchy",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "angular/22: wrapper for flow",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "angular/22: wrapper for chart",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "angular/22: wrapper for scene",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "angular/22: wrapper for dragdrop",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "angular/22: wrapper for layout",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "angular/22: wrapper for tabs",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "angular/22: wrapper for list",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "angular/22: wrapper for timeline",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "angular/22: wrapper for tree",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "angular/22: wrapper for gauge",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "angular/22: wrapper for picker",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "angular/22: wrapper for grid",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "angular/22: wrapper for heatmap",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "angular/22: wrapper for toggle",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "angular/22: gauge has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "angular/22: metric has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "angular/22: tabs has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "angular/22: list has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "angular/22: button has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "angular/22: grid has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "angular/22: tree has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "angular/22: timeline has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "angular/22: dragdrop has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "angular/22: flow has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "angular/22: hierarchy has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "angular/22: funnel has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "angular/22: heatmap has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "angular/22: scene has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "angular/22: chart has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "angular/22: calendar has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "angular/22: sheet has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "angular/22: toggle has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "angular/22: picker has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "angular/22: storyflow has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "angular/22: chat has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "angular/22: callout has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "angular/22: card has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "angular/22: input has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "angular/22: layout has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "angular/22: table has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "angular/22: map has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "angular/22: nav has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "angular/22: columns has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "angular/22: week has builder",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "vue/2: wrapper for funnel",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "vue/2: wrapper for callout",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "vue/2: wrapper for week",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "vue/2: wrapper for table",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "vue/2: wrapper for nav",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "vue/2: wrapper for input",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "vue/2: wrapper for button",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "vue/2: wrapper for sheet",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "vue/2: wrapper for chat",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "vue/2: wrapper for columns",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "vue/2: wrapper for metric",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "vue/2: wrapper for storyflow",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "vue/2: wrapper for calendar",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "vue/2: wrapper for card",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "vue/2: wrapper for map",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "vue/2: wrapper for hierarchy",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "vue/2: wrapper for flow",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "vue/2: wrapper for chart",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "vue/2: wrapper for scene",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "vue/2: wrapper for dragdrop",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "vue/2: wrapper for layout",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "vue/2: wrapper for tabs",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "vue/2: wrapper for list",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "vue/2: wrapper for timeline",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "vue/2: wrapper for tree",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "vue/2: wrapper for gauge",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "vue/2: wrapper for picker",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "vue/2: wrapper for grid",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "vue/2: wrapper for heatmap",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "vue/2: wrapper for toggle",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "vue/2: callout has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "vue/2: dragdrop has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "vue/2: picker has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "vue/2: flow has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "vue/2: chat has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "vue/2: chart has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "vue/2: sheet has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "vue/2: layout has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "vue/2: heatmap has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "vue/2: toggle has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "vue/2: button has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "vue/2: storyflow has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "vue/2: calendar has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "vue/2: timeline has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "vue/2: tree has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "vue/2: gauge has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "vue/2: input has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "vue/2: columns has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "vue/2: map has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "vue/2: funnel has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "vue/2: hierarchy has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "vue/2: scene has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "vue/2: table has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "vue/2: grid has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "vue/2: list has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "vue/2: card has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "vue/2: nav has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "vue/2: tabs has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "vue/2: week has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "vue/2: metric has builder",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "vue/3: wrapper for funnel",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "vue/3: wrapper for callout",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "vue/3: wrapper for week",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "vue/3: wrapper for table",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "vue/3: wrapper for nav",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "vue/3: wrapper for input",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "vue/3: wrapper for button",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "vue/3: wrapper for sheet",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "vue/3: wrapper for chat",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "vue/3: wrapper for columns",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "vue/3: wrapper for metric",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "vue/3: wrapper for storyflow",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "vue/3: wrapper for calendar",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "vue/3: wrapper for card",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "vue/3: wrapper for map",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "vue/3: wrapper for hierarchy",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "vue/3: wrapper for flow",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "vue/3: wrapper for chart",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "vue/3: wrapper for scene",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "vue/3: wrapper for dragdrop",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "vue/3: wrapper for layout",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "vue/3: wrapper for tabs",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "vue/3: wrapper for list",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "vue/3: wrapper for timeline",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "vue/3: wrapper for tree",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "vue/3: wrapper for gauge",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "vue/3: wrapper for picker",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "vue/3: wrapper for grid",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "vue/3: wrapper for heatmap",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "vue/3: wrapper for toggle",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "vue/3: callout has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "vue/3: dragdrop has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "vue/3: picker has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "vue/3: flow has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "vue/3: chat has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "vue/3: chart has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "vue/3: sheet has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "vue/3: layout has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "vue/3: heatmap has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "vue/3: toggle has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "vue/3: button has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "vue/3: storyflow has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "vue/3: calendar has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "vue/3: timeline has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "vue/3: tree has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "vue/3: gauge has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "vue/3: input has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "vue/3: columns has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "vue/3: map has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "vue/3: funnel has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "vue/3: hierarchy has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "vue/3: scene has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "vue/3: table has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "vue/3: grid has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "vue/3: list has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "vue/3: card has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "vue/3: nav has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "vue/3: tabs has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "vue/3: week has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "vue/3: metric has builder",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "svelte/4: wrapper for funnel",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "svelte/4: wrapper for callout",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "svelte/4: wrapper for week",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "svelte/4: wrapper for table",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "svelte/4: wrapper for nav",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "svelte/4: wrapper for input",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "svelte/4: wrapper for button",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "svelte/4: wrapper for sheet",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "svelte/4: wrapper for chat",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "svelte/4: wrapper for columns",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "svelte/4: wrapper for metric",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "svelte/4: wrapper for storyflow",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "svelte/4: wrapper for calendar",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "svelte/4: wrapper for card",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "svelte/4: wrapper for map",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "svelte/4: wrapper for hierarchy",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "svelte/4: wrapper for flow",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "svelte/4: wrapper for chart",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "svelte/4: wrapper for scene",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "svelte/4: wrapper for dragdrop",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "svelte/4: wrapper for layout",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "svelte/4: wrapper for tabs",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "svelte/4: wrapper for list",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "svelte/4: wrapper for timeline",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "svelte/4: wrapper for tree",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "svelte/4: wrapper for gauge",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "svelte/4: wrapper for picker",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "svelte/4: wrapper for grid",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "svelte/4: wrapper for heatmap",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "svelte/4: wrapper for toggle",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "svelte/4: list has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "svelte/4: callout has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "svelte/4: chat has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "svelte/4: picker has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "svelte/4: timeline has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "svelte/4: grid has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "svelte/4: chart has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "svelte/4: calendar has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "svelte/4: table has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "svelte/4: flow has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "svelte/4: input has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "svelte/4: week has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "svelte/4: toggle has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "svelte/4: heatmap has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "svelte/4: button has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "svelte/4: columns has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "svelte/4: sheet has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "svelte/4: nav has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "svelte/4: tree has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "svelte/4: card has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "svelte/4: hierarchy has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "svelte/4: map has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "svelte/4: storyflow has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "svelte/4: tabs has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "svelte/4: layout has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "svelte/4: metric has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "svelte/4: funnel has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "svelte/4: dragdrop has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "svelte/4: gauge has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "svelte/4: scene has builder",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "svelte/5: wrapper for funnel",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "svelte/5: wrapper for callout",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "svelte/5: wrapper for week",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "svelte/5: wrapper for table",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "svelte/5: wrapper for nav",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "svelte/5: wrapper for input",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "svelte/5: wrapper for button",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "svelte/5: wrapper for sheet",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "svelte/5: wrapper for chat",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "svelte/5: wrapper for columns",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "svelte/5: wrapper for metric",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "svelte/5: wrapper for storyflow",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "svelte/5: wrapper for calendar",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "svelte/5: wrapper for card",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "svelte/5: wrapper for map",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "svelte/5: wrapper for hierarchy",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "svelte/5: wrapper for flow",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "svelte/5: wrapper for chart",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "svelte/5: wrapper for scene",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "svelte/5: wrapper for dragdrop",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "svelte/5: wrapper for layout",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "svelte/5: wrapper for tabs",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "svelte/5: wrapper for list",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "svelte/5: wrapper for timeline",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "svelte/5: wrapper for tree",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "svelte/5: wrapper for gauge",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "svelte/5: wrapper for picker",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "svelte/5: wrapper for grid",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "svelte/5: wrapper for heatmap",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "svelte/5: wrapper for toggle",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "svelte/5: list has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "svelte/5: callout has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "svelte/5: chat has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "svelte/5: picker has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "svelte/5: timeline has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "svelte/5: grid has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "svelte/5: chart has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "svelte/5: calendar has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "svelte/5: table has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "svelte/5: flow has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "svelte/5: input has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "svelte/5: week has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "svelte/5: toggle has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "svelte/5: heatmap has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "svelte/5: button has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "svelte/5: columns has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "svelte/5: sheet has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "svelte/5: nav has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "svelte/5: tree has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "svelte/5: card has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "svelte/5: hierarchy has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "svelte/5: map has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "svelte/5: storyflow has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "svelte/5: tabs has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "svelte/5: layout has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "svelte/5: metric has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "svelte/5: funnel has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "svelte/5: dragdrop has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "svelte/5: gauge has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "svelte/5: scene has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-builder",
+      "name": "builder funnel: has wrappers (8/8)",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-builder",
+      "name": "builder callout: has wrappers (8/8)",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-builder",
+      "name": "builder week: has wrappers (8/8)",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-builder",
+      "name": "builder table: has wrappers (8/8)",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-builder",
+      "name": "builder nav: has wrappers (8/8)",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-builder",
+      "name": "builder input: has wrappers (8/8)",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-builder",
+      "name": "builder button: has wrappers (8/8)",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-builder",
+      "name": "builder sheet: has wrappers (8/8)",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-builder",
+      "name": "builder chat: has wrappers (8/8)",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-builder",
+      "name": "builder columns: has wrappers (8/8)",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-builder",
+      "name": "builder metric: has wrappers (8/8)",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-builder",
+      "name": "builder storyflow: has wrappers (8/8)",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-builder",
+      "name": "builder calendar: has wrappers (8/8)",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-builder",
+      "name": "builder card: has wrappers (8/8)",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-builder",
+      "name": "builder map: has wrappers (8/8)",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-builder",
+      "name": "builder hierarchy: has wrappers (8/8)",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-builder",
+      "name": "builder flow: has wrappers (8/8)",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-builder",
+      "name": "builder chart: has wrappers (8/8)",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-builder",
+      "name": "builder scene: has wrappers (8/8)",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-builder",
+      "name": "builder dragdrop: has wrappers (8/8)",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-builder",
+      "name": "builder layout: has wrappers (8/8)",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-builder",
+      "name": "builder tabs: has wrappers (8/8)",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-builder",
+      "name": "builder list: has wrappers (8/8)",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-builder",
+      "name": "builder timeline: has wrappers (8/8)",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-builder",
+      "name": "builder tree: has wrappers (8/8)",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-builder",
+      "name": "builder gauge: has wrappers (8/8)",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-builder",
+      "name": "builder picker: has wrappers (8/8)",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-builder",
+      "name": "builder grid: has wrappers (8/8)",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-builder",
+      "name": "builder heatmap: has wrappers (8/8)",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-builder",
+      "name": "builder toggle: has wrappers (8/8)",
+      "status": "pass"
+    }
+  ],
+  "failures": [],
+  "ts": "2026-06-17T07:25:21.142Z"
+}

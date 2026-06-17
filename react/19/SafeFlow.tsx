@@ -2,7 +2,7 @@ import { useRef, useEffect } from "react";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
 import { renderSafeFlow, flowData } from "../../builders/flow";
 import { createSafeFireContext } from "safecontracts";
-import { buildPayloadViaCli } from "../../builders/payload-delegate";
+import { buildPayloadViaCli } from "../../utils/payload-delegate";
 
 /*----------------------------------------------------------------------------------------------------
  *

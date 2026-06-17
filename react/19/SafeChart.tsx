@@ -3,7 +3,7 @@ import type { Chart } from "chart.js";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
 import { createSafeChart } from "../../builders/chart";
 import { createSafeFireContext } from "safecontracts";
-import { buildPayloadViaCli } from "../../builders/payload-delegate";
+import { buildPayloadViaCli } from "../../utils/payload-delegate";
 
 /*----------------------------------------------------------------------------------------------------
  *

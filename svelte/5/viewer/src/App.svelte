@@ -1,6 +1,6 @@
 <script>
   import { SAMPLES } from '../../../../samples';
-    import { createSafeProofViewer } from '../../../../builders/proof-viewer';
+    import { createSafeProofViewer } from '../../../../dev/proof-viewer';
 
   function proofMount(node, comp) {
     node.innerHTML = '';

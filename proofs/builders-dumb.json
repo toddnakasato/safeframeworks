@@ -1,16 +1,16 @@
 {
   "ok": true,
   "component": "all",
-  "total": 179,
-  "passed": 179,
+  "total": 173,
+  "passed": 173,
   "failed": 0,
   "groups": {
-    "no-contracts-emit": 30,
-    "no-payload-delegate": 30,
-    "no-fireWithPayload": 30,
-    "no-direct-fire": 30,
-    "no-OnSafeEvent-signature": 30,
-    "uses-SafeFireContext": 27,
+    "no-contracts-emit": 29,
+    "no-payload-delegate": 29,
+    "no-fireWithPayload": 29,
+    "no-direct-fire": 29,
+    "no-OnSafeEvent-signature": 29,
+    "uses-SafeFireContext": 26,
     "render-creates-ctx": 1,
     "render-injects-transport": 1
   },
@@ -607,36 +607,6 @@
     },
     {
       "group": "no-contracts-emit",
-      "name": "layout: no contracts-emit import",
-      "status": "pass"
-    },
-    {
-      "group": "no-payload-delegate",
-      "name": "layout: no payload-delegate import",
-      "status": "pass"
-    },
-    {
-      "group": "no-fireWithPayload",
-      "name": "layout: no fireWithPayload calls",
-      "status": "pass"
-    },
-    {
-      "group": "no-direct-fire",
-      "name": "layout: no direct fire function calls",
-      "status": "pass"
-    },
-    {
-      "group": "no-OnSafeEvent-signature",
-      "name": "layout: no OnSafeEvent in signatures",
-      "status": "pass"
-    },
-    {
-      "group": "uses-SafeFireContext",
-      "name": "layout: uses SafeFireContext",
-      "status": "pass"
-    },
-    {
-      "group": "no-contracts-emit",
       "name": "tabs: no contracts-emit import",
       "status": "pass"
     },
@@ -912,5 +882,5 @@
     }
   ],
   "failures": [],
-  "ts": "2026-06-17T06:47:03.544Z"
+  "ts": "2026-06-17T07:25:21.074Z"
 }

@@ -10,7 +10,7 @@
  */
 import type { ConfigBase, OnSafeEvent, SafeFireContext } from "../../safecontracts/src/contracts";
 import { createSafeFireContext } from "../../safecontracts/src/contracts";
-import { buildPayloadViaCli } from "./payload-delegate";
+import { buildPayloadViaCli } from "../utils/payload-delegate";
 import { createSafeButton } from "./button";
 import { createSafeCalendar } from "./calendar";
 import { createSafeCallout } from "./callout";
@@ -36,7 +36,7 @@ import { createSafeTimeline } from "./timeline";
 import { createSafeToggle } from "./toggle";
 import { createSafeTree } from "./tree";
 import { createSafeWeek } from "./week";
-import { createSafeProofViewer } from "./proof-viewer";
+import { createSafeProofViewer } from "../dev/proof-viewer";
 
 const el = (tag: string, text?: string): HTMLElement => {
     const e = document.createElement(tag);

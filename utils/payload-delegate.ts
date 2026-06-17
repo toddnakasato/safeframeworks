@@ -1,5 +1,5 @@
 /**
- * builders/payload-delegate.ts — bridges safecontracts safeFire to the Tauri host.
+ * utils/payload-delegate.ts — bridges safecontracts safeFire to the Tauri host.
  *
  * Provides buildPayloadViaCli — the BuildPayloadFn the host injects into
  * createSafeFireContext. Calls the compiled safedesk binary via Tauri invoke.

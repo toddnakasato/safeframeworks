@@ -1,5 +1,5 @@
 /**
- * builders/proof-viewer.ts — dev-only PRRR workbench for safeframeworks.
+ * dev/proof-viewer.ts — dev-only PRRR workbench for safeframeworks.
  *
  * Shows the full Payload, Route, Reply, Respond chain per event.
  * All data comes from real sources — nothing faked.

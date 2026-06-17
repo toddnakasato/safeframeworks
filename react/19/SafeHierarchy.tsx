@@ -1,7 +1,7 @@
 import { useRef, useEffect } from "react";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
 import { createSafeFireContext } from "safecontracts";
-import { buildPayloadViaCli } from "../../builders/payload-delegate";
+import { buildPayloadViaCli } from "../../utils/payload-delegate";
 import { createSafeHierarchy } from "../../builders/hierarchy";
 
 /*----------------------------------------------------------------------------------------------------
