@@ -113,7 +113,7 @@ export default function App() {
     const cssOnlyEvents = new Set(["row:hover", "row:leave", "hover"]);
     if (cssOnlyEvents.has(event.name)) return;
     // Call safedesk paint apply — writes state.json
-    const component = (event as any).component ?? event.origin?.id ?? "";
+    const component = event.component ?? "";
     try {
       const args = ["paint", "apply", "--component", component, "--event", event.name, "--state", STATE_FILE];
       if (event.data?.index !== undefined) args.push("--index", String(event.data.index));
