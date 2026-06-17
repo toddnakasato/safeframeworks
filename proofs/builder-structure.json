@@ -1,8 +1,8 @@
 {
   "ok": true,
   "component": "all",
-  "total": 207,
-  "passed": 207,
+  "total": 266,
+  "passed": 266,
   "failed": 0,
   "groups": {
     "uses-readList-or-readRecord": 19,
@@ -10,9 +10,11 @@
     "uses-applyIntent": 21,
     "uses-applyPaintState": 15,
     "has-data-component": 29,
-    "imports-match-calls": 61,
+    "imports-match-calls": 62,
     "metadata-is-declared": 21,
-    "required-metadata-fields": 12
+    "required-metadata-fields": 12,
+    "no-getDataSource": 29,
+    "no-initSafe": 29
   },
   "checks": [
     {
@@ -61,6 +63,16 @@
       "status": "pass"
     },
     {
+      "group": "no-getDataSource",
+      "name": "funnel: no raw getDataSource",
+      "status": "pass"
+    },
+    {
+      "group": "no-initSafe",
+      "name": "funnel: no initSafe function",
+      "status": "pass"
+    },
+    {
       "group": "uses-shared-el",
       "name": "callout: uses shared el/elAttrs from utils",
       "status": "pass"
@@ -91,6 +103,16 @@
       "status": "pass"
     },
     {
+      "group": "no-getDataSource",
+      "name": "callout: no raw getDataSource",
+      "status": "pass"
+    },
+    {
+      "group": "no-initSafe",
+      "name": "callout: no initSafe function",
+      "status": "pass"
+    },
+    {
       "group": "uses-shared-el",
       "name": "week: uses shared el/elAttrs from utils",
       "status": "pass"
@@ -113,6 +135,16 @@
     {
       "group": "metadata-is-declared",
       "name": "week: metadata variable is declared",
+      "status": "pass"
+    },
+    {
+      "group": "no-getDataSource",
+      "name": "week: no raw getDataSource",
+      "status": "pass"
+    },
+    {
+      "group": "no-initSafe",
+      "name": "week: no initSafe function",
       "status": "pass"
     },
     {
@@ -161,6 +193,16 @@
       "status": "pass"
     },
     {
+      "group": "no-getDataSource",
+      "name": "table: no raw getDataSource",
+      "status": "pass"
+    },
+    {
+      "group": "no-initSafe",
+      "name": "table: no initSafe function",
+      "status": "pass"
+    },
+    {
       "group": "uses-readList-or-readRecord",
       "name": "nav: uses readList or readRecord",
       "status": "pass"
@@ -201,6 +243,16 @@
       "status": "pass"
     },
     {
+      "group": "no-getDataSource",
+      "name": "nav: no raw getDataSource",
+      "status": "pass"
+    },
+    {
+      "group": "no-initSafe",
+      "name": "nav: no initSafe function",
+      "status": "pass"
+    },
+    {
       "group": "uses-readList-or-readRecord",
       "name": "input: uses readList or readRecord",
       "status": "pass"
@@ -236,6 +288,16 @@
       "status": "pass"
     },
     {
+      "group": "no-getDataSource",
+      "name": "input: no raw getDataSource",
+      "status": "pass"
+    },
+    {
+      "group": "no-initSafe",
+      "name": "input: no initSafe function",
+      "status": "pass"
+    },
+    {
       "group": "uses-shared-el",
       "name": "button: uses shared el/elAttrs from utils",
       "status": "pass"
@@ -263,6 +325,16 @@
     {
       "group": "metadata-is-declared",
       "name": "button: metadata variable is declared",
+      "status": "pass"
+    },
+    {
+      "group": "no-getDataSource",
+      "name": "button: no raw getDataSource",
+      "status": "pass"
+    },
+    {
+      "group": "no-initSafe",
+      "name": "button: no initSafe function",
       "status": "pass"
     },
     {
@@ -311,6 +383,16 @@
       "status": "pass"
     },
     {
+      "group": "no-getDataSource",
+      "name": "sheet: no raw getDataSource",
+      "status": "pass"
+    },
+    {
+      "group": "no-initSafe",
+      "name": "sheet: no initSafe function",
+      "status": "pass"
+    },
+    {
       "group": "uses-readList-or-readRecord",
       "name": "chat: uses readList or readRecord",
       "status": "pass"
@@ -331,6 +413,16 @@
       "status": "pass"
     },
     {
+      "group": "no-getDataSource",
+      "name": "chat: no raw getDataSource",
+      "status": "pass"
+    },
+    {
+      "group": "no-initSafe",
+      "name": "chat: no initSafe function",
+      "status": "pass"
+    },
+    {
       "group": "uses-shared-el",
       "name": "columns: uses shared el/elAttrs from utils",
       "status": "pass"
@@ -338,6 +430,16 @@
     {
       "group": "has-data-component",
       "name": "columns: sets data-component",
+      "status": "pass"
+    },
+    {
+      "group": "no-getDataSource",
+      "name": "columns: no raw getDataSource",
+      "status": "pass"
+    },
+    {
+      "group": "no-initSafe",
+      "name": "columns: no initSafe function",
       "status": "pass"
     },
     {
@@ -356,6 +458,16 @@
       "status": "pass"
     },
     {
+      "group": "no-getDataSource",
+      "name": "metric: no raw getDataSource",
+      "status": "pass"
+    },
+    {
+      "group": "no-initSafe",
+      "name": "metric: no initSafe function",
+      "status": "pass"
+    },
+    {
       "group": "uses-shared-el",
       "name": "storyflow: uses shared el/elAttrs from utils",
       "status": "pass"
@@ -363,6 +475,16 @@
     {
       "group": "has-data-component",
       "name": "storyflow: sets data-component",
+      "status": "pass"
+    },
+    {
+      "group": "no-getDataSource",
+      "name": "storyflow: no raw getDataSource",
+      "status": "pass"
+    },
+    {
+      "group": "no-initSafe",
+      "name": "storyflow: no initSafe function",
       "status": "pass"
     },
     {
@@ -388,6 +510,16 @@
     {
       "group": "metadata-is-declared",
       "name": "calendar: metadata variable is declared",
+      "status": "pass"
+    },
+    {
+      "group": "no-getDataSource",
+      "name": "calendar: no raw getDataSource",
+      "status": "pass"
+    },
+    {
+      "group": "no-initSafe",
+      "name": "calendar: no initSafe function",
       "status": "pass"
     },
     {
@@ -436,6 +568,16 @@
       "status": "pass"
     },
     {
+      "group": "no-getDataSource",
+      "name": "card: no raw getDataSource",
+      "status": "pass"
+    },
+    {
+      "group": "no-initSafe",
+      "name": "card: no initSafe function",
+      "status": "pass"
+    },
+    {
       "group": "uses-readList-or-readRecord",
       "name": "map: uses readList or readRecord",
       "status": "pass"
@@ -468,6 +610,16 @@
     {
       "group": "metadata-is-declared",
       "name": "map: metadata variable is declared",
+      "status": "pass"
+    },
+    {
+      "group": "no-getDataSource",
+      "name": "map: no raw getDataSource",
+      "status": "pass"
+    },
+    {
+      "group": "no-initSafe",
+      "name": "map: no initSafe function",
       "status": "pass"
     },
     {
@@ -506,6 +658,16 @@
       "status": "pass"
     },
     {
+      "group": "no-getDataSource",
+      "name": "hierarchy: no raw getDataSource",
+      "status": "pass"
+    },
+    {
+      "group": "no-initSafe",
+      "name": "hierarchy: no initSafe function",
+      "status": "pass"
+    },
+    {
       "group": "uses-readList-or-readRecord",
       "name": "flow: uses readList or readRecord",
       "status": "pass"
@@ -538,6 +700,16 @@
     {
       "group": "metadata-is-declared",
       "name": "flow: metadata variable is declared",
+      "status": "pass"
+    },
+    {
+      "group": "no-getDataSource",
+      "name": "flow: no raw getDataSource",
+      "status": "pass"
+    },
+    {
+      "group": "no-initSafe",
+      "name": "flow: no initSafe function",
       "status": "pass"
     },
     {
@@ -576,6 +748,16 @@
       "status": "pass"
     },
     {
+      "group": "no-getDataSource",
+      "name": "chart: no raw getDataSource",
+      "status": "pass"
+    },
+    {
+      "group": "no-initSafe",
+      "name": "chart: no initSafe function",
+      "status": "pass"
+    },
+    {
       "group": "uses-shared-el",
       "name": "scene: uses shared el/elAttrs from utils",
       "status": "pass"
@@ -596,6 +778,16 @@
       "status": "pass"
     },
     {
+      "group": "no-getDataSource",
+      "name": "scene: no raw getDataSource",
+      "status": "pass"
+    },
+    {
+      "group": "no-initSafe",
+      "name": "scene: no initSafe function",
+      "status": "pass"
+    },
+    {
       "group": "uses-shared-el",
       "name": "dragdrop: uses shared el/elAttrs from utils",
       "status": "pass"
@@ -612,7 +804,22 @@
     },
     {
       "group": "imports-match-calls",
+      "name": "dragdrop: imports readList",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
       "name": "dragdrop: imports applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "no-getDataSource",
+      "name": "dragdrop: no raw getDataSource",
+      "status": "pass"
+    },
+    {
+      "group": "no-initSafe",
+      "name": "dragdrop: no initSafe function",
       "status": "pass"
     },
     {
@@ -648,6 +855,16 @@
     {
       "group": "metadata-is-declared",
       "name": "tabs: metadata variable is declared",
+      "status": "pass"
+    },
+    {
+      "group": "no-getDataSource",
+      "name": "tabs: no raw getDataSource",
+      "status": "pass"
+    },
+    {
+      "group": "no-initSafe",
+      "name": "tabs: no initSafe function",
       "status": "pass"
     },
     {
@@ -688,6 +905,16 @@
     {
       "group": "imports-match-calls",
       "name": "list: imports applyPaintState",
+      "status": "pass"
+    },
+    {
+      "group": "no-getDataSource",
+      "name": "list: no raw getDataSource",
+      "status": "pass"
+    },
+    {
+      "group": "no-initSafe",
+      "name": "list: no initSafe function",
       "status": "pass"
     },
     {
@@ -733,6 +960,16 @@
     {
       "group": "metadata-is-declared",
       "name": "timeline: metadata variable is declared",
+      "status": "pass"
+    },
+    {
+      "group": "no-getDataSource",
+      "name": "timeline: no raw getDataSource",
+      "status": "pass"
+    },
+    {
+      "group": "no-initSafe",
+      "name": "timeline: no initSafe function",
       "status": "pass"
     },
     {
@@ -786,6 +1023,16 @@
       "status": "pass"
     },
     {
+      "group": "no-getDataSource",
+      "name": "tree: no raw getDataSource",
+      "status": "pass"
+    },
+    {
+      "group": "no-initSafe",
+      "name": "tree: no initSafe function",
+      "status": "pass"
+    },
+    {
       "group": "uses-readList-or-readRecord",
       "name": "gauge: uses readList or readRecord",
       "status": "pass"
@@ -828,6 +1075,16 @@
     {
       "group": "metadata-is-declared",
       "name": "gauge: metadata variable is declared",
+      "status": "pass"
+    },
+    {
+      "group": "no-getDataSource",
+      "name": "gauge: no raw getDataSource",
+      "status": "pass"
+    },
+    {
+      "group": "no-initSafe",
+      "name": "gauge: no initSafe function",
       "status": "pass"
     },
     {
@@ -876,6 +1133,16 @@
       "status": "pass"
     },
     {
+      "group": "no-getDataSource",
+      "name": "picker: no raw getDataSource",
+      "status": "pass"
+    },
+    {
+      "group": "no-initSafe",
+      "name": "picker: no initSafe function",
+      "status": "pass"
+    },
+    {
       "group": "uses-readList-or-readRecord",
       "name": "grid: uses readList or readRecord",
       "status": "pass"
@@ -898,6 +1165,16 @@
     {
       "group": "imports-match-calls",
       "name": "grid: imports elAttrs",
+      "status": "pass"
+    },
+    {
+      "group": "no-getDataSource",
+      "name": "grid: no raw getDataSource",
+      "status": "pass"
+    },
+    {
+      "group": "no-initSafe",
+      "name": "grid: no initSafe function",
       "status": "pass"
     },
     {
@@ -946,6 +1223,16 @@
       "status": "pass"
     },
     {
+      "group": "no-getDataSource",
+      "name": "heatmap: no raw getDataSource",
+      "status": "pass"
+    },
+    {
+      "group": "no-initSafe",
+      "name": "heatmap: no initSafe function",
+      "status": "pass"
+    },
+    {
       "group": "uses-readList-or-readRecord",
       "name": "toggle: uses readList or readRecord",
       "status": "pass"
@@ -988,6 +1275,16 @@
     {
       "group": "metadata-is-declared",
       "name": "toggle: metadata variable is declared",
+      "status": "pass"
+    },
+    {
+      "group": "no-getDataSource",
+      "name": "toggle: no raw getDataSource",
+      "status": "pass"
+    },
+    {
+      "group": "no-initSafe",
+      "name": "toggle: no initSafe function",
       "status": "pass"
     },
     {
@@ -1052,5 +1349,5 @@
     }
   ],
   "failures": [],
-  "ts": "2026-06-17T15:37:35.103Z"
+  "ts": "2026-06-17T18:36:48.792Z"
 }

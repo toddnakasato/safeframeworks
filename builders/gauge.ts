@@ -1,6 +1,5 @@
 import * as d3 from "d3";
 import type { SafeFireContext } from "../../safecontracts/src/contracts";
-import { getDataSource } from "../../safecontracts/src/contracts";
 import type { ConfigBase } from "../../safecontracts/src/contracts";
 import { elAttrs, applyPaintState, applyIntent } from "../utils/util";
 import { readList } from "../../safecontracts/src/contracts-data";
@@ -36,7 +35,6 @@ export function createSafeGauge(container: HTMLElement, config: ConfigBase, ctx:
     const thresholds = (metadata.thresholds as [number, string][]) ?? [[60, "var(--sd-danger)"], [80, "var(--sd-warning)"], [100, "var(--sd-success)"]];
 
     // Self-extract record data from the first DataSource (contract: record).
-    const ds = getDataSource(config);
     const data = readList(config);
 
     const value = Number(data[valueField]) ?? 0;
@@ -57,14 +55,6 @@ export function createSafeGauge(container: HTMLElement, config: ConfigBase, ctx:
     root.setAttribute("data-component", "gauge");
     applyIntent(root, metadata);
     applyPaintState(root, metadata, "gauge");
-
-    // Paint intent attributes
-    const _selectedGauge = metadata.selectedGauge ?? null;
-    if (_selectedGauge != null) root.setAttribute("data-selected", String(_selectedGauge));
-
-    // External paint state (resolved from state.json by host)
-
-    root.setAttribute("data-variant", variant);
     root.onclick = () => ctx.fire("click", { value });
 
     const svgEl = document.createElementNS("http://www.w3.org/2000/svg", "svg");
@@ -131,13 +121,4 @@ export function createSafeGauge(container: HTMLElement, config: ConfigBase, ctx:
 
     container.appendChild(root);
     return root;
-}
-
-export function initSafeGauges(root: Document | HTMLElement = document): void {
-    root.querySelectorAll<HTMLElement>("div[data-gauge-config]").forEach((host) => {
-        if (host.dataset.gaugeMounted) return;
-        host.dataset.gaugeMounted = "1";
-        const config = JSON.parse(host.dataset.gaugeConfig!) as ConfigBase;
-        createSafeGauge(host, config);
-    });
 }

@@ -1,7 +1,6 @@
 import type { ConfigBase } from "../../safecontracts/src/contracts";
 import { el, applyPaintState, applyIntent } from "../utils/util";
 import type { SafeFireContext } from "../../safecontracts/src/contracts";
-import { getDataSource } from "../../safecontracts/src/contracts";
 import { readList } from "../../safecontracts/src/contracts-data";
 
 /*----------------------------------------------------------------------------------------------------
@@ -40,21 +39,12 @@ export function createSafeToggle(container: HTMLElement, config: ConfigBase, ctx
     const variant = (metadata.variant as string) ?? "switch";
 
     // Self-extract list from config data (SafeRenderer does this for react)
-    const ds = getDataSource(config) as any;
     const dataList: Record<string, any>[] = readList(config);
 
     const root = el("div");
     root.setAttribute("data-component", "toggle");
     applyIntent(root, metadata);
     applyPaintState(root, metadata, "toggle");
-
-    // Paint intent attributes
-    const _expanded = metadata.expanded ?? null;
-    if (_expanded != null) root.setAttribute("data-expanded-items", String(_expanded));
-
-    // External paint state (resolved from state.json by host)
-
-    root.setAttribute("data-variant", variant);
 
     function renderSwitch() {
         const label = metadata.label as string | undefined;
@@ -206,13 +196,4 @@ export function createSafeToggle(container: HTMLElement, config: ConfigBase, ctx
 
     container.appendChild(root);
     return root;
-}
-
-export function initSafeToggles(root: Document | HTMLElement = document): void {
-    root.querySelectorAll<HTMLElement>("div[data-toggle-config]").forEach((host) => {
-        if (host.dataset.toggleMounted) return;
-        host.dataset.toggleMounted = "1";
-        const config = JSON.parse(host.dataset.toggleConfig!) as ConfigBase;
-        createSafeToggle(host, config);
-    });
 }

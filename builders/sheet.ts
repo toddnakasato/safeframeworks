@@ -1,7 +1,6 @@
 import { HyperFormula } from "hyperformula";
 import { el, applyPaintState, applyIntent } from "../utils/util";
 import type { SafeFireContext } from "../../safecontracts/src/contracts";
-import { getDataSource } from "../../safecontracts/src/contracts";
 import type { ConfigBase } from "../../safecontracts/src/contracts";
 import type { SheetColumn } from "../../safecontracts/src/components/sheet";
 import { SHEET_DEFAULTS, SHEET_STATUS_ACCENTS } from "../../safecontracts/src/components/sheet";
@@ -106,8 +105,6 @@ export function createSafeSheet(container: HTMLElement, config: ConfigBase, ctx:
     const skeletonRows = (metadata.skeletonRows as number) ?? SHEET_DEFAULTS.skeletonRows;
     const skeletonCols = (metadata.skeletonCols as number) ?? (columns.length || SHEET_DEFAULTS.skeletonCols);
     const emptyMessage = (metadata.emptyMessage as string) ?? SHEET_DEFAULTS.emptyMessage;
-
-    const ds = getDataSource(config);
     const data = readList(config);
 
     const hf = HyperFormula.buildFromArray(data, { licenseKey: "gpl-v3" });
@@ -135,16 +132,6 @@ export function createSafeSheet(container: HTMLElement, config: ConfigBase, ctx:
     root.setAttribute("data-component", "sheet");
     applyIntent(root, metadata);
     applyPaintState(root, metadata, "sheet");
-
-    // Paint intent attributes
-    const _selectedCell = metadata.selectedCell ?? null;
-    if (_selectedCell != null) root.setAttribute("data-selected-cell", String(_selectedCell));
-
-    // External paint state (resolved from state.json by host)
-
-    root.setAttribute("data-variant", variant);
-    root.setAttribute("data-surface", surface);
-    root.setAttribute("data-spacing", spacing);
     for (const token of ["accent", "density", "radius"]) {
         if (metadata[token] != null) root.setAttribute(`data-${token}`, String(metadata[token]));
     }
@@ -453,13 +440,4 @@ export function createSafeSheet(container: HTMLElement, config: ConfigBase, ctx:
 
     container.appendChild(root);
     return root;
-}
-
-export function initSafeSheets(root: Document | HTMLElement = document): void {
-    root.querySelectorAll<HTMLElement>("div[data-sheet-config]").forEach((host) => {
-        if (host.dataset.sheetMounted) return;
-        host.dataset.sheetMounted = "1";
-        const config = JSON.parse(host.dataset.sheetConfig!) as ConfigBase;
-        createSafeSheet(host, config);
-    });
 }

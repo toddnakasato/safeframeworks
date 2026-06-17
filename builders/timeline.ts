@@ -1,7 +1,6 @@
 import * as d3 from "d3";
 import { el, applyPaintState, applyIntent } from "../utils/util";
 import type { SafeFireContext } from "../../safecontracts/src/contracts";
-import { getDataSource } from "../../safecontracts/src/contracts";
 import type { ConfigBase } from "../../safecontracts/src/contracts";
 import { sortBy } from "../../safecontracts/src/contracts-operations";
 import { resolveColors } from "../../safecontracts/src/palette";
@@ -20,7 +19,6 @@ import { readList } from "../../safecontracts/src/contracts-data";
  ----------------------------------------------------------------------------------------------------*/
 
 export function timelineData(config: ConfigBase): Record<string, any>[] {
-    const ds = getDataSource(config);
     return readList(config);
 }
 
@@ -65,14 +63,6 @@ export function createSafeTimeline(container: HTMLElement, config: ConfigBase, c
     root.setAttribute("data-component", "timeline");
     applyIntent(root, metadata);
     applyPaintState(root, metadata, "timeline");
-
-    // Paint intent attributes
-    const _selectedEvent = metadata.selectedEvent ?? null;
-    if (_selectedEvent != null) root.setAttribute("data-selected-event", String(_selectedEvent));
-
-    // External paint state (resolved from state.json by host)
-
-    root.setAttribute("data-variant", variant);
 
     if (variant === "horizontal" || variant === "swimlane" || variant === "gantt") {
         root.style.width = "100%";
@@ -333,13 +323,4 @@ export function createSafeTimeline(container: HTMLElement, config: ConfigBase, c
 
     container.appendChild(root);
     return root;
-}
-
-export function initSafeTimelines(root: Document | HTMLElement = document): void {
-    root.querySelectorAll<HTMLElement>("div[data-timeline-config]").forEach((host) => {
-        if (host.dataset.timelineMounted) return;
-        host.dataset.timelineMounted = "1";
-        const config = JSON.parse(host.dataset.timelineConfig!) as ConfigBase;
-        createSafeTimeline(host, config);
-    });
 }

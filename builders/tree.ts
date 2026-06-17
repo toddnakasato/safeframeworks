@@ -1,6 +1,5 @@
 import type { ConfigBase } from "../../safecontracts/src/contracts";
 import type { SafeFireContext } from "../../safecontracts/src/contracts";
-import { getDataSource } from "../../safecontracts/src/contracts";
 import { elAttrs, applyPaintState, applyIntent } from "../utils/util";
 import { readList } from "../../safecontracts/src/contracts-data";
 
@@ -182,13 +181,4 @@ export function createSafeTree(container: HTMLElement, config: ConfigBase, ctx: 
 
     container.appendChild(root);
     return root;
-}
-
-export function initSafeTrees(root: Document | HTMLElement = document): void {
-    root.querySelectorAll<HTMLElement>("div[data-tree-config]").forEach((host) => {
-        if (host.dataset.treeMounted) return;
-        host.dataset.treeMounted = "1";
-        const config = JSON.parse(host.dataset.treeConfig!) as ConfigBase;
-        createSafeTree(host, config);
-    });
 }

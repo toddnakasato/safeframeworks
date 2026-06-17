@@ -1,7 +1,6 @@
 import type { ConfigBase, RowCell, RowDef } from "../../safecontracts/src/contracts";
-import { el, applyPaintState, applyIntent } from "../utils/util";
+import { el, applyPaintState, applyIntent, readSchema } from "../utils/util";
 import type { SafeFireContext } from "../../safecontracts/src/contracts";
-import { getDataSource } from "../../safecontracts/src/contracts";
 import { filterBy } from "../../safecontracts/src/contracts-operations";
 import { readList } from "../../safecontracts/src/contracts-data";
 
@@ -28,7 +27,6 @@ export function createSafePicker(container: HTMLElement, config: ConfigBase, ctx
     const isCardGrid = metadata.variant === "card-grid";
 
     // Self-extract list from config data (SafeRenderer does this for react)
-    const ds = getDataSource(config) as any;
     const data: Record<string, any>[] = readList(config);
 
     const accent = (metadata.accent as string) ?? "brand";
@@ -54,9 +52,9 @@ export function createSafePicker(container: HTMLElement, config: ConfigBase, ctx
 
     const rows: RowDef[] = (metadata.rows as RowDef[]) ?? [];
     if (rows.length === 0) {
-        const schema = (getDataSource(config) as any)?.schema;
-        if (schema?.fields) {
-            const f = schema.fields.filter((x: any) => x.visible !== false);
+        const schemaFields = readSchema(config);
+        if (schemaFields.length) {
+            const f = schemaFields.filter((x: any) => x.visible !== false);
             if (f.length >= 2) rows.push([{ field: f[0].name, style: "label" }, { field: f[1].name, align: "end", style: "badge" }]);
             else if (f.length === 1) rows.push([{ field: f[0].name, style: "label" }]);
             if (f.length >= 3) rows.push([{ field: f[2].name, style: "subtitle" }]);
@@ -68,17 +66,7 @@ export function createSafePicker(container: HTMLElement, config: ConfigBase, ctx
     applyIntent(root, metadata);
     applyPaintState(root, metadata, "picker");
 
-    // Paint intent attributes
-    const _selectedItem = metadata.selectedItem ?? null;
-    if (_selectedItem != null) root.setAttribute("data-selected-item", String(_selectedItem));
-
-    // External paint state (resolved from state.json by host)
-
     root.setAttribute("data-variant", isCardGrid ? "card-grid" : ((metadata.variant as string) ?? "default"));
-    root.setAttribute("data-surface", surface);
-    root.setAttribute("data-accent", accent);
-    root.setAttribute("data-spacing", spacing);
-    root.setAttribute("data-radius", radius);
     const maxWidth = metadata.maxWidth as string | undefined;
     if (maxWidth) root.style.maxWidth = maxWidth;
 
@@ -213,13 +201,4 @@ export function createSafePicker(container: HTMLElement, config: ConfigBase, ctx
 
     container.appendChild(root);
     return root;
-}
-
-export function initSafePickers(root: Document | HTMLElement = document): void {
-    root.querySelectorAll<HTMLElement>("div[data-picker-config]").forEach((host) => {
-        if (host.dataset.pickerMounted) return;
-        host.dataset.pickerMounted = "1";
-        const config = JSON.parse(host.dataset.pickerConfig!) as ConfigBase;
-        createSafePicker(host, config);
-    });
 }

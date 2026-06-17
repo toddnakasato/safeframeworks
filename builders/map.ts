@@ -1,6 +1,5 @@
 import L from "leaflet";
 import type { SafeFireContext } from "../../safecontracts/src/contracts";
-import { getDataSource } from "../../safecontracts/src/contracts";
 import "leaflet/dist/leaflet.css";
 import type { ConfigBase } from "../../safecontracts/src/contracts";
 import { readList } from "../../safecontracts/src/contracts-data";
@@ -51,7 +50,6 @@ function createIcon(accent?: string, icon?: string): L.DivIcon {
 }
 
 export function mapData(config: ConfigBase): Record<string, any>[] {
-    const ds = getDataSource(config);
     return readList(config);
 }
 
@@ -151,13 +149,4 @@ export function createSafeMap(container: HTMLElement, config: ConfigBase, data: 
 
     setTimeout(() => map.invalidateSize(), 100);
     return map;
-}
-
-export function initSafeMaps(root: Document | HTMLElement = document): void {
-    root.querySelectorAll<HTMLElement>("div[data-map-config]").forEach((el) => {
-        if (el.dataset.mapMounted) return;
-        el.dataset.mapMounted = "1";
-        const config = JSON.parse(el.dataset.mapConfig!) as ConfigBase;
-        createSafeMap(el, config, mapData(config));
-    });
 }

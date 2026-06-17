@@ -1,7 +1,6 @@
 import type { ConfigBase, RowCell, RowDef } from "../../safecontracts/src/contracts";
-import { el, applyPaintState, applyIntent } from "../utils/util";
+import { el, applyPaintState, applyIntent, readSchema, readSchema } from "../utils/util";
 import type { SafeFireContext } from "../../safecontracts/src/contracts";
-import { getDataSource } from "../../safecontracts/src/contracts";
 import { readList } from "../../safecontracts/src/contracts-data";
 
 /*----------------------------------------------------------------------------------------------------
@@ -35,7 +34,6 @@ export function createSafeCard(container: HTMLElement, config: ConfigBase, ctx: 
     const backLabel = metadata.backLabel as string | undefined;
 
     // Self-extract record data from the first DataSource (contract: record).
-    const ds = getDataSource(config);
     const data = readList(config);
 
     // External paint state (resolved from state.json by host)
@@ -50,12 +48,6 @@ export function createSafeCard(container: HTMLElement, config: ConfigBase, ctx: 
     // Paint intent attributes
     if (_selectedCard != null) root.setAttribute("data-selected", String(_selectedCard));
     if (_activeScene != null) root.setAttribute("data-active-scene", String(_activeScene));
-
-    root.setAttribute("data-variant", variant);
-    root.setAttribute("data-surface", surface);
-    root.setAttribute("data-radius", radius);
-    root.setAttribute("data-spacing", spacing);
-    root.setAttribute("data-accent", accent);
     root.onclick = () => ctx.fire("click", { data });
 
     const appendBack = () => {
@@ -100,8 +92,8 @@ export function createSafeCard(container: HTMLElement, config: ConfigBase, ctx: 
     appendBack();
     if (header) root.appendChild(el("div", "header", header));
 
-    const resolvedSchema = getDataSource(config)?.schema;
-    const fields = resolvedSchema?.fields ?? [];
+    // schema via readSchema in util
+    const fields = readSchema(config) ?? [];
 
     for (const field of fields) {
         const val = data[field.name];
@@ -117,13 +109,4 @@ export function createSafeCard(container: HTMLElement, config: ConfigBase, ctx: 
 
     container.appendChild(root);
     return root;
-}
-
-export function initSafeCards(root: Document | HTMLElement = document): void {
-    root.querySelectorAll<HTMLElement>("div[data-card-config]").forEach((host) => {
-        if (host.dataset.cardMounted) return;
-        host.dataset.cardMounted = "1";
-        const config = JSON.parse(host.dataset.cardConfig!) as ConfigBase;
-        createSafeCard(host, config);
-    });
 }

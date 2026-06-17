@@ -1,6 +1,5 @@
 import * as d3 from "d3";
 import type { SafeFireContext } from "../../safecontracts/src/contracts";
-import { getDataSource } from "../../safecontracts/src/contracts";
 import type { ConfigBase } from "../../safecontracts/src/contracts";
 import { HIERARCHY_DEFAULTS } from "../../safecontracts/src/components/hierarchy";
 import { resolveColors } from "../../safecontracts/src/palette";
@@ -252,13 +251,4 @@ export function createSafeHierarchy(container: HTMLElement, config: ConfigBase, 
     else renderTreemap(svgEl, root, metadata, ctx);
 
     return rootEl;
-}
-
-export function initSafeHierarchies(root: Document | HTMLElement = document): void {
-    root.querySelectorAll<HTMLElement>("div[data-hierarchy-config]").forEach((host) => {
-        if (host.dataset.hierarchyMounted) return;
-        host.dataset.hierarchyMounted = "1";
-        const config = JSON.parse(host.dataset.hierarchyConfig!) as ConfigBase;
-        createSafeHierarchy(host, config);
-    });
 }

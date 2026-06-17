@@ -1,7 +1,6 @@
 import type { ConfigBase } from "../../safecontracts/src/contracts";
-import { el, applyIntent } from "../utils/util";
+import { el, applyIntent, readList } from "../utils/util";
 import type { SafeFireContext } from "../../safecontracts/src/contracts";
-import { getDataSource } from "../../safecontracts/src/contracts";
 
 /*----------------------------------------------------------------------------------------------------
  *
@@ -169,14 +168,11 @@ export function createSafeDragDrop(container: HTMLElement, config: ConfigBase, c
     const variant = (config.metadata.variant as string) ?? "generic";
 
     // Self-extract list from config data (SafeRenderer does this for react)
-    const ds = getDataSource(config) as any;
-    const rawData = ds?.inline;
-    const dataList: Record<string, any>[] = Array.isArray(rawData) ? rawData : [];
+    const dataList: Record<string, any>[] = readList(config);
 
     const root = el("div");
     root.setAttribute("data-component", "drag-drop");
     applyIntent(root, config.metadata);
-    root.setAttribute("data-variant", variant);
 
     if (variant === "file") buildFile(root, config, ctx);
     else if (variant === "palette") buildPalette(root, config, ctx);
@@ -184,13 +180,4 @@ export function createSafeDragDrop(container: HTMLElement, config: ConfigBase, c
 
     container.appendChild(root);
     return root;
-}
-
-export function initSafeDragDrops(root: Document | HTMLElement = document): void {
-    root.querySelectorAll<HTMLElement>("div[data-dragdrop-config]").forEach((host) => {
-        if (host.dataset.dragdropMounted) return;
-        host.dataset.dragdropMounted = "1";
-        const config = JSON.parse(host.dataset.dragdropConfig!) as ConfigBase;
-        createSafeDragDrop(host, config);
-    });
 }

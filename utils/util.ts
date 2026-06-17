@@ -18,6 +18,8 @@
 
 import type { ConfigBase } from "../../safecontracts/src/contracts";
 import { readList, readRecord } from "../../safecontracts/src/contracts-data";
+import type { Field } from "../../safecontracts/src/contracts";
+import { getDataSource } from "../../safecontracts/src/contracts-data";
 import { COMPONENT_PAINT } from "../../safecontracts/src/contracts-paint";
 
 // ---------------------------------------------------------------------------
@@ -162,6 +164,14 @@ export function readData(config: ConfigBase, slot?: string): Record<string, any>
  */
 export function readSingleRecord(config: ConfigBase, slot?: string): Record<string, any> {
     return readRecord(config, slot);
+}
+
+/**
+ * Read the schema (fields) from the first data slot.
+ * Replaces: getDataSource(config)?.schema?.fields ?? []
+ */
+export function readSchema(config: ConfigBase, slot?: string): Field[] {
+    return getDataSource(config, slot)?.schema?.fields ?? [];
 }
 
 // ---------------------------------------------------------------------------

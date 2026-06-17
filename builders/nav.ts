@@ -169,12 +169,3 @@ export function createSafeNav(container: HTMLElement, config: ConfigBase, ctx: S
     container.appendChild(root);
     return root;
 }
-
-export function initSafeNavs(root: Document | HTMLElement = document): void {
-    root.querySelectorAll<HTMLElement>("div[data-nav-config]").forEach((host) => {
-        if (host.dataset.navMounted) return;
-        host.dataset.navMounted = "1";
-        const config = JSON.parse(host.dataset.navConfig!) as ConfigBase;
-        createSafeNav(host, config);
-    });
-}

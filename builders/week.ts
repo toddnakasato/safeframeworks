@@ -83,7 +83,6 @@ export function createSafeWeek(container: HTMLElement, config: ConfigBase, ctx: 
     const root = el("div");
     root.setAttribute("data-component", "week");
     applyIntent(root, metadata);
-    root.setAttribute("data-variant", variant);
 
     const fireNavigate = (dir: number) => {
         offset += dir;
@@ -180,13 +179,4 @@ export function createSafeWeek(container: HTMLElement, config: ConfigBase, ctx: 
 
     container.appendChild(root);
     return root;
-}
-
-export function initSafeWeeks(root: Document | HTMLElement = document): void {
-    root.querySelectorAll<HTMLElement>("div[data-week-config]").forEach((host) => {
-        if (host.dataset.weekMounted) return;
-        host.dataset.weekMounted = "1";
-        const config = JSON.parse(host.dataset.weekConfig!) as ConfigBase;
-        createSafeWeek(host, config);
-    });
 }

@@ -1,7 +1,6 @@
 import { createElement, type IconNode } from "lucide";
-import { el, applyPaintState, applyIntent } from "../utils/util";
+import { el, applyPaintState, applyIntent, readSchema } from "../utils/util";
 import type { SafeFireContext } from "../../safecontracts/src/contracts";
-import { getDataSource } from "../../safecontracts/src/contracts";
 import * as lucide from "lucide";
 import type { ConfigBase } from "../../safecontracts/src/contracts";
 import { DAY_NAMES_SHORT } from "../../safecontracts/src/contracts";
@@ -192,7 +191,7 @@ function buildSelection(root: HTMLElement, config: ConfigBase, data: any[], ctx:
 
 function buildColumns(root: HTMLElement, config: ConfigBase, data: any[], ctx: SafeFireContext): void {
     const meta = config.metadata;
-    const schema = getDataSource(config)?.schema;
+    const schema = { fields: readSchema(config) };
     const fields = (schema?.fields ?? []) as any[];
     const pageSize = (meta.pageSize as number) ?? LIST_DEFAULTS.pageSize;
     const numbers = meta.pageNumbers !== false;
@@ -626,13 +625,4 @@ export function createSafeList(container: HTMLElement, config: ConfigBase, ctx: 
 
     container.appendChild(root);
     return root;
-}
-
-export function initSafeLists(root: Document | HTMLElement = document): void {
-    root.querySelectorAll<HTMLElement>("div[data-list-config]").forEach((host) => {
-        if (host.dataset.listMounted) return;
-        host.dataset.listMounted = "1";
-        const config = JSON.parse(host.dataset.listConfig!) as ConfigBase;
-        createSafeList(host, config);
-    });
 }

@@ -1,7 +1,6 @@
 import type { ConfigBase } from "../../safecontracts/src/contracts";
 import { el, applyPaintState, applyIntent } from "../utils/util";
 import type { SafeFireContext } from "../../safecontracts/src/contracts";
-import { getDataSource } from "../../safecontracts/src/contracts";
 import { readList } from "../../safecontracts/src/contracts-data";
 
 /*----------------------------------------------------------------------------------------------------
@@ -41,14 +40,6 @@ export function createSafeHeatmap(container: HTMLElement, config: ConfigBase, ct
     root.setAttribute("data-component", "heatmap");
     applyIntent(root, metadata);
     applyPaintState(root, metadata, "heatmap");
-
-    // Paint intent attributes
-    const _selectedCell = metadata.selectedCell ?? null;
-    if (_selectedCell != null) root.setAttribute("data-selected-cell", String(_selectedCell));
-
-    // External paint state (resolved from state.json by host)
-
-    root.setAttribute("data-variant", variant);
     root.style.width = "100%";
 
     if (metadata.title) root.appendChild(el("div", "title", metadata.title as string));
@@ -75,13 +66,4 @@ export function createSafeHeatmap(container: HTMLElement, config: ConfigBase, ct
     root.appendChild(grid);
     container.appendChild(root);
     return root;
-}
-
-export function initSafeHeatmaps(root: Document | HTMLElement = document): void {
-    root.querySelectorAll<HTMLElement>("div[data-heatmap-config]").forEach((host) => {
-        if (host.dataset.heatmapMounted) return;
-        host.dataset.heatmapMounted = "1";
-        const config = JSON.parse(host.dataset.heatmapConfig!) as ConfigBase;
-        createSafeHeatmap(host, config);
-    });
 }

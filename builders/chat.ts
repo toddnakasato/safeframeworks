@@ -121,12 +121,3 @@ export function createSafeChat(container: HTMLElement, config: ConfigBase, ctx: 
     container.appendChild(root);
     return root;
 }
-
-export function initSafeChats(root: Document | HTMLElement = document): void {
-    root.querySelectorAll<HTMLElement>("div[data-chat-config]").forEach((host) => {
-        if (host.dataset.chatMounted) return;
-        host.dataset.chatMounted = "1";
-        const config = JSON.parse(host.dataset.chatConfig!) as ConfigBase;
-        createSafeChat(host, config);
-    });
-}

@@ -78,12 +78,3 @@ export function createSafeLayout(
     container.appendChild(root);
     return root;
 }
-
-export function initSafeLayouts(root: Document | HTMLElement = document): void {
-    root.querySelectorAll<HTMLElement>("div[data-layout-config]").forEach((host) => {
-        if (host.dataset.layoutMounted) return;
-        host.dataset.layoutMounted = "1";
-        const config = JSON.parse(host.dataset.layoutConfig!) as ConfigBase;
-        createSafeLayout(host, config);
-    });
-}

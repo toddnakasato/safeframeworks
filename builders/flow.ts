@@ -1,6 +1,5 @@
 import * as d3 from "d3";
 import type { SafeFireContext } from "../../safecontracts/src/contracts";
-import { getDataSource } from "../../safecontracts/src/contracts";
 import { sankey as d3Sankey, sankeyLinkHorizontal } from "d3-sankey";
 import type { ConfigBase } from "../../safecontracts/src/contracts";
 import type { FlowData, FlowNode } from "../../safecontracts/src/components/flow";
@@ -25,7 +24,6 @@ const HEIGHT = 350;
  ----------------------------------------------------------------------------------------------------*/
 
 export function flowData(config: ConfigBase): FlowData {
-    const ds = getDataSource(config);
     const inline = readRecord(config) as unknown as FlowData;
     return inline && Array.isArray(inline.nodes) ? inline : { nodes: [], links: [] };
 }
@@ -335,13 +333,4 @@ export function renderSafeFlow(
     else if (variant === "force") renderForce(svgEl, data, metadata, ctx);
     else if (variant === "arc") renderArc(svgEl, data, metadata, ctx);
     else renderSankey(svgEl, data, metadata, ctx);
-}
-
-export function initSafeFlows(root: Document | HTMLElement = document): void {
-    root.querySelectorAll<SVGSVGElement>("svg[data-flow-config]").forEach((svg) => {
-        if (svg.dataset.flowMounted) return;
-        svg.dataset.flowMounted = "1";
-        const config = JSON.parse(svg.dataset.flowConfig!) as ConfigBase;
-        renderSafeFlow(svg, config, flowData(config));
-    });
 }

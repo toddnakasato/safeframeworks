@@ -1,5 +1,4 @@
 import type { ConfigBase, Field, SafeFireContext } from "../../safecontracts/src/contracts";
-import { getDataSource } from "../../safecontracts/src/contracts";
 import { createSafeInput } from "./input";
 import { elAttrs } from "../utils/util";
 import { readRecord } from "../../safecontracts/src/contracts-data";
@@ -88,8 +87,7 @@ function fieldToInputConfig(
 
 export function createSafeGrid(container: HTMLElement, config: ConfigBase, ctx?: SafeFireContext): HTMLElement {
     const metadata = config.metadata;
-    const ds = getDataSource(config) as any;
-    const schema = ds?.schema;
+    const schema = readSchema(config);
     const record: Record<string, any> = readRecord(config);
     const columns = (metadata.columns as string) ?? D.columns;
     const label = metadata.label as string | undefined;
@@ -162,13 +160,4 @@ export function createSafeGrid(container: HTMLElement, config: ConfigBase, ctx?:
 
     container.appendChild(root);
     return root;
-}
-
-export function initSafeGrids(root: Document | HTMLElement = document): void {
-    root.querySelectorAll<HTMLElement>("div[data-grid-config]").forEach((host) => {
-        if (host.dataset.gridMounted) return;
-        host.dataset.gridMounted = "1";
-        const config = JSON.parse(host.dataset.gridConfig!) as ConfigBase;
-        createSafeGrid(host, config);
-    });
 }

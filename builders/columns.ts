@@ -66,12 +66,3 @@ export function createSafeColumns(container: HTMLElement, config: ConfigBase, _c
     container.appendChild(root);
     return root;
 }
-
-export function initSafeColumnsAll(root: Document | HTMLElement = document): void {
-    root.querySelectorAll<HTMLElement>("div[data-columns-config]").forEach((host) => {
-        if (host.dataset.columnsMounted) return;
-        host.dataset.columnsMounted = "1";
-        const config = JSON.parse(host.dataset.columnsConfig!) as ConfigBase;
-        createSafeColumns(host, config);
-    });
-}

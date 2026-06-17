@@ -9,7 +9,6 @@ import {
     Filler, Legend, Tooltip,
 } from "chart.js";
 import type { ChartConfiguration } from "chart.js";
-import { getDataSource } from "../../safecontracts/src/contracts";
 import type { ConfigBase } from "../../safecontracts/src/contracts";
 import type { SafeFireContext } from "../../safecontracts/src/contracts";
 import { resolveColors } from "../../safecontracts/src/palette";
@@ -46,7 +45,6 @@ function resolveCssColor(color: string): string {
 }
 
 export function chartData(config: ConfigBase): Record<string, any>[] {
-    const ds = getDataSource(config);
     return readList(config);
 }
 
@@ -197,13 +195,4 @@ export function createSafeChart(canvas: HTMLCanvasElement, config: ConfigBase, c
         },
     };
     return new Chart(canvas, cfg);
-}
-
-export function initSafeCharts(root: Document | HTMLElement = document): void {
-    root.querySelectorAll<HTMLCanvasElement>("canvas[data-chart-config]").forEach((canvas) => {
-        if (canvas.dataset.chartMounted) return;
-        canvas.dataset.chartMounted = "1";
-        const config = JSON.parse(canvas.dataset.chartConfig!) as ConfigBase;
-        createSafeChart(canvas, config);
-    });
 }

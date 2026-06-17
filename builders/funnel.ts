@@ -1,6 +1,5 @@
 import * as d3 from "d3";
 import type { SafeFireContext } from "../../safecontracts/src/contracts";
-import { getDataSource } from "../../safecontracts/src/contracts";
 import type { ConfigBase } from "../../safecontracts/src/contracts";
 import { resolveColors } from "../../safecontracts/src/palette";
 import { elAttrs, applyPaintState, applyIntent } from "../utils/util";
@@ -39,14 +38,6 @@ export function createSafeFunnel(container: HTMLElement, config: ConfigBase, ctx
     root.setAttribute("data-component", "funnel");
     applyIntent(root, metadata);
     applyPaintState(root, metadata, "funnel");
-
-    // Paint intent attributes
-    const _selectedStage = metadata.selectedStage ?? null;
-    if (_selectedStage != null) root.setAttribute("data-selected-stage", String(_selectedStage));
-
-    // External paint state (resolved from state.json by host)
-
-    root.setAttribute("data-variant", variant);
 
     const svgEl = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     svgEl.style.width = "100%";
@@ -110,13 +101,4 @@ export function createSafeFunnel(container: HTMLElement, config: ConfigBase, ctx
     });
 
     return root;
-}
-
-export function initSafeFunnels(root: Document | HTMLElement = document): void {
-    root.querySelectorAll<HTMLElement>("div[data-funnel-config]").forEach((host) => {
-        if (host.dataset.funnelMounted) return;
-        host.dataset.funnelMounted = "1";
-        const config = JSON.parse(host.dataset.funnelConfig!) as ConfigBase;
-        createSafeFunnel(host, config);
-    });
 }

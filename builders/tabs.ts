@@ -41,14 +41,6 @@ export function createSafeTabs(container: HTMLElement, config: ConfigBase, ctx: 
     root.setAttribute("data-component", "tabs");
     applyIntent(root, metadata);
     applyPaintState(root, metadata, "tabs");
-
-    // Paint intent attributes
-    const _activeTab = metadata.activeTab ?? null;
-    if (_activeTab != null) root.setAttribute("data-active-tab", String(_activeTab));
-
-    // External paint state (resolved from state.json by host)
-
-    root.setAttribute("data-variant", variant);
     root.setAttribute("data-position", position);
     root.style.display = "flex";
     root.style.flexDirection = isVertical
@@ -131,13 +123,4 @@ export function createSafeTabs(container: HTMLElement, config: ConfigBase, ctx: 
 
     container.appendChild(root);
     return root;
-}
-
-export function initSafeTabs(root: Document | HTMLElement = document): void {
-    root.querySelectorAll<HTMLElement>("div[data-tabs-config]").forEach((host) => {
-        if (host.dataset.tabsMounted) return;
-        host.dataset.tabsMounted = "1";
-        const config = JSON.parse(host.dataset.tabsConfig!) as ConfigBase;
-        createSafeTabs(host, config);
-    });
 }

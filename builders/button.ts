@@ -189,12 +189,3 @@ export function createSafeButton(container: HTMLElement, config: ConfigBase, ctx
     container.appendChild(root);
     return root;
 }
-
-export function initSafeButtons(root: Document | HTMLElement = document): void {
-    root.querySelectorAll<HTMLElement>("div[data-button-config]").forEach((host) => {
-        if (host.dataset.buttonMounted) return;
-        host.dataset.buttonMounted = "1";
-        const config = JSON.parse(host.dataset.buttonConfig!) as ConfigBase;
-        createSafeButton(host, config);
-    });
-}

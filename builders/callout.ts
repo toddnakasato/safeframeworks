@@ -42,12 +42,3 @@ export function createSafeCallout(container: HTMLElement, config: ConfigBase, ct
     container.appendChild(root);
     return root;
 }
-
-export function initSafeCallouts(root: Document | HTMLElement = document): void {
-    root.querySelectorAll<HTMLElement>("div[data-callout-config]").forEach((host) => {
-        if (host.dataset.calloutMounted) return;
-        host.dataset.calloutMounted = "1";
-        const config = JSON.parse(host.dataset.calloutConfig!) as ConfigBase;
-        createSafeCallout(host, config);
-    });
-}

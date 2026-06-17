@@ -1,7 +1,6 @@
 import type { ConfigBase, Field } from "../../safecontracts/src/contracts";
 import type { SafeFireContext } from "../../safecontracts/src/contracts";
 import { el, applyPaintState, applyIntent } from "../utils/util";
-import { getDataSource } from "../../safecontracts/src/contracts";
 import { fmtDate, fmtCurrency, fmtInt, fmtPercent, fmtStr } from "../../safecontracts/src/formatter";
 import { sortBy, paginate } from "../../safecontracts/src/contracts-operations";
 import type { SortDir } from "../../safecontracts/src/contracts-operations";
@@ -54,8 +53,7 @@ export function createSafeTable(container: HTMLElement, config: ConfigBase, ctx:
     const metadata = config.metadata;
 
     // Self-extract data + schema from the first datasource
-    const ds = getDataSource(config);
-    const schema = ds?.schema;
+    const schema = readSchema(config);
     const data = readList(config);
     const fields = (schema?.fields ?? []).filter((f: Field) => f.visible !== false);
 
@@ -103,9 +101,6 @@ export function createSafeTable(container: HTMLElement, config: ConfigBase, ctx:
         container.appendChild(root);
         return root;
     }
-
-    root.setAttribute("data-variant", variant);
-    root.setAttribute("data-spacing", spacing);
     root.setAttribute("data-header-style", headerStyle);
     root.setAttribute("data-row-divider", rowDivider);
     root.setAttribute("data-header-divider", headerDivider);
@@ -387,14 +382,4 @@ export function createSafeTable(container: HTMLElement, config: ConfigBase, ctx:
 
     container.appendChild(root);
     return root;
-}
-
-export function initSafeTables(root: Document | HTMLElement = document): void {
-    root.querySelectorAll<HTMLElement>("div[data-table-config]").forEach((host) => {
-        if (host.dataset.tableMounted) return;
-        host.dataset.tableMounted = "1";
-        const config = JSON.parse(host.dataset.tableConfig!) as ConfigBase;
-        // No-op fire context for standalone mount (no event routing)
-        createSafeTable(host, config, { fire: () => {} });
-    });
 }

@@ -1,7 +1,6 @@
 import type { ConfigBase } from "../../safecontracts/src/contracts";
 import { el, applyPaintState } from "../utils/util";
 import type { SafeFireContext } from "../../safecontracts/src/contracts";
-import { getDataSource } from "../../safecontracts/src/contracts";
 import { readRecord } from "../../safecontracts/src/contracts-data";
 
 /*----------------------------------------------------------------------------------------------------
@@ -122,7 +121,6 @@ export function createSafeInput(container: HTMLElement, config: ConfigBase, ctx:
     const metadata = config.metadata;
 
     // Self-extract record from config data (SafeRenderer does this for react)
-    const ds = getDataSource(config) as any;
     const record: Record<string, any> = readRecord(config);
 
     const inputType = (metadata.inputType as string) ?? "text";
@@ -997,13 +995,4 @@ export function createSafeInput(container: HTMLElement, config: ConfigBase, ctx:
 
     container.appendChild(root);
     return root;
-}
-
-export function initSafeInputs(root: Document | HTMLElement = document): void {
-    root.querySelectorAll<HTMLElement>("div[data-input-config]").forEach((host) => {
-        if (host.dataset.inputMounted) return;
-        host.dataset.inputMounted = "1";
-        const config = JSON.parse(host.dataset.inputConfig!) as ConfigBase;
-        createSafeInput(host, config);
-    });
 }

@@ -77,7 +77,6 @@ export function createSafeCalendar(container: HTMLElement, config: ConfigBase, c
     const root = el("div");
     root.setAttribute("data-component", "calendar");
     applyIntent(root, metadata);
-    root.setAttribute("data-variant", variant);
 
     const fireNavigate = (dir: number) => {
         const d = new Date(viewYear, viewMonth + dir, 1);
@@ -227,13 +226,4 @@ export function createSafeCalendar(container: HTMLElement, config: ConfigBase, c
 
     container.appendChild(root);
     return root;
-}
-
-export function initSafeCalendars(root: Document | HTMLElement = document): void {
-    root.querySelectorAll<HTMLElement>("div[data-calendar-config]").forEach((host) => {
-        if (host.dataset.calendarMounted) return;
-        host.dataset.calendarMounted = "1";
-        const config = JSON.parse(host.dataset.calendarConfig!) as ConfigBase;
-        createSafeCalendar(host, config);
-    });
 }
