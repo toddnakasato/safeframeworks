@@ -2,29 +2,28 @@
  * util.ts — shared vanilla-DOM helpers for builders.
  *
  * DOM construction and attribute application. NOT contract.
- * Data reads (readList, readRecord, readSchema) live in safecontracts contracts-data.ts.
- * Event creation lives in safecontracts contracts-emit.ts.
- * This file owns: element creation, intent application, paint state application.
+ * Types and data reads live in safecontracts. This file owns DOM helpers only.
  *
  * Element helpers:
  *   el(tag, role?, text?)   — data-role + textContent shorthand
  *   elAttrs(tag, attrs)     — explicit attribute map
  *
  * Builder helpers:
- *   parseIntent(metadata)   — extract variant/spacing/surface/accent/radius with defaults
  *   applyIntent(root, metadata) — parseIntent + setAttribute in one call
  *   applyPaintState(root, metadata, component) — read COMPONENT_PAINT, set data-* attrs
  *   collapsibleHeader(label, opts) — collapsible section header with chevron
  *
- * Re-exports from safecontracts (convenience — builders import from one place):
- *   readList, readRecord, readSchema
+ * Re-exports from safecontracts:
+ *   readList, readRecord, readSchema, parseIntent, INTENT_DEFAULTS
  */
 
-import type { ConfigBase } from "../../safecontracts/src/contracts";
 import { COMPONENT_PAINT } from "../../safecontracts/src/contracts-paint";
+import { parseIntent } from "../../safecontracts/src/contracts-intent";
 
-// Re-export data helpers from contracts so builders can import from one place
+// Re-export from contracts so builders import from one place
 export { readList, readRecord, readSchema } from "../../safecontracts/src/contracts-data";
+export { parseIntent, INTENT_DEFAULTS } from "../../safecontracts/src/contracts-intent";
+export type { Intent } from "../../safecontracts/src/contracts-intent";
 
 // ---------------------------------------------------------------------------
 // Element helpers
@@ -46,47 +45,14 @@ export function elAttrs(tag: string, attrs: Record<string, string> = {}): HTMLEl
 }
 
 // ---------------------------------------------------------------------------
-// Intent helpers — standard metadata fields every builder reads
+// Intent — DOM application (parseIntent lives in safecontracts)
 // ---------------------------------------------------------------------------
-
-/** Standard intent fields extracted from metadata with defaults. */
-export interface Intent {
-    variant: string;
-    spacing: string;
-    surface: string;
-    accent: string;
-    radius: string;
-}
-
-/** Default intent values when metadata doesn't specify. */
-const INTENT_DEFAULTS: Intent = {
-    variant: "default",
-    spacing: "normal",
-    surface: "base",
-    accent: "brand",
-    radius: "md",
-};
-
-/**
- * Extract standard intent fields from metadata.
- * Override defaults per-component via the second argument.
- */
-export function parseIntent(metadata: Record<string, any>, defaults?: Partial<Intent>): Intent {
-    const d = defaults ? { ...INTENT_DEFAULTS, ...defaults } : INTENT_DEFAULTS;
-    return {
-        variant:  (metadata.variant as string) ?? d.variant,
-        spacing:  (metadata.spacing as string) ?? d.spacing,
-        surface:  (metadata.surface as string) ?? d.surface,
-        accent:   (metadata.accent as string)  ?? d.accent,
-        radius:   (metadata.radius as string)  ?? d.radius,
-    };
-}
 
 /**
  * Parse intent fields and set them as data-* attributes on the root element.
- * Returns the parsed Intent for builders that need the values.
+ * Returns the parsed intent for builders that need the values.
  */
-export function applyIntent(root: HTMLElement, metadata: Record<string, any>, defaults?: Partial<Intent>): Intent {
+export function applyIntent(root: HTMLElement, metadata: Record<string, any>, defaults?: Parameters<typeof parseIntent>[1]): ReturnType<typeof parseIntent> {
     const intent = parseIntent(metadata, defaults);
     root.setAttribute("data-variant", intent.variant);
     root.setAttribute("data-spacing", intent.spacing);
@@ -106,15 +72,11 @@ export function applyIntent(root: HTMLElement, metadata: Record<string, any>, de
  *
  * Only processes paint entries that have an `attr` field defined.
  * Skips null/undefined values (they mean "no paint state").
- *
- * Example: table's COMPONENT_PAINT has key:"selectedRow", attr:"data-row-selected".
- * If metadata.selectedRow is 3, sets root.setAttribute("data-row-selected", "3").
  */
 export function applyPaintState(root: HTMLElement, metadata: Record<string, any>, component: string): void {
     const paintDefs = COMPONENT_PAINT[component];
     if (!paintDefs) return;
 
-    // Collect unique key->attr mappings (many events write the same key)
     const seen = new Map<string, string>();
     for (const def of Object.values(paintDefs)) {
         if (def.attr && !seen.has(def.key)) {
