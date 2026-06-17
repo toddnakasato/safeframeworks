@@ -4,11 +4,27 @@
  * the same components styled differently. Sidebar: component menu with
  * variation sub-items, generated from SAMPLES.
  */
-import { useState, useEffect, Component } from "react";
+import { useState, useEffect, useCallback, Component } from "react";
 import type { ReactNode, ErrorInfo } from "react";
 import { renderConfigBase } from "../../SafeRenderer";
 import { SAMPLES } from "../../../../samples";
-import type { SafeEvent } from "safecontracts";
+import type { SafeEvent, ConfigBase } from "safecontracts";
+
+/** Tauri invoke — safe no-op when not in Tauri context */
+async function invoke<T>(cmd: string, args?: Record<string, any>): Promise<T> {
+  const { invoke: tauriInvoke } = await import("@tauri-apps/api/core");
+  return tauriInvoke<T>(cmd, args);
+}
+
+/** Listen for Tauri events */
+async function listen(event: string, handler: (payload: any) => void): Promise<() => void> {
+  const { listen: tauriListen } = await import("@tauri-apps/api/event");
+  const unlisten = await tauriListen(event, (e) => handler(e.payload));
+  return unlisten;
+}
+
+const STATE_DIR = "runtime";
+const STATE_FILE = "runtime/state.json";
 
 /** Error boundary — catches render errors so one bad component doesn't kill the viewer. */
 class ComponentBoundary extends Component<{ label: string; children: ReactNode }, { error: string | null }> {
@@ -56,23 +72,66 @@ export default function App() {
   const [activeTheme, setActiveTheme] = useState<string>("default");
   const [activeComponent, setActiveComponent] = useState<string | null>(null);
   const [activeVariation, setActiveVariation] = useState<string | null>(null);
+  const [paintState, setPaintState] = useState<Record<string, any>>({});
 
   useEffect(() => {
     loadStyle(activeStyle, activeTheme);
   }, [activeStyle, activeTheme]);
+
+  // EPRPP: start file watcher + listen for changes
+  useEffect(() => {
+    // Ensure runtime dir and state file exist
+    invoke("write_state", { path: STATE_FILE, content: JSON.stringify(paintState) }).catch(() => {});
+    // Start watching
+    invoke("watch_dir", { path: STATE_DIR }).catch(() => {});
+    // Listen for file changes → re-read state → re-render
+    let unlisten: (() => void) | null = null;
+    listen("fs-change", async (_path: string) => {
+      try {
+        const raw = await invoke<string>("read_file_content", { path: STATE_FILE });
+        const newState = JSON.parse(raw);
+        setPaintState(newState);
+      } catch {}
+    }).then(fn => { unlisten = fn; });
+    return () => { if (unlisten) unlisten(); };
+  }, []);
 
   const selectStyle = (s: string) => {
     setActiveStyle(s);
     setActiveTheme("default");
   };
 
-  const handleEvent = (event: SafeEvent) => {
+  // EPRPP: event → safedesk paint apply → writes state.json → watcher fires → re-render
+  const handleEvent = useCallback(async (event: SafeEvent) => {
     console.log("[event]", event.origin?.id, event.name, event.data);
-    // Push to all proof-viewer Events tabs
+    // Push to proof-viewer Events tabs
     document.querySelectorAll("[data-component='proof-viewer']").forEach((pv) => {
       if ((pv as any).pushEvent) (pv as any).pushEvent(event);
     });
-  };
+    // Call safedesk paint apply — writes state.json
+    const component = (event as any).component ?? event.origin?.id ?? "";
+    try {
+      const args = ["paint", "apply", "--component", component, "--event", event.name, "--state", STATE_FILE];
+      if (event.data?.index !== undefined) args.push("--index", String(event.data.index));
+      if (event.data?.field) args.push("--field", String(event.data.field));
+      if (event.data?.dir) args.push("--dir", String(event.data.dir));
+      if (event.data?.page !== undefined) args.push("--page", String(event.data.page));
+      if (event.data?.selected) args.push("--selected", String(event.data.selected));
+      if (event.data?.value !== undefined) args.push("--value", String(event.data.value));
+      await invoke<string>("safecli_run", { name: "safedesk", args });
+    } catch (e) {
+      console.warn("[paint]", e);
+    }
+  }, []);
+
+  /** Merge paint state into a ConfigBase's metadata */
+  function paintConfig(config: ConfigBase): ConfigBase {
+    if (!paintState || Object.keys(paintState).length === 0) return config;
+    return {
+      ...config,
+      metadata: { ...config.metadata, ...paintState },
+    };
+  }
 
   const selectComponent = (name: string | null) => {
     setActiveComponent(name);
@@ -163,7 +222,7 @@ export default function App() {
               </div>
               <div style={{ padding: 16 }}>
                 <ComponentBoundary label={`${comp}/${v}`}>
-                  {renderConfigBase(SAMPLES[comp][v], handleEvent)}
+                  {renderConfigBase(paintConfig(SAMPLES[comp][v]), handleEvent)}
                 </ComponentBoundary>
               </div>
               <div style={{ borderTop: "1px solid var(--sd-border, #e5e7eb)" }}>
