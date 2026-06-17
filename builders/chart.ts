@@ -13,6 +13,8 @@ import { getDataSource } from "../../safecontracts/src/contracts";
 import type { ConfigBase } from "../../safecontracts/src/contracts";
 import type { SafeFireContext } from "../../safecontracts/src/contracts";
 import { resolveColors } from "../../safecontracts/src/palette";
+import { readList } from "../../safecontracts/src/contracts-data";
+import { applyIntent } from "../utils/util";
 
 /*----------------------------------------------------------------------------------------------------
  *
@@ -45,7 +47,7 @@ function resolveCssColor(color: string): string {
 
 export function chartData(config: ConfigBase): Record<string, any>[] {
     const ds = getDataSource(config);
-    return Array.isArray(ds?.inline) ? ds.inline : [];
+    return readList(config);
 }
 
 function yFields(config: ConfigBase): string[] {
@@ -167,6 +169,7 @@ export function createSafeChart(canvas: HTMLCanvasElement, config: ConfigBase, c
     const _hoverPoint = metadata.hoverPoint ?? null;
 
     canvas.setAttribute("data-component", "chart");
+    applyIntent(canvas, metadata);
     canvas.setAttribute("data-variant", (metadata.variant as string) ?? "default");
     canvas.setAttribute("data-chart-type", (metadata.chartType as string) ?? "bar");
     const cfg = buildChartConfig(config);

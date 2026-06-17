@@ -1,5 +1,6 @@
 import type { ConfigBase } from "../../safecontracts/src/contracts";
 import type { SafeFireContext } from "../../safecontracts/src/contracts";
+import { elAttrs, applyPaintState, applyIntent } from "../utils/util";
 
 /*----------------------------------------------------------------------------------------------------
  *
@@ -38,6 +39,8 @@ export function createSafeTabs(container: HTMLElement, config: ConfigBase, ctx: 
 
     const root = document.createElement("div");
     root.setAttribute("data-component", "tabs");
+    applyIntent(root, metadata);
+    applyPaintState(root, metadata, "tabs");
 
     // Paint intent attributes
     const _activeTab = metadata.activeTab ?? null;

@@ -2,6 +2,8 @@ import * as d3 from "d3";
 import type { SafeFireContext } from "../../safecontracts/src/contracts";
 import { getDataSource } from "../../safecontracts/src/contracts";
 import type { ConfigBase } from "../../safecontracts/src/contracts";
+import { elAttrs, applyPaintState, applyIntent } from "../utils/util";
+import { readList } from "../../safecontracts/src/contracts-data";
 
 /*----------------------------------------------------------------------------------------------------
  *
@@ -35,8 +37,7 @@ export function createSafeGauge(container: HTMLElement, config: ConfigBase, ctx:
 
     // Self-extract record data from the first DataSource (contract: record).
     const ds = getDataSource(config);
-    const raw = ds?.inline;
-    const data: Record<string, any> = (Array.isArray(raw) ? raw[0] : raw) ?? {};
+    const data = readList(config);
 
     const value = Number(data[valueField]) ?? 0;
     const label = labelField ? String(data[labelField] ?? "") : "";
@@ -54,6 +55,8 @@ export function createSafeGauge(container: HTMLElement, config: ConfigBase, ctx:
 
     const root = document.createElement("div");
     root.setAttribute("data-component", "gauge");
+    applyIntent(root, metadata);
+    applyPaintState(root, metadata, "gauge");
 
     // Paint intent attributes
     const _selectedGauge = metadata.selectedGauge ?? null;

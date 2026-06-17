@@ -1,7 +1,8 @@
 import type { ConfigBase } from "../../safecontracts/src/contracts";
-import { el } from "../utils/util";
+import { el, applyPaintState } from "../utils/util";
 import type { SafeFireContext } from "../../safecontracts/src/contracts";
 import { getDataSource } from "../../safecontracts/src/contracts";
+import { readList } from "../../safecontracts/src/contracts-data";
 
 /*----------------------------------------------------------------------------------------------------
  *
@@ -122,8 +123,7 @@ export function createSafeInput(container: HTMLElement, config: ConfigBase, ctx:
 
     // Self-extract record from config data (SafeRenderer does this for react)
     const ds = getDataSource(config) as any;
-    const rawData = ds?.inline;
-    const record: Record<string, any> = (Array.isArray(rawData) ? rawData[0] : rawData) ?? {};
+    const record: Record<string, any> = readRecord(config);
 
     const inputType = (metadata.inputType as string) ?? "text";
     const displayFormat = metadata.displayFormat as string | undefined;
@@ -197,6 +197,7 @@ export function createSafeInput(container: HTMLElement, config: ConfigBase, ctx:
 
     const root = el("div");
     root.setAttribute("data-component", "input");
+    applyPaintState(root, metadata, "input");
 
     // External paint state (resolved from state.json by host)
     const _editing = metadata.editing ?? null;

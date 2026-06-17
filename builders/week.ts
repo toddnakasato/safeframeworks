@@ -1,5 +1,5 @@
 import type { ConfigBase } from "../../safecontracts/src/contracts";
-import { el } from "../utils/util";
+import { el, applyIntent } from "../utils/util";
 import type { SafeFireContext } from "../../safecontracts/src/contracts";
 import { DAY_NAMES_SHORT, MONTH_NAMES } from "../../safecontracts/src/contracts";
 
@@ -82,6 +82,7 @@ export function createSafeWeek(container: HTMLElement, config: ConfigBase, ctx: 
 
     const root = el("div");
     root.setAttribute("data-component", "week");
+    applyIntent(root, metadata);
     root.setAttribute("data-variant", variant);
 
     const fireNavigate = (dir: number) => {

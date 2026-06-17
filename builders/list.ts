@@ -1,5 +1,5 @@
 import { createElement, type IconNode } from "lucide";
-import { el } from "../utils/util";
+import { el, applyPaintState, applyIntent } from "../utils/util";
 import type { SafeFireContext } from "../../safecontracts/src/contracts";
 import { getDataSource } from "../../safecontracts/src/contracts";
 import * as lucide from "lucide";
@@ -7,6 +7,7 @@ import type { ConfigBase } from "../../safecontracts/src/contracts";
 import { DAY_NAMES_SHORT } from "../../safecontracts/src/contracts";
 import { LIST_DEFAULTS, LIST_STATUS_ACCENTS } from "../../safecontracts/src/components/list";
 import { paginate } from "../../safecontracts/src/contracts-operations";
+import { readList } from "../../safecontracts/src/contracts-data";
 
 /*----------------------------------------------------------------------------------------------------
  *
@@ -571,12 +572,13 @@ function buildGantt(root: HTMLElement, config: ConfigBase, data: any[], ctx: Saf
 }
 
 export function createSafeList(container: HTMLElement, config: ConfigBase, ctx: SafeFireContext): HTMLElement {
-    const raw = getDataSource(config)?.inline;
-    const list: any[] = Array.isArray(raw) ? raw : [];
+    const list: any[] = readList(config);
     const variant = (config.metadata.variant as string) ?? LIST_DEFAULTS.variant;
 
     const root = el("div");
     root.setAttribute("data-component", "list");
+    applyIntent(root, metadata);
+    applyPaintState(root, metadata, "list");
 
     // External paint state (resolved from state.json by host)
     const _selectedItem = metadata.selectedItem ?? null;

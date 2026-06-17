@@ -2,6 +2,7 @@ import { createElement, type IconNode } from "lucide";
 import type { SafeFireContext } from "../../safecontracts/src/contracts";
 import * as lucide from "lucide";
 import type { ConfigBase } from "../../safecontracts/src/contracts";
+import { elAttrs, applyIntent } from "../utils/util";
 
 /*----------------------------------------------------------------------------------------------------
  *
@@ -30,14 +31,9 @@ function iconEl(name: string | undefined, size: number): SVGElement | null {
     return el;
 }
 
-function el(tag: string, attrs: Record<string, string> = {}): HTMLElement {
-    const e = document.createElement(tag);
-    for (const [k, v] of Object.entries(attrs)) e.setAttribute(k, v);
-    return e;
-}
 
 function iconSpan(role: string, icon: string): HTMLElement {
-    const s = el("span", { "data-role": role });
+    const s = elAttrs("span", { "data-role": role });
     const svg = iconEl(icon, 14);
     if (svg) s.appendChild(svg); else s.textContent = icon;
     return s;
@@ -68,7 +64,7 @@ function buildSingleButton(config: ConfigBase, ctx: SafeFireContext): HTMLElemen
     const selected = !!metadata.selected;
     const status = metadata.status as string | undefined;
 
-    const btn = el("button", { "data-component": "button", "data-variant": variant, "data-size": size }) as HTMLButtonElement;
+    const btn = elAttrs("button", { "data-component": "button", "data-variant": variant, "data-size": size }) as HTMLButtonElement;
     if (disabled) btn.setAttribute("data-disabled", "true");
     if (loading) btn.setAttribute("data-loading", "true");
     if (fullWidth) btn.setAttribute("data-full-width", "true");
@@ -82,26 +78,26 @@ function buildSingleButton(config: ConfigBase, ctx: SafeFireContext): HTMLElemen
         ctx.fire(eventName, null); // config-driven name; validated by prove build
     };
 
-    if (loading) btn.appendChild(el("span", { "data-role": "spinner" }));
+    if (loading) btn.appendChild(elAttrs("span", { "data-role": "spinner" }));
     if (status) {
-        const badge = el("span", { "data-role": "status-badge", "data-status": status });
+        const badge = elAttrs("span", { "data-role": "status-badge", "data-status": status });
         if (status === "completed") badge.textContent = "✓";
         btn.appendChild(badge);
     }
     if (icon && iconPosition === "left" && !iconOnly) btn.appendChild(iconSpan("icon", icon));
     if (iconOnly && icon) btn.appendChild(iconSpan("icon", icon));
     if (!iconOnly && label) {
-        const l = el("span", { "data-role": "label" });
+        const l = elAttrs("span", { "data-role": "label" });
         l.textContent = label;
         btn.appendChild(l);
     }
     if (description) {
-        const d = el("span", { "data-role": "description" });
+        const d = elAttrs("span", { "data-role": "description" });
         d.textContent = description;
         btn.appendChild(d);
     }
     if (suffix) {
-        const s = el("span", { "data-role": "suffix" });
+        const s = elAttrs("span", { "data-role": "suffix" });
         s.textContent = suffix;
         btn.appendChild(s);
     }
@@ -121,7 +117,8 @@ function buildPaginationGroup(config: ConfigBase, ctx: SafeFireContext): HTMLEle
 
     let page = initialPage;
 
-    const root = el("div", { "data-component": "button", "data-group-variant": "pagination", "data-size": size });
+    const root = elAttrs("div", { "data-component": "button", "data-group-variant": "pagination", "data-size": size });
+    applyIntent(root, metadata);
 
     const go = (p: number) => {
         page = Math.max(1, Math.min(totalPages, p));
@@ -130,7 +127,7 @@ function buildPaginationGroup(config: ConfigBase, ctx: SafeFireContext): HTMLEle
     };
 
     function pageBtn(text: string, isDisabled: boolean, target: () => number): HTMLElement {
-        const b = el("button", { "data-role": "page-btn", "data-variant": variant }) as HTMLButtonElement;
+        const b = elAttrs("button", { "data-role": "page-btn", "data-variant": variant }) as HTMLButtonElement;
         if (isDisabled) b.setAttribute("data-disabled", "true");
         b.disabled = isDisabled;
         b.textContent = text;
@@ -142,7 +139,7 @@ function buildPaginationGroup(config: ConfigBase, ctx: SafeFireContext): HTMLEle
         root.replaceChildren();
         if (showFirstLast) root.appendChild(pageBtn("«", page <= 1, () => 1));
         root.appendChild(pageBtn("‹", page <= 1, () => page - 1));
-        const indicator = el("span", { "data-role": "page-indicator" });
+        const indicator = elAttrs("span", { "data-role": "page-indicator" });
         indicator.textContent = `${page} / ${totalPages}`;
         root.appendChild(indicator);
         root.appendChild(pageBtn("›", page >= totalPages, () => page + 1));
@@ -160,19 +157,19 @@ function buildButtonGroup(config: ConfigBase, ctx: SafeFireContext): HTMLElement
 
     if (groupVariant === "pagination") return buildPaginationGroup(config, ctx);
 
-    const root = el("div", {
+    const root = elAttrs("div", {
         "data-component": "button",
         "data-group-variant": groupVariant,
         "data-group-direction": groupDirection,
     });
 
     for (const [, child] of Object.entries(config.children ?? {})) {
-        const item = el("div", { "data-role": "group-item" });
+        const item = elAttrs("div", { "data-role": "group-item" });
         if (!child.component || child.component === "button") {
             item.appendChild(buildButton(child, ctx));
         } else {
             // Non-button child: placeholder only — full renderer recursion is the host's job.
-            item.appendChild(el("div", { "data-role": "button-child", "data-child-component": child.component }));
+            item.appendChild(elAttrs("div", { "data-role": "button-child", "data-child-component": child.component }));
         }
         root.appendChild(item);
     }

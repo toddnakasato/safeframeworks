@@ -1,4 +1,5 @@
 import type { ConfigBase, SafeFireContext } from "../../safecontracts/src/contracts";
+import { elAttrs, applyIntent } from "../utils/util";
 
 /*----------------------------------------------------------------------------------------------------
  *
@@ -12,11 +13,6 @@ import type { ConfigBase, SafeFireContext } from "../../safecontracts/src/contra
  *
  ----------------------------------------------------------------------------------------------------*/
 
-function el(tag: string, attrs: Record<string, string> = {}): HTMLElement {
-    const e = document.createElement(tag);
-    for (const [k, v] of Object.entries(attrs)) e.setAttribute(k, v);
-    return e;
-}
 
 /*----------------------------------------------------------------------------------------------------
  *
@@ -30,17 +26,18 @@ export function createSafeCallout(container: HTMLElement, config: ConfigBase, ct
     const message = (metadata.message as string) ?? "";
     const position = (metadata.position as string) ?? "right";
 
-    const root = el("div", {
+    const root = elAttrs("div", {
         "data-component": "callout",
         "data-variant": variant,
         "data-position": position,
     });
+    applyIntent(root, metadata);
 
-    root.appendChild(el("div", { "data-role": "callout-dot" }));
-    const msg = el("div", { "data-role": "callout-message" });
+    root.appendChild(elAttrs("div", { "data-role": "callout-dot" }));
+    const msg = elAttrs("div", { "data-role": "callout-message" });
     msg.textContent = message;
     root.appendChild(msg);
-    root.appendChild(el("div", { "data-role": "callout-arrow" }));
+    root.appendChild(elAttrs("div", { "data-role": "callout-arrow" }));
 
     container.appendChild(root);
     return root;

@@ -1,5 +1,5 @@
 import type { ConfigBase } from "../../safecontracts/src/contracts";
-import { el } from "../utils/util";
+import { el, applyIntent } from "../utils/util";
 import type { SafeFireContext } from "../../safecontracts/src/contracts";
 import { getDataSource } from "../../safecontracts/src/contracts";
 
@@ -175,6 +175,7 @@ export function createSafeDragDrop(container: HTMLElement, config: ConfigBase, c
 
     const root = el("div");
     root.setAttribute("data-component", "drag-drop");
+    applyIntent(root, metadata);
     root.setAttribute("data-variant", variant);
 
     if (variant === "file") buildFile(root, config, ctx);

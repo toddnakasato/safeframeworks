@@ -1,0 +1,583 @@
+{
+  "ok": true,
+  "component": "all",
+  "total": 113,
+  "passed": 113,
+  "failed": 0,
+  "groups": {
+    "uses-readList-or-readRecord": 19,
+    "uses-shared-el": 29,
+    "uses-applyIntent": 21,
+    "uses-applyPaintState": 15,
+    "has-data-component": 29
+  },
+  "checks": [
+    {
+      "group": "uses-readList-or-readRecord",
+      "name": "funnel: uses readList or readRecord",
+      "status": "pass"
+    },
+    {
+      "group": "uses-shared-el",
+      "name": "funnel: uses shared el/elAttrs from utils",
+      "status": "pass"
+    },
+    {
+      "group": "uses-applyIntent",
+      "name": "funnel: uses applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "uses-applyPaintState",
+      "name": "funnel: uses applyPaintState",
+      "status": "pass"
+    },
+    {
+      "group": "has-data-component",
+      "name": "funnel: sets data-component",
+      "status": "pass"
+    },
+    {
+      "group": "uses-shared-el",
+      "name": "callout: uses shared el/elAttrs from utils",
+      "status": "pass"
+    },
+    {
+      "group": "uses-applyIntent",
+      "name": "callout: uses applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "has-data-component",
+      "name": "callout: sets data-component",
+      "status": "pass"
+    },
+    {
+      "group": "uses-shared-el",
+      "name": "week: uses shared el/elAttrs from utils",
+      "status": "pass"
+    },
+    {
+      "group": "uses-applyIntent",
+      "name": "week: uses applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "has-data-component",
+      "name": "week: sets data-component",
+      "status": "pass"
+    },
+    {
+      "group": "uses-readList-or-readRecord",
+      "name": "table: uses readList or readRecord",
+      "status": "pass"
+    },
+    {
+      "group": "uses-shared-el",
+      "name": "table: uses shared el/elAttrs from utils",
+      "status": "pass"
+    },
+    {
+      "group": "uses-applyIntent",
+      "name": "table: uses applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "uses-applyPaintState",
+      "name": "table: uses applyPaintState",
+      "status": "pass"
+    },
+    {
+      "group": "has-data-component",
+      "name": "table: sets data-component",
+      "status": "pass"
+    },
+    {
+      "group": "uses-readList-or-readRecord",
+      "name": "nav: uses readList or readRecord",
+      "status": "pass"
+    },
+    {
+      "group": "uses-shared-el",
+      "name": "nav: uses shared el/elAttrs from utils",
+      "status": "pass"
+    },
+    {
+      "group": "uses-applyPaintState",
+      "name": "nav: uses applyPaintState",
+      "status": "pass"
+    },
+    {
+      "group": "has-data-component",
+      "name": "nav: sets data-component",
+      "status": "pass"
+    },
+    {
+      "group": "uses-readList-or-readRecord",
+      "name": "input: uses readList or readRecord",
+      "status": "pass"
+    },
+    {
+      "group": "uses-shared-el",
+      "name": "input: uses shared el/elAttrs from utils",
+      "status": "pass"
+    },
+    {
+      "group": "uses-applyPaintState",
+      "name": "input: uses applyPaintState",
+      "status": "pass"
+    },
+    {
+      "group": "has-data-component",
+      "name": "input: sets data-component",
+      "status": "pass"
+    },
+    {
+      "group": "uses-shared-el",
+      "name": "button: uses shared el/elAttrs from utils",
+      "status": "pass"
+    },
+    {
+      "group": "uses-applyIntent",
+      "name": "button: uses applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "has-data-component",
+      "name": "button: sets data-component",
+      "status": "pass"
+    },
+    {
+      "group": "uses-readList-or-readRecord",
+      "name": "sheet: uses readList or readRecord",
+      "status": "pass"
+    },
+    {
+      "group": "uses-shared-el",
+      "name": "sheet: uses shared el/elAttrs from utils",
+      "status": "pass"
+    },
+    {
+      "group": "uses-applyIntent",
+      "name": "sheet: uses applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "uses-applyPaintState",
+      "name": "sheet: uses applyPaintState",
+      "status": "pass"
+    },
+    {
+      "group": "has-data-component",
+      "name": "sheet: sets data-component",
+      "status": "pass"
+    },
+    {
+      "group": "uses-readList-or-readRecord",
+      "name": "chat: uses readList or readRecord",
+      "status": "pass"
+    },
+    {
+      "group": "uses-shared-el",
+      "name": "chat: uses shared el/elAttrs from utils",
+      "status": "pass"
+    },
+    {
+      "group": "has-data-component",
+      "name": "chat: sets data-component",
+      "status": "pass"
+    },
+    {
+      "group": "uses-shared-el",
+      "name": "columns: uses shared el/elAttrs from utils",
+      "status": "pass"
+    },
+    {
+      "group": "has-data-component",
+      "name": "columns: sets data-component",
+      "status": "pass"
+    },
+    {
+      "group": "uses-shared-el",
+      "name": "metric: uses shared el/elAttrs from utils",
+      "status": "pass"
+    },
+    {
+      "group": "has-data-component",
+      "name": "metric: sets data-component",
+      "status": "pass"
+    },
+    {
+      "group": "uses-shared-el",
+      "name": "storyflow: uses shared el/elAttrs from utils",
+      "status": "pass"
+    },
+    {
+      "group": "has-data-component",
+      "name": "storyflow: sets data-component",
+      "status": "pass"
+    },
+    {
+      "group": "uses-shared-el",
+      "name": "calendar: uses shared el/elAttrs from utils",
+      "status": "pass"
+    },
+    {
+      "group": "uses-applyIntent",
+      "name": "calendar: uses applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "has-data-component",
+      "name": "calendar: sets data-component",
+      "status": "pass"
+    },
+    {
+      "group": "uses-readList-or-readRecord",
+      "name": "card: uses readList or readRecord",
+      "status": "pass"
+    },
+    {
+      "group": "uses-shared-el",
+      "name": "card: uses shared el/elAttrs from utils",
+      "status": "pass"
+    },
+    {
+      "group": "uses-applyIntent",
+      "name": "card: uses applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "uses-applyPaintState",
+      "name": "card: uses applyPaintState",
+      "status": "pass"
+    },
+    {
+      "group": "has-data-component",
+      "name": "card: sets data-component",
+      "status": "pass"
+    },
+    {
+      "group": "uses-readList-or-readRecord",
+      "name": "map: uses readList or readRecord",
+      "status": "pass"
+    },
+    {
+      "group": "uses-shared-el",
+      "name": "map: uses shared el/elAttrs from utils",
+      "status": "pass"
+    },
+    {
+      "group": "uses-applyIntent",
+      "name": "map: uses applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "has-data-component",
+      "name": "map: sets data-component",
+      "status": "pass"
+    },
+    {
+      "group": "uses-readList-or-readRecord",
+      "name": "hierarchy: uses readList or readRecord",
+      "status": "pass"
+    },
+    {
+      "group": "uses-shared-el",
+      "name": "hierarchy: uses shared el/elAttrs from utils",
+      "status": "pass"
+    },
+    {
+      "group": "uses-applyIntent",
+      "name": "hierarchy: uses applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "has-data-component",
+      "name": "hierarchy: sets data-component",
+      "status": "pass"
+    },
+    {
+      "group": "uses-readList-or-readRecord",
+      "name": "flow: uses readList or readRecord",
+      "status": "pass"
+    },
+    {
+      "group": "uses-shared-el",
+      "name": "flow: uses shared el/elAttrs from utils",
+      "status": "pass"
+    },
+    {
+      "group": "uses-applyIntent",
+      "name": "flow: uses applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "has-data-component",
+      "name": "flow: sets data-component",
+      "status": "pass"
+    },
+    {
+      "group": "uses-readList-or-readRecord",
+      "name": "chart: uses readList or readRecord",
+      "status": "pass"
+    },
+    {
+      "group": "uses-shared-el",
+      "name": "chart: uses shared el/elAttrs from utils",
+      "status": "pass"
+    },
+    {
+      "group": "uses-applyIntent",
+      "name": "chart: uses applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "has-data-component",
+      "name": "chart: sets data-component",
+      "status": "pass"
+    },
+    {
+      "group": "uses-shared-el",
+      "name": "scene: uses shared el/elAttrs from utils",
+      "status": "pass"
+    },
+    {
+      "group": "uses-applyPaintState",
+      "name": "scene: uses applyPaintState",
+      "status": "pass"
+    },
+    {
+      "group": "has-data-component",
+      "name": "scene: sets data-component",
+      "status": "pass"
+    },
+    {
+      "group": "uses-shared-el",
+      "name": "dragdrop: uses shared el/elAttrs from utils",
+      "status": "pass"
+    },
+    {
+      "group": "uses-applyIntent",
+      "name": "dragdrop: uses applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "has-data-component",
+      "name": "dragdrop: sets data-component",
+      "status": "pass"
+    },
+    {
+      "group": "uses-shared-el",
+      "name": "tabs: uses shared el/elAttrs from utils",
+      "status": "pass"
+    },
+    {
+      "group": "uses-applyIntent",
+      "name": "tabs: uses applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "uses-applyPaintState",
+      "name": "tabs: uses applyPaintState",
+      "status": "pass"
+    },
+    {
+      "group": "has-data-component",
+      "name": "tabs: sets data-component",
+      "status": "pass"
+    },
+    {
+      "group": "uses-readList-or-readRecord",
+      "name": "list: uses readList or readRecord",
+      "status": "pass"
+    },
+    {
+      "group": "uses-shared-el",
+      "name": "list: uses shared el/elAttrs from utils",
+      "status": "pass"
+    },
+    {
+      "group": "uses-applyIntent",
+      "name": "list: uses applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "uses-applyPaintState",
+      "name": "list: uses applyPaintState",
+      "status": "pass"
+    },
+    {
+      "group": "has-data-component",
+      "name": "list: sets data-component",
+      "status": "pass"
+    },
+    {
+      "group": "uses-readList-or-readRecord",
+      "name": "timeline: uses readList or readRecord",
+      "status": "pass"
+    },
+    {
+      "group": "uses-shared-el",
+      "name": "timeline: uses shared el/elAttrs from utils",
+      "status": "pass"
+    },
+    {
+      "group": "uses-applyIntent",
+      "name": "timeline: uses applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "uses-applyPaintState",
+      "name": "timeline: uses applyPaintState",
+      "status": "pass"
+    },
+    {
+      "group": "has-data-component",
+      "name": "timeline: sets data-component",
+      "status": "pass"
+    },
+    {
+      "group": "uses-readList-or-readRecord",
+      "name": "tree: uses readList or readRecord",
+      "status": "pass"
+    },
+    {
+      "group": "uses-shared-el",
+      "name": "tree: uses shared el/elAttrs from utils",
+      "status": "pass"
+    },
+    {
+      "group": "uses-applyIntent",
+      "name": "tree: uses applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "uses-applyPaintState",
+      "name": "tree: uses applyPaintState",
+      "status": "pass"
+    },
+    {
+      "group": "has-data-component",
+      "name": "tree: sets data-component",
+      "status": "pass"
+    },
+    {
+      "group": "uses-readList-or-readRecord",
+      "name": "gauge: uses readList or readRecord",
+      "status": "pass"
+    },
+    {
+      "group": "uses-shared-el",
+      "name": "gauge: uses shared el/elAttrs from utils",
+      "status": "pass"
+    },
+    {
+      "group": "uses-applyIntent",
+      "name": "gauge: uses applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "uses-applyPaintState",
+      "name": "gauge: uses applyPaintState",
+      "status": "pass"
+    },
+    {
+      "group": "has-data-component",
+      "name": "gauge: sets data-component",
+      "status": "pass"
+    },
+    {
+      "group": "uses-readList-or-readRecord",
+      "name": "picker: uses readList or readRecord",
+      "status": "pass"
+    },
+    {
+      "group": "uses-shared-el",
+      "name": "picker: uses shared el/elAttrs from utils",
+      "status": "pass"
+    },
+    {
+      "group": "uses-applyIntent",
+      "name": "picker: uses applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "uses-applyPaintState",
+      "name": "picker: uses applyPaintState",
+      "status": "pass"
+    },
+    {
+      "group": "has-data-component",
+      "name": "picker: sets data-component",
+      "status": "pass"
+    },
+    {
+      "group": "uses-readList-or-readRecord",
+      "name": "grid: uses readList or readRecord",
+      "status": "pass"
+    },
+    {
+      "group": "uses-shared-el",
+      "name": "grid: uses shared el/elAttrs from utils",
+      "status": "pass"
+    },
+    {
+      "group": "has-data-component",
+      "name": "grid: sets data-component",
+      "status": "pass"
+    },
+    {
+      "group": "uses-readList-or-readRecord",
+      "name": "heatmap: uses readList or readRecord",
+      "status": "pass"
+    },
+    {
+      "group": "uses-shared-el",
+      "name": "heatmap: uses shared el/elAttrs from utils",
+      "status": "pass"
+    },
+    {
+      "group": "uses-applyIntent",
+      "name": "heatmap: uses applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "uses-applyPaintState",
+      "name": "heatmap: uses applyPaintState",
+      "status": "pass"
+    },
+    {
+      "group": "has-data-component",
+      "name": "heatmap: sets data-component",
+      "status": "pass"
+    },
+    {
+      "group": "uses-readList-or-readRecord",
+      "name": "toggle: uses readList or readRecord",
+      "status": "pass"
+    },
+    {
+      "group": "uses-shared-el",
+      "name": "toggle: uses shared el/elAttrs from utils",
+      "status": "pass"
+    },
+    {
+      "group": "uses-applyIntent",
+      "name": "toggle: uses applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "uses-applyPaintState",
+      "name": "toggle: uses applyPaintState",
+      "status": "pass"
+    },
+    {
+      "group": "has-data-component",
+      "name": "toggle: sets data-component",
+      "status": "pass"
+    }
+  ],
+  "failures": [],
+  "ts": "2026-06-17T15:01:09.468Z"
+}

@@ -3,6 +3,7 @@ import type { SafeFireContext } from "../../safecontracts/src/contracts";
 import * as lucide from "lucide";
 import type { ConfigBase } from "../../safecontracts/src/contracts";
 import { readList } from "../../safecontracts/src/contracts-data";
+import { elAttrs, applyPaintState } from "../utils/util";
 
 /*----------------------------------------------------------------------------------------------------
  *
@@ -31,11 +32,6 @@ function iconEl(name: string | undefined, size: number): SVGElement | null {
     return el;
 }
 
-function el(tag: string, attrs: Record<string, string> = {}): HTMLElement {
-    const e = document.createElement(tag);
-    for (const [k, v] of Object.entries(attrs)) e.setAttribute(k, v);
-    return e;
-}
 
 /*----------------------------------------------------------------------------------------------------
  *
@@ -65,23 +61,24 @@ export function createSafeNav(container: HTMLElement, config: ConfigBase, ctx: S
     // First group starts expanded (figma default)
     if (groups.length) expanded.add(groups[0][0]);
 
-    const root = el("div", { "data-component": "nav", "data-nav-style": "accordion" });
+    const root = elAttrs("div", { "data-component": "nav", "data-nav-style": "accordion" });
+    applyPaintState(root, metadata, "nav");
     // Intent only — paint is safestyles' job.
     if (accent) root.setAttribute("data-accent", accent);
     if (width) root.style.setProperty("--nav-width", `${width}px`);
 
     if (title) {
-        const header = el("div", { "data-nav-header": "" });
-        const inner = el("div", { "data-nav-header-inner": "" });
-        const logo = el("div", { "data-nav-logo": "" });
+        const header = elAttrs("div", { "data-nav-header": "" });
+        const inner = elAttrs("div", { "data-nav-header-inner": "" });
+        const logo = elAttrs("div", { "data-nav-logo": "" });
         const hIcon = iconEl(headerIconName, 13);
         if (hIcon) logo.appendChild(hIcon); else logo.textContent = title.charAt(0).toUpperCase();
-        const text = el("div", { "data-nav-header-text": "" });
-        const t = el("div", { "data-nav-title": "" });
+        const text = elAttrs("div", { "data-nav-header-text": "" });
+        const t = elAttrs("div", { "data-nav-title": "" });
         t.textContent = title;
         text.appendChild(t);
         if (subtitle) {
-            const st = el("div", { "data-nav-subtitle": "" });
+            const st = elAttrs("div", { "data-nav-subtitle": "" });
             st.textContent = subtitle;
             text.appendChild(st);
         }
@@ -90,7 +87,7 @@ export function createSafeNav(container: HTMLElement, config: ConfigBase, ctx: S
         root.appendChild(header);
     }
 
-    const nav = el("nav", { "data-nav-main": "" });
+    const nav = elAttrs("nav", { "data-nav-main": "" });
     root.appendChild(nav);
 
     const fire = (key: string) => {
@@ -105,17 +102,17 @@ export function createSafeNav(container: HTMLElement, config: ConfigBase, ctx: S
             const gAccent = group.accent as string | undefined;
             const isExpanded = expanded.has(gKey);
 
-            const wrap = el("div", { "data-nav-item": "", "data-depth": "0" });
+            const wrap = elAttrs("div", { "data-nav-item": "", "data-depth": "0" });
             if (gAccent) wrap.setAttribute("data-accent", gAccent);
 
-            const btn = el("button", { "data-nav-button": "", "data-has-children": "true", "data-depth": "0" });
+            const btn = elAttrs("button", { "data-nav-button": "", "data-has-children": "true", "data-depth": "0" });
             if (isExpanded) btn.setAttribute("data-expanded", "true");
             const gi = iconEl(group.icon as string, 15);
-            if (gi) { const s = el("span", { "data-nav-icon": "" }); s.appendChild(gi); btn.appendChild(s); }
-            const lbl = el("span", { "data-nav-label": "" });
+            if (gi) { const s = elAttrs("span", { "data-nav-icon": "" }); s.appendChild(gi); btn.appendChild(s); }
+            const lbl = elAttrs("span", { "data-nav-label": "" });
             lbl.textContent = (group.label as string) ?? gKey;
             btn.appendChild(lbl);
-            const chevWrap = el("span", { "data-nav-chevron": "" });
+            const chevWrap = elAttrs("span", { "data-nav-chevron": "" });
             const chev = createElement(ChevronDown);
             chev.setAttribute("width", "13");
             chev.setAttribute("height", "13");
@@ -125,24 +122,24 @@ export function createSafeNav(container: HTMLElement, config: ConfigBase, ctx: S
             wrap.appendChild(btn);
 
             if (isExpanded && Array.isArray(group.children)) {
-                const kids = el("div", { "data-nav-children": "" });
+                const kids = elAttrs("div", { "data-nav-children": "" });
                 for (const child of group.children as any[]) {
                     const key = `${gKey}.${child.key ?? child.label}`;
                     const isActive = active === key;
-                    const cBtn = el("button", { "data-nav-button": "", "data-depth": "1" });
+                    const cBtn = elAttrs("button", { "data-nav-button": "", "data-depth": "1" });
                     if (isActive) cBtn.setAttribute("data-active", "true");
-                    const dotWrap = el("span", { "data-nav-dot": "" });
+                    const dotWrap = elAttrs("span", { "data-nav-dot": "" });
                     const dot = createElement(Dot);
                     dot.setAttribute("width", "14");
                     dot.setAttribute("height", "14");
                     dotWrap.appendChild(dot);
                     cBtn.appendChild(dotWrap);
-                    const cLbl = el("span", { "data-nav-label": "" });
+                    const cLbl = elAttrs("span", { "data-nav-label": "" });
                     cLbl.textContent = (child.label as string) ?? child.key;
                     cBtn.appendChild(cLbl);
                     const badge = child.badge as string | number | undefined;
                     if (badge != null) {
-                        const b = el("span", { "data-nav-badge": "" });
+                        const b = elAttrs("span", { "data-nav-badge": "" });
                         if (typeof badge === "string" && isNaN(Number(badge))) b.setAttribute("data-badge-accent", "true");
                         b.textContent = String(badge);
                         cBtn.appendChild(b);
@@ -158,9 +155,9 @@ export function createSafeNav(container: HTMLElement, config: ConfigBase, ctx: S
     render();
 
     if (bottom.length) {
-        const foot = el("div", { "data-nav-bottom": "" });
+        const foot = elAttrs("div", { "data-nav-bottom": "" });
         for (const [key, child] of bottom) {
-            const b = el("button", { "data-nav-button": "", "data-icon-only": "true" });
+            const b = elAttrs("button", { "data-nav-button": "", "data-icon-only": "true" });
             const ic = iconEl(child.icon as string, 15);
             if (ic) b.appendChild(ic);
             b.onclick = () => fire(key);

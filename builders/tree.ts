@@ -1,6 +1,8 @@
 import type { ConfigBase } from "../../safecontracts/src/contracts";
 import type { SafeFireContext } from "../../safecontracts/src/contracts";
 import { getDataSource } from "../../safecontracts/src/contracts";
+import { elAttrs, applyPaintState, applyIntent } from "../utils/util";
+import { readList } from "../../safecontracts/src/contracts-data";
 
 /*----------------------------------------------------------------------------------------------------
  *
@@ -55,11 +57,6 @@ function buildTree(data: Record<string, any>[], idField: string, parentField: st
     return roots;
 }
 
-function el(tag: string, attrs: Record<string, string> = {}): HTMLElement {
-    const e = document.createElement(tag);
-    for (const [k, v] of Object.entries(attrs)) e.setAttribute(k, v);
-    return e;
-}
 
 /*----------------------------------------------------------------------------------------------------
  *
@@ -87,13 +84,10 @@ export function createSafeTree(container: HTMLElement, config: ConfigBase, ctx: 
     const indent = (metadata.indent as number) ?? 20;
     const connectors = !!metadata.connectors;
 
-    // Self-extract list from config data (SafeRenderer does this for react)
-    const ds = getDataSource(config) as any;
-    const raw = ds?.inline;
-    const data: Record<string, any>[] = Array.isArray(raw) ? raw : [];
+    const data = readList(config);
 
     if (data.length === 0) {
-        const empty = el("div", { "data-component": "tree", "data-role": "empty" });
+        const empty = elAttrs("div", { "data-component": "tree", "data-role": "empty" });
         empty.textContent = "No items";
         container.appendChild(empty);
         return empty;
@@ -113,12 +107,14 @@ export function createSafeTree(container: HTMLElement, config: ConfigBase, ctx: 
 
     let selected: string | null = null;
 
-    const root = el("div", {
+    const root = elAttrs("div", {
         "data-component": "tree",
         "data-variant": variant,
         "data-spacing": spacing,
         "data-surface": surface,
     });
+    applyIntent(root, metadata);
+    applyPaintState(root, metadata, "tree");
 
     const handleToggle = (id: string) => {
         if (expanded.has(id)) expanded.delete(id);
@@ -138,7 +134,7 @@ export function createSafeTree(container: HTMLElement, config: ConfigBase, ctx: 
         const hasChildren = node.children.length > 0;
         const isSelected = selected === node.id;
 
-        const row = el("div", { "data-role": "node", "data-depth": String(node.depth) });
+        const row = elAttrs("div", { "data-role": "node", "data-depth": String(node.depth) });
         if (isSelected) row.setAttribute("data-selected", "true");
         if (hasChildren) row.setAttribute("data-has-children", "true");
         if (isExpanded) row.setAttribute("data-expanded", "true");
@@ -147,29 +143,29 @@ export function createSafeTree(container: HTMLElement, config: ConfigBase, ctx: 
         row.onclick = () => handleSelect(node);
 
         if (hasChildren) {
-            const toggle = el("span", { "data-role": "toggle" });
+            const toggle = elAttrs("span", { "data-role": "toggle" });
             toggle.textContent = isExpanded ? "▼" : "▶";
             toggle.onclick = (e) => { e.stopPropagation(); handleToggle(node.id); };
             row.appendChild(toggle);
         } else {
-            row.appendChild(el("span", { "data-role": "leaf-spacer" }));
+            row.appendChild(elAttrs("span", { "data-role": "leaf-spacer" }));
         }
-        if (connectors && node.depth > 0) row.appendChild(el("span", { "data-role": "connector" }));
+        if (connectors && node.depth > 0) row.appendChild(elAttrs("span", { "data-role": "connector" }));
         if (iconField && node.record[iconField]) {
-            const icon = el("span", { "data-role": "icon" });
+            const icon = elAttrs("span", { "data-role": "icon" });
             icon.textContent = String(node.record[iconField]);
             row.appendChild(icon);
         }
-        const label = el("span", { "data-role": "label" });
+        const label = elAttrs("span", { "data-role": "label" });
         label.textContent = String(node.record[labelField] ?? "");
         row.appendChild(label);
         if (subtitleField && node.record[subtitleField]) {
-            const sub = el("span", { "data-role": "subtitle" });
+            const sub = elAttrs("span", { "data-role": "subtitle" });
             sub.textContent = String(node.record[subtitleField]);
             row.appendChild(sub);
         }
         if (badgeField && node.record[badgeField]) {
-            const badge = el("span", { "data-role": "badge" });
+            const badge = elAttrs("span", { "data-role": "badge" });
             badge.textContent = String(node.record[badgeField]);
             row.appendChild(badge);
         }

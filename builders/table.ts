@@ -1,10 +1,11 @@
 import type { ConfigBase, Field } from "../../safecontracts/src/contracts";
 import type { SafeFireContext } from "../../safecontracts/src/contracts";
-import { el } from "../utils/util";
+import { el, applyPaintState, applyIntent } from "../utils/util";
 import { getDataSource } from "../../safecontracts/src/contracts";
 import { fmtDate, fmtCurrency, fmtInt, fmtPercent, fmtStr } from "../../safecontracts/src/formatter";
 import { sortBy, paginate } from "../../safecontracts/src/contracts-operations";
 import type { SortDir } from "../../safecontracts/src/contracts-operations";
+import { readList } from "../../safecontracts/src/contracts-data";
 
 /*----------------------------------------------------------------------------------------------------
  *
@@ -55,8 +56,7 @@ export function createSafeTable(container: HTMLElement, config: ConfigBase, ctx:
     // Self-extract data + schema from the first datasource
     const ds = getDataSource(config);
     const schema = ds?.schema;
-    const raw = ds?.inline;
-    const data: Record<string, any>[] = Array.isArray(raw) ? raw : [];
+    const data = readList(config);
     const fields = (schema?.fields ?? []).filter((f: Field) => f.visible !== false);
 
     const variant = (metadata.variant as string) ?? "default";
@@ -92,6 +92,8 @@ export function createSafeTable(container: HTMLElement, config: ConfigBase, ctx:
 
     const root = el("div");
     root.setAttribute("data-component", "table");
+    applyIntent(root, metadata);
+    applyPaintState(root, metadata, "table");
 
     const { fire } = ctx;
 

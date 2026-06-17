@@ -1,5 +1,6 @@
 import type { SafeFireContext } from "../../safecontracts/src/contracts";
 import type { ConfigBase } from "../../safecontracts/src/contracts";
+import { elAttrs } from "../utils/util";
 
 /**
  * createSafeStoryFlow — renders a sequence of scenes. No state management.

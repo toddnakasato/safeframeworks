@@ -1,8 +1,9 @@
 import type { ConfigBase, RowCell, RowDef } from "../../safecontracts/src/contracts";
-import { el } from "../utils/util";
+import { el, applyPaintState, applyIntent } from "../utils/util";
 import type { SafeFireContext } from "../../safecontracts/src/contracts";
 import { getDataSource } from "../../safecontracts/src/contracts";
 import { filterBy } from "../../safecontracts/src/contracts-operations";
+import { readList } from "../../safecontracts/src/contracts-data";
 
 /*----------------------------------------------------------------------------------------------------
  *
@@ -28,8 +29,7 @@ export function createSafePicker(container: HTMLElement, config: ConfigBase, ctx
 
     // Self-extract list from config data (SafeRenderer does this for react)
     const ds = getDataSource(config) as any;
-    const rawData = ds?.inline;
-    const data: Record<string, any>[] = Array.isArray(rawData) ? rawData : [];
+    const data: Record<string, any>[] = readList(config);
 
     const accent = (metadata.accent as string) ?? "brand";
     const spacing = (metadata.spacing as string) ?? "normal";
@@ -65,6 +65,8 @@ export function createSafePicker(container: HTMLElement, config: ConfigBase, ctx
 
     const root = el("div");
     root.setAttribute("data-component", "picker");
+    applyIntent(root, metadata);
+    applyPaintState(root, metadata, "picker");
 
     // Paint intent attributes
     const _selectedItem = metadata.selectedItem ?? null;

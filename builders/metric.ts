@@ -32,6 +32,7 @@ export function createSafeMetric(container: HTMLElement, config: ConfigBase, ctx
     const formatted = formatByType(value, metadata.format as string);
 
     const root = el("div");
+    root.setAttribute("data-component", "metric");
     root.style.display = "flex";
     root.style.flexDirection = "column";
     root.style.alignItems = "center";

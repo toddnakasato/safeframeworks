@@ -3,6 +3,8 @@ import type { SafeFireContext } from "../../safecontracts/src/contracts";
 import { getDataSource } from "../../safecontracts/src/contracts";
 import type { ConfigBase } from "../../safecontracts/src/contracts";
 import { resolveColors } from "../../safecontracts/src/palette";
+import { elAttrs, applyPaintState, applyIntent } from "../utils/util";
+import { readList } from "../../safecontracts/src/contracts-data";
 
 /*----------------------------------------------------------------------------------------------------
  *
@@ -31,13 +33,12 @@ export function createSafeFunnel(container: HTMLElement, config: ConfigBase, ctx
     const showConversion = metadata.showConversion !== false;
     const showPercent = metadata.showPercent !== false;
 
-    // Self-extract list data from the first DataSource (contract: list).
-    const ds = getDataSource(config);
-    const raw = ds?.inline;
-    const data: Record<string, any>[] = Array.isArray(raw) ? raw : [];
+    const data = readList(config);
 
     const root = document.createElement("div");
     root.setAttribute("data-component", "funnel");
+    applyIntent(root, metadata);
+    applyPaintState(root, metadata, "funnel");
 
     // Paint intent attributes
     const _selectedStage = metadata.selectedStage ?? null;

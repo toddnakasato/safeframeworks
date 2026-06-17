@@ -1,7 +1,8 @@
 import type { ConfigBase } from "../../safecontracts/src/contracts";
-import { el } from "../utils/util";
+import { el, applyPaintState, applyIntent } from "../utils/util";
 import type { SafeFireContext } from "../../safecontracts/src/contracts";
 import { getDataSource } from "../../safecontracts/src/contracts";
+import { readList } from "../../safecontracts/src/contracts-data";
 
 /*----------------------------------------------------------------------------------------------------
  *
@@ -40,11 +41,12 @@ export function createSafeToggle(container: HTMLElement, config: ConfigBase, ctx
 
     // Self-extract list from config data (SafeRenderer does this for react)
     const ds = getDataSource(config) as any;
-    const rawData = ds?.inline;
-    const dataList: Record<string, any>[] = Array.isArray(rawData) ? rawData : [];
+    const dataList: Record<string, any>[] = readList(config);
 
     const root = el("div");
     root.setAttribute("data-component", "toggle");
+    applyIntent(root, metadata);
+    applyPaintState(root, metadata, "toggle");
 
     // Paint intent attributes
     const _expanded = metadata.expanded ?? null;

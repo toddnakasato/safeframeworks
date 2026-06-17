@@ -1,7 +1,8 @@
 import type { ConfigBase } from "../../safecontracts/src/contracts";
-import { el } from "../utils/util";
+import { el, applyPaintState, applyIntent } from "../utils/util";
 import type { SafeFireContext } from "../../safecontracts/src/contracts";
 import { getDataSource } from "../../safecontracts/src/contracts";
+import { readList } from "../../safecontracts/src/contracts-data";
 
 /*----------------------------------------------------------------------------------------------------
  *
@@ -28,10 +29,7 @@ export function createSafeHeatmap(container: HTMLElement, config: ConfigBase, ct
     const labelField = metadata.labelField as string | undefined;
     const variant = (metadata.variant as string) ?? "default";
 
-    // Self-extract list data from the first DataSource (contract: list).
-    const ds = getDataSource(config);
-    const raw = ds?.inline;
-    const data: Record<string, any>[] = Array.isArray(raw) ? raw : [];
+    const data = readList(config);
 
     const values = data.map((d) => Number(d[valueField]) || 0);
     const minVal = (metadata.minValue as number) ?? Math.min(...values);
@@ -41,6 +39,8 @@ export function createSafeHeatmap(container: HTMLElement, config: ConfigBase, ct
 
     const root = el("div");
     root.setAttribute("data-component", "heatmap");
+    applyIntent(root, metadata);
+    applyPaintState(root, metadata, "heatmap");
 
     // Paint intent attributes
     const _selectedCell = metadata.selectedCell ?? null;

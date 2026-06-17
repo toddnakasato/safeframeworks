@@ -1,5 +1,5 @@
 import type { ConfigBase } from "../../safecontracts/src/contracts";
-import { el } from "../utils/util";
+import { el, applyIntent } from "../utils/util";
 import type { SafeFireContext } from "../../safecontracts/src/contracts";
 import { MONTH_NAMES } from "../../safecontracts/src/contracts";
 
@@ -76,6 +76,7 @@ export function createSafeCalendar(container: HTMLElement, config: ConfigBase, c
 
     const root = el("div");
     root.setAttribute("data-component", "calendar");
+    applyIntent(root, metadata);
     root.setAttribute("data-variant", variant);
 
     const fireNavigate = (dir: number) => {

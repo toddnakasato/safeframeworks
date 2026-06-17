@@ -4,6 +4,8 @@ import { getDataSource } from "../../safecontracts/src/contracts";
 import type { ConfigBase } from "../../safecontracts/src/contracts";
 import { HIERARCHY_DEFAULTS } from "../../safecontracts/src/components/hierarchy";
 import { resolveColors } from "../../safecontracts/src/palette";
+import { elAttrs, applyIntent } from "../utils/util";
+import { readList } from "../../safecontracts/src/contracts-data";
 
 /*----------------------------------------------------------------------------------------------------
  *
@@ -224,12 +226,11 @@ export function createSafeHierarchy(container: HTMLElement, config: ConfigBase, 
 
     const variant = (metadata.variant as string) ?? HIERARCHY_DEFAULTS.variant;
 
-    const ds = getDataSource(config);
-    const raw = ds?.inline;
-    const data: Record<string, any>[] = Array.isArray(raw) ? raw : [];
+    const data = readList(config);
 
     const rootEl = document.createElement("div");
     rootEl.setAttribute("data-component", "hierarchy");
+    applyIntent(rootEl, metadata);
     rootEl.setAttribute("data-variant", variant);
 
     const svgEl = document.createElementNS("http://www.w3.org/2000/svg", "svg");

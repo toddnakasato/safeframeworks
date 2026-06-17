@@ -6,6 +6,8 @@ import type { ConfigBase } from "../../safecontracts/src/contracts";
 import type { FlowData, FlowNode } from "../../safecontracts/src/components/flow";
 import { FLOW_DEFAULTS } from "../../safecontracts/src/components/flow";
 import { resolveColors } from "../../safecontracts/src/palette";
+import { readList } from "../../safecontracts/src/contracts-data";
+import { applyIntent } from "../utils/util";
 
 /*----------------------------------------------------------------------------------------------------
  *
@@ -24,7 +26,7 @@ const HEIGHT = 350;
 
 export function flowData(config: ConfigBase): FlowData {
     const ds = getDataSource(config);
-    const inline = ds?.inline as unknown as FlowData | undefined;
+    const inline = readRecord(config) as unknown as FlowData;
     return inline && Array.isArray(inline.nodes) ? inline : { nodes: [], links: [] };
 }
 
@@ -324,6 +326,7 @@ export function renderSafeFlow(
     const svg = d3.select(svgEl);
     svg.selectAll("*").remove();
     svgEl.setAttribute("data-component", "flow");
+    applyIntent(svgEl, metadata);
     svgEl.setAttribute("data-variant", variant);
 
     if (!data.nodes?.length) return;

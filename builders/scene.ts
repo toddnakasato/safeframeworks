@@ -1,5 +1,6 @@
 import type { SafeFireContext } from "../../safecontracts/src/contracts";
 import type { ConfigBase } from "../../safecontracts/src/contracts";
+import { elAttrs, applyPaintState } from "../utils/util";
 
 /**
  * createSafeScene — renders a ConfigBase's children. No state management.
@@ -15,6 +16,7 @@ export function createSafeScene(
 
     const root = document.createElement("div");
     root.setAttribute("data-component", "scene");
+    applyPaintState(root, metadata, "scene");
 
     // Paint intent attributes
     const _selectedItem = metadata.selectedItem ?? null;

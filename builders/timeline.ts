@@ -1,10 +1,11 @@
 import * as d3 from "d3";
-import { el } from "../utils/util";
+import { el, applyPaintState, applyIntent } from "../utils/util";
 import type { SafeFireContext } from "../../safecontracts/src/contracts";
 import { getDataSource } from "../../safecontracts/src/contracts";
 import type { ConfigBase } from "../../safecontracts/src/contracts";
 import { sortBy } from "../../safecontracts/src/contracts-operations";
 import { resolveColors } from "../../safecontracts/src/palette";
+import { readList } from "../../safecontracts/src/contracts-data";
 
 /*----------------------------------------------------------------------------------------------------
  *
@@ -20,8 +21,7 @@ import { resolveColors } from "../../safecontracts/src/palette";
 
 export function timelineData(config: ConfigBase): Record<string, any>[] {
     const ds = getDataSource(config);
-    const raw = ds?.inline;
-    return Array.isArray(raw) ? raw : [];
+    return readList(config);
 }
 
 function getCategoryColor(categories: string[], cat: string, colors: string[]): string {
@@ -63,6 +63,8 @@ export function createSafeTimeline(container: HTMLElement, config: ConfigBase, c
 
     const root = el("div");
     root.setAttribute("data-component", "timeline");
+    applyIntent(root, metadata);
+    applyPaintState(root, metadata, "timeline");
 
     // Paint intent attributes
     const _selectedEvent = metadata.selectedEvent ?? null;

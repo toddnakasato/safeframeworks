@@ -1,6 +1,8 @@
 import type { ConfigBase, Field, SafeFireContext } from "../../safecontracts/src/contracts";
 import { getDataSource } from "../../safecontracts/src/contracts";
 import { createSafeInput } from "./input";
+import { elAttrs } from "../utils/util";
+import { readList } from "../../safecontracts/src/contracts-data";
 
 /*----------------------------------------------------------------------------------------------------
  *
@@ -25,11 +27,6 @@ const D = {
  *
  ----------------------------------------------------------------------------------------------------*/
 
-function el(tag: string, attrs: Record<string, string> = {}): HTMLElement {
-    const e = document.createElement(tag);
-    for (const [k, v] of Object.entries(attrs)) e.setAttribute(k, v);
-    return e;
-}
 
 function fieldToInputConfig(
     field: Field,
@@ -93,8 +90,7 @@ export function createSafeGrid(container: HTMLElement, config: ConfigBase, ctx?:
     const metadata = config.metadata;
     const ds = getDataSource(config) as any;
     const schema = ds?.schema;
-    const raw = ds?.inline;
-    const record: Record<string, any> = (Array.isArray(raw) ? raw[0] : raw) ?? {};
+    const record: Record<string, any> = readRecord(config);
     const columns = (metadata.columns as string) ?? D.columns;
     const label = metadata.label as string | undefined;
     const collapsible = !!metadata.collapsible;
@@ -112,7 +108,7 @@ export function createSafeGrid(container: HTMLElement, config: ConfigBase, ctx?:
 
     let collapsed = false;
 
-    const root = el("div", {
+    const root = elAttrs("div", {
         "data-component": "grid",
         "data-surface": surface,
         "data-radius": radius,
@@ -123,16 +119,16 @@ export function createSafeGrid(container: HTMLElement, config: ConfigBase, ctx?:
         root.replaceChildren();
 
         if (label) {
-            const header = el("div", { "data-role": "header" });
+            const header = elAttrs("div", { "data-role": "header" });
             if (collapsible) {
                 header.setAttribute("data-collapsible", "true");
                 header.onclick = () => { collapsed = !collapsed; render(); };
             }
-            const hl = el("span", { "data-role": "header-label" });
+            const hl = elAttrs("span", { "data-role": "header-label" });
             hl.textContent = label;
             header.appendChild(hl);
             if (collapsible) {
-                const hi = el("span", { "data-role": "header-icon" });
+                const hi = elAttrs("span", { "data-role": "header-icon" });
                 hi.textContent = collapsed ? expandIcon : collapseIcon;
                 header.appendChild(hi);
             }
@@ -140,17 +136,17 @@ export function createSafeGrid(container: HTMLElement, config: ConfigBase, ctx?:
         }
 
         if (!collapsed) {
-            const body = el("div", { "data-role": "body" });
+            const body = elAttrs("div", { "data-role": "body" });
             // Structural grid layout — react sets this inline too.
             body.style.display = "grid";
             body.style.gridTemplateColumns = columns.replace(/1fr/g, "minmax(0, 1fr)");
 
             for (const field of fields) {
-                const cell = el("div", { "data-role": "grid-cell", "data-field-type": field.type });
-                const cl = el("div", { "data-role": "label" });
+                const cell = elAttrs("div", { "data-role": "grid-cell", "data-field-type": field.type });
+                const cl = elAttrs("div", { "data-role": "label" });
                 cl.textContent = field.label;
                 cell.appendChild(cl);
-                const inputWrap = el("div", { "data-role": "input" });
+                const inputWrap = elAttrs("div", { "data-role": "input" });
                 createSafeInput(
                     inputWrap,
                     fieldToInputConfig(field, locale, currency, timezone, emptyValue, record[field.name]),

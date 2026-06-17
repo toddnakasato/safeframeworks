@@ -1,7 +1,8 @@
 import type { ConfigBase, RowCell, RowDef } from "../../safecontracts/src/contracts";
-import { el } from "../utils/util";
+import { el, applyPaintState, applyIntent } from "../utils/util";
 import type { SafeFireContext } from "../../safecontracts/src/contracts";
 import { getDataSource } from "../../safecontracts/src/contracts";
+import { readList } from "../../safecontracts/src/contracts-data";
 
 /*----------------------------------------------------------------------------------------------------
  *
@@ -35,8 +36,7 @@ export function createSafeCard(container: HTMLElement, config: ConfigBase, ctx: 
 
     // Self-extract record data from the first DataSource (contract: record).
     const ds = getDataSource(config);
-    const raw = ds?.inline;
-    const data: Record<string, any> = (Array.isArray(raw) ? raw[0] : raw) ?? {};
+    const data = readList(config);
 
     // External paint state (resolved from state.json by host)
     const _selectedCard = metadata.selectedCard ?? null;
@@ -44,6 +44,8 @@ export function createSafeCard(container: HTMLElement, config: ConfigBase, ctx: 
 
     const root = el("div");
     root.setAttribute("data-component", "card");
+    applyIntent(root, metadata);
+    applyPaintState(root, metadata, "card");
 
     // Paint intent attributes
     if (_selectedCard != null) root.setAttribute("data-selected", String(_selectedCard));

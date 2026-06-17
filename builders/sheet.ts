@@ -1,10 +1,11 @@
 import { HyperFormula } from "hyperformula";
-import { el } from "../utils/util";
+import { el, applyPaintState, applyIntent } from "../utils/util";
 import type { SafeFireContext } from "../../safecontracts/src/contracts";
 import { getDataSource } from "../../safecontracts/src/contracts";
 import type { ConfigBase } from "../../safecontracts/src/contracts";
 import type { SheetColumn } from "../../safecontracts/src/components/sheet";
 import { SHEET_DEFAULTS, SHEET_STATUS_ACCENTS } from "../../safecontracts/src/components/sheet";
+import { readList } from "../../safecontracts/src/contracts-data";
 
 /*----------------------------------------------------------------------------------------------------
  *
@@ -107,8 +108,7 @@ export function createSafeSheet(container: HTMLElement, config: ConfigBase, ctx:
     const emptyMessage = (metadata.emptyMessage as string) ?? SHEET_DEFAULTS.emptyMessage;
 
     const ds = getDataSource(config);
-    const raw = ds?.inline;
-    const data: any[][] = Array.isArray(raw) ? (raw as any[][]) : [];
+    const data = readList(config);
 
     const hf = HyperFormula.buildFromArray(data, { licenseKey: "gpl-v3" });
 
@@ -133,6 +133,8 @@ export function createSafeSheet(container: HTMLElement, config: ConfigBase, ctx:
 
     const root = el("div");
     root.setAttribute("data-component", "sheet");
+    applyIntent(root, metadata);
+    applyPaintState(root, metadata, "sheet");
 
     // Paint intent attributes
     const _selectedCell = metadata.selectedCell ?? null;
