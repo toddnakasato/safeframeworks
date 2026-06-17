@@ -1,0 +1,33 @@
+{
+  "ok": true,
+  "component": "funnel",
+  "event": "all",
+  "total": 3,
+  "passed": 3,
+  "failed": 0,
+  "groups": {
+    "coverage": 2,
+    "stranded": 1,
+    "data-keys": 0,
+    "context-keys": 0
+  },
+  "checks": [
+    {
+      "group": "coverage",
+      "name": "funnel: has COMPONENT_PAYLOAD_SHAPES entry",
+      "status": "pass"
+    },
+    {
+      "group": "coverage",
+      "name": "funnel/select: shape declared",
+      "status": "pass"
+    },
+    {
+      "group": "stranded",
+      "name": "funnel/select: payload shape has matching event",
+      "status": "pass"
+    }
+  ],
+  "failures": [],
+  "ts": "2026-06-17T08:58:26.501Z"
+}

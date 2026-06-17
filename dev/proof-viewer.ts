@@ -232,23 +232,185 @@ export function createSafeProofViewer(
 
     // ==================== EVENTS TAB ====================
 
-    const eventsLog = el("div", "pv-events-log");
+    // Styles for events table and modal
+    const evStyle = document.createElement("style");
+    evStyle.textContent = `
+        .pv .ev-tbl { width: 100%; border-collapse: collapse; table-layout: fixed; font-size: 11px; }
+        .pv .ev-tbl th { text-align: left; padding: 5px 6px; border-bottom: 2px solid #e5e7eb; font-size: 10px; text-transform: uppercase; color: #6b7280; }
+        .pv .ev-tbl td { padding: 5px 6px; border-bottom: 1px solid #f3f4f6; vertical-align: top; font-size: 11px; }
+        .pv .ev-tbl tr:hover { background: #f9fafb; }
+        .pv .ev-tbl col.ev-c-event { width: 16%; } .pv .ev-tbl col.ev-c-payload { width: 8%; }
+        .pv .ev-tbl col.ev-c-route { width: 22%; } .pv .ev-tbl col.ev-c-process { width: 26%; }
+        .pv .ev-tbl col.ev-c-paint { width: 28%; }
+        .pv .ev-mono { font-family: "SF Mono", ui-monospace, monospace; font-size: 10px; color: #6b7280; white-space: pre-wrap; word-break: break-all; }
+        .pv .ev-btn-view { padding: 1px 6px; border: 1px solid #d1d5db; border-radius: 3px; background: #fff; cursor: pointer; font-size: 9px; font-weight: 600; }
+        .pv .ev-btn-view:hover { background: #f3f4f6; }
+        .pv .ev-delta { color: #1e40af; font-weight: 600; }
+        .pv .pv-modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.4); z-index: 9999; display: flex; align-items: center; justify-content: center; }
+        .pv .pv-modal { background: #fff; border-radius: 8px; padding: 16px; max-width: 600px; width: 90%; max-height: 80vh; overflow-y: auto; box-shadow: 0 8px 32px rgba(0,0,0,0.2); }
+        .pv .pv-modal-hdr { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+        .pv .pv-modal-title { font-size: 13px; font-weight: 600; }
+        .pv .pv-modal-close { border: none; background: none; cursor: pointer; font-size: 16px; color: #6b7280; padding: 2px 6px; }
+        .pv .pv-modal-close:hover { color: #111; }
+        .pv .pv-modal-body { font-family: "SF Mono", ui-monospace, monospace; font-size: 11px; color: #374151; white-space: pre-wrap; word-break: break-all; background: #f9fafb; border-radius: 4px; padding: 12px; }
+    `;
+    eventsPanel.appendChild(evStyle);
+
+    // Events table
+    const evTbl = document.createElement("table");
+    evTbl.className = "ev-tbl";
+    const evColgroup = document.createElement("colgroup");
+    for (const cls of ["ev-c-event", "ev-c-payload", "ev-c-route", "ev-c-process", "ev-c-paint"]) {
+        const col = document.createElement("col");
+        col.className = cls;
+        evColgroup.appendChild(col);
+    }
+    evTbl.appendChild(evColgroup);
+
+    const evThead = document.createElement("thead");
+    const evHr = document.createElement("tr");
+    for (const l of ["Event", "Payload", "Route", "Process", "Paint"]) evHr.appendChild(el("th", undefined, l));
+    evThead.appendChild(evHr);
+    evTbl.appendChild(evThead);
+
+    const evTbody = document.createElement("tbody");
+    evTbl.appendChild(evTbody);
+
     const eventsEmpty = el("div", "empty", "Interact with the component to see events");
     eventsPanel.appendChild(eventsEmpty);
-    eventsPanel.appendChild(eventsLog);
+    eventsPanel.appendChild(evTbl);
+    evTbl.style.display = "none";
+
+    // State tracking for paint deltas
+    let lastState: Record<string, any> = {};
+
+    // Modal helper
+    function showPayloadModal(eventName: string, payload: any) {
+        const overlay = el("div", "pv-modal-overlay");
+        const modal = el("div", "pv-modal");
+        const hdr = el("div", "pv-modal-hdr");
+        hdr.appendChild(el("span", "pv-modal-title", `${eventName} — Full Payload`));
+        const closeBtn = el("button", "pv-modal-close", "✕") as HTMLButtonElement;
+        closeBtn.onclick = () => overlay.remove();
+        hdr.appendChild(closeBtn);
+        modal.appendChild(hdr);
+        const body = el("div", "pv-modal-body", JSON.stringify(payload, null, 2));
+        modal.appendChild(body);
+        overlay.appendChild(modal);
+        overlay.onclick = (e) => { if (e.target === overlay) overlay.remove(); };
+        root.appendChild(overlay);
+    }
+
+    // Compute paint delta
+    function computeDelta(event: any): { file: string; delta: string } {
+        const name = event.name ?? "";
+        const data = event.data ?? {};
+
+        // Infer file and delta from event type
+        if (name === "sort") {
+            return { file: "data.json", delta: `Δ rows: re-sorted by ${data.field ?? "?"} ${data.dir ?? "asc"}` };
+        }
+        if (name === "page") {
+            const prev = lastState.currentPage ?? 1;
+            const next = data.page ?? 1;
+            lastState.currentPage = next;
+            return { file: "state.json", delta: `Δ currentPage: ${prev} → ${next}` };
+        }
+        if (name === "row:hover") {
+            const prev = lastState.hoverRow ?? "null";
+            lastState.hoverRow = data.index;
+            return { file: "state.json", delta: `Δ hoverRow: ${prev} → ${data.index}` };
+        }
+        if (name === "row:leave") {
+            const prev = lastState.hoverRow ?? "null";
+            lastState.hoverRow = null;
+            return { file: "state.json", delta: `Δ hoverRow: ${prev} → null` };
+        }
+        if (name === "row:click" || name === "select") {
+            const prev = lastState.selectedRow ?? "null";
+            lastState.selectedRow = data.index;
+            return { file: "state.json", delta: `Δ selectedRow: ${prev} → ${data.index}` };
+        }
+        if (name === "row:select") {
+            const prev = JSON.stringify(lastState.selected ?? []);
+            lastState.selected = data.selected;
+            return { file: "state.json", delta: `Δ selected: ${prev} → ${JSON.stringify(data.selected ?? [])}` };
+        }
+        if (name === "cell:click" || name === "cell:dblclick") {
+            return { file: "state.json", delta: `Δ editCell: null → {${data.index},${data.field}}` };
+        }
+        if (name === "cell:edit") {
+            return { file: "data.json", delta: `Δ row[${data.index}].${data.field}: ${data.previous ?? "?"} → ${data.value ?? "?"}` };
+        }
+        if (name === "column:resize") {
+            return { file: "state.json", delta: `Δ colWidth.${data.field}: → ${data.width}px` };
+        }
+        if (name === "filter") {
+            return { file: "data.json", delta: `Δ rows: filtered ${data.field} ${data.operator ?? "eq"} ${data.value}` };
+        }
+        if (name === "reorder") {
+            return { file: "data.json", delta: `Δ rows: reordered` };
+        }
+        // Generic fallback
+        const key = name.replace(":", "_");
+        return { file: "state.json", delta: `Δ ${key}: updated` };
+    }
 
     // Public method — host calls this to push events into the Events tab
     (root as any).pushEvent = (event: any) => {
         eventsEmpty.style.display = "none";
-        const entry = el("div", "ev-row");
-        const tsEl2 = el("span", "ts", new Date().toLocaleTimeString());
-        const nameEl = el("span", "ev-name", `${event.name}`);
-        const dataEl = el("div", "ev-shape", event.data ? JSON.stringify(event.data) : "—");
-        entry.appendChild(tsEl2);
-        entry.appendChild(nameEl);
-        entry.appendChild(dataEl);
-        eventsLog.insertBefore(entry, eventsLog.firstChild);
-        while (eventsLog.children.length > 50) eventsLog.removeChild(eventsLog.lastChild!);
+        evTbl.style.display = "table";
+
+        const tr = document.createElement("tr");
+        const data = event.data ?? {};
+        const name = event.name ?? "?";
+
+        // Event column — name + coordinates
+        const evTd = el("td", "ev-mono");
+        const coordLines = Object.entries(data)
+            .filter(([k]) => !["row", "rows", "selected"].includes(k) || k === "selected")
+            .map(([k, v]) => `  ${k}: ${typeof v === "object" ? JSON.stringify(v) : v}`)
+            .join("\n");
+        evTd.textContent = name + (coordLines ? "\n" + coordLines : "");
+        tr.appendChild(evTd);
+
+        // Payload column — View button
+        const payTd = document.createElement("td");
+        const viewBtn = el("button", "ev-btn-view", "View") as HTMLButtonElement;
+        viewBtn.onclick = (e) => { e.stopPropagation(); showPayloadModal(name, event); };
+        payTd.appendChild(viewBtn);
+        tr.appendChild(payTd);
+
+        // Route column
+        const routeTd = el("td", "ev-mono");
+        routeTd.textContent = `handler: ${target}\non: ${name}`;
+        tr.appendChild(routeTd);
+
+        // Process column
+        const procTd = el("td", "ev-mono");
+        const coordArgs = Object.entries(data)
+            .filter(([k]) => !["row", "rows"].includes(k))
+            .map(([k, v]) => `--${k} ${typeof v === "object" ? JSON.stringify(v) : v}`)
+            .join(" ");
+        procTd.textContent = `safedesk data\n  ${name.replace(":", "-")}\n  --component ${target}\n  ${coordArgs}`;
+        tr.appendChild(procTd);
+
+        // Paint column — file + delta
+        const { file, delta } = computeDelta(event);
+        const paintTd = el("td", "ev-mono");
+        const fileEl = el("div", undefined, file);
+        const deltaEl = el("div", "ev-delta", delta);
+        paintTd.appendChild(fileEl);
+        paintTd.appendChild(deltaEl);
+        tr.appendChild(paintTd);
+
+        // Insert at top, keep max 50
+        if (evTbody.firstChild) {
+            evTbody.insertBefore(tr, evTbody.firstChild);
+        } else {
+            evTbody.appendChild(tr);
+        }
+        while (evTbody.children.length > 50) evTbody.removeChild(evTbody.lastChild!);
     };
 
     root.appendChild(proofsPanel);
