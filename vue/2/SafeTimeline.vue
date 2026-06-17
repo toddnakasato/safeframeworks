@@ -16,7 +16,10 @@ export default defineComponent({
   },
   mounted() {
     const el = this.$refs.timelineContainer as HTMLElement;
-    if (el) this.root = createSafeTimeline(el, this.config, this.onEvent);
+    if (el) {
+      const _ctx = createSafeFireContext(this.config, this.onEvent, buildPayloadViaCli);
+      this.root = createSafeTimeline(el, this.config, _ctx);
+    };
   },
   beforeDestroy() {
     this.root?.remove();

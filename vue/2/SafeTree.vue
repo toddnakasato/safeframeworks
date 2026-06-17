@@ -16,7 +16,10 @@ export default defineComponent({
   },
   mounted() {
     const el = this.$refs.treeContainer as HTMLElement;
-    if (el) this.root = createSafeTree(el, this.config, this.onEvent);
+    if (el) {
+      const _ctx = createSafeFireContext(this.config, this.onEvent, buildPayloadViaCli);
+      this.root = createSafeTree(el, this.config, _ctx);
+    };
   },
   beforeDestroy() {
     this.root?.remove();

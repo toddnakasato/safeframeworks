@@ -10,8 +10,10 @@ const containerRef = ref<HTMLElement | null>(null);
 let root: HTMLElement | null = null;
 
 onMounted(() => {
-  if (containerRef.value) const _ctx = createSafeFireContext(props.config, props.onEvent, buildPayloadViaCli);
-  root = createSafeGauge(containerRef.value, props.config, _ctx);
+  if (containerRef.value) {
+    const _ctx = createSafeFireContext(props.config, props.onEvent, buildPayloadViaCli);
+    root = createSafeGauge(containerRef.value, props.config, _ctx);
+  }
 });
 
 onBeforeUnmount(() => {

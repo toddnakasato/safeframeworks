@@ -16,7 +16,10 @@ export default defineComponent({
   },
   mounted() {
     const el = this.$refs.listContainer as HTMLElement;
-    if (el) this.root = createSafeList(el, this.config, this.onEvent);
+    if (el) {
+      const _ctx = createSafeFireContext(this.config, this.onEvent, buildPayloadViaCli);
+      this.root = createSafeList(el, this.config, _ctx);
+    };
   },
   beforeDestroy() {
     this.root?.remove();

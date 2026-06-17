@@ -17,7 +17,10 @@ export default defineComponent({
   },
   mounted() {
     const el = this.$refs.layoutContainer as HTMLElement;
-    if (el) this.root = createSafeLayout(el, this.config, this.onEvent, buildComponent);
+    if (el) {
+      const _ctx = createSafeFireContext(this.config, this.onEvent, buildPayloadViaCli);
+      this.root = createSafeLayout(el, this.config, _ctx, buildComponent);
+    };
   },
   beforeDestroy() {
     this.root?.remove();

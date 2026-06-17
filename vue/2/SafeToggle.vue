@@ -16,7 +16,10 @@ export default defineComponent({
   },
   mounted() {
     const el = this.$refs.toggleContainer as HTMLElement;
-    if (el) this.root = createSafeToggle(el, this.config, this.onEvent);
+    if (el) {
+      const _ctx = createSafeFireContext(this.config, this.onEvent, buildPayloadViaCli);
+      this.root = createSafeToggle(el, this.config, _ctx);
+    };
   },
   beforeDestroy() {
     this.root?.remove();
