@@ -1,8 +1,8 @@
 {
   "ok": true,
   "component": "all",
-  "total": 266,
-  "passed": 266,
+  "total": 295,
+  "passed": 295,
   "failed": 0,
   "groups": {
     "uses-readList-or-readRecord": 19,
@@ -14,7 +14,8 @@
     "metadata-is-declared": 21,
     "required-metadata-fields": 12,
     "no-getDataSource": 29,
-    "no-initSafe": 29
+    "no-initSafe": 29,
+    "no-module-scope-constants": 29
   },
   "checks": [
     {
@@ -73,6 +74,11 @@
       "status": "pass"
     },
     {
+      "group": "no-module-scope-constants",
+      "name": "funnel: no module-scope uppercase constants",
+      "status": "pass"
+    },
+    {
       "group": "uses-shared-el",
       "name": "callout: uses shared el/elAttrs from utils",
       "status": "pass"
@@ -113,6 +119,11 @@
       "status": "pass"
     },
     {
+      "group": "no-module-scope-constants",
+      "name": "callout: no module-scope uppercase constants",
+      "status": "pass"
+    },
+    {
       "group": "uses-shared-el",
       "name": "week: uses shared el/elAttrs from utils",
       "status": "pass"
@@ -145,6 +156,11 @@
     {
       "group": "no-initSafe",
       "name": "week: no initSafe function",
+      "status": "pass"
+    },
+    {
+      "group": "no-module-scope-constants",
+      "name": "week: no module-scope uppercase constants",
       "status": "pass"
     },
     {
@@ -203,6 +219,11 @@
       "status": "pass"
     },
     {
+      "group": "no-module-scope-constants",
+      "name": "table: no module-scope uppercase constants",
+      "status": "pass"
+    },
+    {
       "group": "uses-readList-or-readRecord",
       "name": "nav: uses readList or readRecord",
       "status": "pass"
@@ -253,6 +274,11 @@
       "status": "pass"
     },
     {
+      "group": "no-module-scope-constants",
+      "name": "nav: no module-scope uppercase constants",
+      "status": "pass"
+    },
+    {
       "group": "uses-readList-or-readRecord",
       "name": "input: uses readList or readRecord",
       "status": "pass"
@@ -298,6 +324,11 @@
       "status": "pass"
     },
     {
+      "group": "no-module-scope-constants",
+      "name": "input: no module-scope uppercase constants",
+      "status": "pass"
+    },
+    {
       "group": "uses-shared-el",
       "name": "button: uses shared el/elAttrs from utils",
       "status": "pass"
@@ -335,6 +366,11 @@
     {
       "group": "no-initSafe",
       "name": "button: no initSafe function",
+      "status": "pass"
+    },
+    {
+      "group": "no-module-scope-constants",
+      "name": "button: no module-scope uppercase constants",
       "status": "pass"
     },
     {
@@ -393,6 +429,11 @@
       "status": "pass"
     },
     {
+      "group": "no-module-scope-constants",
+      "name": "sheet: no module-scope uppercase constants",
+      "status": "pass"
+    },
+    {
       "group": "uses-readList-or-readRecord",
       "name": "chat: uses readList or readRecord",
       "status": "pass"
@@ -423,6 +464,11 @@
       "status": "pass"
     },
     {
+      "group": "no-module-scope-constants",
+      "name": "chat: no module-scope uppercase constants",
+      "status": "pass"
+    },
+    {
       "group": "uses-shared-el",
       "name": "columns: uses shared el/elAttrs from utils",
       "status": "pass"
@@ -440,6 +486,11 @@
     {
       "group": "no-initSafe",
       "name": "columns: no initSafe function",
+      "status": "pass"
+    },
+    {
+      "group": "no-module-scope-constants",
+      "name": "columns: no module-scope uppercase constants",
       "status": "pass"
     },
     {
@@ -468,6 +519,11 @@
       "status": "pass"
     },
     {
+      "group": "no-module-scope-constants",
+      "name": "metric: no module-scope uppercase constants",
+      "status": "pass"
+    },
+    {
       "group": "uses-shared-el",
       "name": "storyflow: uses shared el/elAttrs from utils",
       "status": "pass"
@@ -485,6 +541,11 @@
     {
       "group": "no-initSafe",
       "name": "storyflow: no initSafe function",
+      "status": "pass"
+    },
+    {
+      "group": "no-module-scope-constants",
+      "name": "storyflow: no module-scope uppercase constants",
       "status": "pass"
     },
     {
@@ -520,6 +581,11 @@
     {
       "group": "no-initSafe",
       "name": "calendar: no initSafe function",
+      "status": "pass"
+    },
+    {
+      "group": "no-module-scope-constants",
+      "name": "calendar: no module-scope uppercase constants",
       "status": "pass"
     },
     {
@@ -578,6 +644,11 @@
       "status": "pass"
     },
     {
+      "group": "no-module-scope-constants",
+      "name": "card: no module-scope uppercase constants",
+      "status": "pass"
+    },
+    {
       "group": "uses-readList-or-readRecord",
       "name": "map: uses readList or readRecord",
       "status": "pass"
@@ -620,6 +691,11 @@
     {
       "group": "no-initSafe",
       "name": "map: no initSafe function",
+      "status": "pass"
+    },
+    {
+      "group": "no-module-scope-constants",
+      "name": "map: no module-scope uppercase constants",
       "status": "pass"
     },
     {
@@ -668,6 +744,11 @@
       "status": "pass"
     },
     {
+      "group": "no-module-scope-constants",
+      "name": "hierarchy: no module-scope uppercase constants",
+      "status": "pass"
+    },
+    {
       "group": "uses-readList-or-readRecord",
       "name": "flow: uses readList or readRecord",
       "status": "pass"
@@ -710,6 +791,11 @@
     {
       "group": "no-initSafe",
       "name": "flow: no initSafe function",
+      "status": "pass"
+    },
+    {
+      "group": "no-module-scope-constants",
+      "name": "flow: no module-scope uppercase constants",
       "status": "pass"
     },
     {
@@ -758,6 +844,11 @@
       "status": "pass"
     },
     {
+      "group": "no-module-scope-constants",
+      "name": "chart: no module-scope uppercase constants",
+      "status": "pass"
+    },
+    {
       "group": "uses-shared-el",
       "name": "scene: uses shared el/elAttrs from utils",
       "status": "pass"
@@ -785,6 +876,11 @@
     {
       "group": "no-initSafe",
       "name": "scene: no initSafe function",
+      "status": "pass"
+    },
+    {
+      "group": "no-module-scope-constants",
+      "name": "scene: no module-scope uppercase constants",
       "status": "pass"
     },
     {
@@ -820,6 +916,11 @@
     {
       "group": "no-initSafe",
       "name": "dragdrop: no initSafe function",
+      "status": "pass"
+    },
+    {
+      "group": "no-module-scope-constants",
+      "name": "dragdrop: no module-scope uppercase constants",
       "status": "pass"
     },
     {
@@ -865,6 +966,11 @@
     {
       "group": "no-initSafe",
       "name": "tabs: no initSafe function",
+      "status": "pass"
+    },
+    {
+      "group": "no-module-scope-constants",
+      "name": "tabs: no module-scope uppercase constants",
       "status": "pass"
     },
     {
@@ -915,6 +1021,11 @@
     {
       "group": "no-initSafe",
       "name": "list: no initSafe function",
+      "status": "pass"
+    },
+    {
+      "group": "no-module-scope-constants",
+      "name": "list: no module-scope uppercase constants",
       "status": "pass"
     },
     {
@@ -970,6 +1081,11 @@
     {
       "group": "no-initSafe",
       "name": "timeline: no initSafe function",
+      "status": "pass"
+    },
+    {
+      "group": "no-module-scope-constants",
+      "name": "timeline: no module-scope uppercase constants",
       "status": "pass"
     },
     {
@@ -1033,6 +1149,11 @@
       "status": "pass"
     },
     {
+      "group": "no-module-scope-constants",
+      "name": "tree: no module-scope uppercase constants",
+      "status": "pass"
+    },
+    {
       "group": "uses-readList-or-readRecord",
       "name": "gauge: uses readList or readRecord",
       "status": "pass"
@@ -1085,6 +1206,11 @@
     {
       "group": "no-initSafe",
       "name": "gauge: no initSafe function",
+      "status": "pass"
+    },
+    {
+      "group": "no-module-scope-constants",
+      "name": "gauge: no module-scope uppercase constants",
       "status": "pass"
     },
     {
@@ -1143,6 +1269,11 @@
       "status": "pass"
     },
     {
+      "group": "no-module-scope-constants",
+      "name": "picker: no module-scope uppercase constants",
+      "status": "pass"
+    },
+    {
       "group": "uses-readList-or-readRecord",
       "name": "grid: uses readList or readRecord",
       "status": "pass"
@@ -1175,6 +1306,11 @@
     {
       "group": "no-initSafe",
       "name": "grid: no initSafe function",
+      "status": "pass"
+    },
+    {
+      "group": "no-module-scope-constants",
+      "name": "grid: no module-scope uppercase constants",
       "status": "pass"
     },
     {
@@ -1233,6 +1369,11 @@
       "status": "pass"
     },
     {
+      "group": "no-module-scope-constants",
+      "name": "heatmap: no module-scope uppercase constants",
+      "status": "pass"
+    },
+    {
       "group": "uses-readList-or-readRecord",
       "name": "toggle: uses readList or readRecord",
       "status": "pass"
@@ -1285,6 +1426,11 @@
     {
       "group": "no-initSafe",
       "name": "toggle: no initSafe function",
+      "status": "pass"
+    },
+    {
+      "group": "no-module-scope-constants",
+      "name": "toggle: no module-scope uppercase constants",
       "status": "pass"
     },
     {
@@ -1349,5 +1495,5 @@
     }
   ],
   "failures": [],
-  "ts": "2026-06-17T19:02:59.562Z"
+  "ts": "2026-06-17T19:05:09.789Z"
 }

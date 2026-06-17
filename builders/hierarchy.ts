@@ -48,6 +48,8 @@ export function createSafeHierarchy(container: HTMLElement, config: ConfigBase, 
 }
 
 function renderTreemap(svgEl: SVGSVGElement, root: d3.HierarchyNode<any>, metadata: Record<string, any>, ctx: SafeFireContext): void {
+    const WIDTH = (metadata.width as number) ?? 500;
+    const HEIGHT = (metadata.height as number) ?? 320;
     const COLORS = resolveColors(metadata);
     const labelField = (metadata.labelField as string) ?? HIERARCHY_DEFAULTS.labelField;
     const valueField = (metadata.valueField as string) ?? HIERARCHY_DEFAULTS.valueField;
@@ -101,6 +103,8 @@ function renderTreemap(svgEl: SVGSVGElement, root: d3.HierarchyNode<any>, metada
 }
 
 function renderSunburst(svgEl: SVGSVGElement, root: d3.HierarchyNode<any>, metadata: Record<string, any>, ctx: SafeFireContext): void {
+    const WIDTH = (metadata.width as number) ?? 500;
+    const HEIGHT = (metadata.height as number) ?? 320;
     const COLORS = resolveColors(metadata);
     const labelField = (metadata.labelField as string) ?? HIERARCHY_DEFAULTS.labelField;
     const accentField = (metadata.accentField as string) ?? HIERARCHY_DEFAULTS.accentField;
@@ -149,6 +153,8 @@ function renderSunburst(svgEl: SVGSVGElement, root: d3.HierarchyNode<any>, metad
 }
 
 function renderPack(svgEl: SVGSVGElement, root: d3.HierarchyNode<any>, metadata: Record<string, any>, ctx: SafeFireContext): void {
+    const WIDTH = (metadata.width as number) ?? 500;
+    const HEIGHT = (metadata.height as number) ?? 320;
     const COLORS = resolveColors(metadata);
     const labelField = (metadata.labelField as string) ?? HIERARCHY_DEFAULTS.labelField;
     const accentField = (metadata.accentField as string) ?? HIERARCHY_DEFAULTS.accentField;
@@ -188,6 +194,8 @@ function renderPack(svgEl: SVGSVGElement, root: d3.HierarchyNode<any>, metadata:
 }
 
 function renderIcicle(svgEl: SVGSVGElement, root: d3.HierarchyNode<any>, metadata: Record<string, any>, ctx: SafeFireContext): void {
+    const WIDTH = (metadata.width as number) ?? 500;
+    const HEIGHT = (metadata.height as number) ?? 320;
     const COLORS = resolveColors(metadata);
     const labelField = (metadata.labelField as string) ?? HIERARCHY_DEFAULTS.labelField;
     const accentField = (metadata.accentField as string) ?? HIERARCHY_DEFAULTS.accentField;
