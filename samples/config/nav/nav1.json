@@ -233,5 +233,75 @@
   },
   "eventHandler": {
     "handler": "nav"
+  },
+  "data": {
+    "entries": {
+      "name": "entries",
+      "type": "list",
+      "source": "inline",
+      "inline": [
+        {
+          "key": "dashboard",
+          "label": "Dashboard",
+          "icon": "layout-dashboard",
+          "children": [
+            {
+              "key": "overview",
+              "label": "Overview"
+            },
+            {
+              "key": "analytics",
+              "label": "Analytics",
+              "badge": 3
+            }
+          ]
+        },
+        {
+          "key": "settings",
+          "label": "Settings",
+          "icon": "settings",
+          "children": [
+            {
+              "key": "profile",
+              "label": "Profile"
+            },
+            {
+              "key": "billing",
+              "label": "Billing"
+            }
+          ]
+        },
+        {
+          "key": "help",
+          "label": "Help",
+          "icon": "help-circle",
+          "section": "bottom"
+        }
+      ],
+      "schema": {
+        "fields": [
+          {
+            "name": "key",
+            "label": "Key",
+            "type": "text"
+          },
+          {
+            "name": "label",
+            "label": "Label",
+            "type": "text"
+          },
+          {
+            "name": "icon",
+            "label": "Icon",
+            "type": "text"
+          },
+          {
+            "name": "children",
+            "label": "Children",
+            "type": "text"
+          }
+        ]
+      }
+    }
   }
 }

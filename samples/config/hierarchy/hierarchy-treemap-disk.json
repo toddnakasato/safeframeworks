@@ -1,7 +1,7 @@
 {
   "component": "hierarchy",
   "metadata": {
-    "variant": "treemap",
+    "variant": "pack",
     "labelField": "label",
     "valueField": "value",
     "idField": "id",
@@ -12,9 +12,43 @@
   },
   "data": {
     "nodes": {
-      "name": "hierarchy-disk-usage",
+      "name": "nodes",
       "type": "record",
-      "source": "file"
+      "source": "inline",
+      "inline": {
+        "name": "root",
+        "value": 100,
+        "children": [
+          {
+            "name": "Documents",
+            "value": 60,
+            "children": [
+              {
+                "name": "Work",
+                "value": 35
+              },
+              {
+                "name": "Personal",
+                "value": 25
+              }
+            ]
+          },
+          {
+            "name": "Media",
+            "value": 40,
+            "children": [
+              {
+                "name": "Photos",
+                "value": 25
+              },
+              {
+                "name": "Videos",
+                "value": 15
+              }
+            ]
+          }
+        ]
+      }
     }
   }
 }

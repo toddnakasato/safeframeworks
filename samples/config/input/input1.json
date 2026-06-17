@@ -8,5 +8,17 @@
   },
   "eventHandler": {
     "handler": "input"
+  },
+  "data": {
+    "record": {
+      "name": "record",
+      "type": "record",
+      "source": "inline",
+      "inline": {
+        "value": "Sample",
+        "field": "name",
+        "type": "text"
+      }
+    }
   }
 }

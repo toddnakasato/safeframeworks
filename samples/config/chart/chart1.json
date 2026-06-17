@@ -6,9 +6,27 @@
   },
   "data": {
     "series": {
-      "name": "chart-series",
+      "name": "series",
       "type": "list",
-      "source": "file",
+      "source": "inline",
+      "inline": [
+        {
+          "label": "Q1",
+          "value": 120
+        },
+        {
+          "label": "Q2",
+          "value": 180
+        },
+        {
+          "label": "Q3",
+          "value": 150
+        },
+        {
+          "label": "Q4",
+          "value": 210
+        }
+      ],
       "schema": {
         "fields": [
           {

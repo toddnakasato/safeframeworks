@@ -1,7 +1,7 @@
 {
   "component": "sheet",
   "metadata": {
-    "variant": "striped",
+    "variant": "grouped",
     "totalsRow": true,
     "rowNumbers": false,
     "editable": false,

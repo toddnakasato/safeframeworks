@@ -1,7 +1,7 @@
 {
   "component": "timeline",
   "metadata": {
-    "variant": "dense"
+    "variant": "horizontal"
   },
   "data": {
     "events": {

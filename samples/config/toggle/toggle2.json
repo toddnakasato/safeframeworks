@@ -1,7 +1,7 @@
 {
   "component": "toggle",
   "metadata": {
-    "variant": "checkbox",
+    "variant": "switch",
     "disabled": false,
     "labelPosition": "left",
     "label": "Email notifications"

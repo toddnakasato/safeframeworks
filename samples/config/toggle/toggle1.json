@@ -8,5 +8,24 @@
   },
   "eventHandler": {
     "handler": "toggle"
+  },
+  "data": {
+    "items": {
+      "name": "items",
+      "type": "list",
+      "source": "inline",
+      "inline": [
+        {
+          "key": "notifications",
+          "label": "Notifications",
+          "checked": true
+        },
+        {
+          "key": "darkMode",
+          "label": "Dark Mode",
+          "checked": false
+        }
+      ]
+    }
   }
 }

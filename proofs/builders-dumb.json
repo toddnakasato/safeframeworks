@@ -1,9 +1,9 @@
 {
-  "ok": false,
+  "ok": true,
   "component": "all",
-  "total": 285,
-  "passed": 254,
-  "failed": 31,
+  "total": 282,
+  "passed": 282,
+  "failed": 0,
   "groups": {
     "no-contracts-emit": 29,
     "no-payload-delegate": 29,
@@ -15,7 +15,7 @@
     "no-use-before-declaration": 30,
     "render-creates-ctx": 1,
     "render-injects-transport": 1,
-    "no-empty-samples": 23,
+    "no-empty-samples": 20,
     "valid-sample-variant": 30
   },
   "checks": [
@@ -1181,25 +1181,8 @@
     },
     {
       "group": "no-empty-samples",
-      "name": "tabs: at least one sample has inline data",
-      "status": "pass"
-    },
-    {
-      "group": "no-empty-samples",
       "name": "tree: at least one sample has inline data",
       "status": "pass"
-    },
-    {
-      "group": "no-empty-samples",
-      "name": "week: at least one sample has inline data",
-      "status": "fail",
-      "error": "week/ — all 3 sample(s) lack inline data. At least one must have datasources[].inline for the viewer to render content."
-    },
-    {
-      "group": "no-empty-samples",
-      "name": "calendar: at least one sample has inline data",
-      "status": "fail",
-      "error": "calendar/ — all 2 sample(s) lack inline data. At least one must have datasources[].inline for the viewer to render content."
     },
     {
       "group": "no-empty-samples",
@@ -1209,86 +1192,72 @@
     {
       "group": "no-empty-samples",
       "name": "hierarchy: at least one sample has inline data",
-      "status": "fail",
-      "error": "hierarchy/ — all 4 sample(s) lack inline data. At least one must have datasources[].inline for the viewer to render content."
+      "status": "pass"
     },
     {
       "group": "no-empty-samples",
       "name": "chat: at least one sample has inline data",
-      "status": "fail",
-      "error": "chat/ — all 2 sample(s) lack inline data. At least one must have datasources[].inline for the viewer to render content."
+      "status": "pass"
     },
     {
       "group": "no-empty-samples",
       "name": "picker: at least one sample has inline data",
-      "status": "fail",
-      "error": "picker/ — all 2 sample(s) lack inline data. At least one must have datasources[].inline for the viewer to render content."
+      "status": "pass"
     },
     {
       "group": "no-empty-samples",
       "name": "input: at least one sample has inline data",
-      "status": "fail",
-      "error": "input/ — all 2 sample(s) lack inline data. At least one must have datasources[].inline for the viewer to render content."
+      "status": "pass"
     },
     {
       "group": "no-empty-samples",
       "name": "chart: at least one sample has inline data",
-      "status": "fail",
-      "error": "chart/ — all 2 sample(s) lack inline data. At least one must have datasources[].inline for the viewer to render content."
+      "status": "pass"
     },
     {
       "group": "no-empty-samples",
       "name": "toggle: at least one sample has inline data",
-      "status": "fail",
-      "error": "toggle/ — all 2 sample(s) lack inline data. At least one must have datasources[].inline for the viewer to render content."
+      "status": "pass"
     },
     {
       "group": "no-empty-samples",
       "name": "map: at least one sample has inline data",
-      "status": "fail",
-      "error": "map/ — all 2 sample(s) lack inline data. At least one must have datasources[].inline for the viewer to render content."
+      "status": "pass"
     },
     {
       "group": "no-empty-samples",
       "name": "table: at least one sample has inline data",
-      "status": "fail",
-      "error": "table/ — all 5 sample(s) lack inline data. At least one must have datasources[].inline for the viewer to render content."
+      "status": "pass"
     },
     {
       "group": "no-empty-samples",
       "name": "list: at least one sample has inline data",
-      "status": "fail",
-      "error": "list/ — all 11 sample(s) lack inline data. At least one must have datasources[].inline for the viewer to render content."
+      "status": "pass"
     },
     {
       "group": "no-empty-samples",
       "name": "gauge: at least one sample has inline data",
-      "status": "fail",
-      "error": "gauge/ — all 2 sample(s) lack inline data. At least one must have datasources[].inline for the viewer to render content."
+      "status": "pass"
     },
     {
       "group": "no-empty-samples",
       "name": "heatmap: at least one sample has inline data",
-      "status": "fail",
-      "error": "heatmap/ — all 2 sample(s) lack inline data. At least one must have datasources[].inline for the viewer to render content."
+      "status": "pass"
     },
     {
       "group": "no-empty-samples",
       "name": "nav: at least one sample has inline data",
-      "status": "fail",
-      "error": "nav/ — all 2 sample(s) lack inline data. At least one must have datasources[].inline for the viewer to render content."
+      "status": "pass"
     },
     {
       "group": "no-empty-samples",
       "name": "sheet: at least one sample has inline data",
-      "status": "fail",
-      "error": "sheet/ — all 14 sample(s) lack inline data. At least one must have datasources[].inline for the viewer to render content."
+      "status": "pass"
     },
     {
       "group": "no-empty-samples",
       "name": "timeline: at least one sample has inline data",
-      "status": "fail",
-      "error": "timeline/ — all 2 sample(s) lack inline data. At least one must have datasources[].inline for the viewer to render content."
+      "status": "pass"
     },
     {
       "group": "no-empty-samples",
@@ -1298,20 +1267,17 @@
     {
       "group": "no-empty-samples",
       "name": "drag-drop: at least one sample has inline data",
-      "status": "fail",
-      "error": "drag-drop/ — all 2 sample(s) lack inline data. At least one must have datasources[].inline for the viewer to render content."
+      "status": "pass"
     },
     {
       "group": "no-empty-samples",
       "name": "grid: at least one sample has inline data",
-      "status": "fail",
-      "error": "grid/ — all 2 sample(s) lack inline data. At least one must have datasources[].inline for the viewer to render content."
+      "status": "pass"
     },
     {
       "group": "no-empty-samples",
       "name": "flow: at least one sample has inline data",
-      "status": "fail",
-      "error": "flow/ — all 4 sample(s) lack inline data. At least one must have datasources[].inline for the viewer to render content."
+      "status": "pass"
     },
     {
       "group": "valid-sample-variant",
@@ -1340,9 +1306,8 @@
     },
     {
       "group": "valid-sample-variant",
-      "name": "hierarchy/hierarchy-treemap-disk.json: variant 'treemap' is valid",
-      "status": "fail",
-      "error": "hierarchy/hierarchy-treemap-disk.json uses variant 'treemap' but builder only handles: icicle, pack, sunburst"
+      "name": "hierarchy/hierarchy-treemap-disk.json: variant 'pack' is valid",
+      "status": "pass"
     },
     {
       "group": "valid-sample-variant",
@@ -1356,9 +1321,8 @@
     },
     {
       "group": "valid-sample-variant",
-      "name": "toggle/toggle2.json: variant 'checkbox' is valid",
-      "status": "fail",
-      "error": "toggle/toggle2.json uses variant 'checkbox' but builder only handles: expandable, switch, table"
+      "name": "toggle/toggle2.json: variant 'switch' is valid",
+      "status": "pass"
     },
     {
       "group": "valid-sample-variant",
@@ -1377,33 +1341,28 @@
     },
     {
       "group": "valid-sample-variant",
-      "name": "sheet/sheet-single-column.json: variant 'minimal' is valid",
-      "status": "fail",
-      "error": "sheet/sheet-single-column.json uses variant 'minimal' but builder only handles: empty, grouped, key-value, pivot, skeleton"
+      "name": "sheet/sheet-single-column.json: variant 'key-value' is valid",
+      "status": "pass"
     },
     {
       "group": "valid-sample-variant",
-      "name": "sheet/sheet-basic.json: variant 'default' is valid",
-      "status": "fail",
-      "error": "sheet/sheet-basic.json uses variant 'default' but builder only handles: empty, grouped, key-value, pivot, skeleton"
+      "name": "sheet/sheet-basic.json: variant 'key-value' is valid",
+      "status": "pass"
     },
     {
       "group": "valid-sample-variant",
-      "name": "sheet/sheet-status.json: variant 'default' is valid",
-      "status": "fail",
-      "error": "sheet/sheet-status.json uses variant 'default' but builder only handles: empty, grouped, key-value, pivot, skeleton"
+      "name": "sheet/sheet-status.json: variant 'grouped' is valid",
+      "status": "pass"
     },
     {
       "group": "valid-sample-variant",
-      "name": "sheet/sheet-striped.json: variant 'striped' is valid",
-      "status": "fail",
-      "error": "sheet/sheet-striped.json uses variant 'striped' but builder only handles: empty, grouped, key-value, pivot, skeleton"
+      "name": "sheet/sheet-striped.json: variant 'grouped' is valid",
+      "status": "pass"
     },
     {
       "group": "valid-sample-variant",
-      "name": "sheet/sheet-rows-only.json: variant 'minimal' is valid",
-      "status": "fail",
-      "error": "sheet/sheet-rows-only.json uses variant 'minimal' but builder only handles: empty, grouped, key-value, pivot, skeleton"
+      "name": "sheet/sheet-rows-only.json: variant 'key-value' is valid",
+      "status": "pass"
     },
     {
       "group": "valid-sample-variant",
@@ -1412,9 +1371,8 @@
     },
     {
       "group": "valid-sample-variant",
-      "name": "sheet/sheet-compact.json: variant 'default' is valid",
-      "status": "fail",
-      "error": "sheet/sheet-compact.json uses variant 'default' but builder only handles: empty, grouped, key-value, pivot, skeleton"
+      "name": "sheet/sheet-compact.json: variant 'key-value' is valid",
+      "status": "pass"
     },
     {
       "group": "valid-sample-variant",
@@ -1428,15 +1386,13 @@
     },
     {
       "group": "valid-sample-variant",
-      "name": "sheet/sheet-spreadsheet.json: variant 'default' is valid",
-      "status": "fail",
-      "error": "sheet/sheet-spreadsheet.json uses variant 'default' but builder only handles: empty, grouped, key-value, pivot, skeleton"
+      "name": "sheet/sheet-spreadsheet.json: variant 'pivot' is valid",
+      "status": "pass"
     },
     {
       "group": "valid-sample-variant",
-      "name": "sheet/sheet-dark.json: variant 'default' is valid",
-      "status": "fail",
-      "error": "sheet/sheet-dark.json uses variant 'default' but builder only handles: empty, grouped, key-value, pivot, skeleton"
+      "name": "sheet/sheet-dark.json: variant 'key-value' is valid",
+      "status": "pass"
     },
     {
       "group": "valid-sample-variant",
@@ -1450,9 +1406,8 @@
     },
     {
       "group": "valid-sample-variant",
-      "name": "timeline/timeline2.json: variant 'dense' is valid",
-      "status": "fail",
-      "error": "timeline/timeline2.json uses variant 'dense' but builder only handles: alternating, default, gantt, horizontal, swimlane"
+      "name": "timeline/timeline2.json: variant 'horizontal' is valid",
+      "status": "pass"
     },
     {
       "group": "valid-sample-variant",
@@ -1466,9 +1421,8 @@
     },
     {
       "group": "valid-sample-variant",
-      "name": "flow/flow-sankey-revenue.json: variant 'sankey' is valid",
-      "status": "fail",
-      "error": "flow/flow-sankey-revenue.json uses variant 'sankey' but builder only handles: arc, chord, force"
+      "name": "flow/flow-sankey-revenue.json: variant 'force' is valid",
+      "status": "pass"
     },
     {
       "group": "valid-sample-variant",
@@ -1476,162 +1430,6 @@
       "status": "pass"
     }
   ],
-  "failures": [
-    {
-      "group": "no-empty-samples",
-      "name": "week: at least one sample has inline data",
-      "error": "week/ — all 3 sample(s) lack inline data. At least one must have datasources[].inline for the viewer to render content."
-    },
-    {
-      "group": "no-empty-samples",
-      "name": "calendar: at least one sample has inline data",
-      "error": "calendar/ — all 2 sample(s) lack inline data. At least one must have datasources[].inline for the viewer to render content."
-    },
-    {
-      "group": "no-empty-samples",
-      "name": "hierarchy: at least one sample has inline data",
-      "error": "hierarchy/ — all 4 sample(s) lack inline data. At least one must have datasources[].inline for the viewer to render content."
-    },
-    {
-      "group": "no-empty-samples",
-      "name": "chat: at least one sample has inline data",
-      "error": "chat/ — all 2 sample(s) lack inline data. At least one must have datasources[].inline for the viewer to render content."
-    },
-    {
-      "group": "no-empty-samples",
-      "name": "picker: at least one sample has inline data",
-      "error": "picker/ — all 2 sample(s) lack inline data. At least one must have datasources[].inline for the viewer to render content."
-    },
-    {
-      "group": "no-empty-samples",
-      "name": "input: at least one sample has inline data",
-      "error": "input/ — all 2 sample(s) lack inline data. At least one must have datasources[].inline for the viewer to render content."
-    },
-    {
-      "group": "no-empty-samples",
-      "name": "chart: at least one sample has inline data",
-      "error": "chart/ — all 2 sample(s) lack inline data. At least one must have datasources[].inline for the viewer to render content."
-    },
-    {
-      "group": "no-empty-samples",
-      "name": "toggle: at least one sample has inline data",
-      "error": "toggle/ — all 2 sample(s) lack inline data. At least one must have datasources[].inline for the viewer to render content."
-    },
-    {
-      "group": "no-empty-samples",
-      "name": "map: at least one sample has inline data",
-      "error": "map/ — all 2 sample(s) lack inline data. At least one must have datasources[].inline for the viewer to render content."
-    },
-    {
-      "group": "no-empty-samples",
-      "name": "table: at least one sample has inline data",
-      "error": "table/ — all 5 sample(s) lack inline data. At least one must have datasources[].inline for the viewer to render content."
-    },
-    {
-      "group": "no-empty-samples",
-      "name": "list: at least one sample has inline data",
-      "error": "list/ — all 11 sample(s) lack inline data. At least one must have datasources[].inline for the viewer to render content."
-    },
-    {
-      "group": "no-empty-samples",
-      "name": "gauge: at least one sample has inline data",
-      "error": "gauge/ — all 2 sample(s) lack inline data. At least one must have datasources[].inline for the viewer to render content."
-    },
-    {
-      "group": "no-empty-samples",
-      "name": "heatmap: at least one sample has inline data",
-      "error": "heatmap/ — all 2 sample(s) lack inline data. At least one must have datasources[].inline for the viewer to render content."
-    },
-    {
-      "group": "no-empty-samples",
-      "name": "nav: at least one sample has inline data",
-      "error": "nav/ — all 2 sample(s) lack inline data. At least one must have datasources[].inline for the viewer to render content."
-    },
-    {
-      "group": "no-empty-samples",
-      "name": "sheet: at least one sample has inline data",
-      "error": "sheet/ — all 14 sample(s) lack inline data. At least one must have datasources[].inline for the viewer to render content."
-    },
-    {
-      "group": "no-empty-samples",
-      "name": "timeline: at least one sample has inline data",
-      "error": "timeline/ — all 2 sample(s) lack inline data. At least one must have datasources[].inline for the viewer to render content."
-    },
-    {
-      "group": "no-empty-samples",
-      "name": "drag-drop: at least one sample has inline data",
-      "error": "drag-drop/ — all 2 sample(s) lack inline data. At least one must have datasources[].inline for the viewer to render content."
-    },
-    {
-      "group": "no-empty-samples",
-      "name": "grid: at least one sample has inline data",
-      "error": "grid/ — all 2 sample(s) lack inline data. At least one must have datasources[].inline for the viewer to render content."
-    },
-    {
-      "group": "no-empty-samples",
-      "name": "flow: at least one sample has inline data",
-      "error": "flow/ — all 4 sample(s) lack inline data. At least one must have datasources[].inline for the viewer to render content."
-    },
-    {
-      "group": "valid-sample-variant",
-      "name": "hierarchy/hierarchy-treemap-disk.json: variant 'treemap' is valid",
-      "error": "hierarchy/hierarchy-treemap-disk.json uses variant 'treemap' but builder only handles: icicle, pack, sunburst"
-    },
-    {
-      "group": "valid-sample-variant",
-      "name": "toggle/toggle2.json: variant 'checkbox' is valid",
-      "error": "toggle/toggle2.json uses variant 'checkbox' but builder only handles: expandable, switch, table"
-    },
-    {
-      "group": "valid-sample-variant",
-      "name": "sheet/sheet-single-column.json: variant 'minimal' is valid",
-      "error": "sheet/sheet-single-column.json uses variant 'minimal' but builder only handles: empty, grouped, key-value, pivot, skeleton"
-    },
-    {
-      "group": "valid-sample-variant",
-      "name": "sheet/sheet-basic.json: variant 'default' is valid",
-      "error": "sheet/sheet-basic.json uses variant 'default' but builder only handles: empty, grouped, key-value, pivot, skeleton"
-    },
-    {
-      "group": "valid-sample-variant",
-      "name": "sheet/sheet-status.json: variant 'default' is valid",
-      "error": "sheet/sheet-status.json uses variant 'default' but builder only handles: empty, grouped, key-value, pivot, skeleton"
-    },
-    {
-      "group": "valid-sample-variant",
-      "name": "sheet/sheet-striped.json: variant 'striped' is valid",
-      "error": "sheet/sheet-striped.json uses variant 'striped' but builder only handles: empty, grouped, key-value, pivot, skeleton"
-    },
-    {
-      "group": "valid-sample-variant",
-      "name": "sheet/sheet-rows-only.json: variant 'minimal' is valid",
-      "error": "sheet/sheet-rows-only.json uses variant 'minimal' but builder only handles: empty, grouped, key-value, pivot, skeleton"
-    },
-    {
-      "group": "valid-sample-variant",
-      "name": "sheet/sheet-compact.json: variant 'default' is valid",
-      "error": "sheet/sheet-compact.json uses variant 'default' but builder only handles: empty, grouped, key-value, pivot, skeleton"
-    },
-    {
-      "group": "valid-sample-variant",
-      "name": "sheet/sheet-spreadsheet.json: variant 'default' is valid",
-      "error": "sheet/sheet-spreadsheet.json uses variant 'default' but builder only handles: empty, grouped, key-value, pivot, skeleton"
-    },
-    {
-      "group": "valid-sample-variant",
-      "name": "sheet/sheet-dark.json: variant 'default' is valid",
-      "error": "sheet/sheet-dark.json uses variant 'default' but builder only handles: empty, grouped, key-value, pivot, skeleton"
-    },
-    {
-      "group": "valid-sample-variant",
-      "name": "timeline/timeline2.json: variant 'dense' is valid",
-      "error": "timeline/timeline2.json uses variant 'dense' but builder only handles: alternating, default, gantt, horizontal, swimlane"
-    },
-    {
-      "group": "valid-sample-variant",
-      "name": "flow/flow-sankey-revenue.json: variant 'sankey' is valid",
-      "error": "flow/flow-sankey-revenue.json uses variant 'sankey' but builder only handles: arc, chord, force"
-    }
-  ],
-  "ts": "2026-06-17T14:38:12.657Z"
+  "failures": [],
+  "ts": "2026-06-17T14:45:04.381Z"
 }

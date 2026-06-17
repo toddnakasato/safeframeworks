@@ -2,6 +2,7 @@ import { createElement, ChevronDown, Dot, type IconNode } from "lucide";
 import type { SafeFireContext } from "../../safecontracts/src/contracts";
 import * as lucide from "lucide";
 import type { ConfigBase } from "../../safecontracts/src/contracts";
+import { readList } from "../../safecontracts/src/contracts-data";
 
 /*----------------------------------------------------------------------------------------------------
  *
@@ -56,9 +57,11 @@ export function createSafeNav(container: HTMLElement, config: ConfigBase, ctx: S
     const expanded = new Set<string>();
     let active = "";
 
-    const entries = Object.entries(config.children ?? {});
-    const groups = entries.filter(([, c]) => (c.metadata?.section as string) !== "bottom");
-    const bottom = entries.filter(([, c]) => (c.metadata?.section as string) === "bottom");
+    const navData = readList(config);
+    // Each entry: { key, label, icon?, accent?, section?, badge?, children?: [...] }
+    const entries = navData.map((d: any) => [d.key ?? d.label, d] as [string, any]);
+    const groups = entries.filter(([, d]) => d.section !== "bottom");
+    const bottom = entries.filter(([, d]) => d.section === "bottom");
     // First group starts expanded (figma default)
     if (groups.length) expanded.add(groups[0][0]);
 
@@ -99,8 +102,7 @@ export function createSafeNav(container: HTMLElement, config: ConfigBase, ctx: S
     function render() {
         nav.replaceChildren();
         for (const [gKey, group] of groups) {
-            const gMeta = group.metadata ?? {};
-            const gAccent = gMeta.accent as string | undefined;
+            const gAccent = group.accent as string | undefined;
             const isExpanded = expanded.has(gKey);
 
             const wrap = el("div", { "data-nav-item": "", "data-depth": "0" });
@@ -108,10 +110,10 @@ export function createSafeNav(container: HTMLElement, config: ConfigBase, ctx: S
 
             const btn = el("button", { "data-nav-button": "", "data-has-children": "true", "data-depth": "0" });
             if (isExpanded) btn.setAttribute("data-expanded", "true");
-            const gi = iconEl(gMeta.icon as string, 15);
+            const gi = iconEl(group.icon as string, 15);
             if (gi) { const s = el("span", { "data-nav-icon": "" }); s.appendChild(gi); btn.appendChild(s); }
             const lbl = el("span", { "data-nav-label": "" });
-            lbl.textContent = (gMeta.label as string) ?? gKey;
+            lbl.textContent = (group.label as string) ?? gKey;
             btn.appendChild(lbl);
             const chevWrap = el("span", { "data-nav-chevron": "" });
             const chev = createElement(ChevronDown);
@@ -122,11 +124,10 @@ export function createSafeNav(container: HTMLElement, config: ConfigBase, ctx: S
             btn.onclick = () => { isExpanded ? expanded.delete(gKey) : expanded.add(gKey); render(); };
             wrap.appendChild(btn);
 
-            if (isExpanded && group.children) {
+            if (isExpanded && Array.isArray(group.children)) {
                 const kids = el("div", { "data-nav-children": "" });
-                for (const [cKey, child] of Object.entries(group.children)) {
-                    const cMeta = child.metadata ?? {};
-                    const key = `${gKey}.${cKey}`;
+                for (const child of group.children as any[]) {
+                    const key = `${gKey}.${child.key ?? child.label}`;
                     const isActive = active === key;
                     const cBtn = el("button", { "data-nav-button": "", "data-depth": "1" });
                     if (isActive) cBtn.setAttribute("data-active", "true");
@@ -137,9 +138,9 @@ export function createSafeNav(container: HTMLElement, config: ConfigBase, ctx: S
                     dotWrap.appendChild(dot);
                     cBtn.appendChild(dotWrap);
                     const cLbl = el("span", { "data-nav-label": "" });
-                    cLbl.textContent = (cMeta.label as string) ?? cKey;
+                    cLbl.textContent = (child.label as string) ?? child.key;
                     cBtn.appendChild(cLbl);
-                    const badge = cMeta.badge as string | number | undefined;
+                    const badge = child.badge as string | number | undefined;
                     if (badge != null) {
                         const b = el("span", { "data-nav-badge": "" });
                         if (typeof badge === "string" && isNaN(Number(badge))) b.setAttribute("data-badge-accent", "true");
@@ -160,7 +161,7 @@ export function createSafeNav(container: HTMLElement, config: ConfigBase, ctx: S
         const foot = el("div", { "data-nav-bottom": "" });
         for (const [key, child] of bottom) {
             const b = el("button", { "data-nav-button": "", "data-icon-only": "true" });
-            const ic = iconEl(child.metadata?.icon as string, 15);
+            const ic = iconEl(child.icon as string, 15);
             if (ic) b.appendChild(ic);
             b.onclick = () => fire(key);
             foot.appendChild(b);

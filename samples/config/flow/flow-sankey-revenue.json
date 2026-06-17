@@ -1,7 +1,7 @@
 {
   "component": "flow",
   "metadata": {
-    "variant": "sankey",
+    "variant": "force",
     "title": "Revenue Flow"
   },
   "eventHandler": {
@@ -9,9 +9,37 @@
   },
   "data": {
     "graph": {
-      "name": "flow-revenue",
+      "name": "graph",
       "type": "record",
-      "source": "file"
+      "source": "inline",
+      "inline": {
+        "nodes": [
+          {
+            "id": "a",
+            "name": "Revenue"
+          },
+          {
+            "id": "b",
+            "name": "Costs"
+          },
+          {
+            "id": "c",
+            "name": "Profit"
+          }
+        ],
+        "links": [
+          {
+            "source": "a",
+            "target": "b",
+            "value": 60
+          },
+          {
+            "source": "a",
+            "target": "c",
+            "value": 40
+          }
+        ]
+      }
     }
   }
 }

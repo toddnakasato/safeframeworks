@@ -1,6 +1,7 @@
 import type { ConfigBase } from "../../safecontracts/src/contracts";
 import { el } from "../utils/util";
 import type { SafeFireContext } from "../../safecontracts/src/contracts";
+import { readList } from "../../safecontracts/src/contracts-data";
 
 /*----------------------------------------------------------------------------------------------------
  *
@@ -35,7 +36,7 @@ export function createSafeChat(container: HTMLElement, config: ConfigBase, ctx: 
     const title = (metadata.title as string) ?? "Chat";
     const placeholder = (metadata.placeholder as string) ?? "Type a message...";
     const quickActions = (metadata.quickActions as any[]) ?? [];
-    const initial = (metadata.messages as any[]) ?? [];
+    const initial = readList(config);
 
     const messages: Message[] = initial.map((m: any) => ({
         role: m.role ?? "assistant",

@@ -5,5 +5,24 @@
   },
   "eventHandler": {
     "handler": "picker"
+  },
+  "data": {
+    "items": {
+      "name": "items",
+      "type": "list",
+      "source": "inline",
+      "inline": [
+        {
+          "id": "1",
+          "label": "Option A",
+          "description": "First"
+        },
+        {
+          "id": "2",
+          "label": "Option B",
+          "description": "Second"
+        }
+      ]
+    }
   }
 }

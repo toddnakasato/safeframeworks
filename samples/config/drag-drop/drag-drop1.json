@@ -5,14 +5,28 @@
   },
   "data": {
     "items": {
-      "name": "drag-drop-items",
+      "name": "items",
       "type": "list",
-      "source": "file",
+      "source": "inline",
+      "inline": [
+        {
+          "id": "1",
+          "label": "Task A"
+        },
+        {
+          "id": "2",
+          "label": "Task B"
+        },
+        {
+          "id": "3",
+          "label": "Task C"
+        }
+      ],
       "schema": {
         "fields": [
           {
             "name": "id",
-            "label": "ID",
+            "label": "Id",
             "type": "text"
           },
           {

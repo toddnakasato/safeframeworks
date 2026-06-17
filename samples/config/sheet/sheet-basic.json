@@ -1,7 +1,7 @@
 {
   "component": "sheet",
   "metadata": {
-    "variant": "default",
+    "variant": "key-value",
     "columns": [
       {
         "label": "Name",
@@ -27,8 +27,35 @@
   },
   "data": {
     "rows": {
-      "name": "sheet-people",
-      "source": "file"
+      "name": "rows",
+      "type": "list",
+      "source": "inline",
+      "inline": [
+        [
+          "Name",
+          "Q1",
+          "Q2",
+          "Q3"
+        ],
+        [
+          "Revenue",
+          100,
+          150,
+          130
+        ],
+        [
+          "Expenses",
+          80,
+          90,
+          85
+        ],
+        [
+          "Profit",
+          20,
+          60,
+          45
+        ]
+      ]
     }
   },
   "eventHandler": {

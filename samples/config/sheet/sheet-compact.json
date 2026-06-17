@@ -1,7 +1,7 @@
 {
   "component": "sheet",
   "metadata": {
-    "variant": "default",
+    "variant": "key-value",
     "spacing": "tight",
     "rowNumbers": false,
     "editable": false,

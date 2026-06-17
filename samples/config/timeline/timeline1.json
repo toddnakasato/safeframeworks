@@ -5,23 +5,26 @@
   },
   "data": {
     "events": {
-      "name": "timeline-events",
+      "name": "events",
       "type": "list",
-      "source": "file",
-      "schema": {
-        "fields": [
-          {
-            "name": "date",
-            "label": "Date",
-            "type": "date"
-          },
-          {
-            "name": "label",
-            "label": "Label",
-            "type": "text"
-          }
-        ]
-      }
+      "source": "inline",
+      "inline": [
+        {
+          "date": "2024-01-15",
+          "title": "Project Start",
+          "description": "Kickoff meeting"
+        },
+        {
+          "date": "2024-03-01",
+          "title": "Phase 1 Complete",
+          "description": "Core features shipped"
+        },
+        {
+          "date": "2024-06-15",
+          "title": "Launch",
+          "description": "Public release"
+        }
+      ]
     }
   },
   "eventHandler": {

@@ -8,5 +8,17 @@
   },
   "eventHandler": {
     "handler": "grid"
+  },
+  "data": {
+    "record": {
+      "name": "record",
+      "type": "record",
+      "source": "inline",
+      "inline": {
+        "Name": "Acme Corp",
+        "Status": "Active",
+        "Amount": 50000
+      }
+    }
   }
 }

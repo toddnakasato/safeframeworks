@@ -9,19 +9,49 @@
   },
   "data": {
     "rows": {
-      "name": "table-rows",
+      "name": "rows",
       "type": "list",
-      "source": "file",
+      "source": "inline",
+      "inline": [
+        {
+          "Id": "001",
+          "Name": "Acme Corp",
+          "Amount": 50000,
+          "Status": "Active"
+        },
+        {
+          "Id": "002",
+          "Name": "Beta Inc",
+          "Amount": 30000,
+          "Status": "Pending"
+        },
+        {
+          "Id": "003",
+          "Name": "Gamma LLC",
+          "Amount": 75000,
+          "Status": "Active"
+        }
+      ],
       "schema": {
         "fields": [
           {
-            "name": "name",
+            "name": "Id",
+            "label": "Id",
+            "type": "text"
+          },
+          {
+            "name": "Name",
             "label": "Name",
             "type": "text"
           },
           {
-            "name": "value",
-            "label": "Value",
+            "name": "Amount",
+            "label": "Amount",
+            "type": "number"
+          },
+          {
+            "name": "Status",
+            "label": "Status",
             "type": "text"
           }
         ]

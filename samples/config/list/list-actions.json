@@ -6,9 +6,45 @@
   },
   "data": {
     "items": {
-      "name": "list-tasks",
+      "name": "items",
       "type": "list",
-      "source": "file"
+      "source": "inline",
+      "inline": [
+        {
+          "id": "1",
+          "label": "Design Review",
+          "status": "complete"
+        },
+        {
+          "id": "2",
+          "label": "Code Review",
+          "status": "in-progress"
+        },
+        {
+          "id": "3",
+          "label": "Deploy",
+          "status": "pending"
+        }
+      ],
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "label": "Id",
+            "type": "text"
+          },
+          {
+            "name": "label",
+            "label": "Label",
+            "type": "text"
+          },
+          {
+            "name": "status",
+            "label": "Status",
+            "type": "text"
+          }
+        ]
+      }
     }
   },
   "eventHandler": {

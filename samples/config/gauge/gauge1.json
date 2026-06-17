@@ -5,5 +5,18 @@
   },
   "eventHandler": {
     "handler": "gauge"
+  },
+  "data": {
+    "record": {
+      "name": "record",
+      "type": "record",
+      "source": "inline",
+      "inline": {
+        "value": 72,
+        "min": 0,
+        "max": 100,
+        "label": "Performance"
+      }
+    }
   }
 }

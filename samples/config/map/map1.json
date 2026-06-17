@@ -19,44 +19,49 @@
   },
   "data": {
     "locations": {
-      "name": "map-manhattan",
+      "name": "locations",
       "type": "list",
-      "source": "file",
+      "source": "inline",
+      "inline": [
+        {
+          "lat": 37.7749,
+          "lng": -122.4194,
+          "label": "San Francisco",
+          "value": 100
+        },
+        {
+          "lat": 34.0522,
+          "lng": -118.2437,
+          "label": "Los Angeles",
+          "value": 80
+        },
+        {
+          "lat": 40.7128,
+          "lng": -74.006,
+          "label": "New York",
+          "value": 120
+        }
+      ],
       "schema": {
         "fields": [
           {
             "name": "lat",
-            "label": "Latitude",
+            "label": "Lat",
             "type": "number"
           },
           {
             "name": "lng",
-            "label": "Longitude",
+            "label": "Lng",
             "type": "number"
           },
           {
-            "name": "Name",
-            "label": "Name",
+            "name": "label",
+            "label": "Label",
             "type": "text"
           },
           {
-            "name": "Description",
-            "label": "Description",
-            "type": "text"
-          },
-          {
-            "name": "Icon",
-            "label": "Icon",
-            "type": "text"
-          },
-          {
-            "name": "Accent",
-            "label": "Accent",
-            "type": "text"
-          },
-          {
-            "name": "Radius",
-            "label": "Radius (m)",
+            "name": "value",
+            "label": "Value",
             "type": "number"
           }
         ]

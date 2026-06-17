@@ -1,7 +1,7 @@
 {
   "component": "sheet",
   "metadata": {
-    "variant": "default",
+    "variant": "pivot",
     "editable": true,
     "formulaBar": true,
     "rowNumbers": true,
