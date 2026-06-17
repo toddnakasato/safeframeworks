@@ -10,12 +10,6 @@ import { nowTime } from "../../safecontracts/src/contracts-date";
  *
  ----------------------------------------------------------------------------------------------------*/
 
-/*----------------------------------------------------------------------------------------------------
- *
- * Implementation
- *
- ----------------------------------------------------------------------------------------------------*/
-
 export function createSafeChat(container: HTMLElement, config: ConfigBase, ctx: SafeFireContext): HTMLElement {
     const metadata = config.metadata;
     const title = (metadata.title as string) ?? "Chat";
@@ -26,7 +20,7 @@ export function createSafeChat(container: HTMLElement, config: ConfigBase, ctx: 
     const messages: ChatMessage[] = initial.map((m: any) => ({
         role: m.role ?? "assistant",
         content: m.content ?? "",
-        timestamp: m.timestamp ?? nowTime(),
+        timestamp: m.timestamp ?? nowTime()
     }));
 
     const root = el("div");

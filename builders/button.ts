@@ -6,44 +6,14 @@ import { elAttrs, applyIntent } from "../utils/util";
 
 /*----------------------------------------------------------------------------------------------------
  *
- * Properties
- *
- ----------------------------------------------------------------------------------------------------*/
-
-/*----------------------------------------------------------------------------------------------------
- *
- * Helpers
- *
- ----------------------------------------------------------------------------------------------------*/
-
-function iconNode(name?: string): IconNode | null {
-    if (!name) return null;
-    const pascal = name.split("-").map((s) => s.charAt(0).toUpperCase() + s.slice(1)).join("");
-    return ((lucide as any)[pascal] as IconNode) ?? null;
-}
-
-function iconEl(name: string | undefined, size: number): SVGElement | null {
-    const node = iconNode(name);
-    if (!node) return null;
-    const el = createElement(node);
-    el.setAttribute("width", String(size));
-    el.setAttribute("height", String(size));
-    return el;
-}
-
-
-function iconSpan(role: string, icon: string): HTMLElement {
-    const s = elAttrs("span", { "data-role": role });
-    const svg = iconEl(icon, 14);
-    if (svg) s.appendChild(svg); else s.textContent = icon;
-    return s;
-}
-
-/*----------------------------------------------------------------------------------------------------
- *
  * Implementation
  *
  ----------------------------------------------------------------------------------------------------*/
+export function createSafeButton(container: HTMLElement, config: ConfigBase, ctx: SafeFireContext): HTMLElement {
+    const root = buildButton(config, ctx);
+    container.appendChild(root);
+    return root;
+}
 
 function buildSingleButton(config: ConfigBase, ctx: SafeFireContext): HTMLElement {
     const metadata = config.metadata;
@@ -160,7 +130,7 @@ function buildButtonGroup(config: ConfigBase, ctx: SafeFireContext): HTMLElement
     const root = elAttrs("div", {
         "data-component": "button",
         "data-group-variant": groupVariant,
-        "data-group-direction": groupDirection,
+        "data-group-direction": groupDirection
     });
 
     for (const [, child] of Object.entries(config.children ?? {})) {
@@ -184,8 +154,33 @@ function buildButton(config: ConfigBase, ctx: SafeFireContext): HTMLElement {
     return buildSingleButton(config, ctx);
 }
 
-export function createSafeButton(container: HTMLElement, config: ConfigBase, ctx: SafeFireContext): HTMLElement {
-    const root = buildButton(config, ctx);
-    container.appendChild(root);
-    return root;
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Helpers
+ *
+ ----------------------------------------------------------------------------------------------------*/
+function iconNode(name?: string): IconNode | null {
+    if (!name) return null;
+    const pascal = name
+        .split("-")
+        .map((s) => s.charAt(0).toUpperCase() + s.slice(1))
+        .join("");
+    return ((lucide as any)[pascal] as IconNode) ?? null;
+}
+
+function iconEl(name: string | undefined, size: number): SVGElement | null {
+    const node = iconNode(name);
+    if (!node) return null;
+    const el = createElement(node);
+    el.setAttribute("width", String(size));
+    el.setAttribute("height", String(size));
+    return el;
+}
+
+function iconSpan(role: string, icon: string): HTMLElement {
+    const s = elAttrs("span", { "data-role": role });
+    const svg = iconEl(icon, 14);
+    if (svg) s.appendChild(svg);
+    else s.textContent = icon;
+    return s;
 }

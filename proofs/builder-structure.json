@@ -1,8 +1,8 @@
 {
   "ok": true,
   "component": "all",
-  "total": 351,
-  "passed": 351,
+  "total": 380,
+  "passed": 380,
   "failed": 0,
   "groups": {
     "uses-readList-or-readRecord": 19,
@@ -17,7 +17,8 @@
     "no-initSafe": 29,
     "no-module-scope-constants": 29,
     "no-cross-function-scope-leak": 29,
-    "no-local-contract-interfaces": 27
+    "no-local-contract-interfaces": 27,
+    "no-function-tdz": 29
   },
   "checks": [
     {
@@ -86,6 +87,11 @@
       "status": "pass"
     },
     {
+      "group": "no-function-tdz",
+      "name": "funnel: no TDZ within functions",
+      "status": "pass"
+    },
+    {
       "group": "no-local-contract-interfaces",
       "name": "funnel: no duplicate contract interfaces",
       "status": "pass"
@@ -141,6 +147,11 @@
       "status": "pass"
     },
     {
+      "group": "no-function-tdz",
+      "name": "callout: no TDZ within functions",
+      "status": "pass"
+    },
+    {
       "group": "no-local-contract-interfaces",
       "name": "callout: no duplicate contract interfaces",
       "status": "pass"
@@ -188,6 +199,11 @@
     {
       "group": "no-cross-function-scope-leak",
       "name": "week: no cross-function scope leaks",
+      "status": "pass"
+    },
+    {
+      "group": "no-function-tdz",
+      "name": "week: no TDZ within functions",
       "status": "pass"
     },
     {
@@ -261,6 +277,11 @@
       "status": "pass"
     },
     {
+      "group": "no-function-tdz",
+      "name": "table: no TDZ within functions",
+      "status": "pass"
+    },
+    {
       "group": "no-local-contract-interfaces",
       "name": "table: no duplicate contract interfaces",
       "status": "pass"
@@ -326,6 +347,11 @@
       "status": "pass"
     },
     {
+      "group": "no-function-tdz",
+      "name": "nav: no TDZ within functions",
+      "status": "pass"
+    },
+    {
       "group": "no-local-contract-interfaces",
       "name": "nav: no duplicate contract interfaces",
       "status": "pass"
@@ -386,6 +412,11 @@
       "status": "pass"
     },
     {
+      "group": "no-function-tdz",
+      "name": "input: no TDZ within functions",
+      "status": "pass"
+    },
+    {
       "group": "no-local-contract-interfaces",
       "name": "input: no duplicate contract interfaces",
       "status": "pass"
@@ -438,6 +469,11 @@
     {
       "group": "no-cross-function-scope-leak",
       "name": "button: no cross-function scope leaks",
+      "status": "pass"
+    },
+    {
+      "group": "no-function-tdz",
+      "name": "button: no TDZ within functions",
       "status": "pass"
     },
     {
@@ -511,6 +547,11 @@
       "status": "pass"
     },
     {
+      "group": "no-function-tdz",
+      "name": "sheet: no TDZ within functions",
+      "status": "pass"
+    },
+    {
       "group": "no-local-contract-interfaces",
       "name": "sheet: no duplicate contract interfaces",
       "status": "pass"
@@ -556,6 +597,11 @@
       "status": "pass"
     },
     {
+      "group": "no-function-tdz",
+      "name": "chat: no TDZ within functions",
+      "status": "pass"
+    },
+    {
       "group": "no-local-contract-interfaces",
       "name": "chat: no duplicate contract interfaces",
       "status": "pass"
@@ -588,6 +634,11 @@
     {
       "group": "no-cross-function-scope-leak",
       "name": "columns: no cross-function scope leaks",
+      "status": "pass"
+    },
+    {
+      "group": "no-function-tdz",
+      "name": "columns: no TDZ within functions",
       "status": "pass"
     },
     {
@@ -631,6 +682,11 @@
       "status": "pass"
     },
     {
+      "group": "no-function-tdz",
+      "name": "metric: no TDZ within functions",
+      "status": "pass"
+    },
+    {
       "group": "no-local-contract-interfaces",
       "name": "metric: no duplicate contract interfaces",
       "status": "pass"
@@ -663,6 +719,11 @@
     {
       "group": "no-cross-function-scope-leak",
       "name": "storyflow: no cross-function scope leaks",
+      "status": "pass"
+    },
+    {
+      "group": "no-function-tdz",
+      "name": "storyflow: no TDZ within functions",
       "status": "pass"
     },
     {
@@ -708,6 +769,11 @@
     {
       "group": "no-cross-function-scope-leak",
       "name": "calendar: no cross-function scope leaks",
+      "status": "pass"
+    },
+    {
+      "group": "no-function-tdz",
+      "name": "calendar: no TDZ within functions",
       "status": "pass"
     },
     {
@@ -781,6 +847,11 @@
       "status": "pass"
     },
     {
+      "group": "no-function-tdz",
+      "name": "card: no TDZ within functions",
+      "status": "pass"
+    },
+    {
       "group": "no-local-contract-interfaces",
       "name": "card: no duplicate contract interfaces",
       "status": "pass"
@@ -838,6 +909,11 @@
     {
       "group": "no-cross-function-scope-leak",
       "name": "map: no cross-function scope leaks",
+      "status": "pass"
+    },
+    {
+      "group": "no-function-tdz",
+      "name": "map: no TDZ within functions",
       "status": "pass"
     },
     {
@@ -901,6 +977,11 @@
       "status": "pass"
     },
     {
+      "group": "no-function-tdz",
+      "name": "hierarchy: no TDZ within functions",
+      "status": "pass"
+    },
+    {
       "group": "no-local-contract-interfaces",
       "name": "hierarchy: no duplicate contract interfaces",
       "status": "pass"
@@ -958,6 +1039,11 @@
     {
       "group": "no-cross-function-scope-leak",
       "name": "flow: no cross-function scope leaks",
+      "status": "pass"
+    },
+    {
+      "group": "no-function-tdz",
+      "name": "flow: no TDZ within functions",
       "status": "pass"
     },
     {
@@ -1021,6 +1107,11 @@
       "status": "pass"
     },
     {
+      "group": "no-function-tdz",
+      "name": "chart: no TDZ within functions",
+      "status": "pass"
+    },
+    {
       "group": "no-local-contract-interfaces",
       "name": "chart: no duplicate contract interfaces",
       "status": "pass"
@@ -1063,6 +1154,11 @@
     {
       "group": "no-cross-function-scope-leak",
       "name": "scene: no cross-function scope leaks",
+      "status": "pass"
+    },
+    {
+      "group": "no-function-tdz",
+      "name": "scene: no TDZ within functions",
       "status": "pass"
     },
     {
@@ -1113,6 +1209,11 @@
     {
       "group": "no-cross-function-scope-leak",
       "name": "dragdrop: no cross-function scope leaks",
+      "status": "pass"
+    },
+    {
+      "group": "no-function-tdz",
+      "name": "dragdrop: no TDZ within functions",
       "status": "pass"
     },
     {
@@ -1168,6 +1269,11 @@
     {
       "group": "no-cross-function-scope-leak",
       "name": "tabs: no cross-function scope leaks",
+      "status": "pass"
+    },
+    {
+      "group": "no-function-tdz",
+      "name": "tabs: no TDZ within functions",
       "status": "pass"
     },
     {
@@ -1233,6 +1339,11 @@
     {
       "group": "no-cross-function-scope-leak",
       "name": "list: no cross-function scope leaks",
+      "status": "pass"
+    },
+    {
+      "group": "no-function-tdz",
+      "name": "list: no TDZ within functions",
       "status": "pass"
     },
     {
@@ -1303,6 +1414,11 @@
     {
       "group": "no-cross-function-scope-leak",
       "name": "timeline: no cross-function scope leaks",
+      "status": "pass"
+    },
+    {
+      "group": "no-function-tdz",
+      "name": "timeline: no TDZ within functions",
       "status": "pass"
     },
     {
@@ -1381,6 +1497,11 @@
       "status": "pass"
     },
     {
+      "group": "no-function-tdz",
+      "name": "tree: no TDZ within functions",
+      "status": "pass"
+    },
+    {
       "group": "no-local-contract-interfaces",
       "name": "tree: no duplicate contract interfaces",
       "status": "pass"
@@ -1448,6 +1569,11 @@
     {
       "group": "no-cross-function-scope-leak",
       "name": "gauge: no cross-function scope leaks",
+      "status": "pass"
+    },
+    {
+      "group": "no-function-tdz",
+      "name": "gauge: no TDZ within functions",
       "status": "pass"
     },
     {
@@ -1521,6 +1647,11 @@
       "status": "pass"
     },
     {
+      "group": "no-function-tdz",
+      "name": "picker: no TDZ within functions",
+      "status": "pass"
+    },
+    {
       "group": "no-local-contract-interfaces",
       "name": "picker: no duplicate contract interfaces",
       "status": "pass"
@@ -1568,6 +1699,11 @@
     {
       "group": "no-cross-function-scope-leak",
       "name": "grid: no cross-function scope leaks",
+      "status": "pass"
+    },
+    {
+      "group": "no-function-tdz",
+      "name": "grid: no TDZ within functions",
       "status": "pass"
     },
     {
@@ -1641,6 +1777,11 @@
       "status": "pass"
     },
     {
+      "group": "no-function-tdz",
+      "name": "heatmap: no TDZ within functions",
+      "status": "pass"
+    },
+    {
       "group": "no-local-contract-interfaces",
       "name": "heatmap: no duplicate contract interfaces",
       "status": "pass"
@@ -1711,6 +1852,11 @@
       "status": "pass"
     },
     {
+      "group": "no-function-tdz",
+      "name": "toggle: no TDZ within functions",
+      "status": "pass"
+    },
+    {
       "group": "no-local-contract-interfaces",
       "name": "toggle: no duplicate contract interfaces",
       "status": "pass"
@@ -1777,5 +1923,5 @@
     }
   ],
   "failures": [],
-  "ts": "2026-06-17T19:34:02.792Z"
+  "ts": "2026-06-17T19:43:33.590Z"
 }

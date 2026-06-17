@@ -315,9 +315,9 @@ function renderArc(svgEl: SVGSVGElement, data: FlowData, metadata: Record<string
 }
 
 export function renderSafeFlow(svgEl: SVGSVGElement, config: ConfigBase, data: FlowData, ctx: SafeFireContext): void {
+    const metadata = config.metadata;
     const WIDTH = (metadata.width as number) ?? 600;
     const HEIGHT = (metadata.height as number) ?? 350;
-    const metadata = config.metadata;
     // External paint state (resolved from state.json by host)
     const _selectedNode = metadata.selectedNode ?? null;
 

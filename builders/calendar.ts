@@ -9,7 +9,6 @@ import { DAY_NAMES_SHORT, DAY_NAMES_NARROW, getDaysInMonth, getFirstDayOfMonth, 
  * Implementation
  *
  ----------------------------------------------------------------------------------------------------*/
-
 export function createSafeCalendar(container: HTMLElement, config: ConfigBase, ctx: SafeFireContext): HTMLElement {
     const metadata = config.metadata;
     const variant = (metadata.variant as string) ?? "grid";
@@ -37,7 +36,9 @@ export function createSafeCalendar(container: HTMLElement, config: ConfigBase, c
         viewYear = d.getFullYear();
         viewMonth = d.getMonth();
         ctx.fire("navigate", {
-            year: d.getFullYear(), month: d.getMonth(), direction: dir,
+            year: d.getFullYear(),
+            month: d.getMonth(),
+            direction: dir
         });
         render();
     };
@@ -46,10 +47,7 @@ export function createSafeCalendar(container: HTMLElement, config: ConfigBase, c
         ctx.fire("select", { year: y, month: m, day: d });
     };
 
-    function buildMonthGrid(
-        year: number, month: number, gridSize: string,
-        nav: boolean, gridDayFormat: string,
-    ): HTMLElement {
+    function buildMonthGrid(year: number, month: number, gridSize: string, nav: boolean, gridDayFormat: string): HTMLElement {
         const [todayY, todayM, todayD] = todayTuple();
         const days = generateDays(year, month, weekStart);
         const dayNames = shiftDays(gridDayFormat === "narrow" ? DAY_NAMES_NARROW : DAY_NAMES_SHORT, weekStart);
@@ -82,7 +80,7 @@ export function createSafeCalendar(container: HTMLElement, config: ConfigBase, c
             const cell = el("div", "calendar-cell", day === null ? "" : String(day));
             if (day === null) cell.setAttribute("data-empty", "true");
             if (isToday) cell.setAttribute("data-today", "true");
-            if (day !== null && ((i % 7 === 0) || (i % 7 === 6))) cell.setAttribute("data-weekend", "true");
+            if (day !== null && (i % 7 === 0 || i % 7 === 6)) cell.setAttribute("data-weekend", "true");
             if (day !== null) cell.onclick = () => fireSelect(year, month, day);
             grid.appendChild(cell);
         });
