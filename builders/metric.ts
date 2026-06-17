@@ -1,7 +1,7 @@
 import { el, readRecord } from "../utils/util";
 import type { SafeFireContext } from "../../safecontracts/src/contracts";
 import type { ConfigBase } from "../../safecontracts/src/contracts";
-import { fmtCurrency, fmtInt, fmtPercent } from "../../safecontracts/src/formatter";
+import { fmtCurrency, fmtInt, fmtPercent } from "../../safecontracts/src/contracts-formatter";
 
 function formatByType(value: number, format: string | undefined): string {
     switch (format) {

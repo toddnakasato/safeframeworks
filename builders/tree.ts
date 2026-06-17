@@ -1,60 +1,8 @@
 import type { ConfigBase } from "../../safecontracts/src/contracts";
 import type { SafeFireContext } from "../../safecontracts/src/contracts";
 import { elAttrs, applyPaintState, applyIntent, readList } from "../utils/util";
-
-/*----------------------------------------------------------------------------------------------------
- *
- * Properties
- *
- ----------------------------------------------------------------------------------------------------*/
-
-interface TreeNode {
-    record: Record<string, any>;
-    id: string;
-    children: TreeNode[];
-    depth: number;
-}
-
-/*----------------------------------------------------------------------------------------------------
- *
- * Helpers
- *
- ----------------------------------------------------------------------------------------------------*/
-
-function buildTree(data: Record<string, any>[], idField: string, parentField: string): TreeNode[] {
-    const map = new Map<string, TreeNode>();
-    const roots: TreeNode[] = [];
-
-    for (const record of data) {
-        const id = String(record[idField] ?? "");
-        map.set(id, { record, id, children: [], depth: 0 });
-    }
-
-    for (const record of data) {
-        const id = String(record[idField] ?? "");
-        const parentId = record[parentField];
-        const node = map.get(id)!;
-
-        if (parentId == null || parentId === "" || parentId === id) {
-            roots.push(node);
-        } else {
-            const parent = map.get(String(parentId));
-            if (parent) parent.children.push(node);
-            else roots.push(node);
-        }
-    }
-
-    function setDepth(nodes: TreeNode[], depth: number) {
-        for (const n of nodes) {
-            n.depth = depth;
-            setDepth(n.children, depth + 1);
-        }
-    }
-    setDepth(roots, 0);
-
-    return roots;
-}
-
+import { buildTree } from "../../safecontracts/src/components/tree";
+import type { TreeNode } from "../../safecontracts/src/components/tree";
 
 /*----------------------------------------------------------------------------------------------------
  *

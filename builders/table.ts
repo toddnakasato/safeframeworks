@@ -1,7 +1,7 @@
 import type { ConfigBase, Field } from "../../safecontracts/src/contracts";
 import type { SafeFireContext } from "../../safecontracts/src/contracts";
 import { el, applyPaintState, applyIntent, readList } from "../utils/util";
-import { fmtDate, fmtCurrency, fmtInt, fmtPercent, fmtStr } from "../../safecontracts/src/formatter";
+import { fmtDate, fmtCurrency, fmtInt, fmtPercent, fmtStr } from "../../safecontracts/src/contracts-formatter";
 import { sortBy, paginate } from "../../safecontracts/src/contracts-operations";
 import type { SortDir } from "../../safecontracts/src/contracts-operations";
 
