@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState, useCallback } from "react";
+import { useRef, useEffect } from "react";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
 import { createSafeFireContext } from "safecontracts";
 import { buildPayloadViaCli } from "../../utils/payload-delegate";
@@ -11,29 +11,36 @@ interface SafeTableProps {
 
 export function SafeTable({ config, onEvent }: SafeTableProps) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [hoverRow, setHoverRow] = useState<number | null>(null);
-  const [selectedRow, setSelectedRow] = useState<number | null>(null);
-
-  const wrappedOnEvent: OnSafeEvent | undefined = useCallback((event: any) => {
-    // Short-circuit paint: update local state for hover/select
-    if (event.name === "row:hover") setHoverRow(event.data?.index ?? null);
-    if (event.name === "row:leave") setHoverRow(null);
-    if (event.name === "row:click" || event.name === "select") setSelectedRow(event.data?.index ?? null);
-    onEvent?.(event);
-  }, [onEvent]);
 
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
-    // Merge paint state into config metadata
-    const paintedConfig = {
-      ...config,
-      metadata: { ...config.metadata, hoverRow, selectedRow },
-    };
-    const ctx = createSafeFireContext(paintedConfig, wrappedOnEvent, buildPayloadViaCli);
-    const root = createSafeTable(container, paintedConfig, ctx);
+
+    // Wrap onEvent to apply paint directly to DOM (no re-render)
+    const paintOnEvent: OnSafeEvent | undefined = onEvent ? (event) => {
+      const table = container.querySelector("[data-component='table']");
+      if (table) {
+        if (event.name === "row:hover") {
+          table.querySelectorAll("tr[data-row-hover]").forEach(r => r.removeAttribute("data-row-hover"));
+          const row = table.querySelector(`tr[data-index="${event.data?.index}"]`);
+          if (row) row.setAttribute("data-row-hover", "true");
+        }
+        if (event.name === "row:leave") {
+          table.querySelectorAll("tr[data-row-hover]").forEach(r => r.removeAttribute("data-row-hover"));
+        }
+        if (event.name === "row:click" || event.name === "select") {
+          table.querySelectorAll("tr[data-row-selected]").forEach(r => r.removeAttribute("data-row-selected"));
+          const row = table.querySelector(`tr[data-index="${event.data?.index}"]`);
+          if (row) row.setAttribute("data-row-selected", "true");
+        }
+      }
+      onEvent(event);
+    } : undefined;
+
+    const ctx = createSafeFireContext(config, paintOnEvent, buildPayloadViaCli);
+    const root = createSafeTable(container, config, ctx);
     return () => { root.remove(); };
-  }, [config, wrappedOnEvent, hoverRow, selectedRow]);
+  }, [config]);
 
   return <div ref={containerRef} />;
 }
