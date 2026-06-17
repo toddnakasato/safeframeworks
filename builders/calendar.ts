@@ -2,53 +2,7 @@ import type { ConfigBase } from "../../safecontracts/src/contracts";
 import { el, applyIntent } from "../utils/util";
 import type { SafeFireContext } from "../../safecontracts/src/contracts";
 import { MONTH_NAMES } from "../../safecontracts/src/contracts";
-
-/*----------------------------------------------------------------------------------------------------
- *
- * Properties
- *
- ----------------------------------------------------------------------------------------------------*/
-
-const DAY_NAMES_SHORT = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-const DAY_NAMES_NARROW = ["SU", "M", "TU", "W", "TH", "F", "SA"];
-
-/*----------------------------------------------------------------------------------------------------
- *
- * Helpers
- *
- ----------------------------------------------------------------------------------------------------*/
-
-function getDaysInMonth(year: number, month: number): number {
-    return new Date(year, month + 1, 0).getDate();
-}
-
-function getFirstDayOfMonth(year: number, month: number): number {
-    return new Date(year, month, 1).getDay();
-}
-
-function todayTuple(): [number, number, number] {
-    const d = new Date();
-    return [d.getFullYear(), d.getMonth(), d.getDate()];
-}
-
-function shiftDays(names: string[], weekStart: string): string[] {
-    if (weekStart === "monday") return [...names.slice(1), names[0]];
-    return names;
-}
-
-function shiftFirstDay(firstDay: number, weekStart: string): number {
-    if (weekStart === "monday") return (firstDay + 6) % 7;
-    return firstDay;
-}
-
-function generateDays(year: number, month: number, weekStart: string): (number | null)[] {
-    const total = getDaysInMonth(year, month);
-    const first = shiftFirstDay(getFirstDayOfMonth(year, month), weekStart);
-    const days: (number | null)[] = [];
-    for (let i = 0; i < first; i++) days.push(null);
-    for (let d = 1; d <= total; d++) days.push(d);
-    return days;
-}
+import { DAY_NAMES_SHORT, DAY_NAMES_NARROW, getDaysInMonth, getFirstDayOfMonth, todayTuple, shiftDays, shiftFirstDay, generateDays } from "../../safecontracts/src/contracts-date";
 
 /*----------------------------------------------------------------------------------------------------
  *

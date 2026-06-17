@@ -2,63 +2,7 @@ import type { ConfigBase } from "../../safecontracts/src/contracts";
 import { el, applyIntent } from "../utils/util";
 import type { SafeFireContext } from "../../safecontracts/src/contracts";
 import { DAY_NAMES_SHORT, MONTH_NAMES } from "../../safecontracts/src/contracts";
-
-/*----------------------------------------------------------------------------------------------------
- *
- * Properties
- *
- ----------------------------------------------------------------------------------------------------*/
-
-/*----------------------------------------------------------------------------------------------------
- *
- * Helpers
- *
- ----------------------------------------------------------------------------------------------------*/
-
-function getWeekStart(date: Date, offset: number, weekStart: string): Date {
-    const d = new Date(date);
-    d.setDate(d.getDate() + offset * 7);
-    const day = d.getDay();
-    if (weekStart === "monday") d.setDate(d.getDate() - ((day + 6) % 7));
-    else d.setDate(d.getDate() - day);
-    return d;
-}
-
-function getWeekDates(start: Date, numDays: number): Date[] {
-    const dates: Date[] = [];
-    for (let i = 0; i < numDays; i++) {
-        const d = new Date(start);
-        d.setDate(start.getDate() + i);
-        dates.push(d);
-    }
-    return dates;
-}
-
-function isSameDay(a: Date, b: Date): boolean {
-    return a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth() && a.getDate() === b.getDate();
-}
-
-function isWeekend(date: Date): boolean {
-    const d = date.getDay();
-    return d === 0 || d === 6;
-}
-
-function formatHour(h: number): string {
-    if (h === 0) return "12:00 AM";
-    if (h < 12) return `${h}:00 AM`;
-    if (h === 12) return "12:00 PM";
-    return `${h - 12}:00 PM`;
-}
-
-function formatDateRange(dates: Date[]): string {
-    if (!dates.length) return "";
-    const s = dates[0];
-    const e = dates[dates.length - 1];
-    if (s.getMonth() === e.getMonth()) {
-        return `${MONTH_NAMES[s.getMonth()]} ${s.getDate()}-${e.getDate()}, ${s.getFullYear()}`;
-    }
-    return `${MONTH_NAMES[s.getMonth()]} ${s.getDate()} - ${MONTH_NAMES[e.getMonth()]} ${e.getDate()}, ${s.getFullYear()}`;
-}
+import { getWeekStart, getWeekDates, isSameDay, isWeekend, formatHour, formatDateRange } from "../../safecontracts/src/contracts-date";
 
 /*----------------------------------------------------------------------------------------------------
  *
@@ -159,9 +103,7 @@ export function createSafeWeek(container: HTMLElement, config: ConfigBase, ctx: 
     function render() {
         root.replaceChildren();
         const numDays = variant === "workweek" ? 5 : 7;
-        const ws = variant === "workweek"
-            ? getWeekStart(today, offset, "monday")
-            : getWeekStart(today, offset, weekStart);
+        const ws = variant === "workweek" ? getWeekStart(today, offset, "monday") : getWeekStart(today, offset, weekStart);
         const dates = getWeekDates(ws, numDays);
 
         root.appendChild(buildGrid(dates));
@@ -180,3 +122,9 @@ export function createSafeWeek(container: HTMLElement, config: ConfigBase, ctx: 
     container.appendChild(root);
     return root;
 }
+
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Helpers
+ *
+ ----------------------------------------------------------------------------------------------------*/
