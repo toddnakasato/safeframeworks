@@ -8,7 +8,7 @@ export { LIST_DEFAULTS, LIST_STATUS_ACCENTS } from "../../../safecontracts/src/c
 export type { ConfigBase, ConfigLayout, ConfigApp, ConfigAppRenderer, DataSource, Schema, Field, FieldType, Metadata, Intent, Emphasis, Accent, Surface, Spacing, Radius, Text, SafeEvent, SafeEventOrigin, SafeEventContext, OnSafeEvent, EventHandler, RuntimeHandler, LocalHandler, HandlerContext, HandlerFile, HandlerResult, EventPayloadField, RowCell, RowDef, Effect, EffectType } from "../../../safecontracts/src/contracts";
 export { dispatchEvent } from "../../../safecontracts/src/dispatcher";
 export type { DispatchContext, EventFires, EventShape, EventShapeMap } from "../../../safecontracts/src/dispatcher";
-export { fmtDate, fmtCurrency, fmtInt, fmtPercent, fmtStr, fmtNumber } from "../../../safecontracts/src/formatter";
+export { fmtDate, fmtCurrency, fmtInt, fmtPercent, fmtStr, fmtNumber } from "../../../safecontracts/src/contracts-formatter";
 export { resolveColors } from "../../../safecontracts/src/palette";
 export type { ResolverContext, DataResolverContext } from "../../../safecontracts/src/resolver";
 export { resolveDataSources } from "../../../safecontracts/src/resolver";

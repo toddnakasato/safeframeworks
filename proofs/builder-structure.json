@@ -1,8 +1,8 @@
 {
   "ok": true,
   "component": "all",
-  "total": 295,
-  "passed": 295,
+  "total": 324,
+  "passed": 324,
   "failed": 0,
   "groups": {
     "uses-readList-or-readRecord": 19,
@@ -15,7 +15,8 @@
     "required-metadata-fields": 12,
     "no-getDataSource": 29,
     "no-initSafe": 29,
-    "no-module-scope-constants": 29
+    "no-module-scope-constants": 29,
+    "no-cross-function-scope-leak": 29
   },
   "checks": [
     {
@@ -79,6 +80,11 @@
       "status": "pass"
     },
     {
+      "group": "no-cross-function-scope-leak",
+      "name": "funnel: no cross-function scope leaks",
+      "status": "pass"
+    },
+    {
       "group": "uses-shared-el",
       "name": "callout: uses shared el/elAttrs from utils",
       "status": "pass"
@@ -124,6 +130,11 @@
       "status": "pass"
     },
     {
+      "group": "no-cross-function-scope-leak",
+      "name": "callout: no cross-function scope leaks",
+      "status": "pass"
+    },
+    {
       "group": "uses-shared-el",
       "name": "week: uses shared el/elAttrs from utils",
       "status": "pass"
@@ -161,6 +172,11 @@
     {
       "group": "no-module-scope-constants",
       "name": "week: no module-scope uppercase constants",
+      "status": "pass"
+    },
+    {
+      "group": "no-cross-function-scope-leak",
+      "name": "week: no cross-function scope leaks",
       "status": "pass"
     },
     {
@@ -224,6 +240,11 @@
       "status": "pass"
     },
     {
+      "group": "no-cross-function-scope-leak",
+      "name": "table: no cross-function scope leaks",
+      "status": "pass"
+    },
+    {
       "group": "uses-readList-or-readRecord",
       "name": "nav: uses readList or readRecord",
       "status": "pass"
@@ -279,6 +300,11 @@
       "status": "pass"
     },
     {
+      "group": "no-cross-function-scope-leak",
+      "name": "nav: no cross-function scope leaks",
+      "status": "pass"
+    },
+    {
       "group": "uses-readList-or-readRecord",
       "name": "input: uses readList or readRecord",
       "status": "pass"
@@ -329,6 +355,11 @@
       "status": "pass"
     },
     {
+      "group": "no-cross-function-scope-leak",
+      "name": "input: no cross-function scope leaks",
+      "status": "pass"
+    },
+    {
       "group": "uses-shared-el",
       "name": "button: uses shared el/elAttrs from utils",
       "status": "pass"
@@ -371,6 +402,11 @@
     {
       "group": "no-module-scope-constants",
       "name": "button: no module-scope uppercase constants",
+      "status": "pass"
+    },
+    {
+      "group": "no-cross-function-scope-leak",
+      "name": "button: no cross-function scope leaks",
       "status": "pass"
     },
     {
@@ -434,6 +470,11 @@
       "status": "pass"
     },
     {
+      "group": "no-cross-function-scope-leak",
+      "name": "sheet: no cross-function scope leaks",
+      "status": "pass"
+    },
+    {
       "group": "uses-readList-or-readRecord",
       "name": "chat: uses readList or readRecord",
       "status": "pass"
@@ -469,6 +510,11 @@
       "status": "pass"
     },
     {
+      "group": "no-cross-function-scope-leak",
+      "name": "chat: no cross-function scope leaks",
+      "status": "pass"
+    },
+    {
       "group": "uses-shared-el",
       "name": "columns: uses shared el/elAttrs from utils",
       "status": "pass"
@@ -491,6 +537,11 @@
     {
       "group": "no-module-scope-constants",
       "name": "columns: no module-scope uppercase constants",
+      "status": "pass"
+    },
+    {
+      "group": "no-cross-function-scope-leak",
+      "name": "columns: no cross-function scope leaks",
       "status": "pass"
     },
     {
@@ -524,6 +575,11 @@
       "status": "pass"
     },
     {
+      "group": "no-cross-function-scope-leak",
+      "name": "metric: no cross-function scope leaks",
+      "status": "pass"
+    },
+    {
       "group": "uses-shared-el",
       "name": "storyflow: uses shared el/elAttrs from utils",
       "status": "pass"
@@ -546,6 +602,11 @@
     {
       "group": "no-module-scope-constants",
       "name": "storyflow: no module-scope uppercase constants",
+      "status": "pass"
+    },
+    {
+      "group": "no-cross-function-scope-leak",
+      "name": "storyflow: no cross-function scope leaks",
       "status": "pass"
     },
     {
@@ -586,6 +647,11 @@
     {
       "group": "no-module-scope-constants",
       "name": "calendar: no module-scope uppercase constants",
+      "status": "pass"
+    },
+    {
+      "group": "no-cross-function-scope-leak",
+      "name": "calendar: no cross-function scope leaks",
       "status": "pass"
     },
     {
@@ -649,6 +715,11 @@
       "status": "pass"
     },
     {
+      "group": "no-cross-function-scope-leak",
+      "name": "card: no cross-function scope leaks",
+      "status": "pass"
+    },
+    {
       "group": "uses-readList-or-readRecord",
       "name": "map: uses readList or readRecord",
       "status": "pass"
@@ -696,6 +767,11 @@
     {
       "group": "no-module-scope-constants",
       "name": "map: no module-scope uppercase constants",
+      "status": "pass"
+    },
+    {
+      "group": "no-cross-function-scope-leak",
+      "name": "map: no cross-function scope leaks",
       "status": "pass"
     },
     {
@@ -749,6 +825,11 @@
       "status": "pass"
     },
     {
+      "group": "no-cross-function-scope-leak",
+      "name": "hierarchy: no cross-function scope leaks",
+      "status": "pass"
+    },
+    {
       "group": "uses-readList-or-readRecord",
       "name": "flow: uses readList or readRecord",
       "status": "pass"
@@ -796,6 +877,11 @@
     {
       "group": "no-module-scope-constants",
       "name": "flow: no module-scope uppercase constants",
+      "status": "pass"
+    },
+    {
+      "group": "no-cross-function-scope-leak",
+      "name": "flow: no cross-function scope leaks",
       "status": "pass"
     },
     {
@@ -849,6 +935,11 @@
       "status": "pass"
     },
     {
+      "group": "no-cross-function-scope-leak",
+      "name": "chart: no cross-function scope leaks",
+      "status": "pass"
+    },
+    {
       "group": "uses-shared-el",
       "name": "scene: uses shared el/elAttrs from utils",
       "status": "pass"
@@ -881,6 +972,11 @@
     {
       "group": "no-module-scope-constants",
       "name": "scene: no module-scope uppercase constants",
+      "status": "pass"
+    },
+    {
+      "group": "no-cross-function-scope-leak",
+      "name": "scene: no cross-function scope leaks",
       "status": "pass"
     },
     {
@@ -921,6 +1017,11 @@
     {
       "group": "no-module-scope-constants",
       "name": "dragdrop: no module-scope uppercase constants",
+      "status": "pass"
+    },
+    {
+      "group": "no-cross-function-scope-leak",
+      "name": "dragdrop: no cross-function scope leaks",
       "status": "pass"
     },
     {
@@ -971,6 +1072,11 @@
     {
       "group": "no-module-scope-constants",
       "name": "tabs: no module-scope uppercase constants",
+      "status": "pass"
+    },
+    {
+      "group": "no-cross-function-scope-leak",
+      "name": "tabs: no cross-function scope leaks",
       "status": "pass"
     },
     {
@@ -1026,6 +1132,11 @@
     {
       "group": "no-module-scope-constants",
       "name": "list: no module-scope uppercase constants",
+      "status": "pass"
+    },
+    {
+      "group": "no-cross-function-scope-leak",
+      "name": "list: no cross-function scope leaks",
       "status": "pass"
     },
     {
@@ -1086,6 +1197,11 @@
     {
       "group": "no-module-scope-constants",
       "name": "timeline: no module-scope uppercase constants",
+      "status": "pass"
+    },
+    {
+      "group": "no-cross-function-scope-leak",
+      "name": "timeline: no cross-function scope leaks",
       "status": "pass"
     },
     {
@@ -1154,6 +1270,11 @@
       "status": "pass"
     },
     {
+      "group": "no-cross-function-scope-leak",
+      "name": "tree: no cross-function scope leaks",
+      "status": "pass"
+    },
+    {
       "group": "uses-readList-or-readRecord",
       "name": "gauge: uses readList or readRecord",
       "status": "pass"
@@ -1211,6 +1332,11 @@
     {
       "group": "no-module-scope-constants",
       "name": "gauge: no module-scope uppercase constants",
+      "status": "pass"
+    },
+    {
+      "group": "no-cross-function-scope-leak",
+      "name": "gauge: no cross-function scope leaks",
       "status": "pass"
     },
     {
@@ -1274,6 +1400,11 @@
       "status": "pass"
     },
     {
+      "group": "no-cross-function-scope-leak",
+      "name": "picker: no cross-function scope leaks",
+      "status": "pass"
+    },
+    {
       "group": "uses-readList-or-readRecord",
       "name": "grid: uses readList or readRecord",
       "status": "pass"
@@ -1311,6 +1442,11 @@
     {
       "group": "no-module-scope-constants",
       "name": "grid: no module-scope uppercase constants",
+      "status": "pass"
+    },
+    {
+      "group": "no-cross-function-scope-leak",
+      "name": "grid: no cross-function scope leaks",
       "status": "pass"
     },
     {
@@ -1374,6 +1510,11 @@
       "status": "pass"
     },
     {
+      "group": "no-cross-function-scope-leak",
+      "name": "heatmap: no cross-function scope leaks",
+      "status": "pass"
+    },
+    {
       "group": "uses-readList-or-readRecord",
       "name": "toggle: uses readList or readRecord",
       "status": "pass"
@@ -1431,6 +1572,11 @@
     {
       "group": "no-module-scope-constants",
       "name": "toggle: no module-scope uppercase constants",
+      "status": "pass"
+    },
+    {
+      "group": "no-cross-function-scope-leak",
+      "name": "toggle: no cross-function scope leaks",
       "status": "pass"
     },
     {
@@ -1495,5 +1641,5 @@
     }
   ],
   "failures": [],
-  "ts": "2026-06-17T19:05:09.789Z"
+  "ts": "2026-06-17T19:12:20.384Z"
 }
