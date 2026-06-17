@@ -1,26 +1,26 @@
 {
-  "ok": false,
+  "ok": true,
   "framework": "all",
   "version": "all",
-  "total": 1136,
-  "passed": 1112,
-  "failed": 24,
+  "total": 1208,
+  "passed": 1208,
+  "failed": 0,
   "wrapperCounts": {
     "react/18": 30,
     "react/19": 30,
-    "angular/21": 27,
-    "angular/22": 27,
-    "vue/2": 27,
-    "vue/3": 27,
-    "svelte/4": 27,
-    "svelte/5": 27
+    "angular/21": 30,
+    "angular/22": 30,
+    "vue/2": 30,
+    "vue/3": 30,
+    "svelte/4": 30,
+    "svelte/5": 30
   },
   "groups": {
     "builder-coverage": 240,
-    "wrapper-delegates": 222,
-    "no-direct-fire": 222,
-    "no-payload-construction": 222,
-    "no-duplicate-dom": 222,
+    "wrapper-delegates": 240,
+    "no-direct-fire": 240,
+    "no-payload-construction": 240,
+    "no-duplicate-dom": 240,
     "framework-parity": 8
   },
   "checks": [
@@ -217,8 +217,7 @@
     {
       "group": "wrapper-delegates",
       "name": "react/18/SafeCallout.tsx: imports builder",
-      "status": "fail",
-      "error": "SafeCallout.tsx does not import from builders/callout"
+      "status": "pass"
     },
     {
       "group": "no-direct-fire",
@@ -518,8 +517,7 @@
     {
       "group": "wrapper-delegates",
       "name": "react/18/SafeColumns.tsx: imports builder",
-      "status": "fail",
-      "error": "SafeColumns.tsx does not import from builders/columns"
+      "status": "pass"
     },
     {
       "group": "no-direct-fire",
@@ -639,8 +637,7 @@
     {
       "group": "wrapper-delegates",
       "name": "react/18/SafeGrid.tsx: imports builder",
-      "status": "fail",
-      "error": "SafeGrid.tsx does not import from builders/grid"
+      "status": "pass"
     },
     {
       "group": "no-direct-fire",
@@ -970,8 +967,7 @@
     {
       "group": "wrapper-delegates",
       "name": "react/19/SafeCallout.tsx: imports builder",
-      "status": "fail",
-      "error": "SafeCallout.tsx does not import from builders/callout"
+      "status": "pass"
     },
     {
       "group": "no-direct-fire",
@@ -1271,8 +1267,7 @@
     {
       "group": "wrapper-delegates",
       "name": "react/19/SafeColumns.tsx: imports builder",
-      "status": "fail",
-      "error": "SafeColumns.tsx does not import from builders/columns"
+      "status": "pass"
     },
     {
       "group": "no-direct-fire",
@@ -1392,8 +1387,7 @@
     {
       "group": "wrapper-delegates",
       "name": "react/19/SafeGrid.tsx: imports builder",
-      "status": "fail",
-      "error": "SafeGrid.tsx does not import from builders/grid"
+      "status": "pass"
     },
     {
       "group": "no-direct-fire",
@@ -1583,14 +1577,12 @@
     {
       "group": "builder-coverage",
       "name": "angular/21: has wrapper for metric",
-      "status": "fail",
-      "error": "angular/21 missing wrapper for builder \"metric\""
+      "status": "pass"
     },
     {
       "group": "builder-coverage",
       "name": "angular/21: has wrapper for storyflow",
-      "status": "fail",
-      "error": "angular/21 missing wrapper for builder \"storyflow\""
+      "status": "pass"
     },
     {
       "group": "builder-coverage",
@@ -1625,8 +1617,7 @@
     {
       "group": "builder-coverage",
       "name": "angular/21: has wrapper for scene",
-      "status": "fail",
-      "error": "angular/21 missing wrapper for builder \"scene\""
+      "status": "pass"
     },
     {
       "group": "builder-coverage",
@@ -1701,6 +1692,26 @@
     {
       "group": "no-duplicate-dom",
       "name": "angular/21/SafeGauge.ts: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "angular/21/SafeMetric.ts: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "angular/21/SafeMetric.ts: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "angular/21/SafeMetric.ts: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "angular/21/SafeMetric.ts: no significant DOM creation",
       "status": "pass"
     },
     {
@@ -1925,6 +1936,26 @@
     },
     {
       "group": "wrapper-delegates",
+      "name": "angular/21/SafeScene.ts: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "angular/21/SafeScene.ts: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "angular/21/SafeScene.ts: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "angular/21/SafeScene.ts: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
       "name": "angular/21/SafeChart.ts: imports builder",
       "status": "pass"
     },
@@ -2021,6 +2052,26 @@
     {
       "group": "no-duplicate-dom",
       "name": "angular/21/SafePicker.ts: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "angular/21/SafeStoryFlow.ts: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "angular/21/SafeStoryFlow.ts: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "angular/21/SafeStoryFlow.ts: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "angular/21/SafeStoryFlow.ts: no significant DOM creation",
       "status": "pass"
     },
     {
@@ -2276,14 +2327,12 @@
     {
       "group": "builder-coverage",
       "name": "angular/22: has wrapper for metric",
-      "status": "fail",
-      "error": "angular/22 missing wrapper for builder \"metric\""
+      "status": "pass"
     },
     {
       "group": "builder-coverage",
       "name": "angular/22: has wrapper for storyflow",
-      "status": "fail",
-      "error": "angular/22 missing wrapper for builder \"storyflow\""
+      "status": "pass"
     },
     {
       "group": "builder-coverage",
@@ -2318,8 +2367,7 @@
     {
       "group": "builder-coverage",
       "name": "angular/22: has wrapper for scene",
-      "status": "fail",
-      "error": "angular/22 missing wrapper for builder \"scene\""
+      "status": "pass"
     },
     {
       "group": "builder-coverage",
@@ -2394,6 +2442,26 @@
     {
       "group": "no-duplicate-dom",
       "name": "angular/22/SafeGauge.ts: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "angular/22/SafeMetric.ts: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "angular/22/SafeMetric.ts: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "angular/22/SafeMetric.ts: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "angular/22/SafeMetric.ts: no significant DOM creation",
       "status": "pass"
     },
     {
@@ -2618,6 +2686,26 @@
     },
     {
       "group": "wrapper-delegates",
+      "name": "angular/22/SafeScene.ts: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "angular/22/SafeScene.ts: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "angular/22/SafeScene.ts: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "angular/22/SafeScene.ts: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
       "name": "angular/22/SafeChart.ts: imports builder",
       "status": "pass"
     },
@@ -2714,6 +2802,26 @@
     {
       "group": "no-duplicate-dom",
       "name": "angular/22/SafePicker.ts: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "angular/22/SafeStoryFlow.ts: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "angular/22/SafeStoryFlow.ts: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "angular/22/SafeStoryFlow.ts: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "angular/22/SafeStoryFlow.ts: no significant DOM creation",
       "status": "pass"
     },
     {
@@ -2969,14 +3077,12 @@
     {
       "group": "builder-coverage",
       "name": "vue/2: has wrapper for metric",
-      "status": "fail",
-      "error": "vue/2 missing wrapper for builder \"metric\""
+      "status": "pass"
     },
     {
       "group": "builder-coverage",
       "name": "vue/2: has wrapper for storyflow",
-      "status": "fail",
-      "error": "vue/2 missing wrapper for builder \"storyflow\""
+      "status": "pass"
     },
     {
       "group": "builder-coverage",
@@ -3011,8 +3117,7 @@
     {
       "group": "builder-coverage",
       "name": "vue/2: has wrapper for scene",
-      "status": "fail",
-      "error": "vue/2 missing wrapper for builder \"scene\""
+      "status": "pass"
     },
     {
       "group": "builder-coverage",
@@ -3291,6 +3396,26 @@
     },
     {
       "group": "wrapper-delegates",
+      "name": "vue/2/SafeStoryFlow.vue: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "vue/2/SafeStoryFlow.vue: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "vue/2/SafeStoryFlow.vue: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "vue/2/SafeStoryFlow.vue: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
       "name": "vue/2/SafeCalendar.vue: imports builder",
       "status": "pass"
     },
@@ -3471,6 +3596,26 @@
     },
     {
       "group": "wrapper-delegates",
+      "name": "vue/2/SafeScene.vue: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "vue/2/SafeScene.vue: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "vue/2/SafeScene.vue: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "vue/2/SafeScene.vue: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
       "name": "vue/2/SafeTable.vue: imports builder",
       "status": "pass"
     },
@@ -3610,6 +3755,26 @@
       "status": "pass"
     },
     {
+      "group": "wrapper-delegates",
+      "name": "vue/2/SafeMetric.vue: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "vue/2/SafeMetric.vue: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "vue/2/SafeMetric.vue: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "vue/2/SafeMetric.vue: no significant DOM creation",
+      "status": "pass"
+    },
+    {
       "group": "builder-coverage",
       "name": "vue/3: has wrapper for funnel",
       "status": "pass"
@@ -3662,14 +3827,12 @@
     {
       "group": "builder-coverage",
       "name": "vue/3: has wrapper for metric",
-      "status": "fail",
-      "error": "vue/3 missing wrapper for builder \"metric\""
+      "status": "pass"
     },
     {
       "group": "builder-coverage",
       "name": "vue/3: has wrapper for storyflow",
-      "status": "fail",
-      "error": "vue/3 missing wrapper for builder \"storyflow\""
+      "status": "pass"
     },
     {
       "group": "builder-coverage",
@@ -3704,8 +3867,7 @@
     {
       "group": "builder-coverage",
       "name": "vue/3: has wrapper for scene",
-      "status": "fail",
-      "error": "vue/3 missing wrapper for builder \"scene\""
+      "status": "pass"
     },
     {
       "group": "builder-coverage",
@@ -3984,6 +4146,26 @@
     },
     {
       "group": "wrapper-delegates",
+      "name": "vue/3/SafeStoryFlow.vue: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "vue/3/SafeStoryFlow.vue: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "vue/3/SafeStoryFlow.vue: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "vue/3/SafeStoryFlow.vue: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
       "name": "vue/3/SafeCalendar.vue: imports builder",
       "status": "pass"
     },
@@ -4164,6 +4346,26 @@
     },
     {
       "group": "wrapper-delegates",
+      "name": "vue/3/SafeScene.vue: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "vue/3/SafeScene.vue: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "vue/3/SafeScene.vue: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "vue/3/SafeScene.vue: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
       "name": "vue/3/SafeTable.vue: imports builder",
       "status": "pass"
     },
@@ -4303,6 +4505,26 @@
       "status": "pass"
     },
     {
+      "group": "wrapper-delegates",
+      "name": "vue/3/SafeMetric.vue: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "vue/3/SafeMetric.vue: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "vue/3/SafeMetric.vue: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "vue/3/SafeMetric.vue: no significant DOM creation",
+      "status": "pass"
+    },
+    {
       "group": "builder-coverage",
       "name": "svelte/4: has wrapper for funnel",
       "status": "pass"
@@ -4355,14 +4577,12 @@
     {
       "group": "builder-coverage",
       "name": "svelte/4: has wrapper for metric",
-      "status": "fail",
-      "error": "svelte/4 missing wrapper for builder \"metric\""
+      "status": "pass"
     },
     {
       "group": "builder-coverage",
       "name": "svelte/4: has wrapper for storyflow",
-      "status": "fail",
-      "error": "svelte/4 missing wrapper for builder \"storyflow\""
+      "status": "pass"
     },
     {
       "group": "builder-coverage",
@@ -4397,8 +4617,7 @@
     {
       "group": "builder-coverage",
       "name": "svelte/4: has wrapper for scene",
-      "status": "fail",
-      "error": "svelte/4 missing wrapper for builder \"scene\""
+      "status": "pass"
     },
     {
       "group": "builder-coverage",
@@ -4897,6 +5116,26 @@
     },
     {
       "group": "wrapper-delegates",
+      "name": "svelte/4/SafeStoryFlow.svelte: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "svelte/4/SafeStoryFlow.svelte: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "svelte/4/SafeStoryFlow.svelte: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "svelte/4/SafeStoryFlow.svelte: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
       "name": "svelte/4/SafeTabs.svelte: imports builder",
       "status": "pass"
     },
@@ -4933,6 +5172,26 @@
     {
       "group": "no-duplicate-dom",
       "name": "svelte/4/SafeLayout.svelte: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "svelte/4/SafeMetric.svelte: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "svelte/4/SafeMetric.svelte: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "svelte/4/SafeMetric.svelte: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "svelte/4/SafeMetric.svelte: no significant DOM creation",
       "status": "pass"
     },
     {
@@ -4996,6 +5255,26 @@
       "status": "pass"
     },
     {
+      "group": "wrapper-delegates",
+      "name": "svelte/4/SafeScene.svelte: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "svelte/4/SafeScene.svelte: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "svelte/4/SafeScene.svelte: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "svelte/4/SafeScene.svelte: no significant DOM creation",
+      "status": "pass"
+    },
+    {
       "group": "builder-coverage",
       "name": "svelte/5: has wrapper for funnel",
       "status": "pass"
@@ -5048,14 +5327,12 @@
     {
       "group": "builder-coverage",
       "name": "svelte/5: has wrapper for metric",
-      "status": "fail",
-      "error": "svelte/5 missing wrapper for builder \"metric\""
+      "status": "pass"
     },
     {
       "group": "builder-coverage",
       "name": "svelte/5: has wrapper for storyflow",
-      "status": "fail",
-      "error": "svelte/5 missing wrapper for builder \"storyflow\""
+      "status": "pass"
     },
     {
       "group": "builder-coverage",
@@ -5090,8 +5367,7 @@
     {
       "group": "builder-coverage",
       "name": "svelte/5: has wrapper for scene",
-      "status": "fail",
-      "error": "svelte/5 missing wrapper for builder \"scene\""
+      "status": "pass"
     },
     {
       "group": "builder-coverage",
@@ -5590,6 +5866,26 @@
     },
     {
       "group": "wrapper-delegates",
+      "name": "svelte/5/SafeStoryFlow.svelte: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "svelte/5/SafeStoryFlow.svelte: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "svelte/5/SafeStoryFlow.svelte: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "svelte/5/SafeStoryFlow.svelte: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
       "name": "svelte/5/SafeTabs.svelte: imports builder",
       "status": "pass"
     },
@@ -5626,6 +5922,26 @@
     {
       "group": "no-duplicate-dom",
       "name": "svelte/5/SafeLayout.svelte: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "svelte/5/SafeMetric.svelte: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "svelte/5/SafeMetric.svelte: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "svelte/5/SafeMetric.svelte: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "svelte/5/SafeMetric.svelte: no significant DOM creation",
       "status": "pass"
     },
     {
@@ -5689,167 +6005,66 @@
       "status": "pass"
     },
     {
-      "group": "framework-parity",
-      "name": "react/18: wrapper count 30 (range 27-30)",
+      "group": "wrapper-delegates",
+      "name": "svelte/5/SafeScene.svelte: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "svelte/5/SafeScene.svelte: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "svelte/5/SafeScene.svelte: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "svelte/5/SafeScene.svelte: no significant DOM creation",
       "status": "pass"
     },
     {
       "group": "framework-parity",
-      "name": "react/19: wrapper count 30 (range 27-30)",
+      "name": "react/18: wrapper count 30 (range 30-30)",
       "status": "pass"
     },
     {
       "group": "framework-parity",
-      "name": "angular/21: wrapper count 27 (range 27-30)",
+      "name": "react/19: wrapper count 30 (range 30-30)",
       "status": "pass"
     },
     {
       "group": "framework-parity",
-      "name": "angular/22: wrapper count 27 (range 27-30)",
+      "name": "angular/21: wrapper count 30 (range 30-30)",
       "status": "pass"
     },
     {
       "group": "framework-parity",
-      "name": "vue/2: wrapper count 27 (range 27-30)",
+      "name": "angular/22: wrapper count 30 (range 30-30)",
       "status": "pass"
     },
     {
       "group": "framework-parity",
-      "name": "vue/3: wrapper count 27 (range 27-30)",
+      "name": "vue/2: wrapper count 30 (range 30-30)",
       "status": "pass"
     },
     {
       "group": "framework-parity",
-      "name": "svelte/4: wrapper count 27 (range 27-30)",
+      "name": "vue/3: wrapper count 30 (range 30-30)",
       "status": "pass"
     },
     {
       "group": "framework-parity",
-      "name": "svelte/5: wrapper count 27 (range 27-30)",
+      "name": "svelte/4: wrapper count 30 (range 30-30)",
+      "status": "pass"
+    },
+    {
+      "group": "framework-parity",
+      "name": "svelte/5: wrapper count 30 (range 30-30)",
       "status": "pass"
     }
   ],
-  "failures": [
-    {
-      "group": "wrapper-delegates",
-      "name": "react/18/SafeCallout.tsx: imports builder",
-      "error": "SafeCallout.tsx does not import from builders/callout"
-    },
-    {
-      "group": "wrapper-delegates",
-      "name": "react/18/SafeColumns.tsx: imports builder",
-      "error": "SafeColumns.tsx does not import from builders/columns"
-    },
-    {
-      "group": "wrapper-delegates",
-      "name": "react/18/SafeGrid.tsx: imports builder",
-      "error": "SafeGrid.tsx does not import from builders/grid"
-    },
-    {
-      "group": "wrapper-delegates",
-      "name": "react/19/SafeCallout.tsx: imports builder",
-      "error": "SafeCallout.tsx does not import from builders/callout"
-    },
-    {
-      "group": "wrapper-delegates",
-      "name": "react/19/SafeColumns.tsx: imports builder",
-      "error": "SafeColumns.tsx does not import from builders/columns"
-    },
-    {
-      "group": "wrapper-delegates",
-      "name": "react/19/SafeGrid.tsx: imports builder",
-      "error": "SafeGrid.tsx does not import from builders/grid"
-    },
-    {
-      "group": "builder-coverage",
-      "name": "angular/21: has wrapper for metric",
-      "error": "angular/21 missing wrapper for builder \"metric\""
-    },
-    {
-      "group": "builder-coverage",
-      "name": "angular/21: has wrapper for storyflow",
-      "error": "angular/21 missing wrapper for builder \"storyflow\""
-    },
-    {
-      "group": "builder-coverage",
-      "name": "angular/21: has wrapper for scene",
-      "error": "angular/21 missing wrapper for builder \"scene\""
-    },
-    {
-      "group": "builder-coverage",
-      "name": "angular/22: has wrapper for metric",
-      "error": "angular/22 missing wrapper for builder \"metric\""
-    },
-    {
-      "group": "builder-coverage",
-      "name": "angular/22: has wrapper for storyflow",
-      "error": "angular/22 missing wrapper for builder \"storyflow\""
-    },
-    {
-      "group": "builder-coverage",
-      "name": "angular/22: has wrapper for scene",
-      "error": "angular/22 missing wrapper for builder \"scene\""
-    },
-    {
-      "group": "builder-coverage",
-      "name": "vue/2: has wrapper for metric",
-      "error": "vue/2 missing wrapper for builder \"metric\""
-    },
-    {
-      "group": "builder-coverage",
-      "name": "vue/2: has wrapper for storyflow",
-      "error": "vue/2 missing wrapper for builder \"storyflow\""
-    },
-    {
-      "group": "builder-coverage",
-      "name": "vue/2: has wrapper for scene",
-      "error": "vue/2 missing wrapper for builder \"scene\""
-    },
-    {
-      "group": "builder-coverage",
-      "name": "vue/3: has wrapper for metric",
-      "error": "vue/3 missing wrapper for builder \"metric\""
-    },
-    {
-      "group": "builder-coverage",
-      "name": "vue/3: has wrapper for storyflow",
-      "error": "vue/3 missing wrapper for builder \"storyflow\""
-    },
-    {
-      "group": "builder-coverage",
-      "name": "vue/3: has wrapper for scene",
-      "error": "vue/3 missing wrapper for builder \"scene\""
-    },
-    {
-      "group": "builder-coverage",
-      "name": "svelte/4: has wrapper for metric",
-      "error": "svelte/4 missing wrapper for builder \"metric\""
-    },
-    {
-      "group": "builder-coverage",
-      "name": "svelte/4: has wrapper for storyflow",
-      "error": "svelte/4 missing wrapper for builder \"storyflow\""
-    },
-    {
-      "group": "builder-coverage",
-      "name": "svelte/4: has wrapper for scene",
-      "error": "svelte/4 missing wrapper for builder \"scene\""
-    },
-    {
-      "group": "builder-coverage",
-      "name": "svelte/5: has wrapper for metric",
-      "error": "svelte/5 missing wrapper for builder \"metric\""
-    },
-    {
-      "group": "builder-coverage",
-      "name": "svelte/5: has wrapper for storyflow",
-      "error": "svelte/5 missing wrapper for builder \"storyflow\""
-    },
-    {
-      "group": "builder-coverage",
-      "name": "svelte/5: has wrapper for scene",
-      "error": "svelte/5 missing wrapper for builder \"scene\""
-    }
-  ],
-  "ts": "2026-06-17T07:12:32.590Z"
+  "failures": [],
+  "ts": "2026-06-17T07:15:51.521Z"
 }

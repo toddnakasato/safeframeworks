@@ -1,5 +1,5 @@
 import { HyperFormula } from "hyperformula";
-import { el } from "./util";
+import { el } from "../utils/util";
 import type { SafeFireContext } from "../../safecontracts/src/contracts";
 import { getDataSource } from "../../safecontracts/src/contracts";
 import type { ConfigBase } from "../../safecontracts/src/contracts";

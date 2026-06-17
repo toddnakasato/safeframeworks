@@ -1,6 +1,6 @@
 import type { ConfigBase, Field } from "../../safecontracts/src/contracts";
 import type { SafeFireContext } from "../../safecontracts/src/contracts";
-import { el } from "./util";
+import { el } from "../utils/util";
 import { getDataSource } from "../../safecontracts/src/contracts";
 import { fmtDate, fmtCurrency, fmtInt, fmtPercent, fmtStr } from "../../safecontracts/src/formatter";
 import { sortBy, paginate } from "../../safecontracts/src/contracts-operations";

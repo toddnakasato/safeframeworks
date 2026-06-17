@@ -1,5 +1,5 @@
 import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
-import { el } from "./util";
+import { el } from "../utils/util";
 import type { SafeFireContext } from "../../safecontracts/src/contracts";
 import { LAYOUT_VARIANTS } from "../../safecontracts/src/contracts";
 

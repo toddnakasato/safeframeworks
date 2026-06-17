@@ -1,5 +1,5 @@
 import type { ConfigBase, RowCell, RowDef } from "../../safecontracts/src/contracts";
-import { el } from "./util";
+import { el } from "../utils/util";
 import type { SafeFireContext } from "../../safecontracts/src/contracts";
 import { getDataSource } from "../../safecontracts/src/contracts";
 import { filterBy } from "../../safecontracts/src/contracts-operations";

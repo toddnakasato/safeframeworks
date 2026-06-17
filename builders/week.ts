@@ -1,5 +1,5 @@
 import type { ConfigBase } from "../../safecontracts/src/contracts";
-import { el } from "./util";
+import { el } from "../utils/util";
 import type { SafeFireContext } from "../../safecontracts/src/contracts";
 import { DAY_NAMES_SHORT, MONTH_NAMES } from "../../safecontracts/src/contracts";
 

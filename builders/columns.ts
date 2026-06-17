@@ -1,5 +1,5 @@
 import type { ConfigBase, SafeFireContext } from "../../safecontracts/src/contracts";
-import { el } from "./util";
+import { el } from "../utils/util";
 import { COLUMNS_DEFAULTS } from "../../safecontracts/src/components/columns";
 
 /*----------------------------------------------------------------------------------------------------
