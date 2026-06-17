@@ -2,7 +2,7 @@ import type { ConfigBase, Field, SafeFireContext } from "../../safecontracts/src
 import { getDataSource } from "../../safecontracts/src/contracts";
 import { createSafeInput } from "./input";
 import { elAttrs } from "../utils/util";
-import { readList } from "../../safecontracts/src/contracts-data";
+import { readRecord } from "../../safecontracts/src/contracts-data";
 
 /*----------------------------------------------------------------------------------------------------
  *

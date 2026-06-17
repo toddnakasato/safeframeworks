@@ -1,15 +1,16 @@
 {
   "ok": true,
   "component": "all",
-  "total": 113,
-  "passed": 113,
+  "total": 174,
+  "passed": 174,
   "failed": 0,
   "groups": {
     "uses-readList-or-readRecord": 19,
     "uses-shared-el": 29,
     "uses-applyIntent": 21,
     "uses-applyPaintState": 15,
-    "has-data-component": 29
+    "has-data-component": 29,
+    "imports-match-calls": 61
   },
   "checks": [
     {
@@ -38,6 +39,21 @@
       "status": "pass"
     },
     {
+      "group": "imports-match-calls",
+      "name": "funnel: imports readList",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "funnel: imports applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "funnel: imports applyPaintState",
+      "status": "pass"
+    },
+    {
       "group": "uses-shared-el",
       "name": "callout: uses shared el/elAttrs from utils",
       "status": "pass"
@@ -53,6 +69,16 @@
       "status": "pass"
     },
     {
+      "group": "imports-match-calls",
+      "name": "callout: imports applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "callout: imports elAttrs",
+      "status": "pass"
+    },
+    {
       "group": "uses-shared-el",
       "name": "week: uses shared el/elAttrs from utils",
       "status": "pass"
@@ -65,6 +91,11 @@
     {
       "group": "has-data-component",
       "name": "week: sets data-component",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "week: imports applyIntent",
       "status": "pass"
     },
     {
@@ -93,6 +124,21 @@
       "status": "pass"
     },
     {
+      "group": "imports-match-calls",
+      "name": "table: imports readList",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "table: imports applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "table: imports applyPaintState",
+      "status": "pass"
+    },
+    {
       "group": "uses-readList-or-readRecord",
       "name": "nav: uses readList or readRecord",
       "status": "pass"
@@ -110,6 +156,21 @@
     {
       "group": "has-data-component",
       "name": "nav: sets data-component",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "nav: imports readList",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "nav: imports applyPaintState",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "nav: imports elAttrs",
       "status": "pass"
     },
     {
@@ -133,6 +194,16 @@
       "status": "pass"
     },
     {
+      "group": "imports-match-calls",
+      "name": "input: imports readRecord",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "input: imports applyPaintState",
+      "status": "pass"
+    },
+    {
       "group": "uses-shared-el",
       "name": "button: uses shared el/elAttrs from utils",
       "status": "pass"
@@ -145,6 +216,16 @@
     {
       "group": "has-data-component",
       "name": "button: sets data-component",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "button: imports applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "button: imports elAttrs",
       "status": "pass"
     },
     {
@@ -173,6 +254,21 @@
       "status": "pass"
     },
     {
+      "group": "imports-match-calls",
+      "name": "sheet: imports readList",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "sheet: imports applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "sheet: imports applyPaintState",
+      "status": "pass"
+    },
+    {
       "group": "uses-readList-or-readRecord",
       "name": "chat: uses readList or readRecord",
       "status": "pass"
@@ -185,6 +281,11 @@
     {
       "group": "has-data-component",
       "name": "chat: sets data-component",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "chat: imports readList",
       "status": "pass"
     },
     {
@@ -205,6 +306,11 @@
     {
       "group": "has-data-component",
       "name": "metric: sets data-component",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "metric: imports readRecord",
       "status": "pass"
     },
     {
@@ -233,6 +339,11 @@
       "status": "pass"
     },
     {
+      "group": "imports-match-calls",
+      "name": "calendar: imports applyIntent",
+      "status": "pass"
+    },
+    {
       "group": "uses-readList-or-readRecord",
       "name": "card: uses readList or readRecord",
       "status": "pass"
@@ -258,6 +369,21 @@
       "status": "pass"
     },
     {
+      "group": "imports-match-calls",
+      "name": "card: imports readList",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "card: imports applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "card: imports applyPaintState",
+      "status": "pass"
+    },
+    {
       "group": "uses-readList-or-readRecord",
       "name": "map: uses readList or readRecord",
       "status": "pass"
@@ -275,6 +401,16 @@
     {
       "group": "has-data-component",
       "name": "map: sets data-component",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "map: imports readList",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "map: imports applyIntent",
       "status": "pass"
     },
     {
@@ -298,6 +434,16 @@
       "status": "pass"
     },
     {
+      "group": "imports-match-calls",
+      "name": "hierarchy: imports readList",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "hierarchy: imports applyIntent",
+      "status": "pass"
+    },
+    {
       "group": "uses-readList-or-readRecord",
       "name": "flow: uses readList or readRecord",
       "status": "pass"
@@ -315,6 +461,16 @@
     {
       "group": "has-data-component",
       "name": "flow: sets data-component",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "flow: imports readRecord",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "flow: imports applyIntent",
       "status": "pass"
     },
     {
@@ -338,6 +494,16 @@
       "status": "pass"
     },
     {
+      "group": "imports-match-calls",
+      "name": "chart: imports readList",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "chart: imports applyIntent",
+      "status": "pass"
+    },
+    {
       "group": "uses-shared-el",
       "name": "scene: uses shared el/elAttrs from utils",
       "status": "pass"
@@ -353,6 +519,11 @@
       "status": "pass"
     },
     {
+      "group": "imports-match-calls",
+      "name": "scene: imports applyPaintState",
+      "status": "pass"
+    },
+    {
       "group": "uses-shared-el",
       "name": "dragdrop: uses shared el/elAttrs from utils",
       "status": "pass"
@@ -365,6 +536,11 @@
     {
       "group": "has-data-component",
       "name": "dragdrop: sets data-component",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "dragdrop: imports applyIntent",
       "status": "pass"
     },
     {
@@ -385,6 +561,16 @@
     {
       "group": "has-data-component",
       "name": "tabs: sets data-component",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "tabs: imports applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "tabs: imports applyPaintState",
       "status": "pass"
     },
     {
@@ -413,6 +599,21 @@
       "status": "pass"
     },
     {
+      "group": "imports-match-calls",
+      "name": "list: imports readList",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "list: imports applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "list: imports applyPaintState",
+      "status": "pass"
+    },
+    {
       "group": "uses-readList-or-readRecord",
       "name": "timeline: uses readList or readRecord",
       "status": "pass"
@@ -435,6 +636,21 @@
     {
       "group": "has-data-component",
       "name": "timeline: sets data-component",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "timeline: imports readList",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "timeline: imports applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "timeline: imports applyPaintState",
       "status": "pass"
     },
     {
@@ -463,6 +679,26 @@
       "status": "pass"
     },
     {
+      "group": "imports-match-calls",
+      "name": "tree: imports readList",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "tree: imports applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "tree: imports applyPaintState",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "tree: imports elAttrs",
+      "status": "pass"
+    },
+    {
       "group": "uses-readList-or-readRecord",
       "name": "gauge: uses readList or readRecord",
       "status": "pass"
@@ -485,6 +721,21 @@
     {
       "group": "has-data-component",
       "name": "gauge: sets data-component",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "gauge: imports readList",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "gauge: imports applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "gauge: imports applyPaintState",
       "status": "pass"
     },
     {
@@ -513,6 +764,21 @@
       "status": "pass"
     },
     {
+      "group": "imports-match-calls",
+      "name": "picker: imports readList",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "picker: imports applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "picker: imports applyPaintState",
+      "status": "pass"
+    },
+    {
       "group": "uses-readList-or-readRecord",
       "name": "grid: uses readList or readRecord",
       "status": "pass"
@@ -525,6 +791,16 @@
     {
       "group": "has-data-component",
       "name": "grid: sets data-component",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "grid: imports readRecord",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "grid: imports elAttrs",
       "status": "pass"
     },
     {
@@ -553,6 +829,21 @@
       "status": "pass"
     },
     {
+      "group": "imports-match-calls",
+      "name": "heatmap: imports readList",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "heatmap: imports applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "heatmap: imports applyPaintState",
+      "status": "pass"
+    },
+    {
       "group": "uses-readList-or-readRecord",
       "name": "toggle: uses readList or readRecord",
       "status": "pass"
@@ -576,8 +867,23 @@
       "group": "has-data-component",
       "name": "toggle: sets data-component",
       "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "toggle: imports readList",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "toggle: imports applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "toggle: imports applyPaintState",
+      "status": "pass"
     }
   ],
   "failures": [],
-  "ts": "2026-06-17T15:01:09.468Z"
+  "ts": "2026-06-17T15:23:11.102Z"
 }

@@ -6,7 +6,7 @@ import type { ConfigBase } from "../../safecontracts/src/contracts";
 import type { FlowData, FlowNode } from "../../safecontracts/src/components/flow";
 import { FLOW_DEFAULTS } from "../../safecontracts/src/components/flow";
 import { resolveColors } from "../../safecontracts/src/palette";
-import { readList } from "../../safecontracts/src/contracts-data";
+import { readRecord } from "../../safecontracts/src/contracts-data";
 import { applyIntent } from "../utils/util";
 
 /*----------------------------------------------------------------------------------------------------

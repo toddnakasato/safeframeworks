@@ -2,7 +2,7 @@ import type { ConfigBase } from "../../safecontracts/src/contracts";
 import { el, applyPaintState } from "../utils/util";
 import type { SafeFireContext } from "../../safecontracts/src/contracts";
 import { getDataSource } from "../../safecontracts/src/contracts";
-import { readList } from "../../safecontracts/src/contracts-data";
+import { readRecord } from "../../safecontracts/src/contracts-data";
 
 /*----------------------------------------------------------------------------------------------------
  *
