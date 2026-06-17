@@ -1,10 +1,10 @@
 /**
- * builders/proof-viewer.ts — dev-only FRRR workbench for safeframeworks.
+ * builders/proof-viewer.ts — dev-only PRRR workbench for safeframeworks.
  *
- * Shows the full Fire, Route, Reply, Respond chain per event.
+ * Shows the full Payload, Route, Reply, Respond chain per event.
  * All data comes from real sources — nothing faked.
  *
- *   Fire:    COMPONENT_EVENTS + COMPONENT_FIRE_SHAPES (safecontracts)
+ *   Payload: COMPONENT_EVENTS + COMPONENT_PAYLOAD_SHAPES (safecontracts)
  *   Route:   events/prove-{component}.json (safeframeworks, real handler file)
  *   Reply:   actual safedesk CLI output (live, via safecli_run)
  *   Respond: proof file on disk (safeframeworks/proofs/)
@@ -12,7 +12,7 @@
  * config.metadata.target — the component type to inspect
  */
 import type { ConfigBase, OnSafeEvent, EventHandler } from "../../safecontracts/src/contracts";
-import { COMPONENT_EVENTS, COMPONENT_FIRE_SHAPES } from "../../safecontracts/src/contracts";
+import { COMPONENT_EVENTS, COMPONENT_PAYLOAD_SHAPES } from "../../safecontracts/src/contracts";
 
 async function invoke<T>(cmd: string, args?: Record<string, any>): Promise<T> {
     const { invoke: tauriInvoke } = await import("@tauri-apps/api/core");
@@ -49,7 +49,7 @@ export function createSafeProofViewer(
 ): HTMLElement {
     const target = (config.metadata?.target as string) ?? "";
     const events = COMPONENT_EVENTS[target] ?? [];
-    const shapes = COMPONENT_FIRE_SHAPES[target] ?? {};
+    const shapes = COMPONENT_PAYLOAD_SHAPES[target] ?? {};
 
     const root = el("div", "pv");
     root.setAttribute("data-component", "proof-viewer");
@@ -79,7 +79,7 @@ export function createSafeProofViewer(
         .pv .exp.open { display: table-row; }
         .pv .exp td { background: #f9fafb; border-bottom: 1px solid #e5e7eb; padding: 8px; }
         .pv .empty { color: #9ca3af; padding: 16px; text-align: center; }
-        .pv col.c-ev { width: 10%; } .pv col.c-fire { width: 18%; } .pv col.c-route { width: 22%; }
+        .pv col.c-ev { width: 10%; } .pv col.c-payload { width: 18%; } .pv col.c-route { width: 22%; }
         .pv col.c-reply { width: 20%; } .pv col.c-respond { width: 14%; } .pv col.c-status { width: 8%; } .pv col.c-btn { width: 8%; }
     `;
     root.appendChild(style);
@@ -103,7 +103,7 @@ export function createSafeProofViewer(
     // Table
     const tbl = document.createElement("table");
     const colgroup = document.createElement("colgroup");
-    for (const cls of ["c-ev", "c-fire", "c-route", "c-reply", "c-respond", "c-status", "c-btn"]) {
+    for (const cls of ["c-ev", "c-payload", "c-route", "c-reply", "c-respond", "c-status", "c-btn"]) {
         const col = document.createElement("col");
         col.className = cls;
         colgroup.appendChild(col);
@@ -112,7 +112,7 @@ export function createSafeProofViewer(
 
     const thead = document.createElement("thead");
     const hr = document.createElement("tr");
-    for (const l of ["Event", "Fire", "Route", "Reply", "Respond", "Status", ""]) hr.appendChild(el("th", undefined, l));
+    for (const l of ["Event", "Payload", "Route", "Reply", "Respond", "Status", ""]) hr.appendChild(el("th", undefined, l));
     thead.appendChild(hr);
     tbl.appendChild(thead);
 
@@ -130,15 +130,15 @@ export function createSafeProofViewer(
         // Event
         tr.appendChild(el("td", undefined, eventName));
 
-        // Fire — real shape from COMPONENT_FIRE_SHAPES
-        const fireTd = el("td", "m");
+        // Payload — real shape from COMPONENT_PAYLOAD_SHAPES
+        const payloadTd = el("td", "m");
         if (shape) {
             const lines: string[] = [];
             if (shape.data) for (const [k, v] of Object.entries(shape.data)) lines.push(`data.${k}: ${v}`);
             if (shape.context) for (const [k, v] of Object.entries(shape.context)) lines.push(`ctx.${k}: ${v}`);
-            fireTd.textContent = lines.join("\n") || "—";
-        } else fireTd.textContent = "no shape declared";
-        tr.appendChild(fireTd);
+            payloadTd.textContent = lines.join("\n") || "—";
+        } else payloadTd.textContent = "no shape declared";
+        tr.appendChild(payloadTd);
 
         // Route — known statically from handler naming convention, enriched on mount
         const routeTd = el("td", "m");
