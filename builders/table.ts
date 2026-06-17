@@ -1,7 +1,6 @@
-import type { ConfigBase, OnSafeEvent, Field } from "../../safecontracts/src/contracts";
+import type { ConfigBase, Field } from "../../safecontracts/src/contracts";
+import type { SafeFireContext } from "../../safecontracts/src/contracts";
 import { el } from "./util";
-import { fireWithPayload } from "./payload-delegate";
-import type { PayloadCoordinates } from "./payload-delegate";
 import { getDataSource } from "../../safecontracts/src/contracts";
 import { fmtDate, fmtCurrency, fmtInt, fmtPercent, fmtStr } from "../../safecontracts/src/formatter";
 import { sortBy, paginate } from "../../safecontracts/src/contracts-operations";
@@ -50,8 +49,7 @@ function numericType(type: string): boolean {
  *
  ----------------------------------------------------------------------------------------------------*/
 
-export function createSafeTable(container: HTMLElement, config: ConfigBase, onEvent?: OnSafeEvent): HTMLElement {
-    const instanceId = config.metadata?.name as string | undefined;
+export function createSafeTable(container: HTMLElement, config: ConfigBase, ctx: SafeFireContext): HTMLElement {
     const metadata = config.metadata;
 
     // Self-extract data + schema from the first datasource
@@ -91,9 +89,7 @@ export function createSafeTable(container: HTMLElement, config: ConfigBase, onEv
     const root = el("div");
     root.setAttribute("data-component", "table");
 
-    const fire = (eventName: string, coords: PayloadCoordinates) => {
-        fireWithPayload(onEvent, "table", eventName, { ...coords, rows: data }, { instanceId });
-    };
+    const { fire } = ctx;
 
     if (data.length === 0) {
         root.setAttribute("data-role", "empty");
@@ -390,6 +386,7 @@ export function initSafeTables(root: Document | HTMLElement = document): void {
         if (host.dataset.tableMounted) return;
         host.dataset.tableMounted = "1";
         const config = JSON.parse(host.dataset.tableConfig!) as ConfigBase;
-        createSafeTable(host, config);
+        // No-op fire context for standalone mount (no event routing)
+        createSafeTable(host, config, { fire: () => {} });
     });
 }

@@ -4,8 +4,13 @@
  * Given a ConfigBase, dispatches to the correct createSafe* builder.
  * Used by createSafeLayout's renderChild callback to recursively
  * build children into regions. Framework-free.
+ *
+ * Creates a SafeFireContext per component so builders fire events via
+ * ctx.fire("event", { coords }) — no per-builder fire wrappers.
  */
-import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
+import type { ConfigBase, OnSafeEvent, SafeFireContext } from "../../safecontracts/src/contracts";
+import { createSafeFireContext } from "../../safecontracts/src/contracts";
+import { buildPayloadViaCli } from "./payload-delegate";
 import { createSafeButton } from "./button";
 import { createSafeCalendar } from "./calendar";
 import { createSafeCallout } from "./callout";
@@ -43,6 +48,7 @@ const el = (tag: string, text?: string): HTMLElement => {
  * Render any ConfigBase to a DOM element using the shared builders.
  * Stamps the eventHandler.handler on onEvent before passing to child builders —
  * same logic as SafeRenderer's stampedOnEvent.
+ * Creates a SafeFireContext so builders fire via ctx.fire().
  */
 export function buildComponent(config: ConfigBase, onEvent?: OnSafeEvent): HTMLElement {
     const component = config.component ?? (config.metadata?.component as string);
@@ -54,6 +60,9 @@ export function buildComponent(config: ConfigBase, onEvent?: OnSafeEvent): HTMLE
         onEvent && handler
             ? (event) => onEvent({ ...event, handler })
             : onEvent;
+
+    // Create SafeFireContext — one per component, passed to every builder
+    const ctx = createSafeFireContext(config, stampedOnEvent, buildPayloadViaCli);
 
     switch (component) {
         case "layout":
@@ -114,7 +123,7 @@ export function buildComponent(config: ConfigBase, onEvent?: OnSafeEvent): HTMLE
             createSafeSheet(container, config, stampedOnEvent);
             break;
         case "table":
-            createSafeTable(container, config, stampedOnEvent);
+            createSafeTable(container, config, ctx);
             break;
         case "tabs":
             createSafeTabs(container, config, stampedOnEvent);

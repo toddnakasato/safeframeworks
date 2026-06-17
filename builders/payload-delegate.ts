@@ -1,55 +1,37 @@
 /**
- * builders/payload-delegate.ts — delegate payload assembly to the safedesk binary.
+ * builders/payload-delegate.ts — bridges safecontracts safeFire to the Tauri host.
  *
- * Builders call fireWithPayload() with coordinates (what happened, where).
- * safedesk builds the full payload from the contract template + datasource.
- * Builder stays dumb. CLI owns the payload.
+ * Provides buildPayloadViaCli — the BuildPayloadFn the host injects into
+ * createSafeFireContext. Calls the compiled safedesk binary via Tauri invoke.
  *
- * Runs in Tauri webview — calls safedesk via safecli_run Tauri command.
+ * Builders never import this. The renderer does, once, and passes the
+ * SafeFireContext to every builder.
  */
-import type { OnSafeEvent, SafeEvent } from "../../safecontracts/src/contracts-events";
-import { createSafeEvent } from "../../safecontracts/src/contracts-events";
+import type { BuildPayloadFn, PayloadResult } from "../../safecontracts/src/contracts-safefire";
 
 async function invoke<T>(cmd: string, args?: Record<string, any>): Promise<T> {
     const { invoke: tauriInvoke } = await import("@tauri-apps/api/core");
     return tauriInvoke<T>(cmd, args);
 }
 
-export interface PayloadCoordinates {
-    index?: number;
-    col?: number;
-    field?: string;
-    value?: any;
-    dir?: string;
-    page?: number;
-    selected?: number[];
-    order?: any[];
-    operator?: string;
-    width?: number;
-    previous?: any;
-    /** Inline data rows — passed as --data JSON to safedesk */
-    rows?: Record<string, any>[];
-}
-
 /**
- * Call safedesk payload build via Tauri invoke, return assembled payload.
+ * BuildPayloadFn implementation for Tauri desktop.
+ * Calls safedesk payload build via safecli_run Tauri command.
  */
-export async function buildPayloadViaCliAsync(
+export const buildPayloadViaCli: BuildPayloadFn = async (
     component: string,
     event: string,
-    coords: PayloadCoordinates,
-    datasource?: string,
-): Promise<{ ok: boolean; data?: Record<string, any>; context?: Record<string, any>; error?: string }> {
+    coords: Record<string, any>,
+    rows: Record<string, any>[],
+): Promise<PayloadResult> => {
     const args: string[] = [
         "payload", "build",
         "--component", component,
         "--event", event,
     ];
 
-    if (datasource) {
-        args.push("--datasource", datasource);
-    } else if (coords.rows && coords.rows.length > 0) {
-        args.push("--data", JSON.stringify(coords.rows));
+    if (rows.length > 0) {
+        args.push("--data", JSON.stringify(rows));
     }
     if (coords.index !== undefined) args.push("--index", String(coords.index));
     if (coords.col !== undefined) args.push("--col", String(coords.col));
@@ -69,34 +51,4 @@ export async function buildPayloadViaCliAsync(
     } catch (e: any) {
         return { ok: false, error: `safedesk payload build failed: ${e}` };
     }
-}
-
-/**
- * Fire an event by delegating payload assembly to safedesk.
- *
- * Builder calls this instead of fireTable/fireNav etc.
- * 1. Calls safedesk payload build with coordinates
- * 2. Creates SafeEvent with the assembled payload
- * 3. Calls onEvent with the complete event
- */
-export async function fireWithPayload(
-    onEvent: OnSafeEvent | undefined,
-    component: string,
-    event: string,
-    coords: PayloadCoordinates,
-    options?: { instanceId?: string; datasource?: string },
-): Promise<void> {
-    if (!onEvent) return;
-
-    const result = await buildPayloadViaCliAsync(component, event, coords, options?.datasource);
-    if (!result.ok) {
-        console.error(`[payload-delegate] ${result.error}`);
-        return;
-    }
-
-    const safeEvent = createSafeEvent(component, event, result.data, {
-        instanceId: options?.instanceId,
-        context: result.context,
-    });
-    onEvent(safeEvent);
-}
+};
