@@ -14,12 +14,16 @@ const TILE_URLS: Record<string, string> = {
     default: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
     dark: "https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png",
     minimal: "https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png",
-    satellite: "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+    satellite: "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
 };
 
 const ACCENT_VARS: Record<string, string> = {
-    brand: "--sd-accent", info: "--sd-info", success: "--sd-success",
-    warn: "--sd-warning", danger: "--sd-danger", neutral: "--sd-text-dim",
+    brand: "--sd-accent",
+    info: "--sd-info",
+    success: "--sd-success",
+    warn: "--sd-warning",
+    danger: "--sd-danger",
+    neutral: "--sd-text-dim"
 };
 
 /*----------------------------------------------------------------------------------------------------
@@ -40,7 +44,7 @@ function createIcon(accent?: string, icon?: string): L.DivIcon {
         iconSize: [28, 28],
         iconAnchor: [14, 28],
         popupAnchor: [0, -28],
-        html: `<div data-map-pin data-accent="${accent ?? "brand"}"><span data-map-pin-icon>${icon ?? "●"}</span></div>`,
+        html: `<div data-map-pin data-accent="${accent ?? "brand"}"><span data-map-pin-icon>${icon ?? "●"}</span></div>`
     });
 }
 
@@ -55,12 +59,7 @@ export function mapData(config: ConfigBase): Record<string, any>[] {
  *
  ----------------------------------------------------------------------------------------------------*/
 
-export function createSafeMap(
-    container: HTMLElement,
-    config: ConfigBase,
-    data: Record<string, any>[],
-    ctx: SafeFireContext,
-): L.Map {
+export function createSafeMap(container: HTMLElement, config: ConfigBase, data: Record<string, any>[], ctx: SafeFireContext): L.Map {
     const metadata = config.metadata;
     // External paint state (resolved from state.json by host)
     const _selectedArea = metadata.selectedArea ?? null;
@@ -85,9 +84,7 @@ export function createSafeMap(
     container.setAttribute("data-variant", variant);
 
     L.tileLayer(TILE_URLS[variant] ?? TILE_URLS.default, { maxZoom: 18 }).addTo(map);
-    L.control.attribution({ prefix: false })
-        .addAttribution('© <a href="https://www.openstreetmap.org">OSM</a>')
-        .addTo(map);
+    L.control.attribution({ prefix: false }).addAttribution('© <a href="https://www.openstreetmap.org">OSM</a>').addTo(map);
 
     const allLayers: L.Layer[] = [];
     const pathPoints: L.LatLngExpression[] = [];
@@ -126,7 +123,7 @@ export function createSafeMap(
                 color: c,
                 fillColor: c,
                 fillOpacity: 0.15,
-                weight: 2,
+                weight: 2
             }).addTo(map);
             allLayers.push(circle);
         }
@@ -137,7 +134,7 @@ export function createSafeMap(
             color: "var(--sd-accent)",
             weight: 3,
             opacity: 0.6,
-            dashArray: "8, 8",
+            dashArray: "8, 8"
         }).addTo(map);
         allLayers.push(polyline);
     }
