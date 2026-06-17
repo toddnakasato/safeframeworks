@@ -1,18 +1,7 @@
 import type { ConfigBase } from "../../safecontracts/src/contracts";
 import { el, readList } from "../utils/util";
 import type { SafeFireContext } from "../../safecontracts/src/contracts";
-
-/*----------------------------------------------------------------------------------------------------
- *
- * Properties
- *
- ----------------------------------------------------------------------------------------------------*/
-
-interface Message {
-    role: "assistant" | "user";
-    content: string;
-    timestamp: string;
-}
+import type { ChatMessage } from "../../safecontracts/src/components/chat";
 
 /*----------------------------------------------------------------------------------------------------
  *
@@ -37,7 +26,7 @@ export function createSafeChat(container: HTMLElement, config: ConfigBase, ctx: 
     const quickActions = (metadata.quickActions as any[]) ?? [];
     const initial = readList(config);
 
-    const messages: Message[] = initial.map((m: any) => ({
+    const messages: ChatMessage[] = initial.map((m: any) => ({
         role: m.role ?? "assistant",
         content: m.content ?? "",
         timestamp: m.timestamp ?? now(),

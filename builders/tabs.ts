@@ -1,19 +1,7 @@
 import type { ConfigBase } from "../../safecontracts/src/contracts";
 import type { SafeFireContext } from "../../safecontracts/src/contracts";
 import { elAttrs, applyPaintState, applyIntent } from "../utils/util";
-
-/*----------------------------------------------------------------------------------------------------
- *
- * Properties
- *
- ----------------------------------------------------------------------------------------------------*/
-
-interface TabItem {
-    key: string;
-    label: string;
-    icon?: string;
-    badge?: string | number;
-}
+import type { TabItem } from "../../safecontracts/src/components/tabs";
 
 /*----------------------------------------------------------------------------------------------------
  *

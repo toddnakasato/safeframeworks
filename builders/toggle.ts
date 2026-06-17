@@ -4,35 +4,9 @@ import type { SafeFireContext } from "../../safecontracts/src/contracts";
 
 /*----------------------------------------------------------------------------------------------------
  *
- * Properties
- *
- ----------------------------------------------------------------------------------------------------*/
-
-/*----------------------------------------------------------------------------------------------------
- *
- * Helpers
- *
- ----------------------------------------------------------------------------------------------------*/
-
-function buildSwitchTrack(checked: boolean, disabled: boolean | undefined, onToggle: () => void): HTMLButtonElement {
-    const btn = el("button", "toggle-track") as HTMLButtonElement;
-    btn.type = "button";
-    if (checked) btn.setAttribute("data-checked", "true");
-    if (disabled) {
-        btn.setAttribute("data-disabled", "true");
-        btn.disabled = true;
-    }
-    btn.onclick = onToggle;
-    btn.appendChild(el("span", "toggle-thumb"));
-    return btn;
-}
-
-/*----------------------------------------------------------------------------------------------------
- *
  * Implementation
  *
  ----------------------------------------------------------------------------------------------------*/
-
 export function createSafeToggle(container: HTMLElement, config: ConfigBase, ctx: SafeFireContext): HTMLElement {
     const metadata = config.metadata;
     const variant = (metadata.variant as string) ?? "switch";
@@ -195,4 +169,17 @@ export function createSafeToggle(container: HTMLElement, config: ConfigBase, ctx
 
     container.appendChild(root);
     return root;
+}
+
+function buildSwitchTrack(checked: boolean, disabled: boolean | undefined, onToggle: () => void): HTMLButtonElement {
+    const btn = el("button", "toggle-track") as HTMLButtonElement;
+    btn.type = "button";
+    if (checked) btn.setAttribute("data-checked", "true");
+    if (disabled) {
+        btn.setAttribute("data-disabled", "true");
+        btn.disabled = true;
+    }
+    btn.onclick = onToggle;
+    btn.appendChild(el("span", "toggle-thumb"));
+    return btn;
 }

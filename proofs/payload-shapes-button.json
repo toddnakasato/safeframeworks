@@ -1,0 +1,43 @@
+{
+  "ok": true,
+  "component": "button",
+  "event": "all",
+  "total": 5,
+  "passed": 5,
+  "failed": 0,
+  "groups": {
+    "coverage": 3,
+    "stranded": 2,
+    "data-keys": 0,
+    "context-keys": 0
+  },
+  "checks": [
+    {
+      "group": "coverage",
+      "name": "button: has COMPONENT_PAYLOAD_SHAPES entry",
+      "status": "pass"
+    },
+    {
+      "group": "coverage",
+      "name": "button/click: shape declared",
+      "status": "pass"
+    },
+    {
+      "group": "coverage",
+      "name": "button/page: shape declared",
+      "status": "pass"
+    },
+    {
+      "group": "stranded",
+      "name": "button/click: payload shape has matching event",
+      "status": "pass"
+    },
+    {
+      "group": "stranded",
+      "name": "button/page: payload shape has matching event",
+      "status": "pass"
+    }
+  ],
+  "failures": [],
+  "ts": "2026-06-17T19:18:23.048Z"
+}

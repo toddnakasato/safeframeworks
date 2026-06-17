@@ -1,8 +1,8 @@
 {
   "ok": true,
   "component": "all",
-  "total": 324,
-  "passed": 324,
+  "total": 351,
+  "passed": 351,
   "failed": 0,
   "groups": {
     "uses-readList-or-readRecord": 19,
@@ -16,7 +16,8 @@
     "no-getDataSource": 29,
     "no-initSafe": 29,
     "no-module-scope-constants": 29,
-    "no-cross-function-scope-leak": 29
+    "no-cross-function-scope-leak": 29,
+    "no-local-contract-interfaces": 27
   },
   "checks": [
     {
@@ -85,6 +86,11 @@
       "status": "pass"
     },
     {
+      "group": "no-local-contract-interfaces",
+      "name": "funnel: no duplicate contract interfaces",
+      "status": "pass"
+    },
+    {
       "group": "uses-shared-el",
       "name": "callout: uses shared el/elAttrs from utils",
       "status": "pass"
@@ -135,6 +141,11 @@
       "status": "pass"
     },
     {
+      "group": "no-local-contract-interfaces",
+      "name": "callout: no duplicate contract interfaces",
+      "status": "pass"
+    },
+    {
       "group": "uses-shared-el",
       "name": "week: uses shared el/elAttrs from utils",
       "status": "pass"
@@ -177,6 +188,11 @@
     {
       "group": "no-cross-function-scope-leak",
       "name": "week: no cross-function scope leaks",
+      "status": "pass"
+    },
+    {
+      "group": "no-local-contract-interfaces",
+      "name": "week: no duplicate contract interfaces",
       "status": "pass"
     },
     {
@@ -245,6 +261,11 @@
       "status": "pass"
     },
     {
+      "group": "no-local-contract-interfaces",
+      "name": "table: no duplicate contract interfaces",
+      "status": "pass"
+    },
+    {
       "group": "uses-readList-or-readRecord",
       "name": "nav: uses readList or readRecord",
       "status": "pass"
@@ -305,6 +326,11 @@
       "status": "pass"
     },
     {
+      "group": "no-local-contract-interfaces",
+      "name": "nav: no duplicate contract interfaces",
+      "status": "pass"
+    },
+    {
       "group": "uses-readList-or-readRecord",
       "name": "input: uses readList or readRecord",
       "status": "pass"
@@ -360,6 +386,11 @@
       "status": "pass"
     },
     {
+      "group": "no-local-contract-interfaces",
+      "name": "input: no duplicate contract interfaces",
+      "status": "pass"
+    },
+    {
       "group": "uses-shared-el",
       "name": "button: uses shared el/elAttrs from utils",
       "status": "pass"
@@ -407,6 +438,11 @@
     {
       "group": "no-cross-function-scope-leak",
       "name": "button: no cross-function scope leaks",
+      "status": "pass"
+    },
+    {
+      "group": "no-local-contract-interfaces",
+      "name": "button: no duplicate contract interfaces",
       "status": "pass"
     },
     {
@@ -475,6 +511,11 @@
       "status": "pass"
     },
     {
+      "group": "no-local-contract-interfaces",
+      "name": "sheet: no duplicate contract interfaces",
+      "status": "pass"
+    },
+    {
       "group": "uses-readList-or-readRecord",
       "name": "chat: uses readList or readRecord",
       "status": "pass"
@@ -515,6 +556,11 @@
       "status": "pass"
     },
     {
+      "group": "no-local-contract-interfaces",
+      "name": "chat: no duplicate contract interfaces",
+      "status": "pass"
+    },
+    {
       "group": "uses-shared-el",
       "name": "columns: uses shared el/elAttrs from utils",
       "status": "pass"
@@ -542,6 +588,11 @@
     {
       "group": "no-cross-function-scope-leak",
       "name": "columns: no cross-function scope leaks",
+      "status": "pass"
+    },
+    {
+      "group": "no-local-contract-interfaces",
+      "name": "columns: no duplicate contract interfaces",
       "status": "pass"
     },
     {
@@ -577,6 +628,11 @@
     {
       "group": "no-cross-function-scope-leak",
       "name": "metric: no cross-function scope leaks",
+      "status": "pass"
+    },
+    {
+      "group": "no-local-contract-interfaces",
+      "name": "metric: no duplicate contract interfaces",
       "status": "pass"
     },
     {
@@ -655,6 +711,11 @@
       "status": "pass"
     },
     {
+      "group": "no-local-contract-interfaces",
+      "name": "calendar: no duplicate contract interfaces",
+      "status": "pass"
+    },
+    {
       "group": "uses-readList-or-readRecord",
       "name": "card: uses readList or readRecord",
       "status": "pass"
@@ -720,6 +781,11 @@
       "status": "pass"
     },
     {
+      "group": "no-local-contract-interfaces",
+      "name": "card: no duplicate contract interfaces",
+      "status": "pass"
+    },
+    {
       "group": "uses-readList-or-readRecord",
       "name": "map: uses readList or readRecord",
       "status": "pass"
@@ -772,6 +838,11 @@
     {
       "group": "no-cross-function-scope-leak",
       "name": "map: no cross-function scope leaks",
+      "status": "pass"
+    },
+    {
+      "group": "no-local-contract-interfaces",
+      "name": "map: no duplicate contract interfaces",
       "status": "pass"
     },
     {
@@ -830,6 +901,11 @@
       "status": "pass"
     },
     {
+      "group": "no-local-contract-interfaces",
+      "name": "hierarchy: no duplicate contract interfaces",
+      "status": "pass"
+    },
+    {
       "group": "uses-readList-or-readRecord",
       "name": "flow: uses readList or readRecord",
       "status": "pass"
@@ -882,6 +958,11 @@
     {
       "group": "no-cross-function-scope-leak",
       "name": "flow: no cross-function scope leaks",
+      "status": "pass"
+    },
+    {
+      "group": "no-local-contract-interfaces",
+      "name": "flow: no duplicate contract interfaces",
       "status": "pass"
     },
     {
@@ -940,6 +1021,11 @@
       "status": "pass"
     },
     {
+      "group": "no-local-contract-interfaces",
+      "name": "chart: no duplicate contract interfaces",
+      "status": "pass"
+    },
+    {
       "group": "uses-shared-el",
       "name": "scene: uses shared el/elAttrs from utils",
       "status": "pass"
@@ -977,6 +1063,11 @@
     {
       "group": "no-cross-function-scope-leak",
       "name": "scene: no cross-function scope leaks",
+      "status": "pass"
+    },
+    {
+      "group": "no-local-contract-interfaces",
+      "name": "scene: no duplicate contract interfaces",
       "status": "pass"
     },
     {
@@ -1080,6 +1171,11 @@
       "status": "pass"
     },
     {
+      "group": "no-local-contract-interfaces",
+      "name": "tabs: no duplicate contract interfaces",
+      "status": "pass"
+    },
+    {
       "group": "uses-readList-or-readRecord",
       "name": "list: uses readList or readRecord",
       "status": "pass"
@@ -1137,6 +1233,11 @@
     {
       "group": "no-cross-function-scope-leak",
       "name": "list: no cross-function scope leaks",
+      "status": "pass"
+    },
+    {
+      "group": "no-local-contract-interfaces",
+      "name": "list: no duplicate contract interfaces",
       "status": "pass"
     },
     {
@@ -1202,6 +1303,11 @@
     {
       "group": "no-cross-function-scope-leak",
       "name": "timeline: no cross-function scope leaks",
+      "status": "pass"
+    },
+    {
+      "group": "no-local-contract-interfaces",
+      "name": "timeline: no duplicate contract interfaces",
       "status": "pass"
     },
     {
@@ -1275,6 +1381,11 @@
       "status": "pass"
     },
     {
+      "group": "no-local-contract-interfaces",
+      "name": "tree: no duplicate contract interfaces",
+      "status": "pass"
+    },
+    {
       "group": "uses-readList-or-readRecord",
       "name": "gauge: uses readList or readRecord",
       "status": "pass"
@@ -1337,6 +1448,11 @@
     {
       "group": "no-cross-function-scope-leak",
       "name": "gauge: no cross-function scope leaks",
+      "status": "pass"
+    },
+    {
+      "group": "no-local-contract-interfaces",
+      "name": "gauge: no duplicate contract interfaces",
       "status": "pass"
     },
     {
@@ -1405,6 +1521,11 @@
       "status": "pass"
     },
     {
+      "group": "no-local-contract-interfaces",
+      "name": "picker: no duplicate contract interfaces",
+      "status": "pass"
+    },
+    {
       "group": "uses-readList-or-readRecord",
       "name": "grid: uses readList or readRecord",
       "status": "pass"
@@ -1447,6 +1568,11 @@
     {
       "group": "no-cross-function-scope-leak",
       "name": "grid: no cross-function scope leaks",
+      "status": "pass"
+    },
+    {
+      "group": "no-local-contract-interfaces",
+      "name": "grid: no duplicate contract interfaces",
       "status": "pass"
     },
     {
@@ -1515,6 +1641,11 @@
       "status": "pass"
     },
     {
+      "group": "no-local-contract-interfaces",
+      "name": "heatmap: no duplicate contract interfaces",
+      "status": "pass"
+    },
+    {
       "group": "uses-readList-or-readRecord",
       "name": "toggle: uses readList or readRecord",
       "status": "pass"
@@ -1580,6 +1711,11 @@
       "status": "pass"
     },
     {
+      "group": "no-local-contract-interfaces",
+      "name": "toggle: no duplicate contract interfaces",
+      "status": "pass"
+    },
+    {
       "group": "required-metadata-fields",
       "name": "funnel/funnel1.json: has required field config",
       "status": "pass"
@@ -1641,5 +1777,5 @@
     }
   ],
   "failures": [],
-  "ts": "2026-06-17T19:12:20.384Z"
+  "ts": "2026-06-17T19:31:10.187Z"
 }

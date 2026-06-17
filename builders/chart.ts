@@ -1,12 +1,20 @@
 import {
     Chart,
-    BarController, BarElement,
-    LineController, LineElement, PointElement,
-    PieController, ArcElement,
+    BarController,
+    BarElement,
+    LineController,
+    LineElement,
+    PointElement,
+    PieController,
+    ArcElement,
     ScatterController,
-    RadarController, RadialLinearScale,
-    CategoryScale, LinearScale,
-    Filler, Legend, Tooltip,
+    RadarController,
+    RadialLinearScale,
+    CategoryScale,
+    LinearScale,
+    Filler,
+    Legend,
+    Tooltip
 } from "chart.js";
 import type { ChartConfiguration } from "chart.js";
 import type { ConfigBase } from "../../safecontracts/src/contracts";
@@ -21,43 +29,64 @@ import { applyIntent, readList } from "../utils/util";
  ----------------------------------------------------------------------------------------------------*/
 
 Chart.register(
-    BarController, BarElement,
-    LineController, LineElement, PointElement,
-    PieController, ArcElement,
+    BarController,
+    BarElement,
+    LineController,
+    LineElement,
+    PointElement,
+    PieController,
+    ArcElement,
     ScatterController,
-    RadarController, RadialLinearScale,
-    CategoryScale, LinearScale,
-    Filler, Legend, Tooltip,
+    RadarController,
+    RadialLinearScale,
+    CategoryScale,
+    LinearScale,
+    Filler,
+    Legend,
+    Tooltip
 );
-
-/*----------------------------------------------------------------------------------------------------
- *
- * Helpers
- *
- ----------------------------------------------------------------------------------------------------*/
-
-function resolveCssColor(color: string): string {
-    const m = color.match(/^var\((--[\w-]+)\s*(?:,\s*(.+))?\)$/);
-    if (!m) return color;
-    const resolved = getComputedStyle(document.documentElement).getPropertyValue(m[1]).trim();
-    return resolved || m[2]?.trim() || color;
-}
-
-export function chartData(config: ConfigBase): Record<string, any>[] {
-    return readList(config);
-}
-
-function yFields(config: ConfigBase): string[] {
-    const y = config.metadata.yField;
-    if (!y) return ["value"];
-    return Array.isArray(y) ? y : [y];
-}
 
 /*----------------------------------------------------------------------------------------------------
  *
  * Implementation
  *
  ----------------------------------------------------------------------------------------------------*/
+export function createSafeChart(canvas: HTMLCanvasElement, config: ConfigBase, ctx: SafeFireContext): Chart {
+    const metadata = config.metadata;
+    // External paint state (resolved from state.json by host)
+    const _selectedPoint = metadata.selectedPoint ?? null;
+    const _hoverPoint = metadata.hoverPoint ?? null;
+
+    canvas.setAttribute("data-component", "chart");
+    applyIntent(canvas, metadata);
+    canvas.setAttribute("data-variant", (metadata.variant as string) ?? "default");
+    canvas.setAttribute("data-chart-type", (metadata.chartType as string) ?? "bar");
+    const cfg = buildChartConfig(config);
+    cfg.options = {
+        ...cfg.options,
+        onClick: (_evt: any, elements: any[]) => {
+            if (!ctx || !elements?.length) return;
+            const el = elements[0];
+            const data = chartData(config);
+            ctx.fire("click", {
+                index: el.index,
+                datasetIndex: el.datasetIndex,
+                row: data[el.index]
+            });
+        },
+        onHover: (_event: any, elements: any[]) => {
+            if (elements.length > 0) {
+                const el = elements[0];
+                ctx.fire("hover", {
+                    index: el.index,
+                    datasetIndex: el.datasetIndex,
+                    row: data[el.index]
+                });
+            }
+        }
+    };
+    return new Chart(canvas, cfg);
+}
 
 export function buildChartConfig(config: ConfigBase): ChartConfiguration {
     const meta = config.metadata;
@@ -71,20 +100,21 @@ export function buildChartConfig(config: ConfigBase): ChartConfiguration {
     const text = resolveCssColor("var(--sd-text-dim, #6b7280)");
     const border = resolveCssColor("var(--sd-border, #e5e7eb)");
 
-    const scales: any = chartType === "radar"
-        ? { r: { grid: { color: border }, ticks: { color: text } } }
-        : chartType === "pie"
-            ? undefined
-            : {
-                x: { grid: { display: meta.grid !== false, color: border }, ticks: { color: text } },
-                y: { grid: { display: meta.grid !== false, color: border }, ticks: { color: text } },
-            };
+    const scales: any =
+        chartType === "radar"
+            ? { r: { grid: { color: border }, ticks: { color: text } } }
+            : chartType === "pie"
+              ? undefined
+              : {
+                    x: { grid: { display: meta.grid !== false, color: border }, ticks: { color: text } },
+                    y: { grid: { display: meta.grid !== false, color: border }, ticks: { color: text } }
+                };
 
     const baseOptions: any = {
         responsive: true,
         maintainAspectRatio: false,
         plugins: { legend: { display: meta.legend === true, labels: { color: text } } },
-        ...(scales ? { scales } : {}),
+        ...(scales ? { scales } : {})
     };
 
     if (chartType === "pie") {
@@ -92,13 +122,15 @@ export function buildChartConfig(config: ConfigBase): ChartConfiguration {
             type: "pie",
             data: {
                 labels,
-                datasets: [{
-                    data: data.map((d) => d[ys[0]]),
-                    backgroundColor: data.map((_, i) => colors[i % colors.length]),
-                    borderWidth: 0,
-                }],
+                datasets: [
+                    {
+                        data: data.map((d) => d[ys[0]]),
+                        backgroundColor: data.map((_, i) => colors[i % colors.length]),
+                        borderWidth: 0
+                    }
+                ]
             },
-            options: baseOptions,
+            options: baseOptions
         };
     }
 
@@ -109,10 +141,10 @@ export function buildChartConfig(config: ConfigBase): ChartConfiguration {
                 datasets: ys.map((f, i) => ({
                     label: f,
                     data: data.map((d) => ({ x: d[x], y: d[f] })),
-                    backgroundColor: colors[i % colors.length],
-                })),
+                    backgroundColor: colors[i % colors.length]
+                }))
             },
-            options: baseOptions,
+            options: baseOptions
         };
     }
 
@@ -125,10 +157,10 @@ export function buildChartConfig(config: ConfigBase): ChartConfiguration {
                     label: f,
                     data: data.map((d) => d[f]),
                     borderColor: colors[i % colors.length],
-                    backgroundColor: colors[i % colors.length] + "40",
-                })),
+                    backgroundColor: colors[i % colors.length] + "40"
+                }))
             },
-            options: baseOptions,
+            options: baseOptions
         };
     }
 
@@ -151,47 +183,32 @@ export function buildChartConfig(config: ConfigBase): ChartConfiguration {
                     fill: dsType === "area",
                     tension: 0.3,
                     pointRadius: dsType === "bar" ? undefined : 0,
-                    borderRadius: dsType === "bar" ? 4 : undefined,
+                    borderRadius: dsType === "bar" ? 4 : undefined
                 };
-            }),
+            })
         },
-        options: baseOptions,
+        options: baseOptions
     };
 }
 
-export function createSafeChart(canvas: HTMLCanvasElement, config: ConfigBase, ctx: SafeFireContext): Chart {
-    const metadata = config.metadata;
-    // External paint state (resolved from state.json by host)
-    const _selectedPoint = metadata.selectedPoint ?? null;
-    const _hoverPoint = metadata.hoverPoint ?? null;
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Helpers
+ *
+ ----------------------------------------------------------------------------------------------------*/
+function resolveCssColor(color: string): string {
+    const m = color.match(/^var\((--[\w-]+)\s*(?:,\s*(.+))?\)$/);
+    if (!m) return color;
+    const resolved = getComputedStyle(document.documentElement).getPropertyValue(m[1]).trim();
+    return resolved || m[2]?.trim() || color;
+}
 
-    canvas.setAttribute("data-component", "chart");
-    applyIntent(canvas, metadata);
-    canvas.setAttribute("data-variant", (metadata.variant as string) ?? "default");
-    canvas.setAttribute("data-chart-type", (metadata.chartType as string) ?? "bar");
-    const cfg = buildChartConfig(config);
-    cfg.options = {
-        ...cfg.options,
-        onClick: (_evt: any, elements: any[]) => {
-            if (!ctx || !elements?.length) return;
-            const el = elements[0];
-            const data = chartData(config);
-            ctx.fire("click", {
-                index: el.index,
-                datasetIndex: el.datasetIndex,
-                row: data[el.index],
-            });
-        },
-        onHover: (_event: any, elements: any[]) => {
-            if (elements.length > 0) {
-                const el = elements[0];
-                ctx.fire("hover", {
-                    index: el.index,
-                    datasetIndex: el.datasetIndex,
-                    row: data[el.index],
-                });
-            }
-        },
-    };
-    return new Chart(canvas, cfg);
+export function chartData(config: ConfigBase): Record<string, any>[] {
+    return readList(config);
+}
+
+function yFields(config: ConfigBase): string[] {
+    const y = config.metadata.yField;
+    if (!y) return ["value"];
+    return Array.isArray(y) ? y : [y];
 }

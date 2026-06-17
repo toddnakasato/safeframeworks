@@ -2,18 +2,18 @@ import type { SafeFireContext } from "../../safecontracts/src/contracts";
 import type { ConfigBase } from "../../safecontracts/src/contracts";
 import { elAttrs } from "../utils/util";
 
-/**
- * createSafeStoryFlow — renders a sequence of scenes. No state management.
- * Fires story-flow events (select-node, navigate, step:click, story:play)
- * up to the handler chain. State lives in state.json.
- */
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Implementation
+ *
+ ----------------------------------------------------------------------------------------------------*/
+
 export function createSafeStoryFlow(
     container: HTMLElement,
     config: ConfigBase,
     ctx: SafeFireContext,
     renderChild?: (container: HTMLElement, child: ConfigBase, ctx: SafeFireContext) => void
 ): HTMLElement {
-
     const root = document.createElement("div");
     root.setAttribute("data-component", "story-flow");
     if (config.metadata?.name) root.setAttribute("data-name", config.metadata.name as string);
