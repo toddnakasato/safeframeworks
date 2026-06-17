@@ -56,7 +56,6 @@ export default function App() {
   const [activeTheme, setActiveTheme] = useState<string>("default");
   const [activeComponent, setActiveComponent] = useState<string | null>(null);
   const [activeVariation, setActiveVariation] = useState<string | null>(null);
-  const [events, setEvents] = useState<SafeEvent[]>([]);
 
   useEffect(() => {
     loadStyle(activeStyle, activeTheme);
@@ -68,7 +67,7 @@ export default function App() {
   };
 
   const handleEvent = (event: SafeEvent) => {
-    setEvents(prev => [event, ...prev].slice(0, 20));
+    console.log("[event]", event.origin?.id, event.name, event.data);
   };
 
   const selectComponent = (name: string | null) => {
