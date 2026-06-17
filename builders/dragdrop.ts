@@ -34,11 +34,11 @@ function buildGeneric(root: HTMLElement, config: ConfigBase, items: Record<strin
             node.setAttribute("data-dragging", "true");
             e.dataTransfer!.setData("application/json", JSON.stringify(item));
             e.dataTransfer!.effectAllowed = "move";
-            ctx.fire("drag-start", { id, item }, { instanceId });
+            ctx.fire("drag-start", { id, item });
         });
         node.addEventListener("dragend", () => {
             node.removeAttribute("data-dragging");
-            ctx.fire("drag-end", null, { instanceId });
+            ctx.fire("drag-end", null);
         });
         if (item.icon) node.appendChild(el("span", "drag-icon", item.icon as string));
         if (item.type) node.appendChild(el("span", "drag-type", item.type as string));
@@ -53,7 +53,7 @@ function buildGeneric(root: HTMLElement, config: ConfigBase, items: Record<strin
         zone.removeAttribute("data-over");
         try {
             const item = JSON.parse(e.dataTransfer!.getData("application/json"));
-            ctx.fire("drop", { zone: "primary", item }, { instanceId });
+            ctx.fire("drop", { zone: "primary", item });
         } catch {}
     });
     zone.addEventListener("dragover", (e: DragEvent) => {
@@ -78,7 +78,7 @@ function buildFile(root: HTMLElement, config: ConfigBase, ctx: SafeFireContext):
 
     const fireFiles = (files: FileList | File[]) => {
         const list = Array.from(files).map((f) => ({ name: f.name, size: f.size, type: f.type }));
-        ctx.fire("file-drop", { files: list }, { instanceId });
+        ctx.fire("file-drop", { files: list });
     };
 
     const zone = el("div", "file-zone");
@@ -127,11 +127,11 @@ function buildPalette(root: HTMLElement, config: ConfigBase, ctx: SafeFireContex
                 node.setAttribute("data-dragging", "true");
                 e.dataTransfer!.setData("application/json", JSON.stringify(item));
                 e.dataTransfer!.effectAllowed = "copy";
-                ctx.fire("drag-start", { item }, { instanceId });
+                ctx.fire("drag-start", { item });
             });
             node.addEventListener("dragend", () => {
                 node.removeAttribute("data-dragging");
-                ctx.fire("drag-end", null, { instanceId });
+                ctx.fire("drag-end", null);
             });
             if (item.icon) node.appendChild(el("span", "drag-icon", item.icon));
             node.appendChild(el("span", "drag-label", item.label));
@@ -149,7 +149,7 @@ function buildPalette(root: HTMLElement, config: ConfigBase, ctx: SafeFireContex
             secEl.removeAttribute("data-over");
             try {
                 const item = JSON.parse(e.dataTransfer!.getData("application/json"));
-                ctx.fire("drop", { section: sec.id, item }, { instanceId });
+                ctx.fire("drop", { section: sec.id, item });
             } catch {}
         });
         secEl.addEventListener("dragover", (e: DragEvent) => {

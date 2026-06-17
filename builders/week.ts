@@ -86,12 +86,12 @@ export function createSafeWeek(container: HTMLElement, config: ConfigBase, ctx: 
 
     const fireNavigate = (dir: number) => {
         offset += dir;
-        ctx.fire("navigate", { direction: dir }, { instanceId });
+        ctx.fire("navigate", { direction: dir });
         render();
     };
 
     const fireSelect = (date: Date, hour: number) => {
-        ctx.fire("select", { date: date.toISOString().split("T")[0], hour }, { instanceId });
+        ctx.fire("select", { date: date.toISOString().split("T")[0], hour });
     };
 
     function buildGrid(dates: Date[]): HTMLElement {

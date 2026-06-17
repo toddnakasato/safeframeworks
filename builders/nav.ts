@@ -89,7 +89,7 @@ export function createSafeNav(container: HTMLElement, config: ConfigBase, ctx: S
 
     const fire = (key: string) => {
         active = key;
-        ctx.fire("navigate", { key, value: key }, { instanceId, context: { path: key } });
+        ctx.fire("navigate", { key, value: key });
         render();
     };
 

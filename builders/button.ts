@@ -51,7 +51,6 @@ function iconSpan(role: string, icon: string): HTMLElement {
 
 function buildSingleButton(config: ConfigBase, ctx: SafeFireContext): HTMLElement {
     const metadata = config.metadata;
-    const instanceId = metadata?.name as string | undefined;
     const variant = (metadata.variant as string) ?? "primary";
     const label = metadata.label as string | undefined;
     const icon = metadata.icon as string | undefined;
@@ -80,7 +79,7 @@ function buildSingleButton(config: ConfigBase, ctx: SafeFireContext): HTMLElemen
 
     btn.onclick = () => {
         if (disabled || loading) return;
-        ctx.fire(eventName, null, { instanceId, context: eventContext }); // config-driven name; validated by prove build
+        ctx.fire(eventName, null); // config-driven name; validated by prove build
     };
 
     if (loading) btn.appendChild(el("span", { "data-role": "spinner" }));
@@ -114,7 +113,6 @@ function buildSingleButton(config: ConfigBase, ctx: SafeFireContext): HTMLElemen
 
 function buildPaginationGroup(config: ConfigBase, ctx: SafeFireContext): HTMLElement {
     const metadata = config.metadata;
-    const instanceId = metadata?.name as string | undefined;
     const totalPages = (metadata.totalPages as number) ?? 1;
     const initialPage = (metadata.currentPage as number) ?? 1;
     const showFirstLast = metadata.showFirstLast !== false;
@@ -127,7 +125,7 @@ function buildPaginationGroup(config: ConfigBase, ctx: SafeFireContext): HTMLEle
 
     const go = (p: number) => {
         page = Math.max(1, Math.min(totalPages, p));
-        ctx.fire("page", { page, totalPages }, { instanceId });
+        ctx.fire("page", { page, totalPages });
         render();
     };
 

@@ -45,14 +45,14 @@ export function createSafeCard(container: HTMLElement, config: ConfigBase, ctx: 
     root.setAttribute("data-radius", radius);
     root.setAttribute("data-spacing", spacing);
     root.setAttribute("data-accent", accent);
-    root.onclick = () => ctx.fire("click", { data }, { instanceId });
+    root.onclick = () => ctx.fire("click", { data });
 
     const appendBack = () => {
         if (!backLabel) return;
         const back = el("div", "back", backLabel);
         back.onclick = (e) => {
             e.stopPropagation();
-            ctx.fire("back", {}, { instanceId });
+            ctx.fire("back", {});
         };
         root.appendChild(back);
     };

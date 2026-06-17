@@ -45,7 +45,7 @@ export function createSafeLayout(
 
     if (backLabel) {
         const back = el("button", "layout-back", backLabel);
-        back.onclick = () => ctx.fire("back", {}, { instanceId });
+        back.onclick = () => ctx.fire("back", {});
         root.appendChild(back);
     }
 

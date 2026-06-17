@@ -202,7 +202,7 @@ export function createSafeInput(container: HTMLElement, config: ConfigBase, ctx:
     root.setAttribute("data-valign", valign);
 
     const fireEvent = (name: string, payload: any) => {
-        ctx.fire(name, payload, { instanceId });
+        ctx.fire(name, payload);
     };
 
     function getDisplayValue(): string {

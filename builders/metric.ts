@@ -68,7 +68,7 @@ export function createSafeMetric(container: HTMLElement, config: ConfigBase, ctx
         }
     }
 
-    root.onclick = () => ctx.fire("click", { value, field: metadata.valueField }, { instanceId });
+    root.onclick = () => ctx.fire("click", { value, field: metadata.valueField });
 
     container.appendChild(root);
     return root;

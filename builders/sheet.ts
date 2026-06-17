@@ -154,7 +154,7 @@ export function createSafeSheet(container: HTMLElement, config: ConfigBase, ctx:
 
     const handleCellClick = (r: number, c: number) => {
         selectedCell = [r, c];
-        ctx.fire("select", { row: r, col: c, value: getCellValue(r, c) }, { instanceId });
+        ctx.fire("select", { row: r, col: c, value: getCellValue(r, c) });
         render();
     };
 
@@ -183,7 +183,7 @@ export function createSafeSheet(container: HTMLElement, config: ConfigBase, ctx:
             }
         } catch {}
         editingCell = null;
-        ctx.fire("edit", { row: r, col: c, value: val }, { instanceId });
+        ctx.fire("edit", { row: r, col: c, value: val });
         render();
     };
 

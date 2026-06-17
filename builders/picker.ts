@@ -98,7 +98,7 @@ export function createSafePicker(container: HTMLElement, config: ConfigBase, ctx
             select.value = filterValue;
             select.addEventListener("change", () => {
                 filterValue = select.value;
-                ctx.fire("filter", { field: filterField, value: select.value }, { instanceId });
+                ctx.fire("filter", { field: filterField, value: select.value });
                 renderResults();
             });
             form.appendChild(select);
@@ -184,13 +184,13 @@ export function createSafePicker(container: HTMLElement, config: ConfigBase, ctx
                 const card = el("div", "card");
                 card.setAttribute("data-surface", "raised");
                 card.setAttribute("data-radius", radius);
-                card.onclick = () => ctx.fire("select", { row, index: i }, { instanceId });
+                card.onclick = () => ctx.fire("select", { row, index: i });
                 buildRows(card, row);
                 results.appendChild(card);
             } else {
                 const li = el("li", "list-item");
                 li.setAttribute("data-spacing", spacing);
-                li.onclick = () => ctx.fire("select", { row, index: i }, { instanceId });
+                li.onclick = () => ctx.fire("select", { row, index: i });
                 buildRows(li, row);
                 results.appendChild(li);
             }

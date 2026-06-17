@@ -42,7 +42,7 @@ function fieldOf(meta: Record<string, unknown>, key: string, fallback: string): 
     return (meta[key] as string) ?? fallback;
 }
 
-function makePager(state: PagerState, count: number, pageSize: number, ctx: SafeFireContext, rerender: () => void, instanceId?: string) {
+function makePager(state: PagerState, count: number, pageSize: number, ctx: SafeFireContext, rerender: () => void) {
     // Use contract paginate for totalPages and page clamping
     const dummy = paginate(Array(count), state.page, pageSize);
     const totalPages = dummy.totalPages;
@@ -51,7 +51,7 @@ function makePager(state: PagerState, count: number, pageSize: number, ctx: Safe
     const go = (p: number) => {
         const clamped = paginate(Array(count), p, pageSize);
         state.page = clamped.page;
-        ctx.fire("page", { page: clamped.page, totalPages }, { instanceId });
+        ctx.fire("page", { page: clamped.page, totalPages });
         rerender();
     };
     return { page, totalPages, slice, go };
@@ -111,7 +111,7 @@ function buildSimple(root: HTMLElement, config: ConfigBase, data: any[], ctx: Sa
 
     function render() {
         root.replaceChildren();
-        const { page, totalPages, slice, go } = makePager(state, data.length, pageSize, ctx, render, instanceId);
+        const { page, totalPages, slice, go } = makePager(state, data.length, pageSize, ctx, render);
         const items = el("div", "list-items");
         slice(data).forEach((item, i) => {
             const label = typeof item === "string" ? item : item[labelField];
@@ -120,7 +120,7 @@ function buildSimple(root: HTMLElement, config: ConfigBase, data: any[], ctx: Sa
             const row = el("div", "list-item");
             row.tabIndex = 0;
             row.setAttribute("role", "listitem");
-            row.onclick = () => ctx.fire("select", { index: i, label, item }, { instanceId });
+            row.onclick = () => ctx.fire("select", { index: i, label, item });
             if (withIcons && icon) {
                 const ic = el("span", "item-icon");
                 const g = iconGlyph(icon, 16);
@@ -156,10 +156,10 @@ function buildSelection(root: HTMLElement, config: ConfigBase, data: any[], ctx:
     const toggle = (i: number, item: any) => {
         if (mode === "single") {
             single = i;
-            ctx.fire("select", { index: i, item }, { instanceId });
+            ctx.fire("select", { index: i, item });
         } else {
             if (multi.has(i)) multi.delete(i); else multi.add(i);
-            ctx.fire("toggle", { index: i, selected: multi.has(i), item }, { instanceId });
+            ctx.fire("toggle", { index: i, selected: multi.has(i), item });
         }
         render();
     };
@@ -201,7 +201,7 @@ function buildColumns(root: HTMLElement, config: ConfigBase, data: any[], ctx: S
 
     function render() {
         root.replaceChildren();
-        const { page, totalPages, slice, go } = makePager(state, data.length, pageSize, ctx, render, instanceId);
+        const { page, totalPages, slice, go } = makePager(state, data.length, pageSize, ctx, render);
         const header = el("div", "list-header");
         header.style.gridTemplateColumns = `repeat(${fields.length}, 1fr)`;
         for (const f of fields) header.appendChild(el("span", "header-cell", String(f.label ?? f.name)));
@@ -212,7 +212,7 @@ function buildColumns(root: HTMLElement, config: ConfigBase, data: any[], ctx: S
             row.style.gridTemplateColumns = `repeat(${fields.length}, 1fr)`;
             row.tabIndex = 0;
             row.setAttribute("role", "listitem");
-            row.onclick = () => ctx.fire("select", { index: i, item }, { instanceId });
+            row.onclick = () => ctx.fire("select", { index: i, item });
             for (const f of fields) row.appendChild(el("span", "item-cell", String(item[f.name] ?? "")));
             items.appendChild(row);
         });
@@ -235,14 +235,14 @@ function buildFiles(root: HTMLElement, config: ConfigBase, data: any[], ctx: Saf
 
     function render() {
         root.replaceChildren();
-        const { page, totalPages, slice, go } = makePager(state, data.length, pageSize, ctx, render, instanceId);
+        const { page, totalPages, slice, go } = makePager(state, data.length, pageSize, ctx, render);
         const items = el("div", "list-items");
         slice(data).forEach((item, i) => {
             const row = el("div", "list-item");
             if (item.type != null) row.setAttribute("data-file-type", String(item.type));
             row.tabIndex = 0;
             row.setAttribute("role", "listitem");
-            row.onclick = () => ctx.fire("select", { index: i, item }, { instanceId });
+            row.onclick = () => ctx.fire("select", { index: i, item });
             const ic = el("span", "item-icon");
             const g = iconGlyph(item[iconField], 18);
             if (g) ic.appendChild(g);
@@ -299,7 +299,7 @@ function buildActions(root: HTMLElement, config: ConfigBase, data: any[], ctx: S
             const btn = el("button", "item-action", String(item[actionField]));
             btn.onclick = (e) => {
                 e.stopPropagation();
-                ctx.fire("action", { index: i, action: item[actionField], item }, { instanceId });
+                ctx.fire("action", { index: i, action: item[actionField], item });
             };
             row.appendChild(btn);
         }
@@ -344,14 +344,14 @@ function buildHierarchy(root: HTMLElement, config: ConfigBase, data: any[], ctx:
 
     const toggleNode = (id: string) => {
         if (expanded.has(id)) expanded.delete(id); else expanded.add(id);
-        ctx.fire("expand", { id, expanded: expanded.has(id) }, { instanceId });
+        ctx.fire("expand", { id, expanded: expanded.has(id) });
         render();
     };
 
     function render() {
         root.replaceChildren();
         const flat = flattenTree(data, expanded);
-        const { page, totalPages, slice, go } = makePager(state, flat.length, pageSize, ctx, render, instanceId);
+        const { page, totalPages, slice, go } = makePager(state, flat.length, pageSize, ctx, render);
         const items = el("div", "list-items");
         for (const node of slice(flat)) {
             const isGroup = !!node.children?.length;
@@ -365,7 +365,7 @@ function buildHierarchy(root: HTMLElement, config: ConfigBase, data: any[], ctx:
             if (isGroup) row.setAttribute("aria-expanded", String(isOpen));
             row.onclick = () => isGroup
                 ? toggleNode(String(node.id))
-                : ctx.fire("select", { id: node.id, item: node }, { instanceId });
+                : ctx.fire("select", { id: node.id, item: node });
             if (isGroup) {
                 const chev = el("span", "item-chevron");
                 if (isOpen) chev.setAttribute("data-expanded", "true");
@@ -409,14 +409,14 @@ function buildPropertyGrid(root: HTMLElement, config: ConfigBase, data: any[], c
 
     const toggleGroup = (id: string) => {
         if (expanded.has(id)) expanded.delete(id); else expanded.add(id);
-        ctx.fire("expand", { id, expanded: expanded.has(id) }, { instanceId });
+        ctx.fire("expand", { id, expanded: expanded.has(id) });
         render();
     };
 
     // Commit without re-render so the edited input/select keeps focus.
     const commit = (id: string, value: unknown) => {
         values[id] = value;
-        ctx.fire("change", { id, value }, { instanceId });
+        ctx.fire("change", { id, value });
     };
 
     function renderNode(node: any, level: number): HTMLElement {
@@ -493,7 +493,7 @@ function buildGantt(root: HTMLElement, config: ConfigBase, data: any[], ctx: Saf
 
     const navigate = (dir: number) => {
         offset += dir;
-        ctx.fire("navigate", { direction: dir }, { instanceId });
+        ctx.fire("navigate", { direction: dir });
         render();
     };
 
@@ -547,7 +547,7 @@ function buildGantt(root: HTMLElement, config: ConfigBase, data: any[], ctx: Saf
         data.forEach((item, i) => {
             const intent = (item.accent as string) ?? "brand";
             const row = el("div", "gantt-row");
-            row.onclick = () => ctx.fire("select", { index: i, item }, { instanceId });
+            row.onclick = () => ctx.fire("select", { index: i, item });
             row.appendChild(el("span", "gantt-row-label", String(item[labelField] ?? "")));
             const cells = el("span", "gantt-cells");
             cells.style.gridTemplateColumns = `repeat(${days}, 1fr)`;

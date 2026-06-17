@@ -176,7 +176,7 @@ export function createSafeChart(canvas: HTMLCanvasElement, config: ConfigBase, c
                 index: el.index,
                 datasetIndex: el.datasetIndex,
                 row: data[el.index],
-            }, { instanceId });
+            });
         },
     };
     return new Chart(canvas, cfg);

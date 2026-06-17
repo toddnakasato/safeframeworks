@@ -68,7 +68,7 @@ export function createSafeTabs(container: HTMLElement, config: ConfigBase, ctx: 
             if (active === tab.key) btn.setAttribute("data-active", "");
             btn.onclick = () => {
                 active = tab.key;
-                ctx.fire("select", { key: tab.key }, { instanceId });
+                ctx.fire("select", { key: tab.key });
                 render();
             };
             btn.style.display = "flex";

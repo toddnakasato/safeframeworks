@@ -61,7 +61,7 @@ export function createSafeHeatmap(container: HTMLElement, config: ConfigBase, ct
         cell.style.background = `color-mix(in srgb, var(--sd-accent) ${Math.round((t * 0.85 + 0.05) * 100)}%, transparent)`;
         cell.style.cursor = "default";
         cell.title = label;
-        cell.onclick = () => ctx.fire("cell:click", { index: i, value: val, data: d }, { instanceId });
+        cell.onclick = () => ctx.fire("cell:click", { index: i, value: val, data: d });
         grid.appendChild(cell);
     });
 
