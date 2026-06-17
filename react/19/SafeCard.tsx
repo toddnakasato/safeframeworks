@@ -1,5 +1,7 @@
 import { useRef, useEffect } from "react";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
+import { createSafeFireContext } from "safecontracts";
+import { buildPayloadViaCli } from "../../builders/payload-delegate";
 import { createSafeCard } from "../../builders/card";
 
 interface SafeCardProps {
@@ -13,7 +15,8 @@ export function SafeCard({ config, onEvent }: SafeCardProps) {
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
-    const root = createSafeCard(container, config, onEvent);
+    const ctx = createSafeFireContext(config, onEvent, buildPayloadViaCli);
+    const root = createSafeCard(container, config, ctx);
     return () => { root.remove(); };
   }, [config, onEvent]);
 

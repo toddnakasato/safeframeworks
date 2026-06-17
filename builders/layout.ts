@@ -1,4 +1,4 @@
-import type { ConfigBase } from "../../safecontracts/src/contracts";
+import type { ConfigBase, OnSafeEvent } from "../../safecontracts/src/contracts";
 import { el } from "./util";
 import type { SafeFireContext } from "../../safecontracts/src/contracts";
 import { LAYOUT_VARIANTS } from "../../safecontracts/src/contracts";
@@ -7,7 +7,7 @@ import { LAYOUT_VARIANTS } from "../../safecontracts/src/contracts";
  * Render callback — the host provides this so the layout builder
  * can render any child ConfigBase into a DOM element.
  */
-export type RenderChild = (config: ConfigBase, ctx?: SafeFireContext) => HTMLElement;
+export type RenderChild = (config: ConfigBase, onEvent?: OnSafeEvent) => HTMLElement;
 
 /**
  * Create a layout component. Regions are determined by the variant.

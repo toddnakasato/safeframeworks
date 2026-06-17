@@ -15,7 +15,8 @@ export function SafeLayout({ config, onEvent, renderChild }: SafeLayoutProps) {
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
-    const root = createSafeLayout(container, config, onEvent, renderChild);
+    const _ctx = createSafeFireContext(config, onEvent, buildPayloadViaCli);
+    const root = createSafeLayout(container, config, _ctx, renderChild);
     return () => { root.remove(); };
   }, [config, onEvent, renderChild]);
 

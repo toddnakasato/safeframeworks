@@ -1,5 +1,7 @@
 import { useRef, useEffect } from "react";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
+import { createSafeFireContext } from "safecontracts";
+import { buildPayloadViaCli } from "../../builders/payload-delegate";
 import { createSafeButton } from "../../builders/button";
 
 interface SafeButtonProps {
@@ -13,7 +15,8 @@ export function SafeButton({ config, onEvent }: SafeButtonProps) {
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
-    const root = createSafeButton(container, config, onEvent);
+    const ctx = createSafeFireContext(config, onEvent, buildPayloadViaCli);
+    const root = createSafeButton(container, config, ctx);
     return () => { root.remove(); };
   }, [config, onEvent]);
 

@@ -31,7 +31,8 @@ export function SafeFlow({ config, onEvent }: SafeFlowProps) {
 
   useEffect(() => {
     if (!svgRef.current) return;
-    renderSafeFlow(svgRef.current, config, flowData(config), onEvent);
+    const _ctx = createSafeFireContext(config, onEvent, buildPayloadViaCli);
+    renderSafeFlow(svgRef.current, config, flowData(config), _ctx);
   }, [config, onEvent]);
 
   return (

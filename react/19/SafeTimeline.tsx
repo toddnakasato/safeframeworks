@@ -1,5 +1,7 @@
 import { useRef, useEffect } from "react";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
+import { createSafeFireContext } from "safecontracts";
+import { buildPayloadViaCli } from "../../builders/payload-delegate";
 import { createSafeTimeline } from "../../builders/timeline";
 
 interface SafeTimelineProps {
@@ -13,7 +15,8 @@ export function SafeTimeline({ config, onEvent }: SafeTimelineProps) {
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
-    const root = createSafeTimeline(container, config, onEvent);
+    const ctx = createSafeFireContext(config, onEvent, buildPayloadViaCli);
+    const root = createSafeTimeline(container, config, ctx);
     return () => { root.remove(); };
   }, [config, onEvent]);
 

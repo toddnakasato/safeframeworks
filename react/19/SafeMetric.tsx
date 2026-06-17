@@ -1,5 +1,7 @@
 import { useRef, useEffect } from "react";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
+import { createSafeFireContext } from "safecontracts";
+import { buildPayloadViaCli } from "../../builders/payload-delegate";
 import { createSafeMetric } from "../../builders/metric";
 
 interface SafeMetricProps {
@@ -17,7 +19,8 @@ export function SafeMetric({ config, data, onEvent }: SafeMetricProps) {
     const resolved: ConfigBase = data
       ? { ...config, data: { record: { name: "record", type: "record" as const, source: "inline" as const, schema: { fields: [] }, inline: data } } }
       : config;
-    const root = createSafeMetric(container, resolved, onEvent);
+    const ctx = createSafeFireContext(resolved, onEvent, buildPayloadViaCli);
+    const root = createSafeMetric(container, resolved, ctx);
     return () => { root.remove(); };
   }, [config, data, onEvent]);
 

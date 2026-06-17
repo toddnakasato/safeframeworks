@@ -14,7 +14,8 @@ export const SafeScene = ({ config, onEvent, renderChild }: SafeSceneProps) => {
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
-    const root = createSafeScene(container, config, onEvent, renderChild);
+    const _ctx = createSafeFireContext(config, onEvent, buildPayloadViaCli);
+    const root = createSafeScene(container, config, _ctx, renderChild);
     return () => { root.remove(); };
   }, [config, onEvent, renderChild]);
 

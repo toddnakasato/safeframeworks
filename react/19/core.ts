@@ -2,7 +2,8 @@
  * Core re-exports from safecontracts.
  * UI components are NOT included — they live in this renderer.
  */
-export { findHandlers, runHandler, runHandlers, resolvePath, resolvePayload, COMPONENT_EVENTS, COMPONENT_DATA_SLOTS, getDataSource, DAY_NAMES_SHORT, MONTH_NAMES } from "../../../safecontracts/src/contracts";
+export { findHandlers, runHandler, runHandlers, resolvePath, resolvePayload, COMPONENT_EVENTS, COMPONENT_DATA_SLOTS, getDataSource, DAY_NAMES_SHORT, MONTH_NAMES, createSafeFireContext } from "../../../safecontracts/src/contracts";
+export type { SafeFireContext, BuildPayloadFn, PayloadResult } from "../../../safecontracts/src/contracts";
 export { LIST_DEFAULTS, LIST_STATUS_ACCENTS } from "../../../safecontracts/src/components/list";
 export type { ConfigBase, ConfigLayout, ConfigApp, ConfigAppRenderer, DataSource, Schema, Field, FieldType, Metadata, Intent, Emphasis, Accent, Surface, Spacing, Radius, Text, SafeEvent, SafeEventOrigin, SafeEventContext, OnSafeEvent, EventHandler, RuntimeHandler, LocalHandler, HandlerContext, HandlerFile, HandlerResult, EventPayloadField, RowCell, RowDef, Effect, EffectType } from "../../../safecontracts/src/contracts";
 export { dispatchEvent } from "../../../safecontracts/src/dispatcher";

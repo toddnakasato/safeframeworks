@@ -1,5 +1,7 @@
 import { useRef, useEffect } from "react";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
+import { createSafeFireContext } from "safecontracts";
+import { buildPayloadViaCli } from "../../builders/payload-delegate";
 import { createSafeNav } from "../../builders/nav";
 
 interface SafeNavProps {
@@ -13,7 +15,8 @@ export function SafeNav({ config, onEvent }: SafeNavProps) {
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
-    const root = createSafeNav(container, config, onEvent);
+    const ctx = createSafeFireContext(config, onEvent, buildPayloadViaCli);
+    const root = createSafeNav(container, config, ctx);
     return () => { root.remove(); };
   }, [config, onEvent]);
 

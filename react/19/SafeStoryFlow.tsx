@@ -14,7 +14,8 @@ export function SafeStoryFlow({ config, onEvent, renderChild }: SafeStoryFlowPro
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
-    const root = createSafeStoryFlow(container, config, onEvent, renderChild);
+    const _ctx = createSafeFireContext(config, onEvent, buildPayloadViaCli);
+    const root = createSafeStoryFlow(container, config, _ctx, renderChild);
     return () => { root.remove(); };
   }, [config, onEvent, renderChild]);
 

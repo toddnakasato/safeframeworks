@@ -1,5 +1,7 @@
 import { useRef, useEffect } from "react";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
+import { createSafeFireContext } from "safecontracts";
+import { buildPayloadViaCli } from "../../builders/payload-delegate";
 import { createSafeGauge } from "../../builders/gauge";
 
 interface SafeGaugeProps {
@@ -13,7 +15,8 @@ export function SafeGauge({ config, onEvent }: SafeGaugeProps) {
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
-    const root = createSafeGauge(container, config, onEvent);
+    const ctx = createSafeFireContext(config, onEvent, buildPayloadViaCli);
+    const root = createSafeGauge(container, config, ctx);
     return () => { root.remove(); };
   }, [config, onEvent]);
 

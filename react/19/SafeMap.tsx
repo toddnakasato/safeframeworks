@@ -37,7 +37,8 @@ export function SafeMap({ config, data, onEvent }: SafeMapProps) {
 
   useEffect(() => {
     if (!containerRef.current) return;
-    mapRef.current = createSafeMap(containerRef.current, config, data, onEvent);
+    const _ctx = createSafeFireContext(config, onEvent, buildPayloadViaCli);
+    mapRef.current = createSafeMap(containerRef.current, config, data, _ctx);
     return () => {
       mapRef.current?.remove();
       mapRef.current = null;

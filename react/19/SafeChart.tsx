@@ -39,7 +39,8 @@ export function SafeChart({ config, data, onEvent }: SafeChartProps) {
     const resolved: ConfigBase = data?.length
       ? { ...config, data: { values: { name: "values", type: "list", source: "inline", schema: { fields: [] }, inline: data } } }
       : config;
-    chartRef.current = createSafeChart(canvasRef.current, resolved, onEvent);
+    const _ctx = createSafeFireContext(resolved, onEvent, buildPayloadViaCli);
+    chartRef.current = createSafeChart(canvasRef.current, resolved, _ctx);
     return () => {
       chartRef.current?.destroy();
       chartRef.current = null;
