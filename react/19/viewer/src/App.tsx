@@ -68,6 +68,10 @@ export default function App() {
 
   const handleEvent = (event: SafeEvent) => {
     console.log("[event]", event.origin?.id, event.name, event.data);
+    // Push to all proof-viewer Events tabs
+    document.querySelectorAll("[data-component='proof-viewer']").forEach((pv) => {
+      if ((pv as any).pushEvent) (pv as any).pushEvent(event);
+    });
   };
 
   const selectComponent = (name: string | null) => {

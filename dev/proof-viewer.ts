@@ -41,7 +41,7 @@ function el(tag: string, cls?: string, text?: string): HTMLElement {
 export function createSafeProofViewer(
     container: HTMLElement,
     config: ConfigBase,
-    _onEvent?: OnSafeEvent,
+    onEvent?: OnSafeEvent,
 ): HTMLElement {
     const target = (config.metadata?.target as string) ?? "";
     const events = COMPONENT_EVENTS[target] ?? [];
@@ -219,29 +219,19 @@ export function createSafeProofViewer(
     eventsPanel.appendChild(eventsEmpty);
     eventsPanel.appendChild(eventsLog);
 
-    // Capture live events — wire into _onEvent
-    const originalOnEvent = _onEvent;
-    const capturedEvents: any[] = [];
-    const wrappedOnEvent: OnSafeEvent = (event) => {
-        // Only capture events from this target component
-        if (event.origin?.id === target || (event as any).component === target) {
-            capturedEvents.push(event);
-            eventsEmpty.style.display = "none";
-            const entry = el("div", "ev-row");
-            const nameEl = el("span", "ev-name", `${event.name}`);
-            const dataEl = el("div", "ev-shape m", event.data ? JSON.stringify(event.data) : "—");
-            const tsEl2 = el("span", "ts", new Date().toLocaleTimeString());
-            entry.appendChild(tsEl2);
-            entry.appendChild(nameEl);
-            entry.appendChild(dataEl);
-            eventsLog.insertBefore(entry, eventsLog.firstChild);
-            // Keep max 50
-            while (eventsLog.children.length > 50) eventsLog.removeChild(eventsLog.lastChild!);
-        }
-        originalOnEvent?.(event);
+    // Public method — host calls this to push events into the Events tab
+    (root as any).pushEvent = (event: any) => {
+        eventsEmpty.style.display = "none";
+        const entry = el("div", "ev-row");
+        const tsEl2 = el("span", "ts", new Date().toLocaleTimeString());
+        const nameEl = el("span", "ev-name", `${event.name}`);
+        const dataEl = el("div", "ev-shape m", event.data ? JSON.stringify(event.data) : "—");
+        entry.appendChild(tsEl2);
+        entry.appendChild(nameEl);
+        entry.appendChild(dataEl);
+        eventsLog.insertBefore(entry, eventsLog.firstChild);
+        while (eventsLog.children.length > 50) eventsLog.removeChild(eventsLog.lastChild!);
     };
-    // Expose wrappedOnEvent so the host can use it
-    (root as any).__proofViewerOnEvent = wrappedOnEvent;
 
     root.appendChild(proofsPanel);
     root.appendChild(eventsPanel);

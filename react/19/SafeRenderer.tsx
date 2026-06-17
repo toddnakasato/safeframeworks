@@ -62,7 +62,7 @@ function ProofViewerBridge({ config, onEvent }: { config: ConfigBase; onEvent?: 
         const root = buildComponent(config, onEvent);
         container.appendChild(root);
         return () => { root.remove(); };
-    }, [config, onEvent]);
+    }, [config]);
     return <div ref={containerRef} />;
 }
 
