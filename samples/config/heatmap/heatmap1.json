@@ -1,7 +1,11 @@
 {
   "component": "heatmap",
   "metadata": {
-    "variant": "default"
+    "variant": "default",
+    "columns": 4,
+    "valueField": "value",
+    "labelField": "label",
+    "title": "Activity"
   },
   "eventHandler": {
     "handler": "heatmap"
@@ -12,26 +16,14 @@
       "type": "list",
       "source": "inline",
       "inline": [
-        {
-          "x": 0,
-          "y": 0,
-          "value": 10
-        },
-        {
-          "x": 1,
-          "y": 0,
-          "value": 25
-        },
-        {
-          "x": 0,
-          "y": 1,
-          "value": 15
-        },
-        {
-          "x": 1,
-          "y": 1,
-          "value": 30
-        }
+        { "label": "Mon AM", "value": 10 },
+        { "label": "Mon PM", "value": 25 },
+        { "label": "Tue AM", "value": 15 },
+        { "label": "Tue PM", "value": 30 },
+        { "label": "Wed AM", "value": 5 },
+        { "label": "Wed PM", "value": 20 },
+        { "label": "Thu AM", "value": 35 },
+        { "label": "Thu PM", "value": 12 }
       ]
     }
   }

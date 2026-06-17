@@ -1,7 +1,8 @@
 {
   "component": "gauge",
   "metadata": {
-    "variant": "default"
+    "variant": "default",
+    "valueField": "value"
   },
   "eventHandler": {
     "handler": "gauge"

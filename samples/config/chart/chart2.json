@@ -4,7 +4,8 @@
     "variant": "default",
     "chartType": "pie",
     "legend": true,
-    "title": "Share"
+    "title": "Share",
+    "yField": "value"
   },
   "data": {
     "series": {

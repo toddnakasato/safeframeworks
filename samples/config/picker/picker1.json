@@ -1,7 +1,8 @@
 {
   "component": "picker",
   "metadata": {
-    "variant": "default"
+    "variant": "default",
+    "labelField": "label"
   },
   "eventHandler": {
     "handler": "picker"

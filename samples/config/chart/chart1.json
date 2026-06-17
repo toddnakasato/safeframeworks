@@ -2,7 +2,8 @@
   "component": "chart",
   "metadata": {
     "variant": "default",
-    "chartType": "bar"
+    "chartType": "bar",
+    "yField": "value"
   },
   "data": {
     "series": {

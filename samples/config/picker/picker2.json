@@ -2,7 +2,8 @@
   "component": "picker",
   "metadata": {
     "variant": "default",
-    "spacing": "tight"
+    "spacing": "tight",
+    "labelField": "label"
   },
   "eventHandler": {
     "handler": "picker"

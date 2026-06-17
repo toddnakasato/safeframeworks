@@ -1,8 +1,8 @@
 {
   "ok": true,
   "component": "all",
-  "total": 195,
-  "passed": 195,
+  "total": 207,
+  "passed": 207,
   "failed": 0,
   "groups": {
     "uses-readList-or-readRecord": 19,
@@ -11,7 +11,8 @@
     "uses-applyPaintState": 15,
     "has-data-component": 29,
     "imports-match-calls": 61,
-    "metadata-is-declared": 21
+    "metadata-is-declared": 21,
+    "required-metadata-fields": 12
   },
   "checks": [
     {
@@ -988,8 +989,68 @@
       "group": "metadata-is-declared",
       "name": "toggle: metadata variable is declared",
       "status": "pass"
+    },
+    {
+      "group": "required-metadata-fields",
+      "name": "funnel/funnel1.json: has required field config",
+      "status": "pass"
+    },
+    {
+      "group": "required-metadata-fields",
+      "name": "funnel/funnel2.json: has required field config",
+      "status": "pass"
+    },
+    {
+      "group": "required-metadata-fields",
+      "name": "chart/chart2.json: has required field config",
+      "status": "pass"
+    },
+    {
+      "group": "required-metadata-fields",
+      "name": "chart/chart1.json: has required field config",
+      "status": "pass"
+    },
+    {
+      "group": "required-metadata-fields",
+      "name": "timeline/timeline1.json: has required field config",
+      "status": "pass"
+    },
+    {
+      "group": "required-metadata-fields",
+      "name": "timeline/timeline2.json: has required field config",
+      "status": "pass"
+    },
+    {
+      "group": "required-metadata-fields",
+      "name": "gauge/gauge2.json: has required field config",
+      "status": "pass"
+    },
+    {
+      "group": "required-metadata-fields",
+      "name": "gauge/gauge1.json: has required field config",
+      "status": "pass"
+    },
+    {
+      "group": "required-metadata-fields",
+      "name": "picker/picker1.json: has required field config",
+      "status": "pass"
+    },
+    {
+      "group": "required-metadata-fields",
+      "name": "picker/picker2.json: has required field config",
+      "status": "pass"
+    },
+    {
+      "group": "required-metadata-fields",
+      "name": "heatmap/heatmap1.json: has required field config",
+      "status": "pass"
+    },
+    {
+      "group": "required-metadata-fields",
+      "name": "heatmap/heatmap2.json: has required field config",
+      "status": "pass"
     }
   ],
   "failures": [],
-  "ts": "2026-06-17T15:25:59.496Z"
+  "ts": "2026-06-17T15:37:35.103Z"
 }

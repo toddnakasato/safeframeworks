@@ -1,7 +1,9 @@
 {
   "component": "timeline",
   "metadata": {
-    "variant": "default"
+    "variant": "default",
+    "dateField": "date",
+    "labelField": "title"
   },
   "data": {
     "events": {
