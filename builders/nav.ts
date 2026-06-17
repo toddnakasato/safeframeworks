@@ -44,6 +44,9 @@ function el(tag: string, attrs: Record<string, string> = {}): HTMLElement {
 
 export function createSafeNav(container: HTMLElement, config: ConfigBase, ctx: SafeFireContext): HTMLElement {
     const metadata = config.metadata;
+    // External paint state (resolved from state.json by host)
+    const _activeScene = metadata.activeScene ?? null;
+
     const title = metadata.title as string | undefined;
     const subtitle = metadata.subtitle as string | undefined;
     const headerIconName = (metadata.icon as string) ?? "store";

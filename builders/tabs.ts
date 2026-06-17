@@ -38,6 +38,13 @@ export function createSafeTabs(container: HTMLElement, config: ConfigBase, ctx: 
 
     const root = document.createElement("div");
     root.setAttribute("data-component", "tabs");
+
+    // Paint intent attributes
+    if (_activeTab != null) root.setAttribute("data-active-tab", String(_activeTab));
+
+    // External paint state (resolved from state.json by host)
+    const _activeTab = metadata.activeTab ?? null;
+
     root.setAttribute("data-variant", variant);
     root.setAttribute("data-position", position);
     root.style.display = "flex";

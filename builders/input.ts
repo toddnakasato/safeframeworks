@@ -197,6 +197,13 @@ export function createSafeInput(container: HTMLElement, config: ConfigBase, ctx:
 
     const root = el("div");
     root.setAttribute("data-component", "input");
+
+    // Paint intent attributes
+    if (_editing != null) root.setAttribute("data-editing", String(_editing));
+
+    // External paint state (resolved from state.json by host)
+    const _editing = metadata.editing ?? null;
+
     root.setAttribute("data-input-type", inputType);
     root.setAttribute("data-align", align);
     root.setAttribute("data-valign", valign);

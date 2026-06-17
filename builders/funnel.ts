@@ -38,6 +38,13 @@ export function createSafeFunnel(container: HTMLElement, config: ConfigBase, ctx
 
     const root = document.createElement("div");
     root.setAttribute("data-component", "funnel");
+
+    // Paint intent attributes
+    if (_selectedStage != null) root.setAttribute("data-selected-stage", String(_selectedStage));
+
+    // External paint state (resolved from state.json by host)
+    const _selectedStage = metadata.selectedStage ?? null;
+
     root.setAttribute("data-variant", variant);
 
     const svgEl = document.createElementNS("http://www.w3.org/2000/svg", "svg");

@@ -65,6 +65,13 @@ export function createSafePicker(container: HTMLElement, config: ConfigBase, ctx
 
     const root = el("div");
     root.setAttribute("data-component", "picker");
+
+    // Paint intent attributes
+    if (_selectedItem != null) root.setAttribute("data-selected-item", String(_selectedItem));
+
+    // External paint state (resolved from state.json by host)
+    const _selectedItem = metadata.selectedItem ?? null;
+
     root.setAttribute("data-variant", isCardGrid ? "card-grid" : ((metadata.variant as string) ?? "default"));
     root.setAttribute("data-surface", surface);
     root.setAttribute("data-accent", accent);

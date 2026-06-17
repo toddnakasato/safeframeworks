@@ -69,6 +69,10 @@ function el(tag: string, attrs: Record<string, string> = {}): HTMLElement {
 
 export function createSafeTree(container: HTMLElement, config: ConfigBase, ctx: SafeFireContext): HTMLElement {
     const metadata = config.metadata;
+    // External paint state (resolved from state.json by host)
+    const _selectedNode = metadata.selectedNode ?? null;
+    const _expanded = metadata.expanded ?? null;
+
     const variant = (metadata.variant as string) ?? "default";
     const spacing = (metadata.spacing as string) ?? "normal";
     const surface = (metadata.surface as string) ?? "base";

@@ -45,6 +45,13 @@ export function createSafeToggle(container: HTMLElement, config: ConfigBase, ctx
 
     const root = el("div");
     root.setAttribute("data-component", "toggle");
+
+    // Paint intent attributes
+    if (_expanded != null) root.setAttribute("data-expanded-items", String(_expanded));
+
+    // External paint state (resolved from state.json by host)
+    const _expanded = metadata.expanded ?? null;
+
     root.setAttribute("data-variant", variant);
 
     function renderSwitch() {

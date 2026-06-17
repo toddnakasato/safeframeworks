@@ -162,6 +162,10 @@ export function buildChartConfig(config: ConfigBase): ChartConfiguration {
 
 export function createSafeChart(canvas: HTMLCanvasElement, config: ConfigBase, ctx: SafeFireContext): Chart {
     const metadata = config.metadata;
+    // External paint state (resolved from state.json by host)
+    const _selectedPoint = metadata.selectedPoint ?? null;
+    const _hoverPoint = metadata.hoverPoint ?? null;
+
     canvas.setAttribute("data-component", "chart");
     canvas.setAttribute("data-variant", (metadata.variant as string) ?? "default");
     canvas.setAttribute("data-chart-type", (metadata.chartType as string) ?? "bar");

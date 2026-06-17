@@ -316,6 +316,9 @@ export function renderSafeFlow(
     ctx: SafeFireContext,
 ): void {
     const metadata = config.metadata;
+    // External paint state (resolved from state.json by host)
+    const _selectedNode = metadata.selectedNode ?? null;
+
     const variant = (metadata.variant as string) ?? FLOW_DEFAULTS.variant;
 
     const svg = d3.select(svgEl);

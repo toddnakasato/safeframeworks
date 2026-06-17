@@ -133,6 +133,13 @@ export function createSafeSheet(container: HTMLElement, config: ConfigBase, ctx:
 
     const root = el("div");
     root.setAttribute("data-component", "sheet");
+
+    // Paint intent attributes
+    if (_selectedCell != null) root.setAttribute("data-selected-cell", String(_selectedCell));
+
+    // External paint state (resolved from state.json by host)
+    const _selectedCell = metadata.selectedCell ?? null;
+
     root.setAttribute("data-variant", variant);
     root.setAttribute("data-surface", surface);
     root.setAttribute("data-spacing", spacing);

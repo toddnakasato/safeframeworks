@@ -24,6 +24,9 @@ function trendIcon(dir: string): string {
 
 export function createSafeMetric(container: HTMLElement, config: ConfigBase, ctx: SafeFireContext): HTMLElement {
     const metadata = config.metadata;
+    // External paint state (resolved from state.json by host)
+    const _selectedMetric = metadata.selectedMetric ?? null;
+
     const data = readRecord(config);
     const value = Number(data[metadata.valueField]) || 0;
     const formatted = formatByType(value, metadata.format as string);

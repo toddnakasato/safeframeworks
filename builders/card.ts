@@ -40,6 +40,15 @@ export function createSafeCard(container: HTMLElement, config: ConfigBase, ctx: 
 
     const root = el("div");
     root.setAttribute("data-component", "card");
+
+    // Paint intent attributes
+    if (_selectedCard != null) root.setAttribute("data-selected", String(_selectedCard));
+    if (_activeScene != null) root.setAttribute("data-active-scene", String(_activeScene));
+
+    // External paint state (resolved from state.json by host)
+    const _selectedCard = metadata.selectedCard ?? null;
+    const _activeScene = metadata.activeScene ?? null;
+
     root.setAttribute("data-variant", variant);
     root.setAttribute("data-surface", surface);
     root.setAttribute("data-radius", radius);

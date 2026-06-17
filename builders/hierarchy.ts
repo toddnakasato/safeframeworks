@@ -219,6 +219,9 @@ function renderIcicle(svgEl: SVGSVGElement, root: d3.HierarchyNode<any>, metadat
 
 export function createSafeHierarchy(container: HTMLElement, config: ConfigBase, ctx: SafeFireContext): HTMLElement {
     const metadata = config.metadata;
+    // External paint state (resolved from state.json by host)
+    const _selectedNode = metadata.selectedNode ?? null;
+
     const variant = (metadata.variant as string) ?? HIERARCHY_DEFAULTS.variant;
 
     const ds = getDataSource(config);

@@ -54,6 +54,13 @@ export function createSafeGauge(container: HTMLElement, config: ConfigBase, ctx:
 
     const root = document.createElement("div");
     root.setAttribute("data-component", "gauge");
+
+    // Paint intent attributes
+    if (_selectedGauge != null) root.setAttribute("data-selected", String(_selectedGauge));
+
+    // External paint state (resolved from state.json by host)
+    const _selectedGauge = metadata.selectedGauge ?? null;
+
     root.setAttribute("data-variant", variant);
     root.onclick = () => ctx.fire("click", { value });
 

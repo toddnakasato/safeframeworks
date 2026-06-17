@@ -26,6 +26,13 @@ export function createSafeLayout(
 
     const root = el("div");
     root.setAttribute("data-component", "layout");
+
+    // Paint intent attributes
+    if (_activeScene != null) root.setAttribute("data-active-scene", String(_activeScene));
+
+    // External paint state (resolved from state.json by host)
+    const _activeScene = metadata.activeScene ?? null;
+
     root.setAttribute("data-variant", variant);
 
     // Grid/flex styles

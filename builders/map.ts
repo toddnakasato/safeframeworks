@@ -62,6 +62,10 @@ export function createSafeMap(
     ctx: SafeFireContext,
 ): L.Map {
     const metadata = config.metadata;
+    // External paint state (resolved from state.json by host)
+    const _selectedArea = metadata.selectedArea ?? null;
+    const _selectedMarker = metadata.selectedMarker ?? null;
+
     const variant = (metadata.variant as string) ?? "default";
     const latField = (metadata.latField as string) ?? "lat";
     const lngField = (metadata.lngField as string) ?? "lng";
