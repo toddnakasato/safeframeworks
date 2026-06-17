@@ -4,10 +4,22 @@
  * the same components styled differently. Sidebar: component menu with
  * variation sub-items, generated from SAMPLES.
  */
-import { useState, useEffect } from "react";
+import { useState, useEffect, Component } from "react";
+import type { ReactNode, ErrorInfo } from "react";
 import { renderConfigBase } from "../../SafeRenderer";
 import { SAMPLES } from "../../../../samples";
 import type { SafeEvent } from "safecontracts";
+
+/** Error boundary — catches render errors so one bad component doesn't kill the viewer. */
+class ComponentBoundary extends Component<{ label: string; children: ReactNode }, { error: string | null }> {
+  state = { error: null as string | null };
+  static getDerivedStateFromError(err: Error) { return { error: err.message }; }
+  componentDidCatch(err: Error, info: ErrorInfo) { console.error(`[${this.props.label}]`, err, info); }
+  render() {
+    if (this.state.error) return <div style={{ color: "#dc2626", fontSize: 11, padding: 8, fontFamily: "monospace" }}>Error: {this.state.error}</div>;
+    return this.props.children;
+  }
+}
 
 const STYLES = ["vanilla", "tailwind", "tailwind-daisy", "material"] as const;
 const COMPONENT_NAMES = Object.keys(SAMPLES).sort();
@@ -147,10 +159,14 @@ export default function App() {
                 {v}
               </div>
               <div style={{ padding: 16 }}>
-                {renderConfigBase(SAMPLES[comp][v], handleEvent)}
+                <ComponentBoundary label={`${comp}/${v}`}>
+                  {renderConfigBase(SAMPLES[comp][v], handleEvent)}
+                </ComponentBoundary>
               </div>
               <div style={{ borderTop: "1px solid var(--sd-border, #e5e7eb)" }}>
-                {renderConfigBase({ component: "proof-viewer", metadata: { target: comp } } as any, handleEvent)}
+                <ComponentBoundary label={`proof-viewer/${comp}`}>
+                  {renderConfigBase({ component: "proof-viewer", metadata: { target: comp } } as any, handleEvent)}
+                </ComponentBoundary>
               </div>
             </div>
           ))}
