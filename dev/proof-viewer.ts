@@ -1,8 +1,8 @@
 /**
- * dev/proof-viewer.ts — dev-only EPRRR workbench for safeframeworks.
+ * dev/proof-viewer.ts — dev-only EPRPP workbench for safeframeworks.
  *
  * Two tabs:
- *   PROOFS — Event, Payload, Route, Reply, Respond table with live prove
+ *   PROOFS — Event, Payload, Route, Process, Paint table with live prove
  *   EVENTS — event list with payload shapes
  *
  * config.metadata.target — the component type to inspect
@@ -82,7 +82,7 @@ export function createSafeProofViewer(
         .pv .exp td { background: #f9fafb; border-bottom: 1px solid #e5e7eb; padding: 8px; }
         .pv .empty { color: #9ca3af; padding: 16px; text-align: center; }
         .pv col.c-ev { width: 10%; } .pv col.c-payload { width: 18%; } .pv col.c-route { width: 22%; }
-        .pv col.c-reply { width: 20%; } .pv col.c-respond { width: 14%; } .pv col.c-status { width: 8%; } .pv col.c-btn { width: 8%; }
+        .pv col.c-process { width: 20%; } .pv col.c-paint { width: 14%; } .pv col.c-status { width: 8%; } .pv col.c-btn { width: 8%; }
         .pv .ev-row { display: flex; gap: 8px; padding: 6px 0; border-bottom: 1px solid #f3f4f6; align-items: flex-start; }
         .pv .ev-name { font-weight: 600; font-size: 12px; min-width: 100px; }
         .pv .ev-shape { flex: 1; }
@@ -129,7 +129,7 @@ export function createSafeProofViewer(
 
     const tbl = document.createElement("table");
     const colgroup = document.createElement("colgroup");
-    for (const cls of ["c-ev", "c-payload", "c-route", "c-reply", "c-respond", "c-status", "c-btn"]) {
+    for (const cls of ["c-ev", "c-payload", "c-route", "c-process", "c-paint", "c-status", "c-btn"]) {
         const col = document.createElement("col");
         col.className = cls;
         colgroup.appendChild(col);
@@ -138,13 +138,13 @@ export function createSafeProofViewer(
 
     const thead = document.createElement("thead");
     const hr = document.createElement("tr");
-    for (const l of ["Event", "Payload", "Route", "Reply", "Respond", "Status", ""]) hr.appendChild(el("th", undefined, l));
+    for (const l of ["Event", "Payload", "Route", "Process", "Paint", "Status", ""]) hr.appendChild(el("th", undefined, l));
     thead.appendChild(hr);
     tbl.appendChild(thead);
 
     const tbody = document.createElement("tbody");
 
-    const rowState: Record<string, { replyTd: HTMLElement; respondTd: HTMLElement; statusTd: HTMLElement; proveBtn: HTMLButtonElement }> = {};
+    const rowState: Record<string, { processTd: HTMLElement; paintTd: HTMLElement; statusTd: HTMLElement; proveBtn: HTMLButtonElement }> = {};
 
     for (const eventName of events) {
         const shape = shapes[eventName];
@@ -167,12 +167,12 @@ export function createSafeProofViewer(
         routeTd.textContent = `handler: prove-${target}\non: ${eventName}\ncli: safedesk prove payload-shapes --component ${target} --event ${eventName}`;
         tr.appendChild(routeTd);
 
-        const replyTd = el("td", "m pend", "—");
-        tr.appendChild(replyTd);
+        const processTd = el("td", "m pend", "—");
+        tr.appendChild(processTd);
 
         const evSuffix = eventName.replace(":", "_");
-        const respondTd = el("td", "m pend", `proofs/payload-shapes-${target}-${evSuffix}.json`);
-        tr.appendChild(respondTd);
+        const paintTd = el("td", "m pend", `proofs/payload-shapes-${target}-${evSuffix}.json`);
+        tr.appendChild(paintTd);
 
         const statusTd = el("td", "pend", "—");
         tr.appendChild(statusTd);
@@ -182,7 +182,7 @@ export function createSafeProofViewer(
         btnTd.appendChild(proveBtn);
         tr.appendChild(btnTd);
 
-        rowState[eventName] = { replyTd, respondTd, statusTd, proveBtn };
+        rowState[eventName] = { processTd, paintTd, statusTd, proveBtn };
 
         proveBtn.onclick = async (e) => {
             e.stopPropagation();
@@ -195,7 +195,7 @@ export function createSafeProofViewer(
 
         tbody.appendChild(tr);
 
-        // Expand row — full EPRRR detail
+        // Expand row — full EPRPP detail
         const expRow = document.createElement("tr");
         expRow.className = "exp";
         expRow.setAttribute("data-expand-for", eventName);
@@ -246,14 +246,14 @@ export function createSafeProofViewer(
         const allPass = eventChecks.length > 0 && eventChecks.every((c: any) => c.status === "pass");
         const anyFail = eventChecks.some((c: any) => c.status === "fail");
 
-        rs.replyTd.className = "m";
-        rs.replyTd.textContent = eventChecks.length > 0
+        rs.processTd.className = "m";
+        rs.processTd.textContent = eventChecks.length > 0
             ? eventChecks.map((c: any) => `${c.status === "pass" ? "✓" : "✗"} ${c.name}`).join("\n")
             : `ok: ${result.ok}\ntotal: ${result.total}\npassed: ${result.passed}\nfailed: ${result.failed}`;
 
         const evSuffix = eventName.replace(":", "_");
-        rs.respondTd.className = "m";
-        rs.respondTd.textContent = `proofs/payload-shapes-${target}-${evSuffix}.json\nts: ${result.ts ?? "—"}`;
+        rs.paintTd.className = "m";
+        rs.paintTd.textContent = `proofs/payload-shapes-${target}-${evSuffix}.json\nts: ${result.ts ?? "—"}`;
 
         rs.statusTd.className = anyFail ? "fail" : allPass ? "pass" : "pend";
         rs.statusTd.textContent = anyFail ? "✗ fail" : allPass ? "✓ pass" : "—";
@@ -298,14 +298,14 @@ export function createSafeProofViewer(
                 }
                 if (h.args) lines.push(`args: ${JSON.stringify(h.args)}`);
                 lines.push(`cli: safedesk ${h.domain} ${h.action} --component ${h.args?.component ?? target}`);
-                const routeTd = rs.replyTd.parentElement?.querySelector("td:nth-child(3)");
+                const routeTd = rs.processTd.parentElement?.querySelector("td:nth-child(3)");
                 if (routeTd) {
                     routeTd.className = "m";
                     routeTd.textContent = lines.join("\n");
                 }
             }
 
-            // Expand row — full EPRRR detail from real sources
+            // Expand row — full EPRPP detail from real sources
             const expTd = tbody.querySelector(`tr[data-expand-for="${eventName}"] td`);
             if (expTd) {
                 const shape = shapes[eventName];
