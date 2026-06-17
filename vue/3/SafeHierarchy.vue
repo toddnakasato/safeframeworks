@@ -15,7 +15,11 @@ onMounted(() => {
     root = createSafeHierarchy(containerRef.value, props.config, _ctx);
   }
 });
-onBeforeUnmount(() => { root?.remove(); root = null; });
+
+onBeforeUnmount(() => {
+  root?.remove();
+  root = null;
+});
 </script>
 
 <template>

@@ -37,7 +37,7 @@ import { SafeNavComponent } from '../../SafeNav';
   template: `
     <div class="viewer">
       <div class="sidebar">
-        <div class="brand"><img src="/shield.png" alt="SafeDesk" /><span>angular/21</span></div>
+        <div class="brand"><img src="/shield.png" alt="SafeDesk" /><span>angular/22</span></div>
         <div class="section-label">STYLE</div>
         <button *ngFor="let s of styles" class="style-btn" [class.active]="s === activeStyle" (click)="switchStyle(s)">{{s}}</button>
 
@@ -51,12 +51,12 @@ import { SafeNavComponent } from '../../SafeNav';
         </ng-container>
       </div>
       <div class="main">
-        <h3>angular/21 — {{activeStyle}}<span *ngIf="activeComponent" class="active-comp"> — {{activeVariation ?? activeComponent}}</span></h3>
+        <h3>angular/22 — {{activeStyle}}<span *ngIf="activeComponent" class="active-comp"> — {{activeVariation ?? activeComponent}}</span></h3>
         <ng-container *ngIf="show('layout')">
           <div class="component-card" *ngFor="let v of variations('layout')">
             <div class="component-label">{{v}}</div>
             <div class="component-body">
-              <safe-layout [config]="cfg('layout', v)"></safe-layout>
+              <safe-layout [config]="cfg('layout', v)" [onEvent]="handleEvent"></safe-layout>
             </div>
           </div>
         </ng-container>
@@ -64,7 +64,7 @@ import { SafeNavComponent } from '../../SafeNav';
           <div class="component-card" *ngFor="let v of variations('columns')">
             <div class="component-label">{{v}}</div>
             <div class="component-body">
-              <safe-columns [config]="cfg('columns', v)"></safe-columns>
+              <safe-columns [config]="cfg('columns', v)" [onEvent]="handleEvent"></safe-columns>
             </div>
           </div>
         </ng-container>
@@ -72,7 +72,7 @@ import { SafeNavComponent } from '../../SafeNav';
           <div class="component-card" *ngFor="let v of variations('card')">
             <div class="component-label">{{v}}</div>
             <div class="component-body">
-              <safe-card [config]="cfg('card', v)"></safe-card>
+              <safe-card [config]="cfg('card', v)" [onEvent]="handleEvent"></safe-card>
             </div>
           </div>
         </ng-container>
@@ -80,7 +80,7 @@ import { SafeNavComponent } from '../../SafeNav';
           <div class="component-card" *ngFor="let v of variations('button')">
             <div class="component-label">{{v}}</div>
             <div class="component-body">
-              <safe-button [config]="cfg('button', v)"></safe-button>
+              <safe-button [config]="cfg('button', v)" [onEvent]="handleEvent"></safe-button>
             </div>
           </div>
         </ng-container>
@@ -88,7 +88,7 @@ import { SafeNavComponent } from '../../SafeNav';
           <div class="component-card" *ngFor="let v of variations('table')">
             <div class="component-label">{{v}}</div>
             <div class="component-body">
-              <safe-table [config]="cfg('table', v)"></safe-table>
+              <safe-table [config]="cfg('table', v)" [onEvent]="handleEvent"></safe-table>
             </div>
           </div>
         </ng-container>
@@ -96,7 +96,7 @@ import { SafeNavComponent } from '../../SafeNav';
           <div class="component-card" *ngFor="let v of variations('tree')">
             <div class="component-label">{{v}}</div>
             <div class="component-body">
-              <safe-tree [config]="cfg('tree', v)"></safe-tree>
+              <safe-tree [config]="cfg('tree', v)" [onEvent]="handleEvent"></safe-tree>
             </div>
           </div>
         </ng-container>
@@ -104,7 +104,7 @@ import { SafeNavComponent } from '../../SafeNav';
           <div class="component-card" *ngFor="let v of variations('sheet')">
             <div class="component-label">{{v}}</div>
             <div class="component-body">
-              <safe-sheet [config]="cfg('sheet', v)"></safe-sheet>
+              <safe-sheet [config]="cfg('sheet', v)" [onEvent]="handleEvent"></safe-sheet>
             </div>
           </div>
         </ng-container>
@@ -112,7 +112,7 @@ import { SafeNavComponent } from '../../SafeNav';
           <div class="component-card" *ngFor="let v of variations('chart')">
             <div class="component-label">{{v}}</div>
             <div class="component-body">
-              <safe-chart [config]="cfg('chart', v)"></safe-chart>
+              <safe-chart [config]="cfg('chart', v)" [onEvent]="handleEvent"></safe-chart>
             </div>
           </div>
         </ng-container>
@@ -120,7 +120,7 @@ import { SafeNavComponent } from '../../SafeNav';
           <div class="component-card" *ngFor="let v of variations('heatmap')">
             <div class="component-label">{{v}}</div>
             <div class="component-body">
-              <safe-heatmap [config]="cfg('heatmap', v)"></safe-heatmap>
+              <safe-heatmap [config]="cfg('heatmap', v)" [onEvent]="handleEvent"></safe-heatmap>
             </div>
           </div>
         </ng-container>
@@ -128,7 +128,7 @@ import { SafeNavComponent } from '../../SafeNav';
           <div class="component-card" *ngFor="let v of variations('gauge')">
             <div class="component-label">{{v}}</div>
             <div class="component-body">
-              <safe-gauge [config]="cfg('gauge', v)"></safe-gauge>
+              <safe-gauge [config]="cfg('gauge', v)" [onEvent]="handleEvent"></safe-gauge>
             </div>
           </div>
         </ng-container>
@@ -136,7 +136,7 @@ import { SafeNavComponent } from '../../SafeNav';
           <div class="component-card" *ngFor="let v of variations('funnel')">
             <div class="component-label">{{v}}</div>
             <div class="component-body">
-              <safe-funnel [config]="cfg('funnel', v)"></safe-funnel>
+              <safe-funnel [config]="cfg('funnel', v)" [onEvent]="handleEvent"></safe-funnel>
             </div>
           </div>
         </ng-container>
@@ -144,7 +144,7 @@ import { SafeNavComponent } from '../../SafeNav';
           <div class="component-card" *ngFor="let v of variations('flow')">
             <div class="component-label">{{v}}</div>
             <div class="component-body">
-              <safe-flow [config]="cfg('flow', v)"></safe-flow>
+              <safe-flow [config]="cfg('flow', v)" [onEvent]="handleEvent"></safe-flow>
             </div>
           </div>
         </ng-container>
@@ -152,7 +152,7 @@ import { SafeNavComponent } from '../../SafeNav';
           <div class="component-card" *ngFor="let v of variations('hierarchy')">
             <div class="component-label">{{v}}</div>
             <div class="component-body">
-              <safe-hierarchy [config]="cfg('hierarchy', v)"></safe-hierarchy>
+              <safe-hierarchy [config]="cfg('hierarchy', v)" [onEvent]="handleEvent"></safe-hierarchy>
             </div>
           </div>
         </ng-container>
@@ -160,7 +160,7 @@ import { SafeNavComponent } from '../../SafeNav';
           <div class="component-card" *ngFor="let v of variations('timeline')">
             <div class="component-label">{{v}}</div>
             <div class="component-body">
-              <safe-timeline [config]="cfg('timeline', v)"></safe-timeline>
+              <safe-timeline [config]="cfg('timeline', v)" [onEvent]="handleEvent"></safe-timeline>
             </div>
           </div>
         </ng-container>
@@ -168,7 +168,7 @@ import { SafeNavComponent } from '../../SafeNav';
           <div class="component-card" *ngFor="let v of variations('map')">
             <div class="component-label">{{v}}</div>
             <div class="component-body">
-              <safe-map [config]="cfg('map', v)"></safe-map>
+              <safe-map [config]="cfg('map', v)" [onEvent]="handleEvent"></safe-map>
             </div>
           </div>
         </ng-container>
@@ -176,7 +176,7 @@ import { SafeNavComponent } from '../../SafeNav';
           <div class="component-card" *ngFor="let v of variations('calendar')">
             <div class="component-label">{{v}}</div>
             <div class="component-body">
-              <safe-calendar [config]="cfg('calendar', v)"></safe-calendar>
+              <safe-calendar [config]="cfg('calendar', v)" [onEvent]="handleEvent"></safe-calendar>
             </div>
           </div>
         </ng-container>
@@ -184,7 +184,7 @@ import { SafeNavComponent } from '../../SafeNav';
           <div class="component-card" *ngFor="let v of variations('toggle')">
             <div class="component-label">{{v}}</div>
             <div class="component-body">
-              <safe-toggle [config]="cfg('toggle', v)"></safe-toggle>
+              <safe-toggle [config]="cfg('toggle', v)" [onEvent]="handleEvent"></safe-toggle>
             </div>
           </div>
         </ng-container>
@@ -192,7 +192,7 @@ import { SafeNavComponent } from '../../SafeNav';
           <div class="component-card" *ngFor="let v of variations('week')">
             <div class="component-label">{{v}}</div>
             <div class="component-body">
-              <safe-week [config]="cfg('week', v)"></safe-week>
+              <safe-week [config]="cfg('week', v)" [onEvent]="handleEvent"></safe-week>
             </div>
           </div>
         </ng-container>
@@ -200,7 +200,7 @@ import { SafeNavComponent } from '../../SafeNav';
           <div class="component-card" *ngFor="let v of variations('chat')">
             <div class="component-label">{{v}}</div>
             <div class="component-body">
-              <safe-chat [config]="cfg('chat', v)"></safe-chat>
+              <safe-chat [config]="cfg('chat', v)" [onEvent]="handleEvent"></safe-chat>
             </div>
           </div>
         </ng-container>
@@ -208,7 +208,7 @@ import { SafeNavComponent } from '../../SafeNav';
           <div class="component-card" *ngFor="let v of variations('tabs')">
             <div class="component-label">{{v}}</div>
             <div class="component-body">
-              <safe-tabs [config]="cfg('tabs', v)"></safe-tabs>
+              <safe-tabs [config]="cfg('tabs', v)" [onEvent]="handleEvent"></safe-tabs>
             </div>
           </div>
         </ng-container>
@@ -216,7 +216,7 @@ import { SafeNavComponent } from '../../SafeNav';
           <div class="component-card" *ngFor="let v of variations('callout')">
             <div class="component-label">{{v}}</div>
             <div class="component-body">
-              <safe-callout [config]="cfg('callout', v)"></safe-callout>
+              <safe-callout [config]="cfg('callout', v)" [onEvent]="handleEvent"></safe-callout>
             </div>
           </div>
         </ng-container>
@@ -224,7 +224,7 @@ import { SafeNavComponent } from '../../SafeNav';
           <div class="component-card" *ngFor="let v of variations('drag-drop')">
             <div class="component-label">{{v}}</div>
             <div class="component-body">
-              <safe-drag-drop [config]="cfg('drag-drop', v)"></safe-drag-drop>
+              <safe-drag-drop [config]="cfg('drag-drop', v)" [onEvent]="handleEvent"></safe-drag-drop>
             </div>
           </div>
         </ng-container>
@@ -232,7 +232,7 @@ import { SafeNavComponent } from '../../SafeNav';
           <div class="component-card" *ngFor="let v of variations('grid')">
             <div class="component-label">{{v}}</div>
             <div class="component-body">
-              <safe-grid [config]="cfg('grid', v)"></safe-grid>
+              <safe-grid [config]="cfg('grid', v)" [onEvent]="handleEvent"></safe-grid>
             </div>
           </div>
         </ng-container>
@@ -240,7 +240,7 @@ import { SafeNavComponent } from '../../SafeNav';
           <div class="component-card" *ngFor="let v of variations('input')">
             <div class="component-label">{{v}}</div>
             <div class="component-body">
-              <safe-input [config]="cfg('input', v)"></safe-input>
+              <safe-input [config]="cfg('input', v)" [onEvent]="handleEvent"></safe-input>
             </div>
           </div>
         </ng-container>
@@ -248,7 +248,7 @@ import { SafeNavComponent } from '../../SafeNav';
           <div class="component-card" *ngFor="let v of variations('list')">
             <div class="component-label">{{v}}</div>
             <div class="component-body">
-              <safe-list [config]="cfg('list', v)"></safe-list>
+              <safe-list [config]="cfg('list', v)" [onEvent]="handleEvent"></safe-list>
             </div>
           </div>
         </ng-container>
@@ -256,7 +256,7 @@ import { SafeNavComponent } from '../../SafeNav';
           <div class="component-card" *ngFor="let v of variations('picker')">
             <div class="component-label">{{v}}</div>
             <div class="component-body">
-              <safe-picker [config]="cfg('picker', v)"></safe-picker>
+              <safe-picker [config]="cfg('picker', v)" [onEvent]="handleEvent"></safe-picker>
             </div>
           </div>
         </ng-container>
@@ -264,7 +264,7 @@ import { SafeNavComponent } from '../../SafeNav';
           <div class="component-card" *ngFor="let v of variations('nav')">
             <div class="component-label">{{v}}</div>
             <div class="component-body">
-              <safe-nav [config]="cfg('nav', v)"></safe-nav>
+              <safe-nav [config]="cfg('nav', v)" [onEvent]="handleEvent"></safe-nav>
             </div>
           </div>
         </ng-container>
@@ -345,8 +345,15 @@ export class AppComponent implements AfterViewChecked {
       if (!comp) return;
       const panel = document.createElement('div');
       panel.style.borderTop = '1px solid var(--sd-border, #e5e7eb)';
-      createSafeProofViewer(panel, { component: 'proof-viewer', metadata: { target: comp } } as any);
+      createSafeProofViewer(panel, { component: 'proof-viewer', metadata: { target: comp } } as any, this.handleEvent.bind(this));
       card.appendChild(panel);
+    });
+  }
+
+  handleEvent(event: any) {
+    console.log('[event]', event.origin?.id, event.name, event.data);
+    document.querySelectorAll('[data-component="proof-viewer"]').forEach((pv) => {
+      if ((pv as any).pushEvent) (pv as any).pushEvent(event);
     });
   }
 }

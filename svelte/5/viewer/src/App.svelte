@@ -4,8 +4,15 @@
 
   function proofMount(node, comp) {
     node.innerHTML = '';
-    createSafeProofViewer(node, { component: 'proof-viewer', metadata: { target: comp } });
-    return { update(newComp) { node.innerHTML = ''; createSafeProofViewer(node, { component: 'proof-viewer', metadata: { target: newComp } }); } };
+    createSafeProofViewer(node, { component: 'proof-viewer', metadata: { target: comp } }, handleEvent);
+    return { update(newComp) { node.innerHTML = ''; createSafeProofViewer(node, { component: 'proof-viewer', metadata: { target: newComp } }, handleEvent); } };
+  }
+
+  function handleEvent(event) {
+    console.log('[event]', event.origin?.id, event.name, event.data);
+    document.querySelectorAll('[data-component="proof-viewer"]').forEach((pv) => {
+      if (pv.pushEvent) pv.pushEvent(event);
+    });
   }
   import SafeLayout from "../../SafeLayout.svelte";
   import SafeColumns from "../../SafeColumns.svelte";
@@ -85,7 +92,7 @@
         <div class="component-card">
           <div class="component-label">{v}</div>
           <div class="component-body">
-            <svelte:component this={comps[comp]} config={SAMPLES[comp][v]} />
+            <svelte:component this={comps[comp]} config={SAMPLES[comp][v]} onEvent={handleEvent} />
           </div>
           <div style="border-top: 1px solid var(--sd-border, #e5e7eb)" use:proofMount={comp}></div>
         </div>

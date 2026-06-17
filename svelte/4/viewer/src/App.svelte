@@ -4,8 +4,15 @@
 
   function proofMount(node, comp) {
     node.innerHTML = '';
-    createSafeProofViewer(node, { component: 'proof-viewer', metadata: { target: comp } });
-    return { update(newComp) { node.innerHTML = ''; createSafeProofViewer(node, { component: 'proof-viewer', metadata: { target: newComp } }); } };
+    createSafeProofViewer(node, { component: 'proof-viewer', metadata: { target: comp } }, handleEvent);
+    return { update(newComp) { node.innerHTML = ''; createSafeProofViewer(node, { component: 'proof-viewer', metadata: { target: newComp } }, handleEvent); } };
+  }
+
+  function handleEvent(event) {
+    console.log('[event]', event.origin?.id, event.name, event.data);
+    document.querySelectorAll('[data-component="proof-viewer"]').forEach((pv) => {
+      if (pv.pushEvent) pv.pushEvent(event);
+    });
   }
   import SafeLayout from "../../SafeLayout.svelte";
   import SafeColumns from "../../SafeColumns.svelte";
@@ -38,9 +45,9 @@
   const comps = { "layout": SafeLayout, "columns": SafeColumns, "card": SafeCard, "button": SafeButton, "table": SafeTable, "tree": SafeTree, "sheet": SafeSheet, "chart": SafeChart, "heatmap": SafeHeatmap, "gauge": SafeGauge, "funnel": SafeFunnel, "flow": SafeFlow, "hierarchy": SafeHierarchy, "timeline": SafeTimeline, "map": SafeMap, "calendar": SafeCalendar, "toggle": SafeToggle, "week": SafeWeek, "chat": SafeChat, "tabs": SafeTabs, "callout": SafeCallout, "drag-drop": SafeDragDrop, "grid": SafeGrid, "input": SafeInput, "list": SafeList, "picker": SafePicker, "nav": SafeNav };
   const STYLES = ["vanilla", "tailwind", "tailwind-daisy", "material"];
   const componentNames = Object.keys(SAMPLES).sort();
-  let activeStyle = "vanilla";
-  let activeComponent = null;
-  let activeVariation = null;
+  let activeStyle = $state("vanilla");
+  let activeComponent = $state(null);
+  let activeVariation = $state(null);
 
   function switchStyle(s) {
     activeStyle = s;
@@ -85,7 +92,7 @@
         <div class="component-card">
           <div class="component-label">{v}</div>
           <div class="component-body">
-            <svelte:component this={comps[comp]} config={SAMPLES[comp][v]} />
+            <svelte:component this={comps[comp]} config={SAMPLES[comp][v]} onEvent={handleEvent} />
           </div>
           <div style="border-top: 1px solid var(--sd-border, #e5e7eb)" use:proofMount={comp}></div>
         </div>

@@ -67,7 +67,14 @@ function mountProof(el, comp) {
   el.innerHTML = '';
   el.dataset.mounted = comp;
   el.style.borderTop = '1px solid var(--sd-border, #e5e7eb)';
-  createSafeProofViewer(el, { component: 'proof-viewer', metadata: { target: comp } });
+  createSafeProofViewer(el, { component: 'proof-viewer', metadata: { target: comp } }, handleEvent);
+}
+
+function handleEvent(event) {
+  console.log('[event]', event.origin?.id, event.name, event.data);
+  document.querySelectorAll('[data-component="proof-viewer"]').forEach((pv) => {
+    if (pv.pushEvent) pv.pushEvent(event);
+  });
 }
 </script>
 
@@ -93,9 +100,9 @@ function mountProof(el, comp) {
         <div v-for="v in variationsToShow(comp)" :key="v" class="component-card">
           <div class="component-label">{{ v }}</div>
           <div class="component-body">
-            <component :is="comps[comp]" :config="SAMPLES[comp][v]" />
+            <component :is="comps[comp]" :config="SAMPLES[comp][v]" :on-event="handleEvent" />
           </div>
-          <div class="proof-panel" :ref="(el) => mountProof(el, comp)"></div>
+          <div class="proof-panel" :ref="(el: any) => mountProof(el, comp)"></div>
         </div>
       </template>
     </div>

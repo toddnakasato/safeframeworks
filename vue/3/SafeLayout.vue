@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted, onBeforeUnmount } from 'vue';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-import { createSafeFireContext } from 'safecontracts';
-import { buildPayloadViaCli } from '../../utils/payload-delegate';
 import { createSafeLayout } from '../../builders/layout';
 import { buildComponent } from '../../utils/render';
 
@@ -12,7 +10,6 @@ let root: HTMLElement | null = null;
 
 onMounted(() => {
   if (containerRef.value) {
-    const _ctx = createSafeFireContext(props.config, props.onEvent, buildPayloadViaCli);
     root = createSafeLayout(containerRef.value, props.config, props.onEvent, buildComponent);
   }
 });
