@@ -1,9 +1,9 @@
 {
-  "ok": true,
+  "ok": false,
   "component": "all",
-  "total": 202,
-  "passed": 202,
-  "failed": 0,
+  "total": 285,
+  "passed": 254,
+  "failed": 31,
   "groups": {
     "no-contracts-emit": 29,
     "no-payload-delegate": 29,
@@ -12,8 +12,11 @@
     "no-OnSafeEvent-signature": 29,
     "uses-SafeFireContext": 26,
     "no-instanceId": 29,
+    "no-use-before-declaration": 30,
     "render-creates-ctx": 1,
-    "render-injects-transport": 1
+    "render-injects-transport": 1,
+    "no-empty-samples": 23,
+    "valid-sample-variant": 30
   },
   "checks": [
     {
@@ -52,6 +55,11 @@
       "status": "pass"
     },
     {
+      "group": "no-use-before-declaration",
+      "name": "funnel: no use-before-declaration",
+      "status": "pass"
+    },
+    {
       "group": "no-contracts-emit",
       "name": "callout: no contracts-emit import",
       "status": "pass"
@@ -79,6 +87,11 @@
     {
       "group": "no-instanceId",
       "name": "callout: no instanceId references",
+      "status": "pass"
+    },
+    {
+      "group": "no-use-before-declaration",
+      "name": "callout: no use-before-declaration",
       "status": "pass"
     },
     {
@@ -117,6 +130,11 @@
       "status": "pass"
     },
     {
+      "group": "no-use-before-declaration",
+      "name": "week: no use-before-declaration",
+      "status": "pass"
+    },
+    {
       "group": "no-contracts-emit",
       "name": "table: no contracts-emit import",
       "status": "pass"
@@ -149,6 +167,11 @@
     {
       "group": "no-instanceId",
       "name": "table: no instanceId references",
+      "status": "pass"
+    },
+    {
+      "group": "no-use-before-declaration",
+      "name": "table: no use-before-declaration",
       "status": "pass"
     },
     {
@@ -187,6 +210,11 @@
       "status": "pass"
     },
     {
+      "group": "no-use-before-declaration",
+      "name": "nav: no use-before-declaration",
+      "status": "pass"
+    },
+    {
       "group": "no-contracts-emit",
       "name": "input: no contracts-emit import",
       "status": "pass"
@@ -219,6 +247,11 @@
     {
       "group": "no-instanceId",
       "name": "input: no instanceId references",
+      "status": "pass"
+    },
+    {
+      "group": "no-use-before-declaration",
+      "name": "input: no use-before-declaration",
       "status": "pass"
     },
     {
@@ -257,6 +290,11 @@
       "status": "pass"
     },
     {
+      "group": "no-use-before-declaration",
+      "name": "button: no use-before-declaration",
+      "status": "pass"
+    },
+    {
       "group": "no-contracts-emit",
       "name": "sheet: no contracts-emit import",
       "status": "pass"
@@ -289,6 +327,11 @@
     {
       "group": "no-instanceId",
       "name": "sheet: no instanceId references",
+      "status": "pass"
+    },
+    {
+      "group": "no-use-before-declaration",
+      "name": "sheet: no use-before-declaration",
       "status": "pass"
     },
     {
@@ -327,6 +370,11 @@
       "status": "pass"
     },
     {
+      "group": "no-use-before-declaration",
+      "name": "chat: no use-before-declaration",
+      "status": "pass"
+    },
+    {
       "group": "no-contracts-emit",
       "name": "columns: no contracts-emit import",
       "status": "pass"
@@ -354,6 +402,11 @@
     {
       "group": "no-instanceId",
       "name": "columns: no instanceId references",
+      "status": "pass"
+    },
+    {
+      "group": "no-use-before-declaration",
+      "name": "columns: no use-before-declaration",
       "status": "pass"
     },
     {
@@ -392,6 +445,11 @@
       "status": "pass"
     },
     {
+      "group": "no-use-before-declaration",
+      "name": "metric: no use-before-declaration",
+      "status": "pass"
+    },
+    {
       "group": "no-contracts-emit",
       "name": "storyflow: no contracts-emit import",
       "status": "pass"
@@ -424,6 +482,11 @@
     {
       "group": "no-instanceId",
       "name": "storyflow: no instanceId references",
+      "status": "pass"
+    },
+    {
+      "group": "no-use-before-declaration",
+      "name": "storyflow: no use-before-declaration",
       "status": "pass"
     },
     {
@@ -462,6 +525,11 @@
       "status": "pass"
     },
     {
+      "group": "no-use-before-declaration",
+      "name": "calendar: no use-before-declaration",
+      "status": "pass"
+    },
+    {
       "group": "no-contracts-emit",
       "name": "card: no contracts-emit import",
       "status": "pass"
@@ -494,6 +562,11 @@
     {
       "group": "no-instanceId",
       "name": "card: no instanceId references",
+      "status": "pass"
+    },
+    {
+      "group": "no-use-before-declaration",
+      "name": "card: no use-before-declaration",
       "status": "pass"
     },
     {
@@ -532,6 +605,11 @@
       "status": "pass"
     },
     {
+      "group": "no-use-before-declaration",
+      "name": "map: no use-before-declaration",
+      "status": "pass"
+    },
+    {
       "group": "no-contracts-emit",
       "name": "hierarchy: no contracts-emit import",
       "status": "pass"
@@ -564,6 +642,11 @@
     {
       "group": "no-instanceId",
       "name": "hierarchy: no instanceId references",
+      "status": "pass"
+    },
+    {
+      "group": "no-use-before-declaration",
+      "name": "hierarchy: no use-before-declaration",
       "status": "pass"
     },
     {
@@ -602,6 +685,11 @@
       "status": "pass"
     },
     {
+      "group": "no-use-before-declaration",
+      "name": "flow: no use-before-declaration",
+      "status": "pass"
+    },
+    {
       "group": "no-contracts-emit",
       "name": "chart: no contracts-emit import",
       "status": "pass"
@@ -634,6 +722,11 @@
     {
       "group": "no-instanceId",
       "name": "chart: no instanceId references",
+      "status": "pass"
+    },
+    {
+      "group": "no-use-before-declaration",
+      "name": "chart: no use-before-declaration",
       "status": "pass"
     },
     {
@@ -672,6 +765,11 @@
       "status": "pass"
     },
     {
+      "group": "no-use-before-declaration",
+      "name": "scene: no use-before-declaration",
+      "status": "pass"
+    },
+    {
       "group": "no-contracts-emit",
       "name": "dragdrop: no contracts-emit import",
       "status": "pass"
@@ -704,6 +802,11 @@
     {
       "group": "no-instanceId",
       "name": "dragdrop: no instanceId references",
+      "status": "pass"
+    },
+    {
+      "group": "no-use-before-declaration",
+      "name": "dragdrop: no use-before-declaration",
       "status": "pass"
     },
     {
@@ -742,6 +845,11 @@
       "status": "pass"
     },
     {
+      "group": "no-use-before-declaration",
+      "name": "tabs: no use-before-declaration",
+      "status": "pass"
+    },
+    {
       "group": "no-contracts-emit",
       "name": "list: no contracts-emit import",
       "status": "pass"
@@ -774,6 +882,11 @@
     {
       "group": "no-instanceId",
       "name": "list: no instanceId references",
+      "status": "pass"
+    },
+    {
+      "group": "no-use-before-declaration",
+      "name": "list: no use-before-declaration",
       "status": "pass"
     },
     {
@@ -812,6 +925,11 @@
       "status": "pass"
     },
     {
+      "group": "no-use-before-declaration",
+      "name": "timeline: no use-before-declaration",
+      "status": "pass"
+    },
+    {
       "group": "no-contracts-emit",
       "name": "tree: no contracts-emit import",
       "status": "pass"
@@ -844,6 +962,11 @@
     {
       "group": "no-instanceId",
       "name": "tree: no instanceId references",
+      "status": "pass"
+    },
+    {
+      "group": "no-use-before-declaration",
+      "name": "tree: no use-before-declaration",
       "status": "pass"
     },
     {
@@ -882,6 +1005,11 @@
       "status": "pass"
     },
     {
+      "group": "no-use-before-declaration",
+      "name": "gauge: no use-before-declaration",
+      "status": "pass"
+    },
+    {
       "group": "no-contracts-emit",
       "name": "picker: no contracts-emit import",
       "status": "pass"
@@ -917,6 +1045,11 @@
       "status": "pass"
     },
     {
+      "group": "no-use-before-declaration",
+      "name": "picker: no use-before-declaration",
+      "status": "pass"
+    },
+    {
       "group": "no-contracts-emit",
       "name": "grid: no contracts-emit import",
       "status": "pass"
@@ -944,6 +1077,11 @@
     {
       "group": "no-instanceId",
       "name": "grid: no instanceId references",
+      "status": "pass"
+    },
+    {
+      "group": "no-use-before-declaration",
+      "name": "grid: no use-before-declaration",
       "status": "pass"
     },
     {
@@ -982,6 +1120,11 @@
       "status": "pass"
     },
     {
+      "group": "no-use-before-declaration",
+      "name": "heatmap: no use-before-declaration",
+      "status": "pass"
+    },
+    {
       "group": "no-contracts-emit",
       "name": "toggle: no contracts-emit import",
       "status": "pass"
@@ -1017,6 +1160,16 @@
       "status": "pass"
     },
     {
+      "group": "no-use-before-declaration",
+      "name": "toggle: no use-before-declaration",
+      "status": "pass"
+    },
+    {
+      "group": "no-use-before-declaration",
+      "name": "layout: no use-before-declaration",
+      "status": "pass"
+    },
+    {
       "group": "render-creates-ctx",
       "name": "render.ts: creates SafeFireContext",
       "status": "pass"
@@ -1025,8 +1178,460 @@
       "group": "render-injects-transport",
       "name": "render.ts: injects buildPayloadViaCli transport",
       "status": "pass"
+    },
+    {
+      "group": "no-empty-samples",
+      "name": "tabs: at least one sample has inline data",
+      "status": "pass"
+    },
+    {
+      "group": "no-empty-samples",
+      "name": "tree: at least one sample has inline data",
+      "status": "pass"
+    },
+    {
+      "group": "no-empty-samples",
+      "name": "week: at least one sample has inline data",
+      "status": "fail",
+      "error": "week/ — all 3 sample(s) lack inline data. At least one must have datasources[].inline for the viewer to render content."
+    },
+    {
+      "group": "no-empty-samples",
+      "name": "calendar: at least one sample has inline data",
+      "status": "fail",
+      "error": "calendar/ — all 2 sample(s) lack inline data. At least one must have datasources[].inline for the viewer to render content."
+    },
+    {
+      "group": "no-empty-samples",
+      "name": "card: at least one sample has inline data",
+      "status": "pass"
+    },
+    {
+      "group": "no-empty-samples",
+      "name": "hierarchy: at least one sample has inline data",
+      "status": "fail",
+      "error": "hierarchy/ — all 4 sample(s) lack inline data. At least one must have datasources[].inline for the viewer to render content."
+    },
+    {
+      "group": "no-empty-samples",
+      "name": "chat: at least one sample has inline data",
+      "status": "fail",
+      "error": "chat/ — all 2 sample(s) lack inline data. At least one must have datasources[].inline for the viewer to render content."
+    },
+    {
+      "group": "no-empty-samples",
+      "name": "picker: at least one sample has inline data",
+      "status": "fail",
+      "error": "picker/ — all 2 sample(s) lack inline data. At least one must have datasources[].inline for the viewer to render content."
+    },
+    {
+      "group": "no-empty-samples",
+      "name": "input: at least one sample has inline data",
+      "status": "fail",
+      "error": "input/ — all 2 sample(s) lack inline data. At least one must have datasources[].inline for the viewer to render content."
+    },
+    {
+      "group": "no-empty-samples",
+      "name": "chart: at least one sample has inline data",
+      "status": "fail",
+      "error": "chart/ — all 2 sample(s) lack inline data. At least one must have datasources[].inline for the viewer to render content."
+    },
+    {
+      "group": "no-empty-samples",
+      "name": "toggle: at least one sample has inline data",
+      "status": "fail",
+      "error": "toggle/ — all 2 sample(s) lack inline data. At least one must have datasources[].inline for the viewer to render content."
+    },
+    {
+      "group": "no-empty-samples",
+      "name": "map: at least one sample has inline data",
+      "status": "fail",
+      "error": "map/ — all 2 sample(s) lack inline data. At least one must have datasources[].inline for the viewer to render content."
+    },
+    {
+      "group": "no-empty-samples",
+      "name": "table: at least one sample has inline data",
+      "status": "fail",
+      "error": "table/ — all 5 sample(s) lack inline data. At least one must have datasources[].inline for the viewer to render content."
+    },
+    {
+      "group": "no-empty-samples",
+      "name": "list: at least one sample has inline data",
+      "status": "fail",
+      "error": "list/ — all 11 sample(s) lack inline data. At least one must have datasources[].inline for the viewer to render content."
+    },
+    {
+      "group": "no-empty-samples",
+      "name": "gauge: at least one sample has inline data",
+      "status": "fail",
+      "error": "gauge/ — all 2 sample(s) lack inline data. At least one must have datasources[].inline for the viewer to render content."
+    },
+    {
+      "group": "no-empty-samples",
+      "name": "heatmap: at least one sample has inline data",
+      "status": "fail",
+      "error": "heatmap/ — all 2 sample(s) lack inline data. At least one must have datasources[].inline for the viewer to render content."
+    },
+    {
+      "group": "no-empty-samples",
+      "name": "nav: at least one sample has inline data",
+      "status": "fail",
+      "error": "nav/ — all 2 sample(s) lack inline data. At least one must have datasources[].inline for the viewer to render content."
+    },
+    {
+      "group": "no-empty-samples",
+      "name": "sheet: at least one sample has inline data",
+      "status": "fail",
+      "error": "sheet/ — all 14 sample(s) lack inline data. At least one must have datasources[].inline for the viewer to render content."
+    },
+    {
+      "group": "no-empty-samples",
+      "name": "timeline: at least one sample has inline data",
+      "status": "fail",
+      "error": "timeline/ — all 2 sample(s) lack inline data. At least one must have datasources[].inline for the viewer to render content."
+    },
+    {
+      "group": "no-empty-samples",
+      "name": "funnel: at least one sample has inline data",
+      "status": "pass"
+    },
+    {
+      "group": "no-empty-samples",
+      "name": "drag-drop: at least one sample has inline data",
+      "status": "fail",
+      "error": "drag-drop/ — all 2 sample(s) lack inline data. At least one must have datasources[].inline for the viewer to render content."
+    },
+    {
+      "group": "no-empty-samples",
+      "name": "grid: at least one sample has inline data",
+      "status": "fail",
+      "error": "grid/ — all 2 sample(s) lack inline data. At least one must have datasources[].inline for the viewer to render content."
+    },
+    {
+      "group": "no-empty-samples",
+      "name": "flow: at least one sample has inline data",
+      "status": "fail",
+      "error": "flow/ — all 4 sample(s) lack inline data. At least one must have datasources[].inline for the viewer to render content."
+    },
+    {
+      "group": "valid-sample-variant",
+      "name": "calendar/calendar2.json: variant 'year' is valid",
+      "status": "pass"
+    },
+    {
+      "group": "valid-sample-variant",
+      "name": "calendar/calendar1.json: variant 'grid' is valid",
+      "status": "pass"
+    },
+    {
+      "group": "valid-sample-variant",
+      "name": "hierarchy/hierarchy-sunburst-disk.json: variant 'sunburst' is valid",
+      "status": "pass"
+    },
+    {
+      "group": "valid-sample-variant",
+      "name": "hierarchy/hierarchy-icicle-disk.json: variant 'icicle' is valid",
+      "status": "pass"
+    },
+    {
+      "group": "valid-sample-variant",
+      "name": "hierarchy/hierarchy-pack-budget.json: variant 'pack' is valid",
+      "status": "pass"
+    },
+    {
+      "group": "valid-sample-variant",
+      "name": "hierarchy/hierarchy-treemap-disk.json: variant 'treemap' is valid",
+      "status": "fail",
+      "error": "hierarchy/hierarchy-treemap-disk.json uses variant 'treemap' but builder only handles: icicle, pack, sunburst"
+    },
+    {
+      "group": "valid-sample-variant",
+      "name": "layout/layout2.json: variant 'left-main' is valid",
+      "status": "pass"
+    },
+    {
+      "group": "valid-sample-variant",
+      "name": "layout/layout1.json: variant 'stack' is valid",
+      "status": "pass"
+    },
+    {
+      "group": "valid-sample-variant",
+      "name": "toggle/toggle2.json: variant 'checkbox' is valid",
+      "status": "fail",
+      "error": "toggle/toggle2.json uses variant 'checkbox' but builder only handles: expandable, switch, table"
+    },
+    {
+      "group": "valid-sample-variant",
+      "name": "toggle/toggle1.json: variant 'switch' is valid",
+      "status": "pass"
+    },
+    {
+      "group": "valid-sample-variant",
+      "name": "sheet/sheet-skeleton.json: variant 'skeleton' is valid",
+      "status": "pass"
+    },
+    {
+      "group": "valid-sample-variant",
+      "name": "sheet/sheet-columns-only.json: variant 'empty' is valid",
+      "status": "pass"
+    },
+    {
+      "group": "valid-sample-variant",
+      "name": "sheet/sheet-single-column.json: variant 'minimal' is valid",
+      "status": "fail",
+      "error": "sheet/sheet-single-column.json uses variant 'minimal' but builder only handles: empty, grouped, key-value, pivot, skeleton"
+    },
+    {
+      "group": "valid-sample-variant",
+      "name": "sheet/sheet-basic.json: variant 'default' is valid",
+      "status": "fail",
+      "error": "sheet/sheet-basic.json uses variant 'default' but builder only handles: empty, grouped, key-value, pivot, skeleton"
+    },
+    {
+      "group": "valid-sample-variant",
+      "name": "sheet/sheet-status.json: variant 'default' is valid",
+      "status": "fail",
+      "error": "sheet/sheet-status.json uses variant 'default' but builder only handles: empty, grouped, key-value, pivot, skeleton"
+    },
+    {
+      "group": "valid-sample-variant",
+      "name": "sheet/sheet-striped.json: variant 'striped' is valid",
+      "status": "fail",
+      "error": "sheet/sheet-striped.json uses variant 'striped' but builder only handles: empty, grouped, key-value, pivot, skeleton"
+    },
+    {
+      "group": "valid-sample-variant",
+      "name": "sheet/sheet-rows-only.json: variant 'minimal' is valid",
+      "status": "fail",
+      "error": "sheet/sheet-rows-only.json uses variant 'minimal' but builder only handles: empty, grouped, key-value, pivot, skeleton"
+    },
+    {
+      "group": "valid-sample-variant",
+      "name": "sheet/sheet-pivot.json: variant 'pivot' is valid",
+      "status": "pass"
+    },
+    {
+      "group": "valid-sample-variant",
+      "name": "sheet/sheet-compact.json: variant 'default' is valid",
+      "status": "fail",
+      "error": "sheet/sheet-compact.json uses variant 'default' but builder only handles: empty, grouped, key-value, pivot, skeleton"
+    },
+    {
+      "group": "valid-sample-variant",
+      "name": "sheet/sheet-key-value.json: variant 'key-value' is valid",
+      "status": "pass"
+    },
+    {
+      "group": "valid-sample-variant",
+      "name": "sheet/sheet-empty.json: variant 'skeleton' is valid",
+      "status": "pass"
+    },
+    {
+      "group": "valid-sample-variant",
+      "name": "sheet/sheet-spreadsheet.json: variant 'default' is valid",
+      "status": "fail",
+      "error": "sheet/sheet-spreadsheet.json uses variant 'default' but builder only handles: empty, grouped, key-value, pivot, skeleton"
+    },
+    {
+      "group": "valid-sample-variant",
+      "name": "sheet/sheet-dark.json: variant 'default' is valid",
+      "status": "fail",
+      "error": "sheet/sheet-dark.json uses variant 'default' but builder only handles: empty, grouped, key-value, pivot, skeleton"
+    },
+    {
+      "group": "valid-sample-variant",
+      "name": "sheet/sheet-grouped.json: variant 'grouped' is valid",
+      "status": "pass"
+    },
+    {
+      "group": "valid-sample-variant",
+      "name": "timeline/timeline1.json: variant 'default' is valid",
+      "status": "pass"
+    },
+    {
+      "group": "valid-sample-variant",
+      "name": "timeline/timeline2.json: variant 'dense' is valid",
+      "status": "fail",
+      "error": "timeline/timeline2.json uses variant 'dense' but builder only handles: alternating, default, gantt, horizontal, swimlane"
+    },
+    {
+      "group": "valid-sample-variant",
+      "name": "flow/flow-chord-trade.json: variant 'chord' is valid",
+      "status": "pass"
+    },
+    {
+      "group": "valid-sample-variant",
+      "name": "flow/flow-arc-trade.json: variant 'arc' is valid",
+      "status": "pass"
+    },
+    {
+      "group": "valid-sample-variant",
+      "name": "flow/flow-sankey-revenue.json: variant 'sankey' is valid",
+      "status": "fail",
+      "error": "flow/flow-sankey-revenue.json uses variant 'sankey' but builder only handles: arc, chord, force"
+    },
+    {
+      "group": "valid-sample-variant",
+      "name": "flow/flow-force-team.json: variant 'force' is valid",
+      "status": "pass"
     }
   ],
-  "failures": [],
-  "ts": "2026-06-17T09:50:26.546Z"
+  "failures": [
+    {
+      "group": "no-empty-samples",
+      "name": "week: at least one sample has inline data",
+      "error": "week/ — all 3 sample(s) lack inline data. At least one must have datasources[].inline for the viewer to render content."
+    },
+    {
+      "group": "no-empty-samples",
+      "name": "calendar: at least one sample has inline data",
+      "error": "calendar/ — all 2 sample(s) lack inline data. At least one must have datasources[].inline for the viewer to render content."
+    },
+    {
+      "group": "no-empty-samples",
+      "name": "hierarchy: at least one sample has inline data",
+      "error": "hierarchy/ — all 4 sample(s) lack inline data. At least one must have datasources[].inline for the viewer to render content."
+    },
+    {
+      "group": "no-empty-samples",
+      "name": "chat: at least one sample has inline data",
+      "error": "chat/ — all 2 sample(s) lack inline data. At least one must have datasources[].inline for the viewer to render content."
+    },
+    {
+      "group": "no-empty-samples",
+      "name": "picker: at least one sample has inline data",
+      "error": "picker/ — all 2 sample(s) lack inline data. At least one must have datasources[].inline for the viewer to render content."
+    },
+    {
+      "group": "no-empty-samples",
+      "name": "input: at least one sample has inline data",
+      "error": "input/ — all 2 sample(s) lack inline data. At least one must have datasources[].inline for the viewer to render content."
+    },
+    {
+      "group": "no-empty-samples",
+      "name": "chart: at least one sample has inline data",
+      "error": "chart/ — all 2 sample(s) lack inline data. At least one must have datasources[].inline for the viewer to render content."
+    },
+    {
+      "group": "no-empty-samples",
+      "name": "toggle: at least one sample has inline data",
+      "error": "toggle/ — all 2 sample(s) lack inline data. At least one must have datasources[].inline for the viewer to render content."
+    },
+    {
+      "group": "no-empty-samples",
+      "name": "map: at least one sample has inline data",
+      "error": "map/ — all 2 sample(s) lack inline data. At least one must have datasources[].inline for the viewer to render content."
+    },
+    {
+      "group": "no-empty-samples",
+      "name": "table: at least one sample has inline data",
+      "error": "table/ — all 5 sample(s) lack inline data. At least one must have datasources[].inline for the viewer to render content."
+    },
+    {
+      "group": "no-empty-samples",
+      "name": "list: at least one sample has inline data",
+      "error": "list/ — all 11 sample(s) lack inline data. At least one must have datasources[].inline for the viewer to render content."
+    },
+    {
+      "group": "no-empty-samples",
+      "name": "gauge: at least one sample has inline data",
+      "error": "gauge/ — all 2 sample(s) lack inline data. At least one must have datasources[].inline for the viewer to render content."
+    },
+    {
+      "group": "no-empty-samples",
+      "name": "heatmap: at least one sample has inline data",
+      "error": "heatmap/ — all 2 sample(s) lack inline data. At least one must have datasources[].inline for the viewer to render content."
+    },
+    {
+      "group": "no-empty-samples",
+      "name": "nav: at least one sample has inline data",
+      "error": "nav/ — all 2 sample(s) lack inline data. At least one must have datasources[].inline for the viewer to render content."
+    },
+    {
+      "group": "no-empty-samples",
+      "name": "sheet: at least one sample has inline data",
+      "error": "sheet/ — all 14 sample(s) lack inline data. At least one must have datasources[].inline for the viewer to render content."
+    },
+    {
+      "group": "no-empty-samples",
+      "name": "timeline: at least one sample has inline data",
+      "error": "timeline/ — all 2 sample(s) lack inline data. At least one must have datasources[].inline for the viewer to render content."
+    },
+    {
+      "group": "no-empty-samples",
+      "name": "drag-drop: at least one sample has inline data",
+      "error": "drag-drop/ — all 2 sample(s) lack inline data. At least one must have datasources[].inline for the viewer to render content."
+    },
+    {
+      "group": "no-empty-samples",
+      "name": "grid: at least one sample has inline data",
+      "error": "grid/ — all 2 sample(s) lack inline data. At least one must have datasources[].inline for the viewer to render content."
+    },
+    {
+      "group": "no-empty-samples",
+      "name": "flow: at least one sample has inline data",
+      "error": "flow/ — all 4 sample(s) lack inline data. At least one must have datasources[].inline for the viewer to render content."
+    },
+    {
+      "group": "valid-sample-variant",
+      "name": "hierarchy/hierarchy-treemap-disk.json: variant 'treemap' is valid",
+      "error": "hierarchy/hierarchy-treemap-disk.json uses variant 'treemap' but builder only handles: icicle, pack, sunburst"
+    },
+    {
+      "group": "valid-sample-variant",
+      "name": "toggle/toggle2.json: variant 'checkbox' is valid",
+      "error": "toggle/toggle2.json uses variant 'checkbox' but builder only handles: expandable, switch, table"
+    },
+    {
+      "group": "valid-sample-variant",
+      "name": "sheet/sheet-single-column.json: variant 'minimal' is valid",
+      "error": "sheet/sheet-single-column.json uses variant 'minimal' but builder only handles: empty, grouped, key-value, pivot, skeleton"
+    },
+    {
+      "group": "valid-sample-variant",
+      "name": "sheet/sheet-basic.json: variant 'default' is valid",
+      "error": "sheet/sheet-basic.json uses variant 'default' but builder only handles: empty, grouped, key-value, pivot, skeleton"
+    },
+    {
+      "group": "valid-sample-variant",
+      "name": "sheet/sheet-status.json: variant 'default' is valid",
+      "error": "sheet/sheet-status.json uses variant 'default' but builder only handles: empty, grouped, key-value, pivot, skeleton"
+    },
+    {
+      "group": "valid-sample-variant",
+      "name": "sheet/sheet-striped.json: variant 'striped' is valid",
+      "error": "sheet/sheet-striped.json uses variant 'striped' but builder only handles: empty, grouped, key-value, pivot, skeleton"
+    },
+    {
+      "group": "valid-sample-variant",
+      "name": "sheet/sheet-rows-only.json: variant 'minimal' is valid",
+      "error": "sheet/sheet-rows-only.json uses variant 'minimal' but builder only handles: empty, grouped, key-value, pivot, skeleton"
+    },
+    {
+      "group": "valid-sample-variant",
+      "name": "sheet/sheet-compact.json: variant 'default' is valid",
+      "error": "sheet/sheet-compact.json uses variant 'default' but builder only handles: empty, grouped, key-value, pivot, skeleton"
+    },
+    {
+      "group": "valid-sample-variant",
+      "name": "sheet/sheet-spreadsheet.json: variant 'default' is valid",
+      "error": "sheet/sheet-spreadsheet.json uses variant 'default' but builder only handles: empty, grouped, key-value, pivot, skeleton"
+    },
+    {
+      "group": "valid-sample-variant",
+      "name": "sheet/sheet-dark.json: variant 'default' is valid",
+      "error": "sheet/sheet-dark.json uses variant 'default' but builder only handles: empty, grouped, key-value, pivot, skeleton"
+    },
+    {
+      "group": "valid-sample-variant",
+      "name": "timeline/timeline2.json: variant 'dense' is valid",
+      "error": "timeline/timeline2.json uses variant 'dense' but builder only handles: alternating, default, gantt, horizontal, swimlane"
+    },
+    {
+      "group": "valid-sample-variant",
+      "name": "flow/flow-sankey-revenue.json: variant 'sankey' is valid",
+      "error": "flow/flow-sankey-revenue.json uses variant 'sankey' but builder only handles: arc, chord, force"
+    }
+  ],
+  "ts": "2026-06-17T14:25:35.011Z"
 }

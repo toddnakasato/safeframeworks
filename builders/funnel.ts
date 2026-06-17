@@ -40,10 +40,10 @@ export function createSafeFunnel(container: HTMLElement, config: ConfigBase, ctx
     root.setAttribute("data-component", "funnel");
 
     // Paint intent attributes
+    const _selectedStage = metadata.selectedStage ?? null;
     if (_selectedStage != null) root.setAttribute("data-selected-stage", String(_selectedStage));
 
     // External paint state (resolved from state.json by host)
-    const _selectedStage = metadata.selectedStage ?? null;
 
     root.setAttribute("data-variant", variant);
 

@@ -135,10 +135,10 @@ export function createSafeSheet(container: HTMLElement, config: ConfigBase, ctx:
     root.setAttribute("data-component", "sheet");
 
     // Paint intent attributes
+    const _selectedCell = metadata.selectedCell ?? null;
     if (_selectedCell != null) root.setAttribute("data-selected-cell", String(_selectedCell));
 
     // External paint state (resolved from state.json by host)
-    const _selectedCell = metadata.selectedCell ?? null;
 
     root.setAttribute("data-variant", variant);
     root.setAttribute("data-surface", surface);

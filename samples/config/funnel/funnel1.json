@@ -1,7 +1,31 @@
 {
   "component": "funnel",
   "metadata": {
-    "variant": "default"
+    "variant": "default",
+    "labelField": "stage",
+    "valueField": "count",
+    "showConversion": true,
+    "showPercent": true
+  },
+  "data": {
+    "stages": {
+      "name": "stages",
+      "type": "list",
+      "source": "inline",
+      "inline": [
+        { "stage": "Leads", "count": 1200 },
+        { "stage": "Qualified", "count": 800 },
+        { "stage": "Proposals", "count": 400 },
+        { "stage": "Negotiation", "count": 200 },
+        { "stage": "Closed Won", "count": 120 }
+      ],
+      "schema": {
+        "fields": [
+          { "name": "stage", "label": "Stage", "type": "text" },
+          { "name": "count", "label": "Count", "type": "number" }
+        ]
+      }
+    }
   },
   "eventHandler": {
     "handler": "funnel"

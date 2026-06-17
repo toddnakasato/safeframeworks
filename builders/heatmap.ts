@@ -43,10 +43,10 @@ export function createSafeHeatmap(container: HTMLElement, config: ConfigBase, ct
     root.setAttribute("data-component", "heatmap");
 
     // Paint intent attributes
+    const _selectedCell = metadata.selectedCell ?? null;
     if (_selectedCell != null) root.setAttribute("data-selected-cell", String(_selectedCell));
 
     // External paint state (resolved from state.json by host)
-    const _selectedCell = metadata.selectedCell ?? null;
 
     root.setAttribute("data-variant", variant);
     root.style.width = "100%";

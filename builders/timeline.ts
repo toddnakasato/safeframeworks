@@ -65,10 +65,10 @@ export function createSafeTimeline(container: HTMLElement, config: ConfigBase, c
     root.setAttribute("data-component", "timeline");
 
     // Paint intent attributes
+    const _selectedEvent = metadata.selectedEvent ?? null;
     if (_selectedEvent != null) root.setAttribute("data-selected-event", String(_selectedEvent));
 
     // External paint state (resolved from state.json by host)
-    const _selectedEvent = metadata.selectedEvent ?? null;
 
     root.setAttribute("data-variant", variant);
 

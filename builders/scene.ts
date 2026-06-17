@@ -17,12 +17,12 @@ export function createSafeScene(
     root.setAttribute("data-component", "scene");
 
     // Paint intent attributes
+    const _selectedItem = metadata.selectedItem ?? null;
     if (_selectedItem != null) root.setAttribute("data-selected-item", String(_selectedItem));
+    const _activeScene = metadata.activeScene ?? null;
     if (_activeScene != null) root.setAttribute("data-active-scene", String(_activeScene));
 
     // External paint state (resolved from state.json by host)
-    const _selectedItem = metadata.selectedItem ?? null;
-    const _activeScene = metadata.activeScene ?? null;
 
     if (config.metadata?.name) root.setAttribute("data-name", config.metadata.name as string);
 

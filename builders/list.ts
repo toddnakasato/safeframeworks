@@ -578,13 +578,13 @@ export function createSafeList(container: HTMLElement, config: ConfigBase, ctx: 
     const root = el("div");
     root.setAttribute("data-component", "list");
 
-    // Paint intent attributes
-    if (_selectedItem != null) root.setAttribute("data-selected-item", String(_selectedItem));
-    if (_expanded != null) root.setAttribute("data-expanded-items", String(_expanded));
-
     // External paint state (resolved from state.json by host)
     const _selectedItem = metadata.selectedItem ?? null;
     const _expanded = metadata.expanded ?? null;
+
+    // Paint intent attributes
+    if (_selectedItem != null) root.setAttribute("data-selected-item", String(_selectedItem));
+    if (_expanded != null) root.setAttribute("data-expanded-items", String(_expanded));
 
     // Intent tokens -> data-* attributes. Paint lives in safestyles.
     for (const key of ["accent", "surface", "spacing", "density", "radius"] as const) {

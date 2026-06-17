@@ -2,25 +2,29 @@
   "component": "tree",
   "metadata": {
     "variant": "default",
-    "spacing": "normal"
+    "spacing": "normal",
+    "idField": "id",
+    "parentField": "parentId",
+    "labelField": "label",
+    "expandAll": true
   },
   "data": {
     "nodes": {
       "name": "tree-nodes",
       "type": "list",
-      "source": "file",
+      "source": "inline",
+      "inline": [
+        { "id": "1", "label": "Root", "parentId": null },
+        { "id": "2", "label": "Child A", "parentId": "1" },
+        { "id": "3", "label": "Child B", "parentId": "1" },
+        { "id": "4", "label": "Grandchild A1", "parentId": "2" },
+        { "id": "5", "label": "Grandchild A2", "parentId": "2" },
+        { "id": "6", "label": "Grandchild B1", "parentId": "3" }
+      ],
       "schema": {
         "fields": [
-          {
-            "name": "id",
-            "label": "ID",
-            "type": "text"
-          },
-          {
-            "name": "label",
-            "label": "Label",
-            "type": "text"
-          }
+          { "name": "id", "label": "ID", "type": "text" },
+          { "name": "label", "label": "Label", "type": "text" }
         ]
       }
     }

@@ -1,7 +1,30 @@
 {
   "component": "funnel",
   "metadata": {
-    "variant": "dense"
+    "variant": "dense",
+    "labelField": "stage",
+    "valueField": "count",
+    "showConversion": true,
+    "showPercent": false
+  },
+  "data": {
+    "stages": {
+      "name": "stages",
+      "type": "list",
+      "source": "inline",
+      "inline": [
+        { "stage": "Visitors", "count": 5000 },
+        { "stage": "Sign Ups", "count": 2500 },
+        { "stage": "Active", "count": 1000 },
+        { "stage": "Paid", "count": 300 }
+      ],
+      "schema": {
+        "fields": [
+          { "name": "stage", "label": "Stage", "type": "text" },
+          { "name": "count", "label": "Count", "type": "number" }
+        ]
+      }
+    }
   },
   "eventHandler": {
     "handler": "funnel"

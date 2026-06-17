@@ -40,10 +40,10 @@ export function createSafeTabs(container: HTMLElement, config: ConfigBase, ctx: 
     root.setAttribute("data-component", "tabs");
 
     // Paint intent attributes
+    const _activeTab = metadata.activeTab ?? null;
     if (_activeTab != null) root.setAttribute("data-active-tab", String(_activeTab));
 
     // External paint state (resolved from state.json by host)
-    const _activeTab = metadata.activeTab ?? null;
 
     root.setAttribute("data-variant", variant);
     root.setAttribute("data-position", position);
