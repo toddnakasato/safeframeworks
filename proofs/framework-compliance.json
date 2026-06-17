@@ -1,0 +1,5855 @@
+{
+  "ok": false,
+  "framework": "all",
+  "version": "all",
+  "total": 1136,
+  "passed": 1112,
+  "failed": 24,
+  "wrapperCounts": {
+    "react/18": 30,
+    "react/19": 30,
+    "angular/21": 27,
+    "angular/22": 27,
+    "vue/2": 27,
+    "vue/3": 27,
+    "svelte/4": 27,
+    "svelte/5": 27
+  },
+  "groups": {
+    "builder-coverage": 240,
+    "wrapper-delegates": 222,
+    "no-direct-fire": 222,
+    "no-payload-construction": 222,
+    "no-duplicate-dom": 222,
+    "framework-parity": 8
+  },
+  "checks": [
+    {
+      "group": "builder-coverage",
+      "name": "react/18: has wrapper for funnel",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "react/18: has wrapper for callout",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "react/18: has wrapper for week",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "react/18: has wrapper for table",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "react/18: has wrapper for nav",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "react/18: has wrapper for input",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "react/18: has wrapper for button",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "react/18: has wrapper for sheet",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "react/18: has wrapper for chat",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "react/18: has wrapper for columns",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "react/18: has wrapper for metric",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "react/18: has wrapper for storyflow",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "react/18: has wrapper for calendar",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "react/18: has wrapper for card",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "react/18: has wrapper for map",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "react/18: has wrapper for hierarchy",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "react/18: has wrapper for flow",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "react/18: has wrapper for chart",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "react/18: has wrapper for scene",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "react/18: has wrapper for dragdrop",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "react/18: has wrapper for layout",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "react/18: has wrapper for tabs",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "react/18: has wrapper for list",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "react/18: has wrapper for timeline",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "react/18: has wrapper for tree",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "react/18: has wrapper for gauge",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "react/18: has wrapper for picker",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "react/18: has wrapper for grid",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "react/18: has wrapper for heatmap",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "react/18: has wrapper for toggle",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "react/18/SafeDragDrop.tsx: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "react/18/SafeDragDrop.tsx: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "react/18/SafeDragDrop.tsx: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "react/18/SafeDragDrop.tsx: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "react/18/SafePicker.tsx: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "react/18/SafePicker.tsx: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "react/18/SafePicker.tsx: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "react/18/SafePicker.tsx: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "react/18/SafeCallout.tsx: imports builder",
+      "status": "fail",
+      "error": "SafeCallout.tsx does not import from builders/callout"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "react/18/SafeCallout.tsx: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "react/18/SafeCallout.tsx: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "react/18/SafeCallout.tsx: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "react/18/SafeChat.tsx: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "react/18/SafeChat.tsx: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "react/18/SafeChat.tsx: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "react/18/SafeChat.tsx: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "react/18/SafeFlow.tsx: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "react/18/SafeFlow.tsx: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "react/18/SafeFlow.tsx: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "react/18/SafeFlow.tsx: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "react/18/SafeSheet.tsx: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "react/18/SafeSheet.tsx: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "react/18/SafeSheet.tsx: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "react/18/SafeSheet.tsx: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "react/18/SafeLayout.tsx: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "react/18/SafeLayout.tsx: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "react/18/SafeLayout.tsx: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "react/18/SafeLayout.tsx: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "react/18/SafeChart.tsx: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "react/18/SafeChart.tsx: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "react/18/SafeChart.tsx: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "react/18/SafeChart.tsx: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "react/18/SafeHeatmap.tsx: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "react/18/SafeHeatmap.tsx: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "react/18/SafeHeatmap.tsx: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "react/18/SafeHeatmap.tsx: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "react/18/SafeToggle.tsx: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "react/18/SafeToggle.tsx: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "react/18/SafeToggle.tsx: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "react/18/SafeToggle.tsx: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "react/18/SafeButton.tsx: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "react/18/SafeButton.tsx: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "react/18/SafeButton.tsx: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "react/18/SafeButton.tsx: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "react/18/SafeStoryFlow.tsx: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "react/18/SafeStoryFlow.tsx: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "react/18/SafeStoryFlow.tsx: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "react/18/SafeStoryFlow.tsx: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "react/18/SafeTimeline.tsx: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "react/18/SafeTimeline.tsx: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "react/18/SafeTimeline.tsx: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "react/18/SafeTimeline.tsx: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "react/18/SafeCalendar.tsx: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "react/18/SafeCalendar.tsx: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "react/18/SafeCalendar.tsx: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "react/18/SafeCalendar.tsx: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "react/18/SafeTree.tsx: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "react/18/SafeTree.tsx: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "react/18/SafeTree.tsx: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "react/18/SafeTree.tsx: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "react/18/SafeGauge.tsx: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "react/18/SafeGauge.tsx: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "react/18/SafeGauge.tsx: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "react/18/SafeGauge.tsx: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "react/18/SafeInput.tsx: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "react/18/SafeInput.tsx: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "react/18/SafeInput.tsx: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "react/18/SafeInput.tsx: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "react/18/SafeColumns.tsx: imports builder",
+      "status": "fail",
+      "error": "SafeColumns.tsx does not import from builders/columns"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "react/18/SafeColumns.tsx: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "react/18/SafeColumns.tsx: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "react/18/SafeColumns.tsx: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "react/18/SafeScene.tsx: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "react/18/SafeScene.tsx: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "react/18/SafeScene.tsx: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "react/18/SafeScene.tsx: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "react/18/SafeHierarchy.tsx: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "react/18/SafeHierarchy.tsx: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "react/18/SafeHierarchy.tsx: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "react/18/SafeHierarchy.tsx: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "react/18/SafeFunnel.tsx: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "react/18/SafeFunnel.tsx: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "react/18/SafeFunnel.tsx: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "react/18/SafeFunnel.tsx: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "react/18/SafeMap.tsx: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "react/18/SafeMap.tsx: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "react/18/SafeMap.tsx: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "react/18/SafeMap.tsx: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "react/18/SafeList.tsx: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "react/18/SafeList.tsx: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "react/18/SafeList.tsx: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "react/18/SafeList.tsx: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "react/18/SafeGrid.tsx: imports builder",
+      "status": "fail",
+      "error": "SafeGrid.tsx does not import from builders/grid"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "react/18/SafeGrid.tsx: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "react/18/SafeGrid.tsx: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "react/18/SafeGrid.tsx: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "react/18/SafeTable.tsx: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "react/18/SafeTable.tsx: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "react/18/SafeTable.tsx: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "react/18/SafeTable.tsx: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "react/18/SafeNav.tsx: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "react/18/SafeNav.tsx: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "react/18/SafeNav.tsx: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "react/18/SafeNav.tsx: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "react/18/SafeCard.tsx: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "react/18/SafeCard.tsx: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "react/18/SafeCard.tsx: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "react/18/SafeCard.tsx: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "react/18/SafeTabs.tsx: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "react/18/SafeTabs.tsx: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "react/18/SafeTabs.tsx: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "react/18/SafeTabs.tsx: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "react/18/SafeWeek.tsx: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "react/18/SafeWeek.tsx: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "react/18/SafeWeek.tsx: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "react/18/SafeWeek.tsx: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "react/18/SafeMetric.tsx: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "react/18/SafeMetric.tsx: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "react/18/SafeMetric.tsx: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "react/18/SafeMetric.tsx: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "react/19: has wrapper for funnel",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "react/19: has wrapper for callout",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "react/19: has wrapper for week",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "react/19: has wrapper for table",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "react/19: has wrapper for nav",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "react/19: has wrapper for input",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "react/19: has wrapper for button",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "react/19: has wrapper for sheet",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "react/19: has wrapper for chat",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "react/19: has wrapper for columns",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "react/19: has wrapper for metric",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "react/19: has wrapper for storyflow",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "react/19: has wrapper for calendar",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "react/19: has wrapper for card",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "react/19: has wrapper for map",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "react/19: has wrapper for hierarchy",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "react/19: has wrapper for flow",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "react/19: has wrapper for chart",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "react/19: has wrapper for scene",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "react/19: has wrapper for dragdrop",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "react/19: has wrapper for layout",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "react/19: has wrapper for tabs",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "react/19: has wrapper for list",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "react/19: has wrapper for timeline",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "react/19: has wrapper for tree",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "react/19: has wrapper for gauge",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "react/19: has wrapper for picker",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "react/19: has wrapper for grid",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "react/19: has wrapper for heatmap",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "react/19: has wrapper for toggle",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "react/19/SafeDragDrop.tsx: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "react/19/SafeDragDrop.tsx: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "react/19/SafeDragDrop.tsx: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "react/19/SafeDragDrop.tsx: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "react/19/SafePicker.tsx: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "react/19/SafePicker.tsx: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "react/19/SafePicker.tsx: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "react/19/SafePicker.tsx: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "react/19/SafeCallout.tsx: imports builder",
+      "status": "fail",
+      "error": "SafeCallout.tsx does not import from builders/callout"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "react/19/SafeCallout.tsx: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "react/19/SafeCallout.tsx: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "react/19/SafeCallout.tsx: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "react/19/SafeChat.tsx: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "react/19/SafeChat.tsx: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "react/19/SafeChat.tsx: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "react/19/SafeChat.tsx: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "react/19/SafeFlow.tsx: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "react/19/SafeFlow.tsx: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "react/19/SafeFlow.tsx: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "react/19/SafeFlow.tsx: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "react/19/SafeSheet.tsx: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "react/19/SafeSheet.tsx: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "react/19/SafeSheet.tsx: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "react/19/SafeSheet.tsx: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "react/19/SafeLayout.tsx: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "react/19/SafeLayout.tsx: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "react/19/SafeLayout.tsx: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "react/19/SafeLayout.tsx: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "react/19/SafeChart.tsx: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "react/19/SafeChart.tsx: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "react/19/SafeChart.tsx: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "react/19/SafeChart.tsx: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "react/19/SafeHeatmap.tsx: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "react/19/SafeHeatmap.tsx: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "react/19/SafeHeatmap.tsx: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "react/19/SafeHeatmap.tsx: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "react/19/SafeToggle.tsx: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "react/19/SafeToggle.tsx: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "react/19/SafeToggle.tsx: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "react/19/SafeToggle.tsx: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "react/19/SafeButton.tsx: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "react/19/SafeButton.tsx: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "react/19/SafeButton.tsx: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "react/19/SafeButton.tsx: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "react/19/SafeStoryFlow.tsx: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "react/19/SafeStoryFlow.tsx: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "react/19/SafeStoryFlow.tsx: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "react/19/SafeStoryFlow.tsx: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "react/19/SafeTimeline.tsx: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "react/19/SafeTimeline.tsx: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "react/19/SafeTimeline.tsx: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "react/19/SafeTimeline.tsx: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "react/19/SafeCalendar.tsx: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "react/19/SafeCalendar.tsx: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "react/19/SafeCalendar.tsx: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "react/19/SafeCalendar.tsx: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "react/19/SafeTree.tsx: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "react/19/SafeTree.tsx: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "react/19/SafeTree.tsx: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "react/19/SafeTree.tsx: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "react/19/SafeGauge.tsx: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "react/19/SafeGauge.tsx: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "react/19/SafeGauge.tsx: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "react/19/SafeGauge.tsx: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "react/19/SafeInput.tsx: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "react/19/SafeInput.tsx: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "react/19/SafeInput.tsx: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "react/19/SafeInput.tsx: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "react/19/SafeColumns.tsx: imports builder",
+      "status": "fail",
+      "error": "SafeColumns.tsx does not import from builders/columns"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "react/19/SafeColumns.tsx: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "react/19/SafeColumns.tsx: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "react/19/SafeColumns.tsx: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "react/19/SafeScene.tsx: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "react/19/SafeScene.tsx: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "react/19/SafeScene.tsx: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "react/19/SafeScene.tsx: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "react/19/SafeHierarchy.tsx: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "react/19/SafeHierarchy.tsx: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "react/19/SafeHierarchy.tsx: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "react/19/SafeHierarchy.tsx: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "react/19/SafeFunnel.tsx: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "react/19/SafeFunnel.tsx: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "react/19/SafeFunnel.tsx: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "react/19/SafeFunnel.tsx: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "react/19/SafeMap.tsx: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "react/19/SafeMap.tsx: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "react/19/SafeMap.tsx: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "react/19/SafeMap.tsx: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "react/19/SafeList.tsx: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "react/19/SafeList.tsx: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "react/19/SafeList.tsx: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "react/19/SafeList.tsx: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "react/19/SafeGrid.tsx: imports builder",
+      "status": "fail",
+      "error": "SafeGrid.tsx does not import from builders/grid"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "react/19/SafeGrid.tsx: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "react/19/SafeGrid.tsx: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "react/19/SafeGrid.tsx: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "react/19/SafeTable.tsx: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "react/19/SafeTable.tsx: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "react/19/SafeTable.tsx: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "react/19/SafeTable.tsx: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "react/19/SafeNav.tsx: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "react/19/SafeNav.tsx: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "react/19/SafeNav.tsx: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "react/19/SafeNav.tsx: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "react/19/SafeCard.tsx: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "react/19/SafeCard.tsx: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "react/19/SafeCard.tsx: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "react/19/SafeCard.tsx: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "react/19/SafeTabs.tsx: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "react/19/SafeTabs.tsx: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "react/19/SafeTabs.tsx: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "react/19/SafeTabs.tsx: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "react/19/SafeWeek.tsx: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "react/19/SafeWeek.tsx: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "react/19/SafeWeek.tsx: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "react/19/SafeWeek.tsx: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "react/19/SafeMetric.tsx: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "react/19/SafeMetric.tsx: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "react/19/SafeMetric.tsx: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "react/19/SafeMetric.tsx: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "angular/21: has wrapper for funnel",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "angular/21: has wrapper for callout",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "angular/21: has wrapper for week",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "angular/21: has wrapper for table",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "angular/21: has wrapper for nav",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "angular/21: has wrapper for input",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "angular/21: has wrapper for button",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "angular/21: has wrapper for sheet",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "angular/21: has wrapper for chat",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "angular/21: has wrapper for columns",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "angular/21: has wrapper for metric",
+      "status": "fail",
+      "error": "angular/21 missing wrapper for builder \"metric\""
+    },
+    {
+      "group": "builder-coverage",
+      "name": "angular/21: has wrapper for storyflow",
+      "status": "fail",
+      "error": "angular/21 missing wrapper for builder \"storyflow\""
+    },
+    {
+      "group": "builder-coverage",
+      "name": "angular/21: has wrapper for calendar",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "angular/21: has wrapper for card",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "angular/21: has wrapper for map",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "angular/21: has wrapper for hierarchy",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "angular/21: has wrapper for flow",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "angular/21: has wrapper for chart",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "angular/21: has wrapper for scene",
+      "status": "fail",
+      "error": "angular/21 missing wrapper for builder \"scene\""
+    },
+    {
+      "group": "builder-coverage",
+      "name": "angular/21: has wrapper for dragdrop",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "angular/21: has wrapper for layout",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "angular/21: has wrapper for tabs",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "angular/21: has wrapper for list",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "angular/21: has wrapper for timeline",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "angular/21: has wrapper for tree",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "angular/21: has wrapper for gauge",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "angular/21: has wrapper for picker",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "angular/21: has wrapper for grid",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "angular/21: has wrapper for heatmap",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "angular/21: has wrapper for toggle",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "angular/21/SafeGauge.ts: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "angular/21/SafeGauge.ts: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "angular/21/SafeGauge.ts: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "angular/21/SafeGauge.ts: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "angular/21/SafeTabs.ts: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "angular/21/SafeTabs.ts: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "angular/21/SafeTabs.ts: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "angular/21/SafeTabs.ts: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "angular/21/SafeList.ts: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "angular/21/SafeList.ts: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "angular/21/SafeList.ts: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "angular/21/SafeList.ts: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "angular/21/SafeButton.ts: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "angular/21/SafeButton.ts: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "angular/21/SafeButton.ts: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "angular/21/SafeButton.ts: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "angular/21/SafeGrid.ts: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "angular/21/SafeGrid.ts: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "angular/21/SafeGrid.ts: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "angular/21/SafeGrid.ts: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "angular/21/SafeTree.ts: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "angular/21/SafeTree.ts: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "angular/21/SafeTree.ts: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "angular/21/SafeTree.ts: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "angular/21/SafeTimeline.ts: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "angular/21/SafeTimeline.ts: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "angular/21/SafeTimeline.ts: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "angular/21/SafeTimeline.ts: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "angular/21/SafeDragDrop.ts: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "angular/21/SafeDragDrop.ts: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "angular/21/SafeDragDrop.ts: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "angular/21/SafeDragDrop.ts: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "angular/21/SafeFlow.ts: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "angular/21/SafeFlow.ts: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "angular/21/SafeFlow.ts: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "angular/21/SafeFlow.ts: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "angular/21/SafeHierarchy.ts: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "angular/21/SafeHierarchy.ts: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "angular/21/SafeHierarchy.ts: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "angular/21/SafeHierarchy.ts: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "angular/21/SafeFunnel.ts: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "angular/21/SafeFunnel.ts: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "angular/21/SafeFunnel.ts: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "angular/21/SafeFunnel.ts: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "angular/21/SafeHeatmap.ts: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "angular/21/SafeHeatmap.ts: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "angular/21/SafeHeatmap.ts: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "angular/21/SafeHeatmap.ts: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "angular/21/SafeChart.ts: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "angular/21/SafeChart.ts: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "angular/21/SafeChart.ts: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "angular/21/SafeChart.ts: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "angular/21/SafeCalendar.ts: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "angular/21/SafeCalendar.ts: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "angular/21/SafeCalendar.ts: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "angular/21/SafeCalendar.ts: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "angular/21/SafeSheet.ts: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "angular/21/SafeSheet.ts: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "angular/21/SafeSheet.ts: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "angular/21/SafeSheet.ts: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "angular/21/SafeToggle.ts: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "angular/21/SafeToggle.ts: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "angular/21/SafeToggle.ts: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "angular/21/SafeToggle.ts: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "angular/21/SafePicker.ts: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "angular/21/SafePicker.ts: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "angular/21/SafePicker.ts: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "angular/21/SafePicker.ts: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "angular/21/SafeChat.ts: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "angular/21/SafeChat.ts: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "angular/21/SafeChat.ts: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "angular/21/SafeChat.ts: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "angular/21/SafeCallout.ts: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "angular/21/SafeCallout.ts: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "angular/21/SafeCallout.ts: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "angular/21/SafeCallout.ts: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "angular/21/SafeCard.ts: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "angular/21/SafeCard.ts: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "angular/21/SafeCard.ts: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "angular/21/SafeCard.ts: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "angular/21/SafeInput.ts: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "angular/21/SafeInput.ts: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "angular/21/SafeInput.ts: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "angular/21/SafeInput.ts: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "angular/21/SafeLayout.ts: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "angular/21/SafeLayout.ts: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "angular/21/SafeLayout.ts: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "angular/21/SafeLayout.ts: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "angular/21/SafeTable.ts: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "angular/21/SafeTable.ts: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "angular/21/SafeTable.ts: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "angular/21/SafeTable.ts: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "angular/21/SafeMap.ts: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "angular/21/SafeMap.ts: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "angular/21/SafeMap.ts: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "angular/21/SafeMap.ts: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "angular/21/SafeNav.ts: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "angular/21/SafeNav.ts: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "angular/21/SafeNav.ts: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "angular/21/SafeNav.ts: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "angular/21/SafeColumns.ts: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "angular/21/SafeColumns.ts: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "angular/21/SafeColumns.ts: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "angular/21/SafeColumns.ts: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "angular/21/SafeWeek.ts: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "angular/21/SafeWeek.ts: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "angular/21/SafeWeek.ts: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "angular/21/SafeWeek.ts: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "angular/22: has wrapper for funnel",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "angular/22: has wrapper for callout",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "angular/22: has wrapper for week",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "angular/22: has wrapper for table",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "angular/22: has wrapper for nav",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "angular/22: has wrapper for input",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "angular/22: has wrapper for button",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "angular/22: has wrapper for sheet",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "angular/22: has wrapper for chat",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "angular/22: has wrapper for columns",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "angular/22: has wrapper for metric",
+      "status": "fail",
+      "error": "angular/22 missing wrapper for builder \"metric\""
+    },
+    {
+      "group": "builder-coverage",
+      "name": "angular/22: has wrapper for storyflow",
+      "status": "fail",
+      "error": "angular/22 missing wrapper for builder \"storyflow\""
+    },
+    {
+      "group": "builder-coverage",
+      "name": "angular/22: has wrapper for calendar",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "angular/22: has wrapper for card",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "angular/22: has wrapper for map",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "angular/22: has wrapper for hierarchy",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "angular/22: has wrapper for flow",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "angular/22: has wrapper for chart",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "angular/22: has wrapper for scene",
+      "status": "fail",
+      "error": "angular/22 missing wrapper for builder \"scene\""
+    },
+    {
+      "group": "builder-coverage",
+      "name": "angular/22: has wrapper for dragdrop",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "angular/22: has wrapper for layout",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "angular/22: has wrapper for tabs",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "angular/22: has wrapper for list",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "angular/22: has wrapper for timeline",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "angular/22: has wrapper for tree",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "angular/22: has wrapper for gauge",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "angular/22: has wrapper for picker",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "angular/22: has wrapper for grid",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "angular/22: has wrapper for heatmap",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "angular/22: has wrapper for toggle",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "angular/22/SafeGauge.ts: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "angular/22/SafeGauge.ts: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "angular/22/SafeGauge.ts: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "angular/22/SafeGauge.ts: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "angular/22/SafeTabs.ts: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "angular/22/SafeTabs.ts: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "angular/22/SafeTabs.ts: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "angular/22/SafeTabs.ts: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "angular/22/SafeList.ts: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "angular/22/SafeList.ts: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "angular/22/SafeList.ts: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "angular/22/SafeList.ts: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "angular/22/SafeButton.ts: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "angular/22/SafeButton.ts: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "angular/22/SafeButton.ts: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "angular/22/SafeButton.ts: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "angular/22/SafeGrid.ts: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "angular/22/SafeGrid.ts: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "angular/22/SafeGrid.ts: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "angular/22/SafeGrid.ts: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "angular/22/SafeTree.ts: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "angular/22/SafeTree.ts: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "angular/22/SafeTree.ts: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "angular/22/SafeTree.ts: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "angular/22/SafeTimeline.ts: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "angular/22/SafeTimeline.ts: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "angular/22/SafeTimeline.ts: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "angular/22/SafeTimeline.ts: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "angular/22/SafeDragDrop.ts: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "angular/22/SafeDragDrop.ts: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "angular/22/SafeDragDrop.ts: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "angular/22/SafeDragDrop.ts: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "angular/22/SafeFlow.ts: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "angular/22/SafeFlow.ts: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "angular/22/SafeFlow.ts: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "angular/22/SafeFlow.ts: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "angular/22/SafeHierarchy.ts: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "angular/22/SafeHierarchy.ts: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "angular/22/SafeHierarchy.ts: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "angular/22/SafeHierarchy.ts: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "angular/22/SafeFunnel.ts: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "angular/22/SafeFunnel.ts: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "angular/22/SafeFunnel.ts: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "angular/22/SafeFunnel.ts: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "angular/22/SafeHeatmap.ts: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "angular/22/SafeHeatmap.ts: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "angular/22/SafeHeatmap.ts: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "angular/22/SafeHeatmap.ts: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "angular/22/SafeChart.ts: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "angular/22/SafeChart.ts: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "angular/22/SafeChart.ts: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "angular/22/SafeChart.ts: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "angular/22/SafeCalendar.ts: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "angular/22/SafeCalendar.ts: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "angular/22/SafeCalendar.ts: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "angular/22/SafeCalendar.ts: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "angular/22/SafeSheet.ts: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "angular/22/SafeSheet.ts: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "angular/22/SafeSheet.ts: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "angular/22/SafeSheet.ts: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "angular/22/SafeToggle.ts: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "angular/22/SafeToggle.ts: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "angular/22/SafeToggle.ts: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "angular/22/SafeToggle.ts: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "angular/22/SafePicker.ts: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "angular/22/SafePicker.ts: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "angular/22/SafePicker.ts: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "angular/22/SafePicker.ts: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "angular/22/SafeChat.ts: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "angular/22/SafeChat.ts: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "angular/22/SafeChat.ts: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "angular/22/SafeChat.ts: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "angular/22/SafeCallout.ts: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "angular/22/SafeCallout.ts: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "angular/22/SafeCallout.ts: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "angular/22/SafeCallout.ts: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "angular/22/SafeCard.ts: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "angular/22/SafeCard.ts: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "angular/22/SafeCard.ts: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "angular/22/SafeCard.ts: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "angular/22/SafeInput.ts: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "angular/22/SafeInput.ts: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "angular/22/SafeInput.ts: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "angular/22/SafeInput.ts: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "angular/22/SafeLayout.ts: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "angular/22/SafeLayout.ts: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "angular/22/SafeLayout.ts: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "angular/22/SafeLayout.ts: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "angular/22/SafeTable.ts: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "angular/22/SafeTable.ts: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "angular/22/SafeTable.ts: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "angular/22/SafeTable.ts: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "angular/22/SafeMap.ts: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "angular/22/SafeMap.ts: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "angular/22/SafeMap.ts: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "angular/22/SafeMap.ts: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "angular/22/SafeNav.ts: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "angular/22/SafeNav.ts: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "angular/22/SafeNav.ts: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "angular/22/SafeNav.ts: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "angular/22/SafeColumns.ts: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "angular/22/SafeColumns.ts: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "angular/22/SafeColumns.ts: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "angular/22/SafeColumns.ts: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "angular/22/SafeWeek.ts: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "angular/22/SafeWeek.ts: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "angular/22/SafeWeek.ts: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "angular/22/SafeWeek.ts: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "vue/2: has wrapper for funnel",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "vue/2: has wrapper for callout",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "vue/2: has wrapper for week",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "vue/2: has wrapper for table",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "vue/2: has wrapper for nav",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "vue/2: has wrapper for input",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "vue/2: has wrapper for button",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "vue/2: has wrapper for sheet",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "vue/2: has wrapper for chat",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "vue/2: has wrapper for columns",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "vue/2: has wrapper for metric",
+      "status": "fail",
+      "error": "vue/2 missing wrapper for builder \"metric\""
+    },
+    {
+      "group": "builder-coverage",
+      "name": "vue/2: has wrapper for storyflow",
+      "status": "fail",
+      "error": "vue/2 missing wrapper for builder \"storyflow\""
+    },
+    {
+      "group": "builder-coverage",
+      "name": "vue/2: has wrapper for calendar",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "vue/2: has wrapper for card",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "vue/2: has wrapper for map",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "vue/2: has wrapper for hierarchy",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "vue/2: has wrapper for flow",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "vue/2: has wrapper for chart",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "vue/2: has wrapper for scene",
+      "status": "fail",
+      "error": "vue/2 missing wrapper for builder \"scene\""
+    },
+    {
+      "group": "builder-coverage",
+      "name": "vue/2: has wrapper for dragdrop",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "vue/2: has wrapper for layout",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "vue/2: has wrapper for tabs",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "vue/2: has wrapper for list",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "vue/2: has wrapper for timeline",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "vue/2: has wrapper for tree",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "vue/2: has wrapper for gauge",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "vue/2: has wrapper for picker",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "vue/2: has wrapper for grid",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "vue/2: has wrapper for heatmap",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "vue/2: has wrapper for toggle",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "vue/2/SafeCallout.vue: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "vue/2/SafeCallout.vue: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "vue/2/SafeCallout.vue: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "vue/2/SafeCallout.vue: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "vue/2/SafeDragDrop.vue: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "vue/2/SafeDragDrop.vue: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "vue/2/SafeDragDrop.vue: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "vue/2/SafeDragDrop.vue: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "vue/2/SafePicker.vue: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "vue/2/SafePicker.vue: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "vue/2/SafePicker.vue: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "vue/2/SafePicker.vue: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "vue/2/SafeFlow.vue: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "vue/2/SafeFlow.vue: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "vue/2/SafeFlow.vue: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "vue/2/SafeFlow.vue: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "vue/2/SafeChat.vue: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "vue/2/SafeChat.vue: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "vue/2/SafeChat.vue: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "vue/2/SafeChat.vue: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "vue/2/SafeChart.vue: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "vue/2/SafeChart.vue: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "vue/2/SafeChart.vue: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "vue/2/SafeChart.vue: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "vue/2/SafeSheet.vue: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "vue/2/SafeSheet.vue: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "vue/2/SafeSheet.vue: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "vue/2/SafeSheet.vue: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "vue/2/SafeLayout.vue: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "vue/2/SafeLayout.vue: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "vue/2/SafeLayout.vue: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "vue/2/SafeLayout.vue: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "vue/2/SafeHeatmap.vue: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "vue/2/SafeHeatmap.vue: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "vue/2/SafeHeatmap.vue: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "vue/2/SafeHeatmap.vue: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "vue/2/SafeToggle.vue: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "vue/2/SafeToggle.vue: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "vue/2/SafeToggle.vue: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "vue/2/SafeToggle.vue: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "vue/2/SafeButton.vue: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "vue/2/SafeButton.vue: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "vue/2/SafeButton.vue: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "vue/2/SafeButton.vue: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "vue/2/SafeCalendar.vue: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "vue/2/SafeCalendar.vue: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "vue/2/SafeCalendar.vue: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "vue/2/SafeCalendar.vue: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "vue/2/SafeTimeline.vue: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "vue/2/SafeTimeline.vue: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "vue/2/SafeTimeline.vue: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "vue/2/SafeTimeline.vue: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "vue/2/SafeTree.vue: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "vue/2/SafeTree.vue: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "vue/2/SafeTree.vue: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "vue/2/SafeTree.vue: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "vue/2/SafeGauge.vue: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "vue/2/SafeGauge.vue: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "vue/2/SafeGauge.vue: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "vue/2/SafeGauge.vue: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "vue/2/SafeInput.vue: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "vue/2/SafeInput.vue: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "vue/2/SafeInput.vue: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "vue/2/SafeInput.vue: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "vue/2/SafeColumns.vue: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "vue/2/SafeColumns.vue: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "vue/2/SafeColumns.vue: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "vue/2/SafeColumns.vue: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "vue/2/SafeMap.vue: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "vue/2/SafeMap.vue: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "vue/2/SafeMap.vue: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "vue/2/SafeMap.vue: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "vue/2/SafeFunnel.vue: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "vue/2/SafeFunnel.vue: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "vue/2/SafeFunnel.vue: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "vue/2/SafeFunnel.vue: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "vue/2/SafeHierarchy.vue: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "vue/2/SafeHierarchy.vue: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "vue/2/SafeHierarchy.vue: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "vue/2/SafeHierarchy.vue: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "vue/2/SafeTable.vue: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "vue/2/SafeTable.vue: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "vue/2/SafeTable.vue: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "vue/2/SafeTable.vue: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "vue/2/SafeGrid.vue: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "vue/2/SafeGrid.vue: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "vue/2/SafeGrid.vue: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "vue/2/SafeGrid.vue: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "vue/2/SafeList.vue: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "vue/2/SafeList.vue: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "vue/2/SafeList.vue: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "vue/2/SafeList.vue: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "vue/2/SafeCard.vue: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "vue/2/SafeCard.vue: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "vue/2/SafeCard.vue: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "vue/2/SafeCard.vue: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "vue/2/SafeNav.vue: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "vue/2/SafeNav.vue: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "vue/2/SafeNav.vue: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "vue/2/SafeNav.vue: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "vue/2/SafeTabs.vue: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "vue/2/SafeTabs.vue: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "vue/2/SafeTabs.vue: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "vue/2/SafeTabs.vue: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "vue/2/SafeWeek.vue: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "vue/2/SafeWeek.vue: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "vue/2/SafeWeek.vue: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "vue/2/SafeWeek.vue: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "vue/3: has wrapper for funnel",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "vue/3: has wrapper for callout",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "vue/3: has wrapper for week",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "vue/3: has wrapper for table",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "vue/3: has wrapper for nav",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "vue/3: has wrapper for input",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "vue/3: has wrapper for button",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "vue/3: has wrapper for sheet",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "vue/3: has wrapper for chat",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "vue/3: has wrapper for columns",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "vue/3: has wrapper for metric",
+      "status": "fail",
+      "error": "vue/3 missing wrapper for builder \"metric\""
+    },
+    {
+      "group": "builder-coverage",
+      "name": "vue/3: has wrapper for storyflow",
+      "status": "fail",
+      "error": "vue/3 missing wrapper for builder \"storyflow\""
+    },
+    {
+      "group": "builder-coverage",
+      "name": "vue/3: has wrapper for calendar",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "vue/3: has wrapper for card",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "vue/3: has wrapper for map",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "vue/3: has wrapper for hierarchy",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "vue/3: has wrapper for flow",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "vue/3: has wrapper for chart",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "vue/3: has wrapper for scene",
+      "status": "fail",
+      "error": "vue/3 missing wrapper for builder \"scene\""
+    },
+    {
+      "group": "builder-coverage",
+      "name": "vue/3: has wrapper for dragdrop",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "vue/3: has wrapper for layout",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "vue/3: has wrapper for tabs",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "vue/3: has wrapper for list",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "vue/3: has wrapper for timeline",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "vue/3: has wrapper for tree",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "vue/3: has wrapper for gauge",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "vue/3: has wrapper for picker",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "vue/3: has wrapper for grid",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "vue/3: has wrapper for heatmap",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "vue/3: has wrapper for toggle",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "vue/3/SafeCallout.vue: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "vue/3/SafeCallout.vue: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "vue/3/SafeCallout.vue: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "vue/3/SafeCallout.vue: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "vue/3/SafeDragDrop.vue: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "vue/3/SafeDragDrop.vue: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "vue/3/SafeDragDrop.vue: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "vue/3/SafeDragDrop.vue: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "vue/3/SafePicker.vue: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "vue/3/SafePicker.vue: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "vue/3/SafePicker.vue: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "vue/3/SafePicker.vue: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "vue/3/SafeFlow.vue: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "vue/3/SafeFlow.vue: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "vue/3/SafeFlow.vue: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "vue/3/SafeFlow.vue: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "vue/3/SafeChat.vue: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "vue/3/SafeChat.vue: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "vue/3/SafeChat.vue: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "vue/3/SafeChat.vue: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "vue/3/SafeChart.vue: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "vue/3/SafeChart.vue: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "vue/3/SafeChart.vue: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "vue/3/SafeChart.vue: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "vue/3/SafeSheet.vue: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "vue/3/SafeSheet.vue: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "vue/3/SafeSheet.vue: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "vue/3/SafeSheet.vue: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "vue/3/SafeLayout.vue: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "vue/3/SafeLayout.vue: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "vue/3/SafeLayout.vue: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "vue/3/SafeLayout.vue: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "vue/3/SafeHeatmap.vue: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "vue/3/SafeHeatmap.vue: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "vue/3/SafeHeatmap.vue: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "vue/3/SafeHeatmap.vue: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "vue/3/SafeToggle.vue: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "vue/3/SafeToggle.vue: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "vue/3/SafeToggle.vue: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "vue/3/SafeToggle.vue: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "vue/3/SafeButton.vue: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "vue/3/SafeButton.vue: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "vue/3/SafeButton.vue: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "vue/3/SafeButton.vue: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "vue/3/SafeCalendar.vue: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "vue/3/SafeCalendar.vue: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "vue/3/SafeCalendar.vue: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "vue/3/SafeCalendar.vue: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "vue/3/SafeTimeline.vue: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "vue/3/SafeTimeline.vue: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "vue/3/SafeTimeline.vue: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "vue/3/SafeTimeline.vue: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "vue/3/SafeTree.vue: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "vue/3/SafeTree.vue: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "vue/3/SafeTree.vue: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "vue/3/SafeTree.vue: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "vue/3/SafeGauge.vue: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "vue/3/SafeGauge.vue: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "vue/3/SafeGauge.vue: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "vue/3/SafeGauge.vue: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "vue/3/SafeInput.vue: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "vue/3/SafeInput.vue: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "vue/3/SafeInput.vue: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "vue/3/SafeInput.vue: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "vue/3/SafeColumns.vue: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "vue/3/SafeColumns.vue: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "vue/3/SafeColumns.vue: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "vue/3/SafeColumns.vue: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "vue/3/SafeMap.vue: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "vue/3/SafeMap.vue: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "vue/3/SafeMap.vue: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "vue/3/SafeMap.vue: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "vue/3/SafeFunnel.vue: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "vue/3/SafeFunnel.vue: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "vue/3/SafeFunnel.vue: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "vue/3/SafeFunnel.vue: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "vue/3/SafeHierarchy.vue: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "vue/3/SafeHierarchy.vue: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "vue/3/SafeHierarchy.vue: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "vue/3/SafeHierarchy.vue: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "vue/3/SafeTable.vue: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "vue/3/SafeTable.vue: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "vue/3/SafeTable.vue: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "vue/3/SafeTable.vue: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "vue/3/SafeGrid.vue: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "vue/3/SafeGrid.vue: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "vue/3/SafeGrid.vue: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "vue/3/SafeGrid.vue: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "vue/3/SafeList.vue: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "vue/3/SafeList.vue: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "vue/3/SafeList.vue: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "vue/3/SafeList.vue: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "vue/3/SafeCard.vue: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "vue/3/SafeCard.vue: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "vue/3/SafeCard.vue: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "vue/3/SafeCard.vue: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "vue/3/SafeNav.vue: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "vue/3/SafeNav.vue: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "vue/3/SafeNav.vue: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "vue/3/SafeNav.vue: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "vue/3/SafeTabs.vue: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "vue/3/SafeTabs.vue: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "vue/3/SafeTabs.vue: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "vue/3/SafeTabs.vue: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "vue/3/SafeWeek.vue: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "vue/3/SafeWeek.vue: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "vue/3/SafeWeek.vue: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "vue/3/SafeWeek.vue: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "svelte/4: has wrapper for funnel",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "svelte/4: has wrapper for callout",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "svelte/4: has wrapper for week",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "svelte/4: has wrapper for table",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "svelte/4: has wrapper for nav",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "svelte/4: has wrapper for input",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "svelte/4: has wrapper for button",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "svelte/4: has wrapper for sheet",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "svelte/4: has wrapper for chat",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "svelte/4: has wrapper for columns",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "svelte/4: has wrapper for metric",
+      "status": "fail",
+      "error": "svelte/4 missing wrapper for builder \"metric\""
+    },
+    {
+      "group": "builder-coverage",
+      "name": "svelte/4: has wrapper for storyflow",
+      "status": "fail",
+      "error": "svelte/4 missing wrapper for builder \"storyflow\""
+    },
+    {
+      "group": "builder-coverage",
+      "name": "svelte/4: has wrapper for calendar",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "svelte/4: has wrapper for card",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "svelte/4: has wrapper for map",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "svelte/4: has wrapper for hierarchy",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "svelte/4: has wrapper for flow",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "svelte/4: has wrapper for chart",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "svelte/4: has wrapper for scene",
+      "status": "fail",
+      "error": "svelte/4 missing wrapper for builder \"scene\""
+    },
+    {
+      "group": "builder-coverage",
+      "name": "svelte/4: has wrapper for dragdrop",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "svelte/4: has wrapper for layout",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "svelte/4: has wrapper for tabs",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "svelte/4: has wrapper for list",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "svelte/4: has wrapper for timeline",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "svelte/4: has wrapper for tree",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "svelte/4: has wrapper for gauge",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "svelte/4: has wrapper for picker",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "svelte/4: has wrapper for grid",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "svelte/4: has wrapper for heatmap",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "svelte/4: has wrapper for toggle",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "svelte/4/SafeList.svelte: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "svelte/4/SafeList.svelte: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "svelte/4/SafeList.svelte: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "svelte/4/SafeList.svelte: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "svelte/4/SafeCallout.svelte: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "svelte/4/SafeCallout.svelte: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "svelte/4/SafeCallout.svelte: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "svelte/4/SafeCallout.svelte: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "svelte/4/SafeChat.svelte: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "svelte/4/SafeChat.svelte: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "svelte/4/SafeChat.svelte: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "svelte/4/SafeChat.svelte: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "svelte/4/SafePicker.svelte: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "svelte/4/SafePicker.svelte: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "svelte/4/SafePicker.svelte: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "svelte/4/SafePicker.svelte: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "svelte/4/SafeTimeline.svelte: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "svelte/4/SafeTimeline.svelte: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "svelte/4/SafeTimeline.svelte: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "svelte/4/SafeTimeline.svelte: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "svelte/4/SafeGrid.svelte: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "svelte/4/SafeGrid.svelte: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "svelte/4/SafeGrid.svelte: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "svelte/4/SafeGrid.svelte: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "svelte/4/SafeChart.svelte: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "svelte/4/SafeChart.svelte: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "svelte/4/SafeChart.svelte: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "svelte/4/SafeChart.svelte: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "svelte/4/SafeCalendar.svelte: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "svelte/4/SafeCalendar.svelte: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "svelte/4/SafeCalendar.svelte: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "svelte/4/SafeCalendar.svelte: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "svelte/4/SafeTable.svelte: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "svelte/4/SafeTable.svelte: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "svelte/4/SafeTable.svelte: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "svelte/4/SafeTable.svelte: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "svelte/4/SafeFlow.svelte: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "svelte/4/SafeFlow.svelte: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "svelte/4/SafeFlow.svelte: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "svelte/4/SafeFlow.svelte: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "svelte/4/SafeInput.svelte: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "svelte/4/SafeInput.svelte: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "svelte/4/SafeInput.svelte: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "svelte/4/SafeInput.svelte: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "svelte/4/SafeWeek.svelte: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "svelte/4/SafeWeek.svelte: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "svelte/4/SafeWeek.svelte: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "svelte/4/SafeWeek.svelte: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "svelte/4/SafeToggle.svelte: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "svelte/4/SafeToggle.svelte: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "svelte/4/SafeToggle.svelte: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "svelte/4/SafeToggle.svelte: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "svelte/4/SafeHeatmap.svelte: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "svelte/4/SafeHeatmap.svelte: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "svelte/4/SafeHeatmap.svelte: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "svelte/4/SafeHeatmap.svelte: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "svelte/4/SafeButton.svelte: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "svelte/4/SafeButton.svelte: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "svelte/4/SafeButton.svelte: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "svelte/4/SafeButton.svelte: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "svelte/4/SafeColumns.svelte: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "svelte/4/SafeColumns.svelte: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "svelte/4/SafeColumns.svelte: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "svelte/4/SafeColumns.svelte: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "svelte/4/SafeSheet.svelte: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "svelte/4/SafeSheet.svelte: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "svelte/4/SafeSheet.svelte: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "svelte/4/SafeSheet.svelte: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "svelte/4/SafeNav.svelte: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "svelte/4/SafeNav.svelte: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "svelte/4/SafeNav.svelte: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "svelte/4/SafeNav.svelte: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "svelte/4/SafeTree.svelte: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "svelte/4/SafeTree.svelte: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "svelte/4/SafeTree.svelte: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "svelte/4/SafeTree.svelte: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "svelte/4/SafeCard.svelte: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "svelte/4/SafeCard.svelte: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "svelte/4/SafeCard.svelte: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "svelte/4/SafeCard.svelte: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "svelte/4/SafeHierarchy.svelte: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "svelte/4/SafeHierarchy.svelte: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "svelte/4/SafeHierarchy.svelte: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "svelte/4/SafeHierarchy.svelte: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "svelte/4/SafeMap.svelte: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "svelte/4/SafeMap.svelte: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "svelte/4/SafeMap.svelte: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "svelte/4/SafeMap.svelte: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "svelte/4/SafeTabs.svelte: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "svelte/4/SafeTabs.svelte: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "svelte/4/SafeTabs.svelte: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "svelte/4/SafeTabs.svelte: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "svelte/4/SafeLayout.svelte: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "svelte/4/SafeLayout.svelte: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "svelte/4/SafeLayout.svelte: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "svelte/4/SafeLayout.svelte: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "svelte/4/SafeFunnel.svelte: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "svelte/4/SafeFunnel.svelte: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "svelte/4/SafeFunnel.svelte: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "svelte/4/SafeFunnel.svelte: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "svelte/4/SafeDragDrop.svelte: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "svelte/4/SafeDragDrop.svelte: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "svelte/4/SafeDragDrop.svelte: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "svelte/4/SafeDragDrop.svelte: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "svelte/4/SafeGauge.svelte: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "svelte/4/SafeGauge.svelte: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "svelte/4/SafeGauge.svelte: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "svelte/4/SafeGauge.svelte: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "svelte/5: has wrapper for funnel",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "svelte/5: has wrapper for callout",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "svelte/5: has wrapper for week",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "svelte/5: has wrapper for table",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "svelte/5: has wrapper for nav",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "svelte/5: has wrapper for input",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "svelte/5: has wrapper for button",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "svelte/5: has wrapper for sheet",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "svelte/5: has wrapper for chat",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "svelte/5: has wrapper for columns",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "svelte/5: has wrapper for metric",
+      "status": "fail",
+      "error": "svelte/5 missing wrapper for builder \"metric\""
+    },
+    {
+      "group": "builder-coverage",
+      "name": "svelte/5: has wrapper for storyflow",
+      "status": "fail",
+      "error": "svelte/5 missing wrapper for builder \"storyflow\""
+    },
+    {
+      "group": "builder-coverage",
+      "name": "svelte/5: has wrapper for calendar",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "svelte/5: has wrapper for card",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "svelte/5: has wrapper for map",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "svelte/5: has wrapper for hierarchy",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "svelte/5: has wrapper for flow",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "svelte/5: has wrapper for chart",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "svelte/5: has wrapper for scene",
+      "status": "fail",
+      "error": "svelte/5 missing wrapper for builder \"scene\""
+    },
+    {
+      "group": "builder-coverage",
+      "name": "svelte/5: has wrapper for dragdrop",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "svelte/5: has wrapper for layout",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "svelte/5: has wrapper for tabs",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "svelte/5: has wrapper for list",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "svelte/5: has wrapper for timeline",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "svelte/5: has wrapper for tree",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "svelte/5: has wrapper for gauge",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "svelte/5: has wrapper for picker",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "svelte/5: has wrapper for grid",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "svelte/5: has wrapper for heatmap",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "svelte/5: has wrapper for toggle",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "svelte/5/SafeList.svelte: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "svelte/5/SafeList.svelte: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "svelte/5/SafeList.svelte: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "svelte/5/SafeList.svelte: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "svelte/5/SafeCallout.svelte: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "svelte/5/SafeCallout.svelte: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "svelte/5/SafeCallout.svelte: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "svelte/5/SafeCallout.svelte: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "svelte/5/SafeChat.svelte: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "svelte/5/SafeChat.svelte: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "svelte/5/SafeChat.svelte: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "svelte/5/SafeChat.svelte: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "svelte/5/SafePicker.svelte: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "svelte/5/SafePicker.svelte: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "svelte/5/SafePicker.svelte: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "svelte/5/SafePicker.svelte: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "svelte/5/SafeTimeline.svelte: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "svelte/5/SafeTimeline.svelte: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "svelte/5/SafeTimeline.svelte: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "svelte/5/SafeTimeline.svelte: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "svelte/5/SafeGrid.svelte: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "svelte/5/SafeGrid.svelte: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "svelte/5/SafeGrid.svelte: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "svelte/5/SafeGrid.svelte: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "svelte/5/SafeChart.svelte: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "svelte/5/SafeChart.svelte: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "svelte/5/SafeChart.svelte: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "svelte/5/SafeChart.svelte: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "svelte/5/SafeCalendar.svelte: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "svelte/5/SafeCalendar.svelte: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "svelte/5/SafeCalendar.svelte: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "svelte/5/SafeCalendar.svelte: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "svelte/5/SafeTable.svelte: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "svelte/5/SafeTable.svelte: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "svelte/5/SafeTable.svelte: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "svelte/5/SafeTable.svelte: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "svelte/5/SafeFlow.svelte: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "svelte/5/SafeFlow.svelte: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "svelte/5/SafeFlow.svelte: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "svelte/5/SafeFlow.svelte: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "svelte/5/SafeInput.svelte: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "svelte/5/SafeInput.svelte: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "svelte/5/SafeInput.svelte: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "svelte/5/SafeInput.svelte: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "svelte/5/SafeWeek.svelte: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "svelte/5/SafeWeek.svelte: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "svelte/5/SafeWeek.svelte: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "svelte/5/SafeWeek.svelte: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "svelte/5/SafeToggle.svelte: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "svelte/5/SafeToggle.svelte: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "svelte/5/SafeToggle.svelte: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "svelte/5/SafeToggle.svelte: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "svelte/5/SafeHeatmap.svelte: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "svelte/5/SafeHeatmap.svelte: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "svelte/5/SafeHeatmap.svelte: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "svelte/5/SafeHeatmap.svelte: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "svelte/5/SafeButton.svelte: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "svelte/5/SafeButton.svelte: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "svelte/5/SafeButton.svelte: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "svelte/5/SafeButton.svelte: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "svelte/5/SafeColumns.svelte: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "svelte/5/SafeColumns.svelte: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "svelte/5/SafeColumns.svelte: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "svelte/5/SafeColumns.svelte: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "svelte/5/SafeSheet.svelte: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "svelte/5/SafeSheet.svelte: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "svelte/5/SafeSheet.svelte: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "svelte/5/SafeSheet.svelte: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "svelte/5/SafeNav.svelte: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "svelte/5/SafeNav.svelte: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "svelte/5/SafeNav.svelte: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "svelte/5/SafeNav.svelte: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "svelte/5/SafeTree.svelte: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "svelte/5/SafeTree.svelte: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "svelte/5/SafeTree.svelte: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "svelte/5/SafeTree.svelte: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "svelte/5/SafeCard.svelte: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "svelte/5/SafeCard.svelte: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "svelte/5/SafeCard.svelte: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "svelte/5/SafeCard.svelte: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "svelte/5/SafeHierarchy.svelte: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "svelte/5/SafeHierarchy.svelte: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "svelte/5/SafeHierarchy.svelte: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "svelte/5/SafeHierarchy.svelte: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "svelte/5/SafeMap.svelte: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "svelte/5/SafeMap.svelte: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "svelte/5/SafeMap.svelte: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "svelte/5/SafeMap.svelte: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "svelte/5/SafeTabs.svelte: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "svelte/5/SafeTabs.svelte: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "svelte/5/SafeTabs.svelte: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "svelte/5/SafeTabs.svelte: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "svelte/5/SafeLayout.svelte: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "svelte/5/SafeLayout.svelte: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "svelte/5/SafeLayout.svelte: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "svelte/5/SafeLayout.svelte: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "svelte/5/SafeFunnel.svelte: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "svelte/5/SafeFunnel.svelte: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "svelte/5/SafeFunnel.svelte: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "svelte/5/SafeFunnel.svelte: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "svelte/5/SafeDragDrop.svelte: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "svelte/5/SafeDragDrop.svelte: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "svelte/5/SafeDragDrop.svelte: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "svelte/5/SafeDragDrop.svelte: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "svelte/5/SafeGauge.svelte: imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "svelte/5/SafeGauge.svelte: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "svelte/5/SafeGauge.svelte: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "svelte/5/SafeGauge.svelte: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "framework-parity",
+      "name": "react/18: wrapper count 30 (range 27-30)",
+      "status": "pass"
+    },
+    {
+      "group": "framework-parity",
+      "name": "react/19: wrapper count 30 (range 27-30)",
+      "status": "pass"
+    },
+    {
+      "group": "framework-parity",
+      "name": "angular/21: wrapper count 27 (range 27-30)",
+      "status": "pass"
+    },
+    {
+      "group": "framework-parity",
+      "name": "angular/22: wrapper count 27 (range 27-30)",
+      "status": "pass"
+    },
+    {
+      "group": "framework-parity",
+      "name": "vue/2: wrapper count 27 (range 27-30)",
+      "status": "pass"
+    },
+    {
+      "group": "framework-parity",
+      "name": "vue/3: wrapper count 27 (range 27-30)",
+      "status": "pass"
+    },
+    {
+      "group": "framework-parity",
+      "name": "svelte/4: wrapper count 27 (range 27-30)",
+      "status": "pass"
+    },
+    {
+      "group": "framework-parity",
+      "name": "svelte/5: wrapper count 27 (range 27-30)",
+      "status": "pass"
+    }
+  ],
+  "failures": [
+    {
+      "group": "wrapper-delegates",
+      "name": "react/18/SafeCallout.tsx: imports builder",
+      "error": "SafeCallout.tsx does not import from builders/callout"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "react/18/SafeColumns.tsx: imports builder",
+      "error": "SafeColumns.tsx does not import from builders/columns"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "react/18/SafeGrid.tsx: imports builder",
+      "error": "SafeGrid.tsx does not import from builders/grid"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "react/19/SafeCallout.tsx: imports builder",
+      "error": "SafeCallout.tsx does not import from builders/callout"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "react/19/SafeColumns.tsx: imports builder",
+      "error": "SafeColumns.tsx does not import from builders/columns"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "react/19/SafeGrid.tsx: imports builder",
+      "error": "SafeGrid.tsx does not import from builders/grid"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "angular/21: has wrapper for metric",
+      "error": "angular/21 missing wrapper for builder \"metric\""
+    },
+    {
+      "group": "builder-coverage",
+      "name": "angular/21: has wrapper for storyflow",
+      "error": "angular/21 missing wrapper for builder \"storyflow\""
+    },
+    {
+      "group": "builder-coverage",
+      "name": "angular/21: has wrapper for scene",
+      "error": "angular/21 missing wrapper for builder \"scene\""
+    },
+    {
+      "group": "builder-coverage",
+      "name": "angular/22: has wrapper for metric",
+      "error": "angular/22 missing wrapper for builder \"metric\""
+    },
+    {
+      "group": "builder-coverage",
+      "name": "angular/22: has wrapper for storyflow",
+      "error": "angular/22 missing wrapper for builder \"storyflow\""
+    },
+    {
+      "group": "builder-coverage",
+      "name": "angular/22: has wrapper for scene",
+      "error": "angular/22 missing wrapper for builder \"scene\""
+    },
+    {
+      "group": "builder-coverage",
+      "name": "vue/2: has wrapper for metric",
+      "error": "vue/2 missing wrapper for builder \"metric\""
+    },
+    {
+      "group": "builder-coverage",
+      "name": "vue/2: has wrapper for storyflow",
+      "error": "vue/2 missing wrapper for builder \"storyflow\""
+    },
+    {
+      "group": "builder-coverage",
+      "name": "vue/2: has wrapper for scene",
+      "error": "vue/2 missing wrapper for builder \"scene\""
+    },
+    {
+      "group": "builder-coverage",
+      "name": "vue/3: has wrapper for metric",
+      "error": "vue/3 missing wrapper for builder \"metric\""
+    },
+    {
+      "group": "builder-coverage",
+      "name": "vue/3: has wrapper for storyflow",
+      "error": "vue/3 missing wrapper for builder \"storyflow\""
+    },
+    {
+      "group": "builder-coverage",
+      "name": "vue/3: has wrapper for scene",
+      "error": "vue/3 missing wrapper for builder \"scene\""
+    },
+    {
+      "group": "builder-coverage",
+      "name": "svelte/4: has wrapper for metric",
+      "error": "svelte/4 missing wrapper for builder \"metric\""
+    },
+    {
+      "group": "builder-coverage",
+      "name": "svelte/4: has wrapper for storyflow",
+      "error": "svelte/4 missing wrapper for builder \"storyflow\""
+    },
+    {
+      "group": "builder-coverage",
+      "name": "svelte/4: has wrapper for scene",
+      "error": "svelte/4 missing wrapper for builder \"scene\""
+    },
+    {
+      "group": "builder-coverage",
+      "name": "svelte/5: has wrapper for metric",
+      "error": "svelte/5 missing wrapper for builder \"metric\""
+    },
+    {
+      "group": "builder-coverage",
+      "name": "svelte/5: has wrapper for storyflow",
+      "error": "svelte/5 missing wrapper for builder \"storyflow\""
+    },
+    {
+      "group": "builder-coverage",
+      "name": "svelte/5: has wrapper for scene",
+      "error": "svelte/5 missing wrapper for builder \"scene\""
+    }
+  ],
+  "ts": "2026-06-17T07:12:32.590Z"
+}
