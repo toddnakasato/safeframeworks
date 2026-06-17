@@ -1,5 +1,7 @@
 import { Component, Input, ElementRef, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
+import { createSafeFireContext } from 'safecontracts';
+import { buildPayloadViaCli } from '../../utils/payload-delegate';
 import { createSafeInput } from '../../builders/input';
 
 @Component({
@@ -14,7 +16,8 @@ export class SafeInputComponent implements AfterViewInit, OnDestroy {
   private root: HTMLElement | null = null;
 
   ngAfterViewInit() {
-    this.root = createSafeInput(this.containerRef.nativeElement, this.config, this.onEvent);
+    const _ctx = createSafeFireContext(this.config, this.onEvent, buildPayloadViaCli);
+    this.root = createSafeInput(this.containerRef.nativeElement, this.config, _ctx);
   }
 
   ngOnDestroy() {

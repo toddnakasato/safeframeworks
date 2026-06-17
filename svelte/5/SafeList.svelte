@@ -1,5 +1,7 @@
 <script lang="ts">
   import type { ConfigBase, OnSafeEvent } from 'safecontracts';
+  import { createSafeFireContext } from 'safecontracts';
+  import { buildPayloadViaCli } from '../../utils/payload-delegate';
   import { createSafeList } from '../../builders/list';
 
   let { config, onEvent }: { config: ConfigBase; onEvent?: OnSafeEvent } = $props();
@@ -9,7 +11,8 @@
 
   $effect(() => {
     container.innerHTML = '';
-    root = createSafeList(container, config, onEvent);
+    const _ctx = createSafeFireContext(config, onEvent, buildPayloadViaCli);
+    root = createSafeList(container, config, _ctx);
     return () => { root?.remove(); root = null; };
   });
 </script>

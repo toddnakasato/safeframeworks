@@ -1,5 +1,7 @@
 <script lang="ts">
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
+import { createSafeFireContext } from 'safecontracts';
+import { buildPayloadViaCli } from '../../utils/payload-delegate';
 import type { Chart } from 'chart.js';
 import { defineComponent, type PropType } from 'vue';
 import { createSafeChart } from '../../builders/chart';

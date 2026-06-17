@@ -14,7 +14,8 @@ export class SafeListComponent implements AfterViewInit, OnDestroy {
     private root: HTMLElement | null = null;
 
     ngAfterViewInit() {
-        this.root = createSafeList(this.containerRef.nativeElement, this.config, this.onEvent);
+        const _ctx = createSafeFireContext(this.config, this.onEvent, buildPayloadViaCli);
+    this.root = createSafeList(this.containerRef.nativeElement, this.config, _ctx);
     }
 
     ngOnDestroy() {

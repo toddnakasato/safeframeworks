@@ -3,6 +3,8 @@
   import { afterUpdate } from 'svelte';
   import type { Chart } from 'chart.js';
   import type { ConfigBase, OnSafeEvent } from 'safecontracts';
+  import { createSafeFireContext } from 'safecontracts';
+  import { buildPayloadViaCli } from '../../utils/payload-delegate';
   import { createSafeChart } from '../../builders/chart';
 
   export let config: ConfigBase;

@@ -1,5 +1,7 @@
 <script lang="ts">
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
+import { createSafeFireContext } from 'safecontracts';
+import { buildPayloadViaCli } from '../../utils/payload-delegate';
 import type * as L from 'leaflet';
 import { defineComponent, type PropType } from 'vue';
 import { createSafeMap, mapData } from '../../builders/map';

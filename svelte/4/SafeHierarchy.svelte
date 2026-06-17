@@ -2,6 +2,8 @@
   import { onDestroy } from 'svelte';
   import { afterUpdate } from 'svelte';
   import type { ConfigBase, OnSafeEvent } from 'safecontracts';
+  import { createSafeFireContext } from 'safecontracts';
+  import { buildPayloadViaCli } from '../../utils/payload-delegate';
   import { createSafeHierarchy } from '../../builders/hierarchy';
 
   export let config: ConfigBase;
@@ -13,7 +15,8 @@
   afterUpdate(() => {
     root?.remove();
     container.innerHTML = '';
-    root = createSafeHierarchy(container, config, onEvent);
+    const _ctx = createSafeFireContext(config, onEvent, buildPayloadViaCli);
+    root = createSafeHierarchy(container, config, _ctx);
   });
   onDestroy(() => { root?.remove(); root = null; });
 </script>

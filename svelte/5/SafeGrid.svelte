@@ -1,5 +1,7 @@
 <script lang="ts">
   import type { ConfigBase, OnSafeEvent } from 'safecontracts';
+  import { createSafeFireContext } from 'safecontracts';
+  import { buildPayloadViaCli } from '../../utils/payload-delegate';
   import { createSafeGrid } from '../../builders/grid';
 
   let { config, onEvent }: { config: ConfigBase; onEvent?: OnSafeEvent } = $props();
@@ -9,7 +11,8 @@
 
   $effect(() => {
     container.innerHTML = '';
-    root = createSafeGrid(container, config, onEvent);
+    const _ctx = createSafeFireContext(config, onEvent, buildPayloadViaCli);
+    root = createSafeGrid(container, config, _ctx);
     return () => { root?.remove(); root = null; };
   });
 </script>

@@ -1,6 +1,8 @@
 <script lang="ts">
   import { onMount, onDestroy } from 'svelte';
   import type { ConfigBase, OnSafeEvent } from 'safecontracts';
+  import { createSafeFireContext } from 'safecontracts';
+  import { buildPayloadViaCli } from '../../utils/payload-delegate';
   import { createSafeLayout } from '../../builders/layout';
   import { buildComponent } from '../../utils/render';
 
@@ -11,7 +13,8 @@
   let root: HTMLElement | null = null;
 
   onMount(() => {
-    root = createSafeLayout(container, config, onEvent, buildComponent);
+    const _ctx = createSafeFireContext(config, onEvent, buildPayloadViaCli);
+    root = createSafeLayout(container, config, _ctx, buildComponent);
   });
 
   onDestroy(() => {

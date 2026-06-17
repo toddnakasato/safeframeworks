@@ -1,5 +1,7 @@
 <script lang="ts">
   import type { ConfigBase, OnSafeEvent } from 'safecontracts';
+  import { createSafeFireContext } from 'safecontracts';
+  import { buildPayloadViaCli } from '../../utils/payload-delegate';
   import { createSafeGauge } from '../../builders/gauge';
 
   let { config, onEvent }: { config: ConfigBase; onEvent?: OnSafeEvent } = $props();
@@ -9,7 +11,8 @@
 
   $effect(() => {
     container.innerHTML = '';
-    root = createSafeGauge(container, config, onEvent);
+    const _ctx = createSafeFireContext(config, onEvent, buildPayloadViaCli);
+    root = createSafeGauge(container, config, _ctx);
     return () => { root?.remove(); root = null; };
   });
 </script>
