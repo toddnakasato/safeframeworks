@@ -66,7 +66,7 @@ export function buildComponent(config: ConfigBase, onEvent?: OnSafeEvent): HTMLE
 
     switch (component) {
         case "layout":
-            createSafeLayout(container, config, ctx, buildComponent);
+            createSafeLayout(container, config, stampedOnEvent, buildComponent);
             break;
         case "button":
             createSafeButton(container, config, ctx);

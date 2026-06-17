@@ -16,7 +16,7 @@ export type RenderChild = (config: ConfigBase, onEvent?: OnSafeEvent) => HTMLEle
 export function createSafeLayout(
     container: HTMLElement,
     config: ConfigBase,
-    onEvent?: SafeFireContext,
+    onEvent?: OnSafeEvent,
     renderChild?: RenderChild,
 ): HTMLElement {
     const metadata = config.metadata;

@@ -169,7 +169,7 @@ export function createSafeChart(canvas: HTMLCanvasElement, config: ConfigBase, c
     cfg.options = {
         ...cfg.options,
         onClick: (_evt: any, elements: any[]) => {
-            if (!onEvent || !elements?.length) return;
+            if (!ctx || !elements?.length) return;
             const el = elements[0];
             const data = chartData(config);
             ctx.fire("click", {

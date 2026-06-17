@@ -18,7 +18,7 @@ export function SafeLayout({ config, onEvent, renderChild }: SafeLayoutProps) {
     const container = containerRef.current;
     if (!container) return;
     const _ctx = createSafeFireContext(config, onEvent, buildPayloadViaCli);
-    const root = createSafeLayout(container, config, _ctx, renderChild);
+    const root = createSafeLayout(container, config, onEvent, renderChild);
     return () => { root.remove(); };
   }, [config, onEvent, renderChild]);
 

@@ -111,7 +111,7 @@ function buildSimple(root: HTMLElement, config: ConfigBase, data: any[], ctx: Sa
 
     function render() {
         root.replaceChildren();
-        const { page, totalPages, slice, go } = makePager(state, data.length, pageSize, onEvent, render, instanceId);
+        const { page, totalPages, slice, go } = makePager(state, data.length, pageSize, ctx, render, instanceId);
         const items = el("div", "list-items");
         slice(data).forEach((item, i) => {
             const label = typeof item === "string" ? item : item[labelField];
@@ -201,7 +201,7 @@ function buildColumns(root: HTMLElement, config: ConfigBase, data: any[], ctx: S
 
     function render() {
         root.replaceChildren();
-        const { page, totalPages, slice, go } = makePager(state, data.length, pageSize, onEvent, render, instanceId);
+        const { page, totalPages, slice, go } = makePager(state, data.length, pageSize, ctx, render, instanceId);
         const header = el("div", "list-header");
         header.style.gridTemplateColumns = `repeat(${fields.length}, 1fr)`;
         for (const f of fields) header.appendChild(el("span", "header-cell", String(f.label ?? f.name)));
@@ -235,7 +235,7 @@ function buildFiles(root: HTMLElement, config: ConfigBase, data: any[], ctx: Saf
 
     function render() {
         root.replaceChildren();
-        const { page, totalPages, slice, go } = makePager(state, data.length, pageSize, onEvent, render, instanceId);
+        const { page, totalPages, slice, go } = makePager(state, data.length, pageSize, ctx, render, instanceId);
         const items = el("div", "list-items");
         slice(data).forEach((item, i) => {
             const row = el("div", "list-item");
@@ -351,7 +351,7 @@ function buildHierarchy(root: HTMLElement, config: ConfigBase, data: any[], ctx:
     function render() {
         root.replaceChildren();
         const flat = flattenTree(data, expanded);
-        const { page, totalPages, slice, go } = makePager(state, flat.length, pageSize, onEvent, render, instanceId);
+        const { page, totalPages, slice, go } = makePager(state, flat.length, pageSize, ctx, render, instanceId);
         const items = el("div", "list-items");
         for (const node of slice(flat)) {
             const isGroup = !!node.children?.length;
@@ -586,28 +586,28 @@ export function createSafeList(container: HTMLElement, config: ConfigBase, ctx: 
     switch (variant) {
         case "simple":
         case "icon":
-            buildSimple(root, config, list, onEvent);
+            buildSimple(root, config, list, ctx);
             break;
         case "selection":
-            buildSelection(root, config, list, onEvent);
+            buildSelection(root, config, list, ctx);
             break;
         case "columns":
-            buildColumns(root, config, list, onEvent);
+            buildColumns(root, config, list, ctx);
             break;
         case "files":
-            buildFiles(root, config, list, onEvent);
+            buildFiles(root, config, list, ctx);
             break;
         case "actions":
-            buildActions(root, config, list, onEvent);
+            buildActions(root, config, list, ctx);
             break;
         case "hierarchy":
-            buildHierarchy(root, config, list, onEvent);
+            buildHierarchy(root, config, list, ctx);
             break;
         case "property-grid":
-            buildPropertyGrid(root, config, list, onEvent);
+            buildPropertyGrid(root, config, list, ctx);
             break;
         case "gantt":
-            buildGantt(root, config, list, onEvent);
+            buildGantt(root, config, list, ctx);
             break;
         default:
             root.textContent = `Unknown list variant: ${variant}`;

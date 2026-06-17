@@ -177,9 +177,9 @@ export function createSafeDragDrop(container: HTMLElement, config: ConfigBase, c
     root.setAttribute("data-component", "drag-drop");
     root.setAttribute("data-variant", variant);
 
-    if (variant === "file") buildFile(root, config, onEvent);
-    else if (variant === "palette") buildPalette(root, config, onEvent);
-    else buildGeneric(root, config, dataList, onEvent);
+    if (variant === "file") buildFile(root, config, ctx);
+    else if (variant === "palette") buildPalette(root, config, ctx);
+    else buildGeneric(root, config, dataList, ctx);
 
     container.appendChild(root);
     return root;

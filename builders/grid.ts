@@ -154,7 +154,7 @@ export function createSafeGrid(container: HTMLElement, config: ConfigBase, ctx?:
                 createSafeInput(
                     inputWrap,
                     fieldToInputConfig(field, locale, currency, timezone, emptyValue, record[field.name]),
-                    onEvent,
+                    ctx,
                 );
                 cell.appendChild(inputWrap);
                 body.appendChild(cell);

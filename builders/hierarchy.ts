@@ -242,10 +242,10 @@ export function createSafeHierarchy(container: HTMLElement, config: ConfigBase, 
     const root = buildRoot(data, metadata);
     tagTopLevel(root);
 
-    if (variant === "sunburst") renderSunburst(svgEl, root, metadata, onEvent);
-    else if (variant === "pack") renderPack(svgEl, root, metadata, onEvent);
-    else if (variant === "icicle") renderIcicle(svgEl, root, metadata, onEvent);
-    else renderTreemap(svgEl, root, metadata, onEvent);
+    if (variant === "sunburst") renderSunburst(svgEl, root, metadata, ctx);
+    else if (variant === "pack") renderPack(svgEl, root, metadata, ctx);
+    else if (variant === "icicle") renderIcicle(svgEl, root, metadata, ctx);
+    else renderTreemap(svgEl, root, metadata, ctx);
 
     return rootEl;
 }

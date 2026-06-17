@@ -17,13 +17,13 @@ export function createSafeStoryFlow(
     root.setAttribute("data-component", "story-flow");
     if (instanceId) root.setAttribute("data-name", instanceId);
 
-    // Wrap onEvent to intercept and re-fire as story-flow events
+    // Wrap ctx to intercept and re-fire as story-flow events
     const handleEvent = (event) => {
         const storyEvents = ["select-node", "navigate", "step:click", "story:play"];
         if (storyEvents.includes(event.name)) {
             ctx.fire(event.name, event.data ?? {}, { instanceId });
-        } else if (onEvent) {
-            onEvent(event);
+        } else if (ctx) {
+            ctx(event);
         }
     };
 

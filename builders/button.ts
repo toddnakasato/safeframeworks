@@ -160,7 +160,7 @@ function buildButtonGroup(config: ConfigBase, ctx: SafeFireContext): HTMLElement
     const groupVariant = (metadata.groupVariant as string) ?? "toolbar";
     const groupDirection = (metadata.groupDirection as string) ?? "horizontal";
 
-    if (groupVariant === "pagination") return buildPaginationGroup(config, onEvent);
+    if (groupVariant === "pagination") return buildPaginationGroup(config, ctx);
 
     const root = el("div", {
         "data-component": "button",
@@ -171,7 +171,7 @@ function buildButtonGroup(config: ConfigBase, ctx: SafeFireContext): HTMLElement
     for (const [, child] of Object.entries(config.children ?? {})) {
         const item = el("div", { "data-role": "group-item" });
         if (!child.component || child.component === "button") {
-            item.appendChild(buildButton(child, onEvent));
+            item.appendChild(buildButton(child, ctx));
         } else {
             // Non-button child: placeholder only — full renderer recursion is the host's job.
             item.appendChild(el("div", { "data-role": "button-child", "data-child-component": child.component }));
@@ -185,12 +185,12 @@ function buildButtonGroup(config: ConfigBase, ctx: SafeFireContext): HTMLElement
 function buildButton(config: ConfigBase, ctx: SafeFireContext): HTMLElement {
     const hasChildren = config.children && Object.keys(config.children).length > 0;
     const hasGroupVariant = !!config.metadata.groupVariant;
-    if (hasChildren || hasGroupVariant) return buildButtonGroup(config, onEvent);
-    return buildSingleButton(config, onEvent);
+    if (hasChildren || hasGroupVariant) return buildButtonGroup(config, ctx);
+    return buildSingleButton(config, ctx);
 }
 
 export function createSafeButton(container: HTMLElement, config: ConfigBase, ctx: SafeFireContext): HTMLElement {
-    const root = buildButton(config, onEvent);
+    const root = buildButton(config, ctx);
     container.appendChild(root);
     return root;
 }

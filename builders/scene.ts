@@ -17,12 +17,12 @@ export function createSafeScene(
     root.setAttribute("data-component", "scene");
     if (instanceId) root.setAttribute("data-name", instanceId);
 
-    // Wrap onEvent to intercept and re-fire as scene events
+    // Wrap ctx to intercept and re-fire as scene events
     const handleEvent = (event) => {
         if (event.name === "select" || event.name === "back" || event.name === "filter") {
             ctx.fire(event.name, event.data ?? {}, { instanceId });
-        } else if (onEvent) {
-            onEvent(event);
+        } else if (ctx) {
+            ctx(event);
         }
     };
 

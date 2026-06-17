@@ -84,7 +84,7 @@ function renderSankey(svgEl: SVGSVGElement, data: FlowData, metadata: Record<str
         .attr("stroke-opacity", linkOpacity)
         .attr("stroke-width", (d: any) => Math.max(1, d.width))
         .style("cursor", "pointer")
-        .on("click", (_, d: any) => linkEvent(onEvent, data.nodes[d.source.index]?.name, data.nodes[d.target.index]?.name, d.value, instanceId));
+        .on("click", (_, d: any) => linkEvent(ctx, data.nodes[d.source.index]?.name, data.nodes[d.target.index]?.name, d.value, instanceId));
 
     svg.append("g")
         .selectAll("rect")
@@ -97,7 +97,7 @@ function renderSankey(svgEl: SVGSVGElement, data: FlowData, metadata: Record<str
         .attr("fill", (d: any) => accentColor(data.nodes[d.index], d.index, COLORS, svgEl))
         .attr("rx", 3)
         .style("cursor", "pointer")
-        .on("click", (_, d: any) => nodeEvent(onEvent, data.nodes[d.index]?.name, instanceId));
+        .on("click", (_, d: any) => nodeEvent(ctx, data.nodes[d.index]?.name, instanceId));
 
     if (showLabels) {
         svg.append("g")
@@ -150,7 +150,7 @@ function renderChord(svgEl: SVGSVGElement, data: FlowData, metadata: Record<stri
         .attr("d", arcGen as any)
         .attr("fill", (d) => accentColor(data.nodes[d.index], d.index, COLORS, svgEl))
         .style("cursor", "pointer")
-        .on("click", (_, d) => nodeEvent(onEvent, names[d.index], instanceId));
+        .on("click", (_, d) => nodeEvent(ctx, names[d.index], instanceId));
 
     g.append("g")
         .selectAll("path")
@@ -160,7 +160,7 @@ function renderChord(svgEl: SVGSVGElement, data: FlowData, metadata: Record<stri
         .attr("fill", (d) => accentColor(data.nodes[d.source.index], d.source.index, COLORS, svgEl))
         .attr("fill-opacity", linkOpacity + 0.15)
         .style("cursor", "pointer")
-        .on("click", (_, d) => linkEvent(onEvent, names[d.source.index], names[d.target.index], matrix[d.source.index][d.target.index], instanceId));
+        .on("click", (_, d) => linkEvent(ctx, names[d.source.index], names[d.target.index], matrix[d.source.index][d.target.index], instanceId));
 
     if (showLabels) {
         g.append("g")
@@ -224,7 +224,7 @@ function renderForce(svgEl: SVGSVGElement, data: FlowData, metadata: Record<stri
         .attr("stroke-opacity", linkOpacity + 0.25)
         .attr("stroke-width", (d: any) => Math.max(1, (d.value / maxValue) * 5))
         .style("cursor", "pointer")
-        .on("click", (_, d: any) => linkEvent(onEvent, d.source.name, d.target.name, d.value, instanceId));
+        .on("click", (_, d: any) => linkEvent(ctx, d.source.name, d.target.name, d.value, instanceId));
 
     svg.append("g")
         .selectAll("circle")
@@ -235,7 +235,7 @@ function renderForce(svgEl: SVGSVGElement, data: FlowData, metadata: Record<stri
         .attr("r", nodeRadius)
         .attr("fill", (d: any, i) => colorFor(d, i))
         .style("cursor", "pointer")
-        .on("click", (_, d: any) => nodeEvent(onEvent, d.name, instanceId));
+        .on("click", (_, d: any) => nodeEvent(ctx, d.name, instanceId));
 
     if (showLabels) {
         svg.append("g")
@@ -283,7 +283,7 @@ function renderArc(svgEl: SVGSVGElement, data: FlowData, metadata: Record<string
         .attr("stroke-opacity", linkOpacity + 0.15)
         .attr("stroke-width", (d) => Math.max(1, (d.value / maxValue) * 6))
         .style("cursor", "pointer")
-        .on("click", (_, d) => linkEvent(onEvent, d.source, d.target, d.value, instanceId));
+        .on("click", (_, d) => linkEvent(ctx, d.source, d.target, d.value, instanceId));
 
     svg.append("g")
         .selectAll("circle")
@@ -294,7 +294,7 @@ function renderArc(svgEl: SVGSVGElement, data: FlowData, metadata: Record<string
         .attr("r", nodeRadius)
         .attr("fill", (d, i) => accentColor(d, i, COLORS, svgEl))
         .style("cursor", "pointer")
-        .on("click", (_, d) => nodeEvent(onEvent, d.name, instanceId));
+        .on("click", (_, d) => nodeEvent(ctx, d.name, instanceId));
 
     if (showLabels) {
         svg.append("g")
@@ -325,10 +325,10 @@ export function renderSafeFlow(
 
     if (!data.nodes?.length) return;
 
-    if (variant === "chord") renderChord(svgEl, data, metadata, onEvent);
-    else if (variant === "force") renderForce(svgEl, data, metadata, onEvent);
-    else if (variant === "arc") renderArc(svgEl, data, metadata, onEvent);
-    else renderSankey(svgEl, data, metadata, onEvent);
+    if (variant === "chord") renderChord(svgEl, data, metadata, ctx);
+    else if (variant === "force") renderForce(svgEl, data, metadata, ctx);
+    else if (variant === "arc") renderArc(svgEl, data, metadata, ctx);
+    else renderSankey(svgEl, data, metadata, ctx);
 }
 
 export function initSafeFlows(root: Document | HTMLElement = document): void {
