@@ -2,7 +2,7 @@
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
 import { defineComponent, type PropType } from 'vue';
 import { createSafeLayout } from '../../builders/layout';
-import { buildComponent } from '../../builders/render';
+import { buildComponent } from '../../utils/render';
 
 export default defineComponent({
   name: 'SafeLayout',

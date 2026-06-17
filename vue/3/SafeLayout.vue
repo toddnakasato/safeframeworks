@@ -2,7 +2,7 @@
 import { ref, onMounted, onBeforeUnmount } from 'vue';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
 import { createSafeLayout } from '../../builders/layout';
-import { buildComponent } from '../../builders/render';
+import { buildComponent } from '../../utils/render';
 
 const props = defineProps<{ config: ConfigBase; onEvent?: OnSafeEvent }>();
 const containerRef = ref<HTMLElement | null>(null);

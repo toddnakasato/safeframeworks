@@ -1,5 +1,5 @@
 /**
- * builders/render.ts — universal component renderer.
+ * utils/render.ts — universal component renderer.
  *
  * Given a ConfigBase, dispatches to the correct createSafe* builder.
  * Used by createSafeLayout's renderChild callback to recursively
@@ -10,32 +10,32 @@
  */
 import type { ConfigBase, OnSafeEvent, SafeFireContext } from "../../safecontracts/src/contracts";
 import { createSafeFireContext } from "../../safecontracts/src/contracts";
-import { buildPayloadViaCli } from "../utils/payload-delegate";
-import { createSafeButton } from "./button";
-import { createSafeCalendar } from "./calendar";
-import { createSafeCallout } from "./callout";
-import { createSafeCard } from "./card";
-import { createSafeChat } from "./chat";
-import { createSafeColumns } from "./columns";
-import { createSafeDragDrop } from "./dragdrop";
-import { createSafeFunnel } from "./funnel";
-import { createSafeGauge } from "./gauge";
-import { createSafeGrid } from "./grid";
-import { createSafeHeatmap } from "./heatmap";
-import { createSafeHierarchy } from "./hierarchy";
-import { createSafeInput } from "./input";
-import { createSafeLayout } from "./layout";
-import { createSafeList } from "./list";
-import { createSafeMetric } from "./metric";
-import { createSafeNav } from "./nav";
-import { createSafePicker } from "./picker";
-import { createSafeSheet } from "./sheet";
-import { createSafeTable } from "./table";
-import { createSafeTabs } from "./tabs";
-import { createSafeTimeline } from "./timeline";
-import { createSafeToggle } from "./toggle";
-import { createSafeTree } from "./tree";
-import { createSafeWeek } from "./week";
+import { buildPayloadViaCli } from "./payload-delegate";
+import { createSafeButton } from "../builders/button";
+import { createSafeCalendar } from "../builders/calendar";
+import { createSafeCallout } from "../builders/callout";
+import { createSafeCard } from "../builders/card";
+import { createSafeChat } from "../builders/chat";
+import { createSafeColumns } from "../builders/columns";
+import { createSafeDragDrop } from "../builders/dragdrop";
+import { createSafeFunnel } from "../builders/funnel";
+import { createSafeGauge } from "../builders/gauge";
+import { createSafeGrid } from "../builders/grid";
+import { createSafeHeatmap } from "../builders/heatmap";
+import { createSafeHierarchy } from "../builders/hierarchy";
+import { createSafeInput } from "../builders/input";
+import { createSafeLayout } from "../builders/layout";
+import { createSafeList } from "../builders/list";
+import { createSafeMetric } from "../builders/metric";
+import { createSafeNav } from "../builders/nav";
+import { createSafePicker } from "../builders/picker";
+import { createSafeSheet } from "../builders/sheet";
+import { createSafeTable } from "../builders/table";
+import { createSafeTabs } from "../builders/tabs";
+import { createSafeTimeline } from "../builders/timeline";
+import { createSafeToggle } from "../builders/toggle";
+import { createSafeTree } from "../builders/tree";
+import { createSafeWeek } from "../builders/week";
 import { createSafeProofViewer } from "../dev/proof-viewer";
 
 const el = (tag: string, text?: string): HTMLElement => {

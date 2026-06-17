@@ -21,7 +21,7 @@ import { SafeHeatmap } from "./SafeHeatmap";
 import { SafeInput } from "./SafeInput";
 import { SafeLayout } from "./SafeLayout";
 import type { RenderChild } from "../../builders/layout";
-import { buildComponent } from "../../builders/render";
+import { buildComponent } from "../../utils/render";
 
 const renderChild: RenderChild = buildComponent;
 import { SafeList } from "./SafeList";

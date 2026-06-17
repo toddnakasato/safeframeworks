@@ -1,7 +1,7 @@
 import { Component, Input, ElementRef, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
 import { createSafeLayout } from '../../builders/layout';
-import { buildComponent } from '../../builders/render';
+import { buildComponent } from '../../utils/render';
 
 @Component({
   selector: 'safe-layout',

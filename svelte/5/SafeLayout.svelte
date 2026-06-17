@@ -2,7 +2,7 @@
   import { onMount, onDestroy } from 'svelte';
   import type { ConfigBase, OnSafeEvent } from 'safecontracts';
   import { createSafeLayout } from '../../builders/layout';
-  import { buildComponent } from '../../builders/render';
+  import { buildComponent } from '../../utils/render';
 
   let { config, onEvent }: { config: ConfigBase; onEvent?: OnSafeEvent } = $props();
 
