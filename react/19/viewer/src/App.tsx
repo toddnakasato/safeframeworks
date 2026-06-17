@@ -171,18 +171,6 @@ export default function App() {
             </div>
           ))}
         </div>
-
-        {/* Event log */}
-        {events.length > 0 && (
-          <div style={{ marginTop: 24, borderTop: "1px solid var(--sd-border, #e5e7eb)", paddingTop: 16 }}>
-            <div style={{ fontSize: 11, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.05em", color: "#6b7280", marginBottom: 8 }}>Events</div>
-            {events.map((e, i) => (
-              <div key={i} style={{ fontSize: 11, color: "#6b7280", fontFamily: "monospace", padding: "2px 0" }}>
-                {e.origin.id}.{e.name} {e.data ? JSON.stringify(e.data) : ""}
-              </div>
-            ))}
-          </div>
-        )}
       </div>
     </div>
   );
