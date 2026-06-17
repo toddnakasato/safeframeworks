@@ -1,7 +1,7 @@
 import type { ConfigBase, OnSafeEvent, Field } from "../../safecontracts/src/contracts";
 import { el } from "./util";
-import { fireTable } from "../../safecontracts/src/contracts-emit";
-import type { TableEvent } from "../../safecontracts/src/contracts-emit";
+import { fireWithPayload } from "./payload-delegate";
+import type { PayloadCoordinates } from "./payload-delegate";
 import { getDataSource } from "../../safecontracts/src/contracts";
 import { fmtDate, fmtCurrency, fmtInt, fmtPercent, fmtStr } from "../../safecontracts/src/formatter";
 import { sortBy, paginate } from "../../safecontracts/src/contracts-operations";
@@ -91,8 +91,8 @@ export function createSafeTable(container: HTMLElement, config: ConfigBase, onEv
     const root = el("div");
     root.setAttribute("data-component", "table");
 
-    const fire = (eventName: string, payload: any) => {
-        fireTable(onEvent, eventName as TableEvent, payload, { instanceId });
+    const fire = (eventName: string, coords: PayloadCoordinates) => {
+        fireWithPayload(onEvent, "table", eventName, { ...coords, rows: data }, { instanceId });
     };
 
     if (data.length === 0) {
@@ -142,14 +142,18 @@ export function createSafeTable(container: HTMLElement, config: ConfigBase, onEv
             sortFields.push({ field: field.name, dir: "asc" });
         }
         page = 0;
-        fire("sort", { fields: [...sortFields], field: field.name, dir: sortFields.find(s => s.field === field.name)?.dir ?? "asc" });
+        fire("sort", { field: field.name, dir: sortFields.find(s => s.field === field.name)?.dir ?? "asc" });
         render();
+    }
+
+    function selectedIndices(): number[] {
+        return [...selected].map(id => data.findIndex(r => (r.Id ?? r.id ?? String(r)) === id)).filter(i => i >= 0);
     }
 
     function handleRowSelect(id: string) {
         if (selected.has(id)) selected.delete(id);
         else selected.add(id);
-        fire("row:select", { selected: [...selected] });
+        fire("row:select", { selected: selectedIndices() });
         render();
     }
 
@@ -184,7 +188,7 @@ export function createSafeTable(container: HTMLElement, config: ConfigBase, onEv
                 } else {
                     selected.clear();
                     for (const r of paged) selected.add(r.Id ?? r.id ?? String(r));
-                    fire("row:select", { selected: [...selected] });
+                    fire("row:select", { selected: selectedIndices() });
                 }
                 render();
             };
@@ -266,13 +270,13 @@ export function createSafeTable(container: HTMLElement, config: ConfigBase, onEv
                     e.stopPropagation();
                     return;
                 }
-                fire("row:click", { row, index: globalIndex });
+                fire("row:click", { index: globalIndex });
             };
             tr.onmouseenter = () => {
-                fire("row:hover", { row, index: globalIndex });
+                fire("row:hover", { index: globalIndex });
             };
             tr.onmouseleave = () => {
-                fire("row:leave", { row, index: globalIndex });
+                fire("row:leave", { index: globalIndex });
             };
 
             if (reorderable) {
@@ -304,7 +308,7 @@ export function createSafeTable(container: HTMLElement, config: ConfigBase, onEv
                 if (numericType(field.type)) td.setAttribute("data-align", "right");
                 td.onclick = (e) => {
                     e.stopPropagation();
-                    fire("cell:click", { row, field: field.name, value: row[field.name], rowIndex: globalIndex, colIndex });
+                    fire("cell:click", { index: globalIndex, col: colIndex, field: field.name });
                 };
                 tr.appendChild(td);
             }
