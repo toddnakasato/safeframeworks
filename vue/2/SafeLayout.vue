@@ -19,7 +19,7 @@ export default defineComponent({
     const el = this.$refs.layoutContainer as HTMLElement;
     if (el) {
       const _ctx = createSafeFireContext(this.config, this.onEvent, buildPayloadViaCli);
-      this.root = createSafeLayout(el, this.config, _ctx, buildComponent);
+      this.root = createSafeLayout(el, this.config, this.onEvent, buildComponent);
     };
   },
   beforeDestroy() {

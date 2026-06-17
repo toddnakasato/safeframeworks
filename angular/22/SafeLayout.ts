@@ -18,7 +18,7 @@ export class SafeLayoutComponent implements AfterViewInit, OnDestroy {
 
   ngAfterViewInit() {
     const _ctx = createSafeFireContext(this.config, this.onEvent, buildPayloadViaCli);
-    this.root = createSafeLayout(this.containerRef.nativeElement, this.config, _ctx, buildComponent);
+    this.root = createSafeLayout(this.containerRef.nativeElement, this.config, this.onEvent, buildComponent);
   }
 
   ngOnDestroy() {

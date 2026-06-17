@@ -13,7 +13,7 @@
 
   onMount(() => {
     const _ctx = createSafeFireContext(config, onEvent, buildPayloadViaCli);
-    root = createSafeLayout(container, config, _ctx, buildComponent);
+    root = createSafeLayout(container, config, onEvent, buildComponent);
   });
 
   onDestroy(() => {

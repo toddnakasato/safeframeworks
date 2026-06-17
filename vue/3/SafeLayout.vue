@@ -13,7 +13,7 @@ let root: HTMLElement | null = null;
 onMounted(() => {
   if (containerRef.value) {
     const _ctx = createSafeFireContext(props.config, props.onEvent, buildPayloadViaCli);
-    root = createSafeLayout(containerRef.value, props.config, _ctx, buildComponent);
+    root = createSafeLayout(containerRef.value, props.config, props.onEvent, buildComponent);
   }
 });
 
