@@ -15,9 +15,11 @@ import { createSafeButton } from "./button";
 import { createSafeCalendar } from "./calendar";
 import { createSafeCallout } from "./callout";
 import { createSafeCard } from "./card";
+import { createSafeChart } from "./chart";
 import { createSafeChat } from "./chat";
 import { createSafeColumns } from "./columns";
 import { createSafeDragDrop } from "./dragdrop";
+import { createSafeFlow } from "./flow";
 import { createSafeFunnel } from "./funnel";
 import { createSafeGauge } from "./gauge";
 import { createSafeGrid } from "./grid";
@@ -26,9 +28,11 @@ import { createSafeHierarchy } from "./hierarchy";
 import { createSafeInput } from "./input";
 import { createSafeLayout } from "./layout";
 import { createSafeList } from "./list";
+import { createSafeMap } from "./map";
 import { createSafeMetric } from "./metric";
 import { createSafeNav } from "./nav";
 import { createSafePicker } from "./picker";
+import { createSafeScene } from "./scene";
 import { createSafeSheet } from "./sheet";
 import { createSafeTable } from "./table";
 import { createSafeTabs } from "./tabs";
@@ -36,6 +40,7 @@ import { createSafeTimeline } from "./timeline";
 import { createSafeToggle } from "./toggle";
 import { createSafeTree } from "./tree";
 import { createSafeWeek } from "./week";
+import { createSafeStoryFlow } from "./storyflow";
 import { createSafeProofViewer } from "./proof-viewer";
 
 const el = (tag: string, text?: string): HTMLElement => {
@@ -62,7 +67,7 @@ export function buildComponent(config: ConfigBase, onEvent?: OnSafeEvent): HTMLE
             : onEvent;
 
     // Create SafeFireContext — one per component, passed to every builder
-    const ctx = createSafeFireContext(config, ctx, buildPayloadViaCli);
+    const ctx = createSafeFireContext(config, stampedOnEvent, buildPayloadViaCli);
 
     switch (component) {
         case "layout":
@@ -89,6 +94,9 @@ export function buildComponent(config: ConfigBase, onEvent?: OnSafeEvent): HTMLE
         case "drag-drop":
             createSafeDragDrop(container, config, ctx);
             break;
+        case "flow":
+            createSafeFlow(container, config, ctx);
+            break;
         case "funnel":
             createSafeFunnel(container, config, ctx);
             break;
@@ -110,6 +118,9 @@ export function buildComponent(config: ConfigBase, onEvent?: OnSafeEvent): HTMLE
         case "list":
             createSafeList(container, config, ctx);
             break;
+        case "map":
+            createSafeMap(container, config, ctx);
+            break;
         case "metric":
             createSafeMetric(container, config, ctx);
             break;
@@ -118,6 +129,9 @@ export function buildComponent(config: ConfigBase, onEvent?: OnSafeEvent): HTMLE
             break;
         case "picker":
             createSafePicker(container, config, ctx);
+            break;
+        case "scene":
+            createSafeScene(container, config, ctx);
             break;
         case "sheet":
             createSafeSheet(container, config, ctx);
@@ -139,6 +153,9 @@ export function buildComponent(config: ConfigBase, onEvent?: OnSafeEvent): HTMLE
             break;
         case "week":
             createSafeWeek(container, config, ctx);
+            break;
+        case "story-flow":
+            createSafeStoryFlow(container, config, ctx);
             break;
         case "proof-viewer":
             createSafeProofViewer(container, config, stampedOnEvent);
