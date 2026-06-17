@@ -12,8 +12,7 @@ import type { ChartConfiguration } from "chart.js";
 import type { ConfigBase } from "../../safecontracts/src/contracts";
 import type { SafeFireContext } from "../../safecontracts/src/contracts";
 import { resolveColors } from "../../safecontracts/src/palette";
-import { readList } from "../../safecontracts/src/contracts-data";
-import { applyIntent } from "../utils/util";
+import { applyIntent, readList } from "../utils/util";
 
 /*----------------------------------------------------------------------------------------------------
  *

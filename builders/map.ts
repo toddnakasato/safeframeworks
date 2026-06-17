@@ -2,8 +2,7 @@ import L from "leaflet";
 import type { SafeFireContext } from "../../safecontracts/src/contracts";
 import "leaflet/dist/leaflet.css";
 import type { ConfigBase } from "../../safecontracts/src/contracts";
-import { readList } from "../../safecontracts/src/contracts-data";
-import { applyIntent } from "../utils/util";
+import { applyIntent, readList } from "../utils/util";
 
 /*----------------------------------------------------------------------------------------------------
  *

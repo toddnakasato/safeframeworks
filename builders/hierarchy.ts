@@ -3,8 +3,7 @@ import type { SafeFireContext } from "../../safecontracts/src/contracts";
 import type { ConfigBase } from "../../safecontracts/src/contracts";
 import { HIERARCHY_DEFAULTS } from "../../safecontracts/src/components/hierarchy";
 import { resolveColors } from "../../safecontracts/src/palette";
-import { elAttrs, applyIntent } from "../utils/util";
-import { readList } from "../../safecontracts/src/contracts-data";
+import { elAttrs, applyIntent, readList } from "../utils/util";
 
 /*----------------------------------------------------------------------------------------------------
  *

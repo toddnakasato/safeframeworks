@@ -1,8 +1,7 @@
 import type { ConfigBase, RowCell, RowDef } from "../../safecontracts/src/contracts";
-import { el, applyPaintState, applyIntent, readSchema } from "../utils/util";
+import { el, applyPaintState, applyIntent, readSchema, readList } from "../utils/util";
 import type { SafeFireContext } from "../../safecontracts/src/contracts";
 import { filterBy } from "../../safecontracts/src/contracts-operations";
-import { readList } from "../../safecontracts/src/contracts-data";
 
 /*----------------------------------------------------------------------------------------------------
  *

@@ -1,7 +1,6 @@
 import type { ConfigBase } from "../../safecontracts/src/contracts";
-import { el, applyPaintState } from "../utils/util";
+import { el, applyPaintState, readRecord } from "../utils/util";
 import type { SafeFireContext } from "../../safecontracts/src/contracts";
-import { readRecord } from "../../safecontracts/src/contracts-data";
 
 /*----------------------------------------------------------------------------------------------------
  *

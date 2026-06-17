@@ -1,12 +1,11 @@
 import { createElement, type IconNode } from "lucide";
-import { el, applyPaintState, applyIntent, readSchema } from "../utils/util";
+import { el, applyPaintState, applyIntent, readSchema, readList } from "../utils/util";
 import type { SafeFireContext } from "../../safecontracts/src/contracts";
 import * as lucide from "lucide";
 import type { ConfigBase } from "../../safecontracts/src/contracts";
 import { DAY_NAMES_SHORT } from "../../safecontracts/src/contracts";
 import { LIST_DEFAULTS, LIST_STATUS_ACCENTS } from "../../safecontracts/src/components/list";
 import { paginate } from "../../safecontracts/src/contracts-operations";
-import { readList } from "../../safecontracts/src/contracts-data";
 
 /*----------------------------------------------------------------------------------------------------
  *

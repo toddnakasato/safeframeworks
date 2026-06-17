@@ -1,26 +1,30 @@
 /**
  * util.ts — shared vanilla-DOM helpers for builders.
  *
- * Pure DOM construction — this is renderer machinery, NOT contract.
- * (Event creation lives in safecontracts contracts-emit.ts; data reads in
- * contracts-data.ts readList/readRecord. This file owns only the HTML.)
+ * DOM construction and attribute application. NOT contract.
+ * Data reads (readList, readRecord, readSchema) live in safecontracts contracts-data.ts.
+ * Event creation lives in safecontracts contracts-emit.ts.
+ * This file owns: element creation, intent application, paint state application.
  *
- * Two element helpers cover the two conventions used across builders:
+ * Element helpers:
  *   el(tag, role?, text?)   — data-role + textContent shorthand
  *   elAttrs(tag, attrs)     — explicit attribute map
  *
- * Four builder helpers standardize the common patterns:
+ * Builder helpers:
  *   parseIntent(metadata)   — extract variant/spacing/surface/accent/radius with defaults
  *   applyIntent(root, metadata) — parseIntent + setAttribute in one call
  *   applyPaintState(root, metadata, component) — read COMPONENT_PAINT, set data-* attrs
- *   readData(config)        — readList from contract (one line instead of three)
+ *   collapsibleHeader(label, opts) — collapsible section header with chevron
+ *
+ * Re-exports from safecontracts (convenience — builders import from one place):
+ *   readList, readRecord, readSchema
  */
 
 import type { ConfigBase } from "../../safecontracts/src/contracts";
-import { readList, readRecord } from "../../safecontracts/src/contracts-data";
-import type { Field } from "../../safecontracts/src/contracts";
-import { getDataSource } from "../../safecontracts/src/contracts-data";
 import { COMPONENT_PAINT } from "../../safecontracts/src/contracts-paint";
+
+// Re-export data helpers from contracts so builders can import from one place
+export { readList, readRecord, readSchema } from "../../safecontracts/src/contracts-data";
 
 // ---------------------------------------------------------------------------
 // Element helpers
@@ -92,23 +96,6 @@ export function applyIntent(root: HTMLElement, metadata: Record<string, any>, de
     return intent;
 }
 
-/**
- * Apply the shared Intent attributes (surface, radius, spacing, density)
- * from metadata to a root element, with per-component defaults.
- * @deprecated Use applyIntent instead — covers all five standard fields.
- */
-export function intentAttrs(root: HTMLElement, metadata: Record<string, any>, defaults: { surface?: string; radius?: string; spacing?: string; density?: string } = {}): void {
-    const pairs: [string, string | undefined][] = [
-        ["data-surface", (metadata.surface as string) ?? defaults.surface],
-        ["data-radius", (metadata.radius as string) ?? defaults.radius],
-        ["data-spacing", (metadata.spacing as string) ?? defaults.spacing],
-        ["data-density", (metadata.density as string) ?? defaults.density]
-    ];
-    for (const [attr, value] of pairs) {
-        if (value != null) root.setAttribute(attr, value);
-    }
-}
-
 // ---------------------------------------------------------------------------
 // Paint state helper — reads COMPONENT_PAINT, sets data-* from metadata
 // ---------------------------------------------------------------------------
@@ -141,37 +128,6 @@ export function applyPaintState(root: HTMLElement, metadata: Record<string, any>
             root.setAttribute(attr, String(value));
         }
     }
-}
-
-// ---------------------------------------------------------------------------
-// Data helpers — one-line access to config data via contract
-// ---------------------------------------------------------------------------
-
-/**
- * Read list data from config via the contract's readList.
- * Replaces the three-line pattern:
- *   const ds = getDataSource(config);
- *   const raw = ds?.inline;
- *   const data = Array.isArray(raw) ? raw : [];
- */
-export function readData(config: ConfigBase, slot?: string): Record<string, any>[] {
-    return readList(config, slot);
-}
-
-/**
- * Read a single record from config via the contract's readRecord.
- * Replaces the three-line pattern for single-object data sources.
- */
-export function readSingleRecord(config: ConfigBase, slot?: string): Record<string, any> {
-    return readRecord(config, slot);
-}
-
-/**
- * Read the schema (fields) from the first data slot.
- * Replaces: getDataSource(config)?.schema?.fields ?? []
- */
-export function readSchema(config: ConfigBase, slot?: string): Field[] {
-    return getDataSource(config, slot)?.schema?.fields ?? [];
 }
 
 // ---------------------------------------------------------------------------

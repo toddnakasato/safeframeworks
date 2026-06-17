@@ -1,8 +1,7 @@
 import * as d3 from "d3";
 import type { SafeFireContext } from "../../safecontracts/src/contracts";
 import type { ConfigBase } from "../../safecontracts/src/contracts";
-import { elAttrs, applyPaintState, applyIntent } from "../utils/util";
-import { readList } from "../../safecontracts/src/contracts-data";
+import { elAttrs, applyPaintState, applyIntent, readList } from "../utils/util";
 
 /*----------------------------------------------------------------------------------------------------
  *

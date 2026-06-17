@@ -1,10 +1,9 @@
 import { HyperFormula } from "hyperformula";
-import { el, applyPaintState, applyIntent } from "../utils/util";
+import { el, applyPaintState, applyIntent, readList } from "../utils/util";
 import type { SafeFireContext } from "../../safecontracts/src/contracts";
 import type { ConfigBase } from "../../safecontracts/src/contracts";
 import type { SheetColumn } from "../../safecontracts/src/components/sheet";
 import { SHEET_DEFAULTS, SHEET_STATUS_ACCENTS } from "../../safecontracts/src/components/sheet";
-import { readList } from "../../safecontracts/src/contracts-data";
 
 /*----------------------------------------------------------------------------------------------------
  *

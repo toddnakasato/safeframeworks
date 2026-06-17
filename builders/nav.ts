@@ -2,8 +2,7 @@ import { createElement, ChevronDown, Dot, type IconNode } from "lucide";
 import type { SafeFireContext } from "../../safecontracts/src/contracts";
 import * as lucide from "lucide";
 import type { ConfigBase } from "../../safecontracts/src/contracts";
-import { readList } from "../../safecontracts/src/contracts-data";
-import { elAttrs, applyPaintState } from "../utils/util";
+import { elAttrs, applyPaintState, readList } from "../utils/util";
 
 /*----------------------------------------------------------------------------------------------------
  *
