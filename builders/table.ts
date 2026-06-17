@@ -86,6 +86,10 @@ export function createSafeTable(container: HTMLElement, config: ConfigBase, ctx:
     let dragOverIdx: number | null = null;
     let localOrder: Record<string, any>[] | null = null;
 
+    // External state (resolved from state.json by host)
+    const hoverRow = (metadata.hoverRow as number) ?? null;
+    const selectedRow = (metadata.selectedRow as number) ?? null;
+
     const root = el("div");
     root.setAttribute("data-component", "table");
 
@@ -219,6 +223,8 @@ export function createSafeTable(container: HTMLElement, config: ConfigBase, ctx:
             if (selected.has(rowId)) tr.setAttribute("data-selected", "true");
             tr.setAttribute("data-clickable", "true");
             tr.setAttribute("data-index", String(globalIndex));
+            if (hoverRow === globalIndex) tr.setAttribute("data-row-hover", "true");
+            if (selectedRow === globalIndex) tr.setAttribute("data-row-selected", "true");
             if (reorderable && dragIdx === rowIndex) tr.setAttribute("data-dragging", "true");
             if (reorderable && dragOverIdx === rowIndex) tr.setAttribute("data-drag-over", "true");
             if (reorderable) {
