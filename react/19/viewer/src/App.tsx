@@ -374,28 +374,30 @@ export default function App() {
                       btn.textContent = "⟳ Proving..."; btn.disabled = true;
                       result.textContent = "";
                       try {
-                        const results = await Promise.all(t.proves.map(async cmd => {
-                          try {
-                            const { invoke: tauriInvoke } = await import("@tauri-apps/api/core");
-                            const proveArgs = ["prove", cmd];
-                            const params = t.params ?? {};
-                            if (!params.component && t.component) params.component = t.component;
-                            if (!params.event && t.event) params.event = t.event;
-                            if (params.component) proveArgs.push("--component", params.component);
-                            if (params.event) proveArgs.push("--event", params.event);
-                            if (params.builder) proveArgs.push("--builder", params.builder);
-                            const out = await tauriInvoke<string>("safecli_run", { name: "safedesk", args: proveArgs });
-                            return JSON.parse(out);
-                          } catch { return { passed: 0, total: 0, failed: -1 }; }
-                        }));
-                        const totalP = results.reduce((s, r) => s + (r.passed ?? 0), 0);
-                        const totalT = results.reduce((s, r) => s + (r.total ?? 0), 0);
-                        const totalF = results.reduce((s, r) => s + (r.failed ?? 0), 0);
-                        const pass = totalF === 0;
-                        result.textContent = `${totalP}/${totalT} ${pass ? "✓" : `(${totalF} failed)`}`;
-                        result.style.color = pass ? "var(--sd-success, #15803d)" : "var(--sd-danger, #dc2626)";
+                        if (t.test) {
+                          // Run the ticket's concrete test
+                          const { invoke: tauriInvoke } = await import("@tauri-apps/api/core");
+                          const out = await tauriInvoke<string>("safecli_run", { name: "safedesk", args: t.test.command.split(" ") });
+                          const output = JSON.parse(out);
+                          const failures: string[] = [];
+                          for (const [path, expected] of Object.entries(t.test.assert)) {
+                            const actual = path.split(".").reduce((o: any, k) => o?.[k], output);
+                            if (actual !== expected) failures.push(`${path}: ${JSON.stringify(actual)} ≠ ${JSON.stringify(expected)}`);
+                          }
+                          const pass = failures.length === 0;
+                          const total = Object.keys(t.test.assert).length;
+                          result.textContent = pass ? `${total}/${total} ✓` : `${total - failures.length}/${total} ✗ ${failures[0]}`;
+                          result.style.color = pass ? "var(--sd-success, #15803d)" : "var(--sd-danger, #dc2626)";
+                        } else {
+                          result.textContent = "no test defined";
+                          result.style.color = "var(--sd-text-muted, #475569)";
+                        }
                         btn.textContent = "Prove"; btn.disabled = false;
-                      } catch { btn.textContent = "Prove"; btn.disabled = false; }
+                      } catch (e: any) {
+                        result.textContent = `error: ${e.message?.slice(0, 60) ?? e}`;
+                        result.style.color = "var(--sd-danger, #dc2626)";
+                        btn.textContent = "Prove"; btn.disabled = false;
+                      }
                     }} id={`prove-${t.id}`}
                       style={{ padding: "2px 8px", fontSize: 10, fontWeight: 600, borderRadius: 3, border: "none", background: "var(--sd-accent, #2563eb)", color: "var(--sd-text-inverse, #fff)", cursor: "pointer" }}>
                       Prove
