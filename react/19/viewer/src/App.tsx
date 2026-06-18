@@ -336,7 +336,7 @@ export default function App() {
           react/19 — {activeStyle}{activeTheme !== "default" ? `/${activeTheme}` : ""}
           {proofView && <span style={{ fontWeight: 400, color: "var(--sd-text-muted, #6b7280)" }}> — proofs{activeProof && activeProof !== "__none__" ? ` / ${activeProof}` : ""}</span>}
           {ticketView && <span style={{ fontWeight: 400, color: "var(--sd-text-muted, #6b7280)" }}> — tickets / {ticketView}</span>}
-          {!proofView && activeComponent && <span style={{ fontWeight: 400, color: "var(--sd-text-muted, #6b7280)" }}> — {activeVariation ?? activeComponent}</span>}
+          {!proofView && !ticketView && activeComponent && <span style={{ fontWeight: 400, color: "var(--sd-text-muted, #6b7280)" }}> — {activeVariation ?? activeComponent}</span>}
         </div>
 
         {ticketView ? (

@@ -14,7 +14,8 @@ async function invoke<T>(cmd: string, args?: Record<string, any>): Promise<T> {
 
 /** List all component folders that have tickets */
 export async function listTicketComponents(): Promise<string[]> {
-    return invoke<string[]>("list_dir", { path: TICKETS_DIR });
+    const entries = await invoke<string[]>("list_dir", { path: TICKETS_DIR });
+    return entries.filter(e => !e.startsWith("."));
 }
 
 /** List all ticket files for a component */
