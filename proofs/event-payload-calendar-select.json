@@ -1,0 +1,33 @@
+{
+  "ok": true,
+  "component": "calendar",
+  "event": "select",
+  "total": 3,
+  "passed": 3,
+  "failed": 0,
+  "groups": {
+    "coverage": 2,
+    "stranded": 1,
+    "data-keys": 0,
+    "context-keys": 0
+  },
+  "checks": [
+    {
+      "group": "coverage",
+      "name": "calendar: has COMPONENT_PAYLOAD_SHAPES entry",
+      "status": "pass"
+    },
+    {
+      "group": "coverage",
+      "name": "calendar/select: shape declared",
+      "status": "pass"
+    },
+    {
+      "group": "stranded",
+      "name": "calendar/select: payload shape has matching event",
+      "status": "pass"
+    }
+  ],
+  "failures": [],
+  "ts": "2026-06-18T14:21:05.565Z"
+}

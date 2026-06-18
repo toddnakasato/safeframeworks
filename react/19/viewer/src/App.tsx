@@ -360,9 +360,10 @@ export default function App() {
                     <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 4 }}>{t.title}</div>
                     <div style={{ fontSize: 11, color: "var(--sd-text-dim, #475569)", lineHeight: 1.5 }}>{t.description}</div>
                   </div>
-                  <div style={{ padding: "6px 12px", borderTop: "1px solid var(--sd-border, #e5e7eb)", fontSize: 10, color: "var(--sd-text-muted, #475569)", display: "flex", gap: 12 }}>
+                  <div style={{ padding: "6px 12px", borderTop: "1px solid var(--sd-border, #e5e7eb)", fontSize: 10, color: "var(--sd-text-muted, #475569)", display: "flex", gap: 12, flexWrap: "wrap" }}>
                     <span>proves: {t.proves.join(", ")}</span>
-                    {t.event && <span>event: {t.event}</span>}
+                    {t.params && <span>scope: {Object.entries(t.params).map(([k,v]) => `${k}=${v}`).join(" ")}</span>}
+                    {t.event && !t.params?.event && <span>event: {t.event}</span>}
                     {t.resolution && <span>resolution: {t.resolution}</span>}
                   </div>
                   {/* Ticket actions — Prove button for all, Start/Close for open */}
@@ -376,7 +377,14 @@ export default function App() {
                         const results = await Promise.all(t.proves.map(async cmd => {
                           try {
                             const { invoke: tauriInvoke } = await import("@tauri-apps/api/core");
-                            const out = await tauriInvoke<string>("safecli_run", { name: "safedesk", args: ["prove", cmd] });
+                            const proveArgs = ["prove", cmd];
+                            const params = t.params ?? {};
+                            if (!params.component && t.component) params.component = t.component;
+                            if (!params.event && t.event) params.event = t.event;
+                            if (params.component) proveArgs.push("--component", params.component);
+                            if (params.event) proveArgs.push("--event", params.event);
+                            if (params.builder) proveArgs.push("--builder", params.builder);
+                            const out = await tauriInvoke<string>("safecli_run", { name: "safedesk", args: proveArgs });
                             return JSON.parse(out);
                           } catch { return { passed: 0, total: 0, failed: -1 }; }
                         }));

@@ -62,6 +62,7 @@ export async function createTicket(component: string, type: TicketType, title: s
         description,
         status: "open",
         proves: suggestProves(type),
+        params: { component, ...(event ? { event } : {}) },
         created: now,
         updated: now,
     };

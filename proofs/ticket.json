@@ -15,12 +15,12 @@
     },
     {
       "group": "ticket-closed",
-      "name": "calendar-0002: Payload day click on calendar doesn't contain what day was c (regression)",
+      "name": "calendar-0002 [component=calendar event=select]: Payload day click on calendar doesn't contain what (regression)",
       "status": "pass"
     },
     {
       "group": "ticket-closed",
-      "name": "calendar-0001: calendar select payload doesn't contain the date that was cl (regression)",
+      "name": "calendar-0001 [component=calendar event=select]: calendar select payload doesn't contain the date t (regression)",
       "status": "pass"
     }
   ],

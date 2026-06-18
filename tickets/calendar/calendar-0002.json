@@ -3,15 +3,20 @@
   "component": "calendar",
   "type": "event",
   "title": "Payload day click on calendar doesn't contain what day was clicked",
-  "description": "Calendar select event fires with year/month/day/date but payload-delegate.ts didn't forward these coords to the CLI. CLI received zeros. Also viewer handleEvent was missing calendar args.",
+  "description": "Calendar select event fires with year/month/day/date but payload-delegate.ts didn't forward these coords to the CLI, and resolveToken didn't look up coords by field name. CLI received zeros.",
   "status": "closed",
-  "proves": ["event-coverage", "event-declared", "event-payload"],
+  "proves": ["event-payload", "event-coverage", "event-declared"],
+  "params": {
+    "component": "calendar",
+    "event": "select"
+  },
   "created": "2026-06-18T14:01:24.879Z",
-  "updated": "2026-06-18T14:20:00.000Z",
-  "resolution": "Added year/month/day/date/direction/query/id/content to payload-delegate.ts coord forwarding. Also added same args to viewer handleEvent CLI forwarding. Fixed tickets dir path.",
+  "updated": "2026-06-18T14:30:00.000Z",
+  "event": "select",
+  "resolution": "Three-layer fix: (1) payload-delegate.ts forwards year/month/day/date coords, (2) resolveToken uses field-name-based coord lookup via ctx.coords[fieldName], (3) CLI collects all flags into coords map.",
   "files": [
+    "safecli/commands/payload.ts",
     "safeframeworks/utils/payload-delegate.ts",
-    "safeframeworks/react/19/viewer/src/App.tsx",
-    "safeframeworks/react/19/viewer/src/ticket-service.ts"
+    "safeframeworks/react/19/viewer/src/App.tsx"
   ]
 }
