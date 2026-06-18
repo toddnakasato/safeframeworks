@@ -112,7 +112,10 @@ export function createSafeMap(container: HTMLElement, config: ConfigBase, data: 
             marker.bindPopup(popupHtml);
         }
 
-        marker.on("click", () => ctx.fire("select", { index: i, data: d, lat, lng }));
+        marker.on("click", () => {
+            ctx.fire("select", { index: i, data: d, lat, lng });
+            ctx.fire("marker:click", { data: d });
+        });
         allLayers.push(marker);
         pathPoints.push([lat, lng]);
 

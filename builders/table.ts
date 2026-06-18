@@ -162,6 +162,19 @@ export function createSafeTable(container: HTMLElement, config: ConfigBase, ctx:
         const totalPages = pg.totalPages;
 
         const scroll = el("div", "scroll");
+        // Filter input
+        if (metadata.filterable) {
+            const filterWrap = el("div", "filter-wrap");
+            const filterInput = document.createElement("input") as HTMLInputElement;
+            filterInput.type = "text";
+            filterInput.placeholder = (metadata.filterPlaceholder as string) ?? "Filter…";
+            filterInput.setAttribute("data-role", "filter");
+            filterInput.addEventListener("input", () => {
+                fire("filter", { value: filterInput.value });
+            });
+            filterWrap.appendChild(filterInput);
+            root.appendChild(filterWrap);
+        }
         const table = el("table", "table");
         const thead = el("thead", "thead");
         const headerRow = el("tr", "header-row");
@@ -181,10 +194,12 @@ export function createSafeTable(container: HTMLElement, config: ConfigBase, ctx:
                 if (selected.size === paged.length) {
                     selected.clear();
                     fire("row:select", { selected: [] });
+                    fire("select", { selected: [], all: false });
                 } else {
                     selected.clear();
                     for (const r of paged) selected.add(r.Id ?? r.id ?? String(r));
                     fire("row:select", { selected: selectedIndices() });
+                    fire("select", { selected: selectedIndices(), all: true });
                 }
                 render();
             };
@@ -205,6 +220,30 @@ export function createSafeTable(container: HTMLElement, config: ConfigBase, ctx:
             if (numericType(field.type)) th.setAttribute("data-align", "right");
             if (field.width) th.style.width = `${field.width}px`;
             th.onclick = () => handleSort(field);
+            // Column resize via pointer drag on right edge
+            let resizeStart: { x: number; w: number } | null = null;
+            th.onpointerdown = (e) => {
+                const rect = th.getBoundingClientRect();
+                if (e.clientX > rect.right - 6) {
+                    resizeStart = { x: e.clientX, w: rect.width };
+                    th.setPointerCapture(e.pointerId);
+                    e.preventDefault();
+                }
+            };
+            th.onpointermove = (e) => {
+                if (resizeStart) {
+                    const newWidth = Math.max(30, resizeStart.w + (e.clientX - resizeStart.x));
+                    th.style.width = `${newWidth}px`;
+                }
+            };
+            th.onpointerup = (e) => {
+                if (resizeStart) {
+                    const newWidth = Math.max(30, resizeStart.w + (e.clientX - resizeStart.x));
+                    resizeStart = null;
+                    th.releasePointerCapture(e.pointerId);
+                    fire("column:resize", { field: field.name, width: newWidth });
+                }
+            };
             headerRow.appendChild(th);
         }
 
@@ -270,6 +309,9 @@ export function createSafeTable(container: HTMLElement, config: ConfigBase, ctx:
                 }
                 fire("row:click", { index: globalIndex });
             };
+            tr.ondblclick = () => {
+                fire("row:dblclick", { index: globalIndex });
+            };
             tr.onmouseenter = () => {
                 fire("row:hover", { index: globalIndex });
             };
@@ -307,6 +349,12 @@ export function createSafeTable(container: HTMLElement, config: ConfigBase, ctx:
                 td.onclick = (e) => {
                     e.stopPropagation();
                     fire("cell:click", { index: globalIndex, col: colIndex, field: field.name });
+                };
+                td.ondblclick = (e) => {
+                    e.stopPropagation();
+                    fire("cell:dblclick", { index: globalIndex, col: colIndex, field: field.name });
+                    // Fire cell:edit to signal editing intent on double-click
+                    fire("cell:edit", { index: globalIndex, col: colIndex, field: field.name, value: row[field.name] });
                 };
                 tr.appendChild(td);
             }

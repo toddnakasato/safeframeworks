@@ -265,6 +265,9 @@ export function createSafeInput(container: HTMLElement, config: ConfigBase, ctx:
 
     function wireField(inp: HTMLInputElement | HTMLTextAreaElement, opts?: { commitOnBlur?: boolean }) {
         const commitOnBlur = opts?.commitOnBlur !== false;
+        inp.addEventListener("input", () => {
+            fireEvent("textinput", { field: fieldName, value: inp.value });
+        });
         inp.addEventListener("blur", () => {
             if (commitOnBlur && isEditing && inputType !== "lookup" && inputType !== "picklist" && root.contains(inp)) {
                 handleChange(inp.value);
@@ -273,6 +276,7 @@ export function createSafeInput(container: HTMLElement, config: ConfigBase, ctx:
         inp.addEventListener("keydown", (e: KeyboardEvent) => {
             if (e.key === "Enter" && inputType !== "multiline-text" && inputType !== "text") {
                 e.preventDefault();
+                fireEvent("navigate", { field: fieldName, value: (e.target as HTMLInputElement).value });
                 handleChange((e.target as HTMLInputElement).value);
             } else if (e.key === "Escape") {
                 handleCancelClick();

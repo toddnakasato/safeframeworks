@@ -1,0 +1,377 @@
+{
+  "ok": true,
+  "total": 73,
+  "passed": 73,
+  "failed": 0,
+  "groups": {
+    "event-is-fired": 73
+  },
+  "checks": [
+    {
+      "group": "event-is-fired",
+      "name": "button: fires \"click\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "button: fires \"page\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "calendar: fires \"navigate\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "calendar: fires \"select\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "week: fires \"navigate\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "week: fires \"select\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "list: fires \"select\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "list: fires \"toggle\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "list: fires \"expand\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "list: fires \"action\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "list: fires \"page\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "list: fires \"change\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "list: fires \"navigate\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "toggle: fires \"change\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "toggle: fires \"expand\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "card: fires \"click\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "card: fires \"back\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "picker: fires \"select\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "picker: fires \"filter\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "picker: fires \"search\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "table: fires \"cell:click\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "table: fires \"cell:dblclick\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "table: fires \"cell:edit\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "table: fires \"column:resize\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "table: fires \"filter\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "table: fires \"page\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "table: fires \"reorder\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "table: fires \"row:click\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "table: fires \"row:dblclick\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "table: fires \"row:hover\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "table: fires \"row:leave\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "table: fires \"row:select\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "table: fires \"select\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "table: fires \"sort\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "input: fires \"change\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "input: fires \"editmode\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "input: fires \"canceledit\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "input: fires \"textinput\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "input: fires \"navigate\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "layout: fires \"back\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "scene: fires \"select\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "scene: fires \"back\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "scene: fires \"filter\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "chat: fires \"send\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "chat: fires \"scroll\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "chat: fires \"action\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "drag-drop: fires \"drag-start\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "drag-drop: fires \"drag-end\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "drag-drop: fires \"drop\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "drag-drop: fires \"file-drop\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "story-flow: fires \"select-node\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "story-flow: fires \"navigate\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "story-flow: fires \"step:click\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "story-flow: fires \"story:play\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "nav: fires \"navigate\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "tabs: fires \"select\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "timeline: fires \"select\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "tree: fires \"select\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "tree: fires \"expand\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "tree: fires \"collapse\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "chart: fires \"click\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "chart: fires \"hover\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "heatmap: fires \"cell:click\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "map: fires \"select\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "map: fires \"marker:click\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "metric: fires \"click\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "funnel: fires \"select\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "gauge: fires \"click\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "flow: fires \"node:click\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "flow: fires \"link:click\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "sheet: fires \"select\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "sheet: fires \"edit\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "hierarchy: fires \"select\"",
+      "status": "pass"
+    }
+  ],
+  "failures": []
+}

@@ -38,6 +38,22 @@ export function createSafeStoryFlow(
         }
     }
 
+    // Fire story-flow events via delegated DOM handlers
+    root.addEventListener('click', (e) => {
+        const target = (e.target as HTMLElement).closest('[data-action]') as HTMLElement | null;
+        if (!target) return;
+        const action = target.getAttribute('data-action');
+        if (action === 'select-node') {
+            ctx.fire('select-node', { data: { ...target.dataset } });
+        } else if (action === 'navigate') {
+            ctx.fire('navigate', { data: { ...target.dataset } });
+        } else if (action === 'step:click') {
+            ctx.fire('step:click', { data: { ...target.dataset } });
+        } else if (action === 'story:play') {
+            ctx.fire('story:play', { data: { ...target.dataset } });
+        }
+    });
+
     container.appendChild(root);
     return root;
 }

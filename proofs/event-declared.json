@@ -1,0 +1,372 @@
+{
+  "ok": true,
+  "total": 72,
+  "passed": 72,
+  "failed": 0,
+  "groups": {
+    "fire-is-declared": 72
+  },
+  "checks": [
+    {
+      "group": "fire-is-declared",
+      "name": "funnel: \"select\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "week: \"navigate\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "week: \"select\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "table: \"sort\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "table: \"row:select\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "table: \"filter\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "table: \"select\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "table: \"column:resize\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "table: \"reorder\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "table: \"row:click\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "table: \"row:dblclick\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "table: \"row:hover\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "table: \"row:leave\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "table: \"cell:click\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "table: \"cell:dblclick\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "table: \"cell:edit\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "table: \"page\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "nav: \"navigate\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "input: \"editmode\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "input: \"change\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "input: \"canceledit\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "input: \"textinput\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "input: \"navigate\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "button: \"click\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "button: \"page\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "sheet: \"select\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "sheet: \"edit\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "chat: \"scroll\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "chat: \"send\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "chat: \"action\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "metric: \"click\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "story-flow: \"select-node\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "story-flow: \"navigate\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "story-flow: \"step:click\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "story-flow: \"story:play\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "calendar: \"navigate\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "calendar: \"select\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "card: \"click\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "card: \"back\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "map: \"select\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "map: \"marker:click\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "hierarchy: \"select\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "flow: \"node:click\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "flow: \"link:click\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "chart: \"click\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "chart: \"hover\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "scene: \"select\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "scene: \"back\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "scene: \"filter\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "drag-drop: \"drag-start\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "drag-drop: \"drag-end\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "drag-drop: \"drop\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "drag-drop: \"file-drop\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "tabs: \"select\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "list: \"page\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "list: \"select\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "list: \"toggle\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "list: \"action\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "list: \"expand\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "list: \"change\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "list: \"navigate\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "timeline: \"select\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "tree: \"collapse\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "tree: \"expand\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "tree: \"select\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "gauge: \"click\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "picker: \"filter\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "picker: \"search\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "picker: \"select\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "heatmap: \"cell:click\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "toggle: \"change\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "toggle: \"expand\" is declared",
+      "status": "pass"
+    }
+  ],
+  "failures": []
+}

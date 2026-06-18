@@ -46,6 +46,9 @@ export function createSafeChat(container: HTMLElement, config: ConfigBase, ctx: 
         }
         messagesEl.scrollTop = messagesEl.scrollHeight;
     }
+    messagesEl.addEventListener("scroll", () => {
+        ctx.fire("scroll", {});
+    });
 
     const inputArea = el("div", "chat-input-area");
     const input = document.createElement("input");

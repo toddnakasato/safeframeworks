@@ -1,0 +1,1282 @@
+{
+  "ok": true,
+  "total": 254,
+  "passed": 254,
+  "failed": 0,
+  "groups": {
+    "boot-compiles": 254
+  },
+  "checks": [
+    {
+      "group": "boot-compiles",
+      "name": "react/18/SafeDragDrop.tsx",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "react/18/SafePicker.tsx",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "react/18/SafeCallout.tsx",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "react/18/SafeGridCell.tsx",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "react/18/SafeChat.tsx",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "react/18/SafeFlow.tsx",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "react/18/SafeSheet.tsx",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "react/18/SafeLayout.tsx",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "react/18/SafeChart.tsx",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "react/18/SafeHeatmap.tsx",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "react/18/SafeToggle.tsx",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "react/18/SafeButton.tsx",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "react/18/SafeStoryFlow.tsx",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "react/18/SafeTimeline.tsx",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "react/18/SafeCalendar.tsx",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "react/18/SafeTree.tsx",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "react/18/SafeGauge.tsx",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "react/18/SafeInput.tsx",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "react/18/SafeColumns.tsx",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "react/18/SafeScene.tsx",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "react/18/SafeHierarchy.tsx",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "react/18/SafeStoryboard.tsx",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "react/18/SafeModal.tsx",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "react/18/SafeFunnel.tsx",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "react/18/SafeMap.tsx",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "react/18/SafeList.tsx",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "react/18/SafeGrid.tsx",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "react/18/SafeTable.tsx",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "react/18/SafeNav.tsx",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "react/18/SafeCard.tsx",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "react/18/SafeTabs.tsx",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "react/18/SafeWeek.tsx",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "react/18/SafeRenderer.tsx",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "react/18/SafeMetric.tsx",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "react/19/SafeDragDrop.tsx",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "react/19/SafePicker.tsx",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "react/19/SafeCallout.tsx",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "react/19/SafeGridCell.tsx",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "react/19/SafeChat.tsx",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "react/19/SafeFlow.tsx",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "react/19/SafeSheet.tsx",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "react/19/SafeLayout.tsx",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "react/19/SafeChart.tsx",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "react/19/SafeHeatmap.tsx",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "react/19/SafeToggle.tsx",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "react/19/SafeButton.tsx",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "react/19/SafeStoryFlow.tsx",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "react/19/SafeTimeline.tsx",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "react/19/SafeCalendar.tsx",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "react/19/SafeTree.tsx",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "react/19/SafeGauge.tsx",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "react/19/SafeInput.tsx",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "react/19/SafeColumns.tsx",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "react/19/SafeScene.tsx",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "react/19/SafeHierarchy.tsx",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "react/19/SafeStoryboard.tsx",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "react/19/SafeModal.tsx",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "react/19/SafeFunnel.tsx",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "react/19/SafeMap.tsx",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "react/19/SafeList.tsx",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "react/19/SafeGrid.tsx",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "react/19/SafeTable.tsx",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "react/19/SafeNav.tsx",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "react/19/SafeCard.tsx",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "react/19/SafeTabs.tsx",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "react/19/SafeWeek.tsx",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "react/19/SafeRenderer.tsx",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "react/19/SafeMetric.tsx",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "angular/21/SafeGauge.ts",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "angular/21/SafeMetric.ts",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "angular/21/SafeTabs.ts",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "angular/21/SafeList.ts",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "angular/21/SafeButton.ts",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "angular/21/SafeGrid.ts",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "angular/21/SafeTree.ts",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "angular/21/SafeTimeline.ts",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "angular/21/SafeRenderer.ts",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "angular/21/SafeDragDrop.ts",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "angular/21/SafeFlow.ts",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "angular/21/SafeHierarchy.ts",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "angular/21/SafeFunnel.ts",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "angular/21/SafeHeatmap.ts",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "angular/21/SafeScene.ts",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "angular/21/SafeChart.ts",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "angular/21/SafeCalendar.ts",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "angular/21/SafeSheet.ts",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "angular/21/SafeToggle.ts",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "angular/21/SafePicker.ts",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "angular/21/SafeStoryFlow.ts",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "angular/21/SafeChat.ts",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "angular/21/SafeCallout.ts",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "angular/21/SafeCard.ts",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "angular/21/SafeInput.ts",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "angular/21/SafeLayout.ts",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "angular/21/SafeTable.ts",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "angular/21/SafeMap.ts",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "angular/21/SafeNav.ts",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "angular/21/SafeColumns.ts",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "angular/21/SafeWeek.ts",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "angular/22/SafeGauge.ts",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "angular/22/SafeMetric.ts",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "angular/22/SafeTabs.ts",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "angular/22/SafeList.ts",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "angular/22/SafeButton.ts",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "angular/22/SafeGrid.ts",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "angular/22/SafeTree.ts",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "angular/22/SafeTimeline.ts",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "angular/22/SafeRenderer.ts",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "angular/22/SafeDragDrop.ts",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "angular/22/SafeFlow.ts",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "angular/22/SafeHierarchy.ts",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "angular/22/SafeFunnel.ts",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "angular/22/SafeHeatmap.ts",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "angular/22/SafeScene.ts",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "angular/22/SafeChart.ts",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "angular/22/SafeCalendar.ts",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "angular/22/SafeSheet.ts",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "angular/22/SafeToggle.ts",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "angular/22/SafePicker.ts",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "angular/22/SafeStoryFlow.ts",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "angular/22/SafeChat.ts",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "angular/22/SafeCallout.ts",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "angular/22/SafeCard.ts",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "angular/22/SafeInput.ts",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "angular/22/SafeLayout.ts",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "angular/22/SafeTable.ts",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "angular/22/SafeMap.ts",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "angular/22/SafeNav.ts",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "angular/22/SafeColumns.ts",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "angular/22/SafeWeek.ts",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "svelte/4/SafeList.svelte",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "svelte/4/SafeCallout.svelte",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "svelte/4/SafeChat.svelte",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "svelte/4/SafePicker.svelte",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "svelte/4/SafeTimeline.svelte",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "svelte/4/SafeGrid.svelte",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "svelte/4/SafeChart.svelte",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "svelte/4/SafeCalendar.svelte",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "svelte/4/SafeTable.svelte",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "svelte/4/SafeFlow.svelte",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "svelte/4/SafeInput.svelte",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "svelte/4/SafeWeek.svelte",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "svelte/4/SafeToggle.svelte",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "svelte/4/SafeHeatmap.svelte",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "svelte/4/SafeButton.svelte",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "svelte/4/SafeColumns.svelte",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "svelte/4/SafeSheet.svelte",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "svelte/4/SafeNav.svelte",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "svelte/4/SafeTree.svelte",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "svelte/4/SafeCard.svelte",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "svelte/4/SafeHierarchy.svelte",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "svelte/4/SafeMap.svelte",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "svelte/4/SafeStoryFlow.svelte",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "svelte/4/SafeTabs.svelte",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "svelte/4/SafeLayout.svelte",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "svelte/4/SafeMetric.svelte",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "svelte/4/SafeFunnel.svelte",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "svelte/4/SafeRenderer.svelte",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "svelte/4/SafeDragDrop.svelte",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "svelte/4/SafeGauge.svelte",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "svelte/4/SafeScene.svelte",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "svelte/5/SafeList.svelte",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "svelte/5/SafeCallout.svelte",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "svelte/5/SafeChat.svelte",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "svelte/5/SafePicker.svelte",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "svelte/5/SafeTimeline.svelte",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "svelte/5/SafeGrid.svelte",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "svelte/5/SafeChart.svelte",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "svelte/5/SafeCalendar.svelte",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "svelte/5/SafeTable.svelte",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "svelte/5/SafeFlow.svelte",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "svelte/5/SafeInput.svelte",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "svelte/5/SafeWeek.svelte",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "svelte/5/SafeToggle.svelte",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "svelte/5/SafeHeatmap.svelte",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "svelte/5/SafeButton.svelte",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "svelte/5/SafeColumns.svelte",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "svelte/5/SafeSheet.svelte",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "svelte/5/SafeNav.svelte",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "svelte/5/SafeTree.svelte",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "svelte/5/SafeCard.svelte",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "svelte/5/SafeHierarchy.svelte",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "svelte/5/SafeMap.svelte",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "svelte/5/SafeStoryFlow.svelte",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "svelte/5/SafeTabs.svelte",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "svelte/5/SafeLayout.svelte",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "svelte/5/SafeMetric.svelte",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "svelte/5/SafeFunnel.svelte",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "svelte/5/SafeRenderer.svelte",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "svelte/5/SafeDragDrop.svelte",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "svelte/5/SafeGauge.svelte",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "svelte/5/SafeScene.svelte",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "vue/2/SafeCallout.vue",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "vue/2/SafeDragDrop.vue",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "vue/2/SafePicker.vue",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "vue/2/SafeFlow.vue",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "vue/2/SafeChat.vue",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "vue/2/SafeChart.vue",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "vue/2/SafeSheet.vue",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "vue/2/SafeLayout.vue",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "vue/2/SafeHeatmap.vue",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "vue/2/SafeRenderer.ts",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "vue/2/SafeToggle.vue",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "vue/2/SafeButton.vue",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "vue/2/SafeStoryFlow.vue",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "vue/2/SafeCalendar.vue",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "vue/2/SafeTimeline.vue",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "vue/2/SafeTree.vue",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "vue/2/SafeGauge.vue",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "vue/2/SafeInput.vue",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "vue/2/SafeColumns.vue",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "vue/2/SafeMap.vue",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "vue/2/SafeFunnel.vue",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "vue/2/SafeHierarchy.vue",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "vue/2/SafeScene.vue",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "vue/2/SafeTable.vue",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "vue/2/SafeGrid.vue",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "vue/2/SafeList.vue",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "vue/2/SafeCard.vue",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "vue/2/SafeNav.vue",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "vue/2/SafeTabs.vue",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "vue/2/SafeWeek.vue",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "vue/2/SafeMetric.vue",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "vue/3/SafeCallout.vue",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "vue/3/SafeDragDrop.vue",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "vue/3/SafePicker.vue",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "vue/3/SafeFlow.vue",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "vue/3/SafeChat.vue",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "vue/3/SafeChart.vue",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "vue/3/SafeSheet.vue",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "vue/3/SafeLayout.vue",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "vue/3/SafeHeatmap.vue",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "vue/3/SafeToggle.vue",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "vue/3/SafeButton.vue",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "vue/3/SafeStoryFlow.vue",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "vue/3/SafeCalendar.vue",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "vue/3/SafeTimeline.vue",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "vue/3/SafeTree.vue",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "vue/3/SafeGauge.vue",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "vue/3/SafeInput.vue",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "vue/3/SafeColumns.vue",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "vue/3/SafeMap.vue",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "vue/3/SafeFunnel.vue",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "vue/3/SafeHierarchy.vue",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "vue/3/SafeScene.vue",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "vue/3/SafeTable.vue",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "vue/3/SafeGrid.vue",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "vue/3/SafeList.vue",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "vue/3/SafeCard.vue",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "vue/3/SafeNav.vue",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "vue/3/SafeTabs.vue",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "vue/3/SafeWeek.vue",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "vue/3/SafeRenderer.vue",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "vue/3/SafeMetric.vue",
+      "status": "pass"
+    }
+  ],
+  "failures": []
+}

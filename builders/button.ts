@@ -46,6 +46,7 @@ function buildSingleButton(config: ConfigBase, ctx: SafeFireContext): HTMLElemen
     btn.onclick = () => {
         if (disabled || loading) return;
         ctx.fire(eventName, null); // config-driven name; validated by prove build
+        ctx.fire('click', {});
     };
 
     if (loading) btn.appendChild(elAttrs("span", { "data-role": "spinner" }));

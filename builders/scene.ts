@@ -35,6 +35,25 @@ export function createSafeScene(
         }
     }
 
+    // Fire scene-level events via delegated DOM handlers
+    root.addEventListener('click', (e) => {
+        const target = (e.target as HTMLElement).closest('[data-action]') as HTMLElement | null;
+        if (!target) return;
+        const action = target.getAttribute('data-action');
+        if (action === 'select') {
+            ctx.fire('select', { data: { ...target.dataset } });
+        } else if (action === 'back') {
+            ctx.fire('back', {});
+        }
+    });
+
+    root.addEventListener('input', (e) => {
+        const target = e.target as HTMLElement;
+        if (target.matches('[data-action="filter"]')) {
+            ctx.fire('filter', { query: (target as HTMLInputElement).value });
+        }
+    });
+
     container.appendChild(root);
     return root;
 }

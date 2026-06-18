@@ -110,6 +110,7 @@ export function createSafePicker(container: HTMLElement, config: ConfigBase, ctx
         input.autofocus = true;
         input.addEventListener("input", () => {
             search = input.value;
+            ctx.fire("search", { query: input.value });
             renderResults();
         });
         form.appendChild(input);

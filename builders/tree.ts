@@ -63,9 +63,13 @@ export function createSafeTree(container: HTMLElement, config: ConfigBase, ctx: 
     applyPaintState(root, metadata, "tree");
 
     const handleToggle = (id: string) => {
-        if (expanded.has(id)) expanded.delete(id);
-        else expanded.add(id);
-        ctx.fire("expand", { id });
+        if (expanded.has(id)) {
+            expanded.delete(id);
+            ctx.fire("collapse", { id });
+        } else {
+            expanded.add(id);
+            ctx.fire("expand", { id });
+        }
         render();
     };
 
