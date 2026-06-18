@@ -1,0 +1,17 @@
+{
+  "id": "calendar-0007",
+  "component": "calendar",
+  "type": "variation",
+  "title": "we have a figma specification (calendar variation) that list months horizontally and displays a full year. create this new calendar variation",
+  "description": "we have a figma specification (calendar variation) that list months horizontally and displays a full year. create this new calendar variation",
+  "status": "open",
+  "proves": [
+    "builder-reconcile",
+    "paint-definition"
+  ],
+  "params": {
+    "component": "calendar"
+  },
+  "created": "2026-06-18T15:30:43.399Z",
+  "updated": "2026-06-18T15:30:43.399Z"
+}

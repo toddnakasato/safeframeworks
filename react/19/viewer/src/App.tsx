@@ -96,7 +96,7 @@ export default function App() {
   }, [activeStyle, activeTheme]);
 
   // Load tickets on mount
-  const refreshTickets = useCallback(() => { listAllTickets().then(setTickets).catch(() => {}); }, []);
+  const refreshTickets = useCallback(() => { listAllTickets().then(t => { console.log("[tickets] loaded", t.length); setTickets(t); }).catch(e => console.error("[tickets] load failed", e)); }, []);
   useEffect(() => { refreshTickets(); }, []);
 
   // EPRPP: start file watcher + listen for changes
