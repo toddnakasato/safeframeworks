@@ -54,12 +54,18 @@ for (const k of Object.keys(THEMES)) THEMES[k].sort((a, b) => a === "default" ? 
 /** Load a safestyles implementation + theme dynamically. */
 function loadStyle(name: string, theme: string) {
   document.getElementById("safestyle-link")?.remove();
+  document.getElementById("safestyle-paint")?.remove();
   document.getElementById("safestyle-theme")?.remove();
   const link = document.createElement("link");
   link.id = "safestyle-link";
   link.rel = "stylesheet";
   link.href = `/styles/${name}/components.css`;
   document.head.appendChild(link);
+  const paintLink = document.createElement("link");
+  paintLink.id = "safestyle-paint";
+  paintLink.rel = "stylesheet";
+  paintLink.href = `/styles/${name}/paint.css`;
+  document.head.appendChild(paintLink);
   const themeLink = document.createElement("link");
   themeLink.id = "safestyle-theme";
   themeLink.rel = "stylesheet";
