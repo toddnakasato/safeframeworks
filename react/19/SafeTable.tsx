@@ -13,10 +13,11 @@ export function SafeTable({ config, onEvent }: SafeTableProps) {
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
+    container.innerHTML = "";
     const root = buildComponent(config, onEvent);
     container.appendChild(root);
     return () => { root.remove(); };
-  }, [config]);
+  }, [config, onEvent]);
 
   return <div ref={containerRef} />;
 }

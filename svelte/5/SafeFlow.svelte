@@ -3,16 +3,14 @@
   import { buildComponent } from '../../utils/render';
 
   let { config, onEvent }: { config: ConfigBase; onEvent?: OnSafeEvent } = $props();
-
-  let svg: SVGSVGElement;
+  let container: HTMLElement;
+  let root: HTMLElement | null = null;
 
   $effect(() => {
-    svg.innerHTML = '';
-    createSafeFlow(svg, config, flowData(config), onEvent);
+    container.innerHTML = '';
+    root = buildComponent(config, onEvent);
+    container.appendChild(root);
+    return () => { root?.remove(); root = null; };
   });
 </script>
-
-<div>
-  {#if config.metadata.title}<div data-role="title">{config.metadata.title}</div>{/if}
-  <svg bind:this={svg} data-flow-svg></svg>
-</div>
+<div bind:this={container}></div>

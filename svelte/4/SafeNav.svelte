@@ -1,26 +1,17 @@
 <script lang="ts">
-  import { onDestroy } from 'svelte';
-  import { afterUpdate } from 'svelte';
   import type { ConfigBase, OnSafeEvent } from 'safecontracts';
   import { buildComponent } from '../../utils/render';
+  import { onMount, onDestroy } from 'svelte';
 
   export let config: ConfigBase;
   export let onEvent: OnSafeEvent | undefined = undefined;
-
   let container: HTMLElement;
   let root: HTMLElement | null = null;
 
-  afterUpdate(() => {
-    root?.remove();
-    container.innerHTML = '';
+  onMount(() => {
     root = buildComponent(config, onEvent);
     container.appendChild(root);
   });
-
-  onDestroy(() => {
-    root?.remove();
-    root = null;
-  });
+  onDestroy(() => { root?.remove(); root = null; });
 </script>
-
-<div bind:this={container} data-nav-host></div>
+<div bind:this={container}></div>

@@ -13,7 +13,9 @@ export function SafeButton({ config, onEvent }: SafeButtonProps) {
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
-    const root = createSafeButton(container, config, onEvent);
+    container.innerHTML = "";
+    const root = buildComponent(config, onEvent);
+    container.appendChild(root);
     return () => { root.remove(); };
   }, [config, onEvent]);
 

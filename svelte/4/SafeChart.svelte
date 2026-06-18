@@ -1,34 +1,17 @@
 <script lang="ts">
-  import { onDestroy } from 'svelte';
-  import { afterUpdate } from 'svelte';
-  import type { Chart } from 'chart.js';
   import type { ConfigBase, OnSafeEvent } from 'safecontracts';
   import { buildComponent } from '../../utils/render';
+  import { onMount, onDestroy } from 'svelte';
 
   export let config: ConfigBase;
   export let onEvent: OnSafeEvent | undefined = undefined;
+  let container: HTMLElement;
+  let root: HTMLElement | null = null;
 
-  let canvas: HTMLCanvasElement;
-  let chart: Chart | null = null;
-
-  afterUpdate(() => {
-    chart?.destroy();
-    chart = createSafeChart(canvas, config, onEvent);
+  onMount(() => {
+    root = buildComponent(config, onEvent);
+    container.appendChild(root);
   });
-
-  onDestroy(() => {
-    chart?.destroy();
-    chart = null;
-  });
+  onDestroy(() => { root?.remove(); root = null; });
 </script>
-
-<div
-  data-component="chart"
-  data-variant={config.metadata.variant}
-  data-chart-type={config.metadata.chartType}
->
-  <div data-role="title">{config.metadata.title || "Chart"}</div>
-  <div data-chart-area>
-    <canvas bind:this={canvas}></canvas>
-  </div>
-</div>
+<div bind:this={container}></div>

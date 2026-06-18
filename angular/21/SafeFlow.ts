@@ -1,21 +1,18 @@
-import { Component, Input, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, Input, ElementRef, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
 import { buildComponent } from '../../utils/render';
 
-@Component({
-  selector: 'safe-flow',
-  standalone: true,
-  template: `
-    <div data-role="title">{{ config.metadata.title || '' }}</div>
-    <svg #flowSvg data-flow-svg></svg>
-  `
-})
-export class SafeFlowComponent implements AfterViewInit {
+@Component({ selector: 'safe-flow', standalone: true, template: `<div #flowContainer></div>` })
+export class SafeFlowComponent implements AfterViewInit, OnDestroy {
   @Input() config!: ConfigBase;
   @Input() onEvent?: OnSafeEvent;
-  @ViewChild('flowSvg') svgRef!: ElementRef<SVGSVGElement>;
+  @ViewChild('flowContainer') containerRef!: ElementRef<HTMLElement>;
+  private root: HTMLElement | null = null;
 
   ngAfterViewInit() {
-    createSafeFlow(this.svgRef.nativeElement, this.config, flowData(this.config), this.onEvent);
+    this.root = buildComponent(this.config, this.onEvent);
+    this.containerRef.nativeElement.appendChild(this.root);
   }
+
+  ngOnDestroy() { this.root?.remove(); this.root = null; }
 }

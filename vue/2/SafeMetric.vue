@@ -1,26 +1,16 @@
-<script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount } from 'vue';
-import type { ConfigBase, OnSafeEvent } from 'safecontracts';
+<script lang="ts">
 import { buildComponent } from '../../utils/render';
 
-const props = defineProps<{ config: ConfigBase; onEvent?: OnSafeEvent }>();
-const containerRef = ref<HTMLElement | null>(null);
-let root: HTMLElement | null = null;
-
-onMounted(() => {
-  if (containerRef.value) {
-    root = buildComponent(props.config, props.onEvent);
-    containerRef.value.appendChild(root);
-  }
-});
-
-onBeforeUnmount(() => {
-  root?.remove();
-  root = null;
-  }
-});
+export default {
+  name: 'SafeMetric',
+  props: { config: { type: Object, required: true }, onEvent: { type: Function, default: undefined } },
+  data() { return { root: null as HTMLElement | null }; },
+  mounted() {
+    const el = this.$refs.container as HTMLElement;
+    this.root = buildComponent(this.config, this.onEvent);
+    el.appendChild(this.root);
+  },
+  beforeDestroy() { this.root?.remove(); this.root = null; },
+};
 </script>
-
-<template>
-  <div ref="containerRef"></div>
-</template>
+<template><div ref="container"></div></template>

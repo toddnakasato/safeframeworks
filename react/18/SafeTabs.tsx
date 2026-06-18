@@ -13,7 +13,9 @@ export function SafeTabs({ config, onEvent }: SafeTabsProps) {
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
-    const root = createSafeTabs(container, config, onEvent);
+    container.innerHTML = "";
+    const root = buildComponent(config, onEvent);
+    container.appendChild(root);
     return () => { root.remove(); };
   }, [config, onEvent]);
 

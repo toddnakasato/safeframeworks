@@ -13,7 +13,9 @@ export function SafeHeatmap({ config, onEvent }: SafeHeatmapProps) {
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
-    const root = createSafeHeatmap(container, config, onEvent);
+    container.innerHTML = "";
+    const root = buildComponent(config, onEvent);
+    container.appendChild(root);
     return () => { root.remove(); };
   }, [config, onEvent]);
 

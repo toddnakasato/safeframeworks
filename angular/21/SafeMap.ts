@@ -1,31 +1,18 @@
 import { Component, Input, ElementRef, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
-import type * as L from 'leaflet';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
 import { buildComponent } from '../../utils/render';
 
-@Component({
-  selector: 'safe-map',
-  standalone: true,
-  template: `
-    <div #mapContainer data-map-container></div>
-  `,
-  host: {
-    '[attr.data-component]': "'map'",
-    '[attr.data-variant]': 'config.metadata.variant'
-  }
-})
+@Component({ selector: 'safe-map', standalone: true, template: `<div #mapContainer></div>` })
 export class SafeMapComponent implements AfterViewInit, OnDestroy {
   @Input() config!: ConfigBase;
   @Input() onEvent?: OnSafeEvent;
   @ViewChild('mapContainer') containerRef!: ElementRef<HTMLElement>;
-  private map: L.Map | null = null;
+  private root: HTMLElement | null = null;
 
   ngAfterViewInit() {
-    this.map = createSafeMap(this.containerRef.nativeElement, this.config, mapData(this.config), this.onEvent);
+    this.root = buildComponent(this.config, this.onEvent);
+    this.containerRef.nativeElement.appendChild(this.root);
   }
 
-  ngOnDestroy() {
-    this.map?.remove();
-    this.map = null;
-  }
+  ngOnDestroy() { this.root?.remove(); this.root = null; }
 }

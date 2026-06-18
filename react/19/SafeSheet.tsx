@@ -1,30 +1,11 @@
-import { useEffect, useRef } from "react";
+import { useRef, useEffect } from "react";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
 import { buildComponent } from "../../utils/render";
 
-/*----------------------------------------------------------------------------------------------------
- *
- * Properties
- *
- ----------------------------------------------------------------------------------------------------*/
-
 interface SafeSheetProps {
   config: ConfigBase;
-  data?: any[][];
   onEvent?: OnSafeEvent;
 }
-
-/*----------------------------------------------------------------------------------------------------
- *
- * Helpers
- *
- ----------------------------------------------------------------------------------------------------*/
-
-/*----------------------------------------------------------------------------------------------------
- *
- * Implementation
- *
- ----------------------------------------------------------------------------------------------------*/
 
 export function SafeSheet({ config, onEvent }: SafeSheetProps) {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -32,6 +13,7 @@ export function SafeSheet({ config, onEvent }: SafeSheetProps) {
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
+    container.innerHTML = "";
     const root = buildComponent(config, onEvent);
     container.appendChild(root);
     return () => { root.remove(); };

@@ -13,6 +13,7 @@ export function SafeWeek({ config, onEvent }: SafeWeekProps) {
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
+    container.innerHTML = "";
     const root = buildComponent(config, onEvent);
     container.appendChild(root);
     return () => { root.remove(); };

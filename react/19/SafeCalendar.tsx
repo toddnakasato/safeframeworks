@@ -13,6 +13,7 @@ export function SafeCalendar({ config, onEvent }: SafeCalendarProps) {
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
+    container.innerHTML = "";
     const root = buildComponent(config, onEvent);
     container.appendChild(root);
     return () => { root.remove(); };

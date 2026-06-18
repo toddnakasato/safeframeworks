@@ -1,57 +1,23 @@
-import { useEffect, useRef } from "react";
-import type { Chart } from "chart.js";
+import { useRef, useEffect } from "react";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
 import { buildComponent } from "../../utils/render";
 
-/*----------------------------------------------------------------------------------------------------
- *
- * Properties
- *
- ----------------------------------------------------------------------------------------------------*/
-
-export interface SafeChartProps {
+interface SafeChartProps {
   config: ConfigBase;
-  data: Record<string, any>[];
   onEvent?: OnSafeEvent;
 }
 
-/*----------------------------------------------------------------------------------------------------
- *
- * Helpers
- *
- ----------------------------------------------------------------------------------------------------*/
-
-/*----------------------------------------------------------------------------------------------------
- *
- * Implementation
- *
- ----------------------------------------------------------------------------------------------------*/
-
-export function SafeChart({ config, data, onEvent }: SafeChartProps) {
-  const { metadata } = config;
-  const variant = (metadata.variant as string) ?? "default";
-
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const chartRef = useRef<Chart | null>(null);
+export function SafeChart({ config, onEvent }: SafeChartProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!canvasRef.current) return;
-    const resolved: ConfigBase = data?.length
-      ? { ...config, data: { values: { name: "values", type: "list", source: "inline", schema: { fields: [] }, inline: data } } }
-      : config;
-    chartRef.current = createSafeChart(canvasRef.current, resolved, onEvent);
-    return () => {
-      chartRef.current?.destroy();
-      chartRef.current = null;
-    };
-  }, [config, data, onEvent]);
+    const container = containerRef.current;
+    if (!container) return;
+    container.innerHTML = "";
+    const root = buildComponent(config, onEvent);
+    container.appendChild(root);
+    return () => { root.remove(); };
+  }, [config, onEvent]);
 
-  return (
-    <div data-component="chart" data-variant={variant} data-chart-type={metadata.chartType}>
-      {metadata.title && <div data-role="title">{metadata.title as string}</div>}
-      <div data-chart-area>
-        <canvas ref={canvasRef} />
-      </div>
-    </div>
-  );
+  return <div ref={containerRef} />;
 }

@@ -1,36 +1,16 @@
-<script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount } from 'vue';
-import type { Chart } from 'chart.js';
-import type { ConfigBase, OnSafeEvent } from 'safecontracts';
+<script lang="ts">
 import { buildComponent } from '../../utils/render';
 
-const props = defineProps<{ config: ConfigBase; onEvent?: OnSafeEvent }>();
-
-const canvasRef = ref<HTMLCanvasElement | null>(null);
-let chart: Chart | null = null;
-
-onMounted(() => {
-  if (canvasRef.value) {
-    const _ctx = createSafeFireContext(props.config, props.onEvent, buildPayloadViaCli);
-    chart = createSafeChart(canvasRef.value, props.config, _ctx);
-  }
-});
-
-onBeforeUnmount(() => {
-  chart?.destroy();
-  chart = null;
-});
+export default {
+  name: 'SafeChart',
+  props: { config: { type: Object, required: true }, onEvent: { type: Function, default: undefined } },
+  data() { return { root: null as HTMLElement | null }; },
+  mounted() {
+    const el = this.$refs.container as HTMLElement;
+    this.root = buildComponent(this.config, this.onEvent);
+    el.appendChild(this.root);
+  },
+  beforeDestroy() { this.root?.remove(); this.root = null; },
+};
 </script>
-
-<template>
-  <div
-    data-component="chart"
-    :data-variant="config.metadata.variant"
-    :data-chart-type="config.metadata.chartType"
-  >
-    <div data-role="title">{{ config.metadata.title || "Chart" }}</div>
-    <div data-chart-area>
-      <canvas ref="canvasRef"></canvas>
-    </div>
-  </div>
-</template>
+<template><div ref="container"></div></template>

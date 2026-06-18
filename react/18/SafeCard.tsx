@@ -13,7 +13,9 @@ export function SafeCard({ config, onEvent }: SafeCardProps) {
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
-    const root = createSafeCard(container, config, onEvent);
+    container.innerHTML = "";
+    const root = buildComponent(config, onEvent);
+    container.appendChild(root);
     return () => { root.remove(); };
   }, [config, onEvent]);
 

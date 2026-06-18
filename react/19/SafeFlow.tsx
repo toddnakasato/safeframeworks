@@ -2,43 +2,22 @@ import { useRef, useEffect } from "react";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
 import { buildComponent } from "../../utils/render";
 
-/*----------------------------------------------------------------------------------------------------
- *
- * Properties
- *
- ----------------------------------------------------------------------------------------------------*/
-
 interface SafeFlowProps {
   config: ConfigBase;
   onEvent?: OnSafeEvent;
 }
 
-/*----------------------------------------------------------------------------------------------------
- *
- * Helpers
- *
- ----------------------------------------------------------------------------------------------------*/
-
-/*----------------------------------------------------------------------------------------------------
- *
- * Implementation
- *
- ----------------------------------------------------------------------------------------------------*/
-
 export function SafeFlow({ config, onEvent }: SafeFlowProps) {
-  const { metadata } = config;
-  const svgRef = useRef<SVGSVGElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!svgRef.current) return;
+    const container = containerRef.current;
+    if (!container) return;
+    container.innerHTML = "";
     const root = buildComponent(config, onEvent);
     container.appendChild(root);
+    return () => { root.remove(); };
   }, [config, onEvent]);
 
-  return (
-    <div>
-      {metadata.title != null && <div data-role="title">{metadata.title as string}</div>}
-      <svg ref={svgRef} data-flow-svg />
-    </div>
-  );
+  return <div ref={containerRef} />;
 }

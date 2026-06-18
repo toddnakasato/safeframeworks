@@ -9,17 +9,10 @@ let root: HTMLElement | null = null;
 
 onMounted(() => {
   if (containerRef.value) {
-    const _ctx = createSafeFireContext(props.config, props.onEvent, buildPayloadViaCli);
-    createSafeFlow(containerRef.value, props.config, flowData(props.config), _ctx);
+    root = buildComponent(props.config, props.onEvent);
+    containerRef.value.appendChild(root);
   }
 });
-
-onBeforeUnmount(() => {
-  root?.remove();
-  root = null;
-});
+onBeforeUnmount(() => { root?.remove(); root = null; });
 </script>
-
-<template>
-  <div ref="containerRef"></div>
-</template>
+<template><div ref="containerRef"></div></template>

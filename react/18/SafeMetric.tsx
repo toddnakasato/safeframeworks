@@ -4,22 +4,20 @@ import { buildComponent } from "../../utils/render";
 
 interface SafeMetricProps {
   config: ConfigBase;
-  data: Record<string, any>;
   onEvent?: OnSafeEvent;
 }
 
-export function SafeMetric({ config, data, onEvent }: SafeMetricProps) {
+export function SafeMetric({ config, onEvent }: SafeMetricProps) {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
-    const resolved: ConfigBase = data
-      ? { ...config, data: { record: { name: "record", type: "record" as const, source: "inline" as const, schema: { fields: [] }, inline: data } } }
-      : config;
-    const root = createSafeMetric(container, resolved, onEvent);
+    container.innerHTML = "";
+    const root = buildComponent(config, onEvent);
+    container.appendChild(root);
     return () => { root.remove(); };
-  }, [config, data, onEvent]);
+  }, [config, onEvent]);
 
   return <div ref={containerRef} />;
 }

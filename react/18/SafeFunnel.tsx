@@ -4,22 +4,20 @@ import { buildComponent } from "../../utils/render";
 
 interface SafeFunnelProps {
   config: ConfigBase;
-  data: Record<string, any>[];
   onEvent?: OnSafeEvent;
 }
 
-export function SafeFunnel({ config, data, onEvent }: SafeFunnelProps) {
+export function SafeFunnel({ config, onEvent }: SafeFunnelProps) {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
-    const resolved: ConfigBase = data?.length
-      ? { ...config, data: { [Object.keys(config.data ?? {})[0] ?? "items"]: { name: "items", type: "list" as const, source: "inline" as const, schema: { fields: [] }, inline: data } } }
-      : config;
-    const root = createSafeFunnel(container, resolved, onEvent);
+    container.innerHTML = "";
+    const root = buildComponent(config, onEvent);
+    container.appendChild(root);
     return () => { root.remove(); };
-  }, [config, data, onEvent]);
+  }, [config, onEvent]);
 
   return <div ref={containerRef} />;
 }

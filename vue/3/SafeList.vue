@@ -13,13 +13,6 @@ onMounted(() => {
     containerRef.value.appendChild(root);
   }
 });
-
-onBeforeUnmount(() => {
-  root?.remove();
-  root = null;
-});
+onBeforeUnmount(() => { root?.remove(); root = null; });
 </script>
-
-<template>
-  <div ref="containerRef"></div>
-</template>
+<template><div ref="containerRef"></div></template>

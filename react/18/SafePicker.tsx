@@ -13,7 +13,9 @@ export function SafePicker({ config, onEvent }: SafePickerProps) {
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
-    const root = createSafePicker(container, config, onEvent);
+    container.innerHTML = "";
+    const root = buildComponent(config, onEvent);
+    container.appendChild(root);
     return () => { root.remove(); };
   }, [config, onEvent]);
 

@@ -7,15 +7,17 @@ interface SafeColumnsProps {
   onEvent?: OnSafeEvent;
 }
 
-export function SafeColumns({ config }: SafeColumnsProps) {
+export function SafeColumns({ config, onEvent }: SafeColumnsProps) {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
-    const root = createSafeColumns(container, config);
+    container.innerHTML = "";
+    const root = buildComponent(config, onEvent);
+    container.appendChild(root);
     return () => { root.remove(); };
-  }, [config]);
+  }, [config, onEvent]);
 
   return <div ref={containerRef} />;
 }

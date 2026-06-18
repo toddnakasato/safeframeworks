@@ -7,15 +7,17 @@ interface SafeCalloutProps {
   onEvent?: OnSafeEvent;
 }
 
-export function SafeCallout({ config }: SafeCalloutProps) {
+export function SafeCallout({ config, onEvent }: SafeCalloutProps) {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
-    const root = createSafeCallout(container, config);
+    container.innerHTML = "";
+    const root = buildComponent(config, onEvent);
+    container.appendChild(root);
     return () => { root.remove(); };
-  }, [config]);
+  }, [config, onEvent]);
 
   return <div ref={containerRef} />;
 }

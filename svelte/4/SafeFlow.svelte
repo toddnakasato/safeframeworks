@@ -1,20 +1,17 @@
 <script lang="ts">
-  import { afterUpdate } from 'svelte';
   import type { ConfigBase, OnSafeEvent } from 'safecontracts';
   import { buildComponent } from '../../utils/render';
+  import { onMount, onDestroy } from 'svelte';
 
   export let config: ConfigBase;
   export let onEvent: OnSafeEvent | undefined = undefined;
+  let container: HTMLElement;
+  let root: HTMLElement | null = null;
 
-  let svg: SVGSVGElement;
-
-  afterUpdate(() => {
-    svg.innerHTML = '';
-    createSafeFlow(svg, config, flowData(config), onEvent);
+  onMount(() => {
+    root = buildComponent(config, onEvent);
+    container.appendChild(root);
   });
+  onDestroy(() => { root?.remove(); root = null; });
 </script>
-
-<div>
-  {#if config.metadata.title}<div data-role="title">{config.metadata.title}</div>{/if}
-  <svg bind:this={svg} data-flow-svg></svg>
-</div>
+<div bind:this={container}></div>

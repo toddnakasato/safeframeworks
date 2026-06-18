@@ -3,7 +3,6 @@
   import { buildComponent } from '../../utils/render';
 
   let { config, onEvent }: { config: ConfigBase; onEvent?: OnSafeEvent } = $props();
-
   let container: HTMLElement;
   let root: HTMLElement | null = null;
 
@@ -14,5 +13,4 @@
     return () => { root?.remove(); root = null; };
   });
 </script>
-
-<div bind:this={container} data-nav-host></div>
+<div bind:this={container}></div>
