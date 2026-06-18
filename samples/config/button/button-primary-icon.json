@@ -2,7 +2,7 @@
   "component": "button",
   "metadata": {
     "variant": "primary",
-    "label": "\ud83d\udcbe Save Changes",
+    "label": "Save Changes",
     "icon": "save",
     "iconPosition": "left",
     "size": "md"
