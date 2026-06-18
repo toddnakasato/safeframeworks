@@ -345,7 +345,7 @@ export default function App() {
             {(() => {
               const filtered = ticketView === "open"
                 ? tickets.filter(t => t.status === "open" || t.status === "in-progress")
-                : tickets.filter(t => t.status === "closed" || t.status === "proved");
+                : tickets.filter(t => t.status === "closed" || t.status === "proved").sort((a, b) => b.updated.localeCompare(a.updated));
               if (filtered.length === 0) return <div style={{ color: "var(--sd-text-muted, #6b7280)", fontSize: 13 }}>No {ticketView} tickets.</div>;
               return filtered.map(t => (
                 <div key={t.id} style={{ border: "1px solid var(--sd-border, #e5e7eb)", borderRadius: 6, overflow: "hidden" }}>
