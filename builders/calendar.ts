@@ -44,7 +44,7 @@ export function createSafeCalendar(container: HTMLElement, config: ConfigBase, c
     };
 
     const fireSelect = (y: number, m: number, d: number) => {
-        ctx.fire("select", { year: y, month: m, day: d });
+        ctx.fire("select", { year: y, month: m, day: d, date: `${y}-${String(m).padStart(2, "0")}-${String(d).padStart(2, "0")}` });
     };
 
     function buildMonthGrid(year: number, month: number, gridSize: string, nav: boolean, gridDayFormat: string): HTMLElement {
