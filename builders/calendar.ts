@@ -139,11 +139,12 @@ export function createSafeCalendar(container: HTMLElement, config: ConfigBase, c
 
         if (variant === "year-horizontal") {
             root.setAttribute("data-variant", "year-horizontal");
-            const strip = el("div", "calendar-year-strip");
+            // Day-of-week header row
+            root.appendChild(buildFlatDayHeaders(37));
+            // 12 flat month rows — each month is one horizontal line
             for (let i = 0; i < 12; i++) {
-                strip.appendChild(buildMonthGrid(cfgYear, i, "sm", false, "narrow"));
+                root.appendChild(buildFlatMonth(cfgYear, i));
             }
-            root.appendChild(strip);
             return;
         }
 
