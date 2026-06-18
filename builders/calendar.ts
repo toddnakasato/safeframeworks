@@ -141,16 +141,20 @@ export function createSafeCalendar(container: HTMLElement, config: ConfigBase, c
             root.setAttribute("data-size", size);
             const month_ = buildMonthGrid(viewYear, viewMonth, size, false, dayFormat);
             while (month_.firstChild) root.appendChild(month_.firstChild);
-            // Bottom nav bar with prev/next month
+            // Bottom nav: mini calendar grids for prev/next month, each acts as a button
             const nav = el("div", "calendar-browse-nav");
-            const prevMonth = new Date(viewYear, viewMonth - 1, 1);
-            const nextMonth = new Date(viewYear, viewMonth + 1, 1);
-            const prevBtn = el("button", "calendar-browse-btn", `← ${MONTH_NAMES[prevMonth.getMonth()]} ${prevMonth.getFullYear()}`);
-            prevBtn.onclick = () => fireNavigate(-1);
-            const nextBtn = el("button", "calendar-browse-btn", `${MONTH_NAMES[nextMonth.getMonth()]} ${nextMonth.getFullYear()} →`);
-            nextBtn.onclick = () => fireNavigate(1);
-            nav.appendChild(prevBtn);
-            nav.appendChild(nextBtn);
+            const prevDate = new Date(viewYear, viewMonth - 1, 1);
+            const nextDate = new Date(viewYear, viewMonth + 1, 1);
+            const prevMini = buildMonthGrid(prevDate.getFullYear(), prevDate.getMonth(), "xs", false, "narrow");
+            prevMini.setAttribute("data-role", "calendar-browse-mini");
+            prevMini.setAttribute("data-dir", "prev");
+            prevMini.onclick = () => fireNavigate(-1);
+            const nextMini = buildMonthGrid(nextDate.getFullYear(), nextDate.getMonth(), "xs", false, "narrow");
+            nextMini.setAttribute("data-role", "calendar-browse-mini");
+            nextMini.setAttribute("data-dir", "next");
+            nextMini.onclick = () => fireNavigate(1);
+            nav.appendChild(prevMini);
+            nav.appendChild(nextMini);
             root.appendChild(nav);
             return;
         }
