@@ -1,10 +1,11 @@
 {
   "ok": true,
-  "total": 23,
-  "passed": 23,
+  "total": 55,
+  "passed": 55,
   "failed": 0,
   "groups": {
-    "no-opinionated-styles": 23
+    "no-opinionated-styles": 24,
+    "no-hardcoded-colors": 31
   },
   "checks": [
     {
@@ -120,6 +121,166 @@
     {
       "group": "no-opinionated-styles",
       "name": "toggle: no opinionated inline styles",
+      "status": "pass"
+    },
+    {
+      "group": "no-opinionated-styles",
+      "name": "dev/proof-viewer: no opinionated inline styles",
+      "status": "pass"
+    },
+    {
+      "group": "no-hardcoded-colors",
+      "name": "dev/proof-viewer: no hardcoded colors outside var(--sd-*)",
+      "status": "pass"
+    },
+    {
+      "group": "no-hardcoded-colors",
+      "name": "funnel: no hardcoded colors outside var(--sd-*)",
+      "status": "pass"
+    },
+    {
+      "group": "no-hardcoded-colors",
+      "name": "callout: no hardcoded colors outside var(--sd-*)",
+      "status": "pass"
+    },
+    {
+      "group": "no-hardcoded-colors",
+      "name": "week: no hardcoded colors outside var(--sd-*)",
+      "status": "pass"
+    },
+    {
+      "group": "no-hardcoded-colors",
+      "name": "table: no hardcoded colors outside var(--sd-*)",
+      "status": "pass"
+    },
+    {
+      "group": "no-hardcoded-colors",
+      "name": "nav: no hardcoded colors outside var(--sd-*)",
+      "status": "pass"
+    },
+    {
+      "group": "no-hardcoded-colors",
+      "name": "input: no hardcoded colors outside var(--sd-*)",
+      "status": "pass"
+    },
+    {
+      "group": "no-hardcoded-colors",
+      "name": "button: no hardcoded colors outside var(--sd-*)",
+      "status": "pass"
+    },
+    {
+      "group": "no-hardcoded-colors",
+      "name": "sheet: no hardcoded colors outside var(--sd-*)",
+      "status": "pass"
+    },
+    {
+      "group": "no-hardcoded-colors",
+      "name": "chat: no hardcoded colors outside var(--sd-*)",
+      "status": "pass"
+    },
+    {
+      "group": "no-hardcoded-colors",
+      "name": "columns: no hardcoded colors outside var(--sd-*)",
+      "status": "pass"
+    },
+    {
+      "group": "no-hardcoded-colors",
+      "name": "metric: no hardcoded colors outside var(--sd-*)",
+      "status": "pass"
+    },
+    {
+      "group": "no-hardcoded-colors",
+      "name": "storyflow: no hardcoded colors outside var(--sd-*)",
+      "status": "pass"
+    },
+    {
+      "group": "no-hardcoded-colors",
+      "name": "calendar: no hardcoded colors outside var(--sd-*)",
+      "status": "pass"
+    },
+    {
+      "group": "no-hardcoded-colors",
+      "name": "card: no hardcoded colors outside var(--sd-*)",
+      "status": "pass"
+    },
+    {
+      "group": "no-hardcoded-colors",
+      "name": "map: no hardcoded colors outside var(--sd-*)",
+      "status": "pass"
+    },
+    {
+      "group": "no-hardcoded-colors",
+      "name": "hierarchy: no hardcoded colors outside var(--sd-*)",
+      "status": "pass"
+    },
+    {
+      "group": "no-hardcoded-colors",
+      "name": "flow: no hardcoded colors outside var(--sd-*)",
+      "status": "pass"
+    },
+    {
+      "group": "no-hardcoded-colors",
+      "name": "chart: no hardcoded colors outside var(--sd-*)",
+      "status": "pass"
+    },
+    {
+      "group": "no-hardcoded-colors",
+      "name": "scene: no hardcoded colors outside var(--sd-*)",
+      "status": "pass"
+    },
+    {
+      "group": "no-hardcoded-colors",
+      "name": "dragdrop: no hardcoded colors outside var(--sd-*)",
+      "status": "pass"
+    },
+    {
+      "group": "no-hardcoded-colors",
+      "name": "layout: no hardcoded colors outside var(--sd-*)",
+      "status": "pass"
+    },
+    {
+      "group": "no-hardcoded-colors",
+      "name": "tabs: no hardcoded colors outside var(--sd-*)",
+      "status": "pass"
+    },
+    {
+      "group": "no-hardcoded-colors",
+      "name": "list: no hardcoded colors outside var(--sd-*)",
+      "status": "pass"
+    },
+    {
+      "group": "no-hardcoded-colors",
+      "name": "timeline: no hardcoded colors outside var(--sd-*)",
+      "status": "pass"
+    },
+    {
+      "group": "no-hardcoded-colors",
+      "name": "tree: no hardcoded colors outside var(--sd-*)",
+      "status": "pass"
+    },
+    {
+      "group": "no-hardcoded-colors",
+      "name": "gauge: no hardcoded colors outside var(--sd-*)",
+      "status": "pass"
+    },
+    {
+      "group": "no-hardcoded-colors",
+      "name": "picker: no hardcoded colors outside var(--sd-*)",
+      "status": "pass"
+    },
+    {
+      "group": "no-hardcoded-colors",
+      "name": "grid: no hardcoded colors outside var(--sd-*)",
+      "status": "pass"
+    },
+    {
+      "group": "no-hardcoded-colors",
+      "name": "heatmap: no hardcoded colors outside var(--sd-*)",
+      "status": "pass"
+    },
+    {
+      "group": "no-hardcoded-colors",
+      "name": "toggle: no hardcoded colors outside var(--sd-*)",
       "status": "pass"
     }
   ],
