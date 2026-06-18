@@ -1,8 +1,8 @@
 {
   "ok": true,
   "component": "all",
-  "total": 681,
-  "passed": 681,
+  "total": 686,
+  "passed": 686,
   "failed": 0,
   "groups": {
     "uses-readList-or-readRecord": 19,
@@ -10,6 +10,7 @@
     "uses-applyIntent": 21,
     "uses-applyPaintState": 15,
     "has-data-component": 29,
+    "no-schema-dot-fields": 5,
     "imports-match-calls": 67,
     "metadata-is-declared": 21,
     "required-metadata-fields": 12,
@@ -252,6 +253,11 @@
     {
       "group": "has-data-component",
       "name": "table: sets data-component",
+      "status": "pass"
+    },
+    {
+      "group": "no-schema-dot-fields",
+      "name": "table: no schema.fields after readSchema",
       "status": "pass"
     },
     {
@@ -880,6 +886,11 @@
       "status": "pass"
     },
     {
+      "group": "no-schema-dot-fields",
+      "name": "card: no schema.fields after readSchema",
+      "status": "pass"
+    },
+    {
       "group": "imports-match-calls",
       "name": "card: imports readList",
       "status": "pass"
@@ -1425,6 +1436,11 @@
       "status": "pass"
     },
     {
+      "group": "no-schema-dot-fields",
+      "name": "list: no schema.fields after readSchema",
+      "status": "pass"
+    },
+    {
       "group": "imports-match-calls",
       "name": "list: imports readList",
       "status": "pass"
@@ -1750,6 +1766,11 @@
       "status": "pass"
     },
     {
+      "group": "no-schema-dot-fields",
+      "name": "picker: no schema.fields after readSchema",
+      "status": "pass"
+    },
+    {
       "group": "imports-match-calls",
       "name": "picker: imports readList",
       "status": "pass"
@@ -1822,6 +1843,11 @@
     {
       "group": "has-data-component",
       "name": "grid: sets data-component",
+      "status": "pass"
+    },
+    {
+      "group": "no-schema-dot-fields",
+      "name": "grid: no schema.fields after readSchema",
       "status": "pass"
     },
     {
@@ -3431,5 +3457,5 @@
     }
   ],
   "failures": [],
-  "ts": "2026-06-18T11:05:38.452Z"
+  "ts": "2026-06-18T11:08:17.894Z"
 }

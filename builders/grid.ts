@@ -101,7 +101,7 @@ export function createSafeGrid(container: HTMLElement, config: ConfigBase, ctx?:
     const timezone = (metadata.timezone as string) ?? D.timezone;
     const emptyValue = (metadata.emptyValue as string) ?? D.emptyValue;
 
-    const fields: Field[] = ((schema?.fields ?? []) as Field[]).filter((f) => f.visible !== false);
+    const fields: Field[] = schema.filter((f) => f.visible !== false);
 
     let collapsed = false;
 

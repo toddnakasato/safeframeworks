@@ -54,7 +54,7 @@ export function createSafeTable(container: HTMLElement, config: ConfigBase, ctx:
     // Self-extract data + schema from the first datasource
     const schema = readSchema(config);
     const data = readList(config);
-    const fields = (schema?.fields ?? []).filter((f: Field) => f.visible !== false);
+    const fields = schema.filter((f: Field) => f.visible !== false);
 
     const variant = (metadata.variant as string) ?? "default";
     const spacing = (metadata.spacing as string) ?? "normal";

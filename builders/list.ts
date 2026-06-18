@@ -191,7 +191,7 @@ function buildSelection(root: HTMLElement, config: ConfigBase, data: any[], ctx:
 function buildColumns(root: HTMLElement, config: ConfigBase, data: any[], ctx: SafeFireContext): void {
     const meta = config.metadata;
     const schema = { fields: readSchema(config) };
-    const fields = (schema?.fields ?? []) as any[];
+    const fields = schema.fields;
     const pageSize = (meta.pageSize as number) ?? LIST_DEFAULTS.pageSize;
     const numbers = meta.pageNumbers !== false;
     const state: PagerState = { page: 1 };
