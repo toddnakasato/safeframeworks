@@ -181,7 +181,6 @@ export function createSafeTable(container: HTMLElement, config: ConfigBase, ctx:
 
         if (reorderable) {
             const th = el("th", "drag-handle-header");
-            th.style.width = "28px";
             headerRow.appendChild(th);
         }
         if (rowNumbers) headerRow.appendChild(el("th", "row-number-header", "#"));
@@ -325,10 +324,6 @@ export function createSafeTable(container: HTMLElement, config: ConfigBase, ctx:
 
             if (reorderable) {
                 const td = el("td", "drag-handle", "⠿");
-                td.style.cursor = "grab";
-                td.style.textAlign = "center";
-                td.style.color = "var(--sd-text-dim, #999)";
-                td.style.userSelect = "none";
                 tr.appendChild(td);
             }
             if (rowNumbers) tr.appendChild(el("td", "row-number", String(globalIndex + 1)));
