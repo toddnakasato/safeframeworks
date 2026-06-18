@@ -85,6 +85,31 @@ fn watch_dir(app: tauri::AppHandle, path: String) -> Result<(), String> {
     Ok(())
 }
 
+#[tauri::command]
+fn list_dir(path: String) -> Result<Vec<String>, String> {
+    let cwd = std::env::current_dir().unwrap_or_default();
+    let p = cwd.join(&path);
+    if !p.exists() { return Ok(vec![]); }
+    let entries = std::fs::read_dir(&p).map_err(|e| e.to_string())?;
+    let mut names: Vec<String> = vec![];
+    for entry in entries {
+        if let Ok(e) = entry {
+            if let Some(name) = e.file_name().to_str() {
+                names.push(name.to_string());
+            }
+        }
+    }
+    names.sort();
+    Ok(names)
+}
+
+#[tauri::command]
+fn ensure_dir(path: String) -> Result<(), String> {
+    let cwd = std::env::current_dir().unwrap_or_default();
+    let p = cwd.join(&path);
+    std::fs::create_dir_all(&p).map_err(|e| e.to_string())
+}
+
 pub fn run() {
   tauri::Builder::default()
     .setup(|app| {
@@ -97,7 +122,7 @@ pub fn run() {
       }
       Ok(())
     })
-    .invoke_handler(tauri::generate_handler![safecli_run, read_file_content, write_state, watch_dir])
+    .invoke_handler(tauri::generate_handler![safecli_run, read_file_content, write_state, watch_dir, list_dir, ensure_dir])
         .run(tauri::generate_context!())
     .expect("error while running tauri application");
 }

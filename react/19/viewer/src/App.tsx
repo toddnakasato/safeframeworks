@@ -8,7 +8,8 @@ import { useState, useEffect, useCallback, Component } from "react";
 import type { ReactNode, ErrorInfo } from "react";
 import { renderConfigBase } from "../../SafeRenderer";
 import { SAMPLES } from "../../../../samples";
-import type { SafeEvent, ConfigBase } from "safecontracts";
+import type { SafeEvent, ConfigBase, Ticket, TicketType } from "safecontracts";
+import { listAllTickets, createTicket, updateTicket } from "./ticket-service";
 
 /** Tauri invoke — safe no-op when not in Tauri context */
 async function invoke<T>(cmd: string, args?: Record<string, any>): Promise<T> {
@@ -86,10 +87,17 @@ export default function App() {
   const [proofToast, setProofToast] = useState<{ message: string; color: string } | null>(null);
   const [runningCommands, setRunningCommands] = useState<Set<string>>(new Set());
   const [proofProgress, setProofProgress] = useState<{ done: number; total: number } | null>(null);
+  const [tickets, setTickets] = useState<Ticket[]>([]);
+  const [ticketView, setTicketView] = useState<"open" | "closed" | null>(null);
+  const [ticketForm, setTicketForm] = useState<{ component: string } | null>(null);
 
   useEffect(() => {
     loadStyle(activeStyle, activeTheme);
   }, [activeStyle, activeTheme]);
+
+  // Load tickets on mount
+  const refreshTickets = useCallback(() => { listAllTickets().then(setTickets).catch(() => {}); }, []);
+  useEffect(() => { refreshTickets(); }, []);
 
   // EPRPP: start file watcher + listen for changes
   useEffect(() => {
@@ -211,12 +219,14 @@ export default function App() {
     setActiveVariation(null);
     setProofView(false);
     setActiveProof("__none__");
+    setTicketView(null);
   };
   const selectVariation = (comp: string, variation: string) => {
     setActiveComponent(comp);
     setActiveVariation(variation);
     setProofView(false);
     setActiveProof("__none__");
+    setTicketView(null);
   };
 
   /** [component, variation] pairs to render, per current selection. */
@@ -281,7 +291,22 @@ export default function App() {
 
         {/* Component menu with variation sub-items */}
         <div style={{ flex: 1, overflow: "auto", padding: 8 }}>
-          <div style={sectionLabel}>Components</div>
+          {/* Tickets */}
+          <div style={{ ...sectionLabel, marginTop: 4 }}>Tickets</div>
+          {(() => {
+            const open = tickets.filter(t => t.status === "open" || t.status === "in-progress");
+            const closed = tickets.filter(t => t.status === "closed" || t.status === "proved");
+            return (<>
+              <button onClick={() => { setTicketView("open"); setProofView(false); setActiveProof("__none__"); }} style={itemStyle(ticketView === "open" && !proofView)}>
+                Open {open.length > 0 && `(${open.length})`}
+              </button>
+              <button onClick={() => { setTicketView("closed"); setProofView(false); setActiveProof("__none__"); }} style={itemStyle(ticketView === "closed" && !proofView)}>
+                Closed {closed.length > 0 && `(${closed.length})`}
+              </button>
+            </>);
+          })()}
+
+          <div style={{ ...sectionLabel, marginTop: 12 }}>Components</div>
           <button onClick={() => selectComponent(null)} style={itemStyle(activeComponent === null && !proofView)}>
             All
           </button>
@@ -304,11 +329,54 @@ export default function App() {
       <div style={{ flex: 1, overflow: "auto", padding: 24, background: "var(--sd-surface-base, #fff)" }}>
         <div style={{ fontSize: 14, fontWeight: 600, marginBottom: 16, color: "var(--sd-text, #1a1a1a)" }}>
           react/19 — {activeStyle}{activeTheme !== "default" ? `/${activeTheme}` : ""}
-          {proofView && <span style={{ fontWeight: 400, color: "var(--sd-text-muted, #6b7280)" }}> — proofs{activeProof ? ` / ${activeProof}` : ""}</span>}
+          {proofView && <span style={{ fontWeight: 400, color: "var(--sd-text-muted, #6b7280)" }}> — proofs{activeProof && activeProof !== "__none__" ? ` / ${activeProof}` : ""}</span>}
+          {ticketView && <span style={{ fontWeight: 400, color: "var(--sd-text-muted, #6b7280)" }}> — tickets / {ticketView}</span>}
           {!proofView && activeComponent && <span style={{ fontWeight: 400, color: "var(--sd-text-muted, #6b7280)" }}> — {activeVariation ?? activeComponent}</span>}
         </div>
 
-        {proofView ? (
+        {ticketView ? (
+          /* Ticket view */
+          <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+            {(() => {
+              const filtered = ticketView === "open"
+                ? tickets.filter(t => t.status === "open" || t.status === "in-progress")
+                : tickets.filter(t => t.status === "closed" || t.status === "proved");
+              if (filtered.length === 0) return <div style={{ color: "var(--sd-text-muted, #6b7280)", fontSize: 13 }}>No {ticketView} tickets.</div>;
+              return filtered.map(t => (
+                <div key={t.id} style={{ border: "1px solid var(--sd-border, #e5e7eb)", borderRadius: 6, overflow: "hidden" }}>
+                  <div style={{ padding: "10px 12px", display: "flex", justifyContent: "space-between", alignItems: "center", background: "var(--sd-surface-raised, #fafafa)" }}>
+                    <div>
+                      <span style={{ fontSize: 11, fontWeight: 700, color: "var(--sd-accent, #2563eb)", marginRight: 8 }}>{t.id}</span>
+                      <span style={{ fontSize: 11, padding: "1px 6px", borderRadius: 3, background: "var(--sd-surface-sunken, #f1f5f9)", color: "var(--sd-text-dim, #475569)" }}>{t.type}</span>
+                    </div>
+                    <span style={{ fontSize: 11, fontWeight: 600, color: t.status === "open" ? "var(--sd-accent, #2563eb)" : t.status === "closed" ? "var(--sd-success, #15803d)" : "var(--sd-text-muted, #475569)" }}>{t.status}</span>
+                  </div>
+                  <div style={{ padding: "8px 12px" }}>
+                    <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 4 }}>{t.title}</div>
+                    <div style={{ fontSize: 11, color: "var(--sd-text-dim, #475569)", lineHeight: 1.5 }}>{t.description}</div>
+                  </div>
+                  <div style={{ padding: "6px 12px", borderTop: "1px solid var(--sd-border, #e5e7eb)", fontSize: 10, color: "var(--sd-text-muted, #475569)", display: "flex", gap: 12 }}>
+                    <span>proves: {t.proves.join(", ")}</span>
+                    {t.event && <span>event: {t.event}</span>}
+                    {t.resolution && <span>resolution: {t.resolution}</span>}
+                  </div>
+                  {t.status === "open" && (
+                    <div style={{ padding: "6px 12px", borderTop: "1px solid var(--sd-border, #e5e7eb)", display: "flex", gap: 8 }}>
+                      <button onClick={async () => { await updateTicket({ ...t, status: "in-progress" }); refreshTickets(); }}
+                        style={{ padding: "2px 8px", fontSize: 10, borderRadius: 3, border: "1px solid var(--sd-border, #d1d5db)", background: "var(--sd-surface-base, #fff)", color: "var(--sd-text, #0f172a)", cursor: "pointer" }}>
+                        Start
+                      </button>
+                      <button onClick={async () => { await updateTicket({ ...t, status: "closed", resolution: "Closed without resolution" }); refreshTickets(); }}
+                        style={{ padding: "2px 8px", fontSize: 10, borderRadius: 3, border: "1px solid var(--sd-border, #d1d5db)", background: "var(--sd-surface-base, #fff)", color: "var(--sd-text, #0f172a)", cursor: "pointer" }}>
+                        Close
+                      </button>
+                    </div>
+                  )}
+                </div>
+              ));
+            })()}
+          </div>
+        ) : proofView ? (
           /* Proof results view */
           <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
             {/* Run button + progress */}
@@ -409,6 +477,25 @@ export default function App() {
                   <ComponentBoundary label={`proof-viewer/${comp}`}>
                     {renderConfigBase({ component: "proof-viewer", metadata: { target: comp } } as any, handleEvent)}
                   </ComponentBoundary>
+                </div>
+                {/* Ticket creation */}
+                <div style={{ padding: "8px 12px", borderTop: "1px solid var(--sd-border, #e5e7eb)", display: "flex", gap: 6, alignItems: "center" }}>
+                  <select id={`ticket-type-${comp}`} defaultValue="bug" style={{ padding: "3px 6px", fontSize: 10, borderRadius: 3, border: "1px solid var(--sd-border, #d1d5db)", background: "var(--sd-surface-base, #fff)", color: "var(--sd-text, #0f172a)" }}>
+                    <option value="bug">bug</option><option value="event">event</option><option value="paint">paint</option>
+                    <option value="style">style</option><option value="data">data</option><option value="structure">structure</option>
+                    <option value="variation">variation</option><option value="new-component">new-component</option>
+                  </select>
+                  <input id={`ticket-title-${comp}`} placeholder="Describe the issue..." style={{ flex: 1, padding: "3px 6px", fontSize: 11, borderRadius: 3, border: "1px solid var(--sd-border, #d1d5db)", background: "var(--sd-surface-base, #fff)", color: "var(--sd-text, #0f172a)" }} />
+                  <button onClick={async () => {
+                    const titleEl = document.getElementById(`ticket-title-${comp}`) as HTMLInputElement;
+                    const typeEl = document.getElementById(`ticket-type-${comp}`) as HTMLSelectElement;
+                    if (!titleEl?.value.trim()) return;
+                    await createTicket(comp, typeEl.value as TicketType, titleEl.value.trim(), titleEl.value.trim());
+                    titleEl.value = "";
+                    refreshTickets();
+                  }} style={{ padding: "3px 8px", fontSize: 10, fontWeight: 600, borderRadius: 3, border: "none", background: "var(--sd-accent, #2563eb)", color: "var(--sd-text-inverse, #fff)", cursor: "pointer" }}>
+                    + Ticket
+                  </button>
                 </div>
               </div>
             ))}
