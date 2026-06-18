@@ -30,7 +30,7 @@ export const buildPayloadViaCli: BuildPayloadFn = async (component: string, even
     if (coords.value !== undefined) args.push("--value", String(coords.value));
     if (coords.dir) args.push("--dir", coords.dir);
     if (coords.page !== undefined) args.push("--page", String(coords.page));
-    if (coords.selected) args.push("--selected", coords.selected.join(","));
+    if (Array.isArray(coords.selected)) args.push("--selected", coords.selected.join(","));
     if (coords.order) args.push("--order", JSON.stringify(coords.order));
     if (coords.operator) args.push("--operator", coords.operator);
     if (coords.width !== undefined) args.push("--width", String(coords.width));

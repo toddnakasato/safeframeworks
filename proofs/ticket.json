@@ -1,16 +1,21 @@
 {
   "ok": true,
-  "total": 2,
-  "passed": 2,
+  "total": 3,
+  "passed": 3,
   "failed": 0,
   "groups": {
     "ticket-open": 0,
-    "ticket-closed": 2
+    "ticket-closed": 3
   },
   "checks": [
     {
       "group": "ticket-closed",
       "name": "calendar-0002: payload build --component calendar --event select --year 2026 --month ",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-closed",
+      "name": "button-0002: payload build --component button --event click",
       "status": "pass"
     },
     {
