@@ -2,7 +2,7 @@
   "component": "button",
   "metadata": {
     "variant": "danger",
-    "label": "\ud83d\uddd1\ufe0f Delete",
+    "label": "Delete",
     "icon": "trash-2",
     "iconPosition": "left",
     "size": "md"
