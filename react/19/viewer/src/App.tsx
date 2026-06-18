@@ -179,21 +179,20 @@ export default function App() {
           <img src="/shield.png" alt="SafeDesk" style={{ width: 18, height: 21 }} />
           <span style={{ fontSize: 13, fontWeight: 600 }}>react/19</span>
         </div>
-        {/* Style switcher */}
-        <div style={{ padding: 12, borderBottom: "1px solid var(--sd-border, #e5e7eb)" }}>
-          <div style={{ fontSize: 11, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.05em", color: "#6b7280", marginBottom: 8 }}>Style</div>
-          {STYLES.map(s => (
-            <div key={s}>
-              <button onClick={() => selectStyle(s)} style={itemStyle(s === activeStyle)}>
-                {s}
-              </button>
-              {s === activeStyle && (THEMES[s] ?? []).map(t => (
-                <button key={t} onClick={() => setActiveTheme(t)} style={itemStyle(t === activeTheme, 1)}>
-                  {t}
-                </button>
-              ))}
-            </div>
-          ))}
+        {/* Style switcher — two picklists */}
+        <div style={{ padding: 12, borderBottom: "1px solid var(--sd-border, #e5e7eb)", display: "flex", flexDirection: "column", gap: 8 }}>
+          <div>
+            <label style={{ fontSize: 11, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.05em", color: "#6b7280", display: "block", marginBottom: 4 }}>Framework</label>
+            <select value={activeStyle} onChange={e => selectStyle(e.target.value)} style={{ width: "100%", padding: "4px 8px", fontSize: 13, borderRadius: 4, border: "1px solid var(--sd-border, #d1d5db)" }}>
+              {STYLES.map(s => <option key={s} value={s}>{s}</option>)}
+            </select>
+          </div>
+          <div>
+            <label style={{ fontSize: 11, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.05em", color: "#6b7280", display: "block", marginBottom: 4 }}>Theme</label>
+            <select value={activeTheme} onChange={e => setActiveTheme(e.target.value)} style={{ width: "100%", padding: "4px 8px", fontSize: 13, borderRadius: 4, border: "1px solid var(--sd-border, #d1d5db)" }}>
+              {(THEMES[activeStyle] ?? ["default"]).map(t => <option key={t} value={t}>{t}</option>)}
+            </select>
+          </div>
         </div>
 
         {/* Component menu with variation sub-items */}
