@@ -10,8 +10,18 @@
     "component": "calendar",
     "event": "select"
   },
+  "test": {
+    "command": "payload build --component calendar --event select --year 2026 --month 5 --day 18 --date 2026-06-18",
+    "assert": {
+      "ok": true,
+      "data.year": 2026,
+      "data.month": 5,
+      "data.day": 18,
+      "data.date": "2026-06-18"
+    }
+  },
   "created": "2026-06-18T14:01:24.879Z",
-  "updated": "2026-06-18T14:30:00.000Z",
+  "updated": "2026-06-18T15:00:00.000Z",
   "event": "select",
   "resolution": "Three-layer fix: (1) payload-delegate.ts forwards year/month/day/date coords, (2) resolveToken uses field-name-based coord lookup via ctx.coords[fieldName], (3) CLI collects all flags into coords map.",
   "files": [
