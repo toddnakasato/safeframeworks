@@ -210,11 +210,13 @@ export default function App() {
     setActiveComponent(name);
     setActiveVariation(null);
     setProofView(false);
+    setActiveProof("__none__");
   };
   const selectVariation = (comp: string, variation: string) => {
     setActiveComponent(comp);
     setActiveVariation(variation);
     setProofView(false);
+    setActiveProof("__none__");
   };
 
   /** [component, variation] pairs to render, per current selection. */
@@ -280,12 +282,12 @@ export default function App() {
         {/* Component menu with variation sub-items */}
         <div style={{ flex: 1, overflow: "auto", padding: 8 }}>
           <div style={sectionLabel}>Components</div>
-          <button onClick={() => selectComponent(null)} style={itemStyle(activeComponent === null)}>
+          <button onClick={() => selectComponent(null)} style={itemStyle(activeComponent === null && !proofView)}>
             All
           </button>
           {COMPONENT_NAMES.map(name => (
             <div key={name}>
-              <button onClick={() => selectComponent(name)} style={itemStyle(name === activeComponent && !activeVariation)}>
+              <button onClick={() => selectComponent(name)} style={itemStyle(name === activeComponent && !activeVariation && !proofView)}>
                 {name}
               </button>
               {name === activeComponent && Object.keys(SAMPLES[name]).sort().map(v => (
