@@ -1,11 +1,11 @@
 {
   "ok": true,
-  "total": 3,
-  "passed": 3,
+  "total": 4,
+  "passed": 4,
   "failed": 0,
   "groups": {
     "ticket-open": 0,
-    "ticket-closed": 3
+    "ticket-closed": 4
   },
   "checks": [
     {
@@ -16,6 +16,11 @@
     {
       "group": "ticket-closed",
       "name": "button-0002: payload build --component button --event click",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-closed",
+      "name": "button-0003: payload build --component button --event click --label \"This was helpf",
       "status": "pass"
     },
     {

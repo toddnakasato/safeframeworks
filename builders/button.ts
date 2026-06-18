@@ -45,8 +45,9 @@ function buildSingleButton(config: ConfigBase, ctx: SafeFireContext): HTMLElemen
 
     btn.onclick = () => {
         if (disabled || loading) return;
-        ctx.fire(eventName, null); // config-driven name; validated by prove build
-        ctx.fire('click', {});
+        const coords = { label: label ?? "", id: childId ?? (metadata.name as string) ?? "" };
+        ctx.fire(eventName, coords);
+        if (eventName !== "click") ctx.fire('click', coords);
     };
 
     if (loading) btn.appendChild(elAttrs("span", { "data-role": "spinner" }));
@@ -134,10 +135,10 @@ function buildButtonGroup(config: ConfigBase, ctx: SafeFireContext): HTMLElement
         "data-group-direction": groupDirection
     });
 
-    for (const [, child] of Object.entries(config.children ?? {})) {
+    for (const [key, child] of Object.entries(config.children ?? {})) {
         const item = elAttrs("div", { "data-role": "group-item" });
         if (!child.component || child.component === "button") {
-            item.appendChild(buildButton(child, ctx));
+            item.appendChild(buildButton(child, ctx, key));
         } else {
             // Non-button child: placeholder only — full renderer recursion is the host's job.
             item.appendChild(elAttrs("div", { "data-role": "button-child", "data-child-component": child.component }));
@@ -148,7 +149,7 @@ function buildButtonGroup(config: ConfigBase, ctx: SafeFireContext): HTMLElement
     return root;
 }
 
-function buildButton(config: ConfigBase, ctx: SafeFireContext): HTMLElement {
+function buildButton(config: ConfigBase, ctx: SafeFireContext, childId?: string): HTMLElement {
     const hasChildren = config.children && Object.keys(config.children).length > 0;
     const hasGroupVariant = !!config.metadata.groupVariant;
     if (hasChildren || hasGroupVariant) return buildButtonGroup(config, ctx);

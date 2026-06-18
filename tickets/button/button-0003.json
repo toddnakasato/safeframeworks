@@ -1,0 +1,29 @@
+{
+  "id": "button-0003",
+  "component": "button",
+  "type": "bug",
+  "title": "Button group needs to pass which button was pressed in payload",
+  "description": "Button group (e.g. buttons-ai-responses) children fire click with empty coords {}. Consumer has no way to know which child button was clicked. Need label and id (child key) in the payload.",
+  "status": "closed",
+  "proves": ["event-payload", "event-coverage"],
+  "params": {
+    "component": "button",
+    "event": "click"
+  },
+  "test": {
+    "command": "payload build --component button --event click --label \"This was helpful\" --id helpful",
+    "assert": {
+      "ok": true,
+      "data.label": "This was helpful",
+      "data.id": "helpful"
+    }
+  },
+  "created": "2026-06-18T14:56:08.595Z",
+  "updated": "2026-06-18T16:20:00.000Z",
+  "resolution": "Added label and id to button click payload shape. Builder passes childId (child key) and label in coords. payload-delegate forwards --label.",
+  "files": [
+    "safecontracts/src/contracts-payload.ts",
+    "safeframeworks/builders/button.ts",
+    "safeframeworks/utils/payload-delegate.ts"
+  ]
+}
