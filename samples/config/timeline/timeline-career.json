@@ -1,10 +1,11 @@
 {
   "component": "timeline",
   "metadata": {
-    "variant": "default",
+    "variant": "career",
     "dateField": "date",
     "labelField": "title",
-    "scale": "years"
+    "scale": "years",
+    "descriptionField": "description"
   },
   "data": {
     "events": {

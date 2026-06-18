@@ -1,10 +1,11 @@
 {
   "component": "timeline",
   "metadata": {
-    "variant": "default",
+    "variant": "sprint",
     "dateField": "date",
     "labelField": "title",
-    "scale": "weeks"
+    "scale": "weeks",
+    "descriptionField": "description"
   },
   "data": {
     "events": {

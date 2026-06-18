@@ -324,6 +324,154 @@ export function createSafeTimeline(container: HTMLElement, config: ConfigBase, c
         return root;
     }
 
+    // ── V-01 Roadmap: center line, alternating left/right, status dots ─────
+    if (variant === "roadmap") {
+        const line = el("div", "tl-center-line");
+        root.appendChild(line);
+        sorted.forEach((item, i) => {
+            const left = i % 2 === 0;
+            const row = el("div", "tl-roadmap-row");
+            row.setAttribute("data-side", left ? "left" : "right");
+            row.onclick = () => fireSelect(i, item);
+            const contentL = el("div", "tl-roadmap-content");
+            contentL.setAttribute("data-side", "left");
+            if (!left) contentL.setAttribute("data-hidden", "true");
+            contentL.appendChild(el("div", "tl-date", String(item[dateField])));
+            contentL.appendChild(el("div", "tl-title", String(item[labelField] ?? "")));
+            if (descriptionField && item[descriptionField]) contentL.appendChild(el("div", "tl-desc", String(item[descriptionField])));
+            row.appendChild(contentL);
+            const dot = el("div", "tl-dot");
+            dot.setAttribute("data-status", String(item.status ?? "default"));
+            row.appendChild(dot);
+            const contentR = el("div", "tl-roadmap-content");
+            contentR.setAttribute("data-side", "right");
+            if (left) contentR.setAttribute("data-hidden", "true");
+            contentR.appendChild(el("div", "tl-date", String(item[dateField])));
+            contentR.appendChild(el("div", "tl-title", String(item[labelField] ?? "")));
+            if (descriptionField && item[descriptionField]) contentR.appendChild(el("div", "tl-desc", String(item[descriptionField])));
+            row.appendChild(contentR);
+            root.appendChild(row);
+        });
+        const legend = el("div", "tl-legend");
+        for (const s of ["done", "active", "planned"]) {
+            const li = el("div", "tl-legend-item");
+            const d = el("div", "tl-legend-dot"); d.setAttribute("data-status", s);
+            li.appendChild(d); li.appendChild(el("span", "tl-legend-label", s));
+            legend.appendChild(li);
+        }
+        root.appendChild(legend);
+        container.appendChild(root); return root;
+    }
+
+    // ── V-02 Career: left-aligned date + dot + line + content ──────────────
+    if (variant === "career") {
+        sorted.forEach((item, i) => {
+            const row = el("div", "tl-career-row");
+            row.onclick = () => fireSelect(i, item);
+            row.appendChild(el("div", "tl-career-date", String(item[dateField])));
+            const dotCol = el("div", "tl-career-dot-col");
+            dotCol.appendChild(el("div", "tl-dot"));
+            if (i < sorted.length - 1) dotCol.appendChild(el("div", "tl-career-line"));
+            row.appendChild(dotCol);
+            const content = el("div", "tl-career-content");
+            content.appendChild(el("div", "tl-title", String(item[labelField] ?? "")));
+            if (descriptionField && item[descriptionField]) content.appendChild(el("div", "tl-desc", String(item[descriptionField])));
+            if (item.category) content.appendChild(el("div", "tl-category", String(item.category)));
+            row.appendChild(content);
+            root.appendChild(row);
+        });
+        container.appendChild(root); return root;
+    }
+
+    // ── V-03 Milestones: left dot+line, status badge right ─────────────────
+    if (variant === "milestones") {
+        sorted.forEach((item, i) => {
+            const row = el("div", "tl-milestone-row");
+            row.onclick = () => fireSelect(i, item);
+            const dot = el("div", "tl-dot"); dot.setAttribute("data-status", String(item.status ?? "default"));
+            row.appendChild(dot);
+            const content = el("div", "tl-milestone-content");
+            content.appendChild(el("div", "tl-date", String(item[dateField])));
+            content.appendChild(el("div", "tl-title", String(item[labelField] ?? "")));
+            if (descriptionField && item[descriptionField]) content.appendChild(el("div", "tl-desc", String(item[descriptionField])));
+            row.appendChild(content);
+            if (item.status) {
+                const badge = el("div", "tl-status-badge", String(item.status).toUpperCase());
+                badge.setAttribute("data-status", String(item.status));
+                row.appendChild(badge);
+            }
+            root.appendChild(row);
+        });
+        container.appendChild(root); return root;
+    }
+
+    // ── V-04 Sprint: progress bar + checklist rows ─────────────────────────
+    if (variant === "sprint") {
+        const doneCount = sorted.filter(d => d.done || d.status === "done").length;
+        const barWrap = el("div", "tl-progress-wrap");
+        barWrap.appendChild(el("div", "tl-progress-label", "PROGRESS"));
+        barWrap.appendChild(el("div", "tl-progress-count", `${doneCount} / ${sorted.length}`));
+        const bar = el("div", "tl-progress-bar");
+        const fill = el("div", "tl-progress-fill");
+        fill.style.width = `${(doneCount / sorted.length) * 100}%`;
+        bar.appendChild(fill);
+        barWrap.appendChild(bar);
+        root.appendChild(barWrap);
+        sorted.forEach((item, i) => {
+            const row = el("div", "tl-sprint-row");
+            if (item.active || item.status === "active") row.setAttribute("data-active", "true");
+            row.onclick = () => fireSelect(i, item);
+            row.appendChild(el("div", "tl-sprint-date", String(item[dateField])));
+            row.appendChild(el("div", "tl-sprint-task", String(item[labelField] ?? "")));
+            const check = el("div", "tl-sprint-check");
+            check.setAttribute("data-done", String(!!(item.done || item.status === "done")));
+            check.setAttribute("data-active", String(!!(item.active || item.status === "active")));
+            row.appendChild(check);
+            root.appendChild(row);
+        });
+        container.appendChild(root); return root;
+    }
+
+    // ── V-05 Schedule: colored time blocks with accent bar ─────────────────
+    if (variant === "schedule") {
+        sorted.forEach((item, i) => {
+            const row = el("div", "tl-schedule-row");
+            row.setAttribute("data-type", String(item.type ?? item.category ?? "default"));
+            row.onclick = () => fireSelect(i, item);
+            row.appendChild(el("div", "tl-schedule-bar"));
+            const content = el("div", "tl-schedule-content");
+            content.appendChild(el("div", "tl-schedule-time", String(item[dateField])));
+            content.appendChild(el("div", "tl-title", String(item[labelField] ?? "")));
+            if (descriptionField && item[descriptionField]) content.appendChild(el("div", "tl-desc", String(item[descriptionField])));
+            row.appendChild(content);
+            root.appendChild(row);
+        });
+        container.appendChild(root); return root;
+    }
+
+    // ── V-06 Incident: dark terminal style, severity badges ────────────────
+    if (variant === "incident") {
+        root.setAttribute("data-theme", "dark");
+        sorted.forEach((item, i) => {
+            const row = el("div", "tl-incident-row");
+            row.onclick = () => fireSelect(i, item);
+            row.appendChild(el("div", "tl-incident-ts", String(item[dateField])));
+            if (item.status || item.sev) {
+                const sev = el("div", "tl-incident-sev", String(item.status ?? item.sev ?? "").toUpperCase());
+                sev.setAttribute("data-sev", String(item.status ?? item.sev ?? "info"));
+                row.appendChild(sev);
+            }
+            const content = el("div", "tl-incident-content");
+            content.appendChild(el("div", "tl-incident-msg", String(item[labelField] ?? "")));
+            if (descriptionField && item[descriptionField]) content.appendChild(el("div", "tl-incident-svc", String(item[descriptionField])));
+            row.appendChild(content);
+            root.appendChild(row);
+        });
+        container.appendChild(root); return root;
+    }
+
+    // ── Default vertical: dot + line + content ─────────────────────────────
+
     sorted.forEach((item, i) => {
         const cat = categoryField ? String(item[categoryField] ?? "") : "";
         const color = cat ? getCategoryColor(categories, cat, COLORS) : COLORS[i % COLORS.length];

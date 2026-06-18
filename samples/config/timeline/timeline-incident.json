@@ -1,10 +1,11 @@
 {
   "component": "timeline",
   "metadata": {
-    "variant": "default",
+    "variant": "incident",
     "dateField": "date",
     "labelField": "title",
-    "scale": "minutes"
+    "scale": "minutes",
+    "descriptionField": "description"
   },
   "data": {
     "events": {

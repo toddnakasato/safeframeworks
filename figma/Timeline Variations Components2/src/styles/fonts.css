@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,500;0,14..32,600;1,14..32,400&family=DM+Mono:ital,wght@0,400;0,500;1,400&display=swap');
+
+@layer utilities {
+  .font-condensed {
+    font-family: 'Barlow Condensed', sans-serif;
+    letter-spacing: -0.01em;
+  }
+  .font-mono-alt {
+    font-family: 'DM Mono', monospace;
+  }
+}

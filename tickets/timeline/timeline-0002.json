@@ -1,0 +1,17 @@
+{
+  "id": "timeline-0002",
+  "component": "timeline",
+  "type": "bug",
+  "title": "implment the figma horizontal time line variations in ‘2’ in the figma design folder",
+  "description": "implment the figma horizontal time line variations in ‘2’ in the figma design folder",
+  "status": "open",
+  "proves": [
+    "builder-structure",
+    "framework-boot"
+  ],
+  "params": {
+    "component": "timeline"
+  },
+  "created": "2026-06-18T16:02:57.773Z",
+  "updated": "2026-06-18T16:02:57.773Z"
+}
