@@ -103,18 +103,18 @@ import tabsHorizontalConfig from "./config/tabs/tabs-horizontal.json";
 import tabsVerticalConfig from "./config/tabs/tabs-vertical.json";
 import timelineVerticalConfig from "./config/timeline/timeline-vertical.json";
 import timelineAlternatingConfig from "./config/timeline/timeline-alternating.json";
-import timelineRoadmapConfig from "./config/timeline/timeline-roadmap.json";
-import timelineCareerConfig from "./config/timeline/timeline-career.json";
-import timelineMilestonesConfig from "./config/timeline/timeline-milestones.json";
-import timelineSprintConfig from "./config/timeline/timeline-sprint.json";
-import timelineScheduleConfig from "./config/timeline/timeline-schedule.json";
-import timelineIncidentConfig from "./config/timeline/timeline-incident.json";
-import timelineHistoryConfig from "./config/timeline/timeline-history.json";
-import timelineVersionsConfig from "./config/timeline/timeline-versions.json";
-import timelineGanttConfig from "./config/timeline/timeline-gantt.json";
-import timelineSprintDaysConfig from "./config/timeline/timeline-sprint-days.json";
-import timelineTimeBlocksConfig from "./config/timeline/timeline-time-blocks.json";
-import timelineEventStreamConfig from "./config/timeline/timeline-event-stream.json";
+import timelineVRoadmapConfig from "./config/timeline/timeline-v-roadmap.json";
+import timelineVCareerConfig from "./config/timeline/timeline-v-career.json";
+import timelineVMilestonesConfig from "./config/timeline/timeline-v-milestones.json";
+import timelineVSprintConfig from "./config/timeline/timeline-v-sprint.json";
+import timelineVScheduleConfig from "./config/timeline/timeline-v-schedule.json";
+import timelineVIncidentConfig from "./config/timeline/timeline-v-incident.json";
+import timelineHHistoryConfig from "./config/timeline/timeline-h-history.json";
+import timelineHVersionsConfig from "./config/timeline/timeline-h-versions.json";
+import timelineHGanttConfig from "./config/timeline/timeline-h-gantt.json";
+import timelineHSprintDaysConfig from "./config/timeline/timeline-h-sprint-days.json";
+import timelineHTimeBlocksConfig from "./config/timeline/timeline-h-time-blocks.json";
+import timelineHEventStreamConfig from "./config/timeline/timeline-h-event-stream.json";
 import toggleSwitchConfig from "./config/toggle/toggle-switch.json";
 import toggleCheckboxConfig from "./config/toggle/toggle-checkbox.json";
 import treeNestedConfig from "./config/tree/tree-nested.json";
@@ -359,18 +359,18 @@ export const SAMPLES: Record<string, Record<string, ConfigBase>> = {
     timeline: {
         "timeline-vertical": resolveData(timelineVerticalConfig as unknown as ConfigBase),
         "timeline-alternating": resolveData(timelineAlternatingConfig as unknown as ConfigBase),
-        "timeline-roadmap": resolveData(timelineRoadmapConfig as unknown as ConfigBase),
-        "timeline-career": resolveData(timelineCareerConfig as unknown as ConfigBase),
-        "timeline-milestones": resolveData(timelineMilestonesConfig as unknown as ConfigBase),
-        "timeline-sprint": resolveData(timelineSprintConfig as unknown as ConfigBase),
-        "timeline-schedule": resolveData(timelineScheduleConfig as unknown as ConfigBase),
-        "timeline-incident": resolveData(timelineIncidentConfig as unknown as ConfigBase),
-        "timeline-history": resolveData(timelineHistoryConfig as unknown as ConfigBase),
-        "timeline-versions": resolveData(timelineVersionsConfig as unknown as ConfigBase),
-        "timeline-gantt": resolveData(timelineGanttConfig as unknown as ConfigBase),
-        "timeline-sprint-days": resolveData(timelineSprintDaysConfig as unknown as ConfigBase),
-        "timeline-time-blocks": resolveData(timelineTimeBlocksConfig as unknown as ConfigBase),
-        "timeline-event-stream": resolveData(timelineEventStreamConfig as unknown as ConfigBase),
+        "timeline-v-roadmap": resolveData(timelineVRoadmapConfig as unknown as ConfigBase),
+        "timeline-v-career": resolveData(timelineVCareerConfig as unknown as ConfigBase),
+        "timeline-v-milestones": resolveData(timelineVMilestonesConfig as unknown as ConfigBase),
+        "timeline-v-sprint": resolveData(timelineVSprintConfig as unknown as ConfigBase),
+        "timeline-v-schedule": resolveData(timelineVScheduleConfig as unknown as ConfigBase),
+        "timeline-v-incident": resolveData(timelineVIncidentConfig as unknown as ConfigBase),
+        "timeline-h-history": resolveData(timelineHHistoryConfig as unknown as ConfigBase),
+        "timeline-h-versions": resolveData(timelineHVersionsConfig as unknown as ConfigBase),
+        "timeline-h-gantt": resolveData(timelineHGanttConfig as unknown as ConfigBase),
+        "timeline-h-sprint-days": resolveData(timelineHSprintDaysConfig as unknown as ConfigBase),
+        "timeline-h-time-blocks": resolveData(timelineHTimeBlocksConfig as unknown as ConfigBase),
+        "timeline-h-event-stream": resolveData(timelineHEventStreamConfig as unknown as ConfigBase),
     },
     toggle: {
         "toggle-switch": resolveData(toggleSwitchConfig as unknown as ConfigBase),
