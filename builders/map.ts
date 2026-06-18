@@ -83,7 +83,20 @@ export function createSafeMap(container: HTMLElement, config: ConfigBase, data: 
     applyIntent(container, metadata);
     container.setAttribute("data-variant", variant);
 
-    L.tileLayer(TILE_URLS[variant] ?? TILE_URLS.default, { maxZoom: 18 }).addTo(map);
+    // Pick tile theme: explicit variant, or auto-detect from theme (dark surface = dark tiles)
+    let tileVariant = variant;
+    if (tileVariant === "default") {
+        const surfaceBg = getComputedStyle(container).getPropertyValue("--sd-surface-base").trim();
+        if (surfaceBg) {
+            // Detect dark theme: oklch lightness < 0.5, or rgb values average < 128, or hex < #808080
+            const isDark = surfaceBg.includes("oklch") ? parseFloat(surfaceBg.replace(/oklch\(/, "")) < 0.5
+                : surfaceBg.startsWith("#") ? parseInt(surfaceBg.slice(1, 3), 16) < 128
+                : false;
+            if (isDark) tileVariant = "dark";
+        }
+    }
+
+    L.tileLayer(TILE_URLS[tileVariant] ?? TILE_URLS.default, { maxZoom: 18 }).addTo(map);
     L.control.attribution({ prefix: false }).addAttribution('© <a href="https://www.openstreetmap.org">OSM</a>').addTo(map);
 
     const allLayers: L.Layer[] = [];
