@@ -35,6 +35,14 @@ export const buildPayloadViaCli: BuildPayloadFn = async (component: string, even
     if (coords.operator) args.push("--operator", coords.operator);
     if (coords.width !== undefined) args.push("--width", String(coords.width));
     if (coords.previous !== undefined) args.push("--previous", String(coords.previous));
+    if (coords.year !== undefined) args.push("--year", String(coords.year));
+    if (coords.month !== undefined) args.push("--month", String(coords.month));
+    if (coords.day !== undefined) args.push("--day", String(coords.day));
+    if (coords.date) args.push("--date", String(coords.date));
+    if (coords.direction) args.push("--direction", String(coords.direction));
+    if (coords.query) args.push("--query", String(coords.query));
+    if (coords.id) args.push("--id", String(coords.id));
+    if (coords.content) args.push("--content", String(coords.content));
 
     try {
         const out = await invoke<string>("safecli_run", { name: "safedesk", args });

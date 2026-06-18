@@ -1,0 +1,17 @@
+{
+  "ok": true,
+  "total": 1,
+  "passed": 1,
+  "failed": 0,
+  "groups": {
+    "ticket-proves": 1
+  },
+  "checks": [
+    {
+      "group": "ticket-proves",
+      "name": "no open tickets",
+      "status": "pass"
+    }
+  ],
+  "failures": []
+}
