@@ -313,18 +313,13 @@ export function createSafeTable(container: HTMLElement, config: ConfigBase, ctx:
                 fire("row:dblclick", { index: globalIndex });
             };
             tr.onmouseenter = () => {
-                // cssOnly: inline style on td — bypasses CSS cascade issues
-                container.querySelectorAll("tr[data-row-hover]").forEach(r => {
-                    r.removeAttribute("data-row-hover");
-                    r.querySelectorAll("td").forEach(td => { (td as HTMLElement).style.backgroundColor = ""; });
-                });
+                // cssOnly: set data attribute, safestyles paints via CSS
+                container.querySelectorAll("tr[data-row-hover]").forEach(r => r.removeAttribute("data-row-hover"));
                 tr.setAttribute("data-row-hover", "true");
-                tr.querySelectorAll("td").forEach(td => { (td as HTMLElement).style.backgroundColor = "var(--sd-hover-bg, #dbeafe)"; });
                 fire("row:hover", { index: globalIndex });
             };
             tr.onmouseleave = () => {
                 tr.removeAttribute("data-row-hover");
-                tr.querySelectorAll("td").forEach(td => { (td as HTMLElement).style.backgroundColor = ""; });
                 fire("row:leave", { index: globalIndex });
             };
 
