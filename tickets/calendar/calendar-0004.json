@@ -1,0 +1,28 @@
+{
+  "id": "calendar-0004",
+  "component": "calendar",
+  "type": "variation",
+  "title": "New variant: calendar-browse — single month with prev/next month selector",
+  "description": "Single month grid with a bottom navigation bar showing prev/next month buttons. Like the week component but for months.",
+  "status": "closed",
+  "proves": ["builder-registry", "builder-reconcile"],
+  "params": {
+    "component": "calendar"
+  },
+  "test": {
+    "command": "prove builder-registry",
+    "assert": {
+      "ok": true
+    }
+  },
+  "created": "2026-06-18T15:05:02.166Z",
+  "updated": "2026-06-18T16:40:00.000Z",
+  "variant": "browse",
+  "resolution": "Added 'browse' variant to calendar builder. Bottom nav bar with ← May 2026 / July 2026 → buttons. New sample calendar-browse.json. Structure styles in safestyles.",
+  "files": [
+    "safeframeworks/builders/calendar.ts",
+    "safeframeworks/samples/config/calendar/calendar-browse.json",
+    "safeframeworks/samples/index.ts",
+    "safestyles/core/structure.css"
+  ]
+}

@@ -1,11 +1,11 @@
 {
   "ok": true,
-  "total": 204,
-  "passed": 204,
+  "total": 206,
+  "passed": 206,
   "failed": 0,
   "groups": {
-    "no-numeric-suffix": 102,
-    "has-variant-name": 102
+    "no-numeric-suffix": 103,
+    "has-variant-name": 103
   },
   "checks": [
     {
@@ -180,12 +180,22 @@
     },
     {
       "group": "no-numeric-suffix",
-      "name": "calendar/calendar-grid.json",
+      "name": "calendar/calendar-browse.json",
       "status": "pass"
     },
     {
       "group": "has-variant-name",
-      "name": "calendar/calendar-grid.json: has variant",
+      "name": "calendar/calendar-browse.json: has variant",
+      "status": "pass"
+    },
+    {
+      "group": "no-numeric-suffix",
+      "name": "calendar/calendar-single-month.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "calendar/calendar-single-month.json: has variant",
       "status": "pass"
     },
     {

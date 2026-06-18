@@ -1,0 +1,25 @@
+{
+  "id": "calendar-0003",
+  "component": "calendar",
+  "type": "bug",
+  "title": "Calendar-grid is not the right name, should be calendar-single-month",
+  "description": "calendar-grid.json renamed to calendar-single-month.json for clarity.",
+  "status": "closed",
+  "proves": ["builder-registry"],
+  "params": {
+    "component": "calendar"
+  },
+  "test": {
+    "command": "prove builder-registry",
+    "assert": {
+      "ok": true
+    }
+  },
+  "created": "2026-06-18T15:04:25.663Z",
+  "updated": "2026-06-18T16:30:00.000Z",
+  "resolution": "Renamed calendar-grid.json → calendar-single-month.json. Updated samples/index.ts import and key.",
+  "files": [
+    "safeframeworks/samples/config/calendar/calendar-single-month.json",
+    "safeframeworks/samples/index.ts"
+  ]
+}

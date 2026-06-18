@@ -1,0 +1,12 @@
+{
+  "component": "calendar",
+  "metadata": {
+    "variant": "browse",
+    "size": "md",
+    "dayFormat": "short",
+    "highlightToday": true
+  },
+  "eventHandler": {
+    "handler": "calendar"
+  }
+}

@@ -137,6 +137,24 @@ export function createSafeCalendar(container: HTMLElement, config: ConfigBase, c
             return;
         }
 
+        if (variant === "browse") {
+            root.setAttribute("data-size", size);
+            const month_ = buildMonthGrid(viewYear, viewMonth, size, false, dayFormat);
+            while (month_.firstChild) root.appendChild(month_.firstChild);
+            // Bottom nav bar with prev/next month
+            const nav = el("div", "calendar-browse-nav");
+            const prevMonth = new Date(viewYear, viewMonth - 1, 1);
+            const nextMonth = new Date(viewYear, viewMonth + 1, 1);
+            const prevBtn = el("button", "calendar-browse-btn", `← ${MONTH_NAMES[prevMonth.getMonth()]} ${prevMonth.getFullYear()}`);
+            prevBtn.onclick = () => fireNavigate(-1);
+            const nextBtn = el("button", "calendar-browse-btn", `${MONTH_NAMES[nextMonth.getMonth()]} ${nextMonth.getFullYear()} →`);
+            nextBtn.onclick = () => fireNavigate(1);
+            nav.appendChild(prevBtn);
+            nav.appendChild(nextBtn);
+            root.appendChild(nav);
+            return;
+        }
+
         if (variant === "comparison") {
             for (let offset = -compareMonths; offset <= 0; offset++) {
                 const d = new Date(cfgYear, cfgMonth + offset, 1);

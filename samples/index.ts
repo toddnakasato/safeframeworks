@@ -27,7 +27,8 @@ import buttonsPaginationConfig from "./config/button/buttons-pagination.json";
 import buttonsStepperConfig from "./config/button/buttons-stepper.json";
 import buttonsToggleFilterConfig from "./config/button/buttons-toggle-filter.json";
 import buttonsVerticalStackConfig from "./config/button/buttons-vertical-stack.json";
-import calendarGridConfig from "./config/calendar/calendar-grid.json";
+import calendarSingleMonthConfig from "./config/calendar/calendar-single-month.json";
+import calendarBrowseConfig from "./config/calendar/calendar-browse.json";
 import calendarYearConfig from "./config/calendar/calendar-year.json";
 import calloutInfoConfig from "./config/callout/callout-info.json";
 import calloutWarningConfig from "./config/callout/callout-warning.json";
@@ -225,7 +226,8 @@ export const SAMPLES: Record<string, Record<string, ConfigBase>> = {
         "buttons-vertical-stack": resolveData(buttonsVerticalStackConfig as unknown as ConfigBase),
     },
     calendar: {
-        "calendar-grid": resolveData(calendarGridConfig as unknown as ConfigBase),
+        "calendar-single-month": resolveData(calendarSingleMonthConfig as unknown as ConfigBase),
+        "calendar-browse": resolveData(calendarBrowseConfig as unknown as ConfigBase),
         "calendar-year": resolveData(calendarYearConfig as unknown as ConfigBase),
     },
     callout: {
