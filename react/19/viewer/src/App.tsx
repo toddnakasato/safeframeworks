@@ -284,11 +284,11 @@ export default function App() {
         {/* Proofs */}
         <div style={{ padding: 8, borderBottom: "1px solid var(--sd-border, #e5e7eb)" }}>
           <div style={sectionLabel}>Proofs</div>
-          <button onClick={() => { setActiveProof(null); setProofView(true); }} style={itemStyle(activeProof === null && proofView)}>
+          <button onClick={() => { setActiveProof(null); setProofView(true); setTicketView(null); }} style={itemStyle(activeProof === null && proofView)}>
             All
           </button>
           {PROOF_DOMAINS.map(d => (
-            <button key={d.label} onClick={() => { setActiveProof(d.label); setProofView(true); }} style={itemStyle(activeProof === d.label && proofView)}>
+            <button key={d.label} onClick={() => { setActiveProof(d.label); setProofView(true); setTicketView(null); }} style={itemStyle(activeProof === d.label && proofView)}>
               {d.label}
             </button>
           ))}
