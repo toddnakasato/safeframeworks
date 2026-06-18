@@ -1,11 +1,11 @@
 {
   "ok": true,
-  "total": 55,
-  "passed": 55,
+  "total": 65,
+  "passed": 65,
   "failed": 0,
   "groups": {
-    "no-opinionated-styles": 24,
-    "no-hardcoded-colors": 31
+    "no-opinionated-styles": 29,
+    "no-hardcoded-colors": 36
   },
   "checks": [
     {
@@ -16,6 +16,11 @@
     {
       "group": "no-opinionated-styles",
       "name": "callout: no opinionated inline styles",
+      "status": "pass"
+    },
+    {
+      "group": "no-opinionated-styles",
+      "name": "briefing: no opinionated inline styles",
       "status": "pass"
     },
     {
@@ -75,7 +80,22 @@
     },
     {
       "group": "no-opinionated-styles",
+      "name": "parser: no opinionated inline styles",
+      "status": "pass"
+    },
+    {
+      "group": "no-opinionated-styles",
+      "name": "skillup: no opinionated inline styles",
+      "status": "pass"
+    },
+    {
+      "group": "no-opinionated-styles",
       "name": "dragdrop: no opinionated inline styles",
+      "status": "pass"
+    },
+    {
+      "group": "no-opinionated-styles",
+      "name": "dispatch: no opinionated inline styles",
       "status": "pass"
     },
     {
@@ -96,6 +116,11 @@
     {
       "group": "no-opinionated-styles",
       "name": "timeline: no opinionated inline styles",
+      "status": "pass"
+    },
+    {
+      "group": "no-opinionated-styles",
+      "name": "plan: no opinionated inline styles",
       "status": "pass"
     },
     {
@@ -141,6 +166,11 @@
     {
       "group": "no-hardcoded-colors",
       "name": "callout: no hardcoded colors outside var(--sd-*)",
+      "status": "pass"
+    },
+    {
+      "group": "no-hardcoded-colors",
+      "name": "briefing: no hardcoded colors outside var(--sd-*)",
       "status": "pass"
     },
     {
@@ -205,12 +235,22 @@
     },
     {
       "group": "no-hardcoded-colors",
+      "name": "parser: no hardcoded colors outside var(--sd-*)",
+      "status": "pass"
+    },
+    {
+      "group": "no-hardcoded-colors",
       "name": "map: no hardcoded colors outside var(--sd-*)",
       "status": "pass"
     },
     {
       "group": "no-hardcoded-colors",
       "name": "hierarchy: no hardcoded colors outside var(--sd-*)",
+      "status": "pass"
+    },
+    {
+      "group": "no-hardcoded-colors",
+      "name": "skillup: no hardcoded colors outside var(--sd-*)",
       "status": "pass"
     },
     {
@@ -235,6 +275,11 @@
     },
     {
       "group": "no-hardcoded-colors",
+      "name": "dispatch: no hardcoded colors outside var(--sd-*)",
+      "status": "pass"
+    },
+    {
+      "group": "no-hardcoded-colors",
       "name": "layout: no hardcoded colors outside var(--sd-*)",
       "status": "pass"
     },
@@ -251,6 +296,11 @@
     {
       "group": "no-hardcoded-colors",
       "name": "timeline: no hardcoded colors outside var(--sd-*)",
+      "status": "pass"
+    },
+    {
+      "group": "no-hardcoded-colors",
+      "name": "plan: no hardcoded colors outside var(--sd-*)",
       "status": "pass"
     },
     {

@@ -1,0 +1,29 @@
+{
+  "component": "plan",
+  "metadata": {
+    "variant": "compact",
+    "spacing": "compact",
+    "title": "Quick Tasks",
+    "showChat": false
+  },
+  "data": {
+    "steps": {
+      "name": "plan-steps-compact",
+      "type": "list",
+      "source": "inline",
+      "inline": [
+        { "id": "t1", "action": "Review PR #42", "estimate": "10 min", "status": "pending", "impact": "high", "why": "Blocks deploy" },
+        { "id": "t2", "action": "Update docs", "estimate": "15 min", "status": "pending", "impact": "medium", "why": "New API endpoint" }
+      ],
+      "schema": {
+        "fields": [
+          { "name": "action", "label": "Action", "type": "text" },
+          { "name": "estimate", "label": "Estimate", "type": "text" }
+        ]
+      }
+    }
+  },
+  "eventHandler": {
+    "handler": "plan"
+  }
+}

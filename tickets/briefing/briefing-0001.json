@@ -1,0 +1,42 @@
+{
+  "id": "briefing-0001",
+  "component": "plan",
+  "type": "new-component",
+  "title": "Create the plan component from jitui — ordered task list with progress, impact, done/skip, chat",
+  "description": "Vertical panel: progress bar at top, ordered list of steps with impact colors (critical/high/medium/low), expand to see why/unlocks, done/skip buttons, chat input at bottom. Based on jitui PlanPanel.",
+  "status": "closed",
+  "proves": [
+    "builder-reconcile", "builder-structure", "builder-dumb",
+    "paint-definition", "framework-delegation", "framework-boot",
+    "builder-registry", "event-payload", "paint-contrast"
+  ],
+  "structure_test": {
+    "file": "safeframeworks/builders/plan.ts",
+    "required_roles": [
+      "header",
+      "progress-bar",
+      "progress-fill",
+      "progress-stats",
+      "body",
+      "step",
+      "step-icon",
+      "step-impact",
+      "step-action",
+      "step-estimate",
+      "step-detail",
+      "step-why",
+      "step-unlocks",
+      "step-actions",
+      "btn-done",
+      "btn-skip",
+      "chat-bar",
+      "chat-input",
+      "empty"
+    ]
+  },
+  "params": {
+    "component": "plan"
+  },
+  "created": "2026-06-18T18:54:56.209Z",
+  "updated": "2026-06-18T22:00:00.000Z"
+}

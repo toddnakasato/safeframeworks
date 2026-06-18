@@ -1,0 +1,31 @@
+{
+  "id": "flow-0003",
+  "component": "drag-drop",
+  "type": "variation",
+  "title": "Implement drag-drop variations from figma spec: row, cell, table, template",
+  "description": "Add 4 new variants from the Atom Drag Drop figma spec. Row: reorder rows by dragging. Cell: move cells between positions in a grid. Table: comprehensive table with row reorder + cell move + column sort. Template: multi-zone layout drop targets (main, left-main, left-main-right, complete).",
+  "status": "closed",
+  "resolution": "Added 4 new drag-drop variants from figma spec: row (reorder by dragging), cell (grid swap), table (row reorder + file drop per row), template (13 multi-zone layouts with labeled drop targets). 10 required DOM roles proved in builder + CSS. Fixed prove to recognize el() role pattern alongside elAttrs. All 16 prove commands pass (5415 checks, 0 failures).",
+  "proves": [
+    "builder-reconcile", "builder-structure", "builder-dumb",
+    "builder-registry", "paint-contrast", "paint-unopinionated"
+  ],
+  "structure_test": {
+    "file": "safeframeworks/builders/dragdrop.ts",
+    "required_roles": [
+      "drop-zone",
+      "drag-item",
+      "drag-handle",
+      "row",
+      "cell",
+      "grid",
+      "zone-label",
+      "file-zone",
+      "file-list",
+      "file-item"
+    ]
+  },
+  "params": { "component": "drag-drop" },
+  "created": "2026-06-18T19:32:24.818Z",
+  "updated": "2026-06-19T00:00:00.000Z"
+}

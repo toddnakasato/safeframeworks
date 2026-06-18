@@ -1,0 +1,20 @@
+{
+  "component": "flow",
+  "metadata": {
+    "variant": "dagre",
+    "spacing": "normal",
+    "width": 600,
+    "height": 400,
+    "rankdir": "TB"
+  },
+  "data": {
+    "graph": {
+      "name": "flow-ci-pipeline",
+      "type": "record",
+      "source": "file"
+    }
+  },
+  "eventHandler": {
+    "handler": "flow"
+  }
+}

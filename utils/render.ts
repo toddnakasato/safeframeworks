@@ -35,6 +35,11 @@ import { createSafeTabs } from "../builders/tabs";
 import { createSafeTimeline } from "../builders/timeline";
 import { createSafeToggle } from "../builders/toggle";
 import { createSafeTree } from "../builders/tree";
+import { createSafeBriefing } from "../builders/briefing";
+import { createSafePlan } from "../builders/plan";
+import { createSafeSkillUp } from "../builders/skillup";
+import { createSafeDispatch } from "../builders/dispatch";
+import { createSafeParser } from "../builders/parser";
 import { createSafeWeek } from "../builders/week";
 import { createSafeProofViewer } from "../dev/proof-viewer";
 import { createSafeChart } from "../builders/chart";
@@ -72,6 +77,9 @@ export function buildComponent(config: ConfigBase, onEvent?: OnSafeEvent): HTMLE
     switch (component) {
         case "layout":
             createSafeLayout(container, config, stampedOnEvent, buildComponent);
+            break;
+        case "briefing":
+            createSafeBriefing(container, config, ctx, buildComponent);
             break;
         case "button":
             createSafeButton(container, config, ctx);
@@ -141,6 +149,18 @@ export function buildComponent(config: ConfigBase, onEvent?: OnSafeEvent): HTMLE
             break;
         case "tree":
             createSafeTree(container, config, ctx);
+            break;
+        case "plan":
+            createSafePlan(container, config, ctx);
+            break;
+        case "skillup":
+            createSafeSkillUp(container, config, ctx);
+            break;
+        case "dispatch":
+            createSafeDispatch(container, config, ctx);
+            break;
+        case "parser":
+            createSafeParser(container, config, ctx);
             break;
         case "week":
             createSafeWeek(container, config, ctx);

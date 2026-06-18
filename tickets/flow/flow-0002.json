@@ -1,0 +1,29 @@
+{
+  "id": "flow-0002",
+  "component": "flow",
+  "type": "bug",
+  "title": "FLOW-DAGRE-PIPELINE is not rendering anything",
+  "description": "Data file flow-ci-pipeline.json was not registered in samples/index.ts DATA_MAP. Same root cause as flow-0001.",
+  "status": "closed",
+  "proves": [
+    "builder-structure",
+    "builder-dumb",
+    "builder-registry"
+  ],
+  "test": {
+    "command": "payload build --component flow --event node:click --name Source",
+    "assert": {
+      "ok": true,
+      "data.name": "Source"
+    }
+  },
+  "params": {
+    "component": "flow"
+  },
+  "resolution": "Added flow-ci-pipeline import and DATA_MAP entry in samples/index.ts. Dagre variant renders layered directed graph with BFS fallback layout.",
+  "files": [
+    "safeframeworks/samples/index.ts"
+  ],
+  "created": "2026-06-18T22:00:00.000Z",
+  "updated": "2026-06-18T23:30:00.000Z"
+}

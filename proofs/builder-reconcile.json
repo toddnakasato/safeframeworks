@@ -1,12 +1,12 @@
 {
   "ok": true,
-  "total": 567,
-  "passed": 567,
+  "total": 662,
+  "passed": 662,
   "failed": 0,
   "summary": {
-    "registry": 27,
-    "builders": 30,
-    "builderComponents": 30,
+    "registry": 32,
+    "builders": 35,
+    "builderComponents": 35,
     "knownExtensions": [
       "metric",
       "scene",
@@ -15,11 +15,11 @@
     "frameworkTargets": 8
   },
   "groups": {
-    "registry-has-builder": 27,
-    "builder-has-registry": 30,
-    "builder-has-wrapper": 240,
-    "no-stranded-wrapper": 240,
-    "no-stranded-builder": 30
+    "registry-has-builder": 32,
+    "builder-has-registry": 35,
+    "builder-has-wrapper": 280,
+    "no-stranded-wrapper": 280,
+    "no-stranded-builder": 35
   },
   "checks": [
     {
@@ -35,6 +35,16 @@
     {
       "group": "registry-has-builder",
       "name": "registry → builder: card",
+      "status": "pass"
+    },
+    {
+      "group": "registry-has-builder",
+      "name": "registry → builder: briefing",
+      "status": "pass"
+    },
+    {
+      "group": "registry-has-builder",
+      "name": "registry → builder: dispatch",
       "status": "pass"
     },
     {
@@ -149,6 +159,21 @@
     },
     {
       "group": "registry-has-builder",
+      "name": "registry → builder: parser",
+      "status": "pass"
+    },
+    {
+      "group": "registry-has-builder",
+      "name": "registry → builder: plan",
+      "status": "pass"
+    },
+    {
+      "group": "registry-has-builder",
+      "name": "registry → builder: skillup",
+      "status": "pass"
+    },
+    {
+      "group": "registry-has-builder",
       "name": "registry → builder: nav",
       "status": "pass"
     },
@@ -165,6 +190,11 @@
     {
       "group": "builder-has-registry",
       "name": "builder → registry: callout",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-registry",
+      "name": "builder → registry: briefing",
       "status": "pass"
     },
     {
@@ -229,12 +259,22 @@
     },
     {
       "group": "builder-has-registry",
+      "name": "builder → registry: parser",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-registry",
       "name": "builder → registry: map",
       "status": "pass"
     },
     {
       "group": "builder-has-registry",
       "name": "builder → registry: hierarchy",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-registry",
+      "name": "builder → registry: skillup",
       "status": "pass"
     },
     {
@@ -259,6 +299,11 @@
     },
     {
       "group": "builder-has-registry",
+      "name": "builder → registry: dispatch",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-registry",
       "name": "builder → registry: layout",
       "status": "pass"
     },
@@ -275,6 +320,11 @@
     {
       "group": "builder-has-registry",
       "name": "builder → registry: timeline",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-registry",
+      "name": "builder → registry: plan",
       "status": "pass"
     },
     {
@@ -315,6 +365,11 @@
     {
       "group": "builder-has-wrapper",
       "name": "react/18: wrapper for callout",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "react/18: wrapper for briefing",
       "status": "pass"
     },
     {
@@ -379,12 +434,22 @@
     },
     {
       "group": "builder-has-wrapper",
+      "name": "react/18: wrapper for parser",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
       "name": "react/18: wrapper for map",
       "status": "pass"
     },
     {
       "group": "builder-has-wrapper",
       "name": "react/18: wrapper for hierarchy",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "react/18: wrapper for skillup",
       "status": "pass"
     },
     {
@@ -409,6 +474,11 @@
     },
     {
       "group": "builder-has-wrapper",
+      "name": "react/18: wrapper for dispatch",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
       "name": "react/18: wrapper for layout",
       "status": "pass"
     },
@@ -425,6 +495,11 @@
     {
       "group": "builder-has-wrapper",
       "name": "react/18: wrapper for timeline",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "react/18: wrapper for plan",
       "status": "pass"
     },
     {
@@ -459,6 +534,11 @@
     },
     {
       "group": "no-stranded-wrapper",
+      "name": "react/18: briefing has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
       "name": "react/18: dragdrop has builder",
       "status": "pass"
     },
@@ -480,6 +560,11 @@
     {
       "group": "no-stranded-wrapper",
       "name": "react/18: flow has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "react/18: plan has builder",
       "status": "pass"
     },
     {
@@ -519,6 +604,11 @@
     },
     {
       "group": "no-stranded-wrapper",
+      "name": "react/18: skillup has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
       "name": "react/18: timeline has builder",
       "status": "pass"
     },
@@ -530,6 +620,11 @@
     {
       "group": "no-stranded-wrapper",
       "name": "react/18: tree has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "react/18: parser has builder",
       "status": "pass"
     },
     {
@@ -594,6 +689,11 @@
     },
     {
       "group": "no-stranded-wrapper",
+      "name": "react/18: dispatch has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
       "name": "react/18: tabs has builder",
       "status": "pass"
     },
@@ -615,6 +715,11 @@
     {
       "group": "builder-has-wrapper",
       "name": "react/19: wrapper for callout",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "react/19: wrapper for briefing",
       "status": "pass"
     },
     {
@@ -679,12 +784,22 @@
     },
     {
       "group": "builder-has-wrapper",
+      "name": "react/19: wrapper for parser",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
       "name": "react/19: wrapper for map",
       "status": "pass"
     },
     {
       "group": "builder-has-wrapper",
       "name": "react/19: wrapper for hierarchy",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "react/19: wrapper for skillup",
       "status": "pass"
     },
     {
@@ -709,6 +824,11 @@
     },
     {
       "group": "builder-has-wrapper",
+      "name": "react/19: wrapper for dispatch",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
       "name": "react/19: wrapper for layout",
       "status": "pass"
     },
@@ -725,6 +845,11 @@
     {
       "group": "builder-has-wrapper",
       "name": "react/19: wrapper for timeline",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "react/19: wrapper for plan",
       "status": "pass"
     },
     {
@@ -759,6 +884,11 @@
     },
     {
       "group": "no-stranded-wrapper",
+      "name": "react/19: briefing has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
       "name": "react/19: dragdrop has builder",
       "status": "pass"
     },
@@ -780,6 +910,11 @@
     {
       "group": "no-stranded-wrapper",
       "name": "react/19: flow has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "react/19: plan has builder",
       "status": "pass"
     },
     {
@@ -819,6 +954,11 @@
     },
     {
       "group": "no-stranded-wrapper",
+      "name": "react/19: skillup has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
       "name": "react/19: timeline has builder",
       "status": "pass"
     },
@@ -830,6 +970,11 @@
     {
       "group": "no-stranded-wrapper",
       "name": "react/19: tree has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "react/19: parser has builder",
       "status": "pass"
     },
     {
@@ -894,6 +1039,11 @@
     },
     {
       "group": "no-stranded-wrapper",
+      "name": "react/19: dispatch has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
       "name": "react/19: tabs has builder",
       "status": "pass"
     },
@@ -915,6 +1065,11 @@
     {
       "group": "builder-has-wrapper",
       "name": "angular/21: wrapper for callout",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "angular/21: wrapper for briefing",
       "status": "pass"
     },
     {
@@ -979,12 +1134,22 @@
     },
     {
       "group": "builder-has-wrapper",
+      "name": "angular/21: wrapper for parser",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
       "name": "angular/21: wrapper for map",
       "status": "pass"
     },
     {
       "group": "builder-has-wrapper",
       "name": "angular/21: wrapper for hierarchy",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "angular/21: wrapper for skillup",
       "status": "pass"
     },
     {
@@ -1009,6 +1174,11 @@
     },
     {
       "group": "builder-has-wrapper",
+      "name": "angular/21: wrapper for dispatch",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
       "name": "angular/21: wrapper for layout",
       "status": "pass"
     },
@@ -1025,6 +1195,11 @@
     {
       "group": "builder-has-wrapper",
       "name": "angular/21: wrapper for timeline",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "angular/21: wrapper for plan",
       "status": "pass"
     },
     {
@@ -1069,12 +1244,22 @@
     },
     {
       "group": "no-stranded-wrapper",
+      "name": "angular/21: parser has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
       "name": "angular/21: tabs has builder",
       "status": "pass"
     },
     {
       "group": "no-stranded-wrapper",
       "name": "angular/21: list has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "angular/21: skillup has builder",
       "status": "pass"
     },
     {
@@ -1094,7 +1279,17 @@
     },
     {
       "group": "no-stranded-wrapper",
+      "name": "angular/21: plan has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
       "name": "angular/21: timeline has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "angular/21: dispatch has builder",
       "status": "pass"
     },
     {
@@ -1179,6 +1374,11 @@
     },
     {
       "group": "no-stranded-wrapper",
+      "name": "angular/21: briefing has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
       "name": "angular/21: layout has builder",
       "status": "pass"
     },
@@ -1215,6 +1415,11 @@
     {
       "group": "builder-has-wrapper",
       "name": "angular/22: wrapper for callout",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "angular/22: wrapper for briefing",
       "status": "pass"
     },
     {
@@ -1279,12 +1484,22 @@
     },
     {
       "group": "builder-has-wrapper",
+      "name": "angular/22: wrapper for parser",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
       "name": "angular/22: wrapper for map",
       "status": "pass"
     },
     {
       "group": "builder-has-wrapper",
       "name": "angular/22: wrapper for hierarchy",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "angular/22: wrapper for skillup",
       "status": "pass"
     },
     {
@@ -1309,6 +1524,11 @@
     },
     {
       "group": "builder-has-wrapper",
+      "name": "angular/22: wrapper for dispatch",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
       "name": "angular/22: wrapper for layout",
       "status": "pass"
     },
@@ -1325,6 +1545,11 @@
     {
       "group": "builder-has-wrapper",
       "name": "angular/22: wrapper for timeline",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "angular/22: wrapper for plan",
       "status": "pass"
     },
     {
@@ -1369,12 +1594,22 @@
     },
     {
       "group": "no-stranded-wrapper",
+      "name": "angular/22: parser has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
       "name": "angular/22: tabs has builder",
       "status": "pass"
     },
     {
       "group": "no-stranded-wrapper",
       "name": "angular/22: list has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "angular/22: skillup has builder",
       "status": "pass"
     },
     {
@@ -1394,7 +1629,17 @@
     },
     {
       "group": "no-stranded-wrapper",
+      "name": "angular/22: plan has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
       "name": "angular/22: timeline has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "angular/22: dispatch has builder",
       "status": "pass"
     },
     {
@@ -1479,6 +1724,11 @@
     },
     {
       "group": "no-stranded-wrapper",
+      "name": "angular/22: briefing has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
       "name": "angular/22: layout has builder",
       "status": "pass"
     },
@@ -1515,6 +1765,11 @@
     {
       "group": "builder-has-wrapper",
       "name": "vue/2: wrapper for callout",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "vue/2: wrapper for briefing",
       "status": "pass"
     },
     {
@@ -1579,12 +1834,22 @@
     },
     {
       "group": "builder-has-wrapper",
+      "name": "vue/2: wrapper for parser",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
       "name": "vue/2: wrapper for map",
       "status": "pass"
     },
     {
       "group": "builder-has-wrapper",
       "name": "vue/2: wrapper for hierarchy",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "vue/2: wrapper for skillup",
       "status": "pass"
     },
     {
@@ -1609,6 +1874,11 @@
     },
     {
       "group": "builder-has-wrapper",
+      "name": "vue/2: wrapper for dispatch",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
       "name": "vue/2: wrapper for layout",
       "status": "pass"
     },
@@ -1625,6 +1895,11 @@
     {
       "group": "builder-has-wrapper",
       "name": "vue/2: wrapper for timeline",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "vue/2: wrapper for plan",
       "status": "pass"
     },
     {
@@ -1659,6 +1934,11 @@
     },
     {
       "group": "no-stranded-wrapper",
+      "name": "vue/2: briefing has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
       "name": "vue/2: callout has builder",
       "status": "pass"
     },
@@ -1680,6 +1960,11 @@
     {
       "group": "no-stranded-wrapper",
       "name": "vue/2: chat has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "vue/2: plan has builder",
       "status": "pass"
     },
     {
@@ -1719,6 +2004,11 @@
     },
     {
       "group": "no-stranded-wrapper",
+      "name": "vue/2: skillup has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
       "name": "vue/2: calendar has builder",
       "status": "pass"
     },
@@ -1730,6 +2020,11 @@
     {
       "group": "no-stranded-wrapper",
       "name": "vue/2: tree has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "vue/2: parser has builder",
       "status": "pass"
     },
     {
@@ -1799,6 +2094,11 @@
     },
     {
       "group": "no-stranded-wrapper",
+      "name": "vue/2: dispatch has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
       "name": "vue/2: week has builder",
       "status": "pass"
     },
@@ -1815,6 +2115,11 @@
     {
       "group": "builder-has-wrapper",
       "name": "vue/3: wrapper for callout",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "vue/3: wrapper for briefing",
       "status": "pass"
     },
     {
@@ -1879,12 +2184,22 @@
     },
     {
       "group": "builder-has-wrapper",
+      "name": "vue/3: wrapper for parser",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
       "name": "vue/3: wrapper for map",
       "status": "pass"
     },
     {
       "group": "builder-has-wrapper",
       "name": "vue/3: wrapper for hierarchy",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "vue/3: wrapper for skillup",
       "status": "pass"
     },
     {
@@ -1909,6 +2224,11 @@
     },
     {
       "group": "builder-has-wrapper",
+      "name": "vue/3: wrapper for dispatch",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
       "name": "vue/3: wrapper for layout",
       "status": "pass"
     },
@@ -1925,6 +2245,11 @@
     {
       "group": "builder-has-wrapper",
       "name": "vue/3: wrapper for timeline",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "vue/3: wrapper for plan",
       "status": "pass"
     },
     {
@@ -1959,6 +2284,11 @@
     },
     {
       "group": "no-stranded-wrapper",
+      "name": "vue/3: briefing has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
       "name": "vue/3: callout has builder",
       "status": "pass"
     },
@@ -1980,6 +2310,11 @@
     {
       "group": "no-stranded-wrapper",
       "name": "vue/3: chat has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "vue/3: plan has builder",
       "status": "pass"
     },
     {
@@ -2019,6 +2354,11 @@
     },
     {
       "group": "no-stranded-wrapper",
+      "name": "vue/3: skillup has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
       "name": "vue/3: calendar has builder",
       "status": "pass"
     },
@@ -2030,6 +2370,11 @@
     {
       "group": "no-stranded-wrapper",
       "name": "vue/3: tree has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "vue/3: parser has builder",
       "status": "pass"
     },
     {
@@ -2099,6 +2444,11 @@
     },
     {
       "group": "no-stranded-wrapper",
+      "name": "vue/3: dispatch has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
       "name": "vue/3: week has builder",
       "status": "pass"
     },
@@ -2115,6 +2465,11 @@
     {
       "group": "builder-has-wrapper",
       "name": "svelte/4: wrapper for callout",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "svelte/4: wrapper for briefing",
       "status": "pass"
     },
     {
@@ -2179,12 +2534,22 @@
     },
     {
       "group": "builder-has-wrapper",
+      "name": "svelte/4: wrapper for parser",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
       "name": "svelte/4: wrapper for map",
       "status": "pass"
     },
     {
       "group": "builder-has-wrapper",
       "name": "svelte/4: wrapper for hierarchy",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "svelte/4: wrapper for skillup",
       "status": "pass"
     },
     {
@@ -2209,6 +2574,11 @@
     },
     {
       "group": "builder-has-wrapper",
+      "name": "svelte/4: wrapper for dispatch",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
       "name": "svelte/4: wrapper for layout",
       "status": "pass"
     },
@@ -2225,6 +2595,11 @@
     {
       "group": "builder-has-wrapper",
       "name": "svelte/4: wrapper for timeline",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "svelte/4: wrapper for plan",
       "status": "pass"
     },
     {
@@ -2270,6 +2645,11 @@
     {
       "group": "no-stranded-wrapper",
       "name": "svelte/4: chat has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "svelte/4: skillup has builder",
       "status": "pass"
     },
     {
@@ -2324,6 +2704,11 @@
     },
     {
       "group": "no-stranded-wrapper",
+      "name": "svelte/4: briefing has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
       "name": "svelte/4: heatmap has builder",
       "status": "pass"
     },
@@ -2350,6 +2735,11 @@
     {
       "group": "no-stranded-wrapper",
       "name": "svelte/4: tree has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "svelte/4: dispatch has builder",
       "status": "pass"
     },
     {
@@ -2394,6 +2784,16 @@
     },
     {
       "group": "no-stranded-wrapper",
+      "name": "svelte/4: plan has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "svelte/4: parser has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
       "name": "svelte/4: dragdrop has builder",
       "status": "pass"
     },
@@ -2415,6 +2815,11 @@
     {
       "group": "builder-has-wrapper",
       "name": "svelte/5: wrapper for callout",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "svelte/5: wrapper for briefing",
       "status": "pass"
     },
     {
@@ -2479,12 +2884,22 @@
     },
     {
       "group": "builder-has-wrapper",
+      "name": "svelte/5: wrapper for parser",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
       "name": "svelte/5: wrapper for map",
       "status": "pass"
     },
     {
       "group": "builder-has-wrapper",
       "name": "svelte/5: wrapper for hierarchy",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "svelte/5: wrapper for skillup",
       "status": "pass"
     },
     {
@@ -2509,6 +2924,11 @@
     },
     {
       "group": "builder-has-wrapper",
+      "name": "svelte/5: wrapper for dispatch",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
       "name": "svelte/5: wrapper for layout",
       "status": "pass"
     },
@@ -2525,6 +2945,11 @@
     {
       "group": "builder-has-wrapper",
       "name": "svelte/5: wrapper for timeline",
+      "status": "pass"
+    },
+    {
+      "group": "builder-has-wrapper",
+      "name": "svelte/5: wrapper for plan",
       "status": "pass"
     },
     {
@@ -2570,6 +2995,11 @@
     {
       "group": "no-stranded-wrapper",
       "name": "svelte/5: chat has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "svelte/5: skillup has builder",
       "status": "pass"
     },
     {
@@ -2624,6 +3054,11 @@
     },
     {
       "group": "no-stranded-wrapper",
+      "name": "svelte/5: briefing has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
       "name": "svelte/5: heatmap has builder",
       "status": "pass"
     },
@@ -2650,6 +3085,11 @@
     {
       "group": "no-stranded-wrapper",
       "name": "svelte/5: tree has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "svelte/5: dispatch has builder",
       "status": "pass"
     },
     {
@@ -2694,6 +3134,16 @@
     },
     {
       "group": "no-stranded-wrapper",
+      "name": "svelte/5: plan has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
+      "name": "svelte/5: parser has builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-wrapper",
       "name": "svelte/5: dragdrop has builder",
       "status": "pass"
     },
@@ -2715,6 +3165,11 @@
     {
       "group": "no-stranded-builder",
       "name": "builder callout: has wrappers (8/8)",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-builder",
+      "name": "builder briefing: has wrappers (8/8)",
       "status": "pass"
     },
     {
@@ -2779,12 +3234,22 @@
     },
     {
       "group": "no-stranded-builder",
+      "name": "builder parser: has wrappers (8/8)",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-builder",
       "name": "builder map: has wrappers (8/8)",
       "status": "pass"
     },
     {
       "group": "no-stranded-builder",
       "name": "builder hierarchy: has wrappers (8/8)",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-builder",
+      "name": "builder skillup: has wrappers (8/8)",
       "status": "pass"
     },
     {
@@ -2809,6 +3274,11 @@
     },
     {
       "group": "no-stranded-builder",
+      "name": "builder dispatch: has wrappers (8/8)",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-builder",
       "name": "builder layout: has wrappers (8/8)",
       "status": "pass"
     },
@@ -2825,6 +3295,11 @@
     {
       "group": "no-stranded-builder",
       "name": "builder timeline: has wrappers (8/8)",
+      "status": "pass"
+    },
+    {
+      "group": "no-stranded-builder",
+      "name": "builder plan: has wrappers (8/8)",
       "status": "pass"
     },
     {
@@ -2859,5 +3334,5 @@
     }
   ],
   "failures": [],
-  "ts": "2026-06-18T15:15:25.816Z"
+  "ts": "2026-06-18T19:38:29.705Z"
 }

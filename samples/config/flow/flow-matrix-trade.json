@@ -1,0 +1,19 @@
+{
+  "component": "flow",
+  "metadata": {
+    "variant": "matrix",
+    "spacing": "normal",
+    "width": 500,
+    "height": 500
+  },
+  "data": {
+    "graph": {
+      "name": "flow-region-trade",
+      "type": "record",
+      "source": "file"
+    }
+  },
+  "eventHandler": {
+    "handler": "flow"
+  }
+}

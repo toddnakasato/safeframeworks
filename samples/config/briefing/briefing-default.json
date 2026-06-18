@@ -1,0 +1,103 @@
+{
+  "component": "briefing",
+  "metadata": {
+    "variant": "default",
+    "spacing": "normal",
+    "title": "Daily Briefing",
+    "showDate": true,
+    "showChat": true
+  },
+  "children": {
+    "metrics": {
+      "component": "gauge",
+      "metadata": { "section": "metrics", "order": 0, "icon": "◉", "title": "Metrics" },
+      "data": {
+        "record": {
+          "name": "briefing-metrics",
+          "type": "list",
+          "source": "inline",
+          "inline": [
+            { "label": "Leads", "value": 12, "target": "leads" },
+            { "label": "Opps", "value": 3, "target": "pipeline" },
+            { "label": "Tasks", "value": 5, "target": "tasks" },
+            { "label": "Alerts", "value": 2, "target": "alerts" }
+          ]
+        }
+      }
+    },
+    "calendar": {
+      "component": "calendar",
+      "metadata": { "section": "calendar", "order": 1, "icon": "📅", "title": "Today", "variant": "grid" },
+      "data": {
+        "events": {
+          "name": "briefing-events",
+          "type": "list",
+          "source": "inline",
+          "inline": [
+            { "time": "9:00", "title": "Client call — Acme Corp", "type": "call" },
+            { "time": "11:00", "title": "Pipeline review", "type": "meeting" },
+            { "time": "2:00", "title": "Demo prep — Globex", "type": "prep" },
+            { "time": "4:30", "title": "Team standup", "type": "meeting" }
+          ]
+        }
+      }
+    },
+    "leads": {
+      "component": "list",
+      "metadata": { "section": "leads", "order": 2, "icon": "🔥", "title": "Hot Leads", "variant": "simple", "labelField": "name", "valueField": "score" },
+      "data": {
+        "items": {
+          "name": "briefing-leads",
+          "type": "list",
+          "source": "inline",
+          "inline": [
+            { "name": "Acme Corp", "score": 92, "status": "Hot" },
+            { "name": "Umbrella Corp", "score": 88, "status": "Hot" },
+            { "name": "Globex Inc", "score": 87, "status": "Warm" },
+            { "name": "Initech LLC", "score": 81, "status": "Hot" },
+            { "name": "Wayne Enterprises", "score": 76, "status": "Warm" }
+          ]
+        }
+      }
+    },
+    "pipeline": {
+      "component": "list",
+      "metadata": { "section": "pipeline", "order": 3, "icon": "💰", "title": "Open Opportunities", "variant": "simple", "labelField": "name", "valueField": "amount" },
+      "data": {
+        "items": {
+          "name": "briefing-pipeline",
+          "type": "list",
+          "source": "inline",
+          "inline": [
+            { "name": "Acme renewal", "amount": 45000, "stage": "Negotiation" },
+            { "name": "Globex expansion", "amount": 120000, "stage": "Proposal" },
+            { "name": "Wayne onboarding", "amount": 28000, "stage": "Discovery" }
+          ]
+        }
+      }
+    },
+    "pinned": {
+      "component": "list",
+      "metadata": { "section": "pinned", "order": 4, "icon": "📌", "title": "Pinned", "variant": "simple", "labelField": "label" },
+      "data": {
+        "items": {
+          "name": "briefing-pinned",
+          "type": "list",
+          "source": "inline",
+          "inline": [
+            { "label": "Q1 Report", "icon": "📊" },
+            { "label": "Kernel tree: forge", "icon": "🌳" },
+            { "label": "Team kanban", "icon": "📋" }
+          ]
+        }
+      }
+    },
+    "alerts": {
+      "component": "callout",
+      "metadata": { "section": "alerts", "order": 5, "icon": "⚡", "title": "Alerts", "variant": "insight", "message": "Pipeline dropped 15% this week. 3 tasks overdue. New lead: Umbrella Corp (score 88)." }
+    }
+  },
+  "eventHandler": {
+    "handler": "briefing"
+  }
+}

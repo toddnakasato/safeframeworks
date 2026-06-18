@@ -1,0 +1,73 @@
+{
+  "id": "week-0001",
+  "component": "parser",
+  "type": "new-component",
+  "title": "New parser component from Atom Parser figma spec — document structure viewer with tabbed split panel",
+  "description": "Read the Atom Parser figma design spec folder. Create a new component (not functionality of extraction) just the sample and layout. Its atom parser. The actual extraction of text is out of scope. Figma layout: header, split panel — left has Parse/Generate/Verify tabs, right has Document Sections/JSON Structure tabs.",
+  "status": "closed",
+  "proves": [
+    "builder-reconcile",
+    "builder-structure",
+    "builder-dumb",
+    "paint-definition",
+    "framework-delegation",
+    "framework-boot",
+    "builder-registry",
+    "event-payload"
+  ],
+  "test": {
+    "command": "prove builder-structure --component parser",
+    "assert": {
+      "ok": true
+    }
+  },
+  "structure_test": {
+    "file": "safeframeworks/builders/parser.ts",
+    "required_roles": [
+      "header",
+      "body",
+      "panel-left",
+      "panel-right",
+      "tab-bar",
+      "tab-group",
+      "tab-panel",
+      "tab-content",
+      "tree",
+      "node",
+      "json-view",
+      "json-pre",
+      "copy-btn",
+      "parse-header",
+      "placeholder"
+    ]
+  },
+  "params": {
+    "component": "parser"
+  },
+  "resolution": "Created parser component: safecontracts type (ParserMetadata, PARSER_DATA_FIELDS, PARSER_DATA_SLOTS), builder (builders/parser.ts — header, split panel with left tabs [Parse/Generate/Verify] and right tabs [Document Sections/JSON Structure], tree view with expand/collapse, field details, bounds, JSON view with copy), registered in all contracts, 2 samples, 8 framework wrappers, SafeRenderer routing. All proves pass.",
+  "files": [
+    "safecontracts/src/components/parser.ts",
+    "safecontracts/src/components/index.ts",
+    "safecontracts/src/contracts-registry.ts",
+    "safecontracts/src/contracts-data.ts",
+    "safecontracts/src/contracts-events.ts",
+    "safecontracts/src/contracts-payload.ts",
+    "safecontracts/src/contracts-paint.ts",
+    "safeframeworks/builders/parser.ts",
+    "safeframeworks/utils/render.ts",
+    "safeframeworks/react/19/SafeRenderer.tsx",
+    "safeframeworks/samples/config/parser/parser-default.json",
+    "safeframeworks/samples/config/parser/parser-compact.json",
+    "safeframeworks/samples/index.ts",
+    "safeframeworks/react/18/SafeParser.tsx",
+    "safeframeworks/react/19/SafeParser.tsx",
+    "safeframeworks/angular/21/SafeParser.ts",
+    "safeframeworks/angular/22/SafeParser.ts",
+    "safeframeworks/vue/2/SafeParser.vue",
+    "safeframeworks/vue/3/SafeParser.vue",
+    "safeframeworks/svelte/4/SafeParser.svelte",
+    "safeframeworks/svelte/5/SafeParser.svelte"
+  ],
+  "created": "2026-06-18T18:14:04.435Z",
+  "updated": "2026-06-18T20:30:00.000Z"
+}

@@ -1,15 +1,165 @@
 {
   "ok": true,
-  "total": 108,
-  "passed": 108,
+  "total": 190,
+  "passed": 190,
   "failed": 0,
   "groups": {
-    "wcag-aa-contrast": 108
+    "wcag-aa-contrast": 190
   },
   "checks": [
     {
       "group": "wcag-aa-contrast",
+      "name": "[data-component=\"timeline\"] [data-role=\"tl-date\"]: #6b7280 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"timeline\"] [data-role=\"tl-desc\"]: #475569 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"timeline\"] [data-role=\"tl-legend-label\"]: #6b7280 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"timeline\"][data-variant=\"career\"] [data-...: #6b7280 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"timeline\"] [data-role=\"tl-category\"]: #6b7280 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"timeline\"][data-variant=\"sprint\"] [data-...: #6b7280 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"timeline\"][data-variant=\"sprint\"] [data-...: #2563eb on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"timeline\"][data-variant=\"sprint\"] [data-...: #6b7280 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"timeline\"][data-variant=\"schedule\"] [dat...: #2563eb on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"timeline\"][data-theme=\"dark\"]: #f8fafc on #0f172a",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"timeline\"][data-theme=\"dark\"] [data-role...: #f87171 on #0f172a",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"timeline\"][data-theme=\"dark\"] [data-role...: #4ade80 on #0f172a",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"timeline\"][data-theme=\"dark\"] [data-role...: #60a5fa on #0f172a",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"timeline\"] [data-role=\"tl-gantt-month\"]: #6b7280 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"timeline\"] [data-role=\"tl-gantt-label\"]: #6b7280 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"timeline\"] [data-role=\"tl-gantt-bar\"]: #0f172a on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"timeline\"] [data-role=\"tl-sprint-day-lab...: #6b7280 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"timeline\"] [data-role=\"tl-sprint-day-col...: #2563eb on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"timeline\"] [data-role=\"tl-sprint-day-cou...: #6b7280 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"timeline\"] [data-role=\"tl-sprint-day-tod...: #b45309 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
       "name": "[data-component=\"table\"] [data-role=\"drag-handle\"]: #666 on #fff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"calendar\"] [data-role=\"calendar-detail-c...: #475569 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"calendar\"] [data-role=\"calendar-detail-i...: #475569 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"calendar\"] [data-role=\"calendar-detail-i...: #6b7280 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"calendar\"] [data-role=\"calendar-detail-e...: #6b7280 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"drag-drop\"] [data-role=\"drag-handle\"]: #475569 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"drag-drop\"] [data-role=\"drag-label\"]: #1a1a1a on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"drag-drop\"][data-variant=\"cell\"] [data-r...: #1a1a1a on #fff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"drag-drop\"][data-variant=\"table\"] [data-...: #1a1a1a on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"drag-drop\"][data-variant=\"table\"] [data-...: #475569 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"drag-drop\"][data-variant=\"template\"] [da...: #475569 on #ffffff",
       "status": "pass"
     },
     {
@@ -29,7 +179,267 @@
     },
     {
       "group": "wcag-aa-contrast",
+      "name": "[data-component=\"toggle\"] [data-role=\"toggle-check-label\"]: #0f172a on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
       "name": "[data-nav-user-avatar]: #374151 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"parser\"] [data-role=\"subtitle\"]: #6b7280 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"parser\"] [data-role=\"empty\"]: #6b7280 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"parser\"] [data-role=\"tab-bar\"] [data-rol...: #6b7280 on #f9fafb",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"parser\"] [data-role=\"tab-bar\"] [data-rol...: #1a1a1a on #f9fafb",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"parser\"] [data-role=\"tab-bar\"] [data-rol...: #2563eb on #f9fafb",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"parser\"] [data-role=\"parse-subtitle\"]: #6b7280 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"parser\"] [data-role=\"summary-count\"]: #fff on #2563eb",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"parser\"] [data-role=\"placeholder\"]: #6b7280 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"parser\"] [data-role=\"placeholder-title\"]: #1a1a1a on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"parser\"] [data-role=\"field-label\"]: #6b7280 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"parser\"] [data-role=\"field-value\"]: #374151 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"parser\"] [data-role=\"bounds\"]: #475569 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"parser\"] [data-role=\"copy-btn\"]: #fff on #2563eb",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"parser\"] [data-role=\"json-code\"]: #374151 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"briefing\"] [data-role=\"header-date\"]: #475569 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"briefing\"] [data-role=\"empty\"]: #475569 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"briefing\"] [data-role=\"section-header\"]: #475569 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"briefing\"] [data-role=\"section-count\"]: #fff on #2563eb",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"briefing\"] [data-role=\"metric-value\"]: #2563eb on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"briefing\"] [data-role=\"metric-label\"]: #475569 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"briefing\"] [data-role=\"chat-input\"]: #1a1a1a on #f9fafb",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"plan\"] [data-role=\"progress-stats\"]: #475569 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"plan\"] [data-role=\"empty\"]: #475569 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"plan\"] [data-role=\"step\"][data-status=\"d...: #475569 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"plan\"] [data-role=\"step\"][data-status=\"d...: #15803d on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"plan\"] [data-role=\"step\"][data-active] [...: #2563eb on #f9fafb",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"plan\"] [data-role=\"step\"][data-impact=\"c...: #dc2626 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"plan\"] [data-role=\"step\"][data-impact=\"h...: #b45309 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"plan\"] [data-role=\"step-estimate\"]: #475569 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"plan\"] [data-role=\"step-why\"]: #b45309 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"plan\"] [data-role=\"step-unlocks\"]: #15803d on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"plan\"] [data-role=\"btn-done\"]: #fff on #15803d",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"plan\"] [data-role=\"btn-skip\"]: #1a1a1a on #f1f5f9",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"plan\"] [data-role=\"chat-input\"]: #1a1a1a on #f9fafb",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"skillup\"] [data-role=\"empty\"]: #475569 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"skillup\"] [data-role=\"stat-label\"]: #475569 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"skillup\"] [data-role=\"question-skill\"]: #2563eb on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"skillup\"] [data-role=\"choice-letter\"]: #475569 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"skillup\"] [data-role=\"explanation\"]: #1a1a1a on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"dispatch\"] [data-role=\"header-count\"]: #475569 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"dispatch\"] [data-role=\"empty\"]: #475569 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"dispatch\"] [data-role=\"filter-tag\"]: #475569 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"dispatch\"] [data-role=\"filter-tag\"]:hover: #1a1a1a on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"dispatch\"] [data-role=\"filter-tag\"][data...: #2563eb on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"dispatch\"] [data-role=\"article-meta\"]: #475569 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"dispatch\"] [data-role=\"article-tag\"]: #2563eb on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"dispatch\"] [data-role=\"article-teaser\"]: #475569 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"dispatch\"] [data-role=\"article-footer\"]: #475569 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"dispatch\"] [data-role=\"btn-bookmark\"]: #475569 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"dispatch\"] [data-role=\"btn-bookmark\"]:hover: #b45309 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"dispatch\"] [data-role=\"btn-bookmark\"][da...: #b45309 on #ffffff",
       "status": "pass"
     },
     {

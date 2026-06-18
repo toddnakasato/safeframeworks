@@ -1,0 +1,41 @@
+{
+  "component": "plan",
+  "metadata": {
+    "variant": "default",
+    "spacing": "normal",
+    "title": "Today's Plan",
+    "showChat": true,
+    "actionField": "action",
+    "whyField": "why",
+    "estimateField": "estimate",
+    "impactField": "impact",
+    "unlocksField": "unlocks",
+    "statusField": "status"
+  },
+  "data": {
+    "steps": {
+      "name": "plan-steps",
+      "type": "list",
+      "source": "inline",
+      "inline": [
+        { "id": "p1", "action": "Call Acme Corp — close the renewal", "why": "$45k on the line, proposal expires today", "estimate": "30 min", "status": "pending", "impact": "critical", "unlocks": "Frees pipeline focus for Globex" },
+        { "id": "p2", "action": "Send Globex demo deck", "why": "Demo is tomorrow, they need prep time", "estimate": "15 min", "status": "pending", "impact": "critical", "unlocks": "Demo goes smoothly, $120k opp moves to negotiation" },
+        { "id": "p3", "action": "Follow up Initech proposal (2 days overdue)", "why": "They went quiet — competitor may be circling", "estimate": "10 min", "status": "pending", "impact": "high", "unlocks": "Prevents $81k lead from going cold" },
+        { "id": "p4", "action": "Review pipeline — 15% drop this week", "why": "Lost Cyberdyne $35k, need to know why", "estimate": "20 min", "status": "pending", "impact": "high", "unlocks": "Prevents same loss pattern" },
+        { "id": "p5", "action": "Update Weyland CRM notes", "why": "Sarah can't prep without current context", "estimate": "5 min", "status": "pending", "impact": "medium", "unlocks": "Sarah picks up Weyland follow-up tomorrow" },
+        { "id": "p6", "action": "Prep for team standup at 4:30", "why": "3 blockers to surface, 2 wins to share", "estimate": "10 min", "status": "pending", "impact": "low", "unlocks": "Team aligned for tomorrow" }
+      ],
+      "schema": {
+        "fields": [
+          { "name": "action", "label": "Action", "type": "text" },
+          { "name": "impact", "label": "Impact", "type": "text" },
+          { "name": "estimate", "label": "Estimate", "type": "text" },
+          { "name": "status", "label": "Status", "type": "text" }
+        ]
+      }
+    }
+  },
+  "eventHandler": {
+    "handler": "plan"
+  }
+}

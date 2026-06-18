@@ -1,0 +1,44 @@
+{
+  "component": "briefing",
+  "metadata": {
+    "variant": "compact",
+    "spacing": "compact",
+    "title": "Quick Brief",
+    "showDate": true,
+    "showChat": false
+  },
+  "children": {
+    "metrics": {
+      "component": "gauge",
+      "metadata": { "section": "metrics", "order": 0, "icon": "◉", "title": "KPIs" },
+      "data": {
+        "record": {
+          "name": "brief-metrics",
+          "type": "list",
+          "source": "inline",
+          "inline": [
+            { "label": "Open", "value": 8 },
+            { "label": "Closed", "value": 14 }
+          ]
+        }
+      }
+    },
+    "alerts": {
+      "component": "callout",
+      "metadata": { "section": "alerts", "order": 1, "icon": "⚡", "title": "Alerts" },
+      "data": {
+        "items": {
+          "name": "brief-alerts",
+          "type": "list",
+          "source": "inline",
+          "inline": [
+            { "message": "Deployment pending", "severity": "info" }
+          ]
+        }
+      }
+    }
+  },
+  "eventHandler": {
+    "handler": "briefing"
+  }
+}

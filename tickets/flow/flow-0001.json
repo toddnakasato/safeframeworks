@@ -1,0 +1,29 @@
+{
+  "id": "flow-0001",
+  "component": "flow",
+  "type": "bug",
+  "title": "FLOW-EDGE-BUNDLING-MODULES is not rendering anything",
+  "description": "Data file flow-module-deps.json was not registered in samples/index.ts DATA_MAP. The source: file datasource resolved to empty because the viewer had no mapping for the data name.",
+  "status": "closed",
+  "proves": [
+    "builder-structure",
+    "builder-dumb",
+    "builder-registry"
+  ],
+  "test": {
+    "command": "payload build --component flow --event node:click --name App",
+    "assert": {
+      "ok": true,
+      "data.name": "App"
+    }
+  },
+  "params": {
+    "component": "flow"
+  },
+  "resolution": "Added flow-module-deps import and DATA_MAP entry in samples/index.ts. Edge-bundling variant renders radial hierarchical bundled links from the module dependency data.",
+  "files": [
+    "safeframeworks/samples/index.ts"
+  ],
+  "created": "2026-06-18T22:00:00.000Z",
+  "updated": "2026-06-18T23:30:00.000Z"
+}

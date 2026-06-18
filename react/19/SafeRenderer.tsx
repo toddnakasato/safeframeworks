@@ -33,6 +33,11 @@ import { SafeSheet } from "./SafeSheet";
 import { SafeTable } from "./SafeTable";
 import { SafeTimeline } from "./SafeTimeline";
 import { SafeTree } from "./SafeTree";
+import { SafeBriefing } from "./SafeBriefing";
+import { SafePlan } from "./SafePlan";
+import { SafeSkillUp } from "./SafeSkillUp";
+import { SafeDispatch } from "./SafeDispatch";
+import { SafeParser } from "./SafeParser";
 import { SafeHierarchy } from "./SafeHierarchy";
 
 function extractData(config: ConfigBase): { inline: any; list: any[]; record: Record<string, any> } {
@@ -192,6 +197,26 @@ export function renderConfigBase(config: ConfigBase, onEvent?: OnSafeEvent, ctx?
 
     if (component === "tree") {
         return <SafeTree config={config} data={list} onEvent={stampedOnEvent} />;
+    }
+
+    if (component === "briefing") {
+        return <SafeBriefing config={config} onEvent={stampedOnEvent} />;
+    }
+
+    if (component === "plan") {
+        return <SafePlan config={config} onEvent={stampedOnEvent} />;
+    }
+
+    if (component === "skillup") {
+        return <SafeSkillUp config={config} onEvent={stampedOnEvent} />;
+    }
+
+    if (component === "dispatch") {
+        return <SafeDispatch config={config} onEvent={stampedOnEvent} />;
+    }
+
+    if (component === "parser") {
+        return <SafeParser config={config} onEvent={stampedOnEvent} />;
     }
 
     if (component === "sheet") {

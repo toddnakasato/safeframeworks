@@ -9,19 +9,21 @@
   },
   "dependencies": {
     "@monaco-editor/react": "^4.7.0",
+    "@types/dagre": "^0.7.54",
+    "chart.js": "^4",
     "d3": "^7.9.0",
     "d3-sankey": "^0.12.3",
+    "dagre": "^0.8.5",
     "gsap": "^3.15.0",
     "hyperformula": "^3.3.0",
     "leaflet": "^1.9.4",
+    "lucide": "^0.469",
     "lucide-react": "^1.17.0",
     "react": "^19",
     "react-dom": "^19",
     "react-markdown": "^10.1.0",
     "recharts": "^3.8.1",
-    "remark-gfm": "^4.0.1",
-    "chart.js": "^4",
-    "lucide": "^0.469"
+    "remark-gfm": "^4.0.1"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4",

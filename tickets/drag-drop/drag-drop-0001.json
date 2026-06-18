@@ -1,0 +1,79 @@
+{
+  "id": "drag-drop-0001",
+  "component": "briefing",
+  "type": "new-component",
+  "title": "Create a briefing component based on jitui — composition via renderChild with existing builders",
+  "description": "Vertical dashboard panel with sections: metrics (grid of cards), calendar, leads (list), pipeline (list), pinned (list), alerts (callout), chat input. Each section delegates to an existing builder via renderChild. Layout: header with title+date, scrollable body of sections, chat input at bottom.",
+  "status": "closed",
+  "proves": [
+    "builder-reconcile",
+    "builder-structure",
+    "builder-dumb",
+    "paint-definition",
+    "framework-delegation",
+    "framework-boot",
+    "builder-registry",
+    "event-payload",
+    "paint-contrast"
+  ],
+  "test": {
+    "command": "payload build --component briefing --event select --section leads --id acme",
+    "assert": {
+      "ok": true,
+      "data.section": "leads"
+    }
+  },
+  "structure_test": {
+    "file": "safeframeworks/builders/briefing.ts",
+    "required_roles": [
+      "header",
+      "header-title",
+      "header-date",
+      "body",
+      "section",
+      "section-header",
+      "section-icon",
+      "section-title",
+      "section-count",
+      "section-content",
+      "metrics-grid",
+      "metric-card",
+      "metric-value",
+      "metric-label",
+      "chat-bar",
+      "chat-input",
+      "empty"
+    ]
+  },
+  "params": {
+    "component": "briefing"
+  },
+  "resolution": "Created briefing component via composition. Builder delegates child sections to existing builders (list, calendar, callout) via renderChild. Metrics section renders its own 2x2 grid. Chat bar at bottom fires send event. 17 required DOM roles proved in builder source + structure.css. All 12 prove commands pass (4487 checks, 0 failures).",
+  "files": [
+    "safecontracts/src/components/briefing.ts",
+    "safecontracts/src/components/index.ts",
+    "safecontracts/src/contracts-registry.ts",
+    "safecontracts/src/contracts-data.ts",
+    "safecontracts/src/contracts-events.ts",
+    "safecontracts/src/contracts-payload.ts",
+    "safecontracts/src/contracts-paint.ts",
+    "safeframeworks/builders/briefing.ts",
+    "safeframeworks/utils/render.ts",
+    "safeframeworks/react/19/SafeRenderer.tsx",
+    "safestyles/core/structure.css",
+    "safeframeworks/samples/config/briefing/briefing-default.json",
+    "safeframeworks/samples/config/briefing/briefing-compact.json",
+    "safeframeworks/samples/index.ts",
+    "safeframeworks/react/18/SafeBriefing.tsx",
+    "safeframeworks/react/19/SafeBriefing.tsx",
+    "safeframeworks/angular/21/SafeBriefing.ts",
+    "safeframeworks/angular/22/SafeBriefing.ts",
+    "safeframeworks/vue/2/SafeBriefing.vue",
+    "safeframeworks/vue/3/SafeBriefing.vue",
+    "safeframeworks/svelte/4/SafeBriefing.svelte",
+    "safeframeworks/svelte/5/SafeBriefing.svelte",
+    "safecli/commands/prove-builder-dumb.ts"
+  ],
+  "created": "2026-06-18T18:54:56.209Z",
+  "updated": "2026-06-18T21:30:00.000Z"
+}

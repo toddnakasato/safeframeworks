@@ -1,0 +1,19 @@
+{
+  "component": "flow",
+  "metadata": {
+    "variant": "edge-bundling",
+    "spacing": "normal",
+    "width": 600,
+    "height": 600
+  },
+  "data": {
+    "graph": {
+      "name": "flow-module-deps",
+      "type": "record",
+      "source": "file"
+    }
+  },
+  "eventHandler": {
+    "handler": "flow"
+  }
+}

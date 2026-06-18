@@ -1,22 +1,22 @@
 {
   "ok": true,
   "component": "all",
-  "total": 283,
-  "passed": 283,
+  "total": 344,
+  "passed": 344,
   "failed": 0,
   "groups": {
-    "no-contracts-emit": 29,
-    "no-payload-delegate": 29,
-    "no-fireWithPayload": 29,
-    "no-direct-fire": 29,
-    "no-OnSafeEvent-signature": 29,
-    "uses-SafeFireContext": 26,
-    "no-instanceId": 29,
-    "no-use-before-declaration": 30,
+    "no-contracts-emit": 33,
+    "no-payload-delegate": 33,
+    "no-fireWithPayload": 33,
+    "no-direct-fire": 33,
+    "no-OnSafeEvent-signature": 33,
+    "uses-SafeFireContext": 30,
+    "no-instanceId": 33,
+    "no-use-before-declaration": 35,
     "render-creates-ctx": 1,
     "render-injects-transport": 1,
-    "no-empty-samples": 20,
-    "valid-sample-variant": 31
+    "no-empty-samples": 25,
+    "valid-sample-variant": 54
   },
   "checks": [
     {
@@ -571,6 +571,46 @@
     },
     {
       "group": "no-contracts-emit",
+      "name": "parser: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-delegate",
+      "name": "parser: no payload-delegate import",
+      "status": "pass"
+    },
+    {
+      "group": "no-fireWithPayload",
+      "name": "parser: no fireWithPayload calls",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "parser: no direct fire function calls",
+      "status": "pass"
+    },
+    {
+      "group": "no-OnSafeEvent-signature",
+      "name": "parser: no OnSafeEvent in signatures",
+      "status": "pass"
+    },
+    {
+      "group": "uses-SafeFireContext",
+      "name": "parser: uses SafeFireContext",
+      "status": "pass"
+    },
+    {
+      "group": "no-instanceId",
+      "name": "parser: no instanceId references",
+      "status": "pass"
+    },
+    {
+      "group": "no-use-before-declaration",
+      "name": "parser: no use-before-declaration",
+      "status": "pass"
+    },
+    {
+      "group": "no-contracts-emit",
       "name": "map: no contracts-emit import",
       "status": "pass"
     },
@@ -647,6 +687,46 @@
     {
       "group": "no-use-before-declaration",
       "name": "hierarchy: no use-before-declaration",
+      "status": "pass"
+    },
+    {
+      "group": "no-contracts-emit",
+      "name": "skillup: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-delegate",
+      "name": "skillup: no payload-delegate import",
+      "status": "pass"
+    },
+    {
+      "group": "no-fireWithPayload",
+      "name": "skillup: no fireWithPayload calls",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "skillup: no direct fire function calls",
+      "status": "pass"
+    },
+    {
+      "group": "no-OnSafeEvent-signature",
+      "name": "skillup: no OnSafeEvent in signatures",
+      "status": "pass"
+    },
+    {
+      "group": "uses-SafeFireContext",
+      "name": "skillup: uses SafeFireContext",
+      "status": "pass"
+    },
+    {
+      "group": "no-instanceId",
+      "name": "skillup: no instanceId references",
+      "status": "pass"
+    },
+    {
+      "group": "no-use-before-declaration",
+      "name": "skillup: no use-before-declaration",
       "status": "pass"
     },
     {
@@ -811,6 +891,46 @@
     },
     {
       "group": "no-contracts-emit",
+      "name": "dispatch: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-delegate",
+      "name": "dispatch: no payload-delegate import",
+      "status": "pass"
+    },
+    {
+      "group": "no-fireWithPayload",
+      "name": "dispatch: no fireWithPayload calls",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "dispatch: no direct fire function calls",
+      "status": "pass"
+    },
+    {
+      "group": "no-OnSafeEvent-signature",
+      "name": "dispatch: no OnSafeEvent in signatures",
+      "status": "pass"
+    },
+    {
+      "group": "uses-SafeFireContext",
+      "name": "dispatch: uses SafeFireContext",
+      "status": "pass"
+    },
+    {
+      "group": "no-instanceId",
+      "name": "dispatch: no instanceId references",
+      "status": "pass"
+    },
+    {
+      "group": "no-use-before-declaration",
+      "name": "dispatch: no use-before-declaration",
+      "status": "pass"
+    },
+    {
+      "group": "no-contracts-emit",
       "name": "tabs: no contracts-emit import",
       "status": "pass"
     },
@@ -927,6 +1047,46 @@
     {
       "group": "no-use-before-declaration",
       "name": "timeline: no use-before-declaration",
+      "status": "pass"
+    },
+    {
+      "group": "no-contracts-emit",
+      "name": "plan: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-delegate",
+      "name": "plan: no payload-delegate import",
+      "status": "pass"
+    },
+    {
+      "group": "no-fireWithPayload",
+      "name": "plan: no fireWithPayload calls",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "plan: no direct fire function calls",
+      "status": "pass"
+    },
+    {
+      "group": "no-OnSafeEvent-signature",
+      "name": "plan: no OnSafeEvent in signatures",
+      "status": "pass"
+    },
+    {
+      "group": "uses-SafeFireContext",
+      "name": "plan: uses SafeFireContext",
+      "status": "pass"
+    },
+    {
+      "group": "no-instanceId",
+      "name": "plan: no instanceId references",
+      "status": "pass"
+    },
+    {
+      "group": "no-use-before-declaration",
+      "name": "plan: no use-before-declaration",
       "status": "pass"
     },
     {
@@ -1166,6 +1326,11 @@
     },
     {
       "group": "no-use-before-declaration",
+      "name": "briefing: no use-before-declaration",
+      "status": "pass"
+    },
+    {
+      "group": "no-use-before-declaration",
       "name": "layout: no use-before-declaration",
       "status": "pass"
     },
@@ -1182,6 +1347,11 @@
     {
       "group": "no-empty-samples",
       "name": "tree: at least one sample has inline data",
+      "status": "pass"
+    },
+    {
+      "group": "no-empty-samples",
+      "name": "calendar: at least one sample has inline data",
       "status": "pass"
     },
     {
@@ -1211,7 +1381,22 @@
     },
     {
       "group": "no-empty-samples",
+      "name": "plan: at least one sample has inline data",
+      "status": "pass"
+    },
+    {
+      "group": "no-empty-samples",
+      "name": "dispatch: at least one sample has inline data",
+      "status": "pass"
+    },
+    {
+      "group": "no-empty-samples",
       "name": "chart: at least one sample has inline data",
+      "status": "pass"
+    },
+    {
+      "group": "no-empty-samples",
+      "name": "parser: at least one sample has inline data",
       "status": "pass"
     },
     {
@@ -1237,6 +1422,11 @@
     {
       "group": "no-empty-samples",
       "name": "gauge: at least one sample has inline data",
+      "status": "pass"
+    },
+    {
+      "group": "no-empty-samples",
+      "name": "skillup: at least one sample has inline data",
       "status": "pass"
     },
     {
@@ -1281,6 +1471,16 @@
     },
     {
       "group": "valid-sample-variant",
+      "name": "calendar/calendar-detail-left.json: variant 'detail-left' is valid",
+      "status": "pass"
+    },
+    {
+      "group": "valid-sample-variant",
+      "name": "calendar/calendar-detail-right.json: variant 'detail-right' is valid",
+      "status": "pass"
+    },
+    {
+      "group": "valid-sample-variant",
       "name": "calendar/calendar-year.json: variant 'year' is valid",
       "status": "pass"
     },
@@ -1292,6 +1492,11 @@
     {
       "group": "valid-sample-variant",
       "name": "calendar/calendar-browse.json: variant 'browse' is valid",
+      "status": "pass"
+    },
+    {
+      "group": "valid-sample-variant",
+      "name": "calendar/calendar-year-horizontal.json: variant 'year-horizontal' is valid",
       "status": "pass"
     },
     {
@@ -1327,6 +1532,31 @@
     {
       "group": "valid-sample-variant",
       "name": "toggle/toggle-checkbox.json: variant 'switch' is valid",
+      "status": "pass"
+    },
+    {
+      "group": "valid-sample-variant",
+      "name": "toggle/toggle-check-icon.json: variant 'check' is valid",
+      "status": "pass"
+    },
+    {
+      "group": "valid-sample-variant",
+      "name": "toggle/toggle-check-top.json: variant 'check' is valid",
+      "status": "pass"
+    },
+    {
+      "group": "valid-sample-variant",
+      "name": "toggle/toggle-check-bottom.json: variant 'check' is valid",
+      "status": "pass"
+    },
+    {
+      "group": "valid-sample-variant",
+      "name": "toggle/toggle-expandable.json: variant 'expandable' is valid",
+      "status": "pass"
+    },
+    {
+      "group": "valid-sample-variant",
+      "name": "toggle/toggle-settings.json: variant 'table' is valid",
       "status": "pass"
     },
     {
@@ -1406,12 +1636,77 @@
     },
     {
       "group": "valid-sample-variant",
+      "name": "timeline/timeline-h-history.json: variant 'history' is valid",
+      "status": "pass"
+    },
+    {
+      "group": "valid-sample-variant",
       "name": "timeline/timeline-vertical.json: variant 'default' is valid",
       "status": "pass"
     },
     {
       "group": "valid-sample-variant",
+      "name": "timeline/timeline-h-time-blocks.json: variant 'time-blocks' is valid",
+      "status": "pass"
+    },
+    {
+      "group": "valid-sample-variant",
+      "name": "timeline/timeline-v-career.json: variant 'career' is valid",
+      "status": "pass"
+    },
+    {
+      "group": "valid-sample-variant",
+      "name": "timeline/timeline-h-gantt.json: variant 'gantt-phases' is valid",
+      "status": "pass"
+    },
+    {
+      "group": "valid-sample-variant",
+      "name": "timeline/timeline-v-incident.json: variant 'incident' is valid",
+      "status": "pass"
+    },
+    {
+      "group": "valid-sample-variant",
       "name": "timeline/timeline-alternating.json: variant 'horizontal' is valid",
+      "status": "pass"
+    },
+    {
+      "group": "valid-sample-variant",
+      "name": "timeline/timeline-h-sprint-days.json: variant 'sprint-days' is valid",
+      "status": "pass"
+    },
+    {
+      "group": "valid-sample-variant",
+      "name": "timeline/timeline-v-roadmap.json: variant 'roadmap' is valid",
+      "status": "pass"
+    },
+    {
+      "group": "valid-sample-variant",
+      "name": "timeline/timeline-h-versions.json: variant 'versions' is valid",
+      "status": "pass"
+    },
+    {
+      "group": "valid-sample-variant",
+      "name": "timeline/timeline-v-schedule.json: variant 'schedule' is valid",
+      "status": "pass"
+    },
+    {
+      "group": "valid-sample-variant",
+      "name": "timeline/timeline-v-milestones.json: variant 'milestones' is valid",
+      "status": "pass"
+    },
+    {
+      "group": "valid-sample-variant",
+      "name": "timeline/timeline-v-sprint.json: variant 'sprint' is valid",
+      "status": "pass"
+    },
+    {
+      "group": "valid-sample-variant",
+      "name": "timeline/timeline-h-event-stream.json: variant 'event-stream' is valid",
+      "status": "pass"
+    },
+    {
+      "group": "valid-sample-variant",
+      "name": "flow/flow-matrix-trade.json: variant 'matrix' is valid",
       "status": "pass"
     },
     {
@@ -1431,10 +1726,20 @@
     },
     {
       "group": "valid-sample-variant",
+      "name": "flow/flow-dagre-pipeline.json: variant 'dagre' is valid",
+      "status": "pass"
+    },
+    {
+      "group": "valid-sample-variant",
       "name": "flow/flow-force-team.json: variant 'force' is valid",
+      "status": "pass"
+    },
+    {
+      "group": "valid-sample-variant",
+      "name": "flow/flow-edge-bundling-modules.json: variant 'edge-bundling' is valid",
       "status": "pass"
     }
   ],
   "failures": [],
-  "ts": "2026-06-18T15:15:25.781Z"
+  "ts": "2026-06-18T19:38:29.668Z"
 }

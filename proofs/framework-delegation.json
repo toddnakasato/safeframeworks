@@ -2,25 +2,25 @@
   "ok": true,
   "framework": "all",
   "version": "all",
-  "total": 1208,
-  "passed": 1208,
+  "total": 1408,
+  "passed": 1408,
   "failed": 0,
   "wrapperCounts": {
-    "react/18": 30,
-    "react/19": 30,
-    "angular/21": 30,
-    "angular/22": 30,
-    "vue/2": 30,
-    "vue/3": 30,
-    "svelte/4": 30,
-    "svelte/5": 30
+    "react/18": 35,
+    "react/19": 35,
+    "angular/21": 35,
+    "angular/22": 35,
+    "vue/2": 35,
+    "vue/3": 35,
+    "svelte/4": 35,
+    "svelte/5": 35
   },
   "groups": {
-    "builder-coverage": 240,
-    "wrapper-delegates": 240,
-    "no-direct-fire": 240,
-    "no-payload-construction": 240,
-    "no-duplicate-dom": 240,
+    "builder-coverage": 280,
+    "wrapper-delegates": 280,
+    "no-direct-fire": 280,
+    "no-payload-construction": 280,
+    "no-duplicate-dom": 280,
     "framework-parity": 8
   },
   "checks": [
@@ -32,6 +32,11 @@
     {
       "group": "builder-coverage",
       "name": "react/18: has wrapper for callout",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "react/18: has wrapper for briefing",
       "status": "pass"
     },
     {
@@ -96,12 +101,22 @@
     },
     {
       "group": "builder-coverage",
+      "name": "react/18: has wrapper for parser",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
       "name": "react/18: has wrapper for map",
       "status": "pass"
     },
     {
       "group": "builder-coverage",
       "name": "react/18: has wrapper for hierarchy",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "react/18: has wrapper for skillup",
       "status": "pass"
     },
     {
@@ -126,6 +141,11 @@
     },
     {
       "group": "builder-coverage",
+      "name": "react/18: has wrapper for dispatch",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
       "name": "react/18: has wrapper for layout",
       "status": "pass"
     },
@@ -142,6 +162,11 @@
     {
       "group": "builder-coverage",
       "name": "react/18: has wrapper for timeline",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "react/18: has wrapper for plan",
       "status": "pass"
     },
     {
@@ -172,6 +197,26 @@
     {
       "group": "builder-coverage",
       "name": "react/18: has wrapper for toggle",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "react/18/SafeBriefing.tsx: routes through buildComponent or imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "react/18/SafeBriefing.tsx: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "react/18/SafeBriefing.tsx: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "react/18/SafeBriefing.tsx: no significant DOM creation",
       "status": "pass"
     },
     {
@@ -272,6 +317,26 @@
     {
       "group": "no-duplicate-dom",
       "name": "react/18/SafeFlow.tsx: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "react/18/SafePlan.tsx: routes through buildComponent or imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "react/18/SafePlan.tsx: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "react/18/SafePlan.tsx: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "react/18/SafePlan.tsx: no significant DOM creation",
       "status": "pass"
     },
     {
@@ -416,6 +481,26 @@
     },
     {
       "group": "wrapper-delegates",
+      "name": "react/18/SafeSkillUp.tsx: routes through buildComponent or imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "react/18/SafeSkillUp.tsx: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "react/18/SafeSkillUp.tsx: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "react/18/SafeSkillUp.tsx: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
       "name": "react/18/SafeTimeline.tsx: routes through buildComponent or imports builder",
       "status": "pass"
     },
@@ -472,6 +557,26 @@
     {
       "group": "no-duplicate-dom",
       "name": "react/18/SafeTree.tsx: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "react/18/SafeParser.tsx: routes through buildComponent or imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "react/18/SafeParser.tsx: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "react/18/SafeParser.tsx: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "react/18/SafeParser.tsx: no significant DOM creation",
       "status": "pass"
     },
     {
@@ -716,6 +821,26 @@
     },
     {
       "group": "wrapper-delegates",
+      "name": "react/18/SafeDispatch.tsx: routes through buildComponent or imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "react/18/SafeDispatch.tsx: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "react/18/SafeDispatch.tsx: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "react/18/SafeDispatch.tsx: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
       "name": "react/18/SafeTabs.tsx: routes through buildComponent or imports builder",
       "status": "pass"
     },
@@ -786,6 +911,11 @@
     },
     {
       "group": "builder-coverage",
+      "name": "react/19: has wrapper for briefing",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
       "name": "react/19: has wrapper for week",
       "status": "pass"
     },
@@ -846,12 +976,22 @@
     },
     {
       "group": "builder-coverage",
+      "name": "react/19: has wrapper for parser",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
       "name": "react/19: has wrapper for map",
       "status": "pass"
     },
     {
       "group": "builder-coverage",
       "name": "react/19: has wrapper for hierarchy",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "react/19: has wrapper for skillup",
       "status": "pass"
     },
     {
@@ -876,6 +1016,11 @@
     },
     {
       "group": "builder-coverage",
+      "name": "react/19: has wrapper for dispatch",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
       "name": "react/19: has wrapper for layout",
       "status": "pass"
     },
@@ -892,6 +1037,11 @@
     {
       "group": "builder-coverage",
       "name": "react/19: has wrapper for timeline",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "react/19: has wrapper for plan",
       "status": "pass"
     },
     {
@@ -922,6 +1072,26 @@
     {
       "group": "builder-coverage",
       "name": "react/19: has wrapper for toggle",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "react/19/SafeBriefing.tsx: routes through buildComponent or imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "react/19/SafeBriefing.tsx: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "react/19/SafeBriefing.tsx: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "react/19/SafeBriefing.tsx: no significant DOM creation",
       "status": "pass"
     },
     {
@@ -1022,6 +1192,26 @@
     {
       "group": "no-duplicate-dom",
       "name": "react/19/SafeFlow.tsx: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "react/19/SafePlan.tsx: routes through buildComponent or imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "react/19/SafePlan.tsx: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "react/19/SafePlan.tsx: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "react/19/SafePlan.tsx: no significant DOM creation",
       "status": "pass"
     },
     {
@@ -1166,6 +1356,26 @@
     },
     {
       "group": "wrapper-delegates",
+      "name": "react/19/SafeSkillUp.tsx: routes through buildComponent or imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "react/19/SafeSkillUp.tsx: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "react/19/SafeSkillUp.tsx: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "react/19/SafeSkillUp.tsx: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
       "name": "react/19/SafeTimeline.tsx: routes through buildComponent or imports builder",
       "status": "pass"
     },
@@ -1222,6 +1432,26 @@
     {
       "group": "no-duplicate-dom",
       "name": "react/19/SafeTree.tsx: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "react/19/SafeParser.tsx: routes through buildComponent or imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "react/19/SafeParser.tsx: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "react/19/SafeParser.tsx: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "react/19/SafeParser.tsx: no significant DOM creation",
       "status": "pass"
     },
     {
@@ -1466,6 +1696,26 @@
     },
     {
       "group": "wrapper-delegates",
+      "name": "react/19/SafeDispatch.tsx: routes through buildComponent or imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "react/19/SafeDispatch.tsx: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "react/19/SafeDispatch.tsx: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "react/19/SafeDispatch.tsx: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
       "name": "react/19/SafeTabs.tsx: routes through buildComponent or imports builder",
       "status": "pass"
     },
@@ -1536,6 +1786,11 @@
     },
     {
       "group": "builder-coverage",
+      "name": "angular/21: has wrapper for briefing",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
       "name": "angular/21: has wrapper for week",
       "status": "pass"
     },
@@ -1596,12 +1851,22 @@
     },
     {
       "group": "builder-coverage",
+      "name": "angular/21: has wrapper for parser",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
       "name": "angular/21: has wrapper for map",
       "status": "pass"
     },
     {
       "group": "builder-coverage",
       "name": "angular/21: has wrapper for hierarchy",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "angular/21: has wrapper for skillup",
       "status": "pass"
     },
     {
@@ -1626,6 +1891,11 @@
     },
     {
       "group": "builder-coverage",
+      "name": "angular/21: has wrapper for dispatch",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
       "name": "angular/21: has wrapper for layout",
       "status": "pass"
     },
@@ -1642,6 +1912,11 @@
     {
       "group": "builder-coverage",
       "name": "angular/21: has wrapper for timeline",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "angular/21: has wrapper for plan",
       "status": "pass"
     },
     {
@@ -1716,6 +1991,26 @@
     },
     {
       "group": "wrapper-delegates",
+      "name": "angular/21/SafeParser.ts: routes through buildComponent or imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "angular/21/SafeParser.ts: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "angular/21/SafeParser.ts: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "angular/21/SafeParser.ts: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
       "name": "angular/21/SafeTabs.ts: routes through buildComponent or imports builder",
       "status": "pass"
     },
@@ -1752,6 +2047,26 @@
     {
       "group": "no-duplicate-dom",
       "name": "angular/21/SafeList.ts: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "angular/21/SafeSkillUp.ts: routes through buildComponent or imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "angular/21/SafeSkillUp.ts: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "angular/21/SafeSkillUp.ts: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "angular/21/SafeSkillUp.ts: no significant DOM creation",
       "status": "pass"
     },
     {
@@ -1816,6 +2131,26 @@
     },
     {
       "group": "wrapper-delegates",
+      "name": "angular/21/SafePlan.ts: routes through buildComponent or imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "angular/21/SafePlan.ts: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "angular/21/SafePlan.ts: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "angular/21/SafePlan.ts: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
       "name": "angular/21/SafeTimeline.ts: routes through buildComponent or imports builder",
       "status": "pass"
     },
@@ -1832,6 +2167,26 @@
     {
       "group": "no-duplicate-dom",
       "name": "angular/21/SafeTimeline.ts: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "angular/21/SafeDispatch.ts: routes through buildComponent or imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "angular/21/SafeDispatch.ts: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "angular/21/SafeDispatch.ts: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "angular/21/SafeDispatch.ts: no significant DOM creation",
       "status": "pass"
     },
     {
@@ -2156,6 +2511,26 @@
     },
     {
       "group": "wrapper-delegates",
+      "name": "angular/21/SafeBriefing.ts: routes through buildComponent or imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "angular/21/SafeBriefing.ts: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "angular/21/SafeBriefing.ts: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "angular/21/SafeBriefing.ts: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
       "name": "angular/21/SafeLayout.ts: routes through buildComponent or imports builder",
       "status": "pass"
     },
@@ -2286,6 +2661,11 @@
     },
     {
       "group": "builder-coverage",
+      "name": "angular/22: has wrapper for briefing",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
       "name": "angular/22: has wrapper for week",
       "status": "pass"
     },
@@ -2346,12 +2726,22 @@
     },
     {
       "group": "builder-coverage",
+      "name": "angular/22: has wrapper for parser",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
       "name": "angular/22: has wrapper for map",
       "status": "pass"
     },
     {
       "group": "builder-coverage",
       "name": "angular/22: has wrapper for hierarchy",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "angular/22: has wrapper for skillup",
       "status": "pass"
     },
     {
@@ -2376,6 +2766,11 @@
     },
     {
       "group": "builder-coverage",
+      "name": "angular/22: has wrapper for dispatch",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
       "name": "angular/22: has wrapper for layout",
       "status": "pass"
     },
@@ -2392,6 +2787,11 @@
     {
       "group": "builder-coverage",
       "name": "angular/22: has wrapper for timeline",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "angular/22: has wrapper for plan",
       "status": "pass"
     },
     {
@@ -2466,6 +2866,26 @@
     },
     {
       "group": "wrapper-delegates",
+      "name": "angular/22/SafeParser.ts: routes through buildComponent or imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "angular/22/SafeParser.ts: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "angular/22/SafeParser.ts: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "angular/22/SafeParser.ts: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
       "name": "angular/22/SafeTabs.ts: routes through buildComponent or imports builder",
       "status": "pass"
     },
@@ -2502,6 +2922,26 @@
     {
       "group": "no-duplicate-dom",
       "name": "angular/22/SafeList.ts: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "angular/22/SafeSkillUp.ts: routes through buildComponent or imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "angular/22/SafeSkillUp.ts: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "angular/22/SafeSkillUp.ts: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "angular/22/SafeSkillUp.ts: no significant DOM creation",
       "status": "pass"
     },
     {
@@ -2566,6 +3006,26 @@
     },
     {
       "group": "wrapper-delegates",
+      "name": "angular/22/SafePlan.ts: routes through buildComponent or imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "angular/22/SafePlan.ts: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "angular/22/SafePlan.ts: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "angular/22/SafePlan.ts: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
       "name": "angular/22/SafeTimeline.ts: routes through buildComponent or imports builder",
       "status": "pass"
     },
@@ -2582,6 +3042,26 @@
     {
       "group": "no-duplicate-dom",
       "name": "angular/22/SafeTimeline.ts: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "angular/22/SafeDispatch.ts: routes through buildComponent or imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "angular/22/SafeDispatch.ts: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "angular/22/SafeDispatch.ts: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "angular/22/SafeDispatch.ts: no significant DOM creation",
       "status": "pass"
     },
     {
@@ -2906,6 +3386,26 @@
     },
     {
       "group": "wrapper-delegates",
+      "name": "angular/22/SafeBriefing.ts: routes through buildComponent or imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "angular/22/SafeBriefing.ts: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "angular/22/SafeBriefing.ts: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "angular/22/SafeBriefing.ts: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
       "name": "angular/22/SafeLayout.ts: routes through buildComponent or imports builder",
       "status": "pass"
     },
@@ -3036,6 +3536,11 @@
     },
     {
       "group": "builder-coverage",
+      "name": "vue/2: has wrapper for briefing",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
       "name": "vue/2: has wrapper for week",
       "status": "pass"
     },
@@ -3096,12 +3601,22 @@
     },
     {
       "group": "builder-coverage",
+      "name": "vue/2: has wrapper for parser",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
       "name": "vue/2: has wrapper for map",
       "status": "pass"
     },
     {
       "group": "builder-coverage",
       "name": "vue/2: has wrapper for hierarchy",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "vue/2: has wrapper for skillup",
       "status": "pass"
     },
     {
@@ -3126,6 +3641,11 @@
     },
     {
       "group": "builder-coverage",
+      "name": "vue/2: has wrapper for dispatch",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
       "name": "vue/2: has wrapper for layout",
       "status": "pass"
     },
@@ -3142,6 +3662,11 @@
     {
       "group": "builder-coverage",
       "name": "vue/2: has wrapper for timeline",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "vue/2: has wrapper for plan",
       "status": "pass"
     },
     {
@@ -3172,6 +3697,26 @@
     {
       "group": "builder-coverage",
       "name": "vue/2: has wrapper for toggle",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "vue/2/SafeBriefing.vue: routes through buildComponent or imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "vue/2/SafeBriefing.vue: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "vue/2/SafeBriefing.vue: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "vue/2/SafeBriefing.vue: no significant DOM creation",
       "status": "pass"
     },
     {
@@ -3272,6 +3817,26 @@
     {
       "group": "no-duplicate-dom",
       "name": "vue/2/SafeChat.vue: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "vue/2/SafePlan.vue: routes through buildComponent or imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "vue/2/SafePlan.vue: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "vue/2/SafePlan.vue: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "vue/2/SafePlan.vue: no significant DOM creation",
       "status": "pass"
     },
     {
@@ -3416,6 +3981,26 @@
     },
     {
       "group": "wrapper-delegates",
+      "name": "vue/2/SafeSkillUp.vue: routes through buildComponent or imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "vue/2/SafeSkillUp.vue: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "vue/2/SafeSkillUp.vue: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "vue/2/SafeSkillUp.vue: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
       "name": "vue/2/SafeCalendar.vue: routes through buildComponent or imports builder",
       "status": "pass"
     },
@@ -3472,6 +4057,26 @@
     {
       "group": "no-duplicate-dom",
       "name": "vue/2/SafeTree.vue: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "vue/2/SafeParser.vue: routes through buildComponent or imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "vue/2/SafeParser.vue: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "vue/2/SafeParser.vue: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "vue/2/SafeParser.vue: no significant DOM creation",
       "status": "pass"
     },
     {
@@ -3736,6 +4341,26 @@
     },
     {
       "group": "wrapper-delegates",
+      "name": "vue/2/SafeDispatch.vue: routes through buildComponent or imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "vue/2/SafeDispatch.vue: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "vue/2/SafeDispatch.vue: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "vue/2/SafeDispatch.vue: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
       "name": "vue/2/SafeWeek.vue: routes through buildComponent or imports builder",
       "status": "pass"
     },
@@ -3782,6 +4407,11 @@
     {
       "group": "builder-coverage",
       "name": "vue/3: has wrapper for callout",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "vue/3: has wrapper for briefing",
       "status": "pass"
     },
     {
@@ -3846,12 +4476,22 @@
     },
     {
       "group": "builder-coverage",
+      "name": "vue/3: has wrapper for parser",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
       "name": "vue/3: has wrapper for map",
       "status": "pass"
     },
     {
       "group": "builder-coverage",
       "name": "vue/3: has wrapper for hierarchy",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "vue/3: has wrapper for skillup",
       "status": "pass"
     },
     {
@@ -3876,6 +4516,11 @@
     },
     {
       "group": "builder-coverage",
+      "name": "vue/3: has wrapper for dispatch",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
       "name": "vue/3: has wrapper for layout",
       "status": "pass"
     },
@@ -3892,6 +4537,11 @@
     {
       "group": "builder-coverage",
       "name": "vue/3: has wrapper for timeline",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "vue/3: has wrapper for plan",
       "status": "pass"
     },
     {
@@ -3922,6 +4572,26 @@
     {
       "group": "builder-coverage",
       "name": "vue/3: has wrapper for toggle",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "vue/3/SafeBriefing.vue: routes through buildComponent or imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "vue/3/SafeBriefing.vue: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "vue/3/SafeBriefing.vue: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "vue/3/SafeBriefing.vue: no significant DOM creation",
       "status": "pass"
     },
     {
@@ -4022,6 +4692,26 @@
     {
       "group": "no-duplicate-dom",
       "name": "vue/3/SafeChat.vue: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "vue/3/SafePlan.vue: routes through buildComponent or imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "vue/3/SafePlan.vue: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "vue/3/SafePlan.vue: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "vue/3/SafePlan.vue: no significant DOM creation",
       "status": "pass"
     },
     {
@@ -4166,6 +4856,26 @@
     },
     {
       "group": "wrapper-delegates",
+      "name": "vue/3/SafeSkillUp.vue: routes through buildComponent or imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "vue/3/SafeSkillUp.vue: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "vue/3/SafeSkillUp.vue: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "vue/3/SafeSkillUp.vue: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
       "name": "vue/3/SafeCalendar.vue: routes through buildComponent or imports builder",
       "status": "pass"
     },
@@ -4222,6 +4932,26 @@
     {
       "group": "no-duplicate-dom",
       "name": "vue/3/SafeTree.vue: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "vue/3/SafeParser.vue: routes through buildComponent or imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "vue/3/SafeParser.vue: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "vue/3/SafeParser.vue: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "vue/3/SafeParser.vue: no significant DOM creation",
       "status": "pass"
     },
     {
@@ -4486,6 +5216,26 @@
     },
     {
       "group": "wrapper-delegates",
+      "name": "vue/3/SafeDispatch.vue: routes through buildComponent or imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "vue/3/SafeDispatch.vue: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "vue/3/SafeDispatch.vue: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "vue/3/SafeDispatch.vue: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
       "name": "vue/3/SafeWeek.vue: routes through buildComponent or imports builder",
       "status": "pass"
     },
@@ -4532,6 +5282,11 @@
     {
       "group": "builder-coverage",
       "name": "svelte/4: has wrapper for callout",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "svelte/4: has wrapper for briefing",
       "status": "pass"
     },
     {
@@ -4596,12 +5351,22 @@
     },
     {
       "group": "builder-coverage",
+      "name": "svelte/4: has wrapper for parser",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
       "name": "svelte/4: has wrapper for map",
       "status": "pass"
     },
     {
       "group": "builder-coverage",
       "name": "svelte/4: has wrapper for hierarchy",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "svelte/4: has wrapper for skillup",
       "status": "pass"
     },
     {
@@ -4626,6 +5391,11 @@
     },
     {
       "group": "builder-coverage",
+      "name": "svelte/4: has wrapper for dispatch",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
       "name": "svelte/4: has wrapper for layout",
       "status": "pass"
     },
@@ -4642,6 +5412,11 @@
     {
       "group": "builder-coverage",
       "name": "svelte/4: has wrapper for timeline",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "svelte/4: has wrapper for plan",
       "status": "pass"
     },
     {
@@ -4732,6 +5507,26 @@
     {
       "group": "no-duplicate-dom",
       "name": "svelte/4/SafeChat.svelte: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "svelte/4/SafeSkillUp.svelte: routes through buildComponent or imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "svelte/4/SafeSkillUp.svelte: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "svelte/4/SafeSkillUp.svelte: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "svelte/4/SafeSkillUp.svelte: no significant DOM creation",
       "status": "pass"
     },
     {
@@ -4936,6 +5731,26 @@
     },
     {
       "group": "wrapper-delegates",
+      "name": "svelte/4/SafeBriefing.svelte: routes through buildComponent or imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "svelte/4/SafeBriefing.svelte: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "svelte/4/SafeBriefing.svelte: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "svelte/4/SafeBriefing.svelte: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
       "name": "svelte/4/SafeHeatmap.svelte: routes through buildComponent or imports builder",
       "status": "pass"
     },
@@ -5052,6 +5867,26 @@
     {
       "group": "no-duplicate-dom",
       "name": "svelte/4/SafeTree.svelte: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "svelte/4/SafeDispatch.svelte: routes through buildComponent or imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "svelte/4/SafeDispatch.svelte: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "svelte/4/SafeDispatch.svelte: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "svelte/4/SafeDispatch.svelte: no significant DOM creation",
       "status": "pass"
     },
     {
@@ -5216,6 +6051,46 @@
     },
     {
       "group": "wrapper-delegates",
+      "name": "svelte/4/SafePlan.svelte: routes through buildComponent or imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "svelte/4/SafePlan.svelte: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "svelte/4/SafePlan.svelte: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "svelte/4/SafePlan.svelte: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "svelte/4/SafeParser.svelte: routes through buildComponent or imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "svelte/4/SafeParser.svelte: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "svelte/4/SafeParser.svelte: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "svelte/4/SafeParser.svelte: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
       "name": "svelte/4/SafeDragDrop.svelte: routes through buildComponent or imports builder",
       "status": "pass"
     },
@@ -5286,6 +6161,11 @@
     },
     {
       "group": "builder-coverage",
+      "name": "svelte/5: has wrapper for briefing",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
       "name": "svelte/5: has wrapper for week",
       "status": "pass"
     },
@@ -5346,12 +6226,22 @@
     },
     {
       "group": "builder-coverage",
+      "name": "svelte/5: has wrapper for parser",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
       "name": "svelte/5: has wrapper for map",
       "status": "pass"
     },
     {
       "group": "builder-coverage",
       "name": "svelte/5: has wrapper for hierarchy",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "svelte/5: has wrapper for skillup",
       "status": "pass"
     },
     {
@@ -5376,6 +6266,11 @@
     },
     {
       "group": "builder-coverage",
+      "name": "svelte/5: has wrapper for dispatch",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
       "name": "svelte/5: has wrapper for layout",
       "status": "pass"
     },
@@ -5392,6 +6287,11 @@
     {
       "group": "builder-coverage",
       "name": "svelte/5: has wrapper for timeline",
+      "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "svelte/5: has wrapper for plan",
       "status": "pass"
     },
     {
@@ -5482,6 +6382,26 @@
     {
       "group": "no-duplicate-dom",
       "name": "svelte/5/SafeChat.svelte: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "svelte/5/SafeSkillUp.svelte: routes through buildComponent or imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "svelte/5/SafeSkillUp.svelte: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "svelte/5/SafeSkillUp.svelte: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "svelte/5/SafeSkillUp.svelte: no significant DOM creation",
       "status": "pass"
     },
     {
@@ -5686,6 +6606,26 @@
     },
     {
       "group": "wrapper-delegates",
+      "name": "svelte/5/SafeBriefing.svelte: routes through buildComponent or imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "svelte/5/SafeBriefing.svelte: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "svelte/5/SafeBriefing.svelte: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "svelte/5/SafeBriefing.svelte: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
       "name": "svelte/5/SafeHeatmap.svelte: routes through buildComponent or imports builder",
       "status": "pass"
     },
@@ -5802,6 +6742,26 @@
     {
       "group": "no-duplicate-dom",
       "name": "svelte/5/SafeTree.svelte: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "svelte/5/SafeDispatch.svelte: routes through buildComponent or imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "svelte/5/SafeDispatch.svelte: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "svelte/5/SafeDispatch.svelte: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "svelte/5/SafeDispatch.svelte: no significant DOM creation",
       "status": "pass"
     },
     {
@@ -5966,6 +6926,46 @@
     },
     {
       "group": "wrapper-delegates",
+      "name": "svelte/5/SafePlan.svelte: routes through buildComponent or imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "svelte/5/SafePlan.svelte: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "svelte/5/SafePlan.svelte: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "svelte/5/SafePlan.svelte: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
+      "name": "svelte/5/SafeParser.svelte: routes through buildComponent or imports builder",
+      "status": "pass"
+    },
+    {
+      "group": "no-direct-fire",
+      "name": "svelte/5/SafeParser.svelte: no contracts-emit import",
+      "status": "pass"
+    },
+    {
+      "group": "no-payload-construction",
+      "name": "svelte/5/SafeParser.svelte: no payload shapes reference",
+      "status": "pass"
+    },
+    {
+      "group": "no-duplicate-dom",
+      "name": "svelte/5/SafeParser.svelte: no significant DOM creation",
+      "status": "pass"
+    },
+    {
+      "group": "wrapper-delegates",
       "name": "svelte/5/SafeDragDrop.svelte: routes through buildComponent or imports builder",
       "status": "pass"
     },
@@ -6026,45 +7026,45 @@
     },
     {
       "group": "framework-parity",
-      "name": "react/18: wrapper count 30 (range 30-30)",
+      "name": "react/18: wrapper count 35 (range 35-35)",
       "status": "pass"
     },
     {
       "group": "framework-parity",
-      "name": "react/19: wrapper count 30 (range 30-30)",
+      "name": "react/19: wrapper count 35 (range 35-35)",
       "status": "pass"
     },
     {
       "group": "framework-parity",
-      "name": "angular/21: wrapper count 30 (range 30-30)",
+      "name": "angular/21: wrapper count 35 (range 35-35)",
       "status": "pass"
     },
     {
       "group": "framework-parity",
-      "name": "angular/22: wrapper count 30 (range 30-30)",
+      "name": "angular/22: wrapper count 35 (range 35-35)",
       "status": "pass"
     },
     {
       "group": "framework-parity",
-      "name": "vue/2: wrapper count 30 (range 30-30)",
+      "name": "vue/2: wrapper count 35 (range 35-35)",
       "status": "pass"
     },
     {
       "group": "framework-parity",
-      "name": "vue/3: wrapper count 30 (range 30-30)",
+      "name": "vue/3: wrapper count 35 (range 35-35)",
       "status": "pass"
     },
     {
       "group": "framework-parity",
-      "name": "svelte/4: wrapper count 30 (range 30-30)",
+      "name": "svelte/4: wrapper count 35 (range 35-35)",
       "status": "pass"
     },
     {
       "group": "framework-parity",
-      "name": "svelte/5: wrapper count 30 (range 30-30)",
+      "name": "svelte/5: wrapper count 35 (range 35-35)",
       "status": "pass"
     }
   ],
   "failures": [],
-  "ts": "2026-06-18T15:15:28.504Z"
+  "ts": "2026-06-18T19:38:33.171Z"
 }

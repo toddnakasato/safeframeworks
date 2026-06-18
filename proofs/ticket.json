@@ -1,16 +1,26 @@
 {
   "ok": true,
-  "total": 6,
-  "passed": 6,
+  "total": 15,
+  "passed": 15,
   "failed": 0,
   "groups": {
     "ticket-open": 0,
-    "ticket-closed": 6
+    "ticket-closed": 15
   },
   "checks": [
     {
       "group": "ticket-closed",
+      "name": "week-0001: prove builder-structure --component parser",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-closed",
       "name": "calendar-0004: prove builder-registry",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-closed",
+      "name": "calendar-0005: prove builder-registry",
       "status": "pass"
     },
     {
@@ -21,6 +31,16 @@
     {
       "group": "ticket-closed",
       "name": "calendar-0003: prove builder-registry",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-closed",
+      "name": "calendar-0007: prove builder-registry",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-closed",
+      "name": "toggle-0001: prove builder-registry",
       "status": "pass"
     },
     {
@@ -36,6 +56,31 @@
     {
       "group": "ticket-closed",
       "name": "button-0001: payload build --component button --event click",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-closed",
+      "name": "timeline-0002: prove builder-registry",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-closed",
+      "name": "timeline-0001: prove builder-registry",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-closed",
+      "name": "drag-drop-0001: payload build --component briefing --event select --section leads --id",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-closed",
+      "name": "flow-0002: payload build --component flow --event node:click --name Source",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-closed",
+      "name": "flow-0001: payload build --component flow --event node:click --name App",
       "status": "pass"
     }
   ],

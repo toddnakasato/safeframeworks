@@ -1,0 +1,124 @@
+{
+  "nodes": [
+    {
+      "name": "App",
+      "group": "core"
+    },
+    {
+      "name": "Router",
+      "group": "core"
+    },
+    {
+      "name": "Store",
+      "group": "core"
+    },
+    {
+      "name": "Auth",
+      "group": "services"
+    },
+    {
+      "name": "API",
+      "group": "services"
+    },
+    {
+      "name": "Cache",
+      "group": "services"
+    },
+    {
+      "name": "Dashboard",
+      "group": "views"
+    },
+    {
+      "name": "Settings",
+      "group": "views"
+    },
+    {
+      "name": "Profile",
+      "group": "views"
+    },
+    {
+      "name": "Button",
+      "group": "components"
+    },
+    {
+      "name": "Modal",
+      "group": "components"
+    },
+    {
+      "name": "Table",
+      "group": "components"
+    }
+  ],
+  "links": [
+    {
+      "source": "App",
+      "target": "Router",
+      "value": 1
+    },
+    {
+      "source": "App",
+      "target": "Store",
+      "value": 1
+    },
+    {
+      "source": "Router",
+      "target": "Dashboard",
+      "value": 1
+    },
+    {
+      "source": "Router",
+      "target": "Settings",
+      "value": 1
+    },
+    {
+      "source": "Router",
+      "target": "Profile",
+      "value": 1
+    },
+    {
+      "source": "Dashboard",
+      "target": "Table",
+      "value": 1
+    },
+    {
+      "source": "Dashboard",
+      "target": "API",
+      "value": 1
+    },
+    {
+      "source": "Settings",
+      "target": "Auth",
+      "value": 1
+    },
+    {
+      "source": "Settings",
+      "target": "Modal",
+      "value": 1
+    },
+    {
+      "source": "Profile",
+      "target": "Auth",
+      "value": 1
+    },
+    {
+      "source": "Profile",
+      "target": "Button",
+      "value": 1
+    },
+    {
+      "source": "API",
+      "target": "Cache",
+      "value": 1
+    },
+    {
+      "source": "Auth",
+      "target": "API",
+      "value": 1
+    },
+    {
+      "source": "Store",
+      "target": "Cache",
+      "value": 1
+    }
+  ]
+}

@@ -1,10 +1,10 @@
 {
   "ok": true,
-  "total": 73,
-  "passed": 73,
+  "total": 87,
+  "passed": 87,
   "failed": 0,
   "groups": {
-    "event-is-fired": 73
+    "event-is-fired": 87
   },
   "checks": [
     {
@@ -294,6 +294,61 @@
     },
     {
       "group": "event-is-fired",
+      "name": "briefing: fires \"select\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "briefing: fires \"send\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "dispatch: fires \"select\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "dispatch: fires \"bookmark\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "dispatch: fires \"filter\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "plan: fires \"select\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "plan: fires \"complete\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "plan: fires \"skip\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "plan: fires \"send\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "skillup: fires \"answer\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "skillup: fires \"select\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
       "name": "tree: fires \"select\"",
       "status": "pass"
     },
@@ -305,6 +360,21 @@
     {
       "group": "event-is-fired",
       "name": "tree: fires \"collapse\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "parser: fires \"select\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "parser: fires \"expand\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "parser: fires \"collapse\"",
       "status": "pass"
     },
     {

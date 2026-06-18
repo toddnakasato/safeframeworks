@@ -1,0 +1,19 @@
+{
+  "component": "drag-drop",
+  "metadata": {
+    "variant": "template",
+    "spacing": "normal",
+    "layout": "left-main-right"
+  },
+  "data": {
+    "items": {
+      "name": "dd-template-items",
+      "type": "list",
+      "source": "inline",
+      "inline": []
+    }
+  },
+  "eventHandler": {
+    "handler": "drag-drop"
+  }
+}

@@ -1,12 +1,17 @@
 {
   "ok": true,
-  "total": 254,
-  "passed": 254,
+  "total": 294,
+  "passed": 294,
   "failed": 0,
   "groups": {
-    "boot-compiles": 254
+    "boot-compiles": 294
   },
   "checks": [
+    {
+      "group": "boot-compiles",
+      "name": "react/18/SafeBriefing.tsx",
+      "status": "pass"
+    },
     {
       "group": "boot-compiles",
       "name": "react/18/SafeDragDrop.tsx",
@@ -35,6 +40,11 @@
     {
       "group": "boot-compiles",
       "name": "react/18/SafeFlow.tsx",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "react/18/SafePlan.tsx",
       "status": "pass"
     },
     {
@@ -74,6 +84,11 @@
     },
     {
       "group": "boot-compiles",
+      "name": "react/18/SafeSkillUp.tsx",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
       "name": "react/18/SafeTimeline.tsx",
       "status": "pass"
     },
@@ -85,6 +100,11 @@
     {
       "group": "boot-compiles",
       "name": "react/18/SafeTree.tsx",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "react/18/SafeParser.tsx",
       "status": "pass"
     },
     {
@@ -159,6 +179,11 @@
     },
     {
       "group": "boot-compiles",
+      "name": "react/18/SafeDispatch.tsx",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
       "name": "react/18/SafeTabs.tsx",
       "status": "pass"
     },
@@ -175,6 +200,11 @@
     {
       "group": "boot-compiles",
       "name": "react/18/SafeMetric.tsx",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "react/19/SafeBriefing.tsx",
       "status": "pass"
     },
     {
@@ -205,6 +235,11 @@
     {
       "group": "boot-compiles",
       "name": "react/19/SafeFlow.tsx",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "react/19/SafePlan.tsx",
       "status": "pass"
     },
     {
@@ -244,6 +279,11 @@
     },
     {
       "group": "boot-compiles",
+      "name": "react/19/SafeSkillUp.tsx",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
       "name": "react/19/SafeTimeline.tsx",
       "status": "pass"
     },
@@ -255,6 +295,11 @@
     {
       "group": "boot-compiles",
       "name": "react/19/SafeTree.tsx",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "react/19/SafeParser.tsx",
       "status": "pass"
     },
     {
@@ -329,6 +374,11 @@
     },
     {
       "group": "boot-compiles",
+      "name": "react/19/SafeDispatch.tsx",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
       "name": "react/19/SafeTabs.tsx",
       "status": "pass"
     },
@@ -359,12 +409,22 @@
     },
     {
       "group": "boot-compiles",
+      "name": "angular/21/SafeParser.ts",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
       "name": "angular/21/SafeTabs.ts",
       "status": "pass"
     },
     {
       "group": "boot-compiles",
       "name": "angular/21/SafeList.ts",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "angular/21/SafeSkillUp.ts",
       "status": "pass"
     },
     {
@@ -384,7 +444,17 @@
     },
     {
       "group": "boot-compiles",
+      "name": "angular/21/SafePlan.ts",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
       "name": "angular/21/SafeTimeline.ts",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "angular/21/SafeDispatch.ts",
       "status": "pass"
     },
     {
@@ -474,6 +544,11 @@
     },
     {
       "group": "boot-compiles",
+      "name": "angular/21/SafeBriefing.ts",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
       "name": "angular/21/SafeLayout.ts",
       "status": "pass"
     },
@@ -514,12 +589,22 @@
     },
     {
       "group": "boot-compiles",
+      "name": "angular/22/SafeParser.ts",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
       "name": "angular/22/SafeTabs.ts",
       "status": "pass"
     },
     {
       "group": "boot-compiles",
       "name": "angular/22/SafeList.ts",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "angular/22/SafeSkillUp.ts",
       "status": "pass"
     },
     {
@@ -539,7 +624,17 @@
     },
     {
       "group": "boot-compiles",
+      "name": "angular/22/SafePlan.ts",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
       "name": "angular/22/SafeTimeline.ts",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "angular/22/SafeDispatch.ts",
       "status": "pass"
     },
     {
@@ -629,6 +724,11 @@
     },
     {
       "group": "boot-compiles",
+      "name": "angular/22/SafeBriefing.ts",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
       "name": "angular/22/SafeLayout.ts",
       "status": "pass"
     },
@@ -670,6 +770,11 @@
     {
       "group": "boot-compiles",
       "name": "svelte/4/SafeChat.svelte",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "svelte/4/SafeSkillUp.svelte",
       "status": "pass"
     },
     {
@@ -724,6 +829,11 @@
     },
     {
       "group": "boot-compiles",
+      "name": "svelte/4/SafeBriefing.svelte",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
       "name": "svelte/4/SafeHeatmap.svelte",
       "status": "pass"
     },
@@ -750,6 +860,11 @@
     {
       "group": "boot-compiles",
       "name": "svelte/4/SafeTree.svelte",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "svelte/4/SafeDispatch.svelte",
       "status": "pass"
     },
     {
@@ -794,6 +909,16 @@
     },
     {
       "group": "boot-compiles",
+      "name": "svelte/4/SafePlan.svelte",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "svelte/4/SafeParser.svelte",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
       "name": "svelte/4/SafeRenderer.svelte",
       "status": "pass"
     },
@@ -825,6 +950,11 @@
     {
       "group": "boot-compiles",
       "name": "svelte/5/SafeChat.svelte",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "svelte/5/SafeSkillUp.svelte",
       "status": "pass"
     },
     {
@@ -879,6 +1009,11 @@
     },
     {
       "group": "boot-compiles",
+      "name": "svelte/5/SafeBriefing.svelte",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
       "name": "svelte/5/SafeHeatmap.svelte",
       "status": "pass"
     },
@@ -905,6 +1040,11 @@
     {
       "group": "boot-compiles",
       "name": "svelte/5/SafeTree.svelte",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "svelte/5/SafeDispatch.svelte",
       "status": "pass"
     },
     {
@@ -949,6 +1089,16 @@
     },
     {
       "group": "boot-compiles",
+      "name": "svelte/5/SafePlan.svelte",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "svelte/5/SafeParser.svelte",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
       "name": "svelte/5/SafeRenderer.svelte",
       "status": "pass"
     },
@@ -965,6 +1115,11 @@
     {
       "group": "boot-compiles",
       "name": "svelte/5/SafeScene.svelte",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "vue/2/SafeBriefing.vue",
       "status": "pass"
     },
     {
@@ -990,6 +1145,11 @@
     {
       "group": "boot-compiles",
       "name": "vue/2/SafeChat.vue",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "vue/2/SafePlan.vue",
       "status": "pass"
     },
     {
@@ -1034,6 +1194,11 @@
     },
     {
       "group": "boot-compiles",
+      "name": "vue/2/SafeSkillUp.vue",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
       "name": "vue/2/SafeCalendar.vue",
       "status": "pass"
     },
@@ -1045,6 +1210,11 @@
     {
       "group": "boot-compiles",
       "name": "vue/2/SafeTree.vue",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "vue/2/SafeParser.vue",
       "status": "pass"
     },
     {
@@ -1114,12 +1284,22 @@
     },
     {
       "group": "boot-compiles",
+      "name": "vue/2/SafeDispatch.vue",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
       "name": "vue/2/SafeWeek.vue",
       "status": "pass"
     },
     {
       "group": "boot-compiles",
       "name": "vue/2/SafeMetric.vue",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "vue/3/SafeBriefing.vue",
       "status": "pass"
     },
     {
@@ -1145,6 +1325,11 @@
     {
       "group": "boot-compiles",
       "name": "vue/3/SafeChat.vue",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "vue/3/SafePlan.vue",
       "status": "pass"
     },
     {
@@ -1184,6 +1369,11 @@
     },
     {
       "group": "boot-compiles",
+      "name": "vue/3/SafeSkillUp.vue",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
       "name": "vue/3/SafeCalendar.vue",
       "status": "pass"
     },
@@ -1195,6 +1385,11 @@
     {
       "group": "boot-compiles",
       "name": "vue/3/SafeTree.vue",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "vue/3/SafeParser.vue",
       "status": "pass"
     },
     {
@@ -1260,6 +1455,11 @@
     {
       "group": "boot-compiles",
       "name": "vue/3/SafeTabs.vue",
+      "status": "pass"
+    },
+    {
+      "group": "boot-compiles",
+      "name": "vue/3/SafeDispatch.vue",
       "status": "pass"
     },
     {

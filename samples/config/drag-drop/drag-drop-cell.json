@@ -1,0 +1,47 @@
+{
+  "component": "drag-drop",
+  "metadata": {
+    "variant": "cell",
+    "spacing": "normal",
+    "columns": 3
+  },
+  "data": {
+    "items": {
+      "name": "dd-cell-items",
+      "type": "list",
+      "source": "inline",
+      "inline": [
+        {
+          "name": "Header"
+        },
+        {
+          "name": "Nav"
+        },
+        {
+          "name": "Search"
+        },
+        {
+          "name": "Sidebar"
+        },
+        {
+          "name": "Content"
+        },
+        {
+          "name": "Widget"
+        },
+        {
+          "name": "Footer"
+        },
+        {
+          "name": "Copyright"
+        },
+        {
+          "name": "Links"
+        }
+      ]
+    }
+  },
+  "eventHandler": {
+    "handler": "drag-drop"
+  }
+}

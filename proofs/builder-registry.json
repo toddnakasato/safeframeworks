@@ -1,13 +1,33 @@
 {
   "ok": true,
-  "total": 246,
-  "passed": 246,
+  "total": 280,
+  "passed": 280,
   "failed": 0,
   "groups": {
-    "no-numeric-suffix": 123,
-    "has-variant-name": 123
+    "no-numeric-suffix": 140,
+    "has-variant-name": 140
   },
   "checks": [
+    {
+      "group": "no-numeric-suffix",
+      "name": "briefing/briefing-compact.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "briefing/briefing-compact.json: has variant",
+      "status": "pass"
+    },
+    {
+      "group": "no-numeric-suffix",
+      "name": "briefing/briefing-default.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "briefing/briefing-default.json: has variant",
+      "status": "pass"
+    },
     {
       "group": "no-numeric-suffix",
       "name": "button/button-danger.json",
@@ -360,6 +380,36 @@
     },
     {
       "group": "no-numeric-suffix",
+      "name": "dispatch/dispatch-compact.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "dispatch/dispatch-compact.json: has variant",
+      "status": "pass"
+    },
+    {
+      "group": "no-numeric-suffix",
+      "name": "dispatch/dispatch-default.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "dispatch/dispatch-default.json: has variant",
+      "status": "pass"
+    },
+    {
+      "group": "no-numeric-suffix",
+      "name": "drag-drop/drag-drop-cell.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "drag-drop/drag-drop-cell.json: has variant",
+      "status": "pass"
+    },
+    {
+      "group": "no-numeric-suffix",
       "name": "drag-drop/drag-drop-kanban.json",
       "status": "pass"
     },
@@ -376,6 +426,36 @@
     {
       "group": "has-variant-name",
       "name": "drag-drop/drag-drop-list.json: has variant",
+      "status": "pass"
+    },
+    {
+      "group": "no-numeric-suffix",
+      "name": "drag-drop/drag-drop-row.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "drag-drop/drag-drop-row.json: has variant",
+      "status": "pass"
+    },
+    {
+      "group": "no-numeric-suffix",
+      "name": "drag-drop/drag-drop-table.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "drag-drop/drag-drop-table.json: has variant",
+      "status": "pass"
+    },
+    {
+      "group": "no-numeric-suffix",
+      "name": "drag-drop/drag-drop-template.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "drag-drop/drag-drop-template.json: has variant",
       "status": "pass"
     },
     {
@@ -400,12 +480,42 @@
     },
     {
       "group": "no-numeric-suffix",
+      "name": "flow/flow-dagre-pipeline.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "flow/flow-dagre-pipeline.json: has variant",
+      "status": "pass"
+    },
+    {
+      "group": "no-numeric-suffix",
+      "name": "flow/flow-edge-bundling-modules.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "flow/flow-edge-bundling-modules.json: has variant",
+      "status": "pass"
+    },
+    {
+      "group": "no-numeric-suffix",
       "name": "flow/flow-force-team.json",
       "status": "pass"
     },
     {
       "group": "has-variant-name",
       "name": "flow/flow-force-team.json: has variant",
+      "status": "pass"
+    },
+    {
+      "group": "no-numeric-suffix",
+      "name": "flow/flow-matrix-trade.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "flow/flow-matrix-trade.json: has variant",
       "status": "pass"
     },
     {
@@ -730,6 +840,26 @@
     },
     {
       "group": "no-numeric-suffix",
+      "name": "parser/parser-compact.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "parser/parser-compact.json: has variant",
+      "status": "pass"
+    },
+    {
+      "group": "no-numeric-suffix",
+      "name": "parser/parser-default.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "parser/parser-default.json: has variant",
+      "status": "pass"
+    },
+    {
+      "group": "no-numeric-suffix",
       "name": "picker/picker-card.json",
       "status": "pass"
     },
@@ -746,6 +876,26 @@
     {
       "group": "has-variant-name",
       "name": "picker/picker-list.json: has variant",
+      "status": "pass"
+    },
+    {
+      "group": "no-numeric-suffix",
+      "name": "plan/plan-compact.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "plan/plan-compact.json: has variant",
+      "status": "pass"
+    },
+    {
+      "group": "no-numeric-suffix",
+      "name": "plan/plan-default.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "plan/plan-default.json: has variant",
       "status": "pass"
     },
     {
@@ -906,6 +1056,26 @@
     {
       "group": "has-variant-name",
       "name": "sheet/sheet-striped.json: has variant",
+      "status": "pass"
+    },
+    {
+      "group": "no-numeric-suffix",
+      "name": "skillup/skillup-compact.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "skillup/skillup-compact.json: has variant",
+      "status": "pass"
+    },
+    {
+      "group": "no-numeric-suffix",
+      "name": "skillup/skillup-default.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "skillup/skillup-default.json: has variant",
       "status": "pass"
     },
     {

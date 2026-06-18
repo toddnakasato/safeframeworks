@@ -1,0 +1,40 @@
+{
+  "component": "drag-drop",
+  "metadata": {
+    "variant": "row",
+    "spacing": "normal",
+    "labelField": "name"
+  },
+  "data": {
+    "items": {
+      "name": "dd-row-items",
+      "type": "list",
+      "source": "inline",
+      "inline": [
+        {
+          "id": "1",
+          "name": "Design mockups"
+        },
+        {
+          "id": "2",
+          "name": "Write tests"
+        },
+        {
+          "id": "3",
+          "name": "Code review"
+        },
+        {
+          "id": "4",
+          "name": "Deploy to staging"
+        },
+        {
+          "id": "5",
+          "name": "QA verification"
+        }
+      ]
+    }
+  },
+  "eventHandler": {
+    "handler": "drag-drop"
+  }
+}

@@ -1,15 +1,25 @@
 {
   "ok": true,
-  "total": 72,
-  "passed": 72,
+  "total": 86,
+  "passed": 86,
   "failed": 0,
   "groups": {
-    "fire-is-declared": 72
+    "fire-is-declared": 86
   },
   "checks": [
     {
       "group": "fire-is-declared",
       "name": "funnel: \"select\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "briefing: \"select\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "briefing: \"send\" is declared",
       "status": "pass"
     },
     {
@@ -204,6 +214,21 @@
     },
     {
       "group": "fire-is-declared",
+      "name": "parser: \"collapse\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "parser: \"expand\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "parser: \"select\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
       "name": "map: \"select\" is declared",
       "status": "pass"
     },
@@ -215,6 +240,16 @@
     {
       "group": "fire-is-declared",
       "name": "hierarchy: \"select\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "skillup: \"answer\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "skillup: \"select\" is declared",
       "status": "pass"
     },
     {
@@ -274,6 +309,21 @@
     },
     {
       "group": "fire-is-declared",
+      "name": "dispatch: \"filter\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "dispatch: \"select\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "dispatch: \"bookmark\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
       "name": "tabs: \"select\" is declared",
       "status": "pass"
     },
@@ -315,6 +365,26 @@
     {
       "group": "fire-is-declared",
       "name": "timeline: \"select\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "plan: \"complete\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "plan: \"skip\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "plan: \"select\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "plan: \"send\" is declared",
       "status": "pass"
     },
     {

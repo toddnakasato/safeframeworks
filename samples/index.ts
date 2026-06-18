@@ -11,6 +11,8 @@
 import type { ConfigBase, DataSource } from "../../safecontracts/src/contracts";
 
 import buttonDangerConfig from "./config/button/button-danger.json";
+import briefingDefaultConfig from "./config/briefing/briefing-default.json";
+import briefingCompactConfig from "./config/briefing/briefing-compact.json";
 import buttonDisabledConfig from "./config/button/button-disabled.json";
 import buttonGhostConfig from "./config/button/button-ghost.json";
 import buttonLinkIconConfig from "./config/button/button-link-icon.json";
@@ -76,10 +78,21 @@ import navHorizontalConfig from "./config/nav/nav-horizontal.json";
 import navSidebarConfig from "./config/nav/nav-sidebar.json";
 import pickerListConfig from "./config/picker/picker-list.json";
 import pickerCardConfig from "./config/picker/picker-card.json";
+import parserDefaultConfig from "./config/parser/parser-default.json";
+import parserCompactConfig from "./config/parser/parser-compact.json";
+import planDefaultConfig from "./config/plan/plan-default.json";
+import skillupDefaultConfig from "./config/skillup/skillup-default.json";
+import dispatchDefaultConfig from "./config/dispatch/dispatch-default.json";
+import dispatchCompactConfig from "./config/dispatch/dispatch-compact.json";
+import skillupCompactConfig from "./config/skillup/skillup-compact.json";
+import planCompactConfig from "./config/plan/plan-compact.json";
 import flowArcTradeConfig from "./config/flow/flow-arc-trade.json";
 import flowChordTradeConfig from "./config/flow/flow-chord-trade.json";
 import flowForceTeamConfig from "./config/flow/flow-force-team.json";
 import flowSankeyRevenueConfig from "./config/flow/flow-sankey-revenue.json";
+import flowEdgeBundlingModulesConfig from "./config/flow/flow-edge-bundling-modules.json";
+import flowMatrixTradeConfig from "./config/flow/flow-matrix-trade.json";
+import flowDagrePipelineConfig from "./config/flow/flow-dagre-pipeline.json";
 import sheetBasicConfig from "./config/sheet/sheet-basic.json";
 import sheetColumnsOnlyConfig from "./config/sheet/sheet-columns-only.json";
 import sheetCompactConfig from "./config/sheet/sheet-compact.json";
@@ -135,6 +148,10 @@ import weekCompactConfig from "./config/week/week-compact.json";
 import cardInfoData from "./data/card-info.json";
 import chartSeriesData from "./data/chart-series.json";
 import dragDropItemsData from "./data/drag-drop-items.json";
+import dragDropRowConfig from "./config/drag-drop/drag-drop-row.json";
+import dragDropCellConfig from "./config/drag-drop/drag-drop-cell.json";
+import dragDropTableConfig from "./config/drag-drop/drag-drop-table.json";
+import dragDropTemplateConfig from "./config/drag-drop/drag-drop-template.json";
 import listAchievementsData from "./data/list-achievements.json";
 import listContactsData from "./data/list-contacts.json";
 import listFilesData from "./data/list-files.json";
@@ -157,6 +174,8 @@ import sheetTickersData from "./data/sheet-tickers.json";
 import flowRevenueData from "./data/flow-revenue.json";
 import flowRegionTradeData from "./data/flow-region-trade.json";
 import flowTeamNetworkData from "./data/flow-team-network.json";
+import flowModuleDepsData from "./data/flow-module-deps.json";
+import flowCiPipelineData from "./data/flow-ci-pipeline.json";
 import hierarchyBudgetData from "./data/hierarchy-budget.json";
 import hierarchyDiskUsageData from "./data/hierarchy-disk-usage.json";
 import tableRowsData from "./data/table-rows.json";
@@ -191,6 +210,8 @@ const DATA_FILES: Record<string, unknown> = {
     "flow-revenue": flowRevenueData,
     "flow-region-trade": flowRegionTradeData,
     "flow-team-network": flowTeamNetworkData,
+    "flow-module-deps": flowModuleDepsData,
+    "flow-ci-pipeline": flowCiPipelineData,
     "hierarchy-budget": hierarchyBudgetData,
     "hierarchy-disk-usage": hierarchyDiskUsageData,
     "table-rows": tableRowsData,
@@ -226,6 +247,10 @@ function resolveData(config: ConfigBase): ConfigBase {
 
 /** component -> variation -> resolved ConfigBase. */
 export const SAMPLES: Record<string, Record<string, ConfigBase>> = {
+    briefing: {
+        "briefing-default": resolveData(briefingDefaultConfig as unknown as ConfigBase),
+        "briefing-compact": resolveData(briefingCompactConfig as unknown as ConfigBase),
+    },
     button: {
         "button-danger": resolveData(buttonDangerConfig as unknown as ConfigBase),
         "button-disabled": resolveData(buttonDisabledConfig as unknown as ConfigBase),
@@ -278,6 +303,10 @@ export const SAMPLES: Record<string, Record<string, ConfigBase>> = {
     "drag-drop": {
         "drag-drop-list": resolveData(dragDropListConfig as unknown as ConfigBase),
         "drag-drop-kanban": resolveData(dragDropKanbanConfig as unknown as ConfigBase),
+        "drag-drop-row": resolveData(dragDropRowConfig as unknown as ConfigBase),
+        "drag-drop-cell": resolveData(dragDropCellConfig as unknown as ConfigBase),
+        "drag-drop-table": resolveData(dragDropTableConfig as unknown as ConfigBase),
+        "drag-drop-template": resolveData(dragDropTemplateConfig as unknown as ConfigBase),
     },
     funnel: {
         "funnel-vertical": resolveData(funnelVerticalConfig as unknown as ConfigBase),
@@ -328,11 +357,30 @@ export const SAMPLES: Record<string, Record<string, ConfigBase>> = {
         "picker-list": resolveData(pickerListConfig as unknown as ConfigBase),
         "picker-card": resolveData(pickerCardConfig as unknown as ConfigBase),
     },
+    parser: {
+        "parser-default": resolveData(parserDefaultConfig as unknown as ConfigBase),
+        "parser-compact": resolveData(parserCompactConfig as unknown as ConfigBase),
+    },
+    plan: {
+        "plan-default": resolveData(planDefaultConfig as unknown as ConfigBase),
+        "plan-compact": resolveData(planCompactConfig as unknown as ConfigBase),
+    },
+    skillup: {
+        "skillup-default": resolveData(skillupDefaultConfig as unknown as ConfigBase),
+        "skillup-compact": resolveData(skillupCompactConfig as unknown as ConfigBase),
+    },
+    dispatch: {
+        "dispatch-default": resolveData(dispatchDefaultConfig as unknown as ConfigBase),
+        "dispatch-compact": resolveData(dispatchCompactConfig as unknown as ConfigBase),
+    },
     flow: {
         "flow-arc-trade": resolveData(flowArcTradeConfig as unknown as ConfigBase),
         "flow-chord-trade": resolveData(flowChordTradeConfig as unknown as ConfigBase),
         "flow-force-team": resolveData(flowForceTeamConfig as unknown as ConfigBase),
         "flow-sankey-revenue": resolveData(flowSankeyRevenueConfig as unknown as ConfigBase),
+        "flow-edge-bundling-modules": resolveData(flowEdgeBundlingModulesConfig as unknown as ConfigBase),
+        "flow-matrix-trade": resolveData(flowMatrixTradeConfig as unknown as ConfigBase),
+        "flow-dagre-pipeline": resolveData(flowDagrePipelineConfig as unknown as ConfigBase),
     },
     sheet: {
         "sheet-basic": resolveData(sheetBasicConfig as unknown as ConfigBase),

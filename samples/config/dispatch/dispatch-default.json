@@ -1,0 +1,74 @@
+{
+  "component": "dispatch",
+  "metadata": {
+    "variant": "default",
+    "spacing": "normal",
+    "title": "Dispatch"
+  },
+  "data": {
+    "articles": {
+      "name": "dispatch-articles",
+      "type": "list",
+      "source": "inline",
+      "inline": [
+        {
+          "id": "d1",
+          "tag": "AI",
+          "headline": "Claude can now use your tools",
+          "teaser": "Anthropic shipped tool use in production.",
+          "body": "Anthropic released tool use for Claude.\n\nWhat it means: Our integration already uses this pattern.",
+          "readTime": "2 min",
+          "source": "Anthropic Blog",
+          "date": "Today"
+        },
+        {
+          "id": "d2",
+          "tag": "Company",
+          "headline": "Q1 results: pipeline up 23%",
+          "teaser": "More deals but conversion flat.",
+          "body": "Q1 pipeline grew 23% YoY. Close rate held at 28%.\n\nKey numbers:\n\u2022 Pipeline: $2.1M\n\u2022 Close rate: 28%",
+          "readTime": "3 min",
+          "source": "Internal",
+          "date": "Today"
+        },
+        {
+          "id": "d3",
+          "tag": "Policy",
+          "headline": "AI tools now reimbursable",
+          "teaser": "Up to $100/month for approved tools.",
+          "body": "Effective immediately, employees can expense AI productivity tools.\n\nApproved: Copilot, Grammarly, Perplexity.",
+          "readTime": "1 min",
+          "source": "HR",
+          "date": "Today"
+        },
+        {
+          "id": "d4",
+          "tag": "Product",
+          "headline": "JITUI v0.1 shipped",
+          "teaser": "Config-driven UI is live.",
+          "body": "16 components, briefing, plan, SkillUp.\n\nBuilt in one session.",
+          "readTime": "2 min",
+          "source": "Engineering",
+          "date": "Today"
+        }
+      ],
+      "schema": {
+        "fields": [
+          {
+            "name": "headline",
+            "label": "Headline",
+            "type": "text"
+          },
+          {
+            "name": "tag",
+            "label": "Tag",
+            "type": "text"
+          }
+        ]
+      }
+    }
+  },
+  "eventHandler": {
+    "handler": "dispatch"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "component": "drag-drop",
+  "metadata": {
+    "variant": "table",
+    "spacing": "normal",
+    "tableColumns": [
+      "name",
+      "status",
+      "priority"
+    ]
+  },
+  "data": {
+    "items": {
+      "name": "dd-table-items",
+      "type": "list",
+      "source": "inline",
+      "inline": [
+        {
+          "id": "1",
+          "name": "Task Alpha",
+          "status": "Active",
+          "priority": "High"
+        },
+        {
+          "id": "2",
+          "name": "Task Beta",
+          "status": "Pending",
+          "priority": "Medium"
+        },
+        {
+          "id": "3",
+          "name": "Task Gamma",
+          "status": "Done",
+          "priority": "Low"
+        },
+        {
+          "id": "4",
+          "name": "Task Delta",
+          "status": "Active",
+          "priority": "Critical"
+        }
+      ]
+    }
+  },
+  "eventHandler": {
+    "handler": "drag-drop"
+  }
+}

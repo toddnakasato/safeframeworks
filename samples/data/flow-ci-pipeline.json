@@ -1,0 +1,75 @@
+{
+  "nodes": [
+    {
+      "name": "Source"
+    },
+    {
+      "name": "Build"
+    },
+    {
+      "name": "Test"
+    },
+    {
+      "name": "Lint"
+    },
+    {
+      "name": "Security"
+    },
+    {
+      "name": "Stage"
+    },
+    {
+      "name": "Approve"
+    },
+    {
+      "name": "Deploy"
+    }
+  ],
+  "links": [
+    {
+      "source": "Source",
+      "target": "Build",
+      "value": 1
+    },
+    {
+      "source": "Source",
+      "target": "Lint",
+      "value": 1
+    },
+    {
+      "source": "Build",
+      "target": "Test",
+      "value": 1
+    },
+    {
+      "source": "Build",
+      "target": "Security",
+      "value": 1
+    },
+    {
+      "source": "Test",
+      "target": "Stage",
+      "value": 1
+    },
+    {
+      "source": "Lint",
+      "target": "Stage",
+      "value": 1
+    },
+    {
+      "source": "Security",
+      "target": "Stage",
+      "value": 1
+    },
+    {
+      "source": "Stage",
+      "target": "Approve",
+      "value": 1
+    },
+    {
+      "source": "Approve",
+      "target": "Deploy",
+      "value": 1
+    }
+  ]
+}

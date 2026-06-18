@@ -1,0 +1,88 @@
+{
+  "component": "parser",
+  "metadata": {
+    "variant": "compact",
+    "spacing": "compact",
+    "idField": "id",
+    "parentField": "parentId",
+    "labelField": "label",
+    "typeField": "type",
+    "fieldsField": "fields",
+    "boundsField": "bounds",
+    "title": "Quick Parse",
+    "subtitle": "Compact structure view",
+    "expandAll": false,
+    "showFields": false,
+    "showBounds": false
+  },
+  "data": {
+    "parts": {
+      "name": "parser-parts-compact",
+      "type": "list",
+      "source": "inline",
+      "inline": [
+        {
+          "id": "1",
+          "type": "header",
+          "label": "Document Header",
+          "bounds": { "x": 0, "y": 0, "width": 100, "height": 8 },
+          "level": 0,
+          "fields": [
+            { "label": "Form Type", "value": "Invoice" }
+          ]
+        },
+        {
+          "id": "2",
+          "type": "section",
+          "label": "Line Items",
+          "bounds": { "x": 0, "y": 8, "width": 100, "height": 60 },
+          "level": 0,
+          "fields": [
+            { "label": "Rows", "value": "12" }
+          ]
+        },
+        {
+          "id": "3",
+          "type": "table",
+          "label": "Item Table",
+          "parentId": "2",
+          "bounds": { "x": 0, "y": 10, "width": 100, "height": 50 },
+          "level": 1,
+          "fields": [
+            { "label": "Columns", "value": "5" }
+          ]
+        },
+        {
+          "id": "4",
+          "type": "section",
+          "label": "Totals",
+          "bounds": { "x": 0, "y": 70, "width": 100, "height": 15 },
+          "level": 0,
+          "fields": [
+            { "label": "Fields", "value": "3" }
+          ]
+        },
+        {
+          "id": "5",
+          "type": "footer",
+          "label": "Footer",
+          "bounds": { "x": 0, "y": 90, "width": 100, "height": 10 },
+          "level": 0,
+          "fields": [
+            { "label": "Page", "value": "Auto" }
+          ]
+        }
+      ],
+      "schema": {
+        "fields": [
+          { "name": "id", "label": "ID", "type": "text" },
+          { "name": "type", "label": "Type", "type": "text" },
+          { "name": "label", "label": "Label", "type": "text" }
+        ]
+      }
+    }
+  },
+  "eventHandler": {
+    "handler": "parser"
+  }
+}

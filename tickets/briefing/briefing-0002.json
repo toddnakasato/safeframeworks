@@ -1,0 +1,42 @@
+{
+  "id": "briefing-0002",
+  "component": "skillup",
+  "type": "new-component",
+  "title": "Create the skillup component from jitui — quiz cards, mastery bars, streak metrics",
+  "description": "Quiz panel: streak/today/accuracy metrics at top, question card with 4 choices + explanation, skill mastery list with progress bars below. Based on jitui SkillUpPanel.",
+  "status": "closed",
+  "proves": [
+    "builder-reconcile", "builder-structure", "builder-dumb",
+    "paint-definition", "framework-delegation", "framework-boot",
+    "builder-registry", "event-payload", "paint-contrast"
+  ],
+  "structure_test": {
+    "file": "safeframeworks/builders/skillup.ts",
+    "required_roles": [
+      "header",
+      "stats-bar",
+      "stat",
+      "stat-value",
+      "stat-label",
+      "body",
+      "question-card",
+      "question-skill",
+      "question-text",
+      "choice",
+      "choice-letter",
+      "choice-text",
+      "explanation",
+      "skill-list",
+      "skill-row",
+      "skill-icon",
+      "skill-name",
+      "skill-mastery",
+      "skill-bar",
+      "skill-bar-fill",
+      "empty"
+    ]
+  },
+  "params": { "component": "skillup" },
+  "created": "2026-06-18T18:54:56.209Z",
+  "updated": "2026-06-18T22:30:00.000Z"
+}

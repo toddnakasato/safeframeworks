@@ -1,0 +1,65 @@
+{
+  "component": "skillup",
+  "metadata": {
+    "variant": "compact",
+    "spacing": "normal",
+    "title": "Quick Quiz",
+    "questionField": "question",
+    "choicesField": "choices",
+    "correctField": "correct",
+    "explanationField": "explanation",
+    "skillField": "skill"
+  },
+  "data": {
+    "questions": {
+      "name": "skillup-compact",
+      "type": "list",
+      "source": "inline",
+      "inline": [
+        {
+          "id": "q1",
+          "skill": "Pipeline Management",
+          "question": "A deal has been in Proposal stage for 3 weeks. Best next step?",
+          "choices": [
+            "Send another proposal",
+            "Call to ask about questions",
+            "Move to Closed-Lost",
+            "Wait another week"
+          ],
+          "correct": 1,
+          "explanation": "Direct contact reopens the conversation."
+        },
+        {
+          "id": "q2",
+          "skill": "Discovery Calls",
+          "question": "Prospect says 'We're happy with our current vendor.' What do you do?",
+          "choices": [
+            "Ask what they'd change with a magic wand",
+            "List your advantages",
+            "Offer a discount",
+            "End the call"
+          ],
+          "correct": 0,
+          "explanation": "The magic wand question uncovers latent pain."
+        }
+      ],
+      "schema": {
+        "fields": [
+          {
+            "name": "question",
+            "label": "Question",
+            "type": "text"
+          },
+          {
+            "name": "skill",
+            "label": "Skill",
+            "type": "text"
+          }
+        ]
+      }
+    }
+  },
+  "eventHandler": {
+    "handler": "skillup"
+  }
+}
