@@ -1,0 +1,16 @@
+{
+  "id": "toggle-0001",
+  "component": "toggle",
+  "type": "variation",
+  "title": "Toggle variations from figma — settings, expandable, check with label positions",
+  "description": "5 new toggle samples: settings (table layout), expandable (hierarchical with children), check-top, check-bottom, check-icon (grid with label positions).",
+  "status": "closed",
+  "proves": ["builder-registry"],
+  "params": { "component": "toggle" },
+  "test": { "command": "prove builder-registry", "assert": { "ok": true } },
+  "created": "2026-06-18T16:15:39.253Z",
+  "updated": "2026-06-18T20:00:00.000Z",
+  "variant": "settings, expandable, check-top, check-bottom, check-icon",
+  "resolution": "Added check variant to builder (grid layout, label position: top/bottom/none/right). 5 new samples with production data. CSS for check grid.",
+  "files": ["safeframeworks/builders/toggle.ts", "safestyles/core/structure.css", "safeframeworks/samples/index.ts"]
+}

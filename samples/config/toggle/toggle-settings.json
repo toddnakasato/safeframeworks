@@ -1,0 +1,40 @@
+{
+  "component": "toggle",
+  "metadata": {
+    "variant": "table"
+  },
+  "data": {
+    "items": {
+      "inline": [
+        {
+          "label": "Email Notifications",
+          "description": "Receive email updates about account activity",
+          "checked": true
+        },
+        {
+          "label": "Push Notifications",
+          "description": "Get real-time push notifications on your device",
+          "checked": true
+        },
+        {
+          "label": "Two-Factor Auth",
+          "description": "Require 2FA for all sign-ins",
+          "checked": false
+        },
+        {
+          "label": "Activity Logging",
+          "description": "Track and log all account activity",
+          "checked": true
+        },
+        {
+          "label": "Auto-Updates",
+          "description": "Automatically install updates when available",
+          "checked": false
+        }
+      ]
+    }
+  },
+  "eventHandler": {
+    "handler": "toggle"
+  }
+}

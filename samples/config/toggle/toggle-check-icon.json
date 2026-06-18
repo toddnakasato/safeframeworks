@@ -1,0 +1,36 @@
+{
+  "component": "toggle",
+  "metadata": {
+    "variant": "check",
+    "labelPosition": "none"
+  },
+  "data": {
+    "items": {
+      "inline": [
+        {
+          "label": "Bold",
+          "icon": "B",
+          "checked": false
+        },
+        {
+          "label": "Italic",
+          "icon": "I",
+          "checked": true
+        },
+        {
+          "label": "Underline",
+          "icon": "U",
+          "checked": false
+        },
+        {
+          "label": "Strike",
+          "icon": "S",
+          "checked": false
+        }
+      ]
+    }
+  },
+  "eventHandler": {
+    "handler": "toggle"
+  }
+}

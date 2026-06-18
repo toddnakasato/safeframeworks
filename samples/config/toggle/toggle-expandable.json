@@ -1,0 +1,71 @@
+{
+  "component": "toggle",
+  "metadata": {
+    "variant": "expandable"
+  },
+  "data": {
+    "items": {
+      "inline": [
+        {
+          "label": "Sales Expert",
+          "description": "Lead qualification and pipeline management",
+          "checked": true,
+          "badge": "Active",
+          "children": [
+            {
+              "label": "Auto-Qualify Leads",
+              "checked": true
+            },
+            {
+              "label": "Pipeline Alerts",
+              "checked": false
+            },
+            {
+              "label": "Revenue Forecasting",
+              "checked": true
+            }
+          ]
+        },
+        {
+          "label": "Marketing Suite",
+          "description": "Campaign management and analytics",
+          "checked": false,
+          "badge": "Inactive",
+          "children": [
+            {
+              "label": "Email Campaigns",
+              "checked": false
+            },
+            {
+              "label": "Social Media",
+              "checked": false
+            }
+          ]
+        },
+        {
+          "label": "Support Hub",
+          "description": "Customer support and ticket management",
+          "checked": true,
+          "badge": "Active",
+          "children": [
+            {
+              "label": "Live Chat",
+              "checked": true
+            },
+            {
+              "label": "Knowledge Base",
+              "checked": true
+            },
+            {
+              "label": "Ticket Routing",
+              "checked": false
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "eventHandler": {
+    "handler": "toggle"
+  }
+}

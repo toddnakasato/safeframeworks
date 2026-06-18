@@ -1,0 +1,32 @@
+{
+  "component": "toggle",
+  "metadata": {
+    "variant": "check",
+    "labelPosition": "bottom"
+  },
+  "data": {
+    "items": {
+      "inline": [
+        {
+          "label": "Mic",
+          "checked": false
+        },
+        {
+          "label": "Camera",
+          "checked": true
+        },
+        {
+          "label": "Screen",
+          "checked": true
+        },
+        {
+          "label": "Audio",
+          "checked": false
+        }
+      ]
+    }
+  },
+  "eventHandler": {
+    "handler": "toggle"
+  }
+}

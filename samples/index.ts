@@ -117,6 +117,11 @@ import timelineHTimeBlocksConfig from "./config/timeline/timeline-h-time-blocks.
 import timelineHEventStreamConfig from "./config/timeline/timeline-h-event-stream.json";
 import toggleSwitchConfig from "./config/toggle/toggle-switch.json";
 import toggleCheckboxConfig from "./config/toggle/toggle-checkbox.json";
+import toggleSettingsConfig from "./config/toggle/toggle-settings.json";
+import toggleExpandableConfig from "./config/toggle/toggle-expandable.json";
+import toggleCheckTopConfig from "./config/toggle/toggle-check-top.json";
+import toggleCheckBottomConfig from "./config/toggle/toggle-check-bottom.json";
+import toggleCheckIconConfig from "./config/toggle/toggle-check-icon.json";
 import treeNestedConfig from "./config/tree/tree-nested.json";
 import treeFlatConfig from "./config/tree/tree-flat.json";
 import hierarchyIcicleDiskConfig from "./config/hierarchy/hierarchy-icicle-disk.json";
@@ -375,6 +380,11 @@ export const SAMPLES: Record<string, Record<string, ConfigBase>> = {
     toggle: {
         "toggle-switch": resolveData(toggleSwitchConfig as unknown as ConfigBase),
         "toggle-checkbox": resolveData(toggleCheckboxConfig as unknown as ConfigBase),
+        "toggle-settings": resolveData(toggleSettingsConfig as unknown as ConfigBase),
+        "toggle-expandable": resolveData(toggleExpandableConfig as unknown as ConfigBase),
+        "toggle-check-top": resolveData(toggleCheckTopConfig as unknown as ConfigBase),
+        "toggle-check-bottom": resolveData(toggleCheckBottomConfig as unknown as ConfigBase),
+        "toggle-check-icon": resolveData(toggleCheckIconConfig as unknown as ConfigBase),
     },
     tree: {
         "tree-nested": resolveData(treeNestedConfig as unknown as ConfigBase),

@@ -163,8 +163,34 @@ export function createSafeToggle(container: HTMLElement, config: ConfigBase, ctx
         render();
     }
 
+    function renderCheck() {
+        const labelPos = (metadata.labelPosition as string) ?? "right";
+        const grid = el("div", "toggle-check-grid");
+        grid.setAttribute("data-label-position", labelPos);
+        function render() {
+            grid.replaceChildren();
+            items.forEach((item: any, i: number) => {
+                const cell = el("div", "toggle-check-cell");
+                const label = el("div", "toggle-check-label", item.icon ?? item.label ?? "");
+                const track = buildSwitchTrack(!!item.checked, !!item.disabled, () => {
+                    item.checked = !item.checked;
+                    ctx.fire("change", { index: i, checked: item.checked, field: item.label });
+                    render();
+                });
+                if (labelPos === "top") { cell.appendChild(label); cell.appendChild(track); }
+                else if (labelPos === "bottom") { cell.appendChild(track); cell.appendChild(label); }
+                else if (labelPos === "none") { cell.appendChild(track); }
+                else { cell.appendChild(track); cell.appendChild(label); }
+                grid.appendChild(cell);
+            });
+        }
+        render();
+        root.appendChild(grid);
+    }
+
     if (variant === "table") renderTable();
     else if (variant === "expandable") renderExpandable();
+    else if (variant === "check") renderCheck();
     else renderSwitch();
 
     container.appendChild(root);

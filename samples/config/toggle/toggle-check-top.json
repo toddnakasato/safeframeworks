@@ -1,0 +1,32 @@
+{
+  "component": "toggle",
+  "metadata": {
+    "variant": "check",
+    "labelPosition": "top"
+  },
+  "data": {
+    "items": {
+      "inline": [
+        {
+          "label": "Power",
+          "checked": true
+        },
+        {
+          "label": "Wi-Fi",
+          "checked": true
+        },
+        {
+          "label": "Bluetooth",
+          "checked": false
+        },
+        {
+          "label": "GPS",
+          "checked": true
+        }
+      ]
+    }
+  },
+  "eventHandler": {
+    "handler": "toggle"
+  }
+}

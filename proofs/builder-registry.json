@@ -1,11 +1,11 @@
 {
   "ok": true,
-  "total": 236,
-  "passed": 236,
+  "total": 246,
+  "passed": 246,
   "failed": 0,
   "groups": {
-    "no-numeric-suffix": 118,
-    "has-variant-name": 118
+    "no-numeric-suffix": 123,
+    "has-variant-name": 123
   },
   "checks": [
     {
@@ -1120,12 +1120,62 @@
     },
     {
       "group": "no-numeric-suffix",
+      "name": "toggle/toggle-check-bottom.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "toggle/toggle-check-bottom.json: has variant",
+      "status": "pass"
+    },
+    {
+      "group": "no-numeric-suffix",
+      "name": "toggle/toggle-check-icon.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "toggle/toggle-check-icon.json: has variant",
+      "status": "pass"
+    },
+    {
+      "group": "no-numeric-suffix",
+      "name": "toggle/toggle-check-top.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "toggle/toggle-check-top.json: has variant",
+      "status": "pass"
+    },
+    {
+      "group": "no-numeric-suffix",
       "name": "toggle/toggle-checkbox.json",
       "status": "pass"
     },
     {
       "group": "has-variant-name",
       "name": "toggle/toggle-checkbox.json: has variant",
+      "status": "pass"
+    },
+    {
+      "group": "no-numeric-suffix",
+      "name": "toggle/toggle-expandable.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "toggle/toggle-expandable.json: has variant",
+      "status": "pass"
+    },
+    {
+      "group": "no-numeric-suffix",
+      "name": "toggle/toggle-settings.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "toggle/toggle-settings.json: has variant",
       "status": "pass"
     },
     {
