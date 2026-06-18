@@ -1,6 +1,6 @@
 import type { ConfigBase, Field, SafeFireContext } from "../../safecontracts/src/contracts";
 import { createSafeInput } from "./input";
-import { elAttrs, readRecord } from "../utils/util";
+import { elAttrs, readRecord, readSchema } from "../utils/util";
 
 /*----------------------------------------------------------------------------------------------------
  *
