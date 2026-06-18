@@ -1,17 +1,17 @@
 {
   "ok": true,
   "component": "all",
-  "total": 686,
-  "passed": 686,
+  "total": 688,
+  "passed": 688,
   "failed": 0,
   "groups": {
     "uses-readList-or-readRecord": 19,
     "uses-shared-el": 29,
     "uses-applyIntent": 21,
-    "uses-applyPaintState": 15,
+    "uses-applyPaintState": 16,
     "has-data-component": 29,
     "no-schema-dot-fields": 5,
-    "imports-match-calls": 67,
+    "imports-match-calls": 68,
     "metadata-is-declared": 21,
     "required-metadata-fields": 12,
     "no-getDataSource": 29,
@@ -1176,6 +1176,11 @@
       "status": "pass"
     },
     {
+      "group": "uses-applyPaintState",
+      "name": "chart: uses applyPaintState",
+      "status": "pass"
+    },
+    {
       "group": "has-data-component",
       "name": "chart: sets data-component",
       "status": "pass"
@@ -1188,6 +1193,11 @@
     {
       "group": "imports-match-calls",
       "name": "chart: imports applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "chart: imports applyPaintState",
       "status": "pass"
     },
     {
@@ -3457,5 +3467,5 @@
     }
   ],
   "failures": [],
-  "ts": "2026-06-18T11:08:17.894Z"
+  "ts": "2026-06-18T11:14:04.475Z"
 }

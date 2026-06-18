@@ -20,7 +20,7 @@ import type { ChartConfiguration } from "chart.js";
 import type { ConfigBase } from "../../safecontracts/src/contracts";
 import type { SafeFireContext } from "../../safecontracts/src/contracts";
 import { resolveColors } from "../../safecontracts/src/palette";
-import { applyIntent, readList } from "../utils/util";
+import { applyIntent, applyPaintState, readList } from "../utils/util";
 
 /*----------------------------------------------------------------------------------------------------
  *
@@ -59,6 +59,7 @@ export function createSafeChart(canvas: HTMLCanvasElement, config: ConfigBase, c
 
     canvas.setAttribute("data-component", "chart");
     applyIntent(canvas, metadata);
+    applyPaintState(canvas, metadata, "chart");
     canvas.setAttribute("data-variant", (metadata.variant as string) ?? "default");
     canvas.setAttribute("data-chart-type", (metadata.chartType as string) ?? "bar");
     const cfg = buildChartConfig(config);
@@ -77,6 +78,7 @@ export function createSafeChart(canvas: HTMLCanvasElement, config: ConfigBase, c
         onHover: (_event: any, elements: any[]) => {
             if (elements.length > 0) {
                 const el = elements[0];
+                canvas.setAttribute("data-hover-point", String(el.index));
                 ctx.fire("hover", {
                     index: el.index,
                     datasetIndex: el.datasetIndex,

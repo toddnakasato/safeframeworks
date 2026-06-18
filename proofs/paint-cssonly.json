@@ -1,0 +1,75 @@
+{
+  "ok": true,
+  "total": 12,
+  "passed": 12,
+  "failed": 0,
+  "groups": {
+    "cssonly-has-attr": 3,
+    "builder-sets-attr": 3,
+    "builder-updates-on-event": 3,
+    "safestyles-targets-attr": 3
+  },
+  "checks": [
+    {
+      "group": "cssonly-has-attr",
+      "name": "table/row:hover: has attr",
+      "status": "pass"
+    },
+    {
+      "group": "builder-sets-attr",
+      "name": "table/row:hover: builder sets data-row-hover",
+      "status": "pass"
+    },
+    {
+      "group": "builder-updates-on-event",
+      "name": "table/row:hover: builder updates attr on row:hover",
+      "status": "pass"
+    },
+    {
+      "group": "safestyles-targets-attr",
+      "name": "table/row:hover: safestyles targets [data-row-hover]",
+      "status": "pass"
+    },
+    {
+      "group": "cssonly-has-attr",
+      "name": "table/row:leave: has attr",
+      "status": "pass"
+    },
+    {
+      "group": "builder-sets-attr",
+      "name": "table/row:leave: builder sets data-row-hover",
+      "status": "pass"
+    },
+    {
+      "group": "builder-updates-on-event",
+      "name": "table/row:leave: builder updates attr on row:leave",
+      "status": "pass"
+    },
+    {
+      "group": "safestyles-targets-attr",
+      "name": "table/row:leave: safestyles targets [data-row-hover]",
+      "status": "pass"
+    },
+    {
+      "group": "cssonly-has-attr",
+      "name": "chart/hover: has attr",
+      "status": "pass"
+    },
+    {
+      "group": "builder-sets-attr",
+      "name": "chart/hover: builder sets data-hover-point",
+      "status": "pass"
+    },
+    {
+      "group": "builder-updates-on-event",
+      "name": "chart/hover: builder updates attr on hover",
+      "status": "pass"
+    },
+    {
+      "group": "safestyles-targets-attr",
+      "name": "chart/hover: safestyles targets [data-hover-point]",
+      "status": "pass"
+    }
+  ],
+  "failures": []
+}
