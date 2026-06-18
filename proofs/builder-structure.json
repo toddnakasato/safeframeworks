@@ -1,8 +1,8 @@
 {
   "ok": true,
   "component": "all",
-  "total": 380,
-  "passed": 380,
+  "total": 409,
+  "passed": 409,
   "failed": 0,
   "groups": {
     "uses-readList-or-readRecord": 19,
@@ -18,7 +18,8 @@
     "no-module-scope-constants": 29,
     "no-cross-function-scope-leak": 29,
     "no-local-contract-interfaces": 27,
-    "no-function-tdz": 29
+    "no-function-tdz": 29,
+    "standard-export-name": 29
   },
   "checks": [
     {
@@ -97,6 +98,11 @@
       "status": "pass"
     },
     {
+      "group": "standard-export-name",
+      "name": "funnel: exports createSafe{Name}",
+      "status": "pass"
+    },
+    {
       "group": "uses-shared-el",
       "name": "callout: uses shared el/elAttrs from utils",
       "status": "pass"
@@ -157,6 +163,11 @@
       "status": "pass"
     },
     {
+      "group": "standard-export-name",
+      "name": "callout: exports createSafe{Name}",
+      "status": "pass"
+    },
+    {
       "group": "uses-shared-el",
       "name": "week: uses shared el/elAttrs from utils",
       "status": "pass"
@@ -209,6 +220,11 @@
     {
       "group": "no-local-contract-interfaces",
       "name": "week: no duplicate contract interfaces",
+      "status": "pass"
+    },
+    {
+      "group": "standard-export-name",
+      "name": "week: exports createSafe{Name}",
       "status": "pass"
     },
     {
@@ -287,6 +303,11 @@
       "status": "pass"
     },
     {
+      "group": "standard-export-name",
+      "name": "table: exports createSafe{Name}",
+      "status": "pass"
+    },
+    {
       "group": "uses-readList-or-readRecord",
       "name": "nav: uses readList or readRecord",
       "status": "pass"
@@ -357,6 +378,11 @@
       "status": "pass"
     },
     {
+      "group": "standard-export-name",
+      "name": "nav: exports createSafe{Name}",
+      "status": "pass"
+    },
+    {
       "group": "uses-readList-or-readRecord",
       "name": "input: uses readList or readRecord",
       "status": "pass"
@@ -422,6 +448,11 @@
       "status": "pass"
     },
     {
+      "group": "standard-export-name",
+      "name": "input: exports createSafe{Name}",
+      "status": "pass"
+    },
+    {
       "group": "uses-shared-el",
       "name": "button: uses shared el/elAttrs from utils",
       "status": "pass"
@@ -479,6 +510,11 @@
     {
       "group": "no-local-contract-interfaces",
       "name": "button: no duplicate contract interfaces",
+      "status": "pass"
+    },
+    {
+      "group": "standard-export-name",
+      "name": "button: exports createSafe{Name}",
       "status": "pass"
     },
     {
@@ -557,6 +593,11 @@
       "status": "pass"
     },
     {
+      "group": "standard-export-name",
+      "name": "sheet: exports createSafe{Name}",
+      "status": "pass"
+    },
+    {
       "group": "uses-readList-or-readRecord",
       "name": "chat: uses readList or readRecord",
       "status": "pass"
@@ -607,6 +648,11 @@
       "status": "pass"
     },
     {
+      "group": "standard-export-name",
+      "name": "chat: exports createSafe{Name}",
+      "status": "pass"
+    },
+    {
       "group": "uses-shared-el",
       "name": "columns: uses shared el/elAttrs from utils",
       "status": "pass"
@@ -644,6 +690,11 @@
     {
       "group": "no-local-contract-interfaces",
       "name": "columns: no duplicate contract interfaces",
+      "status": "pass"
+    },
+    {
+      "group": "standard-export-name",
+      "name": "columns: exports createSafe{Name}",
       "status": "pass"
     },
     {
@@ -692,6 +743,11 @@
       "status": "pass"
     },
     {
+      "group": "standard-export-name",
+      "name": "metric: exports createSafe{Name}",
+      "status": "pass"
+    },
+    {
       "group": "uses-shared-el",
       "name": "storyflow: uses shared el/elAttrs from utils",
       "status": "pass"
@@ -724,6 +780,11 @@
     {
       "group": "no-function-tdz",
       "name": "storyflow: no TDZ within functions",
+      "status": "pass"
+    },
+    {
+      "group": "standard-export-name",
+      "name": "storyflow: exports createSafe{Name}",
       "status": "pass"
     },
     {
@@ -779,6 +840,11 @@
     {
       "group": "no-local-contract-interfaces",
       "name": "calendar: no duplicate contract interfaces",
+      "status": "pass"
+    },
+    {
+      "group": "standard-export-name",
+      "name": "calendar: exports createSafe{Name}",
       "status": "pass"
     },
     {
@@ -857,6 +923,11 @@
       "status": "pass"
     },
     {
+      "group": "standard-export-name",
+      "name": "card: exports createSafe{Name}",
+      "status": "pass"
+    },
+    {
       "group": "uses-readList-or-readRecord",
       "name": "map: uses readList or readRecord",
       "status": "pass"
@@ -919,6 +990,11 @@
     {
       "group": "no-local-contract-interfaces",
       "name": "map: no duplicate contract interfaces",
+      "status": "pass"
+    },
+    {
+      "group": "standard-export-name",
+      "name": "map: exports createSafe{Name}",
       "status": "pass"
     },
     {
@@ -987,6 +1063,11 @@
       "status": "pass"
     },
     {
+      "group": "standard-export-name",
+      "name": "hierarchy: exports createSafe{Name}",
+      "status": "pass"
+    },
+    {
       "group": "uses-readList-or-readRecord",
       "name": "flow: uses readList or readRecord",
       "status": "pass"
@@ -1049,6 +1130,11 @@
     {
       "group": "no-local-contract-interfaces",
       "name": "flow: no duplicate contract interfaces",
+      "status": "pass"
+    },
+    {
+      "group": "standard-export-name",
+      "name": "flow: exports createSafe{Name}",
       "status": "pass"
     },
     {
@@ -1117,6 +1203,11 @@
       "status": "pass"
     },
     {
+      "group": "standard-export-name",
+      "name": "chart: exports createSafe{Name}",
+      "status": "pass"
+    },
+    {
       "group": "uses-shared-el",
       "name": "scene: uses shared el/elAttrs from utils",
       "status": "pass"
@@ -1167,6 +1258,11 @@
       "status": "pass"
     },
     {
+      "group": "standard-export-name",
+      "name": "scene: exports createSafe{Name}",
+      "status": "pass"
+    },
+    {
       "group": "uses-shared-el",
       "name": "dragdrop: uses shared el/elAttrs from utils",
       "status": "pass"
@@ -1214,6 +1310,11 @@
     {
       "group": "no-function-tdz",
       "name": "dragdrop: no TDZ within functions",
+      "status": "pass"
+    },
+    {
+      "group": "standard-export-name",
+      "name": "dragdrop: exports createSafe{Name}",
       "status": "pass"
     },
     {
@@ -1279,6 +1380,11 @@
     {
       "group": "no-local-contract-interfaces",
       "name": "tabs: no duplicate contract interfaces",
+      "status": "pass"
+    },
+    {
+      "group": "standard-export-name",
+      "name": "tabs: exports createSafe{Name}",
       "status": "pass"
     },
     {
@@ -1349,6 +1455,11 @@
     {
       "group": "no-local-contract-interfaces",
       "name": "list: no duplicate contract interfaces",
+      "status": "pass"
+    },
+    {
+      "group": "standard-export-name",
+      "name": "list: exports createSafe{Name}",
       "status": "pass"
     },
     {
@@ -1424,6 +1535,11 @@
     {
       "group": "no-local-contract-interfaces",
       "name": "timeline: no duplicate contract interfaces",
+      "status": "pass"
+    },
+    {
+      "group": "standard-export-name",
+      "name": "timeline: exports createSafe{Name}",
       "status": "pass"
     },
     {
@@ -1507,6 +1623,11 @@
       "status": "pass"
     },
     {
+      "group": "standard-export-name",
+      "name": "tree: exports createSafe{Name}",
+      "status": "pass"
+    },
+    {
       "group": "uses-readList-or-readRecord",
       "name": "gauge: uses readList or readRecord",
       "status": "pass"
@@ -1579,6 +1700,11 @@
     {
       "group": "no-local-contract-interfaces",
       "name": "gauge: no duplicate contract interfaces",
+      "status": "pass"
+    },
+    {
+      "group": "standard-export-name",
+      "name": "gauge: exports createSafe{Name}",
       "status": "pass"
     },
     {
@@ -1657,6 +1783,11 @@
       "status": "pass"
     },
     {
+      "group": "standard-export-name",
+      "name": "picker: exports createSafe{Name}",
+      "status": "pass"
+    },
+    {
       "group": "uses-readList-or-readRecord",
       "name": "grid: uses readList or readRecord",
       "status": "pass"
@@ -1709,6 +1840,11 @@
     {
       "group": "no-local-contract-interfaces",
       "name": "grid: no duplicate contract interfaces",
+      "status": "pass"
+    },
+    {
+      "group": "standard-export-name",
+      "name": "grid: exports createSafe{Name}",
       "status": "pass"
     },
     {
@@ -1787,6 +1923,11 @@
       "status": "pass"
     },
     {
+      "group": "standard-export-name",
+      "name": "heatmap: exports createSafe{Name}",
+      "status": "pass"
+    },
+    {
       "group": "uses-readList-or-readRecord",
       "name": "toggle: uses readList or readRecord",
       "status": "pass"
@@ -1862,6 +2003,11 @@
       "status": "pass"
     },
     {
+      "group": "standard-export-name",
+      "name": "toggle: exports createSafe{Name}",
+      "status": "pass"
+    },
+    {
       "group": "required-metadata-fields",
       "name": "funnel/funnel1.json: has required field config",
       "status": "pass"
@@ -1923,5 +2069,5 @@
     }
   ],
   "failures": [],
-  "ts": "2026-06-17T19:43:33.590Z"
+  "ts": "2026-06-18T10:07:32.091Z"
 }

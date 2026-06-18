@@ -1,6 +1,6 @@
 import { Component, Input, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-import { renderSafeFlow, flowData } from '../../builders/flow';
+import { createSafeFlow, flowData } from '../../builders/flow';
 
 @Component({
   selector: 'safe-flow',
@@ -16,6 +16,6 @@ export class SafeFlowComponent implements AfterViewInit {
   @ViewChild('flowSvg') svgRef!: ElementRef<SVGSVGElement>;
 
   ngAfterViewInit() {
-    renderSafeFlow(this.svgRef.nativeElement, this.config, flowData(this.config), this.onEvent);
+    createSafeFlow(this.svgRef.nativeElement, this.config, flowData(this.config), this.onEvent);
   }
 }

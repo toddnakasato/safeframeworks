@@ -1,6 +1,6 @@
 import { useRef, useEffect } from "react";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
-import { renderSafeFlow, flowData } from "../../builders/flow";
+import { createSafeFlow, flowData } from "../../builders/flow";
 import { createSafeFireContext } from "safecontracts";
 import { buildPayloadViaCli } from "../../utils/payload-delegate";
 
@@ -34,7 +34,7 @@ export function SafeFlow({ config, onEvent }: SafeFlowProps) {
   useEffect(() => {
     if (!svgRef.current) return;
     const _ctx = createSafeFireContext(config, onEvent, buildPayloadViaCli);
-    renderSafeFlow(svgRef.current, config, flowData(config), _ctx);
+    createSafeFlow(svgRef.current, config, flowData(config), _ctx);
   }, [config, onEvent]);
 
   return (

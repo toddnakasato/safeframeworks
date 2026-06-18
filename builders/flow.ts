@@ -39,6 +39,28 @@ function linkEvent(ctx: SafeFireContext, source: string | undefined, target: str
  * Implementation
  *
  ----------------------------------------------------------------------------------------------------*/
+export function createSafeFlow(svgEl: SVGSVGElement, config: ConfigBase, data: FlowData, ctx: SafeFireContext): void {
+    const metadata = config.metadata;
+    const WIDTH = (metadata.width as number) ?? 600;
+    const HEIGHT = (metadata.height as number) ?? 350;
+    // External paint state (resolved from state.json by host)
+    const _selectedNode = metadata.selectedNode ?? null;
+
+    const variant = (metadata.variant as string) ?? FLOW_DEFAULTS.variant;
+
+    const svg = d3.select(svgEl);
+    svg.selectAll("*").remove();
+    svgEl.setAttribute("data-component", "flow");
+    applyIntent(svgEl, metadata);
+    svgEl.setAttribute("data-variant", variant);
+
+    if (!data.nodes?.length) return;
+
+    if (variant === "chord") renderChord(svgEl, data, metadata, ctx);
+    else if (variant === "force") renderForce(svgEl, data, metadata, ctx);
+    else if (variant === "arc") renderArc(svgEl, data, metadata, ctx);
+    else renderSankey(svgEl, data, metadata, ctx);
+}
 
 function renderSankey(svgEl: SVGSVGElement, data: FlowData, metadata: Record<string, any>, ctx: SafeFireContext): void {
     const WIDTH = (metadata.width as number) ?? 600;
@@ -312,27 +334,4 @@ function renderArc(svgEl: SVGSVGElement, data: FlowData, metadata: Record<string
             .attr("font-size", 10)
             .text((d) => d.name);
     }
-}
-
-export function renderSafeFlow(svgEl: SVGSVGElement, config: ConfigBase, data: FlowData, ctx: SafeFireContext): void {
-    const metadata = config.metadata;
-    const WIDTH = (metadata.width as number) ?? 600;
-    const HEIGHT = (metadata.height as number) ?? 350;
-    // External paint state (resolved from state.json by host)
-    const _selectedNode = metadata.selectedNode ?? null;
-
-    const variant = (metadata.variant as string) ?? FLOW_DEFAULTS.variant;
-
-    const svg = d3.select(svgEl);
-    svg.selectAll("*").remove();
-    svgEl.setAttribute("data-component", "flow");
-    applyIntent(svgEl, metadata);
-    svgEl.setAttribute("data-variant", variant);
-
-    if (!data.nodes?.length) return;
-
-    if (variant === "chord") renderChord(svgEl, data, metadata, ctx);
-    else if (variant === "force") renderForce(svgEl, data, metadata, ctx);
-    else if (variant === "arc") renderArc(svgEl, data, metadata, ctx);
-    else renderSankey(svgEl, data, metadata, ctx);
 }
