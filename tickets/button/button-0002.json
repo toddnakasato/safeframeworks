@@ -1,0 +1,20 @@
+{
+  "id": "button-0002",
+  "component": "button",
+  "type": "bug",
+  "title": "button click causes unhandled rejection in payload-delegate",
+  "description": "Clicking any button throws an unhandled rejection at payload-delegate.ts:10. The safedesk CLI returns ok, but the Tauri invoke chain fails. The buildPayloadViaCli catch block returns { ok: false } but the promise rejection from invoke propagates before catch handles it.",
+  "status": "open",
+  "proves": ["builder-structure", "framework-boot"],
+  "params": {
+    "component": "button"
+  },
+  "test": {
+    "command": "payload build --component button --event click",
+    "assert": {
+      "ok": true
+    }
+  },
+  "created": "2026-06-18T16:00:00.000Z",
+  "updated": "2026-06-18T16:00:00.000Z"
+}
