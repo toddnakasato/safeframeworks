@@ -1,0 +1,16 @@
+{
+  "id": "calendar-0002",
+  "component": "calendar",
+  "type": "event",
+  "title": "Payload day click on calendar doesn't contain what day was clicked",
+  "description": "Calendar select event fires but viewer handleEvent doesn't forward year/month/day/date to the CLI paint apply command. CLI receives zeros.",
+  "status": "closed",
+  "proves": ["event-coverage", "event-declared", "event-payload"],
+  "created": "2026-06-18T14:01:24.879Z",
+  "updated": "2026-06-18T14:10:00.000Z",
+  "resolution": "Added --year, --month, --day, --date args to viewer handleEvent CLI forwarding. Also fixed tickets dir path (CWD is src-tauri/, need ../../../../tickets).",
+  "files": [
+    "safeframeworks/react/19/viewer/src/App.tsx",
+    "safeframeworks/react/19/viewer/src/ticket-service.ts"
+  ]
+}

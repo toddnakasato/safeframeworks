@@ -199,6 +199,10 @@ export default function App() {
       if (event.data?.page !== undefined) args.push("--page", String(event.data.page));
       if (event.data?.selected) args.push("--selected", String(event.data.selected));
       if (event.data?.value !== undefined) args.push("--value", String(event.data.value));
+      if (event.data?.year !== undefined) args.push("--year", String(event.data.year));
+      if (event.data?.month !== undefined) args.push("--month", String(event.data.month));
+      if (event.data?.day !== undefined) args.push("--day", String(event.data.day));
+      if (event.data?.date) args.push("--date", String(event.data.date));
       await invoke<string>("safecli_run", { name: "safedesk", args });
     } catch (e) {
       console.warn("[paint]", e);

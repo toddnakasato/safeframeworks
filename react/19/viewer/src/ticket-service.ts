@@ -5,7 +5,7 @@
 import type { Ticket, TicketType } from "../../../../../safecontracts/src/contracts-ticket";
 import { suggestProves } from "../../../../../safecontracts/src/contracts-ticket";
 
-const TICKETS_DIR = "../../../tickets";
+const TICKETS_DIR = "../../../../tickets";
 
 async function invoke<T>(cmd: string, args?: Record<string, any>): Promise<T> {
     const { invoke: tauriInvoke } = await import("@tauri-apps/api/core");
