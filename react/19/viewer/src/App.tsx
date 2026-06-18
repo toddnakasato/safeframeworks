@@ -79,6 +79,9 @@ export default function App() {
   const [activeComponent, setActiveComponent] = useState<string | null>(null);
   const [activeVariation, setActiveVariation] = useState<string | null>(null);
   const [paintState, setPaintState] = useState<Record<string, any>>({});
+  const [activeProof, setActiveProof] = useState<string | null>(null);
+  const [proofResults, setProofResults] = useState<Record<string, { passed: number; total: number; failed: number }>>({});
+  const [proofRunning, setProofRunning] = useState(false);
 
   useEffect(() => {
     loadStyle(activeStyle, activeTheme);
@@ -105,6 +108,30 @@ export default function App() {
   const selectStyle = (s: string) => {
     setActiveStyle(s);
     setActiveTheme("default");
+  };
+
+  const PROOF_DOMAINS: { label: string; commands: string[] }[] = [
+    { label: "builder", commands: ["builder-dumb", "builder-reconcile", "builder-structure"] },
+    { label: "event", commands: ["event-coverage", "event-declared", "event-payload"] },
+    { label: "framework", commands: ["framework-boot", "framework-delegation"] },
+    { label: "paint", commands: ["paint-chain", "paint-contrast", "paint-cssonly", "paint-definition", "paint-parity", "paint-unopinionated"] },
+  ];
+  const ALL_PROVE_COMMANDS = PROOF_DOMAINS.flatMap(d => d.commands);
+
+  const runProofs = async (commands: string[]) => {
+    setProofRunning(true);
+    try {
+      const results = await Promise.all(
+        commands.map(async cmd => {
+          try {
+            const { invoke: tauriInvoke } = await import("@tauri-apps/api/core");
+            const out = await tauriInvoke<string>("safecli_run", { name: "safedesk", args: ["prove", cmd] });
+            return [cmd, JSON.parse(out)] as [string, any];
+          } catch { return [cmd, { passed: 0, total: 0, failed: 0 }] as [string, any]; }
+        })
+      );
+      setProofResults(prev => ({ ...prev, ...Object.fromEntries(results.map(([k, v]) => [k, { passed: v.passed ?? 0, total: v.total ?? 0, failed: v.failed ?? 0 }])) }));
+    } finally { setProofRunning(false); }
   };
 
   // EPRPP: event → safedesk paint apply → writes state.json → watcher fires → re-render
@@ -197,6 +224,29 @@ export default function App() {
               {(THEMES[activeStyle] ?? ["default"]).map(t => <option key={t} value={t}>{t}</option>)}
             </select>
           </div>
+        </div>
+
+        {/* Proofs */}
+        <div style={{ padding: 8, borderBottom: "1px solid var(--sd-border, #e5e7eb)" }}>
+          <div style={sectionLabel}>Proofs</div>
+          <button onClick={() => { setActiveProof(null); runProofs(ALL_PROVE_COMMANDS); }} style={itemStyle(activeProof === null && proofRunning)} disabled={proofRunning}>
+            {proofRunning && activeProof === null ? "Running..." : "All"}
+            {!proofRunning && Object.keys(proofResults).length > 0 && activeProof === null && (() => {
+              const t = ALL_PROVE_COMMANDS.reduce((s, c) => s + (proofResults[c]?.total ?? 0), 0);
+              const p = ALL_PROVE_COMMANDS.reduce((s, c) => s + (proofResults[c]?.passed ?? 0), 0);
+              return t > 0 ? ` (${p}/${t})` : "";
+            })()}
+          </button>
+          {PROOF_DOMAINS.map(d => (
+            <button key={d.label} onClick={() => { setActiveProof(d.label); runProofs(d.commands); }} style={itemStyle(activeProof === d.label)} disabled={proofRunning}>
+              {proofRunning && activeProof === d.label ? "Running..." : d.label}
+              {!proofRunning && (() => {
+                const t = d.commands.reduce((s, c) => s + (proofResults[c]?.total ?? 0), 0);
+                const p = d.commands.reduce((s, c) => s + (proofResults[c]?.passed ?? 0), 0);
+                return t > 0 ? ` (${p}/${t})` : "";
+              })()}
+            </button>
+          ))}
         </div>
 
         {/* Component menu with variation sub-items */}

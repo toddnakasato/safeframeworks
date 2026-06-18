@@ -197,25 +197,20 @@ export function createSafeProofViewer(
         return { passed, total: matching.length };
     }
 
-    // --- Prove All: run all 4 prove commands, update each check ---
+    // --- Prove All: run all prove commands, update each check ---
     proveAllBtn.onclick = async () => {
         proveAllBtn.textContent = "Running...";
         proveAllBtn.disabled = true;
 
-        // Run all 4 commands in parallel
-        const [shapesResult, dumbResult, complianceResult, reconcileResult] = await Promise.all([
-            runCli(["prove", "payload-shapes", "--component", target]),
-            runCli(["prove", "builder-dumb"]),
-            runCli(["prove", "framework-compliance"]),
-            runCli(["prove", "builder-reconcile"]),
-        ]);
-
-        const resultMap: Record<string, any> = {
-            "payload-shapes": shapesResult,
-            "builder-dumb": dumbResult,
-            "framework-compliance": complianceResult,
-            "builder-reconcile": reconcileResult,
-        };
+        // Run all commands in parallel
+        const commands = [...new Set(PROOF_CHECKS.map(c => c.command))];
+        const results = await Promise.all(
+            commands.map(cmd => {
+                const args = cmd === "event-payload" ? ["prove", cmd, "--component", target] : ["prove", cmd];
+                return runCli(args).then(r => [cmd, r] as [string, any]);
+            })
+        );
+        const resultMap: Record<string, any> = Object.fromEntries(results);
 
         PROOF_CHECKS.forEach((check, i) => {
             const result = resultMap[check.command];

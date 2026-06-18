@@ -1,0 +1,163 @@
+{
+  "ok": true,
+  "component": "table",
+  "event": "all",
+  "total": 29,
+  "passed": 29,
+  "failed": 0,
+  "groups": {
+    "coverage": 15,
+    "stranded": 14,
+    "data-keys": 0,
+    "context-keys": 0
+  },
+  "checks": [
+    {
+      "group": "coverage",
+      "name": "table: has COMPONENT_PAYLOAD_SHAPES entry",
+      "status": "pass"
+    },
+    {
+      "group": "coverage",
+      "name": "table/cell:click: shape declared",
+      "status": "pass"
+    },
+    {
+      "group": "coverage",
+      "name": "table/cell:dblclick: shape declared",
+      "status": "pass"
+    },
+    {
+      "group": "coverage",
+      "name": "table/cell:edit: shape declared",
+      "status": "pass"
+    },
+    {
+      "group": "coverage",
+      "name": "table/column:resize: shape declared",
+      "status": "pass"
+    },
+    {
+      "group": "coverage",
+      "name": "table/filter: shape declared",
+      "status": "pass"
+    },
+    {
+      "group": "coverage",
+      "name": "table/page: shape declared",
+      "status": "pass"
+    },
+    {
+      "group": "coverage",
+      "name": "table/reorder: shape declared",
+      "status": "pass"
+    },
+    {
+      "group": "coverage",
+      "name": "table/row:click: shape declared",
+      "status": "pass"
+    },
+    {
+      "group": "coverage",
+      "name": "table/row:dblclick: shape declared",
+      "status": "pass"
+    },
+    {
+      "group": "coverage",
+      "name": "table/row:hover: shape declared",
+      "status": "pass"
+    },
+    {
+      "group": "coverage",
+      "name": "table/row:leave: shape declared",
+      "status": "pass"
+    },
+    {
+      "group": "coverage",
+      "name": "table/row:select: shape declared",
+      "status": "pass"
+    },
+    {
+      "group": "coverage",
+      "name": "table/select: shape declared",
+      "status": "pass"
+    },
+    {
+      "group": "coverage",
+      "name": "table/sort: shape declared",
+      "status": "pass"
+    },
+    {
+      "group": "stranded",
+      "name": "table/cell:click: payload shape has matching event",
+      "status": "pass"
+    },
+    {
+      "group": "stranded",
+      "name": "table/cell:dblclick: payload shape has matching event",
+      "status": "pass"
+    },
+    {
+      "group": "stranded",
+      "name": "table/cell:edit: payload shape has matching event",
+      "status": "pass"
+    },
+    {
+      "group": "stranded",
+      "name": "table/column:resize: payload shape has matching event",
+      "status": "pass"
+    },
+    {
+      "group": "stranded",
+      "name": "table/filter: payload shape has matching event",
+      "status": "pass"
+    },
+    {
+      "group": "stranded",
+      "name": "table/page: payload shape has matching event",
+      "status": "pass"
+    },
+    {
+      "group": "stranded",
+      "name": "table/reorder: payload shape has matching event",
+      "status": "pass"
+    },
+    {
+      "group": "stranded",
+      "name": "table/row:click: payload shape has matching event",
+      "status": "pass"
+    },
+    {
+      "group": "stranded",
+      "name": "table/row:dblclick: payload shape has matching event",
+      "status": "pass"
+    },
+    {
+      "group": "stranded",
+      "name": "table/row:hover: payload shape has matching event",
+      "status": "pass"
+    },
+    {
+      "group": "stranded",
+      "name": "table/row:leave: payload shape has matching event",
+      "status": "pass"
+    },
+    {
+      "group": "stranded",
+      "name": "table/row:select: payload shape has matching event",
+      "status": "pass"
+    },
+    {
+      "group": "stranded",
+      "name": "table/select: payload shape has matching event",
+      "status": "pass"
+    },
+    {
+      "group": "stranded",
+      "name": "table/sort: payload shape has matching event",
+      "status": "pass"
+    }
+  ],
+  "failures": [],
+  "ts": "2026-06-18T12:45:49.203Z"
+}
