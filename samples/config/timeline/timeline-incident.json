@@ -1,0 +1,54 @@
+{
+  "component": "timeline",
+  "metadata": {
+    "variant": "default",
+    "dateField": "date",
+    "labelField": "title",
+    "scale": "minutes"
+  },
+  "data": {
+    "events": {
+      "inline": [
+        {
+          "date": "2025-03-11T12:03",
+          "title": "Alert triggered",
+          "description": "CPU > 95% on prod-web-03",
+          "status": "active"
+        },
+        {
+          "date": "2025-03-11T12:05",
+          "title": "On-call paged",
+          "description": "PagerDuty escalation to L2"
+        },
+        {
+          "date": "2025-03-11T12:08",
+          "title": "Investigation started",
+          "description": "SSH to prod-web-03, top shows runaway process"
+        },
+        {
+          "date": "2025-03-11T12:12",
+          "title": "Root cause identified",
+          "description": "Memory leak in cache warming job"
+        },
+        {
+          "date": "2025-03-11T12:15",
+          "title": "Mitigation applied",
+          "description": "Killed process, restarted service"
+        },
+        {
+          "date": "2025-03-11T12:20",
+          "title": "Monitoring green",
+          "description": "CPU back to 15%, all health checks pass"
+        },
+        {
+          "date": "2025-03-11T12:45",
+          "title": "Postmortem filed",
+          "description": "INC-4921 closed, fix deployed to prevent recurrence"
+        }
+      ]
+    }
+  },
+  "eventHandler": {
+    "handler": "timeline"
+  }
+}

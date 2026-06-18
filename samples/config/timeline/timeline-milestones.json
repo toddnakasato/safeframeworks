@@ -1,0 +1,48 @@
+{
+  "component": "timeline",
+  "metadata": {
+    "variant": "default",
+    "dateField": "date",
+    "labelField": "title",
+    "scale": "months"
+  },
+  "data": {
+    "events": {
+      "inline": [
+        {
+          "date": "2024-01-10",
+          "title": "Requirements Finalized",
+          "description": "Stakeholder sign-off"
+        },
+        {
+          "date": "2024-03-22",
+          "title": "Design Complete",
+          "description": "UI/UX approved, component library ready"
+        },
+        {
+          "date": "2024-05-15",
+          "title": "Alpha Release",
+          "description": "Internal testing, 200 test cases"
+        },
+        {
+          "date": "2024-08-01",
+          "title": "Beta Launch",
+          "description": "50 beta customers onboarded"
+        },
+        {
+          "date": "2024-10-30",
+          "title": "GA Release",
+          "description": "General availability, docs published"
+        },
+        {
+          "date": "2025-01-15",
+          "title": "V2 Planning",
+          "description": "Roadmap for next major version"
+        }
+      ]
+    }
+  },
+  "eventHandler": {
+    "handler": "timeline"
+  }
+}

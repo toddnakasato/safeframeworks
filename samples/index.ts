@@ -103,6 +103,12 @@ import tabsHorizontalConfig from "./config/tabs/tabs-horizontal.json";
 import tabsVerticalConfig from "./config/tabs/tabs-vertical.json";
 import timelineVerticalConfig from "./config/timeline/timeline-vertical.json";
 import timelineAlternatingConfig from "./config/timeline/timeline-alternating.json";
+import timelineRoadmapConfig from "./config/timeline/timeline-roadmap.json";
+import timelineCareerConfig from "./config/timeline/timeline-career.json";
+import timelineMilestonesConfig from "./config/timeline/timeline-milestones.json";
+import timelineSprintConfig from "./config/timeline/timeline-sprint.json";
+import timelineScheduleConfig from "./config/timeline/timeline-schedule.json";
+import timelineIncidentConfig from "./config/timeline/timeline-incident.json";
 import toggleSwitchConfig from "./config/toggle/toggle-switch.json";
 import toggleCheckboxConfig from "./config/toggle/toggle-checkbox.json";
 import treeNestedConfig from "./config/tree/tree-nested.json";
@@ -347,6 +353,12 @@ export const SAMPLES: Record<string, Record<string, ConfigBase>> = {
     timeline: {
         "timeline-vertical": resolveData(timelineVerticalConfig as unknown as ConfigBase),
         "timeline-alternating": resolveData(timelineAlternatingConfig as unknown as ConfigBase),
+        "timeline-roadmap": resolveData(timelineRoadmapConfig as unknown as ConfigBase),
+        "timeline-career": resolveData(timelineCareerConfig as unknown as ConfigBase),
+        "timeline-milestones": resolveData(timelineMilestonesConfig as unknown as ConfigBase),
+        "timeline-sprint": resolveData(timelineSprintConfig as unknown as ConfigBase),
+        "timeline-schedule": resolveData(timelineScheduleConfig as unknown as ConfigBase),
+        "timeline-incident": resolveData(timelineIncidentConfig as unknown as ConfigBase),
     },
     toggle: {
         "toggle-switch": resolveData(toggleSwitchConfig as unknown as ConfigBase),

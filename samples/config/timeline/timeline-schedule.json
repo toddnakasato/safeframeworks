@@ -1,0 +1,53 @@
+{
+  "component": "timeline",
+  "metadata": {
+    "variant": "default",
+    "dateField": "date",
+    "labelField": "title",
+    "scale": "hours"
+  },
+  "data": {
+    "events": {
+      "inline": [
+        {
+          "date": "2025-03-11T08:00",
+          "title": "Morning standup",
+          "description": "15 min sync"
+        },
+        {
+          "date": "2025-03-11T09:00",
+          "title": "Deep work block",
+          "description": "Calendar component refactor"
+        },
+        {
+          "date": "2025-03-11T11:30",
+          "title": "Design review",
+          "description": "Timeline figma specs"
+        },
+        {
+          "date": "2025-03-11T12:00",
+          "title": "Lunch",
+          "description": ""
+        },
+        {
+          "date": "2025-03-11T13:30",
+          "title": "Pair programming",
+          "description": "Ticket system integration"
+        },
+        {
+          "date": "2025-03-11T15:00",
+          "title": "1:1 with manager",
+          "description": "Quarterly goals check-in"
+        },
+        {
+          "date": "2025-03-11T16:30",
+          "title": "PR reviews",
+          "description": "3 PRs pending review"
+        }
+      ]
+    }
+  },
+  "eventHandler": {
+    "handler": "timeline"
+  }
+}

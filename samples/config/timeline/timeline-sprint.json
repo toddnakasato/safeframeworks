@@ -1,0 +1,48 @@
+{
+  "component": "timeline",
+  "metadata": {
+    "variant": "default",
+    "dateField": "date",
+    "labelField": "title",
+    "scale": "weeks"
+  },
+  "data": {
+    "events": {
+      "inline": [
+        {
+          "date": "2025-01-06",
+          "title": "Sprint Start",
+          "description": "Planning: 24 story points committed"
+        },
+        {
+          "date": "2025-01-08",
+          "title": "API endpoints",
+          "description": "REST API for user management shipped"
+        },
+        {
+          "date": "2025-01-10",
+          "title": "Frontend integration",
+          "description": "React components wired to new API"
+        },
+        {
+          "date": "2025-01-13",
+          "title": "Code review",
+          "description": "3 PRs merged, 1 blocked on CI"
+        },
+        {
+          "date": "2025-01-15",
+          "title": "QA pass",
+          "description": "All 24 points verified, 2 bugs filed"
+        },
+        {
+          "date": "2025-01-17",
+          "title": "Sprint Demo",
+          "description": "Stakeholder demo, 100% velocity"
+        }
+      ]
+    }
+  },
+  "eventHandler": {
+    "handler": "timeline"
+  }
+}

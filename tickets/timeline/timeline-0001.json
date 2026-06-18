@@ -1,0 +1,31 @@
+{
+  "id": "timeline-0001",
+  "component": "timeline",
+  "type": "variation",
+  "title": "6 new timeline vertical variations from figma design",
+  "description": "Roadmap (years), career (years), milestones (months), sprint (weeks), schedule (hours), incident (minutes). Each with production-ready sample data matching the figma spec.",
+  "status": "closed",
+  "proves": ["builder-registry", "builder-reconcile"],
+  "params": {
+    "component": "timeline"
+  },
+  "test": {
+    "command": "prove builder-registry",
+    "assert": {
+      "ok": true
+    }
+  },
+  "created": "2026-06-18T15:59:15.589Z",
+  "updated": "2026-06-18T18:00:00.000Z",
+  "variant": "roadmap, career, milestones, sprint, schedule, incident",
+  "resolution": "Created 6 new timeline samples with scale metadata (years/months/weeks/hours/minutes). Each has realistic data from the figma spec. builder-registry: 224/224 PASS.",
+  "files": [
+    "safeframeworks/samples/config/timeline/timeline-roadmap.json",
+    "safeframeworks/samples/config/timeline/timeline-career.json",
+    "safeframeworks/samples/config/timeline/timeline-milestones.json",
+    "safeframeworks/samples/config/timeline/timeline-sprint.json",
+    "safeframeworks/samples/config/timeline/timeline-schedule.json",
+    "safeframeworks/samples/config/timeline/timeline-incident.json",
+    "safeframeworks/samples/index.ts"
+  ]
+}

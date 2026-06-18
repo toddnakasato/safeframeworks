@@ -1,0 +1,60 @@
+{
+  "component": "timeline",
+  "metadata": {
+    "variant": "default",
+    "dateField": "date",
+    "labelField": "title",
+    "scale": "years"
+  },
+  "data": {
+    "events": {
+      "inline": [
+        {
+          "date": "2020-03-01",
+          "title": "Company Founded",
+          "description": "Initial seed round, 5 employees",
+          "status": "done"
+        },
+        {
+          "date": "2021-06-15",
+          "title": "Series A",
+          "description": "$12M funding, expanded to 30 people",
+          "status": "done"
+        },
+        {
+          "date": "2022-09-01",
+          "title": "Product Launch",
+          "description": "V1.0 shipped to 500 customers",
+          "status": "done"
+        },
+        {
+          "date": "2023-11-20",
+          "title": "Series B",
+          "description": "$45M funding, international expansion",
+          "status": "done"
+        },
+        {
+          "date": "2024-06-01",
+          "title": "Platform Rewrite",
+          "description": "Migrated to microservices architecture",
+          "status": "done"
+        },
+        {
+          "date": "2025-03-15",
+          "title": "Enterprise Tier",
+          "description": "SOC2, SSO, dedicated support",
+          "status": "active"
+        },
+        {
+          "date": "2026-01-01",
+          "title": "IPO Preparation",
+          "description": "Target Q3 2026 listing",
+          "status": "planned"
+        }
+      ]
+    }
+  },
+  "eventHandler": {
+    "handler": "timeline"
+  }
+}

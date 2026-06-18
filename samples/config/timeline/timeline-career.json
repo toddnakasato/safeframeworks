@@ -1,0 +1,53 @@
+{
+  "component": "timeline",
+  "metadata": {
+    "variant": "default",
+    "dateField": "date",
+    "labelField": "title",
+    "scale": "years"
+  },
+  "data": {
+    "events": {
+      "inline": [
+        {
+          "date": "2018-06-01",
+          "title": "Junior Developer",
+          "description": "Acme Corp \u2014 Python, Django",
+          "status": "done",
+          "category": "engineering"
+        },
+        {
+          "date": "2019-09-01",
+          "title": "Mid Developer",
+          "description": "Acme Corp \u2014 Team lead for 3",
+          "status": "done",
+          "category": "engineering"
+        },
+        {
+          "date": "2021-01-15",
+          "title": "Senior Engineer",
+          "description": "TechCo \u2014 Distributed systems",
+          "status": "done",
+          "category": "engineering"
+        },
+        {
+          "date": "2023-03-01",
+          "title": "Staff Engineer",
+          "description": "TechCo \u2014 Architecture, mentoring",
+          "status": "done",
+          "category": "leadership"
+        },
+        {
+          "date": "2024-08-01",
+          "title": "Engineering Manager",
+          "description": "StartupX \u2014 12 reports, 3 teams",
+          "status": "active",
+          "category": "leadership"
+        }
+      ]
+    }
+  },
+  "eventHandler": {
+    "handler": "timeline"
+  }
+}

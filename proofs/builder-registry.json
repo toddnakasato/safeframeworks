@@ -1,11 +1,11 @@
 {
   "ok": true,
-  "total": 212,
-  "passed": 212,
+  "total": 224,
+  "passed": 224,
   "failed": 0,
   "groups": {
-    "no-numeric-suffix": 106,
-    "has-variant-name": 106
+    "no-numeric-suffix": 112,
+    "has-variant-name": 112
   },
   "checks": [
     {
@@ -986,6 +986,66 @@
     {
       "group": "has-variant-name",
       "name": "timeline/timeline-alternating.json: has variant",
+      "status": "pass"
+    },
+    {
+      "group": "no-numeric-suffix",
+      "name": "timeline/timeline-career.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "timeline/timeline-career.json: has variant",
+      "status": "pass"
+    },
+    {
+      "group": "no-numeric-suffix",
+      "name": "timeline/timeline-incident.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "timeline/timeline-incident.json: has variant",
+      "status": "pass"
+    },
+    {
+      "group": "no-numeric-suffix",
+      "name": "timeline/timeline-milestones.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "timeline/timeline-milestones.json: has variant",
+      "status": "pass"
+    },
+    {
+      "group": "no-numeric-suffix",
+      "name": "timeline/timeline-roadmap.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "timeline/timeline-roadmap.json: has variant",
+      "status": "pass"
+    },
+    {
+      "group": "no-numeric-suffix",
+      "name": "timeline/timeline-schedule.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "timeline/timeline-schedule.json: has variant",
+      "status": "pass"
+    },
+    {
+      "group": "no-numeric-suffix",
+      "name": "timeline/timeline-sprint.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "timeline/timeline-sprint.json: has variant",
       "status": "pass"
     },
     {
