@@ -1,8 +1,6 @@
 import { useEffect, useRef } from "react";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
-import { createSafeFireContext } from "safecontracts";
-import { buildPayloadViaCli } from "../../utils/payload-delegate";
-import { createSafeSheet } from "../../builders/sheet";
+import { buildComponent } from "../../utils/render";
 
 /*----------------------------------------------------------------------------------------------------
  *
@@ -34,8 +32,8 @@ export function SafeSheet({ config, onEvent }: SafeSheetProps) {
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
-    const ctx = createSafeFireContext(config, onEvent, buildPayloadViaCli);
-    const root = createSafeSheet(container, config, ctx);
+    const root = buildComponent(config, onEvent);
+    container.appendChild(root);
     return () => { root.remove(); };
   }, [config, onEvent]);
 

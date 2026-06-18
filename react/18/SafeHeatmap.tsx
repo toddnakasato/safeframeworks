@@ -1,6 +1,6 @@
 import { useRef, useEffect } from "react";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
-import { createSafeHeatmap } from "../../builders/heatmap";
+import { buildComponent } from "../../utils/render";
 
 interface SafeHeatmapProps {
   config: ConfigBase;

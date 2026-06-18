@@ -1,9 +1,7 @@
 import { useRef, useEffect } from "react";
 import type L from "leaflet";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
-import { createSafeMap } from "../../builders/map";
-import { createSafeFireContext } from "safecontracts";
-import { buildPayloadViaCli } from "../../utils/payload-delegate";
+import { buildComponent } from "../../utils/render";
 
 /*----------------------------------------------------------------------------------------------------
  *
@@ -39,8 +37,8 @@ export function SafeMap({ config, data, onEvent }: SafeMapProps) {
 
   useEffect(() => {
     if (!containerRef.current) return;
-    const _ctx = createSafeFireContext(config, onEvent, buildPayloadViaCli);
-    mapRef.current = createSafeMap(containerRef.current, config, data, _ctx);
+    const root = buildComponent(config, onEvent);
+    container.appendChild(root);
     return () => {
       mapRef.current?.remove();
       mapRef.current = null;

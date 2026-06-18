@@ -1,6 +1,6 @@
 import { useRef, useEffect } from "react";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
-import { createSafeWeek } from "../../builders/week";
+import { buildComponent } from "../../utils/render";
 
 interface SafeWeekProps {
   config: ConfigBase;

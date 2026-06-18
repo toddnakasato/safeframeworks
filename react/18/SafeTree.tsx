@@ -1,6 +1,6 @@
 import { useRef, useEffect } from "react";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
-import { createSafeTree } from "../../builders/tree";
+import { buildComponent } from "../../utils/render";
 
 interface SafeTreeProps {
   config: ConfigBase;

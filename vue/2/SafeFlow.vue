@@ -1,18 +1,19 @@
 <script lang="ts">
-import { createSafeFlow, flowData } from '../../builders/flow';
+import { buildComponent } from '../../utils/render';
 
 export default {
   name: 'SafeFlow',
   props: { config: { type: Object, required: true }, onEvent: { type: Function, default: undefined } },
+  data() { return { root: null as HTMLElement | null }; },
   mounted() {
-    createSafeFlow(this.$refs.flowSvg, this.config, flowData(this.config), this.onEvent);
+    const el = this.$refs.container as HTMLElement;
+    this.root = buildComponent(this.config, this.onEvent);
+    el.appendChild(this.root);
   },
+  beforeDestroy() { this.root?.remove(); this.root = null; },
 };
 </script>
 
 <template>
-  <div>
-    <div v-if="config.metadata.title" data-role="title">{{ config.metadata.title }}</div>
-    <svg ref="flowSvg" data-flow-svg></svg>
-  </div>
+  <div ref="container"></div>
 </template>

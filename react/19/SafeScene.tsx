@@ -1,8 +1,6 @@
 import { useRef, useEffect, useCallback } from "react";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
-import { createSafeScene } from "../../builders/scene";
-import { createSafeFireContext } from "safecontracts";
-import { buildPayloadViaCli } from "../../utils/payload-delegate";
+import { buildComponent } from "../../utils/render";
 
 interface SafeSceneProps {
   config: ConfigBase;
@@ -16,8 +14,8 @@ export const SafeScene = ({ config, onEvent, renderChild }: SafeSceneProps) => {
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
-    const _ctx = createSafeFireContext(config, onEvent, buildPayloadViaCli);
-    const root = createSafeScene(container, config, _ctx, renderChild);
+    const root = buildComponent(config, onEvent);
+    container.appendChild(root);
     return () => { root.remove(); };
   }, [config, onEvent, renderChild]);
 

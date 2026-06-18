@@ -1,6 +1,6 @@
 import { useRef, useEffect } from "react";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
-import { createSafeButton } from "../../builders/button";
+import { buildComponent } from "../../utils/render";
 
 interface SafeButtonProps {
   config: ConfigBase;

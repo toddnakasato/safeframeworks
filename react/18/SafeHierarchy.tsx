@@ -1,6 +1,6 @@
 import { useRef, useEffect } from "react";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
-import { createSafeHierarchy } from "../../builders/hierarchy";
+import { buildComponent } from "../../utils/render";
 
 /*----------------------------------------------------------------------------------------------------
  *

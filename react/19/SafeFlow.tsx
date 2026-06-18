@@ -1,8 +1,6 @@
 import { useRef, useEffect } from "react";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
-import { createSafeFlow, flowData } from "../../builders/flow";
-import { createSafeFireContext } from "safecontracts";
-import { buildPayloadViaCli } from "../../utils/payload-delegate";
+import { buildComponent } from "../../utils/render";
 
 /*----------------------------------------------------------------------------------------------------
  *
@@ -33,8 +31,8 @@ export function SafeFlow({ config, onEvent }: SafeFlowProps) {
 
   useEffect(() => {
     if (!svgRef.current) return;
-    const _ctx = createSafeFireContext(config, onEvent, buildPayloadViaCli);
-    createSafeFlow(svgRef.current, config, flowData(config), _ctx);
+    const root = buildComponent(config, onEvent);
+    container.appendChild(root);
   }, [config, onEvent]);
 
   return (

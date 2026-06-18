@@ -1,8 +1,6 @@
 import { useRef, useEffect } from "react";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
-import { createSafeFireContext } from "safecontracts";
-import { buildPayloadViaCli } from "../../utils/payload-delegate";
-import { createSafeHeatmap } from "../../builders/heatmap";
+import { buildComponent } from "../../utils/render";
 
 interface SafeHeatmapProps {
   config: ConfigBase;
@@ -15,8 +13,8 @@ export function SafeHeatmap({ config, onEvent }: SafeHeatmapProps) {
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
-    const ctx = createSafeFireContext(config, onEvent, buildPayloadViaCli);
-    const root = createSafeHeatmap(container, config, ctx);
+    const root = buildComponent(config, onEvent);
+    container.appendChild(root);
     return () => { root.remove(); };
   }, [config, onEvent]);
 

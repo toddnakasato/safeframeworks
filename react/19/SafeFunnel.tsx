@@ -1,8 +1,6 @@
 import { useRef, useEffect } from "react";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
-import { createSafeFireContext } from "safecontracts";
-import { buildPayloadViaCli } from "../../utils/payload-delegate";
-import { createSafeFunnel } from "../../builders/funnel";
+import { buildComponent } from "../../utils/render";
 
 interface SafeFunnelProps {
   config: ConfigBase;

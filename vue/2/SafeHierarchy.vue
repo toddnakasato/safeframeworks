@@ -1,12 +1,14 @@
 <script lang="ts">
-import { createSafeHierarchy } from '../../builders/hierarchy';
+import { buildComponent } from '../../utils/render';
 
 export default {
   name: 'SafeHierarchy',
   props: { config: { type: Object, required: true }, onEvent: { type: Function, default: undefined } },
-  data() { return { root: null }; },
+  data() { return { root: null as HTMLElement | null }; },
   mounted() {
-    this.root = createSafeHierarchy(this.$refs.container, this.config, this.onEvent);
+    const el = this.$refs.container as HTMLElement;
+    this.root = buildComponent(this.config, this.onEvent);
+    el.appendChild(this.root);
   },
   beforeDestroy() { this.root?.remove(); this.root = null; },
 };

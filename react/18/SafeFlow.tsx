@@ -1,6 +1,6 @@
 import { useRef, useEffect } from "react";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
-import { createSafeFlow, flowData } from "../../builders/flow";
+import { buildComponent } from "../../utils/render";
 
 /*----------------------------------------------------------------------------------------------------
  *

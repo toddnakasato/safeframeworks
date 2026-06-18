@@ -1,6 +1,6 @@
 import { useRef, useEffect } from "react";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
-import { createSafeColumns } from "../../builders/columns";
+import { buildComponent } from "../../utils/render";
 
 interface SafeColumnsProps {
   config: ConfigBase;

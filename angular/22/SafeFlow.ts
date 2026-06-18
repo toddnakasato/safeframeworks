@@ -1,6 +1,6 @@
 import { Component, Input, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-import { createSafeFlow, flowData } from '../../builders/flow';
+import { buildComponent } from '../../utils/render';
 
 @Component({
   selector: 'safe-flow',

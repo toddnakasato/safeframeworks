@@ -1,8 +1,6 @@
 import { useRef, useEffect } from "react";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
-import { createSafeFireContext } from "safecontracts";
-import { buildPayloadViaCli } from "../../utils/payload-delegate";
-import { createSafeDragDrop } from "../../builders/dragdrop";
+import { buildComponent } from "../../utils/render";
 
 interface SafeDragDropProps {
   config: ConfigBase;
@@ -15,8 +13,8 @@ export function SafeDragDrop({ config, onEvent }: SafeDragDropProps) {
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
-    const ctx = createSafeFireContext(config, onEvent, buildPayloadViaCli);
-    const root = createSafeDragDrop(container, config, ctx);
+    const root = buildComponent(config, onEvent);
+    container.appendChild(root);
     return () => { root.remove(); };
   }, [config, onEvent]);
 

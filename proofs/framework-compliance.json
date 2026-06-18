@@ -176,7 +176,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "react/18/SafeDragDrop.tsx: imports builder",
+      "name": "react/18/SafeDragDrop.tsx: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -196,7 +196,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "react/18/SafePicker.tsx: imports builder",
+      "name": "react/18/SafePicker.tsx: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -216,7 +216,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "react/18/SafeCallout.tsx: imports builder",
+      "name": "react/18/SafeCallout.tsx: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -236,7 +236,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "react/18/SafeChat.tsx: imports builder",
+      "name": "react/18/SafeChat.tsx: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -256,7 +256,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "react/18/SafeFlow.tsx: imports builder",
+      "name": "react/18/SafeFlow.tsx: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -276,7 +276,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "react/18/SafeSheet.tsx: imports builder",
+      "name": "react/18/SafeSheet.tsx: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -296,7 +296,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "react/18/SafeLayout.tsx: imports builder",
+      "name": "react/18/SafeLayout.tsx: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -316,7 +316,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "react/18/SafeChart.tsx: imports builder",
+      "name": "react/18/SafeChart.tsx: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -336,7 +336,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "react/18/SafeHeatmap.tsx: imports builder",
+      "name": "react/18/SafeHeatmap.tsx: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -356,7 +356,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "react/18/SafeToggle.tsx: imports builder",
+      "name": "react/18/SafeToggle.tsx: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -376,7 +376,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "react/18/SafeButton.tsx: imports builder",
+      "name": "react/18/SafeButton.tsx: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -396,7 +396,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "react/18/SafeStoryFlow.tsx: imports builder",
+      "name": "react/18/SafeStoryFlow.tsx: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -416,7 +416,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "react/18/SafeTimeline.tsx: imports builder",
+      "name": "react/18/SafeTimeline.tsx: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -436,7 +436,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "react/18/SafeCalendar.tsx: imports builder",
+      "name": "react/18/SafeCalendar.tsx: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -456,7 +456,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "react/18/SafeTree.tsx: imports builder",
+      "name": "react/18/SafeTree.tsx: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -476,7 +476,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "react/18/SafeGauge.tsx: imports builder",
+      "name": "react/18/SafeGauge.tsx: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -496,7 +496,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "react/18/SafeInput.tsx: imports builder",
+      "name": "react/18/SafeInput.tsx: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -516,7 +516,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "react/18/SafeColumns.tsx: imports builder",
+      "name": "react/18/SafeColumns.tsx: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -536,7 +536,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "react/18/SafeScene.tsx: imports builder",
+      "name": "react/18/SafeScene.tsx: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -556,7 +556,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "react/18/SafeHierarchy.tsx: imports builder",
+      "name": "react/18/SafeHierarchy.tsx: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -576,7 +576,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "react/18/SafeFunnel.tsx: imports builder",
+      "name": "react/18/SafeFunnel.tsx: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -596,7 +596,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "react/18/SafeMap.tsx: imports builder",
+      "name": "react/18/SafeMap.tsx: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -616,7 +616,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "react/18/SafeList.tsx: imports builder",
+      "name": "react/18/SafeList.tsx: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -636,7 +636,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "react/18/SafeGrid.tsx: imports builder",
+      "name": "react/18/SafeGrid.tsx: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -656,7 +656,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "react/18/SafeTable.tsx: imports builder",
+      "name": "react/18/SafeTable.tsx: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -676,7 +676,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "react/18/SafeNav.tsx: imports builder",
+      "name": "react/18/SafeNav.tsx: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -696,7 +696,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "react/18/SafeCard.tsx: imports builder",
+      "name": "react/18/SafeCard.tsx: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -716,7 +716,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "react/18/SafeTabs.tsx: imports builder",
+      "name": "react/18/SafeTabs.tsx: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -736,7 +736,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "react/18/SafeWeek.tsx: imports builder",
+      "name": "react/18/SafeWeek.tsx: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -756,7 +756,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "react/18/SafeMetric.tsx: imports builder",
+      "name": "react/18/SafeMetric.tsx: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -926,7 +926,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "react/19/SafeDragDrop.tsx: imports builder",
+      "name": "react/19/SafeDragDrop.tsx: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -946,7 +946,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "react/19/SafePicker.tsx: imports builder",
+      "name": "react/19/SafePicker.tsx: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -966,7 +966,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "react/19/SafeCallout.tsx: imports builder",
+      "name": "react/19/SafeCallout.tsx: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -986,7 +986,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "react/19/SafeChat.tsx: imports builder",
+      "name": "react/19/SafeChat.tsx: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -1006,7 +1006,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "react/19/SafeFlow.tsx: imports builder",
+      "name": "react/19/SafeFlow.tsx: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -1026,7 +1026,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "react/19/SafeSheet.tsx: imports builder",
+      "name": "react/19/SafeSheet.tsx: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -1046,7 +1046,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "react/19/SafeLayout.tsx: imports builder",
+      "name": "react/19/SafeLayout.tsx: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -1066,7 +1066,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "react/19/SafeChart.tsx: imports builder",
+      "name": "react/19/SafeChart.tsx: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -1086,7 +1086,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "react/19/SafeHeatmap.tsx: imports builder",
+      "name": "react/19/SafeHeatmap.tsx: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -1106,7 +1106,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "react/19/SafeToggle.tsx: imports builder",
+      "name": "react/19/SafeToggle.tsx: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -1126,7 +1126,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "react/19/SafeButton.tsx: imports builder",
+      "name": "react/19/SafeButton.tsx: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -1146,7 +1146,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "react/19/SafeStoryFlow.tsx: imports builder",
+      "name": "react/19/SafeStoryFlow.tsx: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -1166,7 +1166,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "react/19/SafeTimeline.tsx: imports builder",
+      "name": "react/19/SafeTimeline.tsx: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -1186,7 +1186,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "react/19/SafeCalendar.tsx: imports builder",
+      "name": "react/19/SafeCalendar.tsx: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -1206,7 +1206,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "react/19/SafeTree.tsx: imports builder",
+      "name": "react/19/SafeTree.tsx: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -1226,7 +1226,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "react/19/SafeGauge.tsx: imports builder",
+      "name": "react/19/SafeGauge.tsx: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -1246,7 +1246,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "react/19/SafeInput.tsx: imports builder",
+      "name": "react/19/SafeInput.tsx: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -1266,7 +1266,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "react/19/SafeColumns.tsx: imports builder",
+      "name": "react/19/SafeColumns.tsx: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -1286,7 +1286,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "react/19/SafeScene.tsx: imports builder",
+      "name": "react/19/SafeScene.tsx: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -1306,7 +1306,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "react/19/SafeHierarchy.tsx: imports builder",
+      "name": "react/19/SafeHierarchy.tsx: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -1326,7 +1326,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "react/19/SafeFunnel.tsx: imports builder",
+      "name": "react/19/SafeFunnel.tsx: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -1346,7 +1346,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "react/19/SafeMap.tsx: imports builder",
+      "name": "react/19/SafeMap.tsx: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -1366,7 +1366,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "react/19/SafeList.tsx: imports builder",
+      "name": "react/19/SafeList.tsx: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -1386,7 +1386,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "react/19/SafeGrid.tsx: imports builder",
+      "name": "react/19/SafeGrid.tsx: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -1406,7 +1406,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "react/19/SafeTable.tsx: imports builder",
+      "name": "react/19/SafeTable.tsx: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -1426,7 +1426,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "react/19/SafeNav.tsx: imports builder",
+      "name": "react/19/SafeNav.tsx: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -1446,7 +1446,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "react/19/SafeCard.tsx: imports builder",
+      "name": "react/19/SafeCard.tsx: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -1466,7 +1466,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "react/19/SafeTabs.tsx: imports builder",
+      "name": "react/19/SafeTabs.tsx: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -1486,7 +1486,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "react/19/SafeWeek.tsx: imports builder",
+      "name": "react/19/SafeWeek.tsx: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -1506,7 +1506,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "react/19/SafeMetric.tsx: imports builder",
+      "name": "react/19/SafeMetric.tsx: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -1676,7 +1676,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "angular/21/SafeGauge.ts: imports builder",
+      "name": "angular/21/SafeGauge.ts: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -1696,7 +1696,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "angular/21/SafeMetric.ts: imports builder",
+      "name": "angular/21/SafeMetric.ts: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -1716,7 +1716,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "angular/21/SafeTabs.ts: imports builder",
+      "name": "angular/21/SafeTabs.ts: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -1736,7 +1736,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "angular/21/SafeList.ts: imports builder",
+      "name": "angular/21/SafeList.ts: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -1756,7 +1756,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "angular/21/SafeButton.ts: imports builder",
+      "name": "angular/21/SafeButton.ts: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -1776,7 +1776,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "angular/21/SafeGrid.ts: imports builder",
+      "name": "angular/21/SafeGrid.ts: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -1796,7 +1796,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "angular/21/SafeTree.ts: imports builder",
+      "name": "angular/21/SafeTree.ts: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -1816,7 +1816,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "angular/21/SafeTimeline.ts: imports builder",
+      "name": "angular/21/SafeTimeline.ts: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -1836,7 +1836,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "angular/21/SafeDragDrop.ts: imports builder",
+      "name": "angular/21/SafeDragDrop.ts: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -1856,7 +1856,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "angular/21/SafeFlow.ts: imports builder",
+      "name": "angular/21/SafeFlow.ts: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -1876,7 +1876,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "angular/21/SafeHierarchy.ts: imports builder",
+      "name": "angular/21/SafeHierarchy.ts: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -1896,7 +1896,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "angular/21/SafeFunnel.ts: imports builder",
+      "name": "angular/21/SafeFunnel.ts: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -1916,7 +1916,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "angular/21/SafeHeatmap.ts: imports builder",
+      "name": "angular/21/SafeHeatmap.ts: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -1936,7 +1936,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "angular/21/SafeScene.ts: imports builder",
+      "name": "angular/21/SafeScene.ts: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -1956,7 +1956,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "angular/21/SafeChart.ts: imports builder",
+      "name": "angular/21/SafeChart.ts: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -1976,7 +1976,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "angular/21/SafeCalendar.ts: imports builder",
+      "name": "angular/21/SafeCalendar.ts: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -1996,7 +1996,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "angular/21/SafeSheet.ts: imports builder",
+      "name": "angular/21/SafeSheet.ts: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -2016,7 +2016,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "angular/21/SafeToggle.ts: imports builder",
+      "name": "angular/21/SafeToggle.ts: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -2036,7 +2036,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "angular/21/SafePicker.ts: imports builder",
+      "name": "angular/21/SafePicker.ts: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -2056,7 +2056,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "angular/21/SafeStoryFlow.ts: imports builder",
+      "name": "angular/21/SafeStoryFlow.ts: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -2076,7 +2076,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "angular/21/SafeChat.ts: imports builder",
+      "name": "angular/21/SafeChat.ts: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -2096,7 +2096,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "angular/21/SafeCallout.ts: imports builder",
+      "name": "angular/21/SafeCallout.ts: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -2116,7 +2116,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "angular/21/SafeCard.ts: imports builder",
+      "name": "angular/21/SafeCard.ts: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -2136,7 +2136,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "angular/21/SafeInput.ts: imports builder",
+      "name": "angular/21/SafeInput.ts: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -2156,7 +2156,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "angular/21/SafeLayout.ts: imports builder",
+      "name": "angular/21/SafeLayout.ts: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -2176,7 +2176,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "angular/21/SafeTable.ts: imports builder",
+      "name": "angular/21/SafeTable.ts: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -2196,7 +2196,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "angular/21/SafeMap.ts: imports builder",
+      "name": "angular/21/SafeMap.ts: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -2216,7 +2216,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "angular/21/SafeNav.ts: imports builder",
+      "name": "angular/21/SafeNav.ts: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -2236,7 +2236,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "angular/21/SafeColumns.ts: imports builder",
+      "name": "angular/21/SafeColumns.ts: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -2256,7 +2256,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "angular/21/SafeWeek.ts: imports builder",
+      "name": "angular/21/SafeWeek.ts: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -2426,7 +2426,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "angular/22/SafeGauge.ts: imports builder",
+      "name": "angular/22/SafeGauge.ts: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -2446,7 +2446,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "angular/22/SafeMetric.ts: imports builder",
+      "name": "angular/22/SafeMetric.ts: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -2466,7 +2466,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "angular/22/SafeTabs.ts: imports builder",
+      "name": "angular/22/SafeTabs.ts: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -2486,7 +2486,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "angular/22/SafeList.ts: imports builder",
+      "name": "angular/22/SafeList.ts: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -2506,7 +2506,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "angular/22/SafeButton.ts: imports builder",
+      "name": "angular/22/SafeButton.ts: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -2526,7 +2526,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "angular/22/SafeGrid.ts: imports builder",
+      "name": "angular/22/SafeGrid.ts: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -2546,7 +2546,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "angular/22/SafeTree.ts: imports builder",
+      "name": "angular/22/SafeTree.ts: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -2566,7 +2566,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "angular/22/SafeTimeline.ts: imports builder",
+      "name": "angular/22/SafeTimeline.ts: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -2586,7 +2586,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "angular/22/SafeDragDrop.ts: imports builder",
+      "name": "angular/22/SafeDragDrop.ts: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -2606,7 +2606,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "angular/22/SafeFlow.ts: imports builder",
+      "name": "angular/22/SafeFlow.ts: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -2626,7 +2626,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "angular/22/SafeHierarchy.ts: imports builder",
+      "name": "angular/22/SafeHierarchy.ts: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -2646,7 +2646,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "angular/22/SafeFunnel.ts: imports builder",
+      "name": "angular/22/SafeFunnel.ts: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -2666,7 +2666,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "angular/22/SafeHeatmap.ts: imports builder",
+      "name": "angular/22/SafeHeatmap.ts: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -2686,7 +2686,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "angular/22/SafeScene.ts: imports builder",
+      "name": "angular/22/SafeScene.ts: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -2706,7 +2706,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "angular/22/SafeChart.ts: imports builder",
+      "name": "angular/22/SafeChart.ts: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -2726,7 +2726,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "angular/22/SafeCalendar.ts: imports builder",
+      "name": "angular/22/SafeCalendar.ts: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -2746,7 +2746,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "angular/22/SafeSheet.ts: imports builder",
+      "name": "angular/22/SafeSheet.ts: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -2766,7 +2766,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "angular/22/SafeToggle.ts: imports builder",
+      "name": "angular/22/SafeToggle.ts: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -2786,7 +2786,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "angular/22/SafePicker.ts: imports builder",
+      "name": "angular/22/SafePicker.ts: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -2806,7 +2806,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "angular/22/SafeStoryFlow.ts: imports builder",
+      "name": "angular/22/SafeStoryFlow.ts: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -2826,7 +2826,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "angular/22/SafeChat.ts: imports builder",
+      "name": "angular/22/SafeChat.ts: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -2846,7 +2846,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "angular/22/SafeCallout.ts: imports builder",
+      "name": "angular/22/SafeCallout.ts: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -2866,7 +2866,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "angular/22/SafeCard.ts: imports builder",
+      "name": "angular/22/SafeCard.ts: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -2886,7 +2886,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "angular/22/SafeInput.ts: imports builder",
+      "name": "angular/22/SafeInput.ts: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -2906,7 +2906,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "angular/22/SafeLayout.ts: imports builder",
+      "name": "angular/22/SafeLayout.ts: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -2926,7 +2926,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "angular/22/SafeTable.ts: imports builder",
+      "name": "angular/22/SafeTable.ts: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -2946,7 +2946,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "angular/22/SafeMap.ts: imports builder",
+      "name": "angular/22/SafeMap.ts: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -2966,7 +2966,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "angular/22/SafeNav.ts: imports builder",
+      "name": "angular/22/SafeNav.ts: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -2986,7 +2986,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "angular/22/SafeColumns.ts: imports builder",
+      "name": "angular/22/SafeColumns.ts: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -3006,7 +3006,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "angular/22/SafeWeek.ts: imports builder",
+      "name": "angular/22/SafeWeek.ts: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -3176,7 +3176,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "vue/2/SafeCallout.vue: imports builder",
+      "name": "vue/2/SafeCallout.vue: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -3196,7 +3196,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "vue/2/SafeDragDrop.vue: imports builder",
+      "name": "vue/2/SafeDragDrop.vue: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -3216,7 +3216,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "vue/2/SafePicker.vue: imports builder",
+      "name": "vue/2/SafePicker.vue: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -3236,7 +3236,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "vue/2/SafeFlow.vue: imports builder",
+      "name": "vue/2/SafeFlow.vue: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -3256,7 +3256,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "vue/2/SafeChat.vue: imports builder",
+      "name": "vue/2/SafeChat.vue: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -3276,7 +3276,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "vue/2/SafeChart.vue: imports builder",
+      "name": "vue/2/SafeChart.vue: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -3296,7 +3296,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "vue/2/SafeSheet.vue: imports builder",
+      "name": "vue/2/SafeSheet.vue: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -3316,7 +3316,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "vue/2/SafeLayout.vue: imports builder",
+      "name": "vue/2/SafeLayout.vue: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -3336,7 +3336,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "vue/2/SafeHeatmap.vue: imports builder",
+      "name": "vue/2/SafeHeatmap.vue: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -3356,7 +3356,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "vue/2/SafeToggle.vue: imports builder",
+      "name": "vue/2/SafeToggle.vue: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -3376,7 +3376,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "vue/2/SafeButton.vue: imports builder",
+      "name": "vue/2/SafeButton.vue: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -3396,7 +3396,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "vue/2/SafeStoryFlow.vue: imports builder",
+      "name": "vue/2/SafeStoryFlow.vue: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -3416,7 +3416,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "vue/2/SafeCalendar.vue: imports builder",
+      "name": "vue/2/SafeCalendar.vue: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -3436,7 +3436,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "vue/2/SafeTimeline.vue: imports builder",
+      "name": "vue/2/SafeTimeline.vue: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -3456,7 +3456,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "vue/2/SafeTree.vue: imports builder",
+      "name": "vue/2/SafeTree.vue: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -3476,7 +3476,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "vue/2/SafeGauge.vue: imports builder",
+      "name": "vue/2/SafeGauge.vue: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -3496,7 +3496,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "vue/2/SafeInput.vue: imports builder",
+      "name": "vue/2/SafeInput.vue: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -3516,7 +3516,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "vue/2/SafeColumns.vue: imports builder",
+      "name": "vue/2/SafeColumns.vue: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -3536,7 +3536,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "vue/2/SafeMap.vue: imports builder",
+      "name": "vue/2/SafeMap.vue: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -3556,7 +3556,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "vue/2/SafeFunnel.vue: imports builder",
+      "name": "vue/2/SafeFunnel.vue: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -3576,7 +3576,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "vue/2/SafeHierarchy.vue: imports builder",
+      "name": "vue/2/SafeHierarchy.vue: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -3596,7 +3596,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "vue/2/SafeScene.vue: imports builder",
+      "name": "vue/2/SafeScene.vue: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -3616,7 +3616,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "vue/2/SafeTable.vue: imports builder",
+      "name": "vue/2/SafeTable.vue: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -3636,7 +3636,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "vue/2/SafeGrid.vue: imports builder",
+      "name": "vue/2/SafeGrid.vue: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -3656,7 +3656,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "vue/2/SafeList.vue: imports builder",
+      "name": "vue/2/SafeList.vue: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -3676,7 +3676,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "vue/2/SafeCard.vue: imports builder",
+      "name": "vue/2/SafeCard.vue: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -3696,7 +3696,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "vue/2/SafeNav.vue: imports builder",
+      "name": "vue/2/SafeNav.vue: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -3716,7 +3716,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "vue/2/SafeTabs.vue: imports builder",
+      "name": "vue/2/SafeTabs.vue: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -3736,7 +3736,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "vue/2/SafeWeek.vue: imports builder",
+      "name": "vue/2/SafeWeek.vue: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -3756,7 +3756,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "vue/2/SafeMetric.vue: imports builder",
+      "name": "vue/2/SafeMetric.vue: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -3926,7 +3926,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "vue/3/SafeCallout.vue: imports builder",
+      "name": "vue/3/SafeCallout.vue: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -3946,7 +3946,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "vue/3/SafeDragDrop.vue: imports builder",
+      "name": "vue/3/SafeDragDrop.vue: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -3966,7 +3966,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "vue/3/SafePicker.vue: imports builder",
+      "name": "vue/3/SafePicker.vue: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -3986,7 +3986,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "vue/3/SafeFlow.vue: imports builder",
+      "name": "vue/3/SafeFlow.vue: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -4006,7 +4006,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "vue/3/SafeChat.vue: imports builder",
+      "name": "vue/3/SafeChat.vue: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -4026,7 +4026,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "vue/3/SafeChart.vue: imports builder",
+      "name": "vue/3/SafeChart.vue: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -4046,7 +4046,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "vue/3/SafeSheet.vue: imports builder",
+      "name": "vue/3/SafeSheet.vue: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -4066,7 +4066,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "vue/3/SafeLayout.vue: imports builder",
+      "name": "vue/3/SafeLayout.vue: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -4086,7 +4086,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "vue/3/SafeHeatmap.vue: imports builder",
+      "name": "vue/3/SafeHeatmap.vue: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -4106,7 +4106,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "vue/3/SafeToggle.vue: imports builder",
+      "name": "vue/3/SafeToggle.vue: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -4126,7 +4126,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "vue/3/SafeButton.vue: imports builder",
+      "name": "vue/3/SafeButton.vue: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -4146,7 +4146,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "vue/3/SafeStoryFlow.vue: imports builder",
+      "name": "vue/3/SafeStoryFlow.vue: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -4166,7 +4166,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "vue/3/SafeCalendar.vue: imports builder",
+      "name": "vue/3/SafeCalendar.vue: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -4186,7 +4186,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "vue/3/SafeTimeline.vue: imports builder",
+      "name": "vue/3/SafeTimeline.vue: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -4206,7 +4206,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "vue/3/SafeTree.vue: imports builder",
+      "name": "vue/3/SafeTree.vue: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -4226,7 +4226,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "vue/3/SafeGauge.vue: imports builder",
+      "name": "vue/3/SafeGauge.vue: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -4246,7 +4246,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "vue/3/SafeInput.vue: imports builder",
+      "name": "vue/3/SafeInput.vue: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -4266,7 +4266,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "vue/3/SafeColumns.vue: imports builder",
+      "name": "vue/3/SafeColumns.vue: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -4286,7 +4286,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "vue/3/SafeMap.vue: imports builder",
+      "name": "vue/3/SafeMap.vue: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -4306,7 +4306,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "vue/3/SafeFunnel.vue: imports builder",
+      "name": "vue/3/SafeFunnel.vue: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -4326,7 +4326,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "vue/3/SafeHierarchy.vue: imports builder",
+      "name": "vue/3/SafeHierarchy.vue: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -4346,7 +4346,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "vue/3/SafeScene.vue: imports builder",
+      "name": "vue/3/SafeScene.vue: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -4366,7 +4366,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "vue/3/SafeTable.vue: imports builder",
+      "name": "vue/3/SafeTable.vue: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -4386,7 +4386,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "vue/3/SafeGrid.vue: imports builder",
+      "name": "vue/3/SafeGrid.vue: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -4406,7 +4406,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "vue/3/SafeList.vue: imports builder",
+      "name": "vue/3/SafeList.vue: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -4426,7 +4426,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "vue/3/SafeCard.vue: imports builder",
+      "name": "vue/3/SafeCard.vue: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -4446,7 +4446,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "vue/3/SafeNav.vue: imports builder",
+      "name": "vue/3/SafeNav.vue: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -4466,7 +4466,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "vue/3/SafeTabs.vue: imports builder",
+      "name": "vue/3/SafeTabs.vue: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -4486,7 +4486,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "vue/3/SafeWeek.vue: imports builder",
+      "name": "vue/3/SafeWeek.vue: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -4506,7 +4506,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "vue/3/SafeMetric.vue: imports builder",
+      "name": "vue/3/SafeMetric.vue: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -4676,7 +4676,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "svelte/4/SafeList.svelte: imports builder",
+      "name": "svelte/4/SafeList.svelte: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -4696,7 +4696,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "svelte/4/SafeCallout.svelte: imports builder",
+      "name": "svelte/4/SafeCallout.svelte: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -4716,7 +4716,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "svelte/4/SafeChat.svelte: imports builder",
+      "name": "svelte/4/SafeChat.svelte: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -4736,7 +4736,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "svelte/4/SafePicker.svelte: imports builder",
+      "name": "svelte/4/SafePicker.svelte: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -4756,7 +4756,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "svelte/4/SafeTimeline.svelte: imports builder",
+      "name": "svelte/4/SafeTimeline.svelte: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -4776,7 +4776,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "svelte/4/SafeGrid.svelte: imports builder",
+      "name": "svelte/4/SafeGrid.svelte: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -4796,7 +4796,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "svelte/4/SafeChart.svelte: imports builder",
+      "name": "svelte/4/SafeChart.svelte: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -4816,7 +4816,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "svelte/4/SafeCalendar.svelte: imports builder",
+      "name": "svelte/4/SafeCalendar.svelte: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -4836,7 +4836,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "svelte/4/SafeTable.svelte: imports builder",
+      "name": "svelte/4/SafeTable.svelte: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -4856,7 +4856,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "svelte/4/SafeFlow.svelte: imports builder",
+      "name": "svelte/4/SafeFlow.svelte: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -4876,7 +4876,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "svelte/4/SafeInput.svelte: imports builder",
+      "name": "svelte/4/SafeInput.svelte: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -4896,7 +4896,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "svelte/4/SafeWeek.svelte: imports builder",
+      "name": "svelte/4/SafeWeek.svelte: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -4916,7 +4916,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "svelte/4/SafeToggle.svelte: imports builder",
+      "name": "svelte/4/SafeToggle.svelte: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -4936,7 +4936,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "svelte/4/SafeHeatmap.svelte: imports builder",
+      "name": "svelte/4/SafeHeatmap.svelte: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -4956,7 +4956,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "svelte/4/SafeButton.svelte: imports builder",
+      "name": "svelte/4/SafeButton.svelte: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -4976,7 +4976,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "svelte/4/SafeColumns.svelte: imports builder",
+      "name": "svelte/4/SafeColumns.svelte: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -4996,7 +4996,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "svelte/4/SafeSheet.svelte: imports builder",
+      "name": "svelte/4/SafeSheet.svelte: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -5016,7 +5016,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "svelte/4/SafeNav.svelte: imports builder",
+      "name": "svelte/4/SafeNav.svelte: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -5036,7 +5036,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "svelte/4/SafeTree.svelte: imports builder",
+      "name": "svelte/4/SafeTree.svelte: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -5056,7 +5056,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "svelte/4/SafeCard.svelte: imports builder",
+      "name": "svelte/4/SafeCard.svelte: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -5076,7 +5076,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "svelte/4/SafeHierarchy.svelte: imports builder",
+      "name": "svelte/4/SafeHierarchy.svelte: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -5096,7 +5096,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "svelte/4/SafeMap.svelte: imports builder",
+      "name": "svelte/4/SafeMap.svelte: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -5116,7 +5116,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "svelte/4/SafeStoryFlow.svelte: imports builder",
+      "name": "svelte/4/SafeStoryFlow.svelte: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -5136,7 +5136,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "svelte/4/SafeTabs.svelte: imports builder",
+      "name": "svelte/4/SafeTabs.svelte: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -5156,7 +5156,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "svelte/4/SafeLayout.svelte: imports builder",
+      "name": "svelte/4/SafeLayout.svelte: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -5176,7 +5176,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "svelte/4/SafeMetric.svelte: imports builder",
+      "name": "svelte/4/SafeMetric.svelte: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -5196,7 +5196,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "svelte/4/SafeFunnel.svelte: imports builder",
+      "name": "svelte/4/SafeFunnel.svelte: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -5216,7 +5216,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "svelte/4/SafeDragDrop.svelte: imports builder",
+      "name": "svelte/4/SafeDragDrop.svelte: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -5236,7 +5236,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "svelte/4/SafeGauge.svelte: imports builder",
+      "name": "svelte/4/SafeGauge.svelte: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -5256,7 +5256,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "svelte/4/SafeScene.svelte: imports builder",
+      "name": "svelte/4/SafeScene.svelte: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -5426,7 +5426,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "svelte/5/SafeList.svelte: imports builder",
+      "name": "svelte/5/SafeList.svelte: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -5446,7 +5446,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "svelte/5/SafeCallout.svelte: imports builder",
+      "name": "svelte/5/SafeCallout.svelte: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -5466,7 +5466,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "svelte/5/SafeChat.svelte: imports builder",
+      "name": "svelte/5/SafeChat.svelte: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -5486,7 +5486,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "svelte/5/SafePicker.svelte: imports builder",
+      "name": "svelte/5/SafePicker.svelte: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -5506,7 +5506,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "svelte/5/SafeTimeline.svelte: imports builder",
+      "name": "svelte/5/SafeTimeline.svelte: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -5526,7 +5526,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "svelte/5/SafeGrid.svelte: imports builder",
+      "name": "svelte/5/SafeGrid.svelte: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -5546,7 +5546,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "svelte/5/SafeChart.svelte: imports builder",
+      "name": "svelte/5/SafeChart.svelte: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -5566,7 +5566,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "svelte/5/SafeCalendar.svelte: imports builder",
+      "name": "svelte/5/SafeCalendar.svelte: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -5586,7 +5586,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "svelte/5/SafeTable.svelte: imports builder",
+      "name": "svelte/5/SafeTable.svelte: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -5606,7 +5606,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "svelte/5/SafeFlow.svelte: imports builder",
+      "name": "svelte/5/SafeFlow.svelte: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -5626,7 +5626,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "svelte/5/SafeInput.svelte: imports builder",
+      "name": "svelte/5/SafeInput.svelte: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -5646,7 +5646,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "svelte/5/SafeWeek.svelte: imports builder",
+      "name": "svelte/5/SafeWeek.svelte: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -5666,7 +5666,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "svelte/5/SafeToggle.svelte: imports builder",
+      "name": "svelte/5/SafeToggle.svelte: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -5686,7 +5686,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "svelte/5/SafeHeatmap.svelte: imports builder",
+      "name": "svelte/5/SafeHeatmap.svelte: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -5706,7 +5706,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "svelte/5/SafeButton.svelte: imports builder",
+      "name": "svelte/5/SafeButton.svelte: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -5726,7 +5726,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "svelte/5/SafeColumns.svelte: imports builder",
+      "name": "svelte/5/SafeColumns.svelte: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -5746,7 +5746,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "svelte/5/SafeSheet.svelte: imports builder",
+      "name": "svelte/5/SafeSheet.svelte: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -5766,7 +5766,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "svelte/5/SafeNav.svelte: imports builder",
+      "name": "svelte/5/SafeNav.svelte: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -5786,7 +5786,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "svelte/5/SafeTree.svelte: imports builder",
+      "name": "svelte/5/SafeTree.svelte: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -5806,7 +5806,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "svelte/5/SafeCard.svelte: imports builder",
+      "name": "svelte/5/SafeCard.svelte: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -5826,7 +5826,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "svelte/5/SafeHierarchy.svelte: imports builder",
+      "name": "svelte/5/SafeHierarchy.svelte: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -5846,7 +5846,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "svelte/5/SafeMap.svelte: imports builder",
+      "name": "svelte/5/SafeMap.svelte: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -5866,7 +5866,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "svelte/5/SafeStoryFlow.svelte: imports builder",
+      "name": "svelte/5/SafeStoryFlow.svelte: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -5886,7 +5886,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "svelte/5/SafeTabs.svelte: imports builder",
+      "name": "svelte/5/SafeTabs.svelte: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -5906,7 +5906,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "svelte/5/SafeLayout.svelte: imports builder",
+      "name": "svelte/5/SafeLayout.svelte: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -5926,7 +5926,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "svelte/5/SafeMetric.svelte: imports builder",
+      "name": "svelte/5/SafeMetric.svelte: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -5946,7 +5946,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "svelte/5/SafeFunnel.svelte: imports builder",
+      "name": "svelte/5/SafeFunnel.svelte: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -5966,7 +5966,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "svelte/5/SafeDragDrop.svelte: imports builder",
+      "name": "svelte/5/SafeDragDrop.svelte: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -5986,7 +5986,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "svelte/5/SafeGauge.svelte: imports builder",
+      "name": "svelte/5/SafeGauge.svelte: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -6006,7 +6006,7 @@
     },
     {
       "group": "wrapper-delegates",
-      "name": "svelte/5/SafeScene.svelte: imports builder",
+      "name": "svelte/5/SafeScene.svelte: routes through buildComponent or imports builder",
       "status": "pass"
     },
     {
@@ -6066,5 +6066,5 @@
     }
   ],
   "failures": [],
-  "ts": "2026-06-18T10:21:57.773Z"
+  "ts": "2026-06-18T10:32:39.261Z"
 }

@@ -2,9 +2,7 @@
 import { ref, onMounted, onBeforeUnmount } from 'vue';
 import type * as L from 'leaflet';
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-import { createSafeFireContext } from 'safecontracts';
-import { buildPayloadViaCli } from '../../utils/payload-delegate';
-import { createSafeMap, mapData } from '../../builders/map';
+import { buildComponent } from '../../utils/render';
 
 const props = defineProps<{ config: ConfigBase; onEvent?: OnSafeEvent }>();
 

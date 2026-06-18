@@ -1,6 +1,6 @@
 import { useRef, useEffect } from "react";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
-import { createSafeDragDrop } from "../../builders/dragdrop";
+import { buildComponent } from "../../utils/render";
 
 interface SafeDragDropProps {
   config: ConfigBase;

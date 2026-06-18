@@ -1,6 +1,6 @@
 import { useRef, useEffect } from "react";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
-import { createSafePicker } from "../../builders/picker";
+import { buildComponent } from "../../utils/render";
 
 interface SafePickerProps {
   config: ConfigBase;

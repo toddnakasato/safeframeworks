@@ -1,6 +1,6 @@
 import { useRef, useEffect } from "react";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
-import { createSafeToggle } from "../../builders/toggle";
+import { buildComponent } from "../../utils/render";
 
 interface SafeToggleProps {
   config: ConfigBase;

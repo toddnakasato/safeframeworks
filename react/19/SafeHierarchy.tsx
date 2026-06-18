@@ -1,8 +1,6 @@
 import { useRef, useEffect } from "react";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
-import { createSafeFireContext } from "safecontracts";
-import { buildPayloadViaCli } from "../../utils/payload-delegate";
-import { createSafeHierarchy } from "../../builders/hierarchy";
+import { buildComponent } from "../../utils/render";
 
 /*----------------------------------------------------------------------------------------------------
  *
@@ -33,8 +31,8 @@ export function SafeHierarchy({ config, onEvent }: SafeHierarchyProps) {
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
-    const ctx = createSafeFireContext(config, onEvent, buildPayloadViaCli);
-    const root = createSafeHierarchy(container, config, ctx);
+    const root = buildComponent(config, onEvent);
+    container.appendChild(root);
     return () => { root.remove(); };
   }, [config, onEvent]);
 

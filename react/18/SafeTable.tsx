@@ -1,6 +1,6 @@
 import { useRef, useEffect } from "react";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
-import { createSafeTable } from "../../builders/table";
+import { buildComponent } from "../../utils/render";
 
 interface SafeTableProps {
   config: ConfigBase;

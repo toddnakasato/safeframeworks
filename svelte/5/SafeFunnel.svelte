@@ -1,8 +1,6 @@
 <script lang="ts">
   import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-  import { createSafeFireContext } from 'safecontracts';
-  import { buildPayloadViaCli } from '../../utils/payload-delegate';
-  import { createSafeFunnel } from '../../builders/funnel';
+  import { buildComponent } from '../../utils/render';
 
   let { config, onEvent }: { config: ConfigBase; onEvent?: OnSafeEvent } = $props();
 
@@ -11,8 +9,8 @@
 
   $effect(() => {
     container.innerHTML = '';
-    const _ctx = createSafeFireContext(config, onEvent, buildPayloadViaCli);
-    root = createSafeFunnel(container, config, _ctx);
+    root = buildComponent(config, onEvent);
+    container.appendChild(root);
     return () => { root?.remove(); root = null; };
   });
 </script>

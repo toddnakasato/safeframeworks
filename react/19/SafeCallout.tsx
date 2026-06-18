@@ -1,6 +1,6 @@
 import { useRef, useEffect } from "react";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
-import { createSafeCallout } from "../../builders/callout";
+import { buildComponent } from "../../utils/render";
 
 interface SafeCalloutProps {
   config: ConfigBase;

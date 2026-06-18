@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
-import { createSafeSheet } from "../../builders/sheet";
+import { buildComponent } from "../../utils/render";
 
 /*----------------------------------------------------------------------------------------------------
  *

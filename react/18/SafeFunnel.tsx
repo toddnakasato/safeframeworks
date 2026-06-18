@@ -1,6 +1,6 @@
 import { useRef, useEffect } from "react";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
-import { createSafeFunnel } from "../../builders/funnel";
+import { buildComponent } from "../../utils/render";
 
 interface SafeFunnelProps {
   config: ConfigBase;

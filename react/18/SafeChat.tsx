@@ -1,6 +1,6 @@
 import { useRef, useEffect } from "react";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
-import { createSafeChat } from "../../builders/chat";
+import { buildComponent } from "../../utils/render";
 
 interface SafeChatProps {
   config: ConfigBase;

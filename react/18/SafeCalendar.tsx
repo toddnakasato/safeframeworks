@@ -1,6 +1,6 @@
 import { useRef, useEffect } from "react";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
-import { createSafeCalendar } from "../../builders/calendar";
+import { buildComponent } from "../../utils/render";
 
 interface SafeCalendarProps {
   config: ConfigBase;

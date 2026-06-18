@@ -1,6 +1,6 @@
 import { useRef, useEffect } from "react";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
-import { createSafeInput } from "../../builders/input";
+import { buildComponent } from "../../utils/render";
 
 interface SafeInputProps {
   config: ConfigBase;

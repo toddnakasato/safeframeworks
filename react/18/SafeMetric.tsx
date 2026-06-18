@@ -1,6 +1,6 @@
 import { useRef, useEffect } from "react";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
-import { createSafeMetric } from "../../builders/metric";
+import { buildComponent } from "../../utils/render";
 
 interface SafeMetricProps {
   config: ConfigBase;

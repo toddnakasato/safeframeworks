@@ -1,6 +1,6 @@
 import { useRef, useEffect } from "react";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
-import { createSafeCard } from "../../builders/card";
+import { buildComponent } from "../../utils/render";
 
 interface SafeCardProps {
   config: ConfigBase;

@@ -1,9 +1,7 @@
 <script lang="ts">
 import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-import { createSafeFireContext } from 'safecontracts';
-import { buildPayloadViaCli } from '../../utils/payload-delegate';
+import { buildComponent } from '../../utils/render';
 import { defineComponent, type PropType } from 'vue';
-import { createSafeInput } from '../../builders/input';
 
 export default defineComponent({
   name: 'SafeInput',

@@ -6,18 +6,6 @@ import { elAttrs, applyPaintState, applyIntent, readList } from "../utils/util";
 
 /*----------------------------------------------------------------------------------------------------
  *
- * Properties
- *
- ----------------------------------------------------------------------------------------------------*/
-
-/*----------------------------------------------------------------------------------------------------
- *
- * Helpers
- *
- ----------------------------------------------------------------------------------------------------*/
-
-/*----------------------------------------------------------------------------------------------------
- *
  * Implementation
  *
  ----------------------------------------------------------------------------------------------------*/
@@ -65,36 +53,51 @@ export function createSafeFunnel(container: HTMLElement, config: ConfigBase, ctx
         const y = i * (barHeight + 6) + 10;
         const color = FUNNEL_COLORS[i % FUNNEL_COLORS.length];
 
-        const g = svg.append("g").style("cursor", "pointer")
+        const g = svg
+            .append("g")
+            .style("cursor", "pointer")
             .on("click", () => ctx.fire("select", { index: i, data: d }));
 
         g.append("rect")
-            .attr("x", x).attr("y", y)
-            .attr("width", 0).attr("height", barHeight)
-            .attr("rx", 4).attr("fill", color)
-            .transition().duration(600).delay(i * 100)
+            .attr("x", x)
+            .attr("y", y)
+            .attr("width", 0)
+            .attr("height", barHeight)
+            .attr("rx", 4)
+            .attr("fill", color)
+            .transition()
+            .duration(600)
+            .delay(i * 100)
             .attr("width", barW);
 
         g.append("text")
-            .attr("x", width / 2).attr("y", y + barHeight / 2)
-            .attr("text-anchor", "middle").attr("dy", "0.35em")
-            .attr("fill", "var(--sd-surface)").attr("font-size", 12).attr("font-weight", 600)
+            .attr("x", width / 2)
+            .attr("y", y + barHeight / 2)
+            .attr("text-anchor", "middle")
+            .attr("dy", "0.35em")
+            .attr("fill", "var(--sd-surface)")
+            .attr("font-size", 12)
+            .attr("font-weight", 600)
             .text(String(d[labelField] ?? ""));
 
         const displayVal = val.toLocaleString();
         const pctText = showPercent ? ` (${Math.round(pct * 100)}%)` : "";
         g.append("text")
-            .attr("x", x + barW + 8).attr("y", y + barHeight / 2)
+            .attr("x", x + barW + 8)
+            .attr("y", y + barHeight / 2)
             .attr("dy", "0.35em")
-            .attr("fill", "var(--sd-text-dim)").attr("font-size", 11)
+            .attr("fill", "var(--sd-text-dim)")
+            .attr("font-size", 11)
             .text(`${displayVal}${pctText}`);
 
         if (showConversion && i > 0) {
             const prevVal = Number(data[i - 1][valueField]) ?? 1;
             const convRate = prevVal > 0 ? Math.round((val / prevVal) * 100) : 0;
             svg.append("text")
-                .attr("x", 12).attr("y", y - 1)
-                .attr("fill", "var(--sd-text-dim)").attr("font-size", 9)
+                .attr("x", 12)
+                .attr("y", y - 1)
+                .attr("fill", "var(--sd-text-dim)")
+                .attr("font-size", 9)
                 .text(`↓ ${convRate}%`);
         }
     });

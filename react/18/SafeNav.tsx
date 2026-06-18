@@ -1,6 +1,6 @@
 import { useRef, useEffect } from "react";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
-import { createSafeNav } from "../../builders/nav";
+import { buildComponent } from "../../utils/render";
 
 interface SafeNavProps {
   config: ConfigBase;

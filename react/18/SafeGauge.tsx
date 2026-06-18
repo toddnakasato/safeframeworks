@@ -1,6 +1,6 @@
 import { useRef, useEffect } from "react";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
-import { createSafeGauge } from "../../builders/gauge";
+import { buildComponent } from "../../utils/render";
 
 interface SafeGaugeProps {
   config: ConfigBase;

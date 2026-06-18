@@ -1,8 +1,8 @@
 {
   "ok": true,
   "component": "all",
-  "total": 443,
-  "passed": 443,
+  "total": 681,
+  "passed": 681,
   "failed": 0,
   "groups": {
     "uses-readList-or-readRecord": 19,
@@ -20,7 +20,8 @@
     "no-local-contract-interfaces": 27,
     "no-function-tdz": 29,
     "standard-export-name": 29,
-    "routed-through-render": 29
+    "routed-through-render": 29,
+    "wrappers-use-buildComponent": 238
   },
   "checks": [
     {
@@ -2179,6 +2180,1196 @@
       "status": "pass"
     },
     {
+      "group": "wrappers-use-buildComponent",
+      "name": "react/18/SafeDragDrop.tsx: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "react/18/SafePicker.tsx: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "react/18/SafeCallout.tsx: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "react/18/SafeGridCell.tsx: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "react/18/SafeChat.tsx: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "react/18/SafeFlow.tsx: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "react/18/SafeSheet.tsx: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "react/18/SafeChart.tsx: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "react/18/SafeHeatmap.tsx: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "react/18/SafeToggle.tsx: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "react/18/SafeButton.tsx: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "react/18/SafeStoryFlow.tsx: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "react/18/SafeTimeline.tsx: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "react/18/SafeCalendar.tsx: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "react/18/SafeTree.tsx: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "react/18/SafeGauge.tsx: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "react/18/SafeInput.tsx: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "react/18/SafeColumns.tsx: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "react/18/SafeScene.tsx: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "react/18/SafeHierarchy.tsx: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "react/18/SafeStoryboard.tsx: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "react/18/SafeModal.tsx: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "react/18/SafeFunnel.tsx: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "react/18/SafeMap.tsx: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "react/18/SafeList.tsx: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "react/18/SafeGrid.tsx: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "react/18/SafeTable.tsx: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "react/18/SafeNav.tsx: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "react/18/SafeCard.tsx: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "react/18/SafeTabs.tsx: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "react/18/SafeWeek.tsx: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "react/18/SafeMetric.tsx: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "react/19/SafeDragDrop.tsx: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "react/19/SafePicker.tsx: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "react/19/SafeCallout.tsx: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "react/19/SafeGridCell.tsx: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "react/19/SafeChat.tsx: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "react/19/SafeFlow.tsx: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "react/19/SafeSheet.tsx: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "react/19/SafeChart.tsx: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "react/19/SafeHeatmap.tsx: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "react/19/SafeToggle.tsx: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "react/19/SafeButton.tsx: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "react/19/SafeStoryFlow.tsx: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "react/19/SafeTimeline.tsx: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "react/19/SafeCalendar.tsx: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "react/19/SafeTree.tsx: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "react/19/SafeGauge.tsx: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "react/19/SafeInput.tsx: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "react/19/SafeColumns.tsx: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "react/19/SafeScene.tsx: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "react/19/SafeHierarchy.tsx: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "react/19/SafeStoryboard.tsx: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "react/19/SafeModal.tsx: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "react/19/SafeFunnel.tsx: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "react/19/SafeMap.tsx: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "react/19/SafeList.tsx: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "react/19/SafeGrid.tsx: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "react/19/SafeTable.tsx: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "react/19/SafeNav.tsx: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "react/19/SafeCard.tsx: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "react/19/SafeTabs.tsx: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "react/19/SafeWeek.tsx: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "react/19/SafeMetric.tsx: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "angular/21/SafeGauge.ts: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "angular/21/SafeMetric.ts: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "angular/21/SafeTabs.ts: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "angular/21/SafeList.ts: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "angular/21/SafeButton.ts: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "angular/21/SafeGrid.ts: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "angular/21/SafeTree.ts: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "angular/21/SafeTimeline.ts: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "angular/21/SafeDragDrop.ts: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "angular/21/SafeFlow.ts: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "angular/21/SafeHierarchy.ts: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "angular/21/SafeFunnel.ts: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "angular/21/SafeHeatmap.ts: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "angular/21/SafeScene.ts: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "angular/21/SafeChart.ts: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "angular/21/SafeCalendar.ts: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "angular/21/SafeSheet.ts: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "angular/21/SafeToggle.ts: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "angular/21/SafePicker.ts: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "angular/21/SafeStoryFlow.ts: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "angular/21/SafeChat.ts: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "angular/21/SafeCallout.ts: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "angular/21/SafeCard.ts: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "angular/21/SafeInput.ts: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "angular/21/SafeTable.ts: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "angular/21/SafeMap.ts: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "angular/21/SafeNav.ts: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "angular/21/SafeColumns.ts: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "angular/21/SafeWeek.ts: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "angular/22/SafeGauge.ts: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "angular/22/SafeMetric.ts: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "angular/22/SafeTabs.ts: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "angular/22/SafeList.ts: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "angular/22/SafeButton.ts: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "angular/22/SafeGrid.ts: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "angular/22/SafeTree.ts: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "angular/22/SafeTimeline.ts: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "angular/22/SafeDragDrop.ts: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "angular/22/SafeFlow.ts: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "angular/22/SafeHierarchy.ts: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "angular/22/SafeFunnel.ts: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "angular/22/SafeHeatmap.ts: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "angular/22/SafeScene.ts: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "angular/22/SafeChart.ts: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "angular/22/SafeCalendar.ts: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "angular/22/SafeSheet.ts: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "angular/22/SafeToggle.ts: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "angular/22/SafePicker.ts: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "angular/22/SafeStoryFlow.ts: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "angular/22/SafeChat.ts: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "angular/22/SafeCallout.ts: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "angular/22/SafeCard.ts: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "angular/22/SafeInput.ts: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "angular/22/SafeTable.ts: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "angular/22/SafeMap.ts: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "angular/22/SafeNav.ts: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "angular/22/SafeColumns.ts: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "angular/22/SafeWeek.ts: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "svelte/4/SafeList.svelte: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "svelte/4/SafeCallout.svelte: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "svelte/4/SafeChat.svelte: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "svelte/4/SafePicker.svelte: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "svelte/4/SafeTimeline.svelte: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "svelte/4/SafeGrid.svelte: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "svelte/4/SafeChart.svelte: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "svelte/4/SafeCalendar.svelte: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "svelte/4/SafeTable.svelte: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "svelte/4/SafeFlow.svelte: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "svelte/4/SafeInput.svelte: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "svelte/4/SafeWeek.svelte: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "svelte/4/SafeToggle.svelte: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "svelte/4/SafeHeatmap.svelte: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "svelte/4/SafeButton.svelte: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "svelte/4/SafeColumns.svelte: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "svelte/4/SafeSheet.svelte: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "svelte/4/SafeNav.svelte: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "svelte/4/SafeTree.svelte: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "svelte/4/SafeCard.svelte: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "svelte/4/SafeHierarchy.svelte: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "svelte/4/SafeMap.svelte: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "svelte/4/SafeStoryFlow.svelte: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "svelte/4/SafeTabs.svelte: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "svelte/4/SafeMetric.svelte: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "svelte/4/SafeFunnel.svelte: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "svelte/4/SafeDragDrop.svelte: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "svelte/4/SafeGauge.svelte: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "svelte/4/SafeScene.svelte: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "svelte/5/SafeList.svelte: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "svelte/5/SafeCallout.svelte: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "svelte/5/SafeChat.svelte: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "svelte/5/SafePicker.svelte: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "svelte/5/SafeTimeline.svelte: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "svelte/5/SafeGrid.svelte: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "svelte/5/SafeChart.svelte: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "svelte/5/SafeCalendar.svelte: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "svelte/5/SafeTable.svelte: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "svelte/5/SafeFlow.svelte: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "svelte/5/SafeInput.svelte: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "svelte/5/SafeWeek.svelte: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "svelte/5/SafeToggle.svelte: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "svelte/5/SafeHeatmap.svelte: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "svelte/5/SafeButton.svelte: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "svelte/5/SafeColumns.svelte: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "svelte/5/SafeSheet.svelte: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "svelte/5/SafeNav.svelte: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "svelte/5/SafeTree.svelte: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "svelte/5/SafeCard.svelte: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "svelte/5/SafeHierarchy.svelte: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "svelte/5/SafeMap.svelte: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "svelte/5/SafeStoryFlow.svelte: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "svelte/5/SafeTabs.svelte: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "svelte/5/SafeMetric.svelte: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "svelte/5/SafeFunnel.svelte: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "svelte/5/SafeDragDrop.svelte: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "svelte/5/SafeGauge.svelte: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "svelte/5/SafeScene.svelte: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "vue/2/SafeCallout.vue: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "vue/2/SafeDragDrop.vue: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "vue/2/SafePicker.vue: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "vue/2/SafeFlow.vue: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "vue/2/SafeChat.vue: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "vue/2/SafeChart.vue: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "vue/2/SafeSheet.vue: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "vue/2/SafeHeatmap.vue: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "vue/2/SafeToggle.vue: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "vue/2/SafeButton.vue: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "vue/2/SafeStoryFlow.vue: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "vue/2/SafeCalendar.vue: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "vue/2/SafeTimeline.vue: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "vue/2/SafeTree.vue: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "vue/2/SafeGauge.vue: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "vue/2/SafeInput.vue: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "vue/2/SafeColumns.vue: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "vue/2/SafeMap.vue: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "vue/2/SafeFunnel.vue: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "vue/2/SafeHierarchy.vue: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "vue/2/SafeScene.vue: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "vue/2/SafeTable.vue: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "vue/2/SafeGrid.vue: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "vue/2/SafeList.vue: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "vue/2/SafeCard.vue: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "vue/2/SafeNav.vue: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "vue/2/SafeTabs.vue: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "vue/2/SafeWeek.vue: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "vue/2/SafeMetric.vue: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "vue/3/SafeCallout.vue: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "vue/3/SafeDragDrop.vue: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "vue/3/SafePicker.vue: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "vue/3/SafeFlow.vue: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "vue/3/SafeChat.vue: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "vue/3/SafeChart.vue: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "vue/3/SafeSheet.vue: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "vue/3/SafeHeatmap.vue: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "vue/3/SafeToggle.vue: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "vue/3/SafeButton.vue: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "vue/3/SafeStoryFlow.vue: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "vue/3/SafeCalendar.vue: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "vue/3/SafeTimeline.vue: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "vue/3/SafeTree.vue: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "vue/3/SafeGauge.vue: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "vue/3/SafeInput.vue: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "vue/3/SafeColumns.vue: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "vue/3/SafeMap.vue: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "vue/3/SafeFunnel.vue: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "vue/3/SafeHierarchy.vue: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "vue/3/SafeScene.vue: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "vue/3/SafeTable.vue: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "vue/3/SafeGrid.vue: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "vue/3/SafeList.vue: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "vue/3/SafeCard.vue: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "vue/3/SafeNav.vue: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "vue/3/SafeTabs.vue: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "vue/3/SafeWeek.vue: uses buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "wrappers-use-buildComponent",
+      "name": "vue/3/SafeMetric.vue: uses buildComponent",
+      "status": "pass"
+    },
+    {
       "group": "required-metadata-fields",
       "name": "funnel/funnel1.json: has required field config",
       "status": "pass"
@@ -2240,5 +3431,5 @@
     }
   ],
   "failures": [],
-  "ts": "2026-06-18T10:21:57.697Z"
+  "ts": "2026-06-18T10:32:39.201Z"
 }

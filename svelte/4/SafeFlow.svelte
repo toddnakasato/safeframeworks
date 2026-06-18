@@ -1,7 +1,7 @@
 <script lang="ts">
   import { afterUpdate } from 'svelte';
   import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-  import { createSafeFlow, flowData } from '../../builders/flow';
+  import { buildComponent } from '../../utils/render';
 
   export let config: ConfigBase;
   export let onEvent: OnSafeEvent | undefined = undefined;

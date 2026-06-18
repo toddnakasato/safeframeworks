@@ -1,6 +1,6 @@
 import { useRef, useEffect } from "react";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
-import { createSafeStoryFlow } from "../../builders/storyflow";
+import { buildComponent } from "../../utils/render";
 
 interface SafeStoryFlowProps {
   config: ConfigBase;

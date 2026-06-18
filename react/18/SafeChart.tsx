@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import type { Chart } from "chart.js";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
-import { createSafeChart } from "../../builders/chart";
+import { buildComponent } from "../../utils/render";
 
 /*----------------------------------------------------------------------------------------------------
  *

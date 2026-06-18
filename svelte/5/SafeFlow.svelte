@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-  import { createSafeFlow, flowData } from '../../builders/flow';
+  import { buildComponent } from '../../utils/render';
 
   let { config, onEvent }: { config: ConfigBase; onEvent?: OnSafeEvent } = $props();
 

@@ -1,7 +1,7 @@
 import { useRef, useEffect } from "react";
 import type L from "leaflet";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
-import { createSafeMap } from "../../builders/map";
+import { buildComponent } from "../../utils/render";
 
 /*----------------------------------------------------------------------------------------------------
  *

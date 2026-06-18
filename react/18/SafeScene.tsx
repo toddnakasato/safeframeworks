@@ -1,6 +1,6 @@
 import { useRef, useEffect, useCallback } from "react";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
-import { createSafeScene } from "../../builders/scene";
+import { buildComponent } from "../../utils/render";
 
 interface SafeSceneProps {
   config: ConfigBase;

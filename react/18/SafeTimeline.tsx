@@ -1,6 +1,6 @@
 import { useRef, useEffect } from "react";
 import type { ConfigBase, OnSafeEvent } from "safecontracts";
-import { createSafeTimeline } from "../../builders/timeline";
+import { buildComponent } from "../../utils/render";
 
 interface SafeTimelineProps {
   config: ConfigBase;
