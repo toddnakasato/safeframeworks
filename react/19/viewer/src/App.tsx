@@ -83,6 +83,8 @@ export default function App() {
   const [proofResults, setProofResults] = useState<Record<string, { passed: number; total: number; failed: number; checks?: any[]; failures?: any[] }>>({});
   const [proofRunning, setProofRunning] = useState(false);
   const [proofView, setProofView] = useState(false);
+  const [proofToast, setProofToast] = useState<{ message: string; color: string } | null>(null);
+  const [runningCommands, setRunningCommands] = useState<Set<string>>(new Set());
 
   useEffect(() => {
     loadStyle(activeStyle, activeTheme);
@@ -121,18 +123,44 @@ export default function App() {
 
   const runProofs = async (commands: string[]) => {
     setProofRunning(true);
+    // Clear previous results for these commands immediately
+    setProofResults(prev => {
+      const next = { ...prev };
+      commands.forEach(c => delete next[c]);
+      return next;
+    });
+    setRunningCommands(new Set(commands));
     try {
       const results = await Promise.all(
         commands.map(async cmd => {
           try {
             const { invoke: tauriInvoke } = await import("@tauri-apps/api/core");
             const out = await tauriInvoke<string>("safecli_run", { name: "safedesk", args: ["prove", cmd] });
-            return [cmd, JSON.parse(out)] as [string, any];
-          } catch { return [cmd, { passed: 0, total: 0, failed: 0 }] as [string, any]; }
+            const parsed = JSON.parse(out);
+            // Update as each command completes
+            const entry = { passed: parsed.passed ?? 0, total: parsed.total ?? 0, failed: parsed.failed ?? 0, checks: parsed.checks, failures: parsed.failures };
+            setProofResults(prev => ({ ...prev, [cmd]: entry }));
+            setRunningCommands(prev => { const next = new Set(prev); next.delete(cmd); return next; });
+            return [cmd, entry] as [string, any];
+          } catch {
+            const entry = { passed: 0, total: 0, failed: -1 };
+            setProofResults(prev => ({ ...prev, [cmd]: entry }));
+            setRunningCommands(prev => { const next = new Set(prev); next.delete(cmd); return next; });
+            return [cmd, entry] as [string, any];
+          }
         })
       );
-      setProofResults(prev => ({ ...prev, ...Object.fromEntries(results.map(([k, v]) => [k, { passed: v.passed ?? 0, total: v.total ?? 0, failed: v.failed ?? 0, checks: v.checks, failures: v.failures }])) }));
-    } finally { setProofRunning(false); }
+      // Toast summary
+      const totalP = results.reduce((s, [,v]) => s + (v.passed ?? 0), 0);
+      const totalT = results.reduce((s, [,v]) => s + (v.total ?? 0), 0);
+      const totalF = results.reduce((s, [,v]) => s + (v.failed ?? 0), 0);
+      const pass = totalF === 0;
+      setProofToast({ message: `${totalP}/${totalT} checks ${pass ? "passed ✓" : `— ${totalF} failed ✗`}`, color: pass ? "var(--sd-success, #15803d)" : "var(--sd-danger, #dc2626)" });
+      setTimeout(() => setProofToast(null), 4000);
+    } finally {
+      setProofRunning(false);
+      setRunningCommands(new Set());
+    }
   };
 
   // EPRPP: event → safedesk paint apply → writes state.json → watcher fires → re-render
@@ -309,13 +337,15 @@ export default function App() {
                 </div>
                 {domain.commands.map(cmd => {
                   const r = proofResults[cmd];
+                  const isRunning = runningCommands.has(cmd);
                   const pass = r && r.failed === 0;
                   const hasResults = r && r.total > 0;
                   return (
-                    <div key={cmd} style={{ border: "1px solid var(--sd-border, #e5e7eb)", borderRadius: 6, marginBottom: 8, overflow: "hidden" }}>
+                    <div key={cmd} style={{ border: "1px solid var(--sd-border, #e5e7eb)", borderRadius: 6, marginBottom: 8, overflow: "hidden", opacity: isRunning ? 0.6 : 1, transition: "opacity 0.2s" }}>
                       <div style={{ padding: "8px 12px", display: "flex", justifyContent: "space-between", alignItems: "center", background: "var(--sd-surface-raised, #fafafa)" }}>
                         <span style={{ fontSize: 13, fontWeight: 600 }}>{cmd}</span>
-                        {hasResults && (
+                        {isRunning && <span style={{ fontSize: 11, color: "var(--sd-text-muted, #6b7280)" }}>⟳ running...</span>}
+                        {!isRunning && hasResults && (
                           <span style={{ fontSize: 12, fontWeight: 600, color: pass ? "var(--sd-success, #15803d)" : "var(--sd-danger, #dc2626)" }}>
                             {r.passed}/{r.total} {pass ? "✓" : "✗"}
                           </span>
@@ -375,6 +405,12 @@ export default function App() {
           </div>
         )}
       </div>
+      {/* Toast */}
+      {proofToast && (
+        <div style={{ position: "fixed", bottom: 24, right: 24, padding: "10px 20px", borderRadius: 6, background: "var(--sd-surface-deep, #1e293b)", color: proofToast.color, fontSize: 13, fontWeight: 600, boxShadow: "0 4px 12px rgba(0,0,0,0.25)", zIndex: 9999, transition: "opacity 0.3s" }}>
+          {proofToast.message}
+        </div>
+      )}
     </div>
   );
 }
