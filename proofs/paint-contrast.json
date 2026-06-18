@@ -1,0 +1,552 @@
+{
+  "ok": true,
+  "total": 108,
+  "passed": 108,
+  "failed": 0,
+  "groups": {
+    "wcag-aa-contrast": 108
+  },
+  "checks": [
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"table\"] [data-role=\"drag-handle\"]: #666 on #fff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"callout\"][data-variant=\"insight\"] [data-...: #1e3a5f on #fff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"callout\"][data-variant=\"warning\"] [data-...: #78350f on #fff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"callout\"][data-variant=\"success\"] [data-...: #14532d on #fff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-nav-user-avatar]: #374151 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"card\"]: #0f172a on #fff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"button\"]: #0f172a on #fff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"button\"][data-variant=\"primary\"]: #fff on #2563eb",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"button\"][data-variant=\"secondary\"]: #0f172a on #f1f5f9",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"button\"][data-variant=\"outline\"]: #0f172a on #fff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"button\"][data-variant=\"ghost\"]: #0f172a on #fff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"button\"][data-variant=\"danger\"]: #fff on #dc2626",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"button\"][data-variant=\"link\"]: #2563eb on #fff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"button\"][data-icon-only]: #475569 on #fff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"button\"][data-status=\"completed\"]: #15803d on #fff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"button\"][data-status=\"active\"]: #2563eb on #fff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"button\"][data-status=\"pending\"]: #475569 on #fff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"table\"]: #0f172a on #fff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"table\"] th: #475569 on #fff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"table\"][data-header-style=\"filled\"] th: #0f172a on #f1f5f9",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"table\"][data-header-style=\"uppercase\"] th: #475569 on #fff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"table\"][data-header-style=\"minimal\"] th: #475569 on #fff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"table\"] [data-role=\"row-number\"], [data-...: #475569 on #fff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"table\"][data-truncate] td: #0f172a on #fff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"tree\"]: #0f172a on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"tree\"] [data-role=\"subtitle\"]: #475569 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"sheet\"]: #0f172a on #fff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"sheet\"] [data-role=\"col-header\"], [data-...: #475569 on #f1f5f9",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"sheet\"][data-variant=\"grouped\"] [data-ro...: #0f172a on #f1f5f9",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"sheet\"][data-surface=\"deep\"]: #fff on #0f172a",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"sheet\"] [data-role=\"formula-bar\"]: #475569 on #f8fafc",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"chart\"]: #0f172a on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"chart\"][data-variant=\"minimal\"]: #475569 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"chart\"][data-variant=\"dense\"]: #0f172a on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"chart\"] [data-role=\"legend\"]: #475569 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"chart\"] [data-role=\"axis\"]: #475569 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"heatmap\"]: #0f172a on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"heatmap\"] [data-role=\"label\"]: #475569 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"timeline\"]: #0f172a on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"timeline\"] [data-role=\"category\"]: #2563eb on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"timeline\"] [data-role=\"date\"]: #475569 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"timeline\"] [data-role=\"description\"]: #475569 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"calendar\"]: #0f172a on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"calendar\"] [data-role=\"calendar-title\"]: #0f172a on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"calendar\"] [data-role=\"calendar-day-name\"]: #475569 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"calendar\"] [data-role=\"calendar-cell\"][d...: #fff on #2563eb",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"calendar\"] [data-role=\"calendar-cell\"][d...: #475569 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"calendar\"][data-size=\"sm\"] [data-role=\"c...: #0f172a on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-role=\"calendar-flat-label\"]: #2563eb on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-role=\"calendar-flat-cell\"][data-today]: #fff on #2563eb",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"week\"]: #0f172a on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-role=\"week-day-header\"]: #475569 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-role=\"week-day-header\"][data-today]: #fff on #2563eb",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"toggle\"]: #0f172a on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"toggle\"][data-label-position] [data-role...: #0f172a on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"toggle\"] [data-role=\"description\"]: #475569 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"toggle\"][data-variant=\"checkbox\"] [data-...: #fff on #2563eb",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"chat\"]: #0f172a on #fff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"chat\"] [data-role=\"chat-message\"][data-f...: #fff on #2563eb",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"chat\"] [data-role=\"chat-message\"][data-f...: #0f172a on #f1f5f9",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"chat\"] [data-role=\"chat-input\"]: #0f172a on #fff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"chat\"] [data-role=\"quick-action\"]: #475569 on #fff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"chat\"] [data-role=\"quick-action\"]:hover: #2563eb on #fff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"tabs\"] [data-tab]: #475569 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"tabs\"] [data-tab]:hover: #0f172a on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"tabs\"][data-variant=\"default\"] [data-tab...: #2563eb on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"tabs\"][data-variant=\"underline\"] [data-t...: #0f172a on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"tabs\"][data-variant=\"pill\"] [data-tab][d...: #fff on #2563eb",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"callout\"]: #0f172a on #fff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"drag-drop\"]: #0f172a on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-role=\"drag-item\"] [data-role=\"drag-type\"]: #475569 on #fff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-role=\"drop-zone\"]: #475569 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"grid\"]: #0f172a on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"grid\"] [data-role=\"grid-label\"]: #475569 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"grid\"] [data-role=\"grid-value\"]: #0f172a on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"input\"]: #0f172a on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"input\"] [data-role=\"field\"]: #0f172a on #fff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"input\"] [data-role=\"field\"]::placeholder: #475569 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"input\"] [data-role=\"display\"]: #0f172a on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"input\"] [data-role=\"display\"][data-link]: #2563eb on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"input\"] [data-role=\"edit-button\"], [data...: #475569 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"input\"] [data-role=\"edit-button\"]:hover: #2563eb on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"input\"] [data-role=\"tag\"]: #0f172a on #f1f5f9",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"picker\"]: #0f172a on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"picker\"] [data-role=\"subtitle\"]: #475569 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"picker\"][data-variant=\"compact\"] [data-r...: #0f172a on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"picker\"] [data-role=\"empty\"]: #475569 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"nav\"]: #0f172a on #fff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-nav-title]: #0f172a on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-nav-subtitle]: #475569 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-nav-item]: #475569 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-nav-item]:hover: #0f172a on #f1f5f9",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-nav-item][data-active]: #fff on #2563eb",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-nav-search-input]: #0f172a on #f1f5f9",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-nav-search-input]::placeholder: #475569 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-nav-user-initials]: #fff on #2563eb",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-nav-user-name]: #0f172a on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-nav-user-email]: #475569 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"list\"]: #0f172a on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"list\"] [data-role=\"description\"]: #475569 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"list\"] [data-role=\"time\"]: #475569 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"list\"] [data-role=\"count\"]: #475569 on #f1f5f9",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"list\"] [data-role=\"status\"]: #475569 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"list\"] [data-role=\"status\"][data-accent=...: #15803d on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"list\"] [data-role=\"status\"][data-accent=...: #b45309 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"list\"] [data-role=\"status\"][data-accent=...: #dc2626 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"list\"] [data-role=\"status\"][data-accent=...: #2563eb on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"list\"] [data-role=\"page-number\"][data-ac...: #fff on #2563eb",
+      "status": "pass"
+    }
+  ],
+  "failures": []
+}
