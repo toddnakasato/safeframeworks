@@ -232,22 +232,12 @@ export default function App() {
         {/* Proofs */}
         <div style={{ padding: 8, borderBottom: "1px solid var(--sd-border, #e5e7eb)" }}>
           <div style={sectionLabel}>Proofs</div>
-          <button onClick={() => { setActiveProof(null); setProofView(true); runProofs(ALL_PROVE_COMMANDS); }} style={itemStyle(activeProof === null && proofView)} disabled={proofRunning}>
-            {proofRunning && activeProof === null ? "Running..." : "All"}
-            {!proofRunning && Object.keys(proofResults).length > 0 && activeProof === null && (() => {
-              const t = ALL_PROVE_COMMANDS.reduce((s, c) => s + (proofResults[c]?.total ?? 0), 0);
-              const p = ALL_PROVE_COMMANDS.reduce((s, c) => s + (proofResults[c]?.passed ?? 0), 0);
-              return t > 0 ? ` (${p}/${t})` : "";
-            })()}
+          <button onClick={() => { setActiveProof(null); setProofView(true); }} style={itemStyle(activeProof === null && proofView)}>
+            All
           </button>
           {PROOF_DOMAINS.map(d => (
-            <button key={d.label} onClick={() => { setActiveProof(d.label); setProofView(true); runProofs(d.commands); }} style={itemStyle(activeProof === d.label && proofView)} disabled={proofRunning}>
-              {proofRunning && activeProof === d.label ? "Running..." : d.label}
-              {!proofRunning && (() => {
-                const t = d.commands.reduce((s, c) => s + (proofResults[c]?.total ?? 0), 0);
-                const p = d.commands.reduce((s, c) => s + (proofResults[c]?.passed ?? 0), 0);
-                return t > 0 ? ` (${p}/${t})` : "";
-              })()}
+            <button key={d.label} onClick={() => { setActiveProof(d.label); setProofView(true); }} style={itemStyle(activeProof === d.label && proofView)}>
+              {d.label}
             </button>
           ))}
         </div>
@@ -284,10 +274,39 @@ export default function App() {
         {proofView ? (
           /* Proof results view */
           <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-            {proofRunning && <div style={{ color: "var(--sd-text-muted, #6b7280)", fontSize: 13 }}>Running proofs...</div>}
+            {/* Run All button */}
+            <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+              <button onClick={() => runProofs(activeProof ? PROOF_DOMAINS.find(d => d.label === activeProof)?.commands ?? [] : ALL_PROVE_COMMANDS)} disabled={proofRunning}
+                style={{ padding: "6px 16px", fontSize: 13, fontWeight: 600, borderRadius: 4, border: "none", cursor: proofRunning ? "wait" : "pointer", background: "var(--sd-accent, #2563eb)", color: "var(--sd-text-inverse, #fff)" }}>
+                {proofRunning ? "Running..." : activeProof ? `Run ${activeProof}` : "Run All"}
+              </button>
+              {(() => {
+                const cmds = activeProof ? PROOF_DOMAINS.find(d => d.label === activeProof)?.commands ?? [] : ALL_PROVE_COMMANDS;
+                const t = cmds.reduce((s, c) => s + (proofResults[c]?.total ?? 0), 0);
+                const p = cmds.reduce((s, c) => s + (proofResults[c]?.passed ?? 0), 0);
+                const f = cmds.reduce((s, c) => s + (proofResults[c]?.failed ?? 0), 0);
+                if (t === 0) return null;
+                return <span style={{ fontSize: 13, fontWeight: 600, color: f === 0 ? "var(--sd-success, #15803d)" : "var(--sd-danger, #dc2626)" }}>{p}/{t} {f === 0 ? "✓" : `(${f} failed)`}</span>;
+              })()}
+            </div>
+
             {(activeProof ? PROOF_DOMAINS.filter(d => d.label === activeProof) : PROOF_DOMAINS).map(domain => (
               <div key={domain.label}>
-                <div style={{ fontSize: 12, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em", color: "var(--sd-text-muted, #6b7280)", marginBottom: 8 }}>{domain.label}</div>
+                <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 8 }}>
+                  <span style={{ fontSize: 12, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em", color: "var(--sd-text-muted, #6b7280)" }}>{domain.label}</span>
+                  {!activeProof && (
+                    <button onClick={() => runProofs(domain.commands)} disabled={proofRunning}
+                      style={{ padding: "2px 8px", fontSize: 10, fontWeight: 600, borderRadius: 3, border: "1px solid var(--sd-border, #d1d5db)", cursor: proofRunning ? "wait" : "pointer", background: "var(--sd-surface-base, #fff)", color: "var(--sd-text, #0f172a)" }}>
+                      Run
+                    </button>
+                  )}
+                  {(() => {
+                    const t = domain.commands.reduce((s, c) => s + (proofResults[c]?.total ?? 0), 0);
+                    const p = domain.commands.reduce((s, c) => s + (proofResults[c]?.passed ?? 0), 0);
+                    if (t === 0) return null;
+                    return <span style={{ fontSize: 11, fontWeight: 600, color: p === t ? "var(--sd-success, #15803d)" : "var(--sd-danger, #dc2626)" }}>{p}/{t}</span>;
+                  })()}
+                </div>
                 {domain.commands.map(cmd => {
                   const r = proofResults[cmd];
                   const pass = r && r.failed === 0;
