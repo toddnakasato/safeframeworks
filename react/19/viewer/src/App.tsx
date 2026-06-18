@@ -32,7 +32,7 @@ class ComponentBoundary extends Component<{ label: string; children: ReactNode }
   static getDerivedStateFromError(err: Error) { return { error: err.message }; }
   componentDidCatch(err: Error, info: ErrorInfo) { console.error(`[${this.props.label}]`, err, info); }
   render() {
-    if (this.state.error) return <div style={{ color: "#dc2626", fontSize: 11, padding: 8, fontFamily: "monospace" }}>Error: {this.state.error}</div>;
+    if (this.state.error) return <div style={{ color: "var(--sd-danger, #dc2626)", fontSize: 11, padding: 8, fontFamily: "monospace" }}>Error: {this.state.error}</div>;
     return this.props.children;
   }
 }
@@ -165,15 +165,19 @@ export default function App() {
     display: "block", width: "100%", textAlign: "left", padding: "4px 8px",
     paddingLeft: 8 + indent * 14,
     fontSize: 13, border: "none", borderRadius: 4, cursor: "pointer",
-    background: active ? "#3b82f6" : "transparent",
-    color: active ? "#fff" : "#1a1a1a",
+    background: active ? "var(--sd-accent, #3b82f6)" : "transparent",
+    color: active ? "var(--sd-text-inverse, #fff)" : "var(--sd-text, #1a1a1a)",
     marginBottom: 2,
   });
 
+  const labelStyle: React.CSSProperties = { fontSize: 11, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.05em", color: "var(--sd-text-muted, #6b7280)", display: "block", marginBottom: 4 };
+  const dropdownStyle: React.CSSProperties = { width: "100%", padding: "4px 8px", fontSize: 13, borderRadius: 4, border: "1px solid var(--sd-border, #d1d5db)", background: "var(--sd-surface-base, #fff)", color: "var(--sd-text, #1a1a1a)" };
+  const sectionLabel: React.CSSProperties = { fontSize: 11, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.05em", color: "var(--sd-text-muted, #6b7280)", marginBottom: 8, padding: "0 4px" };
+
   return (
-    <div style={{ display: "flex", height: "100vh", fontFamily: "system-ui, sans-serif" }}>
+    <div style={{ display: "flex", height: "100vh", fontFamily: "system-ui, sans-serif", background: "var(--sd-surface-base, #fff)", color: "var(--sd-text, #1a1a1a)" }}>
       {/* Sidebar */}
-      <div style={{ width: 220, borderRight: "1px solid var(--sd-border, #e5e7eb)", display: "flex", flexDirection: "column", overflow: "hidden" }}>
+      <div style={{ width: 220, borderRight: "1px solid var(--sd-border, #e5e7eb)", display: "flex", flexDirection: "column", overflow: "hidden", background: "var(--sd-surface-raised, #f9fafb)" }}>
         {/* Brand */}
         <div style={{ padding: 12, borderBottom: "1px solid var(--sd-border, #e5e7eb)", display: "flex", alignItems: "center", gap: 8 }}>
           <img src="/shield.png" alt="SafeDesk" style={{ width: 18, height: 21 }} />
@@ -182,14 +186,14 @@ export default function App() {
         {/* Style switcher — two picklists */}
         <div style={{ padding: 12, borderBottom: "1px solid var(--sd-border, #e5e7eb)", display: "flex", flexDirection: "column", gap: 8 }}>
           <div>
-            <label style={{ fontSize: 11, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.05em", color: "#6b7280", display: "block", marginBottom: 4 }}>Framework</label>
-            <select value={activeStyle} onChange={e => selectStyle(e.target.value)} style={{ width: "100%", padding: "4px 8px", fontSize: 13, borderRadius: 4, border: "1px solid var(--sd-border, #d1d5db)" }}>
+            <label style={labelStyle}>Framework</label>
+            <select value={activeStyle} onChange={e => selectStyle(e.target.value)} style={dropdownStyle}>
               {STYLES.map(s => <option key={s} value={s}>{s}</option>)}
             </select>
           </div>
           <div>
-            <label style={{ fontSize: 11, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.05em", color: "#6b7280", display: "block", marginBottom: 4 }}>Theme</label>
-            <select value={activeTheme} onChange={e => setActiveTheme(e.target.value)} style={{ width: "100%", padding: "4px 8px", fontSize: 13, borderRadius: 4, border: "1px solid var(--sd-border, #d1d5db)" }}>
+            <label style={labelStyle}>Theme</label>
+            <select value={activeTheme} onChange={e => setActiveTheme(e.target.value)} style={dropdownStyle}>
               {(THEMES[activeStyle] ?? ["default"]).map(t => <option key={t} value={t}>{t}</option>)}
             </select>
           </div>
@@ -197,7 +201,7 @@ export default function App() {
 
         {/* Component menu with variation sub-items */}
         <div style={{ flex: 1, overflow: "auto", padding: 8 }}>
-          <div style={{ fontSize: 11, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.05em", color: "#6b7280", marginBottom: 8, padding: "0 4px" }}>Components</div>
+          <div style={sectionLabel}>Components</div>
           <button onClick={() => selectComponent(null)} style={itemStyle(activeComponent === null)}>
             All
           </button>
@@ -217,16 +221,16 @@ export default function App() {
       </div>
 
       {/* Main area */}
-      <div style={{ flex: 1, overflow: "auto", padding: 24 }}>
-        <div style={{ fontSize: 14, fontWeight: 600, marginBottom: 16, color: "#1a1a1a" }}>
+      <div style={{ flex: 1, overflow: "auto", padding: 24, background: "var(--sd-surface-base, #fff)" }}>
+        <div style={{ fontSize: 14, fontWeight: 600, marginBottom: 16, color: "var(--sd-text, #1a1a1a)" }}>
           react/19 — {activeStyle}{activeTheme !== "default" ? `/${activeTheme}` : ""}
-          {activeComponent && <span style={{ fontWeight: 400, color: "#6b7280" }}> — {activeVariation ?? activeComponent}</span>}
+          {activeComponent && <span style={{ fontWeight: 400, color: "var(--sd-text-muted, #6b7280)" }}> — {activeVariation ?? activeComponent}</span>}
         </div>
 
         <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
           {toShow.map(([comp, v]) => (
             <div key={v} style={{ border: "1px solid var(--sd-border, #e5e7eb)", borderRadius: 8, overflow: "hidden" }}>
-              <div style={{ padding: "8px 12px", fontSize: 11, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.05em", color: "#6b7280", borderBottom: "1px solid var(--sd-border, #e5e7eb)", background: "#fafafa" }}>
+              <div style={{ padding: "8px 12px", fontSize: 11, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.05em", color: "var(--sd-text-muted, #6b7280)", borderBottom: "1px solid var(--sd-border, #e5e7eb)", background: "var(--sd-surface-raised, #fafafa)" }}>
                 {v}
               </div>
               <div style={{ padding: 16 }}>
