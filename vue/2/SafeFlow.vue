@@ -1,11 +1,11 @@
 <script lang="ts">
-import { renderSafeFlow, flowData } from '../../builders/flow';
+import { createSafeFlow, flowData } from '../../builders/flow';
 
 export default {
   name: 'SafeFlow',
   props: { config: { type: Object, required: true }, onEvent: { type: Function, default: undefined } },
   mounted() {
-    renderSafeFlow(this.$refs.flowSvg, this.config, flowData(this.config), this.onEvent);
+    createSafeFlow(this.$refs.flowSvg, this.config, flowData(this.config), this.onEvent);
   },
 };
 </script>

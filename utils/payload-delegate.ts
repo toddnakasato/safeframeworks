@@ -18,17 +18,8 @@ async function invoke<T>(cmd: string, args?: Record<string, any>): Promise<T> {
  * BuildPayloadFn implementation for Tauri desktop.
  * Calls safedesk payload build via safecli_run Tauri command.
  */
-export const buildPayloadViaCli: BuildPayloadFn = async (
-    component: string,
-    event: string,
-    coords: Record<string, any>,
-    rows: Record<string, any>[],
-): Promise<PayloadResult> => {
-    const args: string[] = [
-        "payload", "build",
-        "--component", component,
-        "--event", event,
-    ];
+export const buildPayloadViaCli: BuildPayloadFn = async (component: string, event: string, coords: Record<string, any>, rows: Record<string, any>[]): Promise<PayloadResult> => {
+    const args: string[] = ["payload", "build", "--component", component, "--event", event];
 
     if (rows.length > 0) {
         args.push("--data", JSON.stringify(rows));

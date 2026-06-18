@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-  import { renderSafeFlow, flowData } from '../../builders/flow';
+  import { createSafeFlow, flowData } from '../../builders/flow';
 
   let { config, onEvent }: { config: ConfigBase; onEvent?: OnSafeEvent } = $props();
 
@@ -8,7 +8,7 @@
 
   $effect(() => {
     svg.innerHTML = '';
-    renderSafeFlow(svg, config, flowData(config), onEvent);
+    createSafeFlow(svg, config, flowData(config), onEvent);
   });
 </script>
 

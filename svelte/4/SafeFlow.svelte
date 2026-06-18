@@ -1,7 +1,7 @@
 <script lang="ts">
   import { afterUpdate } from 'svelte';
   import type { ConfigBase, OnSafeEvent } from 'safecontracts';
-  import { renderSafeFlow, flowData } from '../../builders/flow';
+  import { createSafeFlow, flowData } from '../../builders/flow';
 
   export let config: ConfigBase;
   export let onEvent: OnSafeEvent | undefined = undefined;
@@ -10,7 +10,7 @@
 
   afterUpdate(() => {
     svg.innerHTML = '';
-    renderSafeFlow(svg, config, flowData(config), onEvent);
+    createSafeFlow(svg, config, flowData(config), onEvent);
   });
 </script>
 
