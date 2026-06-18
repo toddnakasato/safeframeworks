@@ -1,7 +1,7 @@
 {
   "component": "map",
   "metadata": {
-    "variant": "dark",
+    "variant": "default",
     "title": "Manhattan Offices",
     "latField": "lat",
     "lngField": "lng",
