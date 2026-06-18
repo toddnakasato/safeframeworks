@@ -27,34 +27,34 @@ import buttonsPaginationConfig from "./config/button/buttons-pagination.json";
 import buttonsStepperConfig from "./config/button/buttons-stepper.json";
 import buttonsToggleFilterConfig from "./config/button/buttons-toggle-filter.json";
 import buttonsVerticalStackConfig from "./config/button/buttons-vertical-stack.json";
-import calendar1Config from "./config/calendar/calendar1.json";
-import calendar2Config from "./config/calendar/calendar2.json";
-import callout1Config from "./config/callout/callout1.json";
-import callout2Config from "./config/callout/callout2.json";
-import card1Config from "./config/card/card1.json";
-import card2Config from "./config/card/card2.json";
+import calendarGridConfig from "./config/calendar/calendar-grid.json";
+import calendarYearConfig from "./config/calendar/calendar-year.json";
+import calloutInfoConfig from "./config/callout/callout-info.json";
+import calloutWarningConfig from "./config/callout/callout-warning.json";
+import cardOutlineConfig from "./config/card/card-outline.json";
+import cardElevatedConfig from "./config/card/card-elevated.json";
 import cardInlineConfig from "./config/card/card-inline.json";
 import cardStateConfig from "./config/card/card-state.json";
-import chart1Config from "./config/chart/chart1.json";
-import chart2Config from "./config/chart/chart2.json";
-import chat1Config from "./config/chat/chat1.json";
-import chat2Config from "./config/chat/chat2.json";
-import columns1Config from "./config/columns/columns1.json";
-import columns2Config from "./config/columns/columns2.json";
-import dragDrop1Config from "./config/drag-drop/drag-drop1.json";
-import dragDrop2Config from "./config/drag-drop/drag-drop2.json";
-import funnel1Config from "./config/funnel/funnel1.json";
-import funnel2Config from "./config/funnel/funnel2.json";
-import gauge1Config from "./config/gauge/gauge1.json";
-import gauge2Config from "./config/gauge/gauge2.json";
-import grid1Config from "./config/grid/grid1.json";
-import grid2Config from "./config/grid/grid2.json";
-import heatmap1Config from "./config/heatmap/heatmap1.json";
-import heatmap2Config from "./config/heatmap/heatmap2.json";
-import input1Config from "./config/input/input1.json";
-import input2Config from "./config/input/input2.json";
-import layout1Config from "./config/layout/layout1.json";
-import layout2Config from "./config/layout/layout2.json";
+import chartBarConfig from "./config/chart/chart-bar.json";
+import chartPieConfig from "./config/chart/chart-pie.json";
+import chatConversationConfig from "./config/chat/chat-conversation.json";
+import chatSimpleConfig from "./config/chat/chat-simple.json";
+import columnsTwoConfig from "./config/columns/columns-two.json";
+import columnsThreeConfig from "./config/columns/columns-three.json";
+import dragDropListConfig from "./config/drag-drop/drag-drop-list.json";
+import dragDropKanbanConfig from "./config/drag-drop/drag-drop-kanban.json";
+import funnelVerticalConfig from "./config/funnel/funnel-vertical.json";
+import funnelHorizontalConfig from "./config/funnel/funnel-horizontal.json";
+import gaugeRadialConfig from "./config/gauge/gauge-radial.json";
+import gaugeMinimalConfig from "./config/gauge/gauge-minimal.json";
+import gridDetailConfig from "./config/grid/grid-detail.json";
+import gridCompactConfig from "./config/grid/grid-compact.json";
+import heatmapMatrixConfig from "./config/heatmap/heatmap-matrix.json";
+import heatmapDenseConfig from "./config/heatmap/heatmap-dense.json";
+import inputFormConfig from "./config/input/input-form.json";
+import inputSingleConfig from "./config/input/input-single.json";
+import layoutStackConfig from "./config/layout/layout-stack.json";
+import layoutSidebarConfig from "./config/layout/layout-sidebar.json";
 import listActionsConfig from "./config/list/list-actions.json";
 import listColumnsContactsConfig from "./config/list/list-columns-contacts.json";
 import listFileBrowserConfig from "./config/list/list-file-browser.json";
@@ -66,12 +66,12 @@ import listSelectMultipleConfig from "./config/list/list-select-multiple.json";
 import listSelectSingleConfig from "./config/list/list-select-single.json";
 import listSimpleHorizontalConfig from "./config/list/list-simple-horizontal.json";
 import listSimplePagedConfig from "./config/list/list-simple-paged.json";
-import map1Config from "./config/map/map1.json";
-import map2Config from "./config/map/map2.json";
-import nav1Config from "./config/nav/nav1.json";
-import nav2Config from "./config/nav/nav2.json";
-import picker1Config from "./config/picker/picker1.json";
-import picker2Config from "./config/picker/picker2.json";
+import mapMarkersConfig from "./config/map/map-markers.json";
+import mapPathConfig from "./config/map/map-path.json";
+import navHorizontalConfig from "./config/nav/nav-horizontal.json";
+import navSidebarConfig from "./config/nav/nav-sidebar.json";
+import pickerListConfig from "./config/picker/picker-list.json";
+import pickerCardConfig from "./config/picker/picker-card.json";
 import flowArcTradeConfig from "./config/flow/flow-arc-trade.json";
 import flowChordTradeConfig from "./config/flow/flow-chord-trade.json";
 import flowForceTeamConfig from "./config/flow/flow-force-team.json";
@@ -95,21 +95,21 @@ import tableRowNumbersConfig from "./config/table/table-row-numbers.json";
 import tableTransactionsConfig from "./config/table/table-transactions.json";
 import tableContactsConfig from "./config/table/table-contacts.json";
 import tableEventsConfig from "./config/table/table-events.json";
-import tabs1Config from "./config/tabs/tabs1.json";
-import tabs2Config from "./config/tabs/tabs2.json";
-import timeline1Config from "./config/timeline/timeline1.json";
-import timeline2Config from "./config/timeline/timeline2.json";
-import toggle1Config from "./config/toggle/toggle1.json";
-import toggle2Config from "./config/toggle/toggle2.json";
-import tree1Config from "./config/tree/tree1.json";
-import tree2Config from "./config/tree/tree2.json";
+import tabsHorizontalConfig from "./config/tabs/tabs-horizontal.json";
+import tabsVerticalConfig from "./config/tabs/tabs-vertical.json";
+import timelineVerticalConfig from "./config/timeline/timeline-vertical.json";
+import timelineAlternatingConfig from "./config/timeline/timeline-alternating.json";
+import toggleSwitchConfig from "./config/toggle/toggle-switch.json";
+import toggleCheckboxConfig from "./config/toggle/toggle-checkbox.json";
+import treeNestedConfig from "./config/tree/tree-nested.json";
+import treeFlatConfig from "./config/tree/tree-flat.json";
 import hierarchyIcicleDiskConfig from "./config/hierarchy/hierarchy-icicle-disk.json";
 import hierarchyPackBudgetConfig from "./config/hierarchy/hierarchy-pack-budget.json";
 import hierarchySunburstDiskConfig from "./config/hierarchy/hierarchy-sunburst-disk.json";
 import hierarchyTreemapDiskConfig from "./config/hierarchy/hierarchy-treemap-disk.json";
-import week1Config from "./config/week/week1.json";
-import week2Config from "./config/week/week2.json";
-import week3Config from "./config/week/week3.json";
+import weekFullConfig from "./config/week/week-full.json";
+import weekWorkweekConfig from "./config/week/week-workweek.json";
+import weekCompactConfig from "./config/week/week-compact.json";
 
 import cardInfoData from "./data/card-info.json";
 import chartSeriesData from "./data/chart-series.json";
@@ -225,58 +225,58 @@ export const SAMPLES: Record<string, Record<string, ConfigBase>> = {
         "buttons-vertical-stack": resolveData(buttonsVerticalStackConfig as unknown as ConfigBase),
     },
     calendar: {
-        "calendar1": resolveData(calendar1Config as unknown as ConfigBase),
-        "calendar2": resolveData(calendar2Config as unknown as ConfigBase),
+        "calendar-grid": resolveData(calendarGridConfig as unknown as ConfigBase),
+        "calendar-year": resolveData(calendarYearConfig as unknown as ConfigBase),
     },
     callout: {
-        "callout1": resolveData(callout1Config as unknown as ConfigBase),
-        "callout2": resolveData(callout2Config as unknown as ConfigBase),
+        "callout-info": resolveData(calloutInfoConfig as unknown as ConfigBase),
+        "callout-warning": resolveData(calloutWarningConfig as unknown as ConfigBase),
     },
     card: {
-        "card1": resolveData(card1Config as unknown as ConfigBase),
-        "card2": resolveData(card2Config as unknown as ConfigBase),
+        "card-outline": resolveData(cardOutlineConfig as unknown as ConfigBase),
+        "card-elevated": resolveData(cardElevatedConfig as unknown as ConfigBase),
         "card-inline": resolveData(cardInlineConfig as unknown as ConfigBase),
         "card-state": resolveData(cardStateConfig as unknown as ConfigBase),
     },
     chart: {
-        "chart1": resolveData(chart1Config as unknown as ConfigBase),
-        "chart2": resolveData(chart2Config as unknown as ConfigBase),
+        "chart-bar": resolveData(chartBarConfig as unknown as ConfigBase),
+        "chart-pie": resolveData(chartPieConfig as unknown as ConfigBase),
     },
     chat: {
-        "chat1": resolveData(chat1Config as unknown as ConfigBase),
-        "chat2": resolveData(chat2Config as unknown as ConfigBase),
+        "chat-conversation": resolveData(chatConversationConfig as unknown as ConfigBase),
+        "chat-simple": resolveData(chatSimpleConfig as unknown as ConfigBase),
     },
     columns: {
-        "columns1": resolveData(columns1Config as unknown as ConfigBase),
-        "columns2": resolveData(columns2Config as unknown as ConfigBase),
+        "columns-two": resolveData(columnsTwoConfig as unknown as ConfigBase),
+        "columns-three": resolveData(columnsThreeConfig as unknown as ConfigBase),
     },
     "drag-drop": {
-        "drag-drop1": resolveData(dragDrop1Config as unknown as ConfigBase),
-        "drag-drop2": resolveData(dragDrop2Config as unknown as ConfigBase),
+        "drag-drop-list": resolveData(dragDropListConfig as unknown as ConfigBase),
+        "drag-drop-kanban": resolveData(dragDropKanbanConfig as unknown as ConfigBase),
     },
     funnel: {
-        "funnel1": resolveData(funnel1Config as unknown as ConfigBase),
-        "funnel2": resolveData(funnel2Config as unknown as ConfigBase),
+        "funnel-vertical": resolveData(funnelVerticalConfig as unknown as ConfigBase),
+        "funnel-horizontal": resolveData(funnelHorizontalConfig as unknown as ConfigBase),
     },
     gauge: {
-        "gauge1": resolveData(gauge1Config as unknown as ConfigBase),
-        "gauge2": resolveData(gauge2Config as unknown as ConfigBase),
+        "gauge-radial": resolveData(gaugeRadialConfig as unknown as ConfigBase),
+        "gauge-minimal": resolveData(gaugeMinimalConfig as unknown as ConfigBase),
     },
     grid: {
-        "grid1": resolveData(grid1Config as unknown as ConfigBase),
-        "grid2": resolveData(grid2Config as unknown as ConfigBase),
+        "grid-detail": resolveData(gridDetailConfig as unknown as ConfigBase),
+        "grid-compact": resolveData(gridCompactConfig as unknown as ConfigBase),
     },
     heatmap: {
-        "heatmap1": resolveData(heatmap1Config as unknown as ConfigBase),
-        "heatmap2": resolveData(heatmap2Config as unknown as ConfigBase),
+        "heatmap-matrix": resolveData(heatmapMatrixConfig as unknown as ConfigBase),
+        "heatmap-dense": resolveData(heatmapDenseConfig as unknown as ConfigBase),
     },
     input: {
-        "input1": resolveData(input1Config as unknown as ConfigBase),
-        "input2": resolveData(input2Config as unknown as ConfigBase),
+        "input-form": resolveData(inputFormConfig as unknown as ConfigBase),
+        "input-single": resolveData(inputSingleConfig as unknown as ConfigBase),
     },
     layout: {
-        "layout1": resolveData(layout1Config as unknown as ConfigBase),
-        "layout2": resolveData(layout2Config as unknown as ConfigBase),
+        "layout-stack": resolveData(layoutStackConfig as unknown as ConfigBase),
+        "layout-sidebar": resolveData(layoutSidebarConfig as unknown as ConfigBase),
     },
     list: {
         "list-actions": resolveData(listActionsConfig as unknown as ConfigBase),
@@ -292,16 +292,16 @@ export const SAMPLES: Record<string, Record<string, ConfigBase>> = {
         "list-simple-paged": resolveData(listSimplePagedConfig as unknown as ConfigBase),
     },
     map: {
-        "map1": resolveData(map1Config as unknown as ConfigBase),
-        "map2": resolveData(map2Config as unknown as ConfigBase),
+        "map-markers": resolveData(mapMarkersConfig as unknown as ConfigBase),
+        "map-path": resolveData(mapPathConfig as unknown as ConfigBase),
     },
     nav: {
-        "nav1": resolveData(nav1Config as unknown as ConfigBase),
-        "nav2": resolveData(nav2Config as unknown as ConfigBase),
+        "nav-horizontal": resolveData(navHorizontalConfig as unknown as ConfigBase),
+        "nav-sidebar": resolveData(navSidebarConfig as unknown as ConfigBase),
     },
     picker: {
-        "picker1": resolveData(picker1Config as unknown as ConfigBase),
-        "picker2": resolveData(picker2Config as unknown as ConfigBase),
+        "picker-list": resolveData(pickerListConfig as unknown as ConfigBase),
+        "picker-card": resolveData(pickerCardConfig as unknown as ConfigBase),
     },
     flow: {
         "flow-arc-trade": resolveData(flowArcTradeConfig as unknown as ConfigBase),
@@ -333,20 +333,20 @@ export const SAMPLES: Record<string, Record<string, ConfigBase>> = {
         "table-events": resolveData(tableEventsConfig as unknown as ConfigBase),
     },
     tabs: {
-        "tabs1": resolveData(tabs1Config as unknown as ConfigBase),
-        "tabs2": resolveData(tabs2Config as unknown as ConfigBase),
+        "tabs-horizontal": resolveData(tabsHorizontalConfig as unknown as ConfigBase),
+        "tabs-vertical": resolveData(tabsVerticalConfig as unknown as ConfigBase),
     },
     timeline: {
-        "timeline1": resolveData(timeline1Config as unknown as ConfigBase),
-        "timeline2": resolveData(timeline2Config as unknown as ConfigBase),
+        "timeline-vertical": resolveData(timelineVerticalConfig as unknown as ConfigBase),
+        "timeline-alternating": resolveData(timelineAlternatingConfig as unknown as ConfigBase),
     },
     toggle: {
-        "toggle1": resolveData(toggle1Config as unknown as ConfigBase),
-        "toggle2": resolveData(toggle2Config as unknown as ConfigBase),
+        "toggle-switch": resolveData(toggleSwitchConfig as unknown as ConfigBase),
+        "toggle-checkbox": resolveData(toggleCheckboxConfig as unknown as ConfigBase),
     },
     tree: {
-        "tree1": resolveData(tree1Config as unknown as ConfigBase),
-        "tree2": resolveData(tree2Config as unknown as ConfigBase),
+        "tree-nested": resolveData(treeNestedConfig as unknown as ConfigBase),
+        "tree-flat": resolveData(treeFlatConfig as unknown as ConfigBase),
     },
     hierarchy: {
         "hierarchy-icicle-disk": resolveData(hierarchyIcicleDiskConfig as unknown as ConfigBase),
@@ -355,8 +355,8 @@ export const SAMPLES: Record<string, Record<string, ConfigBase>> = {
         "hierarchy-treemap-disk": resolveData(hierarchyTreemapDiskConfig as unknown as ConfigBase),
     },
     week: {
-        "week1": resolveData(week1Config as unknown as ConfigBase),
-        "week2": resolveData(week2Config as unknown as ConfigBase),
-        "week3": resolveData(week3Config as unknown as ConfigBase),
+        "week-full": resolveData(weekFullConfig as unknown as ConfigBase),
+        "week-workweek": resolveData(weekWorkweekConfig as unknown as ConfigBase),
+        "week-compact": resolveData(weekCompactConfig as unknown as ConfigBase),
     },
 };
