@@ -80,8 +80,9 @@ export default function App() {
   const [activeVariation, setActiveVariation] = useState<string | null>(null);
   const [paintState, setPaintState] = useState<Record<string, any>>({});
   const [activeProof, setActiveProof] = useState<string | null>(null);
-  const [proofResults, setProofResults] = useState<Record<string, { passed: number; total: number; failed: number }>>({});
+  const [proofResults, setProofResults] = useState<Record<string, { passed: number; total: number; failed: number; checks?: any[]; failures?: any[] }>>({});
   const [proofRunning, setProofRunning] = useState(false);
+  const [proofView, setProofView] = useState(false);
 
   useEffect(() => {
     loadStyle(activeStyle, activeTheme);
@@ -130,7 +131,7 @@ export default function App() {
           } catch { return [cmd, { passed: 0, total: 0, failed: 0 }] as [string, any]; }
         })
       );
-      setProofResults(prev => ({ ...prev, ...Object.fromEntries(results.map(([k, v]) => [k, { passed: v.passed ?? 0, total: v.total ?? 0, failed: v.failed ?? 0 }])) }));
+      setProofResults(prev => ({ ...prev, ...Object.fromEntries(results.map(([k, v]) => [k, { passed: v.passed ?? 0, total: v.total ?? 0, failed: v.failed ?? 0, checks: v.checks, failures: v.failures }])) }));
     } finally { setProofRunning(false); }
   };
 
@@ -173,10 +174,12 @@ export default function App() {
   const selectComponent = (name: string | null) => {
     setActiveComponent(name);
     setActiveVariation(null);
+    setProofView(false);
   };
   const selectVariation = (comp: string, variation: string) => {
     setActiveComponent(comp);
     setActiveVariation(variation);
+    setProofView(false);
   };
 
   /** [component, variation] pairs to render, per current selection. */
@@ -229,7 +232,7 @@ export default function App() {
         {/* Proofs */}
         <div style={{ padding: 8, borderBottom: "1px solid var(--sd-border, #e5e7eb)" }}>
           <div style={sectionLabel}>Proofs</div>
-          <button onClick={() => { setActiveProof(null); runProofs(ALL_PROVE_COMMANDS); }} style={itemStyle(activeProof === null && proofRunning)} disabled={proofRunning}>
+          <button onClick={() => { setActiveProof(null); setProofView(true); runProofs(ALL_PROVE_COMMANDS); }} style={itemStyle(activeProof === null && proofView)} disabled={proofRunning}>
             {proofRunning && activeProof === null ? "Running..." : "All"}
             {!proofRunning && Object.keys(proofResults).length > 0 && activeProof === null && (() => {
               const t = ALL_PROVE_COMMANDS.reduce((s, c) => s + (proofResults[c]?.total ?? 0), 0);
@@ -238,7 +241,7 @@ export default function App() {
             })()}
           </button>
           {PROOF_DOMAINS.map(d => (
-            <button key={d.label} onClick={() => { setActiveProof(d.label); runProofs(d.commands); }} style={itemStyle(activeProof === d.label)} disabled={proofRunning}>
+            <button key={d.label} onClick={() => { setActiveProof(d.label); setProofView(true); runProofs(d.commands); }} style={itemStyle(activeProof === d.label && proofView)} disabled={proofRunning}>
               {proofRunning && activeProof === d.label ? "Running..." : d.label}
               {!proofRunning && (() => {
                 const t = d.commands.reduce((s, c) => s + (proofResults[c]?.total ?? 0), 0);
@@ -274,28 +277,84 @@ export default function App() {
       <div style={{ flex: 1, overflow: "auto", padding: 24, background: "var(--sd-surface-base, #fff)" }}>
         <div style={{ fontSize: 14, fontWeight: 600, marginBottom: 16, color: "var(--sd-text, #1a1a1a)" }}>
           react/19 — {activeStyle}{activeTheme !== "default" ? `/${activeTheme}` : ""}
-          {activeComponent && <span style={{ fontWeight: 400, color: "var(--sd-text-muted, #6b7280)" }}> — {activeVariation ?? activeComponent}</span>}
+          {proofView && <span style={{ fontWeight: 400, color: "var(--sd-text-muted, #6b7280)" }}> — proofs{activeProof ? ` / ${activeProof}` : ""}</span>}
+          {!proofView && activeComponent && <span style={{ fontWeight: 400, color: "var(--sd-text-muted, #6b7280)" }}> — {activeVariation ?? activeComponent}</span>}
         </div>
 
-        <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
-          {toShow.map(([comp, v]) => (
-            <div key={v} style={{ border: "1px solid var(--sd-border, #e5e7eb)", borderRadius: 8, overflow: "hidden" }}>
-              <div style={{ padding: "8px 12px", fontSize: 11, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.05em", color: "var(--sd-text-muted, #6b7280)", borderBottom: "1px solid var(--sd-border, #e5e7eb)", background: "var(--sd-surface-raised, #fafafa)" }}>
-                {v}
+        {proofView ? (
+          /* Proof results view */
+          <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+            {proofRunning && <div style={{ color: "var(--sd-text-muted, #6b7280)", fontSize: 13 }}>Running proofs...</div>}
+            {(activeProof ? PROOF_DOMAINS.filter(d => d.label === activeProof) : PROOF_DOMAINS).map(domain => (
+              <div key={domain.label}>
+                <div style={{ fontSize: 12, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em", color: "var(--sd-text-muted, #6b7280)", marginBottom: 8 }}>{domain.label}</div>
+                {domain.commands.map(cmd => {
+                  const r = proofResults[cmd];
+                  const pass = r && r.failed === 0;
+                  const hasResults = r && r.total > 0;
+                  return (
+                    <div key={cmd} style={{ border: "1px solid var(--sd-border, #e5e7eb)", borderRadius: 6, marginBottom: 8, overflow: "hidden" }}>
+                      <div style={{ padding: "8px 12px", display: "flex", justifyContent: "space-between", alignItems: "center", background: "var(--sd-surface-raised, #fafafa)" }}>
+                        <span style={{ fontSize: 13, fontWeight: 600 }}>{cmd}</span>
+                        {hasResults && (
+                          <span style={{ fontSize: 12, fontWeight: 600, color: pass ? "var(--sd-success, #15803d)" : "var(--sd-danger, #dc2626)" }}>
+                            {r.passed}/{r.total} {pass ? "✓" : "✗"}
+                          </span>
+                        )}
+                      </div>
+                      {hasResults && r.failures && r.failures.length > 0 && (
+                        <div style={{ padding: "8px 12px", borderTop: "1px solid var(--sd-border, #e5e7eb)" }}>
+                          {r.failures.map((f: any, i: number) => (
+                            <div key={i} style={{ fontSize: 11, color: "var(--sd-danger, #dc2626)", padding: "2px 0", fontFamily: "monospace" }}>
+                              {f.error?.slice(0, 120)}
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                      {hasResults && r.checks && (
+                        <div style={{ padding: "8px 12px", borderTop: "1px solid var(--sd-border, #e5e7eb)", fontSize: 11, color: "var(--sd-text-dim, #475569)" }}>
+                          {[...new Set((r.checks as any[]).map((c: any) => c.group))].map(group => {
+                            const groupChecks = (r.checks as any[]).filter((c: any) => c.group === group);
+                            const groupPass = groupChecks.filter((c: any) => c.status === "pass").length;
+                            return (
+                              <div key={group} style={{ display: "flex", justifyContent: "space-between", padding: "1px 0" }}>
+                                <span>{group}</span>
+                                <span style={{ color: groupPass === groupChecks.length ? "var(--sd-success, #15803d)" : "var(--sd-danger, #dc2626)", fontWeight: 600 }}>
+                                  {groupPass}/{groupChecks.length}
+                                </span>
+                              </div>
+                            );
+                          })}
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
               </div>
-              <div style={{ padding: 16 }}>
-                <ComponentBoundary label={`${comp}/${v}`}>
-                  {renderConfigBase(paintConfig(SAMPLES[comp][v]), handleEvent)}
-                </ComponentBoundary>
+            ))}
+          </div>
+        ) : (
+          /* Component view */
+          <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+            {toShow.map(([comp, v]) => (
+              <div key={v} style={{ border: "1px solid var(--sd-border, #e5e7eb)", borderRadius: 8, overflow: "hidden" }}>
+                <div style={{ padding: "8px 12px", fontSize: 11, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.05em", color: "var(--sd-text-muted, #6b7280)", borderBottom: "1px solid var(--sd-border, #e5e7eb)", background: "var(--sd-surface-raised, #fafafa)" }}>
+                  {v}
+                </div>
+                <div style={{ padding: 16 }}>
+                  <ComponentBoundary label={`${comp}/${v}`}>
+                    {renderConfigBase(paintConfig(SAMPLES[comp][v]), handleEvent)}
+                  </ComponentBoundary>
+                </div>
+                <div style={{ borderTop: "1px solid var(--sd-border, #e5e7eb)" }}>
+                  <ComponentBoundary label={`proof-viewer/${comp}`}>
+                    {renderConfigBase({ component: "proof-viewer", metadata: { target: comp } } as any, handleEvent)}
+                  </ComponentBoundary>
+                </div>
               </div>
-              <div style={{ borderTop: "1px solid var(--sd-border, #e5e7eb)" }}>
-                <ComponentBoundary label={`proof-viewer/${comp}`}>
-                  {renderConfigBase({ component: "proof-viewer", metadata: { target: comp } } as any, handleEvent)}
-                </ComponentBoundary>
-              </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
