@@ -165,6 +165,7 @@ export function createSafeToggle(container: HTMLElement, config: ConfigBase, ctx
 
     function renderCheck() {
         const labelPos = (metadata.labelPosition as string) ?? "right";
+        const items = (metadata.items as any[]) ?? dataList;
         const grid = el("div", "toggle-check-grid");
         grid.setAttribute("data-label-position", labelPos);
         function render() {
