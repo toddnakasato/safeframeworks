@@ -85,6 +85,7 @@ export default function App() {
   const [proofView, setProofView] = useState(false);
   const [proofToast, setProofToast] = useState<{ message: string; color: string } | null>(null);
   const [runningCommands, setRunningCommands] = useState<Set<string>>(new Set());
+  const [proofProgress, setProofProgress] = useState<{ done: number; total: number } | null>(null);
 
   useEffect(() => {
     loadStyle(activeStyle, activeTheme);
@@ -123,6 +124,7 @@ export default function App() {
 
   const runProofs = async (commands: string[]) => {
     setProofRunning(true);
+    setProofProgress({ done: 0, total: commands.length });
     // Clear previous results for these commands immediately
     setProofResults(prev => {
       const next = { ...prev };
@@ -130,6 +132,7 @@ export default function App() {
       return next;
     });
     setRunningCommands(new Set(commands));
+    let doneCount = 0;
     try {
       const results = await Promise.all(
         commands.map(async cmd => {
@@ -137,15 +140,18 @@ export default function App() {
             const { invoke: tauriInvoke } = await import("@tauri-apps/api/core");
             const out = await tauriInvoke<string>("safecli_run", { name: "safedesk", args: ["prove", cmd] });
             const parsed = JSON.parse(out);
-            // Update as each command completes
             const entry = { passed: parsed.passed ?? 0, total: parsed.total ?? 0, failed: parsed.failed ?? 0, checks: parsed.checks, failures: parsed.failures };
             setProofResults(prev => ({ ...prev, [cmd]: entry }));
             setRunningCommands(prev => { const next = new Set(prev); next.delete(cmd); return next; });
+            doneCount++;
+            setProofProgress({ done: doneCount, total: commands.length });
             return [cmd, entry] as [string, any];
           } catch {
             const entry = { passed: 0, total: 0, failed: -1 };
             setProofResults(prev => ({ ...prev, [cmd]: entry }));
             setRunningCommands(prev => { const next = new Set(prev); next.delete(cmd); return next; });
+            doneCount++;
+            setProofProgress({ done: doneCount, total: commands.length });
             return [cmd, entry] as [string, any];
           }
         })
@@ -160,6 +166,7 @@ export default function App() {
     } finally {
       setProofRunning(false);
       setRunningCommands(new Set());
+      setProofProgress(null);
     }
   };
 
@@ -302,11 +309,12 @@ export default function App() {
         {proofView ? (
           /* Proof results view */
           <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-            {/* Run All button */}
+            {/* Run button + progress */}
             <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
               <button onClick={() => runProofs(activeProof ? PROOF_DOMAINS.find(d => d.label === activeProof)?.commands ?? [] : ALL_PROVE_COMMANDS)} disabled={proofRunning}
-                style={{ padding: "6px 16px", fontSize: 13, fontWeight: 600, borderRadius: 4, border: "none", cursor: proofRunning ? "wait" : "pointer", background: "var(--sd-accent, #2563eb)", color: "var(--sd-text-inverse, #fff)" }}>
-                {proofRunning ? "Running..." : activeProof ? `Run ${activeProof}` : "Run All"}
+                style={{ padding: "6px 16px", fontSize: 13, fontWeight: 600, borderRadius: 4, border: "none", cursor: proofRunning ? "wait" : "pointer", background: proofRunning ? "var(--sd-text-muted, #6b7280)" : "var(--sd-accent, #2563eb)", color: "var(--sd-text-inverse, #fff)", transition: "background 0.2s" }}>
+                {proofRunning ? "⟳" : "▶"}{" "}
+                {proofRunning ? `Running${proofProgress ? ` ${proofProgress.done}/${proofProgress.total}` : "..."}` : activeProof ? `Run ${activeProof}` : "Run All"}
               </button>
               {(() => {
                 const cmds = activeProof ? PROOF_DOMAINS.find(d => d.label === activeProof)?.commands ?? [] : ALL_PROVE_COMMANDS;
@@ -344,7 +352,7 @@ export default function App() {
                     <div key={cmd} style={{ border: "1px solid var(--sd-border, #e5e7eb)", borderRadius: 6, marginBottom: 8, overflow: "hidden", opacity: isRunning ? 0.6 : 1, transition: "opacity 0.2s" }}>
                       <div style={{ padding: "8px 12px", display: "flex", justifyContent: "space-between", alignItems: "center", background: "var(--sd-surface-raised, #fafafa)" }}>
                         <span style={{ fontSize: 13, fontWeight: 600 }}>{cmd}</span>
-                        {isRunning && <span style={{ fontSize: 11, color: "var(--sd-text-muted, #6b7280)" }}>⟳ running...</span>}
+                        {isRunning && <span style={{ fontSize: 11, color: "var(--sd-text-muted, #6b7280)", display: "inline-flex", alignItems: "center", gap: 4 }}><span style={{ display: "inline-block", animation: "spin 1s linear infinite" }}>⟳</span> running</span>}
                         {!isRunning && hasResults && (
                           <span style={{ fontSize: 12, fontWeight: 600, color: pass ? "var(--sd-success, #15803d)" : "var(--sd-danger, #dc2626)" }}>
                             {r.passed}/{r.total} {pass ? "✓" : "✗"}

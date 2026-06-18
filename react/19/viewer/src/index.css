@@ -2,3 +2,4 @@
    components.css fallbacks; products would define --sd-* tokens here. */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: system-ui, -apple-system, sans-serif; color: var(--sd-text, #1a1a1a); background: var(--sd-surface, #fff); }
+@keyframes spin { to { transform: rotate(360deg); } }
