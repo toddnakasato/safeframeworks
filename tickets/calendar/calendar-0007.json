@@ -2,16 +2,27 @@
   "id": "calendar-0007",
   "component": "calendar",
   "type": "variation",
-  "title": "we have a figma specification (calendar variation) that list months horizontally and displays a full year. create this new calendar variation",
-  "description": "we have a figma specification (calendar variation) that list months horizontally and displays a full year. create this new calendar variation",
-  "status": "open",
-  "proves": [
-    "builder-reconcile",
-    "paint-definition"
-  ],
+  "title": "Horizontal year view — 12 months in a scrollable horizontal strip",
+  "description": "New calendar variant that displays all 12 months in a horizontal scrollable row. Each month is a small grid. Based on figma Atom Calendar Month Specs.",
+  "status": "closed",
+  "proves": ["builder-registry", "builder-reconcile"],
   "params": {
     "component": "calendar"
   },
+  "test": {
+    "command": "prove builder-registry",
+    "assert": {
+      "ok": true
+    }
+  },
   "created": "2026-06-18T15:30:43.399Z",
-  "updated": "2026-06-18T15:30:43.399Z"
+  "updated": "2026-06-18T17:30:00.000Z",
+  "variant": "year-horizontal",
+  "resolution": "Added year-horizontal variant. 12 sm months in a flex row with overflow-x scroll. Structure styles for strip + flex-shrink:0 children.",
+  "files": [
+    "safeframeworks/builders/calendar.ts",
+    "safeframeworks/samples/config/calendar/calendar-year-horizontal.json",
+    "safeframeworks/samples/index.ts",
+    "safestyles/core/structure.css"
+  ]
 }

@@ -31,6 +31,7 @@ import calendarSingleMonthConfig from "./config/calendar/calendar-single-month.j
 import calendarBrowseConfig from "./config/calendar/calendar-browse.json";
 import calendarDetailLeftConfig from "./config/calendar/calendar-detail-left.json";
 import calendarDetailRightConfig from "./config/calendar/calendar-detail-right.json";
+import calendarYearHorizontalConfig from "./config/calendar/calendar-year-horizontal.json";
 import calendarYearConfig from "./config/calendar/calendar-year.json";
 import calloutInfoConfig from "./config/callout/callout-info.json";
 import calloutWarningConfig from "./config/callout/callout-warning.json";
@@ -232,6 +233,7 @@ export const SAMPLES: Record<string, Record<string, ConfigBase>> = {
         "calendar-browse": resolveData(calendarBrowseConfig as unknown as ConfigBase),
         "calendar-detail-left": resolveData(calendarDetailLeftConfig as unknown as ConfigBase),
         "calendar-detail-right": resolveData(calendarDetailRightConfig as unknown as ConfigBase),
+        "calendar-year-horizontal": resolveData(calendarYearHorizontalConfig as unknown as ConfigBase),
         "calendar-year": resolveData(calendarYearConfig as unknown as ConfigBase),
     },
     callout: {

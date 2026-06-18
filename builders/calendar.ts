@@ -137,6 +137,16 @@ export function createSafeCalendar(container: HTMLElement, config: ConfigBase, c
             return;
         }
 
+        if (variant === "year-horizontal") {
+            root.setAttribute("data-variant", "year-horizontal");
+            const strip = el("div", "calendar-year-strip");
+            for (let i = 0; i < 12; i++) {
+                strip.appendChild(buildMonthGrid(cfgYear, i, "sm", false, "narrow"));
+            }
+            root.appendChild(strip);
+            return;
+        }
+
         if (variant === "browse") {
             root.setAttribute("data-size", size);
             const month_ = buildMonthGrid(viewYear, viewMonth, size, false, dayFormat);

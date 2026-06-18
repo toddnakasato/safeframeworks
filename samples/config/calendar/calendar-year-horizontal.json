@@ -1,0 +1,10 @@
+{
+  "component": "calendar",
+  "metadata": {
+    "variant": "year-horizontal",
+    "highlightToday": true
+  },
+  "eventHandler": {
+    "handler": "calendar"
+  }
+}
