@@ -37,6 +37,11 @@ import { createSafeToggle } from "../builders/toggle";
 import { createSafeTree } from "../builders/tree";
 import { createSafeWeek } from "../builders/week";
 import { createSafeProofViewer } from "../dev/proof-viewer";
+import { createSafeChart } from "../builders/chart";
+import { createSafeFlow, flowData } from "../builders/flow";
+import { createSafeMap, mapData } from "../builders/map";
+import { createSafeScene } from "../builders/scene";
+import { createSafeStoryFlow } from "../builders/storyflow";
 
 const el = (tag: string, text?: string): HTMLElement => {
     const e = document.createElement(tag);
@@ -139,6 +144,30 @@ export function buildComponent(config: ConfigBase, onEvent?: OnSafeEvent): HTMLE
             break;
         case "week":
             createSafeWeek(container, config, ctx);
+            break;
+        case "chart": {
+            const canvas = document.createElement("canvas");
+            container.appendChild(canvas);
+            createSafeChart(canvas, config, ctx);
+            break;
+        }
+        case "flow": {
+            const svgEl = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+            svgEl.style.width = "100%";
+            svgEl.style.maxWidth = "600px";
+            svgEl.style.display = "block";
+            container.appendChild(svgEl);
+            createSafeFlow(svgEl, config, flowData(config), ctx);
+            break;
+        }
+        case "map":
+            createSafeMap(container, config, mapData(config), ctx);
+            break;
+        case "scene":
+            createSafeScene(container, config, ctx);
+            break;
+        case "story-flow":
+            createSafeStoryFlow(container, config, ctx);
             break;
         case "proof-viewer":
             createSafeProofViewer(container, config, stampedOnEvent);

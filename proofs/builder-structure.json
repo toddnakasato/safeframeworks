@@ -1,8 +1,8 @@
 {
   "ok": true,
   "component": "all",
-  "total": 409,
-  "passed": 409,
+  "total": 438,
+  "passed": 438,
   "failed": 0,
   "groups": {
     "uses-readList-or-readRecord": 19,
@@ -19,7 +19,8 @@
     "no-cross-function-scope-leak": 29,
     "no-local-contract-interfaces": 27,
     "no-function-tdz": 29,
-    "standard-export-name": 29
+    "standard-export-name": 29,
+    "routed-through-render": 29
   },
   "checks": [
     {
@@ -2008,6 +2009,151 @@
       "status": "pass"
     },
     {
+      "group": "routed-through-render",
+      "name": "funnel: routed in render.ts",
+      "status": "pass"
+    },
+    {
+      "group": "routed-through-render",
+      "name": "callout: routed in render.ts",
+      "status": "pass"
+    },
+    {
+      "group": "routed-through-render",
+      "name": "week: routed in render.ts",
+      "status": "pass"
+    },
+    {
+      "group": "routed-through-render",
+      "name": "table: routed in render.ts",
+      "status": "pass"
+    },
+    {
+      "group": "routed-through-render",
+      "name": "nav: routed in render.ts",
+      "status": "pass"
+    },
+    {
+      "group": "routed-through-render",
+      "name": "input: routed in render.ts",
+      "status": "pass"
+    },
+    {
+      "group": "routed-through-render",
+      "name": "button: routed in render.ts",
+      "status": "pass"
+    },
+    {
+      "group": "routed-through-render",
+      "name": "sheet: routed in render.ts",
+      "status": "pass"
+    },
+    {
+      "group": "routed-through-render",
+      "name": "chat: routed in render.ts",
+      "status": "pass"
+    },
+    {
+      "group": "routed-through-render",
+      "name": "columns: routed in render.ts",
+      "status": "pass"
+    },
+    {
+      "group": "routed-through-render",
+      "name": "metric: routed in render.ts",
+      "status": "pass"
+    },
+    {
+      "group": "routed-through-render",
+      "name": "storyflow: routed in render.ts",
+      "status": "pass"
+    },
+    {
+      "group": "routed-through-render",
+      "name": "calendar: routed in render.ts",
+      "status": "pass"
+    },
+    {
+      "group": "routed-through-render",
+      "name": "card: routed in render.ts",
+      "status": "pass"
+    },
+    {
+      "group": "routed-through-render",
+      "name": "map: routed in render.ts",
+      "status": "pass"
+    },
+    {
+      "group": "routed-through-render",
+      "name": "hierarchy: routed in render.ts",
+      "status": "pass"
+    },
+    {
+      "group": "routed-through-render",
+      "name": "flow: routed in render.ts",
+      "status": "pass"
+    },
+    {
+      "group": "routed-through-render",
+      "name": "chart: routed in render.ts",
+      "status": "pass"
+    },
+    {
+      "group": "routed-through-render",
+      "name": "scene: routed in render.ts",
+      "status": "pass"
+    },
+    {
+      "group": "routed-through-render",
+      "name": "dragdrop: routed in render.ts",
+      "status": "pass"
+    },
+    {
+      "group": "routed-through-render",
+      "name": "tabs: routed in render.ts",
+      "status": "pass"
+    },
+    {
+      "group": "routed-through-render",
+      "name": "list: routed in render.ts",
+      "status": "pass"
+    },
+    {
+      "group": "routed-through-render",
+      "name": "timeline: routed in render.ts",
+      "status": "pass"
+    },
+    {
+      "group": "routed-through-render",
+      "name": "tree: routed in render.ts",
+      "status": "pass"
+    },
+    {
+      "group": "routed-through-render",
+      "name": "gauge: routed in render.ts",
+      "status": "pass"
+    },
+    {
+      "group": "routed-through-render",
+      "name": "picker: routed in render.ts",
+      "status": "pass"
+    },
+    {
+      "group": "routed-through-render",
+      "name": "grid: routed in render.ts",
+      "status": "pass"
+    },
+    {
+      "group": "routed-through-render",
+      "name": "heatmap: routed in render.ts",
+      "status": "pass"
+    },
+    {
+      "group": "routed-through-render",
+      "name": "toggle: routed in render.ts",
+      "status": "pass"
+    },
+    {
       "group": "required-metadata-fields",
       "name": "funnel/funnel1.json: has required field config",
       "status": "pass"
@@ -2069,5 +2215,5 @@
     }
   ],
   "failures": [],
-  "ts": "2026-06-18T10:14:27.532Z"
+  "ts": "2026-06-18T10:18:14.076Z"
 }

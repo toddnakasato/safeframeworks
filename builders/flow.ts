@@ -8,33 +8,6 @@ import { resolveColors } from "../../safecontracts/src/palette";
 import { applyIntent, readRecord } from "../utils/util";
 
 /*----------------------------------------------------------------------------------------------------
-  *
-  * Implementation
-  *
-  ----------------------------------------------------------------------------------------------------*/
-
-export function flowData(config: ConfigBase): FlowData {
-    const inline = readRecord(config) as unknown as FlowData;
-    return inline && Array.isArray(inline.nodes) ? inline : { nodes: [], links: [] };
-}
-
-function accentColor(node: FlowNode | undefined, idx: number, colors: string[], el: SVGSVGElement): string {
-    if (node?.accent) {
-        const resolved = getComputedStyle(el).getPropertyValue(`--sd-${node.accent}`).trim();
-        if (resolved) return resolved;
-    }
-    return colors[idx % colors.length];
-}
-
-function nodeEvent(ctx: SafeFireContext, name: string | undefined) {
-    ctx.fire("node:click", { name });
-}
-
-function linkEvent(ctx: SafeFireContext, source: string | undefined, target: string | undefined, value: number) {
-    ctx.fire("link:click", { source, target, value });
-}
-
-/*----------------------------------------------------------------------------------------------------
  *
  * Implementation
  *
@@ -334,4 +307,31 @@ function renderArc(svgEl: SVGSVGElement, data: FlowData, metadata: Record<string
             .attr("font-size", 10)
             .text((d) => d.name);
     }
+}
+
+/*----------------------------------------------------------------------------------------------------
+  *
+  * Helpers
+  *
+  ----------------------------------------------------------------------------------------------------*/
+
+export function flowData(config: ConfigBase): FlowData {
+    const inline = readRecord(config) as unknown as FlowData;
+    return inline && Array.isArray(inline.nodes) ? inline : { nodes: [], links: [] };
+}
+
+function accentColor(node: FlowNode | undefined, idx: number, colors: string[], el: SVGSVGElement): string {
+    if (node?.accent) {
+        const resolved = getComputedStyle(el).getPropertyValue(`--sd-${node.accent}`).trim();
+        if (resolved) return resolved;
+    }
+    return colors[idx % colors.length];
+}
+
+function nodeEvent(ctx: SafeFireContext, name: string | undefined) {
+    ctx.fire("node:click", { name });
+}
+
+function linkEvent(ctx: SafeFireContext, source: string | undefined, target: string | undefined, value: number) {
+    ctx.fire("link:click", { source, target, value });
 }
