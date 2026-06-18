@@ -1,0 +1,25 @@
+{
+  "component": "calendar",
+  "metadata": {
+    "variant": "detail-left",
+    "size": "md",
+    "dayFormat": "short",
+    "showNav": true,
+    "highlightToday": true
+  },
+  "data": {
+    "events": {
+      "inline": [
+        { "date": "2026-06-18", "title": "Team standup", "time": "9:00 AM", "description": "Daily sync" },
+        { "date": "2026-06-18", "title": "Design review", "time": "2:00 PM", "description": "Review calendar variants" },
+        { "date": "2026-06-18", "title": "Deploy v2.4", "time": "4:30 PM" },
+        { "date": "2026-06-20", "title": "Sprint planning", "time": "10:00 AM", "description": "Plan next sprint" },
+        { "date": "2026-06-20", "title": "Lunch with team", "time": "12:00 PM" },
+        { "date": "2026-06-25", "title": "Release day", "time": "9:00 AM", "description": "Ship it" }
+      ]
+    }
+  },
+  "eventHandler": {
+    "handler": "calendar"
+  }
+}

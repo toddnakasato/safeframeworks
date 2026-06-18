@@ -1,8 +1,8 @@
 {
   "ok": true,
   "component": "all",
-  "total": 282,
-  "passed": 282,
+  "total": 283,
+  "passed": 283,
   "failed": 0,
   "groups": {
     "no-contracts-emit": 29,
@@ -16,7 +16,7 @@
     "render-creates-ctx": 1,
     "render-injects-transport": 1,
     "no-empty-samples": 20,
-    "valid-sample-variant": 30
+    "valid-sample-variant": 31
   },
   "checks": [
     {
@@ -1281,12 +1281,17 @@
     },
     {
       "group": "valid-sample-variant",
-      "name": "calendar/calendar2.json: variant 'year' is valid",
+      "name": "calendar/calendar-year.json: variant 'year' is valid",
       "status": "pass"
     },
     {
       "group": "valid-sample-variant",
-      "name": "calendar/calendar1.json: variant 'grid' is valid",
+      "name": "calendar/calendar-single-month.json: variant 'grid' is valid",
+      "status": "pass"
+    },
+    {
+      "group": "valid-sample-variant",
+      "name": "calendar/calendar-browse.json: variant 'browse' is valid",
       "status": "pass"
     },
     {
@@ -1311,22 +1316,22 @@
     },
     {
       "group": "valid-sample-variant",
-      "name": "layout/layout2.json: variant 'left-main' is valid",
+      "name": "layout/layout-sidebar.json: variant 'left-main' is valid",
       "status": "pass"
     },
     {
       "group": "valid-sample-variant",
-      "name": "layout/layout1.json: variant 'stack' is valid",
+      "name": "layout/layout-stack.json: variant 'stack' is valid",
       "status": "pass"
     },
     {
       "group": "valid-sample-variant",
-      "name": "toggle/toggle2.json: variant 'switch' is valid",
+      "name": "toggle/toggle-checkbox.json: variant 'switch' is valid",
       "status": "pass"
     },
     {
       "group": "valid-sample-variant",
-      "name": "toggle/toggle1.json: variant 'switch' is valid",
+      "name": "toggle/toggle-switch.json: variant 'switch' is valid",
       "status": "pass"
     },
     {
@@ -1401,12 +1406,12 @@
     },
     {
       "group": "valid-sample-variant",
-      "name": "timeline/timeline1.json: variant 'default' is valid",
+      "name": "timeline/timeline-vertical.json: variant 'default' is valid",
       "status": "pass"
     },
     {
       "group": "valid-sample-variant",
-      "name": "timeline/timeline2.json: variant 'horizontal' is valid",
+      "name": "timeline/timeline-alternating.json: variant 'horizontal' is valid",
       "status": "pass"
     },
     {
@@ -1431,5 +1436,5 @@
     }
   ],
   "failures": [],
-  "ts": "2026-06-18T13:56:04.865Z"
+  "ts": "2026-06-18T15:15:25.781Z"
 }

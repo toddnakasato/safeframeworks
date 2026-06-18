@@ -3407,65 +3407,65 @@
     },
     {
       "group": "required-metadata-fields",
-      "name": "funnel/funnel1.json: has required field config",
+      "name": "funnel/funnel-horizontal.json: has required field config",
       "status": "pass"
     },
     {
       "group": "required-metadata-fields",
-      "name": "funnel/funnel2.json: has required field config",
+      "name": "funnel/funnel-vertical.json: has required field config",
       "status": "pass"
     },
     {
       "group": "required-metadata-fields",
-      "name": "chart/chart2.json: has required field config",
+      "name": "chart/chart-bar.json: has required field config",
       "status": "pass"
     },
     {
       "group": "required-metadata-fields",
-      "name": "chart/chart1.json: has required field config",
+      "name": "chart/chart-pie.json: has required field config",
       "status": "pass"
     },
     {
       "group": "required-metadata-fields",
-      "name": "timeline/timeline1.json: has required field config",
+      "name": "timeline/timeline-vertical.json: has required field config",
       "status": "pass"
     },
     {
       "group": "required-metadata-fields",
-      "name": "timeline/timeline2.json: has required field config",
+      "name": "timeline/timeline-alternating.json: has required field config",
       "status": "pass"
     },
     {
       "group": "required-metadata-fields",
-      "name": "gauge/gauge2.json: has required field config",
+      "name": "gauge/gauge-radial.json: has required field config",
       "status": "pass"
     },
     {
       "group": "required-metadata-fields",
-      "name": "gauge/gauge1.json: has required field config",
+      "name": "gauge/gauge-minimal.json: has required field config",
       "status": "pass"
     },
     {
       "group": "required-metadata-fields",
-      "name": "picker/picker1.json: has required field config",
+      "name": "picker/picker-list.json: has required field config",
       "status": "pass"
     },
     {
       "group": "required-metadata-fields",
-      "name": "picker/picker2.json: has required field config",
+      "name": "picker/picker-card.json: has required field config",
       "status": "pass"
     },
     {
       "group": "required-metadata-fields",
-      "name": "heatmap/heatmap1.json: has required field config",
+      "name": "heatmap/heatmap-dense.json: has required field config",
       "status": "pass"
     },
     {
       "group": "required-metadata-fields",
-      "name": "heatmap/heatmap2.json: has required field config",
+      "name": "heatmap/heatmap-matrix.json: has required field config",
       "status": "pass"
     }
   ],
   "failures": [],
-  "ts": "2026-06-18T13:56:04.969Z"
+  "ts": "2026-06-18T15:15:25.877Z"
 }

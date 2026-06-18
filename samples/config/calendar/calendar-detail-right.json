@@ -1,0 +1,24 @@
+{
+  "component": "calendar",
+  "metadata": {
+    "variant": "detail-right",
+    "size": "md",
+    "dayFormat": "short",
+    "showNav": true,
+    "highlightToday": true
+  },
+  "data": {
+    "events": {
+      "inline": [
+        { "date": "2026-06-18", "title": "Code review", "time": "10:00 AM", "description": "PR #42 calendar variants" },
+        { "date": "2026-06-18", "title": "1:1 with manager", "time": "3:00 PM" },
+        { "date": "2026-06-19", "title": "Workshop", "time": "1:00 PM", "description": "Component architecture" },
+        { "date": "2026-06-22", "title": "Demo day", "time": "11:00 AM", "description": "Show calendar detail variants" },
+        { "date": "2026-06-22", "title": "Retro", "time": "3:00 PM" }
+      ]
+    }
+  },
+  "eventHandler": {
+    "handler": "calendar"
+  }
+}

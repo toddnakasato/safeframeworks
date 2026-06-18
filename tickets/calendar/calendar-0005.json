@@ -1,0 +1,30 @@
+{
+  "id": "calendar-0005",
+  "component": "calendar",
+  "type": "variation",
+  "title": "Calendar detail variants — left/right collapsible panel showing day items",
+  "description": "Two new variants: detail-left and detail-right. Single month calendar with a collapsible side panel that shows events for the selected day. Click a day to see its items. Panel collapses to a thin strip.",
+  "status": "closed",
+  "proves": ["builder-registry", "builder-reconcile"],
+  "params": {
+    "component": "calendar"
+  },
+  "test": {
+    "command": "prove builder-registry",
+    "assert": {
+      "ok": true
+    }
+  },
+  "created": "2026-06-18T15:14:57.638Z",
+  "updated": "2026-06-18T17:00:00.000Z",
+  "variant": "detail-left, detail-right",
+  "resolution": "Added detail-left and detail-right variants. Calendar grid + collapsible side panel. Panel shows events filtered by selected date. readList reads from data.events slot. Structure styles in safestyles.",
+  "files": [
+    "safecontracts/src/contracts-data.ts",
+    "safeframeworks/builders/calendar.ts",
+    "safeframeworks/samples/config/calendar/calendar-detail-left.json",
+    "safeframeworks/samples/config/calendar/calendar-detail-right.json",
+    "safeframeworks/samples/index.ts",
+    "safestyles/core/structure.css"
+  ]
+}

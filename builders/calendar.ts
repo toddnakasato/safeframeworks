@@ -1,5 +1,5 @@
 import type { ConfigBase } from "../../safecontracts/src/contracts";
-import { el, applyIntent } from "../utils/util";
+import { el, applyIntent, readList } from "../utils/util";
 import type { SafeFireContext } from "../../safecontracts/src/contracts";
 import { MONTH_NAMES } from "../../safecontracts/src/contracts";
 import { DAY_NAMES_SHORT, DAY_NAMES_NARROW, getDaysInMonth, getFirstDayOfMonth, todayTuple, shiftDays, shiftFirstDay, generateDays } from "../../safecontracts/src/contracts-date";
@@ -156,6 +156,80 @@ export function createSafeCalendar(container: HTMLElement, config: ConfigBase, c
             nav.appendChild(prevMini);
             nav.appendChild(nextMini);
             root.appendChild(nav);
+            return;
+        }
+
+        if (variant === "detail-left" || variant === "detail-right") {
+            const events: Record<string, any>[] = readList(config);
+            const side = variant === "detail-left" ? "left" : "right";
+            let panelCollapsed = false;
+            let selectedDate = "";
+
+            const wrapper = el("div", "calendar-detail-wrapper");
+            wrapper.setAttribute("data-side", side);
+
+            // Panel
+            const panel = el("div", "calendar-detail-panel");
+            const panelHeader = el("div", "calendar-detail-panel-header");
+            const panelTitle = el("span", "calendar-detail-panel-title", "Select a day");
+            const collapseBtn = el("button", "calendar-detail-collapse", "▸");
+            collapseBtn.onclick = () => {
+                panelCollapsed = !panelCollapsed;
+                panel.setAttribute("data-collapsed", String(panelCollapsed));
+                collapseBtn.textContent = panelCollapsed ? (side === "left" ? "◂" : "▸") : (side === "left" ? "▸" : "◂");
+            };
+            panelHeader.appendChild(panelTitle);
+            panelHeader.appendChild(collapseBtn);
+            panel.appendChild(panelHeader);
+            const panelList = el("div", "calendar-detail-panel-list");
+            panel.appendChild(panelList);
+
+            // Calendar grid
+            const calArea = el("div", "calendar-detail-cal");
+
+            function updatePanel(dateStr: string) {
+                selectedDate = dateStr;
+                panelTitle.textContent = dateStr || "Select a day";
+                panelList.replaceChildren();
+                const dayEvents = events.filter(e => e.date === dateStr);
+                if (dayEvents.length === 0) {
+                    panelList.appendChild(el("div", "calendar-detail-empty", "No items"));
+                } else {
+                    for (const ev of dayEvents) {
+                        const item = el("div", "calendar-detail-item");
+                        item.appendChild(el("div", "calendar-detail-item-title", ev.title ?? ev.name ?? ""));
+                        if (ev.time) item.appendChild(el("div", "calendar-detail-item-time", ev.time));
+                        if (ev.description) item.appendChild(el("div", "calendar-detail-item-desc", ev.description));
+                        panelList.appendChild(item);
+                    }
+                }
+            }
+
+            // Wrap fireSelect to also update panel
+            const origFire = fireSelect;
+            const detailFireSelect = (y: number, m: number, d: number) => {
+                origFire(y, m, d);
+                updatePanel(`${y}-${String(m).padStart(2, "0")}-${String(d).padStart(2, "0")}`);
+            };
+
+            calArea.setAttribute("data-size", size);
+            // Build grid but override cell clicks to use detailFireSelect
+            const month_ = buildMonthGrid(viewYear, viewMonth, size, showNav, dayFormat);
+            // Re-wire cell clicks to use detailFireSelect
+            month_.querySelectorAll("[data-role='calendar-cell']:not([data-empty])").forEach(cell => {
+                const day = parseInt(cell.textContent ?? "0", 10);
+                if (day > 0) (cell as HTMLElement).onclick = () => detailFireSelect(viewYear, viewMonth, day);
+            });
+            while (month_.firstChild) calArea.appendChild(month_.firstChild);
+
+            if (side === "left") {
+                wrapper.appendChild(panel);
+                wrapper.appendChild(calArea);
+            } else {
+                wrapper.appendChild(calArea);
+                wrapper.appendChild(panel);
+            }
+            root.appendChild(wrapper);
             return;
         }
 
