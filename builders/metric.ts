@@ -32,30 +32,17 @@ export function createSafeMetric(container: HTMLElement, config: ConfigBase, ctx
 
     const root = el("div");
     root.setAttribute("data-component", "metric");
-    root.style.display = "flex";
-    root.style.flexDirection = "column";
-    root.style.alignItems = "center";
-    root.style.textAlign = "center";
-    root.style.gap = "var(--sd-space-sm)";
-    root.style.cursor = "pointer";
 
     if (metadata.title) {
         const title = el("span");
         title.textContent = metadata.title as string;
-        title.style.fontSize = "var(--sd-font-md)";
-        title.style.fontWeight = "600";
-        title.style.textTransform = "uppercase";
-        title.style.letterSpacing = "0.08em";
-        title.style.color = "var(--sd-text-muted)";
+        title.setAttribute("data-role", "label");
         root.appendChild(title);
     }
 
     const num = el("span");
     num.textContent = formatted;
-    num.style.fontWeight = "600";
-    num.style.color = "var(--sd-text)";
-    num.style.fontSize = "var(--sd-font-3xl)";
-    num.style.fontVariantNumeric = "tabular-nums";
+    num.setAttribute("data-role", "value");
     root.appendChild(num);
 
     if (metadata.deltaField) {
@@ -64,9 +51,8 @@ export function createSafeMetric(container: HTMLElement, config: ConfigBase, ctx
             const dir = metadata.trend ?? (deltaVal > 0 ? "up" : deltaVal < 0 ? "down" : "flat");
             const trend = el("span");
             trend.textContent = `${trendIcon(dir as string)} ${formatByType(Math.abs(deltaVal), metadata.format as string)}`;
-            trend.style.fontSize = "var(--sd-font-md)";
-            trend.style.fontWeight = "500";
-            trend.style.color = dir === "up" ? "var(--sd-success)" : dir === "down" ? "var(--sd-danger)" : "var(--sd-text-dim)";
+            trend.setAttribute("data-role", "trend");
+            trend.setAttribute("data-direction", dir as string);
             root.appendChild(trend);
         }
     }

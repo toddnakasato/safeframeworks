@@ -304,7 +304,7 @@ export function createSafeTimeline(container: HTMLElement, config: ConfigBase, c
             row.onclick = () => fireSelect(i, item);
 
             const dot = el("div", "alt-dot");
-            dot.style.background = color;
+            dot.style.setProperty('--sd-category-color', color);
             row.appendChild(dot);
 
             const content = el("div", "alt-content");
@@ -312,7 +312,7 @@ export function createSafeTimeline(container: HTMLElement, config: ConfigBase, c
             content.appendChild(el("div", "label", `${icon} ${String(item[labelField] ?? "")}`));
             if (cat) {
                 const catEl = el("div", "category", cat);
-                catEl.style.color = color;
+                catEl.style.setProperty('--sd-category-color', color);
                 content.appendChild(catEl);
             }
             if (desc) content.appendChild(el("div", "description", desc));
@@ -338,7 +338,7 @@ export function createSafeTimeline(container: HTMLElement, config: ConfigBase, c
             marker.appendChild(el("span", "icon", icon));
         } else {
             const dot = el("span", "dot");
-            dot.style.background = color;
+            dot.style.setProperty('--sd-category-color', color);
             marker.appendChild(dot);
         }
         if (i < sorted.length - 1) marker.appendChild(el("span", "line"));
@@ -349,7 +349,7 @@ export function createSafeTimeline(container: HTMLElement, config: ConfigBase, c
         content.appendChild(el("div", "label", String(item[labelField] ?? "")));
         if (cat) {
             const catEl = el("div", "category", cat);
-            catEl.style.color = color;
+            catEl.style.setProperty('--sd-category-color', color);
             content.appendChild(catEl);
         }
         if (desc) content.appendChild(el("div", "description", desc));

@@ -7,43 +7,6 @@ import type { SortDir } from "../../safecontracts/src/contracts-operations";
 
 /*----------------------------------------------------------------------------------------------------
  *
- * Properties
- *
- ----------------------------------------------------------------------------------------------------*/
-
-// SortDir imported from contracts-operations
-
-/*----------------------------------------------------------------------------------------------------
- *
- * Helpers
- *
- ----------------------------------------------------------------------------------------------------*/
-
-function formatValue(value: any, field: Field): string {
-    if (value === null || value === undefined) return "—";
-    switch (field.type) {
-        case "currency":
-            return fmtCurrency(Number(value));
-        case "number":
-            return fmtInt(Number(value));
-        case "percent":
-            return fmtPercent(Number(value));
-        case "date":
-        case "datetime":
-            return fmtDate(value);
-        case "boolean":
-            return value ? "Yes" : "No";
-        default:
-            return fmtStr(value);
-    }
-}
-
-function numericType(type: string): boolean {
-    return type === "currency" || type === "number" || type === "percent";
-}
-
-/*----------------------------------------------------------------------------------------------------
- *
  * Implementation
  *
  ----------------------------------------------------------------------------------------------------*/
@@ -74,7 +37,7 @@ export function createSafeTable(container: HTMLElement, config: ConfigBase, ctx:
 
     // Internal state
     let sortFields: { field: string; dir: SortDir }[] = [];
-    if ((metadata.defaultSort as string)) {
+    if (metadata.defaultSort as string) {
         sortFields = [{ field: metadata.defaultSort as string, dir: (metadata.defaultSortDir as SortDir) ?? "asc" }];
     }
     let page = 0;
@@ -125,7 +88,7 @@ export function createSafeTable(container: HTMLElement, config: ConfigBase, ctx:
 
     function handleSort(field: Field) {
         if (!field.sortable) return;
-        const existing = sortFields.findIndex(s => s.field === field.name);
+        const existing = sortFields.findIndex((s) => s.field === field.name);
         if (existing >= 0) {
             // Toggle direction or remove
             const current = sortFields[existing];
@@ -138,12 +101,12 @@ export function createSafeTable(container: HTMLElement, config: ConfigBase, ctx:
             sortFields.push({ field: field.name, dir: "asc" });
         }
         page = 0;
-        fire("sort", { field: field.name, dir: sortFields.find(s => s.field === field.name)?.dir ?? "asc" });
+        fire("sort", { field: field.name, dir: sortFields.find((s) => s.field === field.name)?.dir ?? "asc" });
         render();
     }
 
     function selectedIndices(): number[] {
-        return [...selected].map(id => data.findIndex(r => (r.Id ?? r.id ?? String(r)) === id)).filter(i => i >= 0);
+        return [...selected].map((id) => data.findIndex((r) => (r.Id ?? r.id ?? String(r)) === id)).filter((i) => i >= 0);
     }
 
     function handleRowSelect(id: string) {
@@ -209,7 +172,7 @@ export function createSafeTable(container: HTMLElement, config: ConfigBase, ctx:
         for (const field of fields) {
             const th = el("th", "column-header", field.label);
             if (field.sortable) th.setAttribute("data-sortable", "true");
-            const sortEntry = sortFields.find(s => s.field === field.name);
+            const sortEntry = sortFields.find((s) => s.field === field.name);
             if (sortEntry) {
                 th.setAttribute("data-sorted", sortEntry.dir);
                 const sortIndex = sortFields.length > 1 ? `${sortFields.indexOf(sortEntry) + 1}` : "";
@@ -313,7 +276,7 @@ export function createSafeTable(container: HTMLElement, config: ConfigBase, ctx:
             };
             tr.onmouseenter = () => {
                 // cssOnly: set data attribute, safestyles paints via CSS
-                container.querySelectorAll("tr[data-row-hover]").forEach(r => r.removeAttribute("data-row-hover"));
+                container.querySelectorAll("tr[data-row-hover]").forEach((r) => r.removeAttribute("data-row-hover"));
                 tr.setAttribute("data-row-hover", "true");
                 fire("row:hover", { index: globalIndex });
             };
@@ -367,7 +330,7 @@ export function createSafeTable(container: HTMLElement, config: ConfigBase, ctx:
                 if (field.type === "currency" || field.type === "number") {
                     summaryRow[field.name] = sorted.reduce((acc, r) => acc + (Number(r[field.name]) || 0), 0);
                 } else if (field.type === "percent") {
-                    summaryRow[field.name] = Math.round(sorted.reduce((acc, r) => acc + (Number(r[field.name]) || 0), 0) / (sorted.length || 1) * 10) / 10;
+                    summaryRow[field.name] = Math.round((sorted.reduce((acc, r) => acc + (Number(r[field.name]) || 0), 0) / (sorted.length || 1)) * 10) / 10;
                 } else {
                     summaryRow[field.name] = "";
                 }
@@ -377,11 +340,7 @@ export function createSafeTable(container: HTMLElement, config: ConfigBase, ctx:
             if (rowNumbers) tr.appendChild(el("td", "row-number", "Σ"));
             if (selectable) tr.appendChild(el("td", "select-cell"));
             fields.forEach((field, fi) => {
-                const text = fi === 0 && !numericType(field.type)
-                    ? `${sorted.length} rows`
-                    : summaryRow[field.name] !== ""
-                        ? formatValue(summaryRow[field.name], field)
-                        : "";
+                const text = fi === 0 && !numericType(field.type) ? `${sorted.length} rows` : summaryRow[field.name] !== "" ? formatValue(summaryRow[field.name], field) : "";
                 const td = el("td", "summary-cell", text);
                 td.setAttribute("data-type", field.type);
                 if (numericType(field.type)) td.setAttribute("data-align", "right");
@@ -396,8 +355,7 @@ export function createSafeTable(container: HTMLElement, config: ConfigBase, ctx:
 
         if (pageSize > 0 && totalPages > 1) {
             const pagination = el("div", "pagination");
-            const info = el("span", "page-info",
-                `${page * pageSize + 1}–${Math.min((page + 1) * pageSize, sorted.length)} of ${sorted.length}`);
+            const info = el("span", "page-info", `${page * pageSize + 1}–${Math.min((page + 1) * pageSize, sorted.length)} of ${sorted.length}`);
             const controls = el("div", "page-controls");
             const prev = el("button", "page-prev", "← Prev") as HTMLButtonElement;
             if (page === 0) {
@@ -428,4 +386,33 @@ export function createSafeTable(container: HTMLElement, config: ConfigBase, ctx:
 
     container.appendChild(root);
     return root;
+}
+
+/*----------------------------------------------------------------------------------------------------
+ *
+ * Helpers
+ *
+ ----------------------------------------------------------------------------------------------------*/
+
+function formatValue(value: any, field: Field): string {
+    if (value === null || value === undefined) return "—";
+    switch (field.type) {
+        case "currency":
+            return fmtCurrency(Number(value));
+        case "number":
+            return fmtInt(Number(value));
+        case "percent":
+            return fmtPercent(Number(value));
+        case "date":
+        case "datetime":
+            return fmtDate(value);
+        case "boolean":
+            return value ? "Yes" : "No";
+        default:
+            return fmtStr(value);
+    }
+}
+
+function numericType(type: string): boolean {
+    return type === "currency" || type === "number" || type === "percent";
 }

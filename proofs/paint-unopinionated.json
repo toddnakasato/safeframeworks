@@ -1,0 +1,127 @@
+{
+  "ok": true,
+  "total": 23,
+  "passed": 23,
+  "failed": 0,
+  "groups": {
+    "no-opinionated-styles": 23
+  },
+  "checks": [
+    {
+      "group": "no-opinionated-styles",
+      "name": "funnel: no opinionated inline styles",
+      "status": "pass"
+    },
+    {
+      "group": "no-opinionated-styles",
+      "name": "callout: no opinionated inline styles",
+      "status": "pass"
+    },
+    {
+      "group": "no-opinionated-styles",
+      "name": "week: no opinionated inline styles",
+      "status": "pass"
+    },
+    {
+      "group": "no-opinionated-styles",
+      "name": "table: no opinionated inline styles",
+      "status": "pass"
+    },
+    {
+      "group": "no-opinionated-styles",
+      "name": "nav: no opinionated inline styles",
+      "status": "pass"
+    },
+    {
+      "group": "no-opinionated-styles",
+      "name": "input: no opinionated inline styles",
+      "status": "pass"
+    },
+    {
+      "group": "no-opinionated-styles",
+      "name": "button: no opinionated inline styles",
+      "status": "pass"
+    },
+    {
+      "group": "no-opinionated-styles",
+      "name": "sheet: no opinionated inline styles",
+      "status": "pass"
+    },
+    {
+      "group": "no-opinionated-styles",
+      "name": "chat: no opinionated inline styles",
+      "status": "pass"
+    },
+    {
+      "group": "no-opinionated-styles",
+      "name": "columns: no opinionated inline styles",
+      "status": "pass"
+    },
+    {
+      "group": "no-opinionated-styles",
+      "name": "metric: no opinionated inline styles",
+      "status": "pass"
+    },
+    {
+      "group": "no-opinionated-styles",
+      "name": "calendar: no opinionated inline styles",
+      "status": "pass"
+    },
+    {
+      "group": "no-opinionated-styles",
+      "name": "card: no opinionated inline styles",
+      "status": "pass"
+    },
+    {
+      "group": "no-opinionated-styles",
+      "name": "dragdrop: no opinionated inline styles",
+      "status": "pass"
+    },
+    {
+      "group": "no-opinionated-styles",
+      "name": "layout: no opinionated inline styles",
+      "status": "pass"
+    },
+    {
+      "group": "no-opinionated-styles",
+      "name": "tabs: no opinionated inline styles",
+      "status": "pass"
+    },
+    {
+      "group": "no-opinionated-styles",
+      "name": "list: no opinionated inline styles",
+      "status": "pass"
+    },
+    {
+      "group": "no-opinionated-styles",
+      "name": "timeline: no opinionated inline styles",
+      "status": "pass"
+    },
+    {
+      "group": "no-opinionated-styles",
+      "name": "tree: no opinionated inline styles",
+      "status": "pass"
+    },
+    {
+      "group": "no-opinionated-styles",
+      "name": "picker: no opinionated inline styles",
+      "status": "pass"
+    },
+    {
+      "group": "no-opinionated-styles",
+      "name": "grid: no opinionated inline styles",
+      "status": "pass"
+    },
+    {
+      "group": "no-opinionated-styles",
+      "name": "heatmap: no opinionated inline styles",
+      "status": "pass"
+    },
+    {
+      "group": "no-opinionated-styles",
+      "name": "toggle: no opinionated inline styles",
+      "status": "pass"
+    }
+  ],
+  "failures": []
+}

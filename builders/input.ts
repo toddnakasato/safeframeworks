@@ -288,19 +288,19 @@ export function createSafeInput(container: HTMLElement, config: ConfigBase, ctx:
         // react applies these inline too — structural orientation/gradient intent
         if (isVertical) {
             (inp.style as any).writingMode = "vertical-lr";
-            inp.style.direction = "rtl";
+            inp.setAttribute("data-direction", "rtl");
             inp.style.height = sliderHeight;
         }
         if (gradientColors) {
-            inp.style.background = `linear-gradient(${isVertical ? "to top" : "to right"}, ${gradientColors.join(", ")})`;
-            inp.style.borderRadius = "0.25rem";
+            inp.style.setProperty("--sd-slider-gradient", `linear-gradient(${isVertical ? "to top" : "to right"}, ${gradientColors.join(", ")})`);
+            inp.setAttribute("data-gradient", "");
         }
     }
 
     function makeTextInput(type: string, value: any): HTMLInputElement {
         const inp = el("input", "field") as HTMLInputElement;
         inp.type = type;
-        inp.style.textAlign = textAlign;
+        inp.setAttribute("data-text-align", textAlign);
         inp.value = value ?? "";
         if (placeholder || defaultText) inp.placeholder = placeholder || defaultText;
         return inp;
@@ -330,7 +330,7 @@ export function createSafeInput(container: HTMLElement, config: ConfigBase, ctx:
             let inp: HTMLInputElement | HTMLTextAreaElement;
             if (inputType === "multiline-text") {
                 inp = el("textarea", "field") as HTMLTextAreaElement;
-                inp.style.textAlign = textAlign;
+                inp.setAttribute("data-text-align", textAlign);
                 inp.value = rawValue ?? "";
                 if (placeholder || defaultText) inp.placeholder = placeholder || defaultText;
             } else {
@@ -626,7 +626,7 @@ export function createSafeInput(container: HTMLElement, config: ConfigBase, ctx:
         if (inputType === "picklist") {
             if (!hasPicklistFilter && !isMultiSelect) {
                 const sel = el("select", "field") as HTMLSelectElement;
-                sel.style.textAlign = textAlign;
+                sel.setAttribute("data-text-align", textAlign);
                 const def = document.createElement("option");
                 def.value = "";
                 def.textContent = defaultSelectMessage;
@@ -755,11 +755,7 @@ export function createSafeInput(container: HTMLElement, config: ConfigBase, ctx:
                 sMin.value = String(Array.isArray(editValue) ? editValue[0] : (editValue ?? min));
                 const sMax = mkSlider("max");
                 sMax.value = String(editValueMax ?? max);
-                // react also positions the max track inline
-                sMax.style.position = "absolute";
-                sMax.style.left = "0";
-                sMax.style.right = "0";
-                sMax.style.top = "0";
+                // react also positions the max track inline — now in CSS for dual-range sliders
                 sMin.addEventListener("input", () => {
                     const v = Number(sMin.value);
                     const maxV = editValueMax ?? max;
@@ -928,7 +924,7 @@ export function createSafeInput(container: HTMLElement, config: ConfigBase, ctx:
         if (inputType === "color") {
             const cw = el("div", "color-wrap");
             const swatch = el("span", "color-swatch");
-            swatch.style.background = String(editValue ?? defaultColor);
+            swatch.style.setProperty("--sd-swatch-color", String(editValue ?? defaultColor));
             cw.append(swatch, el("span", "color-value", String(editValue ?? defaultColor)));
             wrap.appendChild(cw);
             if (!hideEdit) wrap.appendChild(buildEditIcon());
@@ -967,7 +963,7 @@ export function createSafeInput(container: HTMLElement, config: ConfigBase, ctx:
             const displayValue = getDisplayValue();
             const span = el("span", "value", displayValue || defaultText);
             if (isLink) span.setAttribute("data-link", "true");
-            span.style.textAlign = textAlign;
+            span.setAttribute("data-text-align", textAlign);
             if (maxLines) {
                 // react applies the same clamp inline
                 span.style.maxHeight = `${maxLines * 1.5}em`;

@@ -40,16 +40,13 @@ export function createSafeTabs(container: HTMLElement, config: ConfigBase, ctx: 
 
         const bar = document.createElement("div");
         bar.setAttribute("data-tabs-bar", "");
+        bar.setAttribute("data-position", position);
         bar.style.display = "flex";
         bar.style.flexDirection = isVertical ? "column" : "row";
         bar.style.gap = variant === "pill" ? "4px" : "0";
         if (isVertical) {
-            if (position === "left") bar.style.borderRight = borderStyle;
-            if (position === "right") bar.style.borderLeft = borderStyle;
             bar.style.padding = "4px";
         } else {
-            if (position === "top") bar.style.borderBottom = borderStyle;
-            if (position === "bottom") bar.style.borderTop = borderStyle;
         }
 
         for (const tab of tabs) {
@@ -62,14 +59,8 @@ export function createSafeTabs(container: HTMLElement, config: ConfigBase, ctx: 
                 render();
             };
             btn.style.display = "flex";
-            btn.style.alignItems = "center";
             btn.style.gap = "6px";
             btn.style.padding = variant === "pill" ? "6px 14px" : "8px 16px";
-            btn.style.border = "none";
-            btn.style.cursor = "pointer";
-            btn.style.fontWeight = active === tab.key ? "600" : "400";
-            btn.style.background = "transparent";
-            btn.style.color = "inherit";
 
             if (tab.icon) {
                 const icon = document.createElement("span");
@@ -82,10 +73,7 @@ export function createSafeTabs(container: HTMLElement, config: ConfigBase, ctx: 
             if (tab.badge !== undefined) {
                 const badge = document.createElement("span");
                 badge.setAttribute("data-tab-badge", "");
-                badge.style.fontSize = "10px";
-                badge.style.fontWeight = "600";
                 badge.style.padding = "1px 6px";
-                badge.style.borderRadius = "10px";
                 badge.textContent = String(tab.badge);
                 btn.appendChild(badge);
             }

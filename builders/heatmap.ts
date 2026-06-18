@@ -48,9 +48,7 @@ export function createSafeHeatmap(container: HTMLElement, config: ConfigBase, ct
         const label = labelField ? String(d[labelField] ?? "") : String(val);
         const cell = el("div", "cell");
         cell.style.aspectRatio = "1";
-        cell.style.borderRadius = "var(--sd-radius-sm)";
-        cell.style.background = `color-mix(in srgb, var(--sd-accent) ${Math.round((t * 0.85 + 0.05) * 100)}%, transparent)`;
-        cell.style.cursor = "default";
+        cell.style.setProperty('--sd-cell-bg', `color-mix(in srgb, var(--sd-accent) ${Math.round((t * 0.85 + 0.05) * 100)}%, transparent)`);
         cell.title = label;
         cell.onclick = () => ctx.fire("cell:click", { index: i, value: val, data: d });
         grid.appendChild(cell);
