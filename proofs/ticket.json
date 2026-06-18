@@ -1,15 +1,26 @@
 {
   "ok": true,
-  "total": 1,
-  "passed": 1,
+  "total": 3,
+  "passed": 3,
   "failed": 0,
   "groups": {
-    "ticket-proves": 1
+    "ticket-open": 1,
+    "ticket-closed": 2
   },
   "checks": [
     {
-      "group": "ticket-proves",
+      "group": "ticket-open",
       "name": "no open tickets",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-closed",
+      "name": "calendar-0002: Payload day click on calendar doesn't contain what day was c (regression)",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-closed",
+      "name": "calendar-0001: calendar select payload doesn't contain the date that was cl (regression)",
       "status": "pass"
     }
   ],

@@ -127,6 +127,7 @@ export default function App() {
     { label: "event", commands: ["event-coverage", "event-declared", "event-payload"] },
     { label: "framework", commands: ["framework-boot", "framework-delegation"] },
     { label: "paint", commands: ["paint-chain", "paint-contrast", "paint-cssonly", "paint-definition", "paint-parity", "paint-unopinionated"] },
+    { label: "ticket", commands: ["ticket"] },
   ];
   const ALL_PROVE_COMMANDS = PROOF_DOMAINS.flatMap(d => d.commands);
 
@@ -364,8 +365,35 @@ export default function App() {
                     {t.event && <span>event: {t.event}</span>}
                     {t.resolution && <span>resolution: {t.resolution}</span>}
                   </div>
-                  {t.status === "open" && (
-                    <div style={{ padding: "6px 12px", borderTop: "1px solid var(--sd-border, #e5e7eb)", display: "flex", gap: 8 }}>
+                  {/* Ticket actions — Prove button for all, Start/Close for open */}
+                  <div style={{ padding: "6px 12px", borderTop: "1px solid var(--sd-border, #e5e7eb)", display: "flex", gap: 8, alignItems: "center" }}>
+                    <button onClick={async () => {
+                      const btn = document.getElementById(`prove-${t.id}`) as HTMLButtonElement;
+                      const result = document.getElementById(`prove-result-${t.id}`)!;
+                      btn.textContent = "⟳ Proving..."; btn.disabled = true;
+                      result.textContent = "";
+                      try {
+                        const results = await Promise.all(t.proves.map(async cmd => {
+                          try {
+                            const { invoke: tauriInvoke } = await import("@tauri-apps/api/core");
+                            const out = await tauriInvoke<string>("safecli_run", { name: "safedesk", args: ["prove", cmd] });
+                            return JSON.parse(out);
+                          } catch { return { passed: 0, total: 0, failed: -1 }; }
+                        }));
+                        const totalP = results.reduce((s, r) => s + (r.passed ?? 0), 0);
+                        const totalT = results.reduce((s, r) => s + (r.total ?? 0), 0);
+                        const totalF = results.reduce((s, r) => s + (r.failed ?? 0), 0);
+                        const pass = totalF === 0;
+                        result.textContent = `${totalP}/${totalT} ${pass ? "✓" : `(${totalF} failed)`}`;
+                        result.style.color = pass ? "var(--sd-success, #15803d)" : "var(--sd-danger, #dc2626)";
+                        btn.textContent = "Prove"; btn.disabled = false;
+                      } catch { btn.textContent = "Prove"; btn.disabled = false; }
+                    }} id={`prove-${t.id}`}
+                      style={{ padding: "2px 8px", fontSize: 10, fontWeight: 600, borderRadius: 3, border: "none", background: "var(--sd-accent, #2563eb)", color: "var(--sd-text-inverse, #fff)", cursor: "pointer" }}>
+                      Prove
+                    </button>
+                    <span id={`prove-result-${t.id}`} style={{ fontSize: 10, fontWeight: 600 }}></span>
+                    {t.status === "open" && (<>
                       <button onClick={async () => { await updateTicket({ ...t, status: "in-progress" }); refreshTickets(); }}
                         style={{ padding: "2px 8px", fontSize: 10, borderRadius: 3, border: "1px solid var(--sd-border, #d1d5db)", background: "var(--sd-surface-base, #fff)", color: "var(--sd-text, #0f172a)", cursor: "pointer" }}>
                         Start
@@ -374,8 +402,8 @@ export default function App() {
                         style={{ padding: "2px 8px", fontSize: 10, borderRadius: 3, border: "1px solid var(--sd-border, #d1d5db)", background: "var(--sd-surface-base, #fff)", color: "var(--sd-text, #0f172a)", cursor: "pointer" }}>
                         Close
                       </button>
-                    </div>
-                  )}
+                    </>)}
+                  </div>
                 </div>
               ));
             })()}
