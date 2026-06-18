@@ -161,6 +161,7 @@ export function buildComponent(config: ConfigBase, onEvent?: OnSafeEvent): HTMLE
             break;
         }
         case "map":
+            container.style.height = ((config.metadata?.height as string) ?? "400px");
             createSafeMap(container, config, mapData(config), ctx);
             break;
         case "scene":
