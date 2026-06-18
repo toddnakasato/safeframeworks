@@ -149,6 +149,15 @@ export function createSafeMap(container: HTMLElement, config: ConfigBase, data: 
         }
     }
 
-    setTimeout(() => map.invalidateSize(), 100);
+    // invalidateSize after DOM layout settles, then fitBounds again
+    setTimeout(() => {
+        map.invalidateSize();
+        if (fitBounds && allLayers.length > 0) {
+            const group = L.featureGroup(allLayers.filter((l) => l instanceof L.Marker));
+            if (group.getLayers().length > 0) {
+                map.fitBounds(group.getBounds().pad(0.15));
+            }
+        }
+    }, 200);
     return map;
 }
