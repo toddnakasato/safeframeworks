@@ -377,7 +377,22 @@ export default function App() {
                         if (t.test) {
                           // Run the ticket's concrete test
                           const { invoke: tauriInvoke } = await import("@tauri-apps/api/core");
-                          const out = await tauriInvoke<string>("safecli_run", { name: "safedesk", args: t.test.command.split(" ") });
+                          // Parse command respecting quoted strings
+                          const parseCmd = (cmd: string): string[] => {
+                            const args: string[] = [];
+                            let current = "";
+                            let inQuote = false;
+                            let quoteChar = "";
+                            for (const ch of cmd) {
+                              if (!inQuote && (ch === '"' || ch === "'")) { inQuote = true; quoteChar = ch; continue; }
+                              if (inQuote && ch === quoteChar) { inQuote = false; continue; }
+                              if (!inQuote && ch === " ") { if (current) args.push(current); current = ""; continue; }
+                              current += ch;
+                            }
+                            if (current) args.push(current);
+                            return args;
+                          };
+                          const out = await tauriInvoke<string>("safecli_run", { name: "safedesk", args: parseCmd(t.test.command) });
                           const output = JSON.parse(out);
                           const failures: string[] = [];
                           for (const [path, expected] of Object.entries(t.test.assert)) {
