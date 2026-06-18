@@ -1,0 +1,69 @@
+{
+  "component": "timeline",
+  "metadata": {
+    "variant": "sprint-days",
+    "dateField": "day",
+    "labelField": "day",
+    "scale": "days"
+  },
+  "data": {
+    "events": {
+      "inline": [
+        {
+          "day": "Mon 6",
+          "done": 4,
+          "total": 5
+        },
+        {
+          "day": "Tue 7",
+          "done": 3,
+          "total": 4
+        },
+        {
+          "day": "Wed 8",
+          "done": 5,
+          "total": 5
+        },
+        {
+          "day": "Thu 9",
+          "done": 2,
+          "total": 4,
+          "today": true
+        },
+        {
+          "day": "Fri 10",
+          "done": 0,
+          "total": 3
+        },
+        {
+          "day": "Mon 13",
+          "done": 0,
+          "total": 5
+        },
+        {
+          "day": "Tue 14",
+          "done": 0,
+          "total": 4
+        },
+        {
+          "day": "Wed 15",
+          "done": 0,
+          "total": 3
+        },
+        {
+          "day": "Thu 16",
+          "done": 0,
+          "total": 4
+        },
+        {
+          "day": "Fri 17",
+          "done": 0,
+          "total": 5
+        }
+      ]
+    }
+  },
+  "eventHandler": {
+    "handler": "timeline"
+  }
+}

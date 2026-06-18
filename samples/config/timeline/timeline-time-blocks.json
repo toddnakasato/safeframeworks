@@ -1,0 +1,67 @@
+{
+  "component": "timeline",
+  "metadata": {
+    "variant": "time-blocks",
+    "dateField": "label",
+    "labelField": "label",
+    "scale": "hours",
+    "totalHours": 9.5
+  },
+  "data": {
+    "events": {
+      "inline": [
+        {
+          "label": "Deep work",
+          "start": 0,
+          "span": 2,
+          "type": "focus"
+        },
+        {
+          "label": "Standup",
+          "start": 2,
+          "span": 0.5,
+          "type": "meeting"
+        },
+        {
+          "label": "Code review",
+          "start": 2.5,
+          "span": 1.5,
+          "type": "focus"
+        },
+        {
+          "label": "Lunch",
+          "start": 4,
+          "span": 1,
+          "type": "break"
+        },
+        {
+          "label": "Design sync",
+          "start": 5,
+          "span": 1,
+          "type": "meeting"
+        },
+        {
+          "label": "Admin",
+          "start": 6,
+          "span": 0.5,
+          "type": "admin"
+        },
+        {
+          "label": "Sprint work",
+          "start": 6.5,
+          "span": 2,
+          "type": "focus"
+        },
+        {
+          "label": "EOD review",
+          "start": 8.5,
+          "span": 1,
+          "type": "admin"
+        }
+      ]
+    }
+  },
+  "eventHandler": {
+    "handler": "timeline"
+  }
+}

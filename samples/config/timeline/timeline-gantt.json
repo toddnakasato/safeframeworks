@@ -1,0 +1,69 @@
+{
+  "component": "timeline",
+  "metadata": {
+    "variant": "gantt-phases",
+    "dateField": "date",
+    "labelField": "title",
+    "scale": "months",
+    "months": [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul"
+    ]
+  },
+  "data": {
+    "events": {
+      "inline": [
+        {
+          "title": "Research & Discovery",
+          "start": 0,
+          "end": 1.5,
+          "type": "research"
+        },
+        {
+          "title": "UX Design",
+          "start": 1,
+          "end": 3,
+          "type": "design"
+        },
+        {
+          "title": "Frontend Dev",
+          "start": 2.5,
+          "end": 5,
+          "type": "dev"
+        },
+        {
+          "title": "Backend Dev",
+          "start": 2,
+          "end": 4.5,
+          "type": "dev"
+        },
+        {
+          "title": "QA Testing",
+          "start": 4,
+          "end": 6,
+          "type": "qa"
+        },
+        {
+          "title": "Beta Release",
+          "start": 5.5,
+          "end": 6.5,
+          "type": "release"
+        },
+        {
+          "title": "GA Launch",
+          "start": 6,
+          "end": 7,
+          "type": "release"
+        }
+      ]
+    }
+  },
+  "eventHandler": {
+    "handler": "timeline"
+  }
+}

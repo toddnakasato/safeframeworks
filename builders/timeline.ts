@@ -470,6 +470,145 @@ export function createSafeTimeline(container: HTMLElement, config: ConfigBase, c
         container.appendChild(root); return root;
     }
 
+    // ── H-01 History: horizontal line, dots, items above/below ─────────────
+    if (variant === "history" || variant === "versions") {
+        root.style.overflowX = "auto";
+        const strip = el("div", "tl-h-strip");
+        // Above row
+        const aboveRow = el("div", "tl-h-above");
+        sorted.forEach((item, i) => {
+            const cell = el("div", "tl-h-cell");
+            if (item.pos === "above") {
+                cell.appendChild(el("div", "tl-title", String(item[labelField] ?? "")));
+                if (descriptionField && item[descriptionField]) cell.appendChild(el("div", "tl-desc", String(item[descriptionField])));
+            }
+            aboveRow.appendChild(cell);
+        });
+        strip.appendChild(aboveRow);
+        // Line + dots
+        const lineRow = el("div", "tl-h-line-row");
+        const line = el("div", "tl-h-line");
+        lineRow.appendChild(line);
+        const dotsRow = el("div", "tl-h-dots");
+        sorted.forEach((item, i) => {
+            const dotWrap = el("div", "tl-h-dot-wrap");
+            dotWrap.onclick = () => fireSelect(i, item);
+            const dot = el("div", "tl-dot");
+            dot.setAttribute("data-status", String(item.status ?? "default"));
+            dotWrap.appendChild(dot);
+            dotWrap.appendChild(el("div", "tl-date", String(item[dateField])));
+            dotsRow.appendChild(dotWrap);
+        });
+        lineRow.appendChild(dotsRow);
+        strip.appendChild(lineRow);
+        // Below row
+        const belowRow = el("div", "tl-h-below");
+        sorted.forEach((item, i) => {
+            const cell = el("div", "tl-h-cell");
+            if (item.pos === "below") {
+                cell.appendChild(el("div", "tl-title", String(item[labelField] ?? "")));
+                if (descriptionField && item[descriptionField]) cell.appendChild(el("div", "tl-desc", String(item[descriptionField])));
+            }
+            belowRow.appendChild(cell);
+        });
+        strip.appendChild(belowRow);
+        root.appendChild(strip);
+        container.appendChild(root); return root;
+    }
+
+    // ── H-03 Gantt: month columns, phase bars ──────────────────────────────
+    if (variant === "gantt-phases") {
+        root.style.overflowX = "auto";
+        const wrap = el("div", "tl-gantt-wrap");
+        const months = (metadata.months as string[]) ?? [];
+        const total = months.length;
+        // Month headers
+        const headerRow = el("div", "tl-gantt-header");
+        months.forEach(m => headerRow.appendChild(el("div", "tl-gantt-month", m)));
+        wrap.appendChild(headerRow);
+        // Phase rows
+        sorted.forEach((item, i) => {
+            const row = el("div", "tl-gantt-row");
+            row.onclick = () => fireSelect(i, item);
+            row.appendChild(el("div", "tl-gantt-label", String(item[labelField] ?? item.title ?? "")));
+            const track = el("div", "tl-gantt-track");
+            const bar = el("div", "tl-gantt-bar");
+            bar.setAttribute("data-type", String(item.type ?? "default"));
+            bar.style.left = `${((item.start ?? 0) / total) * 100}%`;
+            bar.style.width = `${(((item.end ?? 0) - (item.start ?? 0)) / total) * 100}%`;
+            track.appendChild(bar);
+            row.appendChild(track);
+            wrap.appendChild(row);
+        });
+        root.appendChild(wrap);
+        container.appendChild(root); return root;
+    }
+
+    // ── H-04 Sprint days: day columns with vertical bars ───────────────────
+    if (variant === "sprint-days") {
+        root.style.overflowX = "auto";
+        const strip = el("div", "tl-sprint-days-strip");
+        sorted.forEach((item, i) => {
+            const col = el("div", "tl-sprint-day-col");
+            if (item.today) col.setAttribute("data-today", "true");
+            col.onclick = () => fireSelect(i, item);
+            col.appendChild(el("div", "tl-sprint-day-label", String(item[dateField])));
+            const barWrap = el("div", "tl-sprint-day-bar-wrap");
+            const pct = item.total > 0 ? (item.done / item.total) * 100 : 0;
+            const fill = el("div", "tl-sprint-day-bar-fill");
+            fill.style.height = `${pct}%`;
+            if (item.today) fill.setAttribute("data-today", "true");
+            else if (pct === 100) fill.setAttribute("data-done", "true");
+            barWrap.appendChild(fill);
+            col.appendChild(barWrap);
+            col.appendChild(el("div", "tl-sprint-day-count", `${item.done}/${item.total}`));
+            if (item.today) col.appendChild(el("div", "tl-sprint-day-today", "TODAY"));
+            strip.appendChild(col);
+        });
+        root.appendChild(strip);
+        container.appendChild(root); return root;
+    }
+
+    // ── H-05 Time blocks: proportional strip ───────────────────────────────
+    if (variant === "time-blocks") {
+        root.style.overflowX = "auto";
+        const totalH = (metadata.totalHours as number) ?? 9;
+        const wrap = el("div", "tl-timeblock-wrap");
+        const strip = el("div", "tl-timeblock-strip");
+        sorted.forEach((item, i) => {
+            const block = el("div", "tl-timeblock");
+            block.setAttribute("data-type", String(item.type ?? "default"));
+            block.style.left = `${((item.start ?? 0) / totalH) * 100}%`;
+            block.style.width = `${((item.span ?? 1) / totalH) * 100}%`;
+            block.appendChild(el("span", "tl-timeblock-label", String(item[labelField] ?? "")));
+            block.onclick = () => fireSelect(i, item);
+            strip.appendChild(block);
+        });
+        wrap.appendChild(strip);
+        root.appendChild(wrap);
+        container.appendChild(root); return root;
+    }
+
+    // ── H-06 Event stream: horizontal dots with labels ─────────────────────
+    if (variant === "event-stream") {
+        root.style.overflowX = "auto";
+        root.setAttribute("data-theme", "dark");
+        const strip = el("div", "tl-stream-strip");
+        sorted.forEach((item, i) => {
+            const col = el("div", "tl-stream-event");
+            col.onclick = () => fireSelect(i, item);
+            const label = el("div", "tl-stream-label", String(item[labelField] ?? ""));
+            col.appendChild(label);
+            const dot = el("div", "tl-dot");
+            dot.setAttribute("data-sev", String(item.sev ?? "info"));
+            col.appendChild(dot);
+            col.appendChild(el("div", "tl-date", String(item[dateField])));
+            strip.appendChild(col);
+        });
+        root.appendChild(strip);
+        container.appendChild(root); return root;
+    }
+
     // ── Default vertical: dot + line + content ─────────────────────────────
 
     sorted.forEach((item, i) => {

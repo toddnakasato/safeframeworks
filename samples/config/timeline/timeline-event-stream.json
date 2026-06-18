@@ -1,0 +1,79 @@
+{
+  "component": "timeline",
+  "metadata": {
+    "variant": "event-stream",
+    "dateField": "time",
+    "labelField": "event",
+    "descriptionField": "service",
+    "scale": "minutes"
+  },
+  "data": {
+    "events": {
+      "inline": [
+        {
+          "time": "12:00",
+          "event": "Deploy v2.4.1",
+          "service": "ci-pipeline",
+          "sev": "info"
+        },
+        {
+          "time": "12:03",
+          "event": "Health check pass",
+          "service": "load-balancer",
+          "sev": "info"
+        },
+        {
+          "time": "12:15",
+          "event": "CPU spike 85%",
+          "service": "prod-web-03",
+          "sev": "warn"
+        },
+        {
+          "time": "12:18",
+          "event": "Auto-scale triggered",
+          "service": "k8s-hpa",
+          "sev": "info"
+        },
+        {
+          "time": "12:22",
+          "event": "OOM kill",
+          "service": "prod-web-03",
+          "sev": "critical"
+        },
+        {
+          "time": "12:25",
+          "event": "Pod restarted",
+          "service": "k8s-scheduler",
+          "sev": "warn"
+        },
+        {
+          "time": "12:30",
+          "event": "Memory stable",
+          "service": "monitoring",
+          "sev": "info"
+        },
+        {
+          "time": "13:00",
+          "event": "Rollback initiated",
+          "service": "ci-pipeline",
+          "sev": "critical"
+        },
+        {
+          "time": "13:05",
+          "event": "v2.4.0 restored",
+          "service": "ci-pipeline",
+          "sev": "info"
+        },
+        {
+          "time": "13:45",
+          "event": "All clear",
+          "service": "incident-mgr",
+          "sev": "info"
+        }
+      ]
+    }
+  },
+  "eventHandler": {
+    "handler": "timeline"
+  }
+}

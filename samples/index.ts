@@ -109,6 +109,12 @@ import timelineMilestonesConfig from "./config/timeline/timeline-milestones.json
 import timelineSprintConfig from "./config/timeline/timeline-sprint.json";
 import timelineScheduleConfig from "./config/timeline/timeline-schedule.json";
 import timelineIncidentConfig from "./config/timeline/timeline-incident.json";
+import timelineHistoryConfig from "./config/timeline/timeline-history.json";
+import timelineVersionsConfig from "./config/timeline/timeline-versions.json";
+import timelineGanttConfig from "./config/timeline/timeline-gantt.json";
+import timelineSprintDaysConfig from "./config/timeline/timeline-sprint-days.json";
+import timelineTimeBlocksConfig from "./config/timeline/timeline-time-blocks.json";
+import timelineEventStreamConfig from "./config/timeline/timeline-event-stream.json";
 import toggleSwitchConfig from "./config/toggle/toggle-switch.json";
 import toggleCheckboxConfig from "./config/toggle/toggle-checkbox.json";
 import treeNestedConfig from "./config/tree/tree-nested.json";
@@ -359,6 +365,12 @@ export const SAMPLES: Record<string, Record<string, ConfigBase>> = {
         "timeline-sprint": resolveData(timelineSprintConfig as unknown as ConfigBase),
         "timeline-schedule": resolveData(timelineScheduleConfig as unknown as ConfigBase),
         "timeline-incident": resolveData(timelineIncidentConfig as unknown as ConfigBase),
+        "timeline-history": resolveData(timelineHistoryConfig as unknown as ConfigBase),
+        "timeline-versions": resolveData(timelineVersionsConfig as unknown as ConfigBase),
+        "timeline-gantt": resolveData(timelineGanttConfig as unknown as ConfigBase),
+        "timeline-sprint-days": resolveData(timelineSprintDaysConfig as unknown as ConfigBase),
+        "timeline-time-blocks": resolveData(timelineTimeBlocksConfig as unknown as ConfigBase),
+        "timeline-event-stream": resolveData(timelineEventStreamConfig as unknown as ConfigBase),
     },
     toggle: {
         "toggle-switch": resolveData(toggleSwitchConfig as unknown as ConfigBase),

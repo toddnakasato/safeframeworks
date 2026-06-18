@@ -1,0 +1,62 @@
+{
+  "component": "timeline",
+  "metadata": {
+    "variant": "history",
+    "dateField": "date",
+    "labelField": "title",
+    "descriptionField": "description",
+    "scale": "decade"
+  },
+  "data": {
+    "events": {
+      "inline": [
+        {
+          "date": "2015",
+          "title": "Founded",
+          "description": "Seed round, 3 engineers",
+          "pos": "above"
+        },
+        {
+          "date": "2016",
+          "title": "First Customer",
+          "description": "Enterprise deal signed",
+          "pos": "below"
+        },
+        {
+          "date": "2018",
+          "title": "Series A",
+          "description": "$8M, 25 employees",
+          "pos": "above"
+        },
+        {
+          "date": "2020",
+          "title": "Platform Launch",
+          "description": "V1.0 GA release",
+          "pos": "below"
+        },
+        {
+          "date": "2022",
+          "title": "Series B",
+          "description": "$40M, global expansion",
+          "pos": "above"
+        },
+        {
+          "date": "2024",
+          "title": "1000 Customers",
+          "description": "Enterprise tier launched",
+          "pos": "below"
+        },
+        {
+          "date": "2025",
+          "title": "Now",
+          "description": "IPO preparation",
+          "pos": "above",
+          "status": "active"
+        }
+      ]
+    }
+  },
+  "eventHandler": {
+    "handler": "timeline"
+  }
+}

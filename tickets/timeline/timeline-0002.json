@@ -1,17 +1,16 @@
 {
   "id": "timeline-0002",
   "component": "timeline",
-  "type": "bug",
-  "title": "implment the figma horizontal time line variations in ‘2’ in the figma design folder",
-  "description": "implment the figma horizontal time line variations in ‘2’ in the figma design folder",
-  "status": "open",
-  "proves": [
-    "builder-structure",
-    "framework-boot"
-  ],
-  "params": {
-    "component": "timeline"
-  },
+  "type": "variation",
+  "title": "6 horizontal timeline variations from figma design",
+  "description": "History (decade), versions (years), gantt-phases (months), sprint-days (days), time-blocks (hours), event-stream (minutes). Each with distinct horizontal layout.",
+  "status": "closed",
+  "proves": ["builder-registry"],
+  "params": { "component": "timeline" },
+  "test": { "command": "prove builder-registry", "assert": { "ok": true } },
   "created": "2026-06-18T16:02:57.773Z",
-  "updated": "2026-06-18T16:02:57.773Z"
+  "updated": "2026-06-18T19:00:00.000Z",
+  "variant": "history, versions, gantt-phases, sprint-days, time-blocks, event-stream",
+  "resolution": "6 new horizontal render paths in builder + CSS + samples. History: above/below alternating. Versions: same but date-focused. Gantt: phase bars. Sprint-days: vertical bar columns. Time-blocks: proportional strip. Event-stream: dark horizontal dots.",
+  "files": ["safeframeworks/builders/timeline.ts", "safestyles/core/structure.css", "safeframeworks/samples/index.ts"]
 }

@@ -1,0 +1,55 @@
+{
+  "component": "timeline",
+  "metadata": {
+    "variant": "versions",
+    "dateField": "date",
+    "labelField": "title",
+    "descriptionField": "description",
+    "scale": "years"
+  },
+  "data": {
+    "events": {
+      "inline": [
+        {
+          "date": "2022-03",
+          "title": "v1.0 Genesis",
+          "description": "Initial release",
+          "pos": "above"
+        },
+        {
+          "date": "2022-09",
+          "title": "v1.5 Horizon",
+          "description": "API + webhooks",
+          "pos": "below"
+        },
+        {
+          "date": "2023-04",
+          "title": "v2.0 Atlas",
+          "description": "Multi-tenant arch",
+          "pos": "above"
+        },
+        {
+          "date": "2023-11",
+          "title": "v2.5 Prism",
+          "description": "Analytics dashboard",
+          "pos": "below"
+        },
+        {
+          "date": "2024-06",
+          "title": "v3.0 Nova",
+          "description": "AI-powered features",
+          "pos": "above"
+        },
+        {
+          "date": "2025-01",
+          "title": "v4.0 Quantum",
+          "description": "Real-time collaboration",
+          "pos": "below"
+        }
+      ]
+    }
+  },
+  "eventHandler": {
+    "handler": "timeline"
+  }
+}
