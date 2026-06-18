@@ -2,8 +2,8 @@
  * ticket-service.ts — Read/write tickets via Tauri invoke.
  * Tickets live in safeframeworks/tickets/{component}/{id}.json
  */
-import type { Ticket, TicketType } from "../../../../safecontracts/src/contracts-ticket";
-import { suggestProves } from "../../../../safecontracts/src/contracts-ticket";
+import type { Ticket, TicketType } from "../../../../../safecontracts/src/contracts-ticket";
+import { suggestProves } from "../../../../../safecontracts/src/contracts-ticket";
 
 const TICKETS_DIR = "../../../tickets";
 
