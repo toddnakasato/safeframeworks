@@ -313,9 +313,13 @@ export function createSafeTable(container: HTMLElement, config: ConfigBase, ctx:
                 fire("row:dblclick", { index: globalIndex });
             };
             tr.onmouseenter = () => {
+                // cssOnly: update DOM directly, no round-trip through state.json
+                container.querySelectorAll("tr[data-row-hover]").forEach(r => r.removeAttribute("data-row-hover"));
+                tr.setAttribute("data-row-hover", "true");
                 fire("row:hover", { index: globalIndex });
             };
             tr.onmouseleave = () => {
+                tr.removeAttribute("data-row-hover");
                 fire("row:leave", { index: globalIndex });
             };
 
