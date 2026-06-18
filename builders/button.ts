@@ -15,7 +15,7 @@ export function createSafeButton(container: HTMLElement, config: ConfigBase, ctx
     return root;
 }
 
-function buildSingleButton(config: ConfigBase, ctx: SafeFireContext): HTMLElement {
+function buildSingleButton(config: ConfigBase, ctx: SafeFireContext, childId?: string): HTMLElement {
     const metadata = config.metadata;
     const variant = (metadata.variant as string) ?? "primary";
     const label = metadata.label as string | undefined;
@@ -153,7 +153,7 @@ function buildButton(config: ConfigBase, ctx: SafeFireContext, childId?: string)
     const hasChildren = config.children && Object.keys(config.children).length > 0;
     const hasGroupVariant = !!config.metadata.groupVariant;
     if (hasChildren || hasGroupVariant) return buildButtonGroup(config, ctx);
-    return buildSingleButton(config, ctx);
+    return buildSingleButton(config, ctx, childId);
 }
 
 /*----------------------------------------------------------------------------------------------------
