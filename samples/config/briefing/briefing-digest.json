@@ -1,0 +1,56 @@
+{
+  "component": "briefing",
+  "metadata": {
+    "variant": "digest",
+    "spacing": "normal",
+    "title": "Property digest.",
+    "subtitle": "Daily Briefing - Real Estate",
+    "date": "Fri, Jun 19 - 5 stories - 32 active listings",
+    "width": "20vw",
+    "align": "center"
+  },
+  "children": {
+    "stories": {
+      "component": "list",
+      "metadata": {
+        "variant": "simple",
+        "spacing": "normal",
+        "labelField": "title",
+        "order": 1,
+        "title": "Stories"
+      },
+      "data": {
+        "items": {
+          "name": "digest-stories",
+          "type": "list",
+          "source": "inline",
+          "inline": [
+            {
+              "title": "234 Maple offer expires at 5pm today",
+              "description": "Buyers set a hard deadline. The $1.18M bid is $20K below ask."
+            },
+            {
+              "title": "Your heaviest showing day this month",
+              "description": "8 showings from 10am to 6pm. Johnson family at 10am most likely converters."
+            },
+            {
+              "title": "12 Harbor Blvd: $50K price drop is live",
+              "description": "The reduction to $2.1M generated 3 new inquiries."
+            },
+            {
+              "title": "Johnson rate lock expires tomorrow",
+              "description": "If 234 Maple closes today, financing is secure."
+            },
+            {
+              "title": "78 Elm St expired after 88 days",
+              "description": "No offers. Worth repricing discussion with seller."
+            }
+          ]
+        }
+      }
+    }
+  },
+  "eventHandler": {
+    "handler": "briefing"
+  }
+}

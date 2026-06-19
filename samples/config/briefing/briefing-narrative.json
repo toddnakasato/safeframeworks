@@ -1,0 +1,51 @@
+{
+  "component": "briefing",
+  "metadata": {
+    "variant": "narrative",
+    "spacing": "normal",
+    "title": "Good morning, Dr. Reeves.",
+    "subtitle": "Daily Briefing - Healthcare",
+    "date": "Fri, Jun 19 - Ward summary - Generated 07:02",
+    "width": "20vw",
+    "align": "center"
+  },
+  "children": {
+    "content": {
+      "component": "list",
+      "metadata": {
+        "variant": "simple",
+        "spacing": "normal",
+        "labelField": "text",
+        "order": 1,
+        "title": "Summary"
+      },
+      "data": {
+        "items": {
+          "name": "narrative-paras",
+          "type": "list",
+          "source": "inline",
+          "inline": [
+            {
+              "text": "Your ward has 24 patients today. Torres (4B) needs immediate attention -- blood pressure trending since early morning."
+            },
+            {
+              "text": "Sarah K. remains stable in the ICU post-op. Four procedures begin at 09:00 in OR 2. The 14:00 slot has a scheduling conflict in OR 3."
+            },
+            {
+              "text": "Three labs remain pending: a rush CBC for Torres, a routine lipid screen for Martinez, and an echo for Williams."
+            },
+            {
+              "text": "Bed 12 discharge is cleared for this morning. Bed 7 (Nguyen) needs groin site check at 08:00 post-cardiac cath."
+            },
+            {
+              "text": "Staffing: RN Collins called in sick. Float pool replacement arriving at 07:30. 2 admissions expected from ED."
+            }
+          ]
+        }
+      }
+    }
+  },
+  "eventHandler": {
+    "handler": "briefing"
+  }
+}

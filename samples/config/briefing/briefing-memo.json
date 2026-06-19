@@ -1,0 +1,98 @@
+{
+  "component": "briefing",
+  "metadata": {
+    "variant": "memo",
+    "spacing": "normal",
+    "subtitle": "Daily Briefing - Finance",
+    "title": "Pre-Market Morning Brief",
+    "date": "Friday, June 19, 2026",
+    "width": "20vw",
+    "align": "center"
+  },
+  "children": {
+    "situation": {
+      "component": "list",
+      "metadata": {
+        "variant": "simple",
+        "spacing": "normal",
+        "labelField": "text",
+        "order": 1,
+        "title": "Situation"
+      },
+      "data": {
+        "items": {
+          "name": "memo-situation",
+          "type": "list",
+          "source": "inline",
+          "inline": [
+            {
+              "text": "Markets are cautiously positioned ahead of today's Fed decision. Your portfolio gained +$18,240 overnight, led by NVDA up 4.2% pre-market on earnings anticipation."
+            }
+          ]
+        }
+      }
+    },
+    "developments": {
+      "component": "list",
+      "metadata": {
+        "variant": "simple",
+        "spacing": "normal",
+        "labelField": "label",
+        "order": 2,
+        "title": "Key Developments"
+      },
+      "data": {
+        "items": {
+          "name": "memo-devs",
+          "type": "list",
+          "source": "inline",
+          "inline": [
+            {
+              "label": "NVDA",
+              "description": "Up 4.2% pre-market. Your 50 shares are up $3,605. Earnings after close."
+            },
+            {
+              "label": "FED",
+              "description": "Rate decision at 14:00 EST. Hold expected but guidance language is the variable."
+            },
+            {
+              "label": "RISK",
+              "description": "Three stop-loss orders near trigger: TSLA at $238.20 (current: $242.10)."
+            }
+          ]
+        }
+      }
+    },
+    "actions": {
+      "component": "list",
+      "metadata": {
+        "variant": "simple",
+        "spacing": "normal",
+        "labelField": "text",
+        "order": 3,
+        "title": "Action Required"
+      },
+      "data": {
+        "items": {
+          "name": "memo-actions",
+          "type": "list",
+          "source": "inline",
+          "inline": [
+            {
+              "text": "Review 3 stop-loss orders before 09:30"
+            },
+            {
+              "text": "Set NVDA limit sell at $920 if earnings disappoint"
+            },
+            {
+              "text": "Monitor Fed guidance language at 14:00"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "eventHandler": {
+    "handler": "briefing"
+  }
+}

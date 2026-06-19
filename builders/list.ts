@@ -212,7 +212,40 @@ function buildColumns(root: HTMLElement, config: ConfigBase, data: any[], ctx: S
             row.tabIndex = 0;
             row.setAttribute("role", "listitem");
             row.onclick = () => ctx.fire("select", { index: i, item });
-            for (const f of fields) row.appendChild(el("span", "item-cell", String(item[f.name] ?? "")));
+            for (const f of fields) {
+                if (f.type === "sparkline") {
+                    const cell = el("span", "item-cell");
+                    cell.setAttribute("data-cell-type", "sparkline");
+                    const values = item[f.name];
+                    if (Array.isArray(values) && values.length > 1) {
+                        const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+                        svg.setAttribute("data-role", "sparkline");
+                        svg.setAttribute("viewBox", "0 0 60 20");
+                        svg.style.width = "60px";
+                        svg.style.height = "20px";
+                        const nums = values.map(Number).filter(n => !isNaN(n));
+                        const min = Math.min(...nums);
+                        const max = Math.max(...nums);
+                        const range = max - min || 1;
+                        const points = nums.map((v, vi) =>
+                            `${(vi / (nums.length - 1)) * 60},${20 - ((v - min) / range) * 18}`
+                        ).join(" ");
+                        const polyline = document.createElementNS("http://www.w3.org/2000/svg", "polyline");
+                        polyline.setAttribute("points", points);
+                        polyline.setAttribute("fill", "none");
+                        polyline.setAttribute("stroke-width", "1.5");
+                        polyline.setAttribute("stroke-linejoin", "round");
+                        // Color: green if trending up, red if down
+                        const trending = nums[nums.length - 1] >= nums[0];
+                        polyline.setAttribute("stroke", trending ? "var(--sd-success, #16a34a)" : "var(--sd-error, #dc2626)");
+                        svg.appendChild(polyline);
+                        cell.appendChild(svg);
+                    }
+                    row.appendChild(cell);
+                } else {
+                    row.appendChild(el("span", "item-cell", String(item[f.name] ?? "")));
+                }
+            }
             items.appendChild(row);
         });
         root.appendChild(items);

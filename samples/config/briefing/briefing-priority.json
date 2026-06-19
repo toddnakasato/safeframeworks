@@ -1,0 +1,76 @@
+{
+  "component": "briefing",
+  "metadata": {
+    "variant": "priority",
+    "spacing": "normal",
+    "title": "3 things need you today.",
+    "subtitle": "Daily Briefing - Sales CRM",
+    "date": "Fri, Jun 19 - AI-ranked by urgency x revenue at risk",
+    "width": "20vw",
+    "align": "center"
+  },
+  "children": {
+    "priorities": {
+      "component": "list",
+      "metadata": {
+        "variant": "simple",
+        "spacing": "normal",
+        "labelField": "title",
+        "order": 1,
+        "title": "Priorities"
+      },
+      "data": {
+        "items": {
+          "name": "priority-items",
+          "type": "list",
+          "source": "inline",
+          "inline": [
+            {
+              "title": "Wayne Enterprises",
+              "description": "$350K - Hard close today. Decision window closes at 5pm. You haven't spoken in 3 days."
+            },
+            {
+              "title": "Umbrella Corp follow-up",
+              "description": "Score 88 - $75K opp. Lead score jumped from 71 to 88 overnight. Two competing agencies active."
+            },
+            {
+              "title": "Acme Q3 renewal",
+              "description": "$120K - 11 days to expiry. Contract expires Jun 30. No renewal conversation started."
+            }
+          ]
+        }
+      }
+    },
+    "radar": {
+      "component": "list",
+      "metadata": {
+        "variant": "simple",
+        "spacing": "compact",
+        "labelField": "text",
+        "order": 2,
+        "title": "Also on your radar"
+      },
+      "data": {
+        "items": {
+          "name": "radar-items",
+          "type": "list",
+          "source": "inline",
+          "inline": [
+            {
+              "text": "5 tasks due - Pipeline review overdue"
+            },
+            {
+              "text": "Globex expansion advancing to proposal"
+            },
+            {
+              "text": "Q1 report ready for stakeholder share"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "eventHandler": {
+    "handler": "briefing"
+  }
+}

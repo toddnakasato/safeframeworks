@@ -1,34 +1,180 @@
 {
   "ok": true,
-  "component": "briefing",
-  "total": 332,
-  "passed": 332,
+  "component": "all",
+  "total": 1221,
+  "passed": 1221,
   "failed": 0,
   "groups": {
-    "uses-readList-or-readRecord": 0,
-    "uses-shared-el": 1,
-    "uses-applyIntent": 0,
-    "uses-applyPaintState": 1,
-    "has-data-component": 1,
-    "no-schema-dot-fields": 0,
-    "imports-match-calls": 3,
-    "metadata-is-declared": 1,
-    "required-metadata-fields": 0,
-    "no-getDataSource": 1,
-    "no-initSafe": 1,
-    "no-module-scope-constants": 1,
-    "no-cross-function-scope-leak": 1,
-    "no-local-contract-interfaces": 1,
-    "no-function-tdz": 1,
-    "standard-export-name": 1,
-    "routed-through-render": 1,
+    "uses-readList-or-readRecord": 24,
+    "uses-shared-el": 34,
+    "uses-applyIntent": 21,
+    "uses-applyPaintState": 21,
+    "has-data-component": 34,
+    "no-schema-dot-fields": 5,
+    "imports-match-calls": 88,
+    "metadata-is-declared": 26,
+    "required-metadata-fields": 24,
+    "no-getDataSource": 34,
+    "no-initSafe": 34,
+    "no-module-scope-constants": 34,
+    "no-cross-function-scope-leak": 34,
+    "no-local-contract-interfaces": 32,
+    "no-function-tdz": 34,
+    "standard-export-name": 34,
+    "routed-through-render": 34,
     "wrappers-use-buildComponent": 278,
-    "ticket-required-roles": 17,
-    "ticket-required-css": 17,
-    "valid-child-variants": 3,
-    "samples-registered-in-index": 2
+    "ticket-required-roles": 115,
+    "ticket-required-css": 115,
+    "ticket-required-nesting": 5,
+    "valid-child-variants": 15,
+    "samples-registered-in-index": 146
   },
   "checks": [
+    {
+      "group": "uses-readList-or-readRecord",
+      "name": "funnel: uses readList or readRecord",
+      "status": "pass"
+    },
+    {
+      "group": "uses-shared-el",
+      "name": "funnel: uses shared el/elAttrs from utils",
+      "status": "pass"
+    },
+    {
+      "group": "uses-applyIntent",
+      "name": "funnel: uses applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "uses-applyPaintState",
+      "name": "funnel: uses applyPaintState",
+      "status": "pass"
+    },
+    {
+      "group": "has-data-component",
+      "name": "funnel: sets data-component",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "funnel: imports readList",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "funnel: imports applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "funnel: imports applyPaintState",
+      "status": "pass"
+    },
+    {
+      "group": "metadata-is-declared",
+      "name": "funnel: metadata variable is declared",
+      "status": "pass"
+    },
+    {
+      "group": "no-getDataSource",
+      "name": "funnel: no raw getDataSource",
+      "status": "pass"
+    },
+    {
+      "group": "no-initSafe",
+      "name": "funnel: no initSafe function",
+      "status": "pass"
+    },
+    {
+      "group": "no-module-scope-constants",
+      "name": "funnel: no module-scope uppercase constants",
+      "status": "pass"
+    },
+    {
+      "group": "no-cross-function-scope-leak",
+      "name": "funnel: no cross-function scope leaks",
+      "status": "pass"
+    },
+    {
+      "group": "no-function-tdz",
+      "name": "funnel: no TDZ within functions",
+      "status": "pass"
+    },
+    {
+      "group": "no-local-contract-interfaces",
+      "name": "funnel: no duplicate contract interfaces",
+      "status": "pass"
+    },
+    {
+      "group": "standard-export-name",
+      "name": "funnel: exports createSafe{Name}",
+      "status": "pass"
+    },
+    {
+      "group": "uses-shared-el",
+      "name": "callout: uses shared el/elAttrs from utils",
+      "status": "pass"
+    },
+    {
+      "group": "uses-applyIntent",
+      "name": "callout: uses applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "has-data-component",
+      "name": "callout: sets data-component",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "callout: imports applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "callout: imports elAttrs",
+      "status": "pass"
+    },
+    {
+      "group": "metadata-is-declared",
+      "name": "callout: metadata variable is declared",
+      "status": "pass"
+    },
+    {
+      "group": "no-getDataSource",
+      "name": "callout: no raw getDataSource",
+      "status": "pass"
+    },
+    {
+      "group": "no-initSafe",
+      "name": "callout: no initSafe function",
+      "status": "pass"
+    },
+    {
+      "group": "no-module-scope-constants",
+      "name": "callout: no module-scope uppercase constants",
+      "status": "pass"
+    },
+    {
+      "group": "no-cross-function-scope-leak",
+      "name": "callout: no cross-function scope leaks",
+      "status": "pass"
+    },
+    {
+      "group": "no-function-tdz",
+      "name": "callout: no TDZ within functions",
+      "status": "pass"
+    },
+    {
+      "group": "no-local-contract-interfaces",
+      "name": "callout: no duplicate contract interfaces",
+      "status": "pass"
+    },
+    {
+      "group": "standard-export-name",
+      "name": "callout: exports createSafe{Name}",
+      "status": "pass"
+    },
     {
       "group": "uses-shared-el",
       "name": "briefing: uses shared el/elAttrs from utils",
@@ -100,8 +246,2403 @@
       "status": "pass"
     },
     {
+      "group": "uses-shared-el",
+      "name": "week: uses shared el/elAttrs from utils",
+      "status": "pass"
+    },
+    {
+      "group": "uses-applyIntent",
+      "name": "week: uses applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "has-data-component",
+      "name": "week: sets data-component",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "week: imports applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "metadata-is-declared",
+      "name": "week: metadata variable is declared",
+      "status": "pass"
+    },
+    {
+      "group": "no-getDataSource",
+      "name": "week: no raw getDataSource",
+      "status": "pass"
+    },
+    {
+      "group": "no-initSafe",
+      "name": "week: no initSafe function",
+      "status": "pass"
+    },
+    {
+      "group": "no-module-scope-constants",
+      "name": "week: no module-scope uppercase constants",
+      "status": "pass"
+    },
+    {
+      "group": "no-cross-function-scope-leak",
+      "name": "week: no cross-function scope leaks",
+      "status": "pass"
+    },
+    {
+      "group": "no-function-tdz",
+      "name": "week: no TDZ within functions",
+      "status": "pass"
+    },
+    {
+      "group": "no-local-contract-interfaces",
+      "name": "week: no duplicate contract interfaces",
+      "status": "pass"
+    },
+    {
+      "group": "standard-export-name",
+      "name": "week: exports createSafe{Name}",
+      "status": "pass"
+    },
+    {
+      "group": "uses-readList-or-readRecord",
+      "name": "table: uses readList or readRecord",
+      "status": "pass"
+    },
+    {
+      "group": "uses-shared-el",
+      "name": "table: uses shared el/elAttrs from utils",
+      "status": "pass"
+    },
+    {
+      "group": "uses-applyIntent",
+      "name": "table: uses applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "uses-applyPaintState",
+      "name": "table: uses applyPaintState",
+      "status": "pass"
+    },
+    {
+      "group": "has-data-component",
+      "name": "table: sets data-component",
+      "status": "pass"
+    },
+    {
+      "group": "no-schema-dot-fields",
+      "name": "table: no schema.fields after readSchema",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "table: imports readList",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "table: imports readSchema",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "table: imports applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "table: imports applyPaintState",
+      "status": "pass"
+    },
+    {
+      "group": "metadata-is-declared",
+      "name": "table: metadata variable is declared",
+      "status": "pass"
+    },
+    {
+      "group": "no-getDataSource",
+      "name": "table: no raw getDataSource",
+      "status": "pass"
+    },
+    {
+      "group": "no-initSafe",
+      "name": "table: no initSafe function",
+      "status": "pass"
+    },
+    {
+      "group": "no-module-scope-constants",
+      "name": "table: no module-scope uppercase constants",
+      "status": "pass"
+    },
+    {
+      "group": "no-cross-function-scope-leak",
+      "name": "table: no cross-function scope leaks",
+      "status": "pass"
+    },
+    {
+      "group": "no-function-tdz",
+      "name": "table: no TDZ within functions",
+      "status": "pass"
+    },
+    {
+      "group": "no-local-contract-interfaces",
+      "name": "table: no duplicate contract interfaces",
+      "status": "pass"
+    },
+    {
+      "group": "standard-export-name",
+      "name": "table: exports createSafe{Name}",
+      "status": "pass"
+    },
+    {
+      "group": "uses-readList-or-readRecord",
+      "name": "nav: uses readList or readRecord",
+      "status": "pass"
+    },
+    {
+      "group": "uses-shared-el",
+      "name": "nav: uses shared el/elAttrs from utils",
+      "status": "pass"
+    },
+    {
+      "group": "uses-applyPaintState",
+      "name": "nav: uses applyPaintState",
+      "status": "pass"
+    },
+    {
+      "group": "has-data-component",
+      "name": "nav: sets data-component",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "nav: imports readList",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "nav: imports applyPaintState",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "nav: imports elAttrs",
+      "status": "pass"
+    },
+    {
+      "group": "metadata-is-declared",
+      "name": "nav: metadata variable is declared",
+      "status": "pass"
+    },
+    {
+      "group": "no-getDataSource",
+      "name": "nav: no raw getDataSource",
+      "status": "pass"
+    },
+    {
+      "group": "no-initSafe",
+      "name": "nav: no initSafe function",
+      "status": "pass"
+    },
+    {
+      "group": "no-module-scope-constants",
+      "name": "nav: no module-scope uppercase constants",
+      "status": "pass"
+    },
+    {
+      "group": "no-cross-function-scope-leak",
+      "name": "nav: no cross-function scope leaks",
+      "status": "pass"
+    },
+    {
+      "group": "no-function-tdz",
+      "name": "nav: no TDZ within functions",
+      "status": "pass"
+    },
+    {
+      "group": "no-local-contract-interfaces",
+      "name": "nav: no duplicate contract interfaces",
+      "status": "pass"
+    },
+    {
+      "group": "standard-export-name",
+      "name": "nav: exports createSafe{Name}",
+      "status": "pass"
+    },
+    {
+      "group": "uses-readList-or-readRecord",
+      "name": "input: uses readList or readRecord",
+      "status": "pass"
+    },
+    {
+      "group": "uses-shared-el",
+      "name": "input: uses shared el/elAttrs from utils",
+      "status": "pass"
+    },
+    {
+      "group": "uses-applyPaintState",
+      "name": "input: uses applyPaintState",
+      "status": "pass"
+    },
+    {
+      "group": "has-data-component",
+      "name": "input: sets data-component",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "input: imports readRecord",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "input: imports applyPaintState",
+      "status": "pass"
+    },
+    {
+      "group": "metadata-is-declared",
+      "name": "input: metadata variable is declared",
+      "status": "pass"
+    },
+    {
+      "group": "no-getDataSource",
+      "name": "input: no raw getDataSource",
+      "status": "pass"
+    },
+    {
+      "group": "no-initSafe",
+      "name": "input: no initSafe function",
+      "status": "pass"
+    },
+    {
+      "group": "no-module-scope-constants",
+      "name": "input: no module-scope uppercase constants",
+      "status": "pass"
+    },
+    {
+      "group": "no-cross-function-scope-leak",
+      "name": "input: no cross-function scope leaks",
+      "status": "pass"
+    },
+    {
+      "group": "no-function-tdz",
+      "name": "input: no TDZ within functions",
+      "status": "pass"
+    },
+    {
+      "group": "no-local-contract-interfaces",
+      "name": "input: no duplicate contract interfaces",
+      "status": "pass"
+    },
+    {
+      "group": "standard-export-name",
+      "name": "input: exports createSafe{Name}",
+      "status": "pass"
+    },
+    {
+      "group": "uses-shared-el",
+      "name": "button: uses shared el/elAttrs from utils",
+      "status": "pass"
+    },
+    {
+      "group": "uses-applyIntent",
+      "name": "button: uses applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "has-data-component",
+      "name": "button: sets data-component",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "button: imports applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "button: imports elAttrs",
+      "status": "pass"
+    },
+    {
+      "group": "metadata-is-declared",
+      "name": "button: metadata variable is declared",
+      "status": "pass"
+    },
+    {
+      "group": "no-getDataSource",
+      "name": "button: no raw getDataSource",
+      "status": "pass"
+    },
+    {
+      "group": "no-initSafe",
+      "name": "button: no initSafe function",
+      "status": "pass"
+    },
+    {
+      "group": "no-module-scope-constants",
+      "name": "button: no module-scope uppercase constants",
+      "status": "pass"
+    },
+    {
+      "group": "no-cross-function-scope-leak",
+      "name": "button: no cross-function scope leaks",
+      "status": "pass"
+    },
+    {
+      "group": "no-function-tdz",
+      "name": "button: no TDZ within functions",
+      "status": "pass"
+    },
+    {
+      "group": "no-local-contract-interfaces",
+      "name": "button: no duplicate contract interfaces",
+      "status": "pass"
+    },
+    {
+      "group": "standard-export-name",
+      "name": "button: exports createSafe{Name}",
+      "status": "pass"
+    },
+    {
+      "group": "uses-readList-or-readRecord",
+      "name": "sheet: uses readList or readRecord",
+      "status": "pass"
+    },
+    {
+      "group": "uses-shared-el",
+      "name": "sheet: uses shared el/elAttrs from utils",
+      "status": "pass"
+    },
+    {
+      "group": "uses-applyIntent",
+      "name": "sheet: uses applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "uses-applyPaintState",
+      "name": "sheet: uses applyPaintState",
+      "status": "pass"
+    },
+    {
+      "group": "has-data-component",
+      "name": "sheet: sets data-component",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "sheet: imports readList",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "sheet: imports applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "sheet: imports applyPaintState",
+      "status": "pass"
+    },
+    {
+      "group": "metadata-is-declared",
+      "name": "sheet: metadata variable is declared",
+      "status": "pass"
+    },
+    {
+      "group": "no-getDataSource",
+      "name": "sheet: no raw getDataSource",
+      "status": "pass"
+    },
+    {
+      "group": "no-initSafe",
+      "name": "sheet: no initSafe function",
+      "status": "pass"
+    },
+    {
+      "group": "no-module-scope-constants",
+      "name": "sheet: no module-scope uppercase constants",
+      "status": "pass"
+    },
+    {
+      "group": "no-cross-function-scope-leak",
+      "name": "sheet: no cross-function scope leaks",
+      "status": "pass"
+    },
+    {
+      "group": "no-function-tdz",
+      "name": "sheet: no TDZ within functions",
+      "status": "pass"
+    },
+    {
+      "group": "no-local-contract-interfaces",
+      "name": "sheet: no duplicate contract interfaces",
+      "status": "pass"
+    },
+    {
+      "group": "standard-export-name",
+      "name": "sheet: exports createSafe{Name}",
+      "status": "pass"
+    },
+    {
+      "group": "uses-readList-or-readRecord",
+      "name": "chat: uses readList or readRecord",
+      "status": "pass"
+    },
+    {
+      "group": "uses-shared-el",
+      "name": "chat: uses shared el/elAttrs from utils",
+      "status": "pass"
+    },
+    {
+      "group": "has-data-component",
+      "name": "chat: sets data-component",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "chat: imports readList",
+      "status": "pass"
+    },
+    {
+      "group": "no-getDataSource",
+      "name": "chat: no raw getDataSource",
+      "status": "pass"
+    },
+    {
+      "group": "no-initSafe",
+      "name": "chat: no initSafe function",
+      "status": "pass"
+    },
+    {
+      "group": "no-module-scope-constants",
+      "name": "chat: no module-scope uppercase constants",
+      "status": "pass"
+    },
+    {
+      "group": "no-cross-function-scope-leak",
+      "name": "chat: no cross-function scope leaks",
+      "status": "pass"
+    },
+    {
+      "group": "no-function-tdz",
+      "name": "chat: no TDZ within functions",
+      "status": "pass"
+    },
+    {
+      "group": "no-local-contract-interfaces",
+      "name": "chat: no duplicate contract interfaces",
+      "status": "pass"
+    },
+    {
+      "group": "standard-export-name",
+      "name": "chat: exports createSafe{Name}",
+      "status": "pass"
+    },
+    {
+      "group": "uses-shared-el",
+      "name": "columns: uses shared el/elAttrs from utils",
+      "status": "pass"
+    },
+    {
+      "group": "has-data-component",
+      "name": "columns: sets data-component",
+      "status": "pass"
+    },
+    {
+      "group": "no-getDataSource",
+      "name": "columns: no raw getDataSource",
+      "status": "pass"
+    },
+    {
+      "group": "no-initSafe",
+      "name": "columns: no initSafe function",
+      "status": "pass"
+    },
+    {
+      "group": "no-module-scope-constants",
+      "name": "columns: no module-scope uppercase constants",
+      "status": "pass"
+    },
+    {
+      "group": "no-cross-function-scope-leak",
+      "name": "columns: no cross-function scope leaks",
+      "status": "pass"
+    },
+    {
+      "group": "no-function-tdz",
+      "name": "columns: no TDZ within functions",
+      "status": "pass"
+    },
+    {
+      "group": "no-local-contract-interfaces",
+      "name": "columns: no duplicate contract interfaces",
+      "status": "pass"
+    },
+    {
+      "group": "standard-export-name",
+      "name": "columns: exports createSafe{Name}",
+      "status": "pass"
+    },
+    {
+      "group": "uses-shared-el",
+      "name": "metric: uses shared el/elAttrs from utils",
+      "status": "pass"
+    },
+    {
+      "group": "has-data-component",
+      "name": "metric: sets data-component",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "metric: imports readRecord",
+      "status": "pass"
+    },
+    {
+      "group": "no-getDataSource",
+      "name": "metric: no raw getDataSource",
+      "status": "pass"
+    },
+    {
+      "group": "no-initSafe",
+      "name": "metric: no initSafe function",
+      "status": "pass"
+    },
+    {
+      "group": "no-module-scope-constants",
+      "name": "metric: no module-scope uppercase constants",
+      "status": "pass"
+    },
+    {
+      "group": "no-cross-function-scope-leak",
+      "name": "metric: no cross-function scope leaks",
+      "status": "pass"
+    },
+    {
+      "group": "no-function-tdz",
+      "name": "metric: no TDZ within functions",
+      "status": "pass"
+    },
+    {
+      "group": "no-local-contract-interfaces",
+      "name": "metric: no duplicate contract interfaces",
+      "status": "pass"
+    },
+    {
+      "group": "standard-export-name",
+      "name": "metric: exports createSafe{Name}",
+      "status": "pass"
+    },
+    {
+      "group": "uses-shared-el",
+      "name": "storyflow: uses shared el/elAttrs from utils",
+      "status": "pass"
+    },
+    {
+      "group": "has-data-component",
+      "name": "storyflow: sets data-component",
+      "status": "pass"
+    },
+    {
+      "group": "no-getDataSource",
+      "name": "storyflow: no raw getDataSource",
+      "status": "pass"
+    },
+    {
+      "group": "no-initSafe",
+      "name": "storyflow: no initSafe function",
+      "status": "pass"
+    },
+    {
+      "group": "no-module-scope-constants",
+      "name": "storyflow: no module-scope uppercase constants",
+      "status": "pass"
+    },
+    {
+      "group": "no-cross-function-scope-leak",
+      "name": "storyflow: no cross-function scope leaks",
+      "status": "pass"
+    },
+    {
+      "group": "no-function-tdz",
+      "name": "storyflow: no TDZ within functions",
+      "status": "pass"
+    },
+    {
+      "group": "standard-export-name",
+      "name": "storyflow: exports createSafe{Name}",
+      "status": "pass"
+    },
+    {
+      "group": "uses-readList-or-readRecord",
+      "name": "calendar: uses readList or readRecord",
+      "status": "pass"
+    },
+    {
+      "group": "uses-shared-el",
+      "name": "calendar: uses shared el/elAttrs from utils",
+      "status": "pass"
+    },
+    {
+      "group": "uses-applyIntent",
+      "name": "calendar: uses applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "has-data-component",
+      "name": "calendar: sets data-component",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "calendar: imports readList",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "calendar: imports applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "metadata-is-declared",
+      "name": "calendar: metadata variable is declared",
+      "status": "pass"
+    },
+    {
+      "group": "no-getDataSource",
+      "name": "calendar: no raw getDataSource",
+      "status": "pass"
+    },
+    {
+      "group": "no-initSafe",
+      "name": "calendar: no initSafe function",
+      "status": "pass"
+    },
+    {
+      "group": "no-module-scope-constants",
+      "name": "calendar: no module-scope uppercase constants",
+      "status": "pass"
+    },
+    {
+      "group": "no-cross-function-scope-leak",
+      "name": "calendar: no cross-function scope leaks",
+      "status": "pass"
+    },
+    {
+      "group": "no-function-tdz",
+      "name": "calendar: no TDZ within functions",
+      "status": "pass"
+    },
+    {
+      "group": "no-local-contract-interfaces",
+      "name": "calendar: no duplicate contract interfaces",
+      "status": "pass"
+    },
+    {
+      "group": "standard-export-name",
+      "name": "calendar: exports createSafe{Name}",
+      "status": "pass"
+    },
+    {
+      "group": "uses-readList-or-readRecord",
+      "name": "card: uses readList or readRecord",
+      "status": "pass"
+    },
+    {
+      "group": "uses-shared-el",
+      "name": "card: uses shared el/elAttrs from utils",
+      "status": "pass"
+    },
+    {
+      "group": "uses-applyIntent",
+      "name": "card: uses applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "uses-applyPaintState",
+      "name": "card: uses applyPaintState",
+      "status": "pass"
+    },
+    {
+      "group": "has-data-component",
+      "name": "card: sets data-component",
+      "status": "pass"
+    },
+    {
+      "group": "no-schema-dot-fields",
+      "name": "card: no schema.fields after readSchema",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "card: imports readList",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "card: imports readSchema",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "card: imports applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "card: imports applyPaintState",
+      "status": "pass"
+    },
+    {
+      "group": "metadata-is-declared",
+      "name": "card: metadata variable is declared",
+      "status": "pass"
+    },
+    {
+      "group": "no-getDataSource",
+      "name": "card: no raw getDataSource",
+      "status": "pass"
+    },
+    {
+      "group": "no-initSafe",
+      "name": "card: no initSafe function",
+      "status": "pass"
+    },
+    {
+      "group": "no-module-scope-constants",
+      "name": "card: no module-scope uppercase constants",
+      "status": "pass"
+    },
+    {
+      "group": "no-cross-function-scope-leak",
+      "name": "card: no cross-function scope leaks",
+      "status": "pass"
+    },
+    {
+      "group": "no-function-tdz",
+      "name": "card: no TDZ within functions",
+      "status": "pass"
+    },
+    {
+      "group": "no-local-contract-interfaces",
+      "name": "card: no duplicate contract interfaces",
+      "status": "pass"
+    },
+    {
+      "group": "standard-export-name",
+      "name": "card: exports createSafe{Name}",
+      "status": "pass"
+    },
+    {
+      "group": "uses-readList-or-readRecord",
+      "name": "parser: uses readList or readRecord",
+      "status": "pass"
+    },
+    {
+      "group": "uses-shared-el",
+      "name": "parser: uses shared el/elAttrs from utils",
+      "status": "pass"
+    },
+    {
+      "group": "uses-applyPaintState",
+      "name": "parser: uses applyPaintState",
+      "status": "pass"
+    },
+    {
+      "group": "has-data-component",
+      "name": "parser: sets data-component",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "parser: imports readList",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "parser: imports applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "parser: imports applyPaintState",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "parser: imports elAttrs",
+      "status": "pass"
+    },
+    {
+      "group": "metadata-is-declared",
+      "name": "parser: metadata variable is declared",
+      "status": "pass"
+    },
+    {
+      "group": "no-getDataSource",
+      "name": "parser: no raw getDataSource",
+      "status": "pass"
+    },
+    {
+      "group": "no-initSafe",
+      "name": "parser: no initSafe function",
+      "status": "pass"
+    },
+    {
+      "group": "no-module-scope-constants",
+      "name": "parser: no module-scope uppercase constants",
+      "status": "pass"
+    },
+    {
+      "group": "no-cross-function-scope-leak",
+      "name": "parser: no cross-function scope leaks",
+      "status": "pass"
+    },
+    {
+      "group": "no-function-tdz",
+      "name": "parser: no TDZ within functions",
+      "status": "pass"
+    },
+    {
+      "group": "no-local-contract-interfaces",
+      "name": "parser: no duplicate contract interfaces",
+      "status": "pass"
+    },
+    {
+      "group": "standard-export-name",
+      "name": "parser: exports createSafe{Name}",
+      "status": "pass"
+    },
+    {
+      "group": "uses-readList-or-readRecord",
+      "name": "map: uses readList or readRecord",
+      "status": "pass"
+    },
+    {
+      "group": "uses-shared-el",
+      "name": "map: uses shared el/elAttrs from utils",
+      "status": "pass"
+    },
+    {
+      "group": "uses-applyIntent",
+      "name": "map: uses applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "has-data-component",
+      "name": "map: sets data-component",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "map: imports readList",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "map: imports applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "metadata-is-declared",
+      "name": "map: metadata variable is declared",
+      "status": "pass"
+    },
+    {
+      "group": "no-getDataSource",
+      "name": "map: no raw getDataSource",
+      "status": "pass"
+    },
+    {
+      "group": "no-initSafe",
+      "name": "map: no initSafe function",
+      "status": "pass"
+    },
+    {
+      "group": "no-module-scope-constants",
+      "name": "map: no module-scope uppercase constants",
+      "status": "pass"
+    },
+    {
+      "group": "no-cross-function-scope-leak",
+      "name": "map: no cross-function scope leaks",
+      "status": "pass"
+    },
+    {
+      "group": "no-function-tdz",
+      "name": "map: no TDZ within functions",
+      "status": "pass"
+    },
+    {
+      "group": "no-local-contract-interfaces",
+      "name": "map: no duplicate contract interfaces",
+      "status": "pass"
+    },
+    {
+      "group": "standard-export-name",
+      "name": "map: exports createSafe{Name}",
+      "status": "pass"
+    },
+    {
+      "group": "uses-readList-or-readRecord",
+      "name": "hierarchy: uses readList or readRecord",
+      "status": "pass"
+    },
+    {
+      "group": "uses-shared-el",
+      "name": "hierarchy: uses shared el/elAttrs from utils",
+      "status": "pass"
+    },
+    {
+      "group": "uses-applyIntent",
+      "name": "hierarchy: uses applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "has-data-component",
+      "name": "hierarchy: sets data-component",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "hierarchy: imports readList",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "hierarchy: imports applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "metadata-is-declared",
+      "name": "hierarchy: metadata variable is declared",
+      "status": "pass"
+    },
+    {
+      "group": "no-getDataSource",
+      "name": "hierarchy: no raw getDataSource",
+      "status": "pass"
+    },
+    {
+      "group": "no-initSafe",
+      "name": "hierarchy: no initSafe function",
+      "status": "pass"
+    },
+    {
+      "group": "no-module-scope-constants",
+      "name": "hierarchy: no module-scope uppercase constants",
+      "status": "pass"
+    },
+    {
+      "group": "no-cross-function-scope-leak",
+      "name": "hierarchy: no cross-function scope leaks",
+      "status": "pass"
+    },
+    {
+      "group": "no-function-tdz",
+      "name": "hierarchy: no TDZ within functions",
+      "status": "pass"
+    },
+    {
+      "group": "no-local-contract-interfaces",
+      "name": "hierarchy: no duplicate contract interfaces",
+      "status": "pass"
+    },
+    {
+      "group": "standard-export-name",
+      "name": "hierarchy: exports createSafe{Name}",
+      "status": "pass"
+    },
+    {
+      "group": "uses-readList-or-readRecord",
+      "name": "skillup: uses readList or readRecord",
+      "status": "pass"
+    },
+    {
+      "group": "uses-shared-el",
+      "name": "skillup: uses shared el/elAttrs from utils",
+      "status": "pass"
+    },
+    {
+      "group": "uses-applyPaintState",
+      "name": "skillup: uses applyPaintState",
+      "status": "pass"
+    },
+    {
+      "group": "has-data-component",
+      "name": "skillup: sets data-component",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "skillup: imports readList",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "skillup: imports applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "skillup: imports applyPaintState",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "skillup: imports elAttrs",
+      "status": "pass"
+    },
+    {
+      "group": "metadata-is-declared",
+      "name": "skillup: metadata variable is declared",
+      "status": "pass"
+    },
+    {
+      "group": "no-getDataSource",
+      "name": "skillup: no raw getDataSource",
+      "status": "pass"
+    },
+    {
+      "group": "no-initSafe",
+      "name": "skillup: no initSafe function",
+      "status": "pass"
+    },
+    {
+      "group": "no-module-scope-constants",
+      "name": "skillup: no module-scope uppercase constants",
+      "status": "pass"
+    },
+    {
+      "group": "no-cross-function-scope-leak",
+      "name": "skillup: no cross-function scope leaks",
+      "status": "pass"
+    },
+    {
+      "group": "no-function-tdz",
+      "name": "skillup: no TDZ within functions",
+      "status": "pass"
+    },
+    {
+      "group": "no-local-contract-interfaces",
+      "name": "skillup: no duplicate contract interfaces",
+      "status": "pass"
+    },
+    {
+      "group": "standard-export-name",
+      "name": "skillup: exports createSafe{Name}",
+      "status": "pass"
+    },
+    {
+      "group": "uses-readList-or-readRecord",
+      "name": "flow: uses readList or readRecord",
+      "status": "pass"
+    },
+    {
+      "group": "uses-shared-el",
+      "name": "flow: uses shared el/elAttrs from utils",
+      "status": "pass"
+    },
+    {
+      "group": "uses-applyIntent",
+      "name": "flow: uses applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "has-data-component",
+      "name": "flow: sets data-component",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "flow: imports readRecord",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "flow: imports applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "metadata-is-declared",
+      "name": "flow: metadata variable is declared",
+      "status": "pass"
+    },
+    {
+      "group": "no-getDataSource",
+      "name": "flow: no raw getDataSource",
+      "status": "pass"
+    },
+    {
+      "group": "no-initSafe",
+      "name": "flow: no initSafe function",
+      "status": "pass"
+    },
+    {
+      "group": "no-module-scope-constants",
+      "name": "flow: no module-scope uppercase constants",
+      "status": "pass"
+    },
+    {
+      "group": "no-cross-function-scope-leak",
+      "name": "flow: no cross-function scope leaks",
+      "status": "pass"
+    },
+    {
+      "group": "no-function-tdz",
+      "name": "flow: no TDZ within functions",
+      "status": "pass"
+    },
+    {
+      "group": "no-local-contract-interfaces",
+      "name": "flow: no duplicate contract interfaces",
+      "status": "pass"
+    },
+    {
+      "group": "standard-export-name",
+      "name": "flow: exports createSafe{Name}",
+      "status": "pass"
+    },
+    {
+      "group": "uses-readList-or-readRecord",
+      "name": "chart: uses readList or readRecord",
+      "status": "pass"
+    },
+    {
+      "group": "uses-shared-el",
+      "name": "chart: uses shared el/elAttrs from utils",
+      "status": "pass"
+    },
+    {
+      "group": "uses-applyIntent",
+      "name": "chart: uses applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "uses-applyPaintState",
+      "name": "chart: uses applyPaintState",
+      "status": "pass"
+    },
+    {
+      "group": "has-data-component",
+      "name": "chart: sets data-component",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "chart: imports readList",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "chart: imports applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "chart: imports applyPaintState",
+      "status": "pass"
+    },
+    {
+      "group": "metadata-is-declared",
+      "name": "chart: metadata variable is declared",
+      "status": "pass"
+    },
+    {
+      "group": "no-getDataSource",
+      "name": "chart: no raw getDataSource",
+      "status": "pass"
+    },
+    {
+      "group": "no-initSafe",
+      "name": "chart: no initSafe function",
+      "status": "pass"
+    },
+    {
+      "group": "no-module-scope-constants",
+      "name": "chart: no module-scope uppercase constants",
+      "status": "pass"
+    },
+    {
+      "group": "no-cross-function-scope-leak",
+      "name": "chart: no cross-function scope leaks",
+      "status": "pass"
+    },
+    {
+      "group": "no-function-tdz",
+      "name": "chart: no TDZ within functions",
+      "status": "pass"
+    },
+    {
+      "group": "no-local-contract-interfaces",
+      "name": "chart: no duplicate contract interfaces",
+      "status": "pass"
+    },
+    {
+      "group": "standard-export-name",
+      "name": "chart: exports createSafe{Name}",
+      "status": "pass"
+    },
+    {
+      "group": "uses-shared-el",
+      "name": "scene: uses shared el/elAttrs from utils",
+      "status": "pass"
+    },
+    {
+      "group": "uses-applyPaintState",
+      "name": "scene: uses applyPaintState",
+      "status": "pass"
+    },
+    {
+      "group": "has-data-component",
+      "name": "scene: sets data-component",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "scene: imports applyPaintState",
+      "status": "pass"
+    },
+    {
+      "group": "no-getDataSource",
+      "name": "scene: no raw getDataSource",
+      "status": "pass"
+    },
+    {
+      "group": "no-initSafe",
+      "name": "scene: no initSafe function",
+      "status": "pass"
+    },
+    {
+      "group": "no-module-scope-constants",
+      "name": "scene: no module-scope uppercase constants",
+      "status": "pass"
+    },
+    {
+      "group": "no-cross-function-scope-leak",
+      "name": "scene: no cross-function scope leaks",
+      "status": "pass"
+    },
+    {
+      "group": "no-function-tdz",
+      "name": "scene: no TDZ within functions",
+      "status": "pass"
+    },
+    {
+      "group": "no-local-contract-interfaces",
+      "name": "scene: no duplicate contract interfaces",
+      "status": "pass"
+    },
+    {
+      "group": "standard-export-name",
+      "name": "scene: exports createSafe{Name}",
+      "status": "pass"
+    },
+    {
+      "group": "uses-shared-el",
+      "name": "dragdrop: uses shared el/elAttrs from utils",
+      "status": "pass"
+    },
+    {
+      "group": "uses-applyIntent",
+      "name": "dragdrop: uses applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "has-data-component",
+      "name": "dragdrop: sets data-component",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "dragdrop: imports readList",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "dragdrop: imports applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "no-getDataSource",
+      "name": "dragdrop: no raw getDataSource",
+      "status": "pass"
+    },
+    {
+      "group": "no-initSafe",
+      "name": "dragdrop: no initSafe function",
+      "status": "pass"
+    },
+    {
+      "group": "no-module-scope-constants",
+      "name": "dragdrop: no module-scope uppercase constants",
+      "status": "pass"
+    },
+    {
+      "group": "no-cross-function-scope-leak",
+      "name": "dragdrop: no cross-function scope leaks",
+      "status": "pass"
+    },
+    {
+      "group": "no-function-tdz",
+      "name": "dragdrop: no TDZ within functions",
+      "status": "pass"
+    },
+    {
+      "group": "standard-export-name",
+      "name": "dragdrop: exports createSafe{Name}",
+      "status": "pass"
+    },
+    {
+      "group": "uses-readList-or-readRecord",
+      "name": "dispatch: uses readList or readRecord",
+      "status": "pass"
+    },
+    {
+      "group": "uses-shared-el",
+      "name": "dispatch: uses shared el/elAttrs from utils",
+      "status": "pass"
+    },
+    {
+      "group": "uses-applyPaintState",
+      "name": "dispatch: uses applyPaintState",
+      "status": "pass"
+    },
+    {
+      "group": "has-data-component",
+      "name": "dispatch: sets data-component",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "dispatch: imports readList",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "dispatch: imports applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "dispatch: imports applyPaintState",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "dispatch: imports elAttrs",
+      "status": "pass"
+    },
+    {
+      "group": "metadata-is-declared",
+      "name": "dispatch: metadata variable is declared",
+      "status": "pass"
+    },
+    {
+      "group": "no-getDataSource",
+      "name": "dispatch: no raw getDataSource",
+      "status": "pass"
+    },
+    {
+      "group": "no-initSafe",
+      "name": "dispatch: no initSafe function",
+      "status": "pass"
+    },
+    {
+      "group": "no-module-scope-constants",
+      "name": "dispatch: no module-scope uppercase constants",
+      "status": "pass"
+    },
+    {
+      "group": "no-cross-function-scope-leak",
+      "name": "dispatch: no cross-function scope leaks",
+      "status": "pass"
+    },
+    {
+      "group": "no-function-tdz",
+      "name": "dispatch: no TDZ within functions",
+      "status": "pass"
+    },
+    {
+      "group": "no-local-contract-interfaces",
+      "name": "dispatch: no duplicate contract interfaces",
+      "status": "pass"
+    },
+    {
+      "group": "standard-export-name",
+      "name": "dispatch: exports createSafe{Name}",
+      "status": "pass"
+    },
+    {
+      "group": "uses-shared-el",
+      "name": "tabs: uses shared el/elAttrs from utils",
+      "status": "pass"
+    },
+    {
+      "group": "uses-applyIntent",
+      "name": "tabs: uses applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "uses-applyPaintState",
+      "name": "tabs: uses applyPaintState",
+      "status": "pass"
+    },
+    {
+      "group": "has-data-component",
+      "name": "tabs: sets data-component",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "tabs: imports applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "tabs: imports applyPaintState",
+      "status": "pass"
+    },
+    {
+      "group": "metadata-is-declared",
+      "name": "tabs: metadata variable is declared",
+      "status": "pass"
+    },
+    {
+      "group": "no-getDataSource",
+      "name": "tabs: no raw getDataSource",
+      "status": "pass"
+    },
+    {
+      "group": "no-initSafe",
+      "name": "tabs: no initSafe function",
+      "status": "pass"
+    },
+    {
+      "group": "no-module-scope-constants",
+      "name": "tabs: no module-scope uppercase constants",
+      "status": "pass"
+    },
+    {
+      "group": "no-cross-function-scope-leak",
+      "name": "tabs: no cross-function scope leaks",
+      "status": "pass"
+    },
+    {
+      "group": "no-function-tdz",
+      "name": "tabs: no TDZ within functions",
+      "status": "pass"
+    },
+    {
+      "group": "no-local-contract-interfaces",
+      "name": "tabs: no duplicate contract interfaces",
+      "status": "pass"
+    },
+    {
+      "group": "standard-export-name",
+      "name": "tabs: exports createSafe{Name}",
+      "status": "pass"
+    },
+    {
+      "group": "uses-readList-or-readRecord",
+      "name": "list: uses readList or readRecord",
+      "status": "pass"
+    },
+    {
+      "group": "uses-shared-el",
+      "name": "list: uses shared el/elAttrs from utils",
+      "status": "pass"
+    },
+    {
+      "group": "uses-applyIntent",
+      "name": "list: uses applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "uses-applyPaintState",
+      "name": "list: uses applyPaintState",
+      "status": "pass"
+    },
+    {
+      "group": "has-data-component",
+      "name": "list: sets data-component",
+      "status": "pass"
+    },
+    {
+      "group": "no-schema-dot-fields",
+      "name": "list: no schema.fields after readSchema",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "list: imports readList",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "list: imports readSchema",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "list: imports applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "list: imports applyPaintState",
+      "status": "pass"
+    },
+    {
+      "group": "no-getDataSource",
+      "name": "list: no raw getDataSource",
+      "status": "pass"
+    },
+    {
+      "group": "no-initSafe",
+      "name": "list: no initSafe function",
+      "status": "pass"
+    },
+    {
+      "group": "no-module-scope-constants",
+      "name": "list: no module-scope uppercase constants",
+      "status": "pass"
+    },
+    {
+      "group": "no-cross-function-scope-leak",
+      "name": "list: no cross-function scope leaks",
+      "status": "pass"
+    },
+    {
+      "group": "no-function-tdz",
+      "name": "list: no TDZ within functions",
+      "status": "pass"
+    },
+    {
+      "group": "no-local-contract-interfaces",
+      "name": "list: no duplicate contract interfaces",
+      "status": "pass"
+    },
+    {
+      "group": "standard-export-name",
+      "name": "list: exports createSafe{Name}",
+      "status": "pass"
+    },
+    {
+      "group": "uses-readList-or-readRecord",
+      "name": "timeline: uses readList or readRecord",
+      "status": "pass"
+    },
+    {
+      "group": "uses-shared-el",
+      "name": "timeline: uses shared el/elAttrs from utils",
+      "status": "pass"
+    },
+    {
+      "group": "uses-applyIntent",
+      "name": "timeline: uses applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "uses-applyPaintState",
+      "name": "timeline: uses applyPaintState",
+      "status": "pass"
+    },
+    {
+      "group": "has-data-component",
+      "name": "timeline: sets data-component",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "timeline: imports readList",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "timeline: imports applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "timeline: imports applyPaintState",
+      "status": "pass"
+    },
+    {
+      "group": "metadata-is-declared",
+      "name": "timeline: metadata variable is declared",
+      "status": "pass"
+    },
+    {
+      "group": "no-getDataSource",
+      "name": "timeline: no raw getDataSource",
+      "status": "pass"
+    },
+    {
+      "group": "no-initSafe",
+      "name": "timeline: no initSafe function",
+      "status": "pass"
+    },
+    {
+      "group": "no-module-scope-constants",
+      "name": "timeline: no module-scope uppercase constants",
+      "status": "pass"
+    },
+    {
+      "group": "no-cross-function-scope-leak",
+      "name": "timeline: no cross-function scope leaks",
+      "status": "pass"
+    },
+    {
+      "group": "no-function-tdz",
+      "name": "timeline: no TDZ within functions",
+      "status": "pass"
+    },
+    {
+      "group": "no-local-contract-interfaces",
+      "name": "timeline: no duplicate contract interfaces",
+      "status": "pass"
+    },
+    {
+      "group": "standard-export-name",
+      "name": "timeline: exports createSafe{Name}",
+      "status": "pass"
+    },
+    {
+      "group": "uses-readList-or-readRecord",
+      "name": "plan: uses readList or readRecord",
+      "status": "pass"
+    },
+    {
+      "group": "uses-shared-el",
+      "name": "plan: uses shared el/elAttrs from utils",
+      "status": "pass"
+    },
+    {
+      "group": "uses-applyPaintState",
+      "name": "plan: uses applyPaintState",
+      "status": "pass"
+    },
+    {
+      "group": "has-data-component",
+      "name": "plan: sets data-component",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "plan: imports readList",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "plan: imports applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "plan: imports applyPaintState",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "plan: imports elAttrs",
+      "status": "pass"
+    },
+    {
+      "group": "metadata-is-declared",
+      "name": "plan: metadata variable is declared",
+      "status": "pass"
+    },
+    {
+      "group": "no-getDataSource",
+      "name": "plan: no raw getDataSource",
+      "status": "pass"
+    },
+    {
+      "group": "no-initSafe",
+      "name": "plan: no initSafe function",
+      "status": "pass"
+    },
+    {
+      "group": "no-module-scope-constants",
+      "name": "plan: no module-scope uppercase constants",
+      "status": "pass"
+    },
+    {
+      "group": "no-cross-function-scope-leak",
+      "name": "plan: no cross-function scope leaks",
+      "status": "pass"
+    },
+    {
+      "group": "no-function-tdz",
+      "name": "plan: no TDZ within functions",
+      "status": "pass"
+    },
+    {
+      "group": "no-local-contract-interfaces",
+      "name": "plan: no duplicate contract interfaces",
+      "status": "pass"
+    },
+    {
+      "group": "standard-export-name",
+      "name": "plan: exports createSafe{Name}",
+      "status": "pass"
+    },
+    {
+      "group": "uses-readList-or-readRecord",
+      "name": "tree: uses readList or readRecord",
+      "status": "pass"
+    },
+    {
+      "group": "uses-shared-el",
+      "name": "tree: uses shared el/elAttrs from utils",
+      "status": "pass"
+    },
+    {
+      "group": "uses-applyIntent",
+      "name": "tree: uses applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "uses-applyPaintState",
+      "name": "tree: uses applyPaintState",
+      "status": "pass"
+    },
+    {
+      "group": "has-data-component",
+      "name": "tree: sets data-component",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "tree: imports readList",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "tree: imports applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "tree: imports applyPaintState",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "tree: imports elAttrs",
+      "status": "pass"
+    },
+    {
+      "group": "metadata-is-declared",
+      "name": "tree: metadata variable is declared",
+      "status": "pass"
+    },
+    {
+      "group": "no-getDataSource",
+      "name": "tree: no raw getDataSource",
+      "status": "pass"
+    },
+    {
+      "group": "no-initSafe",
+      "name": "tree: no initSafe function",
+      "status": "pass"
+    },
+    {
+      "group": "no-module-scope-constants",
+      "name": "tree: no module-scope uppercase constants",
+      "status": "pass"
+    },
+    {
+      "group": "no-cross-function-scope-leak",
+      "name": "tree: no cross-function scope leaks",
+      "status": "pass"
+    },
+    {
+      "group": "no-function-tdz",
+      "name": "tree: no TDZ within functions",
+      "status": "pass"
+    },
+    {
+      "group": "no-local-contract-interfaces",
+      "name": "tree: no duplicate contract interfaces",
+      "status": "pass"
+    },
+    {
+      "group": "standard-export-name",
+      "name": "tree: exports createSafe{Name}",
+      "status": "pass"
+    },
+    {
+      "group": "uses-readList-or-readRecord",
+      "name": "gauge: uses readList or readRecord",
+      "status": "pass"
+    },
+    {
+      "group": "uses-shared-el",
+      "name": "gauge: uses shared el/elAttrs from utils",
+      "status": "pass"
+    },
+    {
+      "group": "uses-applyIntent",
+      "name": "gauge: uses applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "uses-applyPaintState",
+      "name": "gauge: uses applyPaintState",
+      "status": "pass"
+    },
+    {
+      "group": "has-data-component",
+      "name": "gauge: sets data-component",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "gauge: imports readList",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "gauge: imports applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "gauge: imports applyPaintState",
+      "status": "pass"
+    },
+    {
+      "group": "metadata-is-declared",
+      "name": "gauge: metadata variable is declared",
+      "status": "pass"
+    },
+    {
+      "group": "no-getDataSource",
+      "name": "gauge: no raw getDataSource",
+      "status": "pass"
+    },
+    {
+      "group": "no-initSafe",
+      "name": "gauge: no initSafe function",
+      "status": "pass"
+    },
+    {
+      "group": "no-module-scope-constants",
+      "name": "gauge: no module-scope uppercase constants",
+      "status": "pass"
+    },
+    {
+      "group": "no-cross-function-scope-leak",
+      "name": "gauge: no cross-function scope leaks",
+      "status": "pass"
+    },
+    {
+      "group": "no-function-tdz",
+      "name": "gauge: no TDZ within functions",
+      "status": "pass"
+    },
+    {
+      "group": "no-local-contract-interfaces",
+      "name": "gauge: no duplicate contract interfaces",
+      "status": "pass"
+    },
+    {
+      "group": "standard-export-name",
+      "name": "gauge: exports createSafe{Name}",
+      "status": "pass"
+    },
+    {
+      "group": "uses-readList-or-readRecord",
+      "name": "picker: uses readList or readRecord",
+      "status": "pass"
+    },
+    {
+      "group": "uses-shared-el",
+      "name": "picker: uses shared el/elAttrs from utils",
+      "status": "pass"
+    },
+    {
+      "group": "uses-applyIntent",
+      "name": "picker: uses applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "uses-applyPaintState",
+      "name": "picker: uses applyPaintState",
+      "status": "pass"
+    },
+    {
+      "group": "has-data-component",
+      "name": "picker: sets data-component",
+      "status": "pass"
+    },
+    {
+      "group": "no-schema-dot-fields",
+      "name": "picker: no schema.fields after readSchema",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "picker: imports readList",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "picker: imports readSchema",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "picker: imports applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "picker: imports applyPaintState",
+      "status": "pass"
+    },
+    {
+      "group": "metadata-is-declared",
+      "name": "picker: metadata variable is declared",
+      "status": "pass"
+    },
+    {
+      "group": "no-getDataSource",
+      "name": "picker: no raw getDataSource",
+      "status": "pass"
+    },
+    {
+      "group": "no-initSafe",
+      "name": "picker: no initSafe function",
+      "status": "pass"
+    },
+    {
+      "group": "no-module-scope-constants",
+      "name": "picker: no module-scope uppercase constants",
+      "status": "pass"
+    },
+    {
+      "group": "no-cross-function-scope-leak",
+      "name": "picker: no cross-function scope leaks",
+      "status": "pass"
+    },
+    {
+      "group": "no-function-tdz",
+      "name": "picker: no TDZ within functions",
+      "status": "pass"
+    },
+    {
+      "group": "no-local-contract-interfaces",
+      "name": "picker: no duplicate contract interfaces",
+      "status": "pass"
+    },
+    {
+      "group": "standard-export-name",
+      "name": "picker: exports createSafe{Name}",
+      "status": "pass"
+    },
+    {
+      "group": "uses-readList-or-readRecord",
+      "name": "grid: uses readList or readRecord",
+      "status": "pass"
+    },
+    {
+      "group": "uses-shared-el",
+      "name": "grid: uses shared el/elAttrs from utils",
+      "status": "pass"
+    },
+    {
+      "group": "has-data-component",
+      "name": "grid: sets data-component",
+      "status": "pass"
+    },
+    {
+      "group": "no-schema-dot-fields",
+      "name": "grid: no schema.fields after readSchema",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "grid: imports readRecord",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "grid: imports readSchema",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "grid: imports elAttrs",
+      "status": "pass"
+    },
+    {
+      "group": "no-getDataSource",
+      "name": "grid: no raw getDataSource",
+      "status": "pass"
+    },
+    {
+      "group": "no-initSafe",
+      "name": "grid: no initSafe function",
+      "status": "pass"
+    },
+    {
+      "group": "no-module-scope-constants",
+      "name": "grid: no module-scope uppercase constants",
+      "status": "pass"
+    },
+    {
+      "group": "no-cross-function-scope-leak",
+      "name": "grid: no cross-function scope leaks",
+      "status": "pass"
+    },
+    {
+      "group": "no-function-tdz",
+      "name": "grid: no TDZ within functions",
+      "status": "pass"
+    },
+    {
+      "group": "no-local-contract-interfaces",
+      "name": "grid: no duplicate contract interfaces",
+      "status": "pass"
+    },
+    {
+      "group": "standard-export-name",
+      "name": "grid: exports createSafe{Name}",
+      "status": "pass"
+    },
+    {
+      "group": "uses-readList-or-readRecord",
+      "name": "heatmap: uses readList or readRecord",
+      "status": "pass"
+    },
+    {
+      "group": "uses-shared-el",
+      "name": "heatmap: uses shared el/elAttrs from utils",
+      "status": "pass"
+    },
+    {
+      "group": "uses-applyIntent",
+      "name": "heatmap: uses applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "uses-applyPaintState",
+      "name": "heatmap: uses applyPaintState",
+      "status": "pass"
+    },
+    {
+      "group": "has-data-component",
+      "name": "heatmap: sets data-component",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "heatmap: imports readList",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "heatmap: imports applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "heatmap: imports applyPaintState",
+      "status": "pass"
+    },
+    {
+      "group": "metadata-is-declared",
+      "name": "heatmap: metadata variable is declared",
+      "status": "pass"
+    },
+    {
+      "group": "no-getDataSource",
+      "name": "heatmap: no raw getDataSource",
+      "status": "pass"
+    },
+    {
+      "group": "no-initSafe",
+      "name": "heatmap: no initSafe function",
+      "status": "pass"
+    },
+    {
+      "group": "no-module-scope-constants",
+      "name": "heatmap: no module-scope uppercase constants",
+      "status": "pass"
+    },
+    {
+      "group": "no-cross-function-scope-leak",
+      "name": "heatmap: no cross-function scope leaks",
+      "status": "pass"
+    },
+    {
+      "group": "no-function-tdz",
+      "name": "heatmap: no TDZ within functions",
+      "status": "pass"
+    },
+    {
+      "group": "no-local-contract-interfaces",
+      "name": "heatmap: no duplicate contract interfaces",
+      "status": "pass"
+    },
+    {
+      "group": "standard-export-name",
+      "name": "heatmap: exports createSafe{Name}",
+      "status": "pass"
+    },
+    {
+      "group": "uses-readList-or-readRecord",
+      "name": "toggle: uses readList or readRecord",
+      "status": "pass"
+    },
+    {
+      "group": "uses-shared-el",
+      "name": "toggle: uses shared el/elAttrs from utils",
+      "status": "pass"
+    },
+    {
+      "group": "uses-applyIntent",
+      "name": "toggle: uses applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "uses-applyPaintState",
+      "name": "toggle: uses applyPaintState",
+      "status": "pass"
+    },
+    {
+      "group": "has-data-component",
+      "name": "toggle: sets data-component",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "toggle: imports readList",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "toggle: imports applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "toggle: imports applyPaintState",
+      "status": "pass"
+    },
+    {
+      "group": "metadata-is-declared",
+      "name": "toggle: metadata variable is declared",
+      "status": "pass"
+    },
+    {
+      "group": "no-getDataSource",
+      "name": "toggle: no raw getDataSource",
+      "status": "pass"
+    },
+    {
+      "group": "no-initSafe",
+      "name": "toggle: no initSafe function",
+      "status": "pass"
+    },
+    {
+      "group": "no-module-scope-constants",
+      "name": "toggle: no module-scope uppercase constants",
+      "status": "pass"
+    },
+    {
+      "group": "no-cross-function-scope-leak",
+      "name": "toggle: no cross-function scope leaks",
+      "status": "pass"
+    },
+    {
+      "group": "no-function-tdz",
+      "name": "toggle: no TDZ within functions",
+      "status": "pass"
+    },
+    {
+      "group": "no-local-contract-interfaces",
+      "name": "toggle: no duplicate contract interfaces",
+      "status": "pass"
+    },
+    {
+      "group": "standard-export-name",
+      "name": "toggle: exports createSafe{Name}",
+      "status": "pass"
+    },
+    {
+      "group": "routed-through-render",
+      "name": "funnel: routed in render.ts",
+      "status": "pass"
+    },
+    {
+      "group": "routed-through-render",
+      "name": "callout: routed in render.ts",
+      "status": "pass"
+    },
+    {
       "group": "routed-through-render",
       "name": "briefing: routed in render.ts",
+      "status": "pass"
+    },
+    {
+      "group": "routed-through-render",
+      "name": "week: routed in render.ts",
+      "status": "pass"
+    },
+    {
+      "group": "routed-through-render",
+      "name": "table: routed in render.ts",
+      "status": "pass"
+    },
+    {
+      "group": "routed-through-render",
+      "name": "nav: routed in render.ts",
+      "status": "pass"
+    },
+    {
+      "group": "routed-through-render",
+      "name": "input: routed in render.ts",
+      "status": "pass"
+    },
+    {
+      "group": "routed-through-render",
+      "name": "button: routed in render.ts",
+      "status": "pass"
+    },
+    {
+      "group": "routed-through-render",
+      "name": "sheet: routed in render.ts",
+      "status": "pass"
+    },
+    {
+      "group": "routed-through-render",
+      "name": "chat: routed in render.ts",
+      "status": "pass"
+    },
+    {
+      "group": "routed-through-render",
+      "name": "columns: routed in render.ts",
+      "status": "pass"
+    },
+    {
+      "group": "routed-through-render",
+      "name": "metric: routed in render.ts",
+      "status": "pass"
+    },
+    {
+      "group": "routed-through-render",
+      "name": "storyflow: routed in render.ts",
+      "status": "pass"
+    },
+    {
+      "group": "routed-through-render",
+      "name": "calendar: routed in render.ts",
+      "status": "pass"
+    },
+    {
+      "group": "routed-through-render",
+      "name": "card: routed in render.ts",
+      "status": "pass"
+    },
+    {
+      "group": "routed-through-render",
+      "name": "parser: routed in render.ts",
+      "status": "pass"
+    },
+    {
+      "group": "routed-through-render",
+      "name": "map: routed in render.ts",
+      "status": "pass"
+    },
+    {
+      "group": "routed-through-render",
+      "name": "hierarchy: routed in render.ts",
+      "status": "pass"
+    },
+    {
+      "group": "routed-through-render",
+      "name": "skillup: routed in render.ts",
+      "status": "pass"
+    },
+    {
+      "group": "routed-through-render",
+      "name": "flow: routed in render.ts",
+      "status": "pass"
+    },
+    {
+      "group": "routed-through-render",
+      "name": "chart: routed in render.ts",
+      "status": "pass"
+    },
+    {
+      "group": "routed-through-render",
+      "name": "scene: routed in render.ts",
+      "status": "pass"
+    },
+    {
+      "group": "routed-through-render",
+      "name": "dragdrop: routed in render.ts",
+      "status": "pass"
+    },
+    {
+      "group": "routed-through-render",
+      "name": "dispatch: routed in render.ts",
+      "status": "pass"
+    },
+    {
+      "group": "routed-through-render",
+      "name": "tabs: routed in render.ts",
+      "status": "pass"
+    },
+    {
+      "group": "routed-through-render",
+      "name": "list: routed in render.ts",
+      "status": "pass"
+    },
+    {
+      "group": "routed-through-render",
+      "name": "timeline: routed in render.ts",
+      "status": "pass"
+    },
+    {
+      "group": "routed-through-render",
+      "name": "plan: routed in render.ts",
+      "status": "pass"
+    },
+    {
+      "group": "routed-through-render",
+      "name": "tree: routed in render.ts",
+      "status": "pass"
+    },
+    {
+      "group": "routed-through-render",
+      "name": "gauge: routed in render.ts",
+      "status": "pass"
+    },
+    {
+      "group": "routed-through-render",
+      "name": "picker: routed in render.ts",
+      "status": "pass"
+    },
+    {
+      "group": "routed-through-render",
+      "name": "grid: routed in render.ts",
+      "status": "pass"
+    },
+    {
+      "group": "routed-through-render",
+      "name": "heatmap: routed in render.ts",
+      "status": "pass"
+    },
+    {
+      "group": "routed-through-render",
+      "name": "toggle: routed in render.ts",
       "status": "pass"
     },
     {
@@ -1496,6 +4037,926 @@
     },
     {
       "group": "ticket-required-roles",
+      "name": "week-0001: builder has data-role=\"header\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "week-0001: builder has data-role=\"body\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "week-0001: builder has data-role=\"panel-left\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "week-0001: builder has data-role=\"panel-right\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "week-0001: builder has data-role=\"tab-bar\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "week-0001: builder has data-role=\"tab-group\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "week-0001: builder has data-role=\"tab-panel\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "week-0001: builder has data-role=\"tab-content\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "week-0001: builder has data-role=\"tree\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "week-0001: builder has data-role=\"node\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "week-0001: builder has data-role=\"json-view\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "week-0001: builder has data-role=\"json-pre\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "week-0001: builder has data-role=\"copy-btn\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "week-0001: builder has data-role=\"parse-header\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "week-0001: builder has data-role=\"placeholder\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "week-0001: structure.css styles data-role=\"header\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "week-0001: structure.css styles data-role=\"body\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "week-0001: structure.css styles data-role=\"panel-left\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "week-0001: structure.css styles data-role=\"panel-right\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "week-0001: structure.css styles data-role=\"tab-bar\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "week-0001: structure.css styles data-role=\"tab-group\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "week-0001: structure.css styles data-role=\"tab-panel\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "week-0001: structure.css styles data-role=\"tab-content\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "week-0001: structure.css styles data-role=\"tree\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "week-0001: structure.css styles data-role=\"node\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "week-0001: structure.css styles data-role=\"json-view\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "week-0001: structure.css styles data-role=\"json-pre\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "week-0001: structure.css styles data-role=\"copy-btn\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "week-0001: structure.css styles data-role=\"parse-header\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "week-0001: structure.css styles data-role=\"placeholder\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "layout-0001: builder has data-role=\"header\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "layout-0001: builder has data-role=\"header-title\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "layout-0001: builder has data-role=\"header-date\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "layout-0001: builder has data-role=\"body\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "layout-0001: builder has data-role=\"section\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "layout-0001: builder has data-role=\"section-header\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "layout-0001: builder has data-role=\"section-title\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "layout-0001: builder has data-role=\"section-content\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "layout-0001: builder has data-role=\"empty\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "layout-0001: structure.css styles data-role=\"header\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "layout-0001: structure.css styles data-role=\"header-title\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "layout-0001: structure.css styles data-role=\"header-date\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "layout-0001: structure.css styles data-role=\"body\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "layout-0001: structure.css styles data-role=\"section\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "layout-0001: structure.css styles data-role=\"section-header\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "layout-0001: structure.css styles data-role=\"section-title\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "layout-0001: structure.css styles data-role=\"section-content\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "layout-0001: structure.css styles data-role=\"empty\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "briefing-0003: builder has data-role=\"header\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "briefing-0003: builder has data-role=\"header-title\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "briefing-0003: builder has data-role=\"header-count\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "briefing-0003: builder has data-role=\"filter-bar\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "briefing-0003: builder has data-role=\"filter-tag\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "briefing-0003: builder has data-role=\"body\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "briefing-0003: builder has data-role=\"article\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "briefing-0003: builder has data-role=\"article-meta\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "briefing-0003: builder has data-role=\"article-tag\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "briefing-0003: builder has data-role=\"article-headline\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "briefing-0003: builder has data-role=\"article-teaser\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "briefing-0003: builder has data-role=\"article-body\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "briefing-0003: builder has data-role=\"article-footer\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "briefing-0003: builder has data-role=\"btn-bookmark\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "briefing-0003: builder has data-role=\"empty\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "briefing-0003: structure.css styles data-role=\"header\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "briefing-0003: structure.css styles data-role=\"header-title\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "briefing-0003: structure.css styles data-role=\"header-count\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "briefing-0003: structure.css styles data-role=\"filter-bar\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "briefing-0003: structure.css styles data-role=\"filter-tag\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "briefing-0003: structure.css styles data-role=\"body\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "briefing-0003: structure.css styles data-role=\"article\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "briefing-0003: structure.css styles data-role=\"article-meta\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "briefing-0003: structure.css styles data-role=\"article-tag\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "briefing-0003: structure.css styles data-role=\"article-headline\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "briefing-0003: structure.css styles data-role=\"article-teaser\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "briefing-0003: structure.css styles data-role=\"article-body\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "briefing-0003: structure.css styles data-role=\"article-footer\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "briefing-0003: structure.css styles data-role=\"btn-bookmark\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "briefing-0003: structure.css styles data-role=\"empty\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "briefing-0002: builder has data-role=\"header\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "briefing-0002: builder has data-role=\"stats-bar\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "briefing-0002: builder has data-role=\"stat\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "briefing-0002: builder has data-role=\"stat-value\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "briefing-0002: builder has data-role=\"stat-label\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "briefing-0002: builder has data-role=\"body\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "briefing-0002: builder has data-role=\"question-card\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "briefing-0002: builder has data-role=\"question-skill\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "briefing-0002: builder has data-role=\"question-text\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "briefing-0002: builder has data-role=\"choice\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "briefing-0002: builder has data-role=\"choice-letter\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "briefing-0002: builder has data-role=\"choice-text\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "briefing-0002: builder has data-role=\"explanation\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "briefing-0002: builder has data-role=\"skill-list\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "briefing-0002: builder has data-role=\"skill-row\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "briefing-0002: builder has data-role=\"skill-icon\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "briefing-0002: builder has data-role=\"skill-name\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "briefing-0002: builder has data-role=\"skill-mastery\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "briefing-0002: builder has data-role=\"skill-bar\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "briefing-0002: builder has data-role=\"skill-bar-fill\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "briefing-0002: builder has data-role=\"empty\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "briefing-0002: structure.css styles data-role=\"header\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "briefing-0002: structure.css styles data-role=\"stats-bar\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "briefing-0002: structure.css styles data-role=\"stat\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "briefing-0002: structure.css styles data-role=\"stat-value\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "briefing-0002: structure.css styles data-role=\"stat-label\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "briefing-0002: structure.css styles data-role=\"body\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "briefing-0002: structure.css styles data-role=\"question-card\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "briefing-0002: structure.css styles data-role=\"question-skill\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "briefing-0002: structure.css styles data-role=\"question-text\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "briefing-0002: structure.css styles data-role=\"choice\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "briefing-0002: structure.css styles data-role=\"choice-letter\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "briefing-0002: structure.css styles data-role=\"choice-text\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "briefing-0002: structure.css styles data-role=\"explanation\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "briefing-0002: structure.css styles data-role=\"skill-list\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "briefing-0002: structure.css styles data-role=\"skill-row\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "briefing-0002: structure.css styles data-role=\"skill-icon\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "briefing-0002: structure.css styles data-role=\"skill-name\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "briefing-0002: structure.css styles data-role=\"skill-mastery\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "briefing-0002: structure.css styles data-role=\"skill-bar\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "briefing-0002: structure.css styles data-role=\"skill-bar-fill\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "briefing-0002: structure.css styles data-role=\"empty\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "briefing-0001: builder has data-role=\"header\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "briefing-0001: builder has data-role=\"progress-bar\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "briefing-0001: builder has data-role=\"progress-fill\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "briefing-0001: builder has data-role=\"progress-stats\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "briefing-0001: builder has data-role=\"body\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "briefing-0001: builder has data-role=\"step\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "briefing-0001: builder has data-role=\"step-icon\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "briefing-0001: builder has data-role=\"step-impact\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "briefing-0001: builder has data-role=\"step-action\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "briefing-0001: builder has data-role=\"step-estimate\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "briefing-0001: builder has data-role=\"step-detail\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "briefing-0001: builder has data-role=\"step-why\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "briefing-0001: builder has data-role=\"step-unlocks\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "briefing-0001: builder has data-role=\"step-actions\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "briefing-0001: builder has data-role=\"btn-done\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "briefing-0001: builder has data-role=\"btn-skip\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "briefing-0001: builder has data-role=\"chat-bar\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "briefing-0001: builder has data-role=\"chat-input\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "briefing-0001: builder has data-role=\"empty\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "briefing-0001: structure.css styles data-role=\"header\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "briefing-0001: structure.css styles data-role=\"progress-bar\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "briefing-0001: structure.css styles data-role=\"progress-fill\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "briefing-0001: structure.css styles data-role=\"progress-stats\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "briefing-0001: structure.css styles data-role=\"body\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "briefing-0001: structure.css styles data-role=\"step\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "briefing-0001: structure.css styles data-role=\"step-icon\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "briefing-0001: structure.css styles data-role=\"step-impact\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "briefing-0001: structure.css styles data-role=\"step-action\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "briefing-0001: structure.css styles data-role=\"step-estimate\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "briefing-0001: structure.css styles data-role=\"step-detail\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "briefing-0001: structure.css styles data-role=\"step-why\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "briefing-0001: structure.css styles data-role=\"step-unlocks\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "briefing-0001: structure.css styles data-role=\"step-actions\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "briefing-0001: structure.css styles data-role=\"btn-done\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "briefing-0001: structure.css styles data-role=\"btn-skip\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "briefing-0001: structure.css styles data-role=\"chat-bar\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "briefing-0001: structure.css styles data-role=\"chat-input\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "briefing-0001: structure.css styles data-role=\"empty\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "drag-drop-0002: builder has data-role=\"roster\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "drag-drop-0002: builder has data-role=\"roster-item\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "drag-drop-0002: builder has data-role=\"avatar\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "drag-drop-0002: builder has data-role=\"team-zone\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "drag-drop-0002: builder has data-role=\"team-header\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "drag-drop-0002: builder has data-role=\"team-members\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "drag-drop-0002: builder has data-role=\"progress-bar\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "drag-drop-0002: builder has data-role=\"progress-fill\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "drag-drop-0002: builder has data-role=\"filter-bar\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "drag-drop-0002: builder has data-role=\"filter-pill\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "drag-drop-0002: builder has data-role=\"type-badge\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "drag-drop-0002: builder has data-role=\"priority-dot\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "drag-drop-0002: builder has data-role=\"points\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "drag-drop-0002: structure.css styles data-role=\"roster\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "drag-drop-0002: structure.css styles data-role=\"roster-item\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "drag-drop-0002: structure.css styles data-role=\"avatar\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "drag-drop-0002: structure.css styles data-role=\"team-zone\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "drag-drop-0002: structure.css styles data-role=\"team-header\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "drag-drop-0002: structure.css styles data-role=\"team-members\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "drag-drop-0002: structure.css styles data-role=\"progress-bar\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "drag-drop-0002: structure.css styles data-role=\"progress-fill\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "drag-drop-0002: structure.css styles data-role=\"filter-bar\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "drag-drop-0002: structure.css styles data-role=\"filter-pill\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "drag-drop-0002: structure.css styles data-role=\"type-badge\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "drag-drop-0002: structure.css styles data-role=\"priority-dot\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "drag-drop-0002: structure.css styles data-role=\"points\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
       "name": "drag-drop-0001: builder has data-role=\"header\"",
       "status": "pass"
     },
@@ -1542,26 +5003,6 @@
     {
       "group": "ticket-required-roles",
       "name": "drag-drop-0001: builder has data-role=\"section-content\"",
-      "status": "pass"
-    },
-    {
-      "group": "ticket-required-roles",
-      "name": "drag-drop-0001: builder has data-role=\"metrics-grid\"",
-      "status": "pass"
-    },
-    {
-      "group": "ticket-required-roles",
-      "name": "drag-drop-0001: builder has data-role=\"metric-card\"",
-      "status": "pass"
-    },
-    {
-      "group": "ticket-required-roles",
-      "name": "drag-drop-0001: builder has data-role=\"metric-value\"",
-      "status": "pass"
-    },
-    {
-      "group": "ticket-required-roles",
-      "name": "drag-drop-0001: builder has data-role=\"metric-label\"",
       "status": "pass"
     },
     {
@@ -1631,26 +5072,6 @@
     },
     {
       "group": "ticket-required-css",
-      "name": "drag-drop-0001: structure.css styles data-role=\"metrics-grid\"",
-      "status": "pass"
-    },
-    {
-      "group": "ticket-required-css",
-      "name": "drag-drop-0001: structure.css styles data-role=\"metric-card\"",
-      "status": "pass"
-    },
-    {
-      "group": "ticket-required-css",
-      "name": "drag-drop-0001: structure.css styles data-role=\"metric-value\"",
-      "status": "pass"
-    },
-    {
-      "group": "ticket-required-css",
-      "name": "drag-drop-0001: structure.css styles data-role=\"metric-label\"",
-      "status": "pass"
-    },
-    {
-      "group": "ticket-required-css",
       "name": "drag-drop-0001: structure.css styles data-role=\"chat-bar\"",
       "status": "pass"
     },
@@ -1662,6 +5083,191 @@
     {
       "group": "ticket-required-css",
       "name": "drag-drop-0001: structure.css styles data-role=\"empty\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "flow-0003: builder has data-role=\"drop-zone\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "flow-0003: builder has data-role=\"drag-item\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "flow-0003: builder has data-role=\"drag-handle\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "flow-0003: builder has data-role=\"row\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "flow-0003: builder has data-role=\"cell\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "flow-0003: builder has data-role=\"grid\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "flow-0003: builder has data-role=\"zone-label\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "flow-0003: builder has data-role=\"file-zone\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "flow-0003: builder has data-role=\"file-list\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "flow-0003: builder has data-role=\"file-item\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "flow-0003: structure.css styles data-role=\"drop-zone\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "flow-0003: structure.css styles data-role=\"drag-item\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "flow-0003: structure.css styles data-role=\"drag-handle\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "flow-0003: structure.css styles data-role=\"row\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "flow-0003: structure.css styles data-role=\"cell\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "flow-0003: structure.css styles data-role=\"grid\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "flow-0003: structure.css styles data-role=\"zone-label\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "flow-0003: structure.css styles data-role=\"file-zone\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "flow-0003: structure.css styles data-role=\"file-list\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "flow-0003: structure.css styles data-role=\"file-item\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-nesting",
+      "name": "layout-0001: header > header-title",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-nesting",
+      "name": "layout-0001: header > header-date",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-nesting",
+      "name": "layout-0001: section > section-header",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-nesting",
+      "name": "layout-0001: section-header > section-title",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-nesting",
+      "name": "layout-0001: section > section-content",
+      "status": "pass"
+    },
+    {
+      "group": "valid-child-variants",
+      "name": "briefing/briefing-priority.json: child priorities variant \"simple\" valid for list",
+      "status": "pass"
+    },
+    {
+      "group": "valid-child-variants",
+      "name": "briefing/briefing-priority.json: child radar variant \"simple\" valid for list",
+      "status": "pass"
+    },
+    {
+      "group": "valid-child-variants",
+      "name": "briefing/briefing-standup.json: child yesterday variant \"simple\" valid for list",
+      "status": "pass"
+    },
+    {
+      "group": "valid-child-variants",
+      "name": "briefing/briefing-standup.json: child today variant \"simple\" valid for list",
+      "status": "pass"
+    },
+    {
+      "group": "valid-child-variants",
+      "name": "briefing/briefing-standup.json: child watch variant \"simple\" valid for list",
+      "status": "pass"
+    },
+    {
+      "group": "valid-child-variants",
+      "name": "briefing/briefing-memo.json: child situation variant \"simple\" valid for list",
+      "status": "pass"
+    },
+    {
+      "group": "valid-child-variants",
+      "name": "briefing/briefing-memo.json: child developments variant \"simple\" valid for list",
+      "status": "pass"
+    },
+    {
+      "group": "valid-child-variants",
+      "name": "briefing/briefing-memo.json: child actions variant \"simple\" valid for list",
+      "status": "pass"
+    },
+    {
+      "group": "valid-child-variants",
+      "name": "briefing/briefing-narrative.json: child content variant \"simple\" valid for list",
+      "status": "pass"
+    },
+    {
+      "group": "valid-child-variants",
+      "name": "briefing/briefing-digest.json: child stories variant \"simple\" valid for list",
+      "status": "pass"
+    },
+    {
+      "group": "valid-child-variants",
+      "name": "briefing/briefing-finance.json: child markets variant \"columns\" valid for list",
+      "status": "pass"
+    },
+    {
+      "group": "valid-child-variants",
+      "name": "briefing/briefing-finance.json: child positions variant \"simple\" valid for list",
       "status": "pass"
     },
     {
@@ -1681,6 +5287,356 @@
     },
     {
       "group": "samples-registered-in-index",
+      "name": "tabs/tabs-vertical.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "tabs/tabs-horizontal.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "tree/tree-flat.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "tree/tree-nested.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "week/week-compact.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "week/week-workweek.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "week/week-full.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "calendar/calendar-detail-left.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "calendar/calendar-detail-right.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "calendar/calendar-year.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "calendar/calendar-single-month.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "calendar/calendar-browse.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "calendar/calendar-year-horizontal.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "card/card-elevated.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "card/card-outline.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "card/card-inline.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "card/card-state.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "hierarchy/hierarchy-sunburst-disk.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "hierarchy/hierarchy-icicle-disk.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "hierarchy/hierarchy-pack-budget.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "hierarchy/hierarchy-treemap-disk.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "chat/chat-simple.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "chat/chat-conversation.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "picker/picker-list.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "picker/picker-card.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "input/input-single.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "input/input-form.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "plan/plan-compact.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "plan/plan-default.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "dispatch/dispatch-default.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "dispatch/dispatch-compact.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "chart/chart-bar.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "chart/chart-pie.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "parser/parser-default.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "parser/parser-compact.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "callout/callout-info.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "callout/callout-warning.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "toggle/toggle-checkbox.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "toggle/toggle-check-icon.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "toggle/toggle-check-top.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "toggle/toggle-check-bottom.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "toggle/toggle-expandable.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "toggle/toggle-settings.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "toggle/toggle-switch.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "map/map-markers.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "map/map-path.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "button/button-link-icon.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "button/buttons-ai-responses.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "button/buttons-pagination.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "button/button-primary-lg.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "button/buttons-vertical-stack.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "button/buttons-toggle-filter.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "button/button-link-suffix.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "button/button-outline-icon-right.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "button/button-primary-icon.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "button/buttons-nav-menu.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "button/button-loading.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "button/button-ghost.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "button/button-secondary-sm.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "button/button-disabled.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "button/button-danger.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "button/buttons-stepper.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "button/buttons-icon-toolbar.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "briefing/briefing-priority.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "briefing/briefing-delta.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "briefing/briefing-standup.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "briefing/briefing-memo.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "briefing/briefing-narrative.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "briefing/briefing-digest.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "briefing/briefing-finance.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
       "name": "briefing/briefing-default.json: registered in SAMPLES",
       "status": "pass"
     },
@@ -1688,8 +5644,498 @@
       "group": "samples-registered-in-index",
       "name": "briefing/briefing-compact.json: registered in SAMPLES",
       "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "table/table-basic.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "table/table-transactions.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "table/table-events.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "table/table-contacts.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "table/table-row-numbers.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "list/list-actions.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "list/list-simple-paged.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "list/list-sparkline.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "list/list-property-grid.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "list/list-select-single.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "list/list-select-multiple.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "list/list-icon-led.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "list/list-hierarchy-tree.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "list/list-file-browser.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "list/list-simple-horizontal.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "list/list-columns-contacts.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "list/list-gantt-tasks.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "gauge/gauge-radial.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "gauge/gauge-minimal.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "skillup/skillup-compact.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "skillup/skillup-default.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "heatmap/heatmap-dense.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "heatmap/heatmap-matrix.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "columns/columns-two.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "columns/columns-three.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "nav/nav-horizontal.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "nav/nav-sidebar.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "sheet/sheet-skeleton.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "sheet/sheet-columns-only.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "sheet/sheet-single-column.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "sheet/sheet-basic.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "sheet/sheet-status.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "sheet/sheet-striped.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "sheet/sheet-rows-only.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "sheet/sheet-pivot.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "sheet/sheet-compact.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "sheet/sheet-key-value.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "sheet/sheet-empty.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "sheet/sheet-spreadsheet.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "sheet/sheet-dark.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "sheet/sheet-grouped.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "timeline/timeline-h-history.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "timeline/timeline-vertical.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "timeline/timeline-h-time-blocks.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "timeline/timeline-v-career.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "timeline/timeline-h-gantt.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "timeline/timeline-v-incident.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "timeline/timeline-alternating.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "timeline/timeline-h-sprint-days.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "timeline/timeline-v-roadmap.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "timeline/timeline-h-versions.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "timeline/timeline-v-schedule.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "timeline/timeline-v-milestones.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "timeline/timeline-v-sprint.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "timeline/timeline-h-event-stream.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "funnel/funnel-horizontal.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "funnel/funnel-vertical.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "drag-drop/drag-drop-row.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "drag-drop/drag-drop-cell.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "drag-drop/drag-drop-work-item.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "drag-drop/drag-drop-kanban.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "drag-drop/drag-drop-team-assign.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "drag-drop/drag-drop-list.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "drag-drop/drag-drop-table.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "drag-drop/drag-drop-template.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "grid/grid-detail.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "grid/grid-compact.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "flow/flow-matrix-trade.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "flow/flow-chord-trade.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "flow/flow-arc-trade.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "flow/flow-sankey-revenue.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "flow/flow-dagre-pipeline.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "flow/flow-force-team.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "flow/flow-edge-bundling-modules.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "required-metadata-fields",
+      "name": "funnel/funnel-horizontal.json: has required field config",
+      "status": "pass"
+    },
+    {
+      "group": "required-metadata-fields",
+      "name": "funnel/funnel-vertical.json: has required field config",
+      "status": "pass"
+    },
+    {
+      "group": "required-metadata-fields",
+      "name": "chart/chart-bar.json: has required field config",
+      "status": "pass"
+    },
+    {
+      "group": "required-metadata-fields",
+      "name": "chart/chart-pie.json: has required field config",
+      "status": "pass"
+    },
+    {
+      "group": "required-metadata-fields",
+      "name": "timeline/timeline-h-history.json: has required field config",
+      "status": "pass"
+    },
+    {
+      "group": "required-metadata-fields",
+      "name": "timeline/timeline-vertical.json: has required field config",
+      "status": "pass"
+    },
+    {
+      "group": "required-metadata-fields",
+      "name": "timeline/timeline-h-time-blocks.json: has required field config",
+      "status": "pass"
+    },
+    {
+      "group": "required-metadata-fields",
+      "name": "timeline/timeline-v-career.json: has required field config",
+      "status": "pass"
+    },
+    {
+      "group": "required-metadata-fields",
+      "name": "timeline/timeline-h-gantt.json: has required field config",
+      "status": "pass"
+    },
+    {
+      "group": "required-metadata-fields",
+      "name": "timeline/timeline-v-incident.json: has required field config",
+      "status": "pass"
+    },
+    {
+      "group": "required-metadata-fields",
+      "name": "timeline/timeline-alternating.json: has required field config",
+      "status": "pass"
+    },
+    {
+      "group": "required-metadata-fields",
+      "name": "timeline/timeline-h-sprint-days.json: has required field config",
+      "status": "pass"
+    },
+    {
+      "group": "required-metadata-fields",
+      "name": "timeline/timeline-v-roadmap.json: has required field config",
+      "status": "pass"
+    },
+    {
+      "group": "required-metadata-fields",
+      "name": "timeline/timeline-h-versions.json: has required field config",
+      "status": "pass"
+    },
+    {
+      "group": "required-metadata-fields",
+      "name": "timeline/timeline-v-schedule.json: has required field config",
+      "status": "pass"
+    },
+    {
+      "group": "required-metadata-fields",
+      "name": "timeline/timeline-v-milestones.json: has required field config",
+      "status": "pass"
+    },
+    {
+      "group": "required-metadata-fields",
+      "name": "timeline/timeline-v-sprint.json: has required field config",
+      "status": "pass"
+    },
+    {
+      "group": "required-metadata-fields",
+      "name": "timeline/timeline-h-event-stream.json: has required field config",
+      "status": "pass"
+    },
+    {
+      "group": "required-metadata-fields",
+      "name": "gauge/gauge-radial.json: has required field config",
+      "status": "pass"
+    },
+    {
+      "group": "required-metadata-fields",
+      "name": "gauge/gauge-minimal.json: has required field config",
+      "status": "pass"
+    },
+    {
+      "group": "required-metadata-fields",
+      "name": "picker/picker-list.json: has required field config",
+      "status": "pass"
+    },
+    {
+      "group": "required-metadata-fields",
+      "name": "picker/picker-card.json: has required field config",
+      "status": "pass"
+    },
+    {
+      "group": "required-metadata-fields",
+      "name": "heatmap/heatmap-dense.json: has required field config",
+      "status": "pass"
+    },
+    {
+      "group": "required-metadata-fields",
+      "name": "heatmap/heatmap-matrix.json: has required field config",
+      "status": "pass"
     }
   ],
   "failures": [],
-  "ts": "2026-06-19T13:08:15.859Z"
+  "ts": "2026-06-19T14:38:41.551Z"
 }

@@ -1,0 +1,101 @@
+{
+  "component": "briefing",
+  "metadata": {
+    "variant": "standup",
+    "spacing": "normal",
+    "title": "Morning standup.",
+    "subtitle": "Daily Briefing - DevOps",
+    "date": "Fri, Jun 19 - 07:04 UTC",
+    "width": "20vw",
+    "align": "center"
+  },
+  "children": {
+    "yesterday": {
+      "component": "list",
+      "metadata": {
+        "variant": "simple",
+        "spacing": "normal",
+        "labelField": "text",
+        "order": 1,
+        "title": "Yesterday"
+      },
+      "data": {
+        "items": {
+          "name": "standup-yesterday",
+          "type": "list",
+          "source": "inline",
+          "inline": [
+            {
+              "text": "api-gateway v2.4.1 shipped to prod - clean deploy - no alerts"
+            },
+            {
+              "text": "4 PRs merged - no rollbacks - test coverage improved"
+            },
+            {
+              "text": "auth-service latency spike at 22:14 - P1 declared 06:42"
+            }
+          ]
+        }
+      }
+    },
+    "today": {
+      "component": "list",
+      "metadata": {
+        "variant": "simple",
+        "spacing": "normal",
+        "labelField": "text",
+        "order": 2,
+        "title": "Today"
+      },
+      "data": {
+        "items": {
+          "name": "standup-today",
+          "type": "list",
+          "source": "inline",
+          "inline": [
+            {
+              "text": "P1 auth-service: 2 on-call - ETA 30min - monitor closely"
+            },
+            {
+              "text": "frontend v1.8.3 to staging - deploy at 10:00 pending P1"
+            },
+            {
+              "text": "worker-queue v0.9.0 to prod - scheduled 10:00"
+            }
+          ]
+        }
+      }
+    },
+    "watch": {
+      "component": "list",
+      "metadata": {
+        "variant": "simple",
+        "spacing": "normal",
+        "labelField": "text",
+        "order": 3,
+        "title": "Watch"
+      },
+      "data": {
+        "items": {
+          "name": "standup-watch",
+          "type": "list",
+          "source": "inline",
+          "inline": [
+            {
+              "text": "3 PRs ready to merge - blocked on auth-service P1"
+            },
+            {
+              "text": "billing-svc SSL cert expires Jun 27 - renew this week"
+            },
+            {
+              "text": "auth-middleware PR - 72h stale - needs decision"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "eventHandler": {
+    "handler": "briefing"
+  }
+}

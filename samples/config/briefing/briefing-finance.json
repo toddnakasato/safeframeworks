@@ -1,0 +1,187 @@
+{
+  "component": "briefing",
+  "metadata": {
+    "variant": "memo",
+    "spacing": "normal",
+    "title": "Pre-Market Morning Brief",
+    "subtitle": "Daily Briefing - Finance",
+    "date": "Fri Jun 19 - 07:04 EST - AUM $2.4M - P&L +$18K",
+    "width": "20vw",
+    "align": "center"
+  },
+  "children": {
+    "markets": {
+      "component": "list",
+      "metadata": {
+        "variant": "columns",
+        "spacing": "compact",
+        "order": 1,
+        "title": "Markets"
+      },
+      "data": {
+        "items": {
+          "name": "market-data",
+          "type": "list",
+          "source": "inline",
+          "schema": {
+            "fields": [
+              {
+                "name": "ticker",
+                "label": "Ticker",
+                "type": "text"
+              },
+              {
+                "name": "price",
+                "label": "Price",
+                "type": "text"
+              },
+              {
+                "name": "trend",
+                "label": "Trend",
+                "type": "sparkline"
+              },
+              {
+                "name": "change",
+                "label": "Change",
+                "type": "text"
+              }
+            ]
+          },
+          "inline": [
+            {
+              "ticker": "S&P 500",
+              "price": "5,412.34",
+              "trend": [
+                5380,
+                5390,
+                5385,
+                5400,
+                5395,
+                5410,
+                5412
+              ],
+              "change": "+0.42%"
+            },
+            {
+              "ticker": "NASDAQ",
+              "price": "17,204.00",
+              "trend": [
+                17050,
+                17080,
+                17100,
+                17120,
+                17150,
+                17180,
+                17204
+              ],
+              "change": "+0.81%"
+            },
+            {
+              "ticker": "BTC/USD",
+              "price": "$67,480",
+              "trend": [
+                65800,
+                66200,
+                66000,
+                66800,
+                67100,
+                67300,
+                67480
+              ],
+              "change": "+2.14%"
+            },
+            {
+              "ticker": "Gold",
+              "price": "$2,318.40",
+              "trend": [
+                2330,
+                2325,
+                2320,
+                2322,
+                2315,
+                2318,
+                2318
+              ],
+              "change": "-0.31%"
+            },
+            {
+              "ticker": "10Y UST",
+              "price": "4.28%",
+              "trend": [
+                4.25,
+                4.26,
+                4.27,
+                4.26,
+                4.28,
+                4.27,
+                4.28
+              ],
+              "change": "+2bp%"
+            },
+            {
+              "ticker": "NVDA",
+              "price": "$875.20",
+              "trend": [
+                840,
+                845,
+                850,
+                855,
+                860,
+                870,
+                875
+              ],
+              "change": "+4.10%"
+            }
+          ]
+        }
+      }
+    },
+    "positions": {
+      "component": "list",
+      "metadata": {
+        "variant": "simple",
+        "spacing": "normal",
+        "labelField": "ticker",
+        "order": 2,
+        "title": "Positions"
+      },
+      "data": {
+        "items": {
+          "name": "positions-data",
+          "type": "list",
+          "source": "inline",
+          "inline": [
+            {
+              "ticker": "AAPL",
+              "description": "200sh - avg $189.40",
+              "change": "+$2,840 +1.2%"
+            },
+            {
+              "ticker": "NVDA",
+              "description": "50sh - avg $875.20",
+              "change": "+$3,605 +4.1%"
+            },
+            {
+              "ticker": "TSLA",
+              "description": "100sh - avg $242.10",
+              "change": "-$820 -0.8%"
+            }
+          ]
+        }
+      }
+    },
+    "alert": {
+      "component": "callout",
+      "metadata": {
+        "variant": "insight",
+        "spacing": "normal",
+        "order": 3,
+        "title": "AI Summary",
+        "message": "NVDA +4.2% pre-mkt. FED decision 14:00 EST -- vol expected. 3 stop-loss orders pending review."
+      }
+    }
+  },
+  "eventHandler": {
+    "handler": "briefing"
+  }
+}

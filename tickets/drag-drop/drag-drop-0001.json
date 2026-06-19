@@ -2,7 +2,7 @@
   "id": "drag-drop-0001",
   "component": "briefing",
   "type": "new-component",
-  "title": "Create a briefing component based on jitui — composition via renderChild with existing builders",
+  "title": "Create a briefing component based on jitui \u2014 composition via renderChild with existing builders",
   "description": "Vertical dashboard panel with sections: metrics (grid of cards), calendar, leads (list), pipeline (list), pinned (list), alerts (callout), chat input. Each section delegates to an existing builder via renderChild. Layout: header with title+date, scrollable body of sections, chat input at bottom.",
   "status": "closed",
   "proves": [
@@ -36,10 +36,6 @@
       "section-title",
       "section-count",
       "section-content",
-      "metrics-grid",
-      "metric-card",
-      "metric-value",
-      "metric-label",
       "chat-bar",
       "chat-input",
       "empty"

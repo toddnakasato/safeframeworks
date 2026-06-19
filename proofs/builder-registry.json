@@ -1,11 +1,11 @@
 {
   "ok": true,
-  "total": 284,
-  "passed": 284,
+  "total": 300,
+  "passed": 300,
   "failed": 0,
   "groups": {
-    "no-numeric-suffix": 142,
-    "has-variant-name": 142
+    "no-numeric-suffix": 150,
+    "has-variant-name": 150
   },
   "checks": [
     {
@@ -26,6 +26,76 @@
     {
       "group": "has-variant-name",
       "name": "briefing/briefing-default.json: has variant",
+      "status": "pass"
+    },
+    {
+      "group": "no-numeric-suffix",
+      "name": "briefing/briefing-delta.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "briefing/briefing-delta.json: has variant",
+      "status": "pass"
+    },
+    {
+      "group": "no-numeric-suffix",
+      "name": "briefing/briefing-digest.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "briefing/briefing-digest.json: has variant",
+      "status": "pass"
+    },
+    {
+      "group": "no-numeric-suffix",
+      "name": "briefing/briefing-finance.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "briefing/briefing-finance.json: has variant",
+      "status": "pass"
+    },
+    {
+      "group": "no-numeric-suffix",
+      "name": "briefing/briefing-memo.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "briefing/briefing-memo.json: has variant",
+      "status": "pass"
+    },
+    {
+      "group": "no-numeric-suffix",
+      "name": "briefing/briefing-narrative.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "briefing/briefing-narrative.json: has variant",
+      "status": "pass"
+    },
+    {
+      "group": "no-numeric-suffix",
+      "name": "briefing/briefing-priority.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "briefing/briefing-priority.json: has variant",
+      "status": "pass"
+    },
+    {
+      "group": "no-numeric-suffix",
+      "name": "briefing/briefing-standup.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "briefing/briefing-standup.json: has variant",
       "status": "pass"
     },
     {
@@ -816,6 +886,16 @@
     {
       "group": "has-variant-name",
       "name": "list/list-simple-paged.json: has variant",
+      "status": "pass"
+    },
+    {
+      "group": "no-numeric-suffix",
+      "name": "list/list-sparkline.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "list/list-sparkline.json: has variant",
       "status": "pass"
     },
     {

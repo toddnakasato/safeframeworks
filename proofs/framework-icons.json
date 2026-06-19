@@ -1,12 +1,12 @@
 {
   "ok": true,
-  "total": 520,
-  "passed": 520,
+  "total": 528,
+  "passed": 528,
   "failed": 0,
   "groups": {
     "lucide-installed": 8,
     "no-emoji-builders": 35,
-    "no-emoji-samples": 142,
+    "no-emoji-samples": 150,
     "no-emoji-data": 33,
     "no-emoji-wrappers": 293,
     "no-emoji-viewers": 8,
@@ -565,6 +565,41 @@
     },
     {
       "group": "no-emoji-samples",
+      "name": "briefing/briefing-priority.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "briefing/briefing-delta.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "briefing/briefing-standup.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "briefing/briefing-memo.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "briefing/briefing-narrative.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "briefing/briefing-digest.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "briefing/briefing-finance.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
       "name": "briefing/briefing-default.json: no emoji",
       "status": "pass"
     },
@@ -606,6 +641,11 @@
     {
       "group": "no-emoji-samples",
       "name": "list/list-simple-paged.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "list/list-sparkline.json: no emoji",
       "status": "pass"
     },
     {

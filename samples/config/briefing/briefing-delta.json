@@ -1,0 +1,77 @@
+{
+  "component": "briefing",
+  "metadata": {
+    "variant": "delta",
+    "spacing": "normal",
+    "title": "Today's docket.",
+    "subtitle": "Daily Briefing - Legal",
+    "date": "Fri, Jun 19 - 6 events - 6.5h billable",
+    "width": "20vw",
+    "align": "center"
+  },
+  "children": {
+    "timeline": {
+      "component": "timeline",
+      "metadata": {
+        "variant": "default",
+        "spacing": "normal",
+        "dateField": "time",
+        "labelField": "title",
+        "order": 1,
+        "title": "Schedule"
+      },
+      "data": {
+        "events": {
+          "name": "legal-docket",
+          "type": "list",
+          "source": "inline",
+          "inline": [
+            {
+              "time": "09:00",
+              "title": "Chen v. Whitmore",
+              "description": "Dept. 12 - Motion hearing"
+            },
+            {
+              "time": "10:30",
+              "title": "Harmon client prep",
+              "description": "Call - 30 min"
+            },
+            {
+              "time": "12:00",
+              "title": "Estate of Briggs filing",
+              "description": "Hard deadline - Final docs"
+            },
+            {
+              "time": "14:30",
+              "title": "Harmon LLC status conf.",
+              "description": "Dept. 7 - Telephonic"
+            },
+            {
+              "time": "16:00",
+              "title": "Park IP -- NDA review",
+              "description": "Internal review due"
+            },
+            {
+              "time": "17:00",
+              "title": "Time entries due",
+              "description": "6.5h billable today"
+            }
+          ]
+        }
+      }
+    },
+    "alerts": {
+      "component": "callout",
+      "metadata": {
+        "variant": "insight",
+        "spacing": "normal",
+        "order": 2,
+        "title": "Overnight Changes",
+        "message": "Chen v. Whitmore: opposing motion filed overnight -- review before 09:00. Harmon deposition rescheduled to Jul 2."
+      }
+    }
+  },
+  "eventHandler": {
+    "handler": "briefing"
+  }
+}

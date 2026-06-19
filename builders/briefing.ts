@@ -6,11 +6,13 @@ import type { RenderChild } from "./layout";
 /*----------------------------------------------------------------------------------------------------
  *
  * Briefing — vertical dashboard panel. Composes existing components
- * via renderChild. Each section in config.children is rendered by its
- * own builder (list, calendar, callout, etc.).
+ * via renderChild. ConfigBase.children defines sections rendered in order.
  *
- * Layout: header (title + date), scrollable body of sections, chat bar.
- * Based on jitui BriefingPanel.
+ * Every briefing variant (narrative, priority, memo, delta, standup, digest,
+ * default, compact) uses the same composition path. The "variant" is expressed
+ * in the children configs and their data — not in builder code.
+ *
+ * Layout: header (subtitle + title + date), scrollable body of sections, chat bar.
  *
  ----------------------------------------------------------------------------------------------------*/
 
@@ -22,8 +24,9 @@ export function createSafeBriefing(
 ): HTMLElement {
     const metadata = config.metadata;
     const title = (metadata.title as string) ?? "Briefing";
+    const subtitle = (metadata.subtitle as string) ?? "";
     const showDate = metadata.showDate !== false;
-    const showChat = metadata.showChat !== false;
+    const showChat = metadata.showChat === true;
     const panelWidth = (metadata.width as string) ?? "";
     const panelAlign = (metadata.align as string) ?? "";
     const children = config.children ?? {};
@@ -38,23 +41,28 @@ export function createSafeBriefing(
 
     /* ---- Header ---- */
     const header = elAttrs("div", { "data-role": "header" });
+    if (subtitle) {
+        const headerSub = elAttrs("span", { "data-role": "header-subtitle" });
+        headerSub.textContent = subtitle;
+        header.appendChild(headerSub);
+    }
     const headerTitle = elAttrs("span", { "data-role": "header-title" });
     headerTitle.textContent = title;
     header.appendChild(headerTitle);
-    if (showDate) {
+    if (showDate || metadata.date) {
         const headerDate = elAttrs("span", { "data-role": "header-date" });
-        headerDate.textContent = new Date().toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric" });
+        headerDate.textContent = (metadata.date as string) ??
+            new Date().toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric" });
         header.appendChild(headerDate);
     }
     root.appendChild(header);
 
-    /* ---- Body: scrollable sections ---- */
+    /* ---- Body: children rendered in order ---- */
     const body = elAttrs("div", { "data-role": "body" });
 
-    // Sort children by metadata.order
     const sortedKeys = Object.keys(children).sort((a, b) => {
-        const orderA = (children[a]?.metadata?.order as number) ?? 99;
-        const orderB = (children[b]?.metadata?.order as number) ?? 99;
+        const orderA = ((children[a] as any)?.metadata?.order as number) ?? 99;
+        const orderB = ((children[b] as any)?.metadata?.order as number) ?? 99;
         return orderA - orderB;
     });
 
@@ -70,7 +78,6 @@ export function createSafeBriefing(
 
         const childMeta = childConfig.metadata;
         const sectionType = (childMeta.section as string) ?? key;
-        const sectionIcon = (childMeta.icon as string) ?? "";
         const sectionTitle = (childMeta.title as string) ?? key;
 
         const section = elAttrs("div", { "data-role": "section", "data-section": sectionType });
@@ -79,9 +86,8 @@ export function createSafeBriefing(
         const sectionHeader = elAttrs("div", { "data-role": "section-header" });
         sectionHeader.onclick = () => ctx.fire("select", { section: sectionType });
 
-        if (sectionIcon) {
-            const iconEl = elAttrs("span", { "data-role": "section-icon" });
-            iconEl.textContent = sectionIcon;
+        if (childMeta.icon) {
+            const iconEl = elAttrs("span", { "data-role": "section-icon", "data-icon": String(childMeta.icon) });
             sectionHeader.appendChild(iconEl);
         }
 
@@ -89,7 +95,7 @@ export function createSafeBriefing(
         titleEl.textContent = sectionTitle;
         sectionHeader.appendChild(titleEl);
 
-        /* Count badge — show data length if available */
+        /* Count badge */
         const childData = childConfig.data;
         if (childData) {
             const firstSlot = Object.values(childData)[0] as any;
@@ -103,29 +109,9 @@ export function createSafeBriefing(
 
         section.appendChild(sectionHeader);
 
-        /* Section content — metrics get a special grid, others use renderChild */
+        /* Section content — delegate to child builder */
         const content = elAttrs("div", { "data-role": "section-content" });
-
-        if (sectionType === "metrics") {
-            // Metrics render as a grid of cards instead of delegating to a single builder
-            const grid = elAttrs("div", { "data-role": "metrics-grid" });
-            const metricsData = (childData ? (Object.values(childData)[0] as any)?.inline : null) ?? [];
-            if (Array.isArray(metricsData)) {
-                for (const m of metricsData) {
-                    const card = elAttrs("div", { "data-role": "metric-card" });
-                    card.onclick = () => ctx.fire("select", { section: "metrics", id: m.target ?? m.label ?? "" });
-                    const val = elAttrs("div", { "data-role": "metric-value" });
-                    val.textContent = String(m.value ?? "");
-                    card.appendChild(val);
-                    const lbl = elAttrs("div", { "data-role": "metric-label" });
-                    lbl.textContent = String(m.label ?? "");
-                    card.appendChild(lbl);
-                    grid.appendChild(card);
-                }
-            }
-            content.appendChild(grid);
-        } else if (renderChild) {
-            // Delegate to the child's own builder
+        if (renderChild) {
             const rendered = renderChild(childConfig);
             content.appendChild(rendered);
         }

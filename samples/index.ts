@@ -13,6 +13,13 @@ import type { ConfigBase, DataSource } from "../../safecontracts/src/contracts";
 import buttonDangerConfig from "./config/button/button-danger.json";
 import briefingDefaultConfig from "./config/briefing/briefing-default.json";
 import briefingCompactConfig from "./config/briefing/briefing-compact.json";
+import briefingnarrativeConfig from "./config/briefing/briefing-narrative.json";
+import briefingpriorityConfig from "./config/briefing/briefing-priority.json";
+import briefingmemoConfig from "./config/briefing/briefing-memo.json";
+import briefingdeltaConfig from "./config/briefing/briefing-delta.json";
+import briefingstandupConfig from "./config/briefing/briefing-standup.json";
+import briefingdigestConfig from "./config/briefing/briefing-digest.json";
+import briefingfinanceConfig from "./config/briefing/briefing-finance.json";
 import buttonDisabledConfig from "./config/button/button-disabled.json";
 import buttonGhostConfig from "./config/button/button-ghost.json";
 import buttonLinkIconConfig from "./config/button/button-link-icon.json";
@@ -65,6 +72,7 @@ import listActionsConfig from "./config/list/list-actions.json";
 import listColumnsContactsConfig from "./config/list/list-columns-contacts.json";
 import listFileBrowserConfig from "./config/list/list-file-browser.json";
 import listGanttTasksConfig from "./config/list/list-gantt-tasks.json";
+import listSparklineConfig from "./config/list/list-sparkline.json";
 import listHierarchyTreeConfig from "./config/list/list-hierarchy-tree.json";
 import listIconLedConfig from "./config/list/list-icon-led.json";
 import listPropertyGridConfig from "./config/list/list-property-grid.json";
@@ -252,6 +260,13 @@ export const SAMPLES: Record<string, Record<string, ConfigBase>> = {
     briefing: {
         "briefing-default": resolveData(briefingDefaultConfig as unknown as ConfigBase),
         "briefing-compact": resolveData(briefingCompactConfig as unknown as ConfigBase),
+        "briefing-narrative": resolveData(briefingnarrativeConfig as unknown as ConfigBase),
+        "briefing-priority": resolveData(briefingpriorityConfig as unknown as ConfigBase),
+        "briefing-memo": resolveData(briefingmemoConfig as unknown as ConfigBase),
+        "briefing-delta": resolveData(briefingdeltaConfig as unknown as ConfigBase),
+        "briefing-standup": resolveData(briefingstandupConfig as unknown as ConfigBase),
+        "briefing-digest": resolveData(briefingdigestConfig as unknown as ConfigBase),
+        "briefing-finance": resolveData(briefingfinanceConfig as unknown as ConfigBase),
     },
     button: {
         "button-danger": resolveData(buttonDangerConfig as unknown as ConfigBase),
@@ -341,6 +356,7 @@ export const SAMPLES: Record<string, Record<string, ConfigBase>> = {
         "list-columns-contacts": resolveData(listColumnsContactsConfig as unknown as ConfigBase),
         "list-file-browser": resolveData(listFileBrowserConfig as unknown as ConfigBase),
         "list-gantt-tasks": resolveData(listGanttTasksConfig as unknown as ConfigBase),
+        "list-sparkline": resolveData(listSparklineConfig as unknown as ConfigBase),
         "list-hierarchy-tree": resolveData(listHierarchyTreeConfig as unknown as ConfigBase),
         "list-icon-led": resolveData(listIconLedConfig as unknown as ConfigBase),
         "list-property-grid": resolveData(listPropertyGridConfig as unknown as ConfigBase),

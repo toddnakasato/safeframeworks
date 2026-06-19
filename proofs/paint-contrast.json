@@ -1,10 +1,10 @@
 {
   "ok": true,
-  "total": 196,
-  "passed": 196,
+  "total": 237,
+  "passed": 237,
   "failed": 0,
   "groups": {
-    "wcag-aa-contrast": 196
+    "wcag-aa-contrast": 237
   },
   "checks": [
     {
@@ -320,6 +320,211 @@
     {
       "group": "wcag-aa-contrast",
       "name": "[data-component=\"briefing\"] [data-role=\"chat-input\"]: #1a1a1a on #f9fafb",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"briefing\"][data-variant=\"narrative\"] [da...: #475569 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"briefing\"][data-variant=\"narrative\"] [da...: #475569 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"briefing\"][data-variant=\"narrative\"] [da...: #2563eb on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"briefing\"] [data-role=\"chip-detail-label\"]: #2563eb on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"briefing\"] [data-role=\"chip-detail-text\"]: #1e293b on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"briefing\"] [data-role=\"chip-detail-close\"]: #475569 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"briefing\"][data-variant=\"priority\"] [dat...: #475569 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"briefing\"][data-variant=\"priority\"] [dat...: #475569 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"briefing\"] [data-role=\"rank-meta\"]: #2563eb on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"briefing\"] [data-role=\"rank-why\"]: #475569 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"briefing\"] [data-role=\"action-btn\"]: #2563eb on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"briefing\"] [data-role=\"memo-key\"]: #475569 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"briefing\"] [data-role=\"memo-value\"]: #1e293b on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"briefing\"] [data-role=\"memo-section-label\"]: #475569 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"briefing\"] [data-role=\"action-check\"][da...: #fff on #2563eb",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"briefing\"] [data-role=\"action-label\"]: #1e293b on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"briefing\"][data-variant=\"delta\"] [data-r...: #475569 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"briefing\"][data-variant=\"delta\"] [data-r...: #475569 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"briefing\"][data-variant=\"delta\"] [data-r...: #c0392b on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"briefing\"][data-variant=\"delta\"] [data-r...: #a05c00 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"briefing\"][data-variant=\"delta\"] [data-r...: #1b2d4f on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"briefing\"][data-variant=\"delta\"] [data-r...: #6b6b5a on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"briefing\"][data-variant=\"delta\"] [data-r...: #475569 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"briefing\"][data-variant=\"delta\"] [data-r...: #475569 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"briefing\"][data-variant=\"delta\"] [data-r...: #475569 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"briefing\"][data-variant=\"delta\"] [data-r...: #1b2d4f on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"briefing\"][data-variant=\"delta\"] [data-r...: #475569 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"briefing\"] [data-role=\"delta-label\"]: #475569 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"briefing\"] [data-role=\"delta-urgent\"] [d...: #dc2626 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"briefing\"] [data-role=\"delta-from\"]: #475569 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"briefing\"] [data-role=\"delta-to\"]: #2563eb on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"briefing\"] [data-role=\"delta-item-text\"]: #475569 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"briefing\"][data-variant=\"standup\"] [data...: #475569 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"briefing\"][data-variant=\"standup\"] [data...: #475569 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"briefing\"] [data-role=\"standup-tab\"]: #475569 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"briefing\"] [data-role=\"standup-tab\"][dat...: #2563eb on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"briefing\"] [data-role=\"bullet-text\"]: #475569 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"briefing\"][data-variant=\"digest\"] [data-...: #475569 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"briefing\"][data-variant=\"digest\"] [data-...: #475569 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"briefing\"] [data-role=\"story-tag\"]: #2563eb on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"briefing\"] [data-role=\"story-body\"]: #475569 on #ffffff",
       "status": "pass"
     },
     {
