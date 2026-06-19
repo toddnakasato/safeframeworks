@@ -29,8 +29,13 @@ import SafeInput from '../../SafeInput.vue';
 import SafeList from '../../SafeList.vue';
 import SafePicker from '../../SafePicker.vue';
 import SafeNav from '../../SafeNav.vue';
+import SafeParser from '../../SafeParser.vue';
+import SafePlan from '../../SafePlan.vue';
+import SafeSkillUp from '../../SafeSkillUp.vue';
+import SafeDispatch from '../../SafeDispatch.vue';
+import SafeBriefing from '../../SafeBriefing.vue';
 
-const comps = { layout: SafeLayout, columns: SafeColumns, card: SafeCard, button: SafeButton, table: SafeTable, tree: SafeTree, sheet: SafeSheet, chart: SafeChart, heatmap: SafeHeatmap, gauge: SafeGauge, funnel: SafeFunnel, flow: SafeFlow, hierarchy: SafeHierarchy, timeline: SafeTimeline, map: SafeMap, calendar: SafeCalendar, toggle: SafeToggle, week: SafeWeek, chat: SafeChat, tabs: SafeTabs, callout: SafeCallout, 'drag-drop': SafeDragDrop, grid: SafeGrid, input: SafeInput, list: SafeList, picker: SafePicker, nav: SafeNav };
+const comps = { layout: SafeLayout, columns: SafeColumns, card: SafeCard, button: SafeButton, table: SafeTable, tree: SafeTree, sheet: SafeSheet, chart: SafeChart, heatmap: SafeHeatmap, gauge: SafeGauge, funnel: SafeFunnel, flow: SafeFlow, hierarchy: SafeHierarchy, timeline: SafeTimeline, map: SafeMap, calendar: SafeCalendar, toggle: SafeToggle, week: SafeWeek, chat: SafeChat, tabs: SafeTabs, callout: SafeCallout, 'drag-drop': SafeDragDrop, grid: SafeGrid, input: SafeInput, list: SafeList, picker: SafePicker, nav: SafeNav, parser: SafeParser, plan: SafePlan, skillup: SafeSkillUp, dispatch: SafeDispatch, briefing: SafeBriefing };
 const STYLES = ['vanilla', 'tailwind', 'tailwind-daisy', 'material'];
 const componentNames = Object.keys(SAMPLES).sort();
 const activeStyle = ref('vanilla');

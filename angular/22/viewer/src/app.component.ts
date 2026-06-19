@@ -29,11 +29,16 @@ import { SafeInputComponent } from '../../SafeInput';
 import { SafeListComponent } from '../../SafeList';
 import { SafePickerComponent } from '../../SafePicker';
 import { SafeNavComponent } from '../../SafeNav';
+import { SafeParserComponent } from '../../SafeParser';
+import { SafePlanComponent } from '../../SafePlan';
+import { SafeSkillUpComponent } from '../../SafeSkillUp';
+import { SafeDispatchComponent } from '../../SafeDispatch';
+import { SafeBriefingComponent } from '../../SafeBriefing';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [NgFor, NgIf, SafeLayoutComponent, SafeColumnsComponent, SafeCardComponent, SafeButtonComponent, SafeTableComponent, SafeTreeComponent, SafeSheetComponent, SafeChartComponent, SafeHeatmapComponent, SafeGaugeComponent, SafeFunnelComponent, SafeFlowComponent, SafeHierarchyComponent, SafeTimelineComponent, SafeMapComponent, SafeCalendarComponent, SafeToggleComponent, SafeWeekComponent, SafeChatComponent, SafeTabsComponent, SafeCalloutComponent, SafeDragDropComponent, SafeGridComponent, SafeInputComponent, SafeListComponent, SafePickerComponent, SafeNavComponent],
+  imports: [NgFor, NgIf, SafeLayoutComponent, SafeColumnsComponent, SafeCardComponent, SafeButtonComponent, SafeTableComponent, SafeTreeComponent, SafeSheetComponent, SafeChartComponent, SafeHeatmapComponent, SafeGaugeComponent, SafeFunnelComponent, SafeFlowComponent, SafeHierarchyComponent, SafeTimelineComponent, SafeMapComponent, SafeCalendarComponent, SafeToggleComponent, SafeWeekComponent, SafeChatComponent, SafeTabsComponent, SafeCalloutComponent, SafeDragDropComponent, SafeGridComponent, SafeInputComponent, SafeListComponent, SafePickerComponent, SafeNavComponent, SafeParserComponent, SafePlanComponent, SafeSkillUpComponent, SafeDispatchComponent, SafeBriefingComponent],
   template: `
     <div class="viewer">
       <div class="sidebar">
@@ -265,6 +270,46 @@ import { SafeNavComponent } from '../../SafeNav';
             <div class="component-label">{{v}}</div>
             <div class="component-body">
               <safe-nav [config]="cfg('nav', v)" [onEvent]="handleEvent"></safe-nav>
+            </div>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="show('parser')">
+          <div class="component-card" *ngFor="let v of variations('parser')">
+            <div class="component-label">{{v}}</div>
+            <div class="component-body">
+              <safe-parser [config]="cfg('parser', v)" [onEvent]="handleEvent"></safe-parser>
+            </div>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="show('plan')">
+          <div class="component-card" *ngFor="let v of variations('plan')">
+            <div class="component-label">{{v}}</div>
+            <div class="component-body">
+              <safe-plan [config]="cfg('plan', v)" [onEvent]="handleEvent"></safe-plan>
+            </div>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="show('skillup')">
+          <div class="component-card" *ngFor="let v of variations('skillup')">
+            <div class="component-label">{{v}}</div>
+            <div class="component-body">
+              <safe-skillup [config]="cfg('skillup', v)" [onEvent]="handleEvent"></safe-skillup>
+            </div>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="show('dispatch')">
+          <div class="component-card" *ngFor="let v of variations('dispatch')">
+            <div class="component-label">{{v}}</div>
+            <div class="component-body">
+              <safe-dispatch [config]="cfg('dispatch', v)" [onEvent]="handleEvent"></safe-dispatch>
+            </div>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="show('briefing')">
+          <div class="component-card" *ngFor="let v of variations('briefing')">
+            <div class="component-label">{{v}}</div>
+            <div class="component-body">
+              <safe-briefing [config]="cfg('briefing', v)" [onEvent]="handleEvent"></safe-briefing>
             </div>
           </div>
         </ng-container>
