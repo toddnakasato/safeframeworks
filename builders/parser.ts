@@ -55,11 +55,11 @@ function buildParserTree(data: Record<string, any>[], idField: string, parentFie
 }
 
 const TYPE_ICONS: Record<string, string> = {
-    header: "📄",
-    section: "📁",
-    table: "📊",
-    "text-block": "📝",
-    footer: "📋",
+    header: "doc",
+    section: "folder",
+    table: "chart",
+    "text-block": "text",
+    footer: "list",
 };
 
 export function createSafeParser(container: HTMLElement, config: ConfigBase, ctx: SafeFireContext): HTMLElement {
@@ -187,7 +187,7 @@ export function createSafeParser(container: HTMLElement, config: ConfigBase, ctx
                 for (const [t, count] of Object.entries(typeCounts)) {
                     const item = elAttrs("div", { "data-role": "summary-item" });
                     const icon = elAttrs("span", { "data-role": "type-icon" });
-                    icon.textContent = TYPE_ICONS[t] ?? "📄";
+                    icon.textContent = TYPE_ICONS[t] ?? "doc";
                     item.appendChild(icon);
                     const label = elAttrs("span", { "data-role": "summary-label" });
                     label.textContent = t;
@@ -206,7 +206,7 @@ export function createSafeParser(container: HTMLElement, config: ConfigBase, ctx
             build: (panel) => {
                 const placeholder = elAttrs("div", { "data-role": "placeholder" });
                 const icon = elAttrs("div", { "data-role": "placeholder-icon" });
-                icon.textContent = "📤";
+                icon.textContent = "upload";
                 placeholder.appendChild(icon);
                 const msg = elAttrs("div", { "data-role": "placeholder-title" });
                 msg.textContent = "Generate Feature";
@@ -223,7 +223,7 @@ export function createSafeParser(container: HTMLElement, config: ConfigBase, ctx
             build: (panel) => {
                 const placeholder = elAttrs("div", { "data-role": "placeholder" });
                 const icon = elAttrs("div", { "data-role": "placeholder-icon" });
-                icon.textContent = "✅";
+                icon.textContent = "check";
                 placeholder.appendChild(icon);
                 const msg = elAttrs("div", { "data-role": "placeholder-title" });
                 msg.textContent = "Verification Suite";
@@ -303,7 +303,7 @@ export function createSafeParser(container: HTMLElement, config: ConfigBase, ctx
         }
 
         const typeIcon = elAttrs("span", { "data-role": "type-icon" });
-        typeIcon.textContent = TYPE_ICONS[partType] ?? "📄";
+        typeIcon.textContent = TYPE_ICONS[partType] ?? "doc";
         row.appendChild(typeIcon);
 
         const label = elAttrs("span", { "data-role": "label" });
@@ -376,11 +376,11 @@ export function createSafeParser(container: HTMLElement, config: ConfigBase, ctx
                 const jsonWrap = elAttrs("div", { "data-role": "json-view" });
 
                 const copyBtn = elAttrs("button", { "data-role": "copy-btn" });
-                copyBtn.textContent = "📋 Copy JSON";
+                copyBtn.textContent = "Copy JSON";
                 copyBtn.onclick = () => {
                     navigator.clipboard.writeText(JSON.stringify(data, null, 2)).then(() => {
-                        copyBtn.textContent = "✓ Copied!";
-                        setTimeout(() => { copyBtn.textContent = "📋 Copy JSON"; }, 2000);
+                        copyBtn.textContent = "check Copied!";
+                        setTimeout(() => { copyBtn.textContent = "Copy JSON"; }, 2000);
                     }).catch(() => {});
                 };
                 jsonWrap.appendChild(copyBtn);

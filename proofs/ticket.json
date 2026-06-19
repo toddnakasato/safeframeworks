@@ -1,11 +1,11 @@
 {
   "ok": true,
-  "total": 15,
-  "passed": 15,
+  "total": 17,
+  "passed": 17,
   "failed": 0,
   "groups": {
     "ticket-open": 0,
-    "ticket-closed": 15
+    "ticket-closed": 17
   },
   "checks": [
     {
@@ -60,12 +60,22 @@
     },
     {
       "group": "ticket-closed",
+      "name": "briefing-0004: prove builder-structure --component briefing",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-closed",
       "name": "timeline-0002: prove builder-registry",
       "status": "pass"
     },
     {
       "group": "ticket-closed",
       "name": "timeline-0001: prove builder-registry",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-closed",
+      "name": "drag-drop-0002: payload build --component drag-drop --event drop --id item1",
       "status": "pass"
     },
     {

@@ -1,0 +1,87 @@
+{
+  "component": "drag-drop",
+  "metadata": {
+    "variant": "work-item",
+    "spacing": "normal",
+    "titleField": "title",
+    "typeField": "type",
+    "priorityField": "priority",
+    "pointsField": "points",
+    "teams": [
+      {
+        "id": "alpha",
+        "name": "Alpha",
+        "icon": "circle"
+      },
+      {
+        "id": "beta",
+        "name": "Beta",
+        "icon": "circle"
+      },
+      {
+        "id": "gamma",
+        "name": "Gamma",
+        "icon": "circle"
+      },
+      {
+        "id": "delta",
+        "name": "Delta",
+        "icon": "circle"
+      }
+    ]
+  },
+  "data": {
+    "items": {
+      "name": "dd-work-items",
+      "type": "list",
+      "source": "inline",
+      "inline": [
+        {
+          "id": "w1",
+          "title": "OAuth2 SSO integration",
+          "type": "feature",
+          "priority": "high",
+          "points": 8
+        },
+        {
+          "id": "w2",
+          "title": "Fix payment timeout",
+          "type": "bug",
+          "priority": "critical",
+          "points": 3
+        },
+        {
+          "id": "w3",
+          "title": "Upgrade Node.js to v22",
+          "type": "chore",
+          "priority": "medium",
+          "points": 2
+        },
+        {
+          "id": "w4",
+          "title": "Explore vector DB options",
+          "type": "spike",
+          "priority": "low",
+          "points": 5
+        },
+        {
+          "id": "w5",
+          "title": "Dashboard data export",
+          "type": "feature",
+          "priority": "medium",
+          "points": 5
+        },
+        {
+          "id": "w6",
+          "title": "Rate limiting middleware",
+          "type": "security",
+          "priority": "high",
+          "points": 3
+        }
+      ]
+    }
+  },
+  "eventHandler": {
+    "handler": "drag-drop"
+  }
+}

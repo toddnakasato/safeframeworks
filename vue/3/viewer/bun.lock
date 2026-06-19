@@ -11,6 +11,7 @@
         "hyperformula": "^3.3.0",
         "leaflet": "^1.9",
         "lucide": "^0.469",
+        "lucide-vue-next": "^1.0.0",
         "vue": "^3",
       },
       "devDependencies": {
@@ -252,6 +253,8 @@
     "leaflet": ["leaflet@1.9.4", "", {}, "sha512-nxS1ynzJOmOlHp+iL3FyWqK89GtNL8U8rvlMOsQdTTssxZwCXh8N2NB3GDQOL+YR3XnWyZAxwQixURb+FA74PA=="],
 
     "lucide": ["lucide@0.469.0", "", {}, "sha512-ZmMtOekJ6g1UFqTvV9aWbkk+u/QxpfDpgUrbNj8jJEK+CtBdHVQ4akCA0TcTyeOvnL8RWo271UzFTimBRT0gKw=="],
+
+    "lucide-vue-next": ["lucide-vue-next@1.0.0", "", { "peerDependencies": { "vue": ">=3.0.1" } }, "sha512-V6SPvx1IHTj/UY+FrIYWV5faISsPSb8BnWSFDxAtezWKvWc9ZZ40PDrdu1/Qb5vg4lHWr1hs1BAMGVGm6V1Xdg=="],
 
     "magic-string": ["magic-string@0.30.21", "", { "dependencies": { "@jridgewell/sourcemap-codec": "^1.5.5" } }, "sha512-vd2F4YUyEXKGcLHoq+TEyCjxueSeHnFxyyjNp80yg0XV4vUhnDer/lvvlqM/arB5bXQN5K2/3oinyCRyx8T2CQ=="],
 

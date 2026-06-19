@@ -24,11 +24,17 @@ export function createSafeBriefing(
     const title = (metadata.title as string) ?? "Briefing";
     const showDate = metadata.showDate !== false;
     const showChat = metadata.showChat !== false;
+    const panelWidth = (metadata.width as string) ?? "";
+    const panelAlign = (metadata.align as string) ?? "";
     const children = config.children ?? {};
 
     const root = elAttrs("div", { "data-component": "briefing" });
     applyIntent(root, metadata);
     applyPaintState(root, metadata, "briefing");
+
+    if (panelWidth) root.style.width = panelWidth;
+    if (panelAlign === "center") { root.style.marginLeft = "auto"; root.style.marginRight = "auto"; }
+    else if (panelAlign === "right") { root.style.marginLeft = "auto"; }
 
     /* ---- Header ---- */
     const header = elAttrs("div", { "data-role": "header" });

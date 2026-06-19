@@ -19,8 +19,8 @@ const D = {
     tabSize: 2,
     decimalPlaces: 2,
     maxIcons: 5,
-    filledIcon: "★",
-    emptyIcon: "☆",
+    filledIcon: "*",
+    emptyIcon: "-",
     defaultSelectMessage: "Select an Option...",
     selectSize: 4,
     editorHeight: "200px",
@@ -206,7 +206,7 @@ export function createSafeInput(container: HTMLElement, config: ConfigBase, ctx:
     root.setAttribute("data-align", align);
     root.setAttribute("data-valign", valign);
 
-    const fireEvent = (name: string, payload: any) => {
+    const doEvent = (name: string, payload: any) => {
         ctx.fire(name, payload);
     };
 
@@ -240,7 +240,7 @@ export function createSafeInput(container: HTMLElement, config: ConfigBase, ctx:
 
     function handleEditClick() {
         isEditing = true;
-        fireEvent("editmode", { editing: true });
+        doEvent("editmode", { editing: true });
         if (inputType === "lookup") { showLookupSelect = false; lookupSearchText = ""; }
         render();
     }
@@ -250,23 +250,23 @@ export function createSafeInput(container: HTMLElement, config: ConfigBase, ctx:
         showLookupSelect = false; lookupSearchText = "";
         showPicklistSelect = false; picklistFilterText = "";
         if (inputType === "lookup") {
-            fireEvent("change", { field: fieldName, value: null, recordName: null });
+            doEvent("change", { field: fieldName, value: null, recordName: null });
         } else {
-            fireEvent("canceledit", { field: fieldName });
+            doEvent("canceledit", { field: fieldName });
         }
         render();
     }
 
     function handleChange(newValue: any) {
         isEditing = false;
-        fireEvent("change", { field: fieldName, value: newValue });
+        doEvent("change", { field: fieldName, value: newValue });
         render();
     }
 
     function wireField(inp: HTMLInputElement | HTMLTextAreaElement, opts?: { commitOnBlur?: boolean }) {
         const commitOnBlur = opts?.commitOnBlur !== false;
         inp.addEventListener("input", () => {
-            fireEvent("textinput", { field: fieldName, value: inp.value });
+            doEvent("textinput", { field: fieldName, value: inp.value });
         });
         inp.addEventListener("blur", () => {
             if (commitOnBlur && isEditing && inputType !== "lookup" && inputType !== "picklist" && root.contains(inp)) {
@@ -276,7 +276,7 @@ export function createSafeInput(container: HTMLElement, config: ConfigBase, ctx:
         inp.addEventListener("keydown", (e: KeyboardEvent) => {
             if (e.key === "Enter" && inputType !== "multiline-text" && inputType !== "text") {
                 e.preventDefault();
-                fireEvent("navigate", { field: fieldName, value: (e.target as HTMLInputElement).value });
+                doEvent("navigate", { field: fieldName, value: (e.target as HTMLInputElement).value });
                 handleChange((e.target as HTMLInputElement).value);
             } else if (e.key === "Escape") {
                 handleCancelClick();
@@ -307,7 +307,7 @@ export function createSafeInput(container: HTMLElement, config: ConfigBase, ctx:
     }
 
     function buildEditIcon(): HTMLElement {
-        const icon = el("span", "edit-icon", "✎");
+        const icon = el("span", "edit-icon", "edit");
         icon.onclick = () => handleEditClick();
         return icon;
     }
@@ -318,7 +318,7 @@ export function createSafeInput(container: HTMLElement, config: ConfigBase, ctx:
         cb.type = "checkbox";
         cb.checked = checked;
         if (!interactive) cb.readOnly = true;
-        else cb.onchange = () => { editValue = cb.checked; fireEvent("change", { field: fieldName, value: cb.checked }); };
+        else cb.onchange = () => { editValue = cb.checked; doEvent("change", { field: fieldName, value: cb.checked }); };
         label.append(cb, el("span", "toggle-slider"));
         return label;
     }
@@ -348,7 +348,7 @@ export function createSafeInput(container: HTMLElement, config: ConfigBase, ctx:
             wrap.appendChild(inp);
 
             if (inputType === "password" && showPasswordToggle) {
-                const tog = el("span", "password-toggle", showPassword ? "🙈" : "👁");
+                const tog = el("span", "password-toggle", showPassword ? "hide" : "show");
                 tog.onclick = () => { showPassword = !showPassword; render(); };
                 wrap.appendChild(tog);
             }
@@ -357,10 +357,10 @@ export function createSafeInput(container: HTMLElement, config: ConfigBase, ctx:
         if (inputType === "search") {
             const sw = el("div", "search-wrap");
             const inp = makeTextInput("search", editValue);
-            const clear = el("span", "clear", "✕");
+            const clear = el("span", "clear", "x");
             inp.addEventListener("input", () => {
                 editValue = inp.value;
-                fireEvent("textinput", { field: fieldName, value: inp.value });
+                doEvent("textinput", { field: fieldName, value: inp.value });
                 clear.hidden = !(showClear && editValue);
             });
             inp.addEventListener("keydown", (e: KeyboardEvent) => {
@@ -368,7 +368,7 @@ export function createSafeInput(container: HTMLElement, config: ConfigBase, ctx:
                 else if (e.key === "Escape") { handleCancelClick(); }
             });
             clear.hidden = !(showClear && editValue);
-            clear.onclick = () => { editValue = ""; fireEvent("change", { field: fieldName, value: "" }); inp.value = ""; clear.hidden = true; };
+            clear.onclick = () => { editValue = ""; doEvent("change", { field: fieldName, value: "" }); inp.value = ""; clear.hidden = true; };
             sw.append(inp, clear);
             wrap.appendChild(sw);
         }
@@ -382,7 +382,7 @@ export function createSafeInput(container: HTMLElement, config: ConfigBase, ctx:
             picker.addEventListener("input", () => {
                 editValue = picker.value;
                 valSpan.textContent = picker.value;
-                fireEvent("change", { field: fieldName, value: picker.value });
+                doEvent("change", { field: fieldName, value: picker.value });
             });
             cw.append(picker, valSpan);
             wrap.appendChild(cw);
@@ -395,7 +395,7 @@ export function createSafeInput(container: HTMLElement, config: ConfigBase, ctx:
             inp.multiple = fileMultiple;
             inp.onchange = () => {
                 const files = Array.from(inp.files ?? []);
-                fireEvent("change", { field: fieldName, value: files.map((f) => ({ name: f.name, size: f.size, type: f.type })) });
+                doEvent("change", { field: fieldName, value: files.map((f) => ({ name: f.name, size: f.size, type: f.type })) });
             };
             wrap.appendChild(inp);
         }
@@ -405,11 +405,11 @@ export function createSafeInput(container: HTMLElement, config: ConfigBase, ctx:
             const list = el("div", "tags-list");
             (Array.isArray(editValue) ? editValue : []).forEach((tag: string, i: number) => {
                 const t = el("span", "tag", tag);
-                const rm = el("span", "tag-remove", "✕");
+                const rm = el("span", "tag-remove", "x");
                 rm.onclick = () => {
                     const next = (editValue as string[]).filter((_: string, j: number) => j !== i);
                     editValue = next;
-                    fireEvent("change", { field: fieldName, value: next });
+                    doEvent("change", { field: fieldName, value: next });
                     render();
                 };
                 t.appendChild(rm);
@@ -425,7 +425,7 @@ export function createSafeInput(container: HTMLElement, config: ConfigBase, ctx:
                     if (val && (!maxTagsNum || ((editValue as string[])?.length ?? 0) < maxTagsNum)) {
                         const next = [...(Array.isArray(editValue) ? editValue : []), val];
                         editValue = next;
-                        fireEvent("change", { field: fieldName, value: next });
+                        doEvent("change", { field: fieldName, value: next });
                         render();
                     }
                 } else if (e.key === "Escape") {
@@ -454,7 +454,7 @@ export function createSafeInput(container: HTMLElement, config: ConfigBase, ctx:
             };
             inp.addEventListener("input", () => {
                 editValue = inp.value;
-                fireEvent("textinput", { field: fieldName, value: inp.value });
+                doEvent("textinput", { field: fieldName, value: inp.value });
                 renderSuggestions();
             });
             inp.addEventListener("blur", () => { setTimeout(() => { if (isEditing) handleChange(editValue); }, 150); });
@@ -474,7 +474,7 @@ export function createSafeInput(container: HTMLElement, config: ConfigBase, ctx:
                 const v = applyMask(inp.value, mask, maskCharVal);
                 editValue = v;
                 inp.value = v;
-                fireEvent("change", { field: fieldName, value: v });
+                doEvent("change", { field: fieldName, value: v });
             });
             inp.addEventListener("keydown", (e: KeyboardEvent) => {
                 if (e.key === "Enter") { e.preventDefault(); handleChange(inp.value); }
@@ -496,7 +496,7 @@ export function createSafeInput(container: HTMLElement, config: ConfigBase, ctx:
                     chars[i] = d.value.slice(-1);
                     const next = chars.join("");
                     editValue = next;
-                    if (next.length === pinLengthNum) fireEvent("change", { field: fieldName, value: next });
+                    if (next.length === pinLengthNum) doEvent("change", { field: fieldName, value: next });
                     if (d.value && digits[i + 1]) digits[i + 1].focus();
                 });
                 d.addEventListener("keydown", (e: KeyboardEvent) => {
@@ -522,7 +522,7 @@ export function createSafeInput(container: HTMLElement, config: ConfigBase, ctx:
                     const cur = Array.isArray(editValue) ? editValue : ["", ""];
                     const next = idx === 0 ? [d.value, cur[1] ?? ""] : [cur[0] ?? "", d.value];
                     editValue = next;
-                    fireEvent("change", { field: fieldName, value: next });
+                    doEvent("change", { field: fieldName, value: next });
                 };
                 return d;
             };
@@ -556,13 +556,13 @@ export function createSafeInput(container: HTMLElement, config: ConfigBase, ctx:
                 drawing = false;
                 const dataUrl = canvas.toDataURL();
                 editValue = dataUrl;
-                fireEvent("change", { field: fieldName, value: dataUrl });
+                doEvent("change", { field: fieldName, value: dataUrl });
             };
             const clearBtn = el("button", "signature-clear", signatureClearLabel);
             clearBtn.onclick = () => {
                 canvas.getContext("2d")?.clearRect(0, 0, canvas.width, canvas.height);
                 editValue = null;
-                fireEvent("change", { field: fieldName, value: null });
+                doEvent("change", { field: fieldName, value: null });
             };
             sw.append(canvas, clearBtn);
             wrap.appendChild(sw);
@@ -576,7 +576,7 @@ export function createSafeInput(container: HTMLElement, config: ConfigBase, ctx:
             rt.addEventListener("blur", () => {
                 const html = rt.innerHTML;
                 editValue = html;
-                fireEvent("change", { field: fieldName, value: html });
+                doEvent("change", { field: fieldName, value: html });
             });
             wrap.appendChild(rt);
         }
@@ -591,7 +591,7 @@ export function createSafeInput(container: HTMLElement, config: ConfigBase, ctx:
                 inp.addEventListener("input", () => {
                     const next = { ...(typeof editValue === "object" && editValue ? editValue : {}), [af]: inp.value };
                     editValue = next;
-                    fireEvent("change", { field: fieldName, value: next });
+                    doEvent("change", { field: fieldName, value: next });
                 });
                 aw.appendChild(inp);
             }
@@ -602,7 +602,7 @@ export function createSafeInput(container: HTMLElement, config: ConfigBase, ctx:
             const cb = el("input", "field") as HTMLInputElement;
             cb.type = "checkbox";
             cb.checked = !!editValue;
-            cb.onchange = () => { editValue = cb.checked; fireEvent("change", { field: fieldName, value: cb.checked }); };
+            cb.onchange = () => { editValue = cb.checked; doEvent("change", { field: fieldName, value: cb.checked }); };
             wrap.appendChild(cb);
         }
 
@@ -614,7 +614,7 @@ export function createSafeInput(container: HTMLElement, config: ConfigBase, ctx:
                 const v = !editValue;
                 editValue = v;
                 rb.checked = !!v;
-                fireEvent("change", { field: fieldName, value: v });
+                doEvent("change", { field: fieldName, value: v });
             };
             wrap.appendChild(rb);
         }
@@ -692,7 +692,7 @@ export function createSafeInput(container: HTMLElement, config: ConfigBase, ctx:
                 inp.value = lookupSearchText;
                 inp.addEventListener("input", () => {
                     lookupSearchText = inp.value;
-                    fireEvent("textinput", { field: fieldName, value: inp.value });
+                    doEvent("textinput", { field: fieldName, value: inp.value });
                 });
                 inp.addEventListener("blur", () => {
                     if (lookupSearchText.trim()) { showLookupSelect = true; render(); }
@@ -719,7 +719,7 @@ export function createSafeInput(container: HTMLElement, config: ConfigBase, ctx:
                     isEditing = false;
                     showLookupSelect = false;
                     lookupSearchText = "";
-                    fireEvent("change", { field: fieldName, value: id, recordName: rec?.name ?? id });
+                    doEvent("change", { field: fieldName, value: id, recordName: rec?.name ?? id });
                     render();
                 };
                 wrap.appendChild(sel);
@@ -761,7 +761,7 @@ export function createSafeInput(container: HTMLElement, config: ConfigBase, ctx:
                     const maxV = editValueMax ?? max;
                     if (v <= maxV) {
                         editValue = [v, maxV];
-                        fireEvent("change", { field: fieldName, value: [v, maxV] });
+                        doEvent("change", { field: fieldName, value: [v, maxV] });
                         updateValSpan();
                     } else {
                         sMin.value = String(Array.isArray(editValue) ? editValue[0] : min);
@@ -773,7 +773,7 @@ export function createSafeInput(container: HTMLElement, config: ConfigBase, ctx:
                     if (v >= minV) {
                         editValueMax = v;
                         editValue = [minV, v];
-                        fireEvent("change", { field: fieldName, value: [minV, v] });
+                        doEvent("change", { field: fieldName, value: [minV, v] });
                         updateValSpan();
                     } else {
                         sMax.value = String(editValueMax ?? max);
@@ -792,7 +792,7 @@ export function createSafeInput(container: HTMLElement, config: ConfigBase, ctx:
                 s.addEventListener("input", () => {
                     const v = Number(s.value);
                     editValue = v;
-                    fireEvent("change", { field: fieldName, value: v });
+                    doEvent("change", { field: fieldName, value: v });
                     updateValSpan();
                 });
                 sw.appendChild(s);
@@ -817,7 +817,7 @@ export function createSafeInput(container: HTMLElement, config: ConfigBase, ctx:
                 icon.onclick = () => {
                     const v = i + 1 === editValue ? 0 : i + 1;
                     editValue = v;
-                    fireEvent("change", { field: fieldName, value: v });
+                    doEvent("change", { field: fieldName, value: v });
                     render();
                 };
                 rw.appendChild(icon);
@@ -833,7 +833,7 @@ export function createSafeInput(container: HTMLElement, config: ConfigBase, ctx:
             ta.value = String(editValue ?? "");
             ta.addEventListener("input", () => {
                 editValue = ta.value;
-                fireEvent("change", { field: fieldName, value: ta.value });
+                doEvent("change", { field: fieldName, value: ta.value });
             });
             ta.addEventListener("keydown", (e: KeyboardEvent) => { if (e.key === "Escape") handleCancelClick(); });
             cw.appendChild(ta);
@@ -841,7 +841,7 @@ export function createSafeInput(container: HTMLElement, config: ConfigBase, ctx:
         }
 
         if (!hideCancel) {
-            const cancel = el("span", "cancel", "✕");
+            const cancel = el("span", "cancel", "x");
             cancel.onclick = () => handleCancelClick();
             wrap.appendChild(cancel);
         }
@@ -950,7 +950,7 @@ export function createSafeInput(container: HTMLElement, config: ConfigBase, ctx:
         }
 
         const handleTextClick = () => {
-            if (isLink) { fireEvent("navigate", { field: fieldName, value: rawValue }); return; }
+            if (isLink) { doEvent("navigate", { field: fieldName, value: rawValue }); return; }
             if (!hideEdit && inputType !== "lookup") handleEditClick();
         };
 

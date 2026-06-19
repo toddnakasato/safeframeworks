@@ -5,7 +5,9 @@
     "spacing": "normal",
     "title": "Daily Briefing",
     "showDate": true,
-    "showChat": true
+    "showChat": true,
+    "width": "20vw",
+    "align": "center"
   },
   "children": {
     "metrics": {
@@ -27,7 +29,7 @@
     },
     "calendar": {
       "component": "calendar",
-      "metadata": { "section": "calendar", "order": 1, "icon": "📅", "title": "Today", "variant": "grid" },
+      "metadata": { "section": "calendar", "order": 1, "icon": "calendar", "title": "Today", "variant": "grid" },
       "data": {
         "events": {
           "name": "briefing-events",
@@ -44,7 +46,7 @@
     },
     "leads": {
       "component": "list",
-      "metadata": { "section": "leads", "order": 2, "icon": "🔥", "title": "Hot Leads", "variant": "simple", "labelField": "name", "valueField": "score" },
+      "metadata": { "section": "leads", "order": 2, "icon": "flame", "title": "Hot Leads", "variant": "simple", "labelField": "name", "valueField": "score" },
       "data": {
         "items": {
           "name": "briefing-leads",
@@ -62,7 +64,7 @@
     },
     "pipeline": {
       "component": "list",
-      "metadata": { "section": "pipeline", "order": 3, "icon": "💰", "title": "Open Opportunities", "variant": "simple", "labelField": "name", "valueField": "amount" },
+      "metadata": { "section": "pipeline", "order": 3, "icon": "coins", "title": "Open Opportunities", "variant": "simple", "labelField": "name", "valueField": "amount" },
       "data": {
         "items": {
           "name": "briefing-pipeline",
@@ -78,23 +80,23 @@
     },
     "pinned": {
       "component": "list",
-      "metadata": { "section": "pinned", "order": 4, "icon": "📌", "title": "Pinned", "variant": "simple", "labelField": "label" },
+      "metadata": { "section": "pinned", "order": 4, "icon": "pin", "title": "Pinned", "variant": "simple", "labelField": "label" },
       "data": {
         "items": {
           "name": "briefing-pinned",
           "type": "list",
           "source": "inline",
           "inline": [
-            { "label": "Q1 Report", "icon": "📊" },
-            { "label": "Kernel tree: forge", "icon": "🌳" },
-            { "label": "Team kanban", "icon": "📋" }
+            { "label": "Q1 Report", "icon": "chart" },
+            { "label": "Kernel tree: forge", "icon": "tree" },
+            { "label": "Team kanban", "icon": "list" }
           ]
         }
       }
     },
     "alerts": {
       "component": "callout",
-      "metadata": { "section": "alerts", "order": 5, "icon": "⚡", "title": "Alerts", "variant": "insight", "message": "Pipeline dropped 15% this week. 3 tasks overdue. New lead: Umbrella Corp (score 88)." }
+      "metadata": { "section": "alerts", "order": 5, "icon": "zap", "title": "Alerts", "variant": "insight", "message": "Pipeline dropped 15% this week. 3 tasks overdue. New lead: Umbrella Corp (score 88)." }
     }
   },
   "eventHandler": {

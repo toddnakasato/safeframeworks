@@ -28,13 +28,13 @@ export function createSafeWeek(container: HTMLElement, config: ConfigBase, ctx: 
     root.setAttribute("data-component", "week");
     applyIntent(root, metadata);
 
-    const fireNavigate = (dir: number) => {
+    const doNavigate = (dir: number) => {
         offset += dir;
         ctx.fire("navigate", { direction: dir });
         render();
     };
 
-    const fireSelect = (date: Date, hour: number) => {
+    const doSelect = (date: Date, hour: number) => {
         ctx.fire("select", { date: date.toISOString().split("T")[0], hour });
     };
 
@@ -45,11 +45,11 @@ export function createSafeWeek(container: HTMLElement, config: ConfigBase, ctx: 
             const nav = el("div", "week-nav");
             const prev = el("button", "week-nav-btn", "‹ Previous Week");
             prev.setAttribute("data-dir", "prev");
-            prev.onclick = () => fireNavigate(-1);
+            prev.onclick = () => doNavigate(-1);
             const title = el("span", "week-nav-title", formatDateRange(dates));
             const next = el("button", "week-nav-btn", "Next Week ›");
             next.setAttribute("data-dir", "next");
-            next.onclick = () => fireNavigate(1);
+            next.onclick = () => doNavigate(1);
             nav.append(prev, title, next);
             wrapper.appendChild(nav);
         }
@@ -73,7 +73,7 @@ export function createSafeWeek(container: HTMLElement, config: ConfigBase, ctx: 
                 const cell = el("div", "week-cell");
                 if (isWeekend(date)) cell.setAttribute("data-weekend", "true");
                 cell.style.minHeight = `${slotHeight}px`;
-                cell.onclick = () => fireSelect(date, hr);
+                cell.onclick = () => doSelect(date, hr);
                 grid.appendChild(cell);
             }
         }
@@ -84,7 +84,7 @@ export function createSafeWeek(container: HTMLElement, config: ConfigBase, ctx: 
 
     function buildMini(dates: Date[], label: string, dir: number): HTMLElement {
         const mini = el("div", "week-mini");
-        mini.onclick = () => fireNavigate(dir);
+        mini.onclick = () => doNavigate(dir);
         mini.appendChild(el("div", "week-mini-label", label));
         mini.appendChild(el("div", "week-mini-range", formatDateRange(dates)));
         const grid = el("div", "week-mini-grid");

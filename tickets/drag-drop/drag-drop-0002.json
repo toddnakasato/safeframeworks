@@ -1,0 +1,38 @@
+{
+  "id": "drag-drop-0002",
+  "component": "drag-drop",
+  "type": "variation",
+  "title": "Add team-assign and work-item variants from Atom Drag Drop 2 figma spec",
+  "description": "Team-assign: drag people from roster to team drop zones (avatar, name, role, skills). Work-item: drag sprint backlog items to team lanes (type, priority, points, tags, filter pills).",
+  "status": "closed",
+  "resolution": "Added team-assign (roster → team drop zones with avatar, role, progress) and work-item (sprint backlog → team lanes with type/priority/points, filter pills, point totals) variants from Atom Drag Drop 2 figma. Added 13 structural roles, CSS for shared team/roster patterns, 2 sample configs. Added filter event to drag-drop contract. 17/17 proves pass.",
+  "proves": [
+    "builder-structure", "builder-dumb", "builder-registry",
+    "paint-contrast", "paint-unopinionated"
+  ],
+  "structure_test": {
+    "file": "safeframeworks/builders/dragdrop.ts",
+    "required_roles": [
+      "roster",
+      "roster-item",
+      "avatar",
+      "team-zone",
+      "team-header",
+      "team-members",
+      "progress-bar",
+      "progress-fill",
+      "filter-bar",
+      "filter-pill",
+      "type-badge",
+      "priority-dot",
+      "points"
+    ]
+  },
+  "test": {
+    "command": "payload build --component drag-drop --event drop --id item1",
+    "assert": { "ok": true }
+  },
+  "params": { "component": "drag-drop" },
+  "created": "2026-06-19T10:55:24.534Z",
+  "updated": "2026-06-19T12:00:00.000Z"
+}

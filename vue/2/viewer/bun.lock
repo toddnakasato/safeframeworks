@@ -11,6 +11,7 @@
         "hyperformula": "^3.3.0",
         "leaflet": "^1.9",
         "lucide": "^0.469",
+        "lucide-vue-next": "^1.0.0",
         "vue": "^2.7",
       },
       "devDependencies": {
@@ -230,6 +231,8 @@
     "leaflet": ["leaflet@1.9.4", "", {}, "sha512-nxS1ynzJOmOlHp+iL3FyWqK89GtNL8U8rvlMOsQdTTssxZwCXh8N2NB3GDQOL+YR3XnWyZAxwQixURb+FA74PA=="],
 
     "lucide": ["lucide@0.469.0", "", {}, "sha512-ZmMtOekJ6g1UFqTvV9aWbkk+u/QxpfDpgUrbNj8jJEK+CtBdHVQ4akCA0TcTyeOvnL8RWo271UzFTimBRT0gKw=="],
+
+    "lucide-vue-next": ["lucide-vue-next@1.0.0", "", { "peerDependencies": { "vue": ">=3.0.1" } }, "sha512-V6SPvx1IHTj/UY+FrIYWV5faISsPSb8BnWSFDxAtezWKvWc9ZZ40PDrdu1/Qb5vg4lHWr1hs1BAMGVGm6V1Xdg=="],
 
     "nanoid": ["nanoid@3.3.12", "", { "bin": { "nanoid": "bin/nanoid.cjs" } }, "sha512-ZB9RH/39qpq5Vu6Y+NmUaFhQR6pp+M2Xt76XBnEwDaGcVAqhlvxrl3B2bKS5D3NH3QR76v3aSrKaF/Kiy7lEtQ=="],
 

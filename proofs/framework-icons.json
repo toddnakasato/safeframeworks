@@ -1,0 +1,2618 @@
+{
+  "ok": true,
+  "total": 520,
+  "passed": 520,
+  "failed": 0,
+  "groups": {
+    "lucide-installed": 8,
+    "no-emoji-builders": 35,
+    "no-emoji-samples": 142,
+    "no-emoji-data": 33,
+    "no-emoji-wrappers": 293,
+    "no-emoji-viewers": 8,
+    "no-emoji-dev": 1
+  },
+  "checks": [
+    {
+      "group": "lucide-installed",
+      "name": "react/18/viewer: lucide-react installed",
+      "status": "pass"
+    },
+    {
+      "group": "lucide-installed",
+      "name": "react/19/viewer: lucide-react installed",
+      "status": "pass"
+    },
+    {
+      "group": "lucide-installed",
+      "name": "angular/21/viewer: lucide-angular installed",
+      "status": "pass"
+    },
+    {
+      "group": "lucide-installed",
+      "name": "angular/22/viewer: lucide-angular installed",
+      "status": "pass"
+    },
+    {
+      "group": "lucide-installed",
+      "name": "vue/2/viewer: lucide-vue-next installed",
+      "status": "pass"
+    },
+    {
+      "group": "lucide-installed",
+      "name": "vue/3/viewer: lucide-vue-next installed",
+      "status": "pass"
+    },
+    {
+      "group": "lucide-installed",
+      "name": "svelte/4/viewer: lucide-svelte installed",
+      "status": "pass"
+    },
+    {
+      "group": "lucide-installed",
+      "name": "svelte/5/viewer: lucide-svelte installed",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-builders",
+      "name": "funnel: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-builders",
+      "name": "callout: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-builders",
+      "name": "briefing: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-builders",
+      "name": "week: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-builders",
+      "name": "table: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-builders",
+      "name": "nav: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-builders",
+      "name": "input: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-builders",
+      "name": "button: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-builders",
+      "name": "sheet: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-builders",
+      "name": "chat: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-builders",
+      "name": "columns: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-builders",
+      "name": "metric: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-builders",
+      "name": "storyflow: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-builders",
+      "name": "calendar: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-builders",
+      "name": "card: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-builders",
+      "name": "parser: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-builders",
+      "name": "map: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-builders",
+      "name": "hierarchy: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-builders",
+      "name": "skillup: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-builders",
+      "name": "flow: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-builders",
+      "name": "chart: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-builders",
+      "name": "scene: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-builders",
+      "name": "dragdrop: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-builders",
+      "name": "dispatch: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-builders",
+      "name": "layout: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-builders",
+      "name": "tabs: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-builders",
+      "name": "list: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-builders",
+      "name": "timeline: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-builders",
+      "name": "plan: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-builders",
+      "name": "tree: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-builders",
+      "name": "gauge: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-builders",
+      "name": "picker: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-builders",
+      "name": "grid: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-builders",
+      "name": "heatmap: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-builders",
+      "name": "toggle: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "tabs/tabs-vertical.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "tabs/tabs-horizontal.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "tree/tree-flat.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "tree/tree-nested.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "week/week-compact.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "week/week-workweek.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "week/week-full.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "proof-viewer/proof-viewer-table.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "proof-viewer/proof-viewer-nav.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "calendar/calendar-detail-left.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "calendar/calendar-detail-right.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "calendar/calendar-year.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "calendar/calendar-single-month.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "calendar/calendar-browse.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "calendar/calendar-year-horizontal.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "card/card-elevated.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "card/card-outline.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "card/card-inline.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "card/card-state.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "hierarchy/hierarchy-sunburst-disk.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "hierarchy/hierarchy-icicle-disk.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "hierarchy/hierarchy-pack-budget.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "hierarchy/hierarchy-treemap-disk.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "chat/chat-simple.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "chat/chat-conversation.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "picker/picker-list.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "picker/picker-card.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "input/input-single.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "input/input-form.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "plan/plan-compact.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "plan/plan-default.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "layout/layout-sidebar.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "layout/layout-stack.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "dispatch/dispatch-default.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "dispatch/dispatch-compact.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "chart/chart-bar.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "chart/chart-pie.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "parser/parser-default.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "parser/parser-compact.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "callout/callout-info.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "callout/callout-warning.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "toggle/toggle-checkbox.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "toggle/toggle-check-icon.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "toggle/toggle-check-top.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "toggle/toggle-check-bottom.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "toggle/toggle-expandable.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "toggle/toggle-settings.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "toggle/toggle-switch.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "map/map-markers.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "map/map-path.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "button/button-link-icon.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "button/buttons-ai-responses.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "button/buttons-pagination.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "button/button-primary-lg.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "button/buttons-vertical-stack.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "button/buttons-toggle-filter.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "button/button-link-suffix.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "button/button-outline-icon-right.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "button/button-primary-icon.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "button/buttons-nav-menu.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "button/button-loading.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "button/button-ghost.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "button/button-secondary-sm.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "button/button-disabled.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "button/button-danger.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "button/buttons-stepper.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "button/buttons-icon-toolbar.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "briefing/briefing-default.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "briefing/briefing-compact.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "table/table-basic.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "table/table-transactions.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "table/table-events.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "table/table-contacts.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "table/table-row-numbers.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "list/list-actions.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "list/list-simple-paged.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "list/list-property-grid.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "list/list-select-single.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "list/list-select-multiple.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "list/list-icon-led.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "list/list-hierarchy-tree.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "list/list-file-browser.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "list/list-simple-horizontal.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "list/list-columns-contacts.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "list/list-gantt-tasks.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "gauge/gauge-radial.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "gauge/gauge-minimal.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "skillup/skillup-compact.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "skillup/skillup-default.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "heatmap/heatmap-dense.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "heatmap/heatmap-matrix.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "columns/columns-two.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "columns/columns-three.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "nav/nav-horizontal.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "nav/nav-sidebar.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "sheet/sheet-skeleton.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "sheet/sheet-columns-only.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "sheet/sheet-single-column.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "sheet/sheet-basic.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "sheet/sheet-status.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "sheet/sheet-striped.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "sheet/sheet-rows-only.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "sheet/sheet-pivot.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "sheet/sheet-compact.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "sheet/sheet-key-value.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "sheet/sheet-empty.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "sheet/sheet-spreadsheet.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "sheet/sheet-dark.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "sheet/sheet-grouped.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "timeline/timeline-h-history.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "timeline/timeline-vertical.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "timeline/timeline-h-time-blocks.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "timeline/timeline-v-career.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "timeline/timeline-h-gantt.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "timeline/timeline-v-incident.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "timeline/timeline-alternating.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "timeline/timeline-h-sprint-days.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "timeline/timeline-v-roadmap.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "timeline/timeline-h-versions.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "timeline/timeline-v-schedule.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "timeline/timeline-v-milestones.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "timeline/timeline-v-sprint.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "timeline/timeline-h-event-stream.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "funnel/funnel-horizontal.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "funnel/funnel-vertical.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "drag-drop/drag-drop-row.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "drag-drop/drag-drop-cell.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "drag-drop/drag-drop-work-item.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "drag-drop/drag-drop-kanban.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "drag-drop/drag-drop-team-assign.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "drag-drop/drag-drop-list.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "drag-drop/drag-drop-table.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "drag-drop/drag-drop-template.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "grid/grid-detail.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "grid/grid-compact.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "flow/flow-matrix-trade.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "flow/flow-chord-trade.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "flow/flow-arc-trade.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "flow/flow-sankey-revenue.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "flow/flow-dagre-pipeline.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "flow/flow-force-team.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "flow/flow-edge-bundling-modules.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-data",
+      "name": "flow-revenue.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-data",
+      "name": "list-properties.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-data",
+      "name": "sheet-grouped-staff.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-data",
+      "name": "list-gantt.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-data",
+      "name": "sheet-metrics.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-data",
+      "name": "sheet-people.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-data",
+      "name": "tree-nodes.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-data",
+      "name": "sheet-projects-status.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-data",
+      "name": "events.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-data",
+      "name": "list-achievements.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-data",
+      "name": "drag-drop-items.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-data",
+      "name": "flow-ci-pipeline.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-data",
+      "name": "list-contacts.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-data",
+      "name": "card-info.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-data",
+      "name": "hierarchy-disk-usage.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-data",
+      "name": "flow-team-network.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-data",
+      "name": "chart-series.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-data",
+      "name": "list-themes.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-data",
+      "name": "sheet-region-sales.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-data",
+      "name": "table-rows.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-data",
+      "name": "hierarchy-budget.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-data",
+      "name": "sheet-tickers.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-data",
+      "name": "sheet-channel-traffic.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-data",
+      "name": "sheet-dense-log.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-data",
+      "name": "list-simple.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-data",
+      "name": "list-files.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-data",
+      "name": "flow-module-deps.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-data",
+      "name": "timeline-events.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-data",
+      "name": "map-manhattan.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-data",
+      "name": "list-hierarchy.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-data",
+      "name": "flow-region-trade.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-data",
+      "name": "sheet-formulas.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-data",
+      "name": "list-tasks.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "react/18/SafeBriefing.tsx: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "react/18/SafeDragDrop.tsx: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "react/18/SafePicker.tsx: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "react/18/SafeCallout.tsx: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "react/18/SafeGridCell.tsx: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "react/18/SafeChat.tsx: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "react/18/SafeFlow.tsx: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "react/18/SafePlan.tsx: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "react/18/SafeSheet.tsx: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "react/18/SafeLayout.tsx: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "react/18/SafeChart.tsx: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "react/18/SafeHeatmap.tsx: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "react/18/SafeToggle.tsx: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "react/18/SafeButton.tsx: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "react/18/SafeStoryFlow.tsx: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "react/18/SafeSkillUp.tsx: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "react/18/SafeTimeline.tsx: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "react/18/SafeCalendar.tsx: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "react/18/SafeTree.tsx: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "react/18/SafeParser.tsx: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "react/18/SafeGauge.tsx: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "react/18/SafeInput.tsx: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "react/18/SafeColumns.tsx: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "react/18/SafeScene.tsx: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "react/18/SafeHierarchy.tsx: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "react/18/SafeStoryboard.tsx: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "react/18/SafeModal.tsx: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "react/18/SafeFunnel.tsx: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "react/18/SafeMap.tsx: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "react/18/SafeList.tsx: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "react/18/SafeGrid.tsx: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "react/18/SafeTable.tsx: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "react/18/SafeNav.tsx: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "react/18/SafeCard.tsx: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "react/18/SafeDispatch.tsx: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "react/18/SafeTabs.tsx: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "react/18/SafeWeek.tsx: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "react/18/SafeRenderer.tsx: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "react/18/SafeMetric.tsx: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "react/19/SafeBriefing.tsx: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "react/19/SafeDragDrop.tsx: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "react/19/SafePicker.tsx: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "react/19/SafeCallout.tsx: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "react/19/SafeGridCell.tsx: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "react/19/SafeChat.tsx: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "react/19/SafeFlow.tsx: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "react/19/SafePlan.tsx: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "react/19/SafeSheet.tsx: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "react/19/SafeLayout.tsx: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "react/19/SafeChart.tsx: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "react/19/SafeHeatmap.tsx: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "react/19/SafeToggle.tsx: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "react/19/SafeButton.tsx: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "react/19/SafeStoryFlow.tsx: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "react/19/SafeSkillUp.tsx: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "react/19/SafeTimeline.tsx: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "react/19/SafeCalendar.tsx: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "react/19/SafeTree.tsx: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "react/19/SafeParser.tsx: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "react/19/SafeGauge.tsx: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "react/19/SafeInput.tsx: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "react/19/SafeColumns.tsx: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "react/19/SafeScene.tsx: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "react/19/SafeHierarchy.tsx: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "react/19/SafeStoryboard.tsx: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "react/19/SafeModal.tsx: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "react/19/SafeFunnel.tsx: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "react/19/SafeMap.tsx: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "react/19/SafeList.tsx: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "react/19/SafeGrid.tsx: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "react/19/SafeTable.tsx: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "react/19/SafeNav.tsx: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "react/19/SafeCard.tsx: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "react/19/SafeDispatch.tsx: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "react/19/SafeTabs.tsx: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "react/19/SafeWeek.tsx: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "react/19/SafeRenderer.tsx: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "react/19/SafeMetric.tsx: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "angular/21/SafeGauge.ts: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "angular/21/SafeMetric.ts: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "angular/21/SafeParser.ts: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "angular/21/SafeTabs.ts: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "angular/21/SafeList.ts: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "angular/21/SafeSkillUp.ts: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "angular/21/SafeButton.ts: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "angular/21/SafeGrid.ts: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "angular/21/SafeTree.ts: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "angular/21/SafePlan.ts: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "angular/21/SafeTimeline.ts: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "angular/21/SafeDispatch.ts: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "angular/21/SafeRenderer.ts: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "angular/21/SafeDragDrop.ts: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "angular/21/SafeFlow.ts: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "angular/21/SafeHierarchy.ts: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "angular/21/SafeFunnel.ts: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "angular/21/SafeHeatmap.ts: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "angular/21/SafeScene.ts: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "angular/21/SafeChart.ts: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "angular/21/SafeCalendar.ts: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "angular/21/SafeSheet.ts: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "angular/21/SafeToggle.ts: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "angular/21/SafePicker.ts: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "angular/21/SafeStoryFlow.ts: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "angular/21/SafeChat.ts: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "angular/21/SafeCallout.ts: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "angular/21/SafeCard.ts: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "angular/21/SafeInput.ts: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "angular/21/SafeBriefing.ts: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "angular/21/SafeLayout.ts: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "angular/21/SafeTable.ts: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "angular/21/SafeMap.ts: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "angular/21/SafeNav.ts: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "angular/21/SafeColumns.ts: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "angular/21/SafeWeek.ts: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "angular/22/SafeGauge.ts: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "angular/22/SafeMetric.ts: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "angular/22/SafeParser.ts: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "angular/22/SafeTabs.ts: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "angular/22/SafeList.ts: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "angular/22/SafeSkillUp.ts: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "angular/22/SafeButton.ts: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "angular/22/SafeGrid.ts: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "angular/22/SafeTree.ts: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "angular/22/SafePlan.ts: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "angular/22/SafeTimeline.ts: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "angular/22/SafeDispatch.ts: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "angular/22/SafeRenderer.ts: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "angular/22/SafeDragDrop.ts: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "angular/22/SafeFlow.ts: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "angular/22/SafeHierarchy.ts: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "angular/22/SafeFunnel.ts: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "angular/22/SafeHeatmap.ts: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "angular/22/SafeScene.ts: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "angular/22/SafeChart.ts: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "angular/22/SafeCalendar.ts: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "angular/22/SafeSheet.ts: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "angular/22/SafeToggle.ts: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "angular/22/SafePicker.ts: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "angular/22/SafeStoryFlow.ts: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "angular/22/SafeChat.ts: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "angular/22/SafeCallout.ts: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "angular/22/SafeCard.ts: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "angular/22/SafeInput.ts: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "angular/22/SafeBriefing.ts: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "angular/22/SafeLayout.ts: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "angular/22/SafeTable.ts: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "angular/22/SafeMap.ts: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "angular/22/SafeNav.ts: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "angular/22/SafeColumns.ts: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "angular/22/SafeWeek.ts: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "vue/2/SafeBriefing.vue: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "vue/2/SafeCallout.vue: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "vue/2/SafeDragDrop.vue: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "vue/2/SafePicker.vue: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "vue/2/SafeFlow.vue: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "vue/2/SafeChat.vue: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "vue/2/SafePlan.vue: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "vue/2/SafeChart.vue: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "vue/2/SafeSheet.vue: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "vue/2/SafeLayout.vue: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "vue/2/SafeHeatmap.vue: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "vue/2/SafeToggle.vue: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "vue/2/SafeButton.vue: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "vue/2/SafeStoryFlow.vue: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "vue/2/SafeSkillUp.vue: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "vue/2/SafeCalendar.vue: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "vue/2/SafeTimeline.vue: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "vue/2/SafeTree.vue: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "vue/2/SafeParser.vue: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "vue/2/SafeGauge.vue: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "vue/2/SafeInput.vue: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "vue/2/SafeColumns.vue: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "vue/2/SafeMap.vue: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "vue/2/SafeFunnel.vue: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "vue/2/SafeHierarchy.vue: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "vue/2/SafeScene.vue: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "vue/2/SafeTable.vue: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "vue/2/SafeGrid.vue: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "vue/2/SafeList.vue: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "vue/2/SafeCard.vue: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "vue/2/SafeNav.vue: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "vue/2/SafeTabs.vue: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "vue/2/SafeDispatch.vue: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "vue/2/SafeWeek.vue: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "vue/2/SafeMetric.vue: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "vue/3/SafeBriefing.vue: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "vue/3/SafeCallout.vue: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "vue/3/SafeDragDrop.vue: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "vue/3/SafePicker.vue: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "vue/3/SafeFlow.vue: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "vue/3/SafeChat.vue: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "vue/3/SafePlan.vue: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "vue/3/SafeChart.vue: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "vue/3/SafeSheet.vue: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "vue/3/SafeLayout.vue: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "vue/3/SafeHeatmap.vue: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "vue/3/SafeToggle.vue: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "vue/3/SafeButton.vue: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "vue/3/SafeStoryFlow.vue: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "vue/3/SafeSkillUp.vue: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "vue/3/SafeCalendar.vue: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "vue/3/SafeTimeline.vue: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "vue/3/SafeTree.vue: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "vue/3/SafeParser.vue: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "vue/3/SafeGauge.vue: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "vue/3/SafeInput.vue: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "vue/3/SafeColumns.vue: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "vue/3/SafeMap.vue: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "vue/3/SafeFunnel.vue: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "vue/3/SafeHierarchy.vue: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "vue/3/SafeScene.vue: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "vue/3/SafeTable.vue: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "vue/3/SafeGrid.vue: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "vue/3/SafeList.vue: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "vue/3/SafeCard.vue: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "vue/3/SafeNav.vue: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "vue/3/SafeTabs.vue: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "vue/3/SafeDispatch.vue: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "vue/3/SafeWeek.vue: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "vue/3/SafeRenderer.vue: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "vue/3/SafeMetric.vue: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "svelte/4/SafeList.svelte: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "svelte/4/SafeCallout.svelte: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "svelte/4/SafeChat.svelte: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "svelte/4/SafeSkillUp.svelte: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "svelte/4/SafePicker.svelte: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "svelte/4/SafeTimeline.svelte: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "svelte/4/SafeGrid.svelte: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "svelte/4/SafeChart.svelte: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "svelte/4/SafeCalendar.svelte: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "svelte/4/SafeTable.svelte: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "svelte/4/SafeFlow.svelte: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "svelte/4/SafeInput.svelte: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "svelte/4/SafeWeek.svelte: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "svelte/4/SafeToggle.svelte: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "svelte/4/SafeBriefing.svelte: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "svelte/4/SafeHeatmap.svelte: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "svelte/4/SafeButton.svelte: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "svelte/4/SafeColumns.svelte: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "svelte/4/SafeSheet.svelte: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "svelte/4/SafeNav.svelte: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "svelte/4/SafeTree.svelte: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "svelte/4/SafeDispatch.svelte: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "svelte/4/SafeCard.svelte: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "svelte/4/SafeHierarchy.svelte: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "svelte/4/SafeMap.svelte: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "svelte/4/SafeStoryFlow.svelte: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "svelte/4/SafeTabs.svelte: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "svelte/4/SafeLayout.svelte: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "svelte/4/SafeMetric.svelte: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "svelte/4/SafeFunnel.svelte: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "svelte/4/SafePlan.svelte: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "svelte/4/SafeParser.svelte: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "svelte/4/SafeRenderer.svelte: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "svelte/4/SafeDragDrop.svelte: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "svelte/4/SafeGauge.svelte: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "svelte/4/SafeScene.svelte: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "svelte/5/SafeList.svelte: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "svelte/5/SafeCallout.svelte: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "svelte/5/SafeChat.svelte: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "svelte/5/SafeSkillUp.svelte: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "svelte/5/SafePicker.svelte: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "svelte/5/SafeTimeline.svelte: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "svelte/5/SafeGrid.svelte: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "svelte/5/SafeChart.svelte: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "svelte/5/SafeCalendar.svelte: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "svelte/5/SafeTable.svelte: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "svelte/5/SafeFlow.svelte: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "svelte/5/SafeInput.svelte: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "svelte/5/SafeWeek.svelte: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "svelte/5/SafeToggle.svelte: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "svelte/5/SafeBriefing.svelte: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "svelte/5/SafeHeatmap.svelte: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "svelte/5/SafeButton.svelte: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "svelte/5/SafeColumns.svelte: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "svelte/5/SafeSheet.svelte: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "svelte/5/SafeNav.svelte: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "svelte/5/SafeTree.svelte: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "svelte/5/SafeDispatch.svelte: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "svelte/5/SafeCard.svelte: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "svelte/5/SafeHierarchy.svelte: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "svelte/5/SafeMap.svelte: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "svelte/5/SafeStoryFlow.svelte: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "svelte/5/SafeTabs.svelte: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "svelte/5/SafeLayout.svelte: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "svelte/5/SafeMetric.svelte: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "svelte/5/SafeFunnel.svelte: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "svelte/5/SafePlan.svelte: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "svelte/5/SafeParser.svelte: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "svelte/5/SafeRenderer.svelte: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "svelte/5/SafeDragDrop.svelte: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "svelte/5/SafeGauge.svelte: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-wrappers",
+      "name": "svelte/5/SafeScene.svelte: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-viewers",
+      "name": "react/18/viewer/src/App.tsx: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-viewers",
+      "name": "react/19/viewer/src/App.tsx: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-viewers",
+      "name": "angular/21/viewer/src/app.component.ts: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-viewers",
+      "name": "angular/22/viewer/src/app.component.ts: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-viewers",
+      "name": "vue/2/viewer/src/App.vue: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-viewers",
+      "name": "vue/3/viewer/src/App.vue: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-viewers",
+      "name": "svelte/4/viewer/src/App.svelte: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-viewers",
+      "name": "svelte/5/viewer/src/App.svelte: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-dev",
+      "name": "dev/proof-viewer.ts: no emoji",
+      "status": "pass"
+    }
+  ],
+  "failures": []
+}

@@ -168,7 +168,7 @@ export function createSafeProofViewer(
         cs.total = total;
         const allPass = passed === total && total > 0;
         const anyFail = passed < total;
-        cs.iconEl.textContent = total === 0 ? "○" : allPass ? "✓" : "✗";
+        cs.iconEl.textContent = total === 0 ? "○" : allPass ? "PASS" : "FAIL";
         cs.iconEl.className = `pc-icon ${total === 0 ? "pend" : allPass ? "pass" : "fail"}`;
         cs.countEl.textContent = `${passed}/${total}`;
         cs.countEl.className = `pc-count ${total === 0 ? "pend" : allPass ? "pass" : "fail"}`;
@@ -180,7 +180,7 @@ export function createSafeProofViewer(
         const allPass = totalPassed === totalChecks && totalChecks > 0;
         summaryCountEl.textContent = `${totalPassed}/${totalChecks} passed`;
         summaryCountEl.className = allPass ? "pass" : totalChecks === 0 ? "pend" : "fail";
-        summaryIconEl.textContent = totalChecks === 0 ? "" : allPass ? " ✓" : ` · ${totalChecks - totalPassed} failed`;
+        summaryIconEl.textContent = totalChecks === 0 ? "" : allPass ? " PASS" : ` · ${totalChecks - totalPassed} failed`;
         summaryIconEl.className = allPass ? "pass" : "fail";
     }
 
@@ -220,7 +220,7 @@ export function createSafeProofViewer(
         });
 
         updateSummary();
-        proveAllBtn.textContent = totalPassed === totalChecks ? `✓ ${totalPassed}/${totalChecks}` : `✗ ${totalChecks - totalPassed} failed`;
+        proveAllBtn.textContent = totalPassed === totalChecks ? `PASS ${totalPassed}/${totalChecks}` : `FAIL ${totalChecks - totalPassed} failed`;
         proveAllBtn.disabled = false;
         tsEl.textContent = `Last: ${new Date().toLocaleTimeString()}`;
     };
@@ -285,7 +285,7 @@ export function createSafeProofViewer(
         const modal = el("div", "pv-modal");
         const hdr = el("div", "pv-modal-hdr");
         hdr.appendChild(el("span", "pv-modal-title", `${eventName} — Full Payload`));
-        const closeBtn = el("button", "pv-modal-close", "✕") as HTMLButtonElement;
+        const closeBtn = el("button", "pv-modal-close", "x") as HTMLButtonElement;
         closeBtn.onclick = () => overlay.remove();
         hdr.appendChild(closeBtn);
         modal.appendChild(hdr);

@@ -1,0 +1,80 @@
+{
+  "component": "drag-drop",
+  "metadata": {
+    "variant": "team-assign",
+    "spacing": "normal",
+    "nameField": "name",
+    "roleField": "role",
+    "avatarField": "avatar",
+    "teams": [
+      {
+        "id": "platform",
+        "name": "Platform",
+        "icon": "settings"
+      },
+      {
+        "id": "growth",
+        "name": "Growth",
+        "icon": "rocket"
+      },
+      {
+        "id": "product",
+        "name": "Product",
+        "icon": "target"
+      },
+      {
+        "id": "data",
+        "name": "Data & AI",
+        "icon": "brain"
+      }
+    ]
+  },
+  "data": {
+    "items": {
+      "name": "dd-team-roster",
+      "type": "list",
+      "source": "inline",
+      "inline": [
+        {
+          "id": "p1",
+          "name": "Alex Rivera",
+          "role": "Frontend Eng",
+          "avatar": "AR"
+        },
+        {
+          "id": "p2",
+          "name": "Jordan Kim",
+          "role": "Backend Eng",
+          "avatar": "JK"
+        },
+        {
+          "id": "p3",
+          "name": "Sam Patel",
+          "role": "Designer",
+          "avatar": "SP"
+        },
+        {
+          "id": "p4",
+          "name": "Morgan Lee",
+          "role": "Data Analyst",
+          "avatar": "ML"
+        },
+        {
+          "id": "p5",
+          "name": "Casey Chen",
+          "role": "DevOps",
+          "avatar": "CC"
+        },
+        {
+          "id": "p6",
+          "name": "Taylor Wong",
+          "role": "Product Mgr",
+          "avatar": "TW"
+        }
+      ]
+    }
+  },
+  "eventHandler": {
+    "handler": "drag-drop"
+  }
+}

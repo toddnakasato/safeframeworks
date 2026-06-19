@@ -8,19 +8,21 @@
     "tauri": "tauri"
   },
   "dependencies": {
-    "@angular/core": "^22",
     "@angular/common": "^22",
     "@angular/compiler": "^22",
+    "@angular/core": "^22",
+    "@angular/forms": "^22.0.2",
     "@angular/platform-browser": "^22",
     "@angular/platform-browser-dynamic": "^22",
-    "rxjs": "^7",
-    "zone.js": "^0.15",
     "chart.js": "^4",
     "d3": "^7",
     "d3-sankey": "^0.12",
+    "hyperformula": "^3.3.0",
     "leaflet": "^1.9",
     "lucide": "^0.469",
-    "hyperformula": "^3.3.0"
+    "lucide-angular": "^1.0.0",
+    "rxjs": "^7",
+    "zone.js": "^0.15"
   },
   "devDependencies": {
     "@analogjs/vite-plugin-angular": "^1",

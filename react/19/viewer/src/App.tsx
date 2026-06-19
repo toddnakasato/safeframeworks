@@ -170,7 +170,7 @@ export default function App() {
       const totalT = results.reduce((s, [,v]) => s + (v.total ?? 0), 0);
       const totalF = results.reduce((s, [,v]) => s + (v.failed ?? 0), 0);
       const pass = totalF === 0;
-      setProofToast({ message: `${totalP}/${totalT} checks ${pass ? "passed ✓" : `— ${totalF} failed ✗`}`, color: pass ? "var(--sd-success, #15803d)" : "var(--sd-danger, #dc2626)" });
+      setProofToast({ message: `${totalP}/${totalT} checks ${pass ? "passed PASS" : `— ${totalF} failed FAIL`}`, color: pass ? "var(--sd-success, #15803d)" : "var(--sd-danger, #dc2626)" });
       setTimeout(() => setProofToast(null), 4000);
     } finally {
       setProofRunning(false);
@@ -401,7 +401,7 @@ export default function App() {
                           }
                           const pass = failures.length === 0;
                           const total = Object.keys(t.test.assert).length;
-                          result.textContent = pass ? `${total}/${total} ✓` : `${total - failures.length}/${total} ✗ ${failures[0]}`;
+                          result.textContent = pass ? `${total}/${total} PASS` : `${total - failures.length}/${total} FAIL ${failures[0]}`;
                           result.style.color = pass ? "var(--sd-success, #15803d)" : "var(--sd-danger, #dc2626)";
                         } else {
                           result.textContent = "no test defined";
@@ -449,7 +449,7 @@ export default function App() {
                 const p = cmds.reduce((s, c) => s + (proofResults[c]?.passed ?? 0), 0);
                 const f = cmds.reduce((s, c) => s + (proofResults[c]?.failed ?? 0), 0);
                 if (t === 0) return null;
-                return <span style={{ fontSize: 13, fontWeight: 600, color: f === 0 ? "var(--sd-success, #15803d)" : "var(--sd-danger, #dc2626)" }}>{p}/{t} {f === 0 ? "✓" : `(${f} failed)`}</span>;
+                return <span style={{ fontSize: 13, fontWeight: 600, color: f === 0 ? "var(--sd-success, #15803d)" : "var(--sd-danger, #dc2626)" }}>{p}/{t} {f === 0 ? "PASS" : `(${f} failed)`}</span>;
               })()}
             </div>
 
@@ -482,7 +482,7 @@ export default function App() {
                         {isRunning && <span style={{ fontSize: 11, color: "var(--sd-text-muted, #6b7280)", display: "inline-flex", alignItems: "center", gap: 4 }}><span style={{ display: "inline-block", animation: "spin 1s linear infinite" }}>⟳</span> running</span>}
                         {!isRunning && hasResults && (
                           <span style={{ fontSize: 12, fontWeight: 600, color: pass ? "var(--sd-success, #15803d)" : "var(--sd-danger, #dc2626)" }}>
-                            {r.passed}/{r.total} {pass ? "✓" : "✗"}
+                            {r.passed}/{r.total} {pass ? "PASS" : "FAIL"}
                           </span>
                         )}
                       </div>

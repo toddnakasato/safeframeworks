@@ -36,7 +36,7 @@ export function createSafeTimeline(container: HTMLElement, config: ConfigBase, c
         categories.push(...set);
     }
 
-    const fireSelect = (index: number, item: Record<string, any>) => {
+    const doSelect = (index: number, item: Record<string, any>) => {
         ctx.fire("select", { index, data: item });
     };
 
@@ -87,7 +87,7 @@ export function createSafeTimeline(container: HTMLElement, config: ConfigBase, c
                     .attr("stroke", "var(--sd-surface)")
                     .attr("stroke-width", 2)
                     .style("cursor", "pointer")
-                    .on("click", () => fireSelect(i, d));
+                    .on("click", () => doSelect(i, d));
 
                 svg.append("line")
                     .attr("x1", cx)
@@ -178,7 +178,7 @@ export function createSafeTimeline(container: HTMLElement, config: ConfigBase, c
                         .attr("stroke", "var(--sd-surface)")
                         .attr("stroke-width", 2)
                         .style("cursor", "pointer")
-                        .on("click", () => fireSelect(ei, d));
+                        .on("click", () => doSelect(ei, d));
 
                     if (icon) {
                         svg.append("text")
@@ -265,7 +265,7 @@ export function createSafeTimeline(container: HTMLElement, config: ConfigBase, c
                     .attr("fill", color)
                     .attr("opacity", 0.85)
                     .style("cursor", "pointer")
-                    .on("click", () => fireSelect(i, d))
+                    .on("click", () => doSelect(i, d))
                     .transition()
                     .duration(600)
                     .delay(i * 50)
@@ -301,7 +301,7 @@ export function createSafeTimeline(container: HTMLElement, config: ConfigBase, c
 
             const row = el("div", "alt-row");
             row.setAttribute("data-side", isLeft ? "left" : "right");
-            row.onclick = () => fireSelect(i, item);
+            row.onclick = () => doSelect(i, item);
 
             const dot = el("div", "alt-dot");
             dot.style.setProperty('--sd-category-color', color);
@@ -332,7 +332,7 @@ export function createSafeTimeline(container: HTMLElement, config: ConfigBase, c
             const left = i % 2 === 0;
             const row = el("div", "tl-roadmap-row");
             row.setAttribute("data-side", left ? "left" : "right");
-            row.onclick = () => fireSelect(i, item);
+            row.onclick = () => doSelect(i, item);
             const contentL = el("div", "tl-roadmap-content");
             contentL.setAttribute("data-side", "left");
             if (!left) contentL.setAttribute("data-hidden", "true");
@@ -367,7 +367,7 @@ export function createSafeTimeline(container: HTMLElement, config: ConfigBase, c
     if (variant === "career") {
         sorted.forEach((item, i) => {
             const row = el("div", "tl-career-row");
-            row.onclick = () => fireSelect(i, item);
+            row.onclick = () => doSelect(i, item);
             row.appendChild(el("div", "tl-career-date", String(item[dateField])));
             const dotCol = el("div", "tl-career-dot-col");
             dotCol.appendChild(el("div", "tl-dot"));
@@ -387,7 +387,7 @@ export function createSafeTimeline(container: HTMLElement, config: ConfigBase, c
     if (variant === "milestones") {
         sorted.forEach((item, i) => {
             const row = el("div", "tl-milestone-row");
-            row.onclick = () => fireSelect(i, item);
+            row.onclick = () => doSelect(i, item);
             const dot = el("div", "tl-dot"); dot.setAttribute("data-status", String(item.status ?? "default"));
             row.appendChild(dot);
             const content = el("div", "tl-milestone-content");
@@ -420,7 +420,7 @@ export function createSafeTimeline(container: HTMLElement, config: ConfigBase, c
         sorted.forEach((item, i) => {
             const row = el("div", "tl-sprint-row");
             if (item.active || item.status === "active") row.setAttribute("data-active", "true");
-            row.onclick = () => fireSelect(i, item);
+            row.onclick = () => doSelect(i, item);
             row.appendChild(el("div", "tl-sprint-date", String(item[dateField])));
             row.appendChild(el("div", "tl-sprint-task", String(item[labelField] ?? "")));
             const check = el("div", "tl-sprint-check");
@@ -437,7 +437,7 @@ export function createSafeTimeline(container: HTMLElement, config: ConfigBase, c
         sorted.forEach((item, i) => {
             const row = el("div", "tl-schedule-row");
             row.setAttribute("data-type", String(item.type ?? item.category ?? "default"));
-            row.onclick = () => fireSelect(i, item);
+            row.onclick = () => doSelect(i, item);
             row.appendChild(el("div", "tl-schedule-bar"));
             const content = el("div", "tl-schedule-content");
             content.appendChild(el("div", "tl-schedule-time", String(item[dateField])));
@@ -454,7 +454,7 @@ export function createSafeTimeline(container: HTMLElement, config: ConfigBase, c
         root.setAttribute("data-theme", "dark");
         sorted.forEach((item, i) => {
             const row = el("div", "tl-incident-row");
-            row.onclick = () => fireSelect(i, item);
+            row.onclick = () => doSelect(i, item);
             row.appendChild(el("div", "tl-incident-ts", String(item[dateField])));
             if (item.status || item.sev) {
                 const sev = el("div", "tl-incident-sev", String(item.status ?? item.sev ?? "").toUpperCase());
@@ -492,7 +492,7 @@ export function createSafeTimeline(container: HTMLElement, config: ConfigBase, c
         const dotsRow = el("div", "tl-h-dots");
         sorted.forEach((item, i) => {
             const dotWrap = el("div", "tl-h-dot-wrap");
-            dotWrap.onclick = () => fireSelect(i, item);
+            dotWrap.onclick = () => doSelect(i, item);
             const dot = el("div", "tl-dot");
             dot.setAttribute("data-status", String(item.status ?? "default"));
             dotWrap.appendChild(dot);
@@ -529,7 +529,7 @@ export function createSafeTimeline(container: HTMLElement, config: ConfigBase, c
         // Phase rows
         sorted.forEach((item, i) => {
             const row = el("div", "tl-gantt-row");
-            row.onclick = () => fireSelect(i, item);
+            row.onclick = () => doSelect(i, item);
             row.appendChild(el("div", "tl-gantt-label", String(item[labelField] ?? item.title ?? "")));
             const track = el("div", "tl-gantt-track");
             const bar = el("div", "tl-gantt-bar");
@@ -551,7 +551,7 @@ export function createSafeTimeline(container: HTMLElement, config: ConfigBase, c
         sorted.forEach((item, i) => {
             const col = el("div", "tl-sprint-day-col");
             if (item.today) col.setAttribute("data-today", "true");
-            col.onclick = () => fireSelect(i, item);
+            col.onclick = () => doSelect(i, item);
             col.appendChild(el("div", "tl-sprint-day-label", String(item[dateField])));
             const barWrap = el("div", "tl-sprint-day-bar-wrap");
             const pct = item.total > 0 ? (item.done / item.total) * 100 : 0;
@@ -581,7 +581,7 @@ export function createSafeTimeline(container: HTMLElement, config: ConfigBase, c
             block.style.left = `${((item.start ?? 0) / totalH) * 100}%`;
             block.style.width = `${((item.span ?? 1) / totalH) * 100}%`;
             block.appendChild(el("span", "tl-timeblock-label", String(item[labelField] ?? "")));
-            block.onclick = () => fireSelect(i, item);
+            block.onclick = () => doSelect(i, item);
             strip.appendChild(block);
         });
         wrap.appendChild(strip);
@@ -596,7 +596,7 @@ export function createSafeTimeline(container: HTMLElement, config: ConfigBase, c
         const strip = el("div", "tl-stream-strip");
         sorted.forEach((item, i) => {
             const col = el("div", "tl-stream-event");
-            col.onclick = () => fireSelect(i, item);
+            col.onclick = () => doSelect(i, item);
             const label = el("div", "tl-stream-label", String(item[labelField] ?? ""));
             col.appendChild(label);
             const dot = el("div", "tl-dot");
@@ -618,7 +618,7 @@ export function createSafeTimeline(container: HTMLElement, config: ConfigBase, c
         const desc = descriptionField ? String(item[descriptionField] ?? "") : "";
 
         const event = el("div", "event");
-        event.onclick = () => fireSelect(i, item);
+        event.onclick = () => doSelect(i, item);
 
         const marker = el("div", "marker");
         if (icon) {

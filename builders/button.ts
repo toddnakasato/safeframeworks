@@ -53,7 +53,7 @@ function buildSingleButton(config: ConfigBase, ctx: SafeFireContext, childId?: s
     if (loading) btn.appendChild(elAttrs("span", { "data-role": "spinner" }));
     if (status) {
         const badge = elAttrs("span", { "data-role": "status-badge", "data-status": status });
-        if (status === "completed") badge.textContent = "✓";
+        if (status === "completed") badge.textContent = "check";
         btn.appendChild(badge);
     }
     if (icon && iconPosition === "left" && !iconOnly) btn.appendChild(iconSpan("icon", icon));

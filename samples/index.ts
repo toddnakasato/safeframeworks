@@ -152,6 +152,8 @@ import dragDropRowConfig from "./config/drag-drop/drag-drop-row.json";
 import dragDropCellConfig from "./config/drag-drop/drag-drop-cell.json";
 import dragDropTableConfig from "./config/drag-drop/drag-drop-table.json";
 import dragDropTemplateConfig from "./config/drag-drop/drag-drop-template.json";
+import dragDropTeamAssignConfig from "./config/drag-drop/drag-drop-team-assign.json";
+import dragDropWorkItemConfig from "./config/drag-drop/drag-drop-work-item.json";
 import listAchievementsData from "./data/list-achievements.json";
 import listContactsData from "./data/list-contacts.json";
 import listFilesData from "./data/list-files.json";
@@ -307,6 +309,8 @@ export const SAMPLES: Record<string, Record<string, ConfigBase>> = {
         "drag-drop-cell": resolveData(dragDropCellConfig as unknown as ConfigBase),
         "drag-drop-table": resolveData(dragDropTableConfig as unknown as ConfigBase),
         "drag-drop-template": resolveData(dragDropTemplateConfig as unknown as ConfigBase),
+        "drag-drop-team-assign": resolveData(dragDropTeamAssignConfig as unknown as ConfigBase),
+        "drag-drop-work-item": resolveData(dragDropWorkItemConfig as unknown as ConfigBase),
     },
     funnel: {
         "funnel-vertical": resolveData(funnelVerticalConfig as unknown as ConfigBase),

@@ -122,7 +122,7 @@ export function createSafeDispatch(container: HTMLElement, config: ConfigBase, c
 
                 const footer = elAttrs("div", { "data-role": "article-footer" });
                 const bkmBtn = elAttrs("button", { "data-role": "btn-bookmark" });
-                bkmBtn.textContent = isBookmarked ? "★ Saved" : "☆ Save";
+                bkmBtn.textContent = isBookmarked ? "star Saved" : "star-off Save";
                 if (isBookmarked) bkmBtn.setAttribute("data-bookmarked", "true");
                 bkmBtn.onclick = (e) => {
                     e.stopPropagation();

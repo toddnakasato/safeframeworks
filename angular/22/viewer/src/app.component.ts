@@ -243,7 +243,7 @@ function loadStyle(name: string, theme: string) {
                 {{proofRunning ? 'Running' + (proofProgress ? ' ' + proofProgress.done + '/' + proofProgress.total : '...') : (activeProof ? 'Run ' + activeProof : 'Run All')}}
               </button>
               <span *ngIf="getActiveTotals().total > 0" [ngStyle]="{ fontSize: '13px', fontWeight: '600', color: getActiveTotals().failed === 0 ? 'var(--sd-success, #15803d)' : 'var(--sd-danger, #dc2626)' }">
-                {{getActiveTotals().passed}}/{{getActiveTotals().total}} {{getActiveTotals().failed === 0 ? '✓' : '(' + getActiveTotals().failed + ' failed)'}}
+                {{getActiveTotals().passed}}/{{getActiveTotals().total}} {{getActiveTotals().failed === 0 ? 'PASS' : '(' + getActiveTotals().failed + ' failed)'}}
               </span>
             </div>
 
@@ -269,7 +269,7 @@ function loadStyle(name: string, theme: string) {
                   </span>
                   <span *ngIf="!isCommandRunning(cmd) && proofResults[cmd] && proofResults[cmd].total > 0"
                     [ngStyle]="{ fontSize: '12px', fontWeight: '600', color: proofResults[cmd].failed === 0 ? 'var(--sd-success, #15803d)' : 'var(--sd-danger, #dc2626)' }">
-                    {{proofResults[cmd].passed}}/{{proofResults[cmd].total}} {{proofResults[cmd].failed === 0 ? '✓' : '✗'}}
+                    {{proofResults[cmd].passed}}/{{proofResults[cmd].total}} {{proofResults[cmd].failed === 0 ? 'PASS' : 'FAIL'}}
                   </span>
                 </div>
                 <!-- Failures -->
@@ -630,7 +630,7 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewChecked {
       const totalT = results.reduce((s, [, v]) => s + (v.total ?? 0), 0);
       const totalF = results.reduce((s, [, v]) => s + (v.failed ?? 0), 0);
       const pass = totalF === 0;
-      this.proofToast = { message: `${totalP}/${totalT} checks ${pass ? 'passed ✓' : `— ${totalF} failed ✗`}`, color: pass ? 'var(--sd-success, #15803d)' : 'var(--sd-danger, #dc2626)' };
+      this.proofToast = { message: `${totalP}/${totalT} checks ${pass ? 'passed PASS' : `— ${totalF} failed FAIL`}`, color: pass ? 'var(--sd-success, #15803d)' : 'var(--sd-danger, #dc2626)' };
       setTimeout(() => { this.proofToast = null; }, 4000);
     } finally {
       this.proofRunning = false;
@@ -705,7 +705,7 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewChecked {
         }
         const pass = failures.length === 0;
         const total = Object.keys(t.test.assert).length;
-        result.textContent = pass ? `${total}/${total} ✓` : `${total - failures.length}/${total} ✗ ${failures[0]}`;
+        result.textContent = pass ? `${total}/${total} PASS` : `${total - failures.length}/${total} FAIL ${failures[0]}`;
         result.style.color = pass ? 'var(--sd-success, #15803d)' : 'var(--sd-danger, #dc2626)';
       } else {
         result.textContent = 'no test defined';

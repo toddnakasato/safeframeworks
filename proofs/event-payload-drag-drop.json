@@ -1,0 +1,73 @@
+{
+  "ok": true,
+  "component": "drag-drop",
+  "event": "all",
+  "total": 11,
+  "passed": 11,
+  "failed": 0,
+  "groups": {
+    "coverage": 6,
+    "stranded": 5,
+    "data-keys": 0,
+    "context-keys": 0
+  },
+  "checks": [
+    {
+      "group": "coverage",
+      "name": "drag-drop: has COMPONENT_PAYLOAD_SHAPES entry",
+      "status": "pass"
+    },
+    {
+      "group": "coverage",
+      "name": "drag-drop/drag-start: shape declared",
+      "status": "pass"
+    },
+    {
+      "group": "coverage",
+      "name": "drag-drop/drag-end: shape declared",
+      "status": "pass"
+    },
+    {
+      "group": "coverage",
+      "name": "drag-drop/drop: shape declared",
+      "status": "pass"
+    },
+    {
+      "group": "coverage",
+      "name": "drag-drop/file-drop: shape declared",
+      "status": "pass"
+    },
+    {
+      "group": "coverage",
+      "name": "drag-drop/filter: shape declared",
+      "status": "pass"
+    },
+    {
+      "group": "stranded",
+      "name": "drag-drop/drag-start: payload shape has matching event",
+      "status": "pass"
+    },
+    {
+      "group": "stranded",
+      "name": "drag-drop/drag-end: payload shape has matching event",
+      "status": "pass"
+    },
+    {
+      "group": "stranded",
+      "name": "drag-drop/drop: payload shape has matching event",
+      "status": "pass"
+    },
+    {
+      "group": "stranded",
+      "name": "drag-drop/file-drop: payload shape has matching event",
+      "status": "pass"
+    },
+    {
+      "group": "stranded",
+      "name": "drag-drop/filter: payload shape has matching event",
+      "status": "pass"
+    }
+  ],
+  "failures": [],
+  "ts": "2026-06-19T11:09:46.499Z"
+}

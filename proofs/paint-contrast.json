@@ -1,10 +1,10 @@
 {
   "ok": true,
-  "total": 190,
-  "passed": 190,
+  "total": 196,
+  "passed": 196,
   "failed": 0,
   "groups": {
-    "wcag-aa-contrast": 190
+    "wcag-aa-contrast": 196
   },
   "checks": [
     {
@@ -160,6 +160,36 @@
     {
       "group": "wcag-aa-contrast",
       "name": "[data-component=\"drag-drop\"][data-variant=\"template\"] [da...: #475569 on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"drag-drop\"] [data-role=\"roster-name\"]: #1e293b on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"drag-drop\"] [data-role=\"avatar\"]: #fff on #2563eb",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"drag-drop\"] [data-role=\"team-name\"]: #1e293b on #ffffff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"drag-drop\"] [data-role=\"filter-pill\"]: #475569 on #fff",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"drag-drop\"] [data-role=\"filter-pill\"][da...: #fff on #1e293b",
+      "status": "pass"
+    },
+    {
+      "group": "wcag-aa-contrast",
+      "name": "[data-component=\"drag-drop\"] [data-role=\"points\"]: #475569 on #ffffff",
       "status": "pass"
     },
     {

@@ -1,7 +1,7 @@
 {
   "ok": true,
-  "total": 12,
-  "passed": 12,
+  "total": 13,
+  "passed": 13,
   "failed": 0,
   "groups": {
     "cssonly-has-attr": 3,
@@ -10,6 +10,11 @@
     "safestyles-targets-attr": 3
   },
   "checks": [
+    {
+      "group": "css-brace-balance",
+      "name": "structure.css: braces balanced",
+      "status": "pass"
+    },
     {
       "group": "cssonly-has-attr",
       "name": "table/row:hover: has attr",

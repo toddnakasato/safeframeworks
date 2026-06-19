@@ -5,7 +5,9 @@
     "spacing": "compact",
     "title": "Quick Brief",
     "showDate": true,
-    "showChat": false
+    "showChat": false,
+    "width": "20vw",
+    "align": "center"
   },
   "children": {
     "metrics": {
@@ -25,7 +27,7 @@
     },
     "alerts": {
       "component": "callout",
-      "metadata": { "section": "alerts", "order": 1, "icon": "⚡", "title": "Alerts" },
+      "metadata": { "section": "alerts", "order": 1, "icon": "zap", "title": "Alerts" },
       "data": {
         "items": {
           "name": "brief-alerts",

@@ -251,7 +251,7 @@ async function runProofs(commands: string[]) {
     const totalT = results.reduce((s, [, v]) => s + (v.total ?? 0), 0);
     const totalF = results.reduce((s, [, v]) => s + (v.failed ?? 0), 0);
     const pass = totalF === 0;
-    proofToast.value = { message: `${totalP}/${totalT} checks ${pass ? 'passed ✓' : `— ${totalF} failed ✗`}`, color: pass ? 'var(--sd-success, #15803d)' : 'var(--sd-danger, #dc2626)' };
+    proofToast.value = { message: `${totalP}/${totalT} checks ${pass ? 'passed PASS' : `— ${totalF} failed FAIL`}`, color: pass ? 'var(--sd-success, #15803d)' : 'var(--sd-danger, #dc2626)' };
     setTimeout(() => { proofToast.value = null; }, 4000);
   } finally {
     proofRunning.value = false;
@@ -291,7 +291,7 @@ async function proveTicket(t: Ticket) {
       }
       const pass = failures.length === 0;
       const total = Object.keys(t.test.assert).length;
-      result.textContent = pass ? `${total}/${total} ✓` : `${total - failures.length}/${total} ✗ ${failures[0]}`;
+      result.textContent = pass ? `${total}/${total} PASS` : `${total - failures.length}/${total} FAIL ${failures[0]}`;
       result.style.color = pass ? 'var(--sd-success, #15803d)' : 'var(--sd-danger, #dc2626)';
     } else {
       result.textContent = 'no test defined';
@@ -516,7 +516,7 @@ function groupChecks(checks: any[]): { group: string; total: number; passed: num
             {{ proofRunning ? `Running${proofProgress ? ` ${proofProgress.done}/${proofProgress.total}` : '...'}` : (activeProof && activeProof !== '__none__') ? `Run ${activeProof}` : 'Run All' }}
           </button>
           <span v-if="activeSummary.total > 0" class="proof-summary" :style="{ color: activeSummary.failed === 0 ? 'var(--sd-success, #15803d)' : 'var(--sd-danger, #dc2626)' }">
-            {{ activeSummary.passed }}/{{ activeSummary.total }} {{ activeSummary.failed === 0 ? '✓' : `(${activeSummary.failed} failed)` }}
+            {{ activeSummary.passed }}/{{ activeSummary.total }} {{ activeSummary.failed === 0 ? 'PASS' : `(${activeSummary.failed} failed)` }}
           </span>
         </div>
 
@@ -533,7 +533,7 @@ function groupChecks(checks: any[]): { group: string; total: number; passed: num
               <span class="proof-cmd-name">{{ cmd }}</span>
               <span v-if="runningCommands.has(cmd)" class="proof-running"><span class="spin">⟳</span> running</span>
               <span v-else-if="proofResults[cmd] && proofResults[cmd].total > 0" class="proof-result-badge" :style="{ color: proofResults[cmd].failed === 0 ? 'var(--sd-success, #15803d)' : 'var(--sd-danger, #dc2626)' }">
-                {{ proofResults[cmd].passed }}/{{ proofResults[cmd].total }} {{ proofResults[cmd].failed === 0 ? '✓' : '✗' }}
+                {{ proofResults[cmd].passed }}/{{ proofResults[cmd].total }} {{ proofResults[cmd].failed === 0 ? 'PASS' : 'FAIL' }}
               </span>
             </div>
             <div v-if="proofResults[cmd] && proofResults[cmd].total > 0 && proofResults[cmd].failures && proofResults[cmd].failures!.length > 0" class="proof-failures">

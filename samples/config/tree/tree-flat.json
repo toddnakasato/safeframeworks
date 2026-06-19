@@ -15,12 +15,12 @@
       "type": "list",
       "source": "inline",
       "inline": [
-        { "id": "1", "label": "Documents", "parentId": null, "icon": "📁" },
-        { "id": "2", "label": "Photos", "parentId": null, "icon": "📁" },
-        { "id": "3", "label": "Resume.pdf", "parentId": "1", "icon": "📄" },
-        { "id": "4", "label": "Cover Letter.docx", "parentId": "1", "icon": "📄" },
-        { "id": "5", "label": "Vacation.jpg", "parentId": "2", "icon": "🖼️" },
-        { "id": "6", "label": "Portrait.png", "parentId": "2", "icon": "🖼️" }
+        { "id": "1", "label": "Documents", "parentId": null, "icon": "folder" },
+        { "id": "2", "label": "Photos", "parentId": null, "icon": "folder" },
+        { "id": "3", "label": "Resume.pdf", "parentId": "1", "icon": "file" },
+        { "id": "4", "label": "Cover Letter.docx", "parentId": "1", "icon": "file" },
+        { "id": "5", "label": "Vacation.jpg", "parentId": "2", "icon": "image️" },
+        { "id": "6", "label": "Portrait.png", "parentId": "2", "icon": "image️" }
       ],
       "schema": {
         "fields": [

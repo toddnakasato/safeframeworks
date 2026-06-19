@@ -175,7 +175,7 @@ function buildSelection(root: HTMLElement, config: ConfigBase, data: any[], ctx:
             row.onclick = () => toggle(i, item);
             const control = el("span", "item-control");
             if (isSelected(i)) control.setAttribute("data-checked", "true");
-            if (mode === "multiple" && isSelected(i)) control.textContent = "✓";
+            if (mode === "multiple" && isSelected(i)) control.textContent = "check";
             row.appendChild(control);
             const body = el("span", "item-body");
             body.appendChild(el("span", "item-label", String(item[labelField] ?? "")));

@@ -1,10 +1,10 @@
 {
   "ok": true,
-  "total": 86,
-  "passed": 86,
+  "total": 82,
+  "passed": 82,
   "failed": 0,
   "groups": {
-    "fire-is-declared": 86
+    "fire-is-declared": 82
   },
   "checks": [
     {
@@ -105,31 +105,6 @@
     {
       "group": "fire-is-declared",
       "name": "nav: \"navigate\" is declared",
-      "status": "pass"
-    },
-    {
-      "group": "fire-is-declared",
-      "name": "input: \"editmode\" is declared",
-      "status": "pass"
-    },
-    {
-      "group": "fire-is-declared",
-      "name": "input: \"change\" is declared",
-      "status": "pass"
-    },
-    {
-      "group": "fire-is-declared",
-      "name": "input: \"canceledit\" is declared",
-      "status": "pass"
-    },
-    {
-      "group": "fire-is-declared",
-      "name": "input: \"textinput\" is declared",
-      "status": "pass"
-    },
-    {
-      "group": "fire-is-declared",
-      "name": "input: \"navigate\" is declared",
       "status": "pass"
     },
     {
@@ -305,6 +280,11 @@
     {
       "group": "fire-is-declared",
       "name": "drag-drop: \"file-drop\" is declared",
+      "status": "pass"
+    },
+    {
+      "group": "fire-is-declared",
+      "name": "drag-drop: \"filter\" is declared",
       "status": "pass"
     },
     {

@@ -65,9 +65,9 @@ export function createSafeSkillUp(container: HTMLElement, config: ConfigBase, ct
         return stat;
     }
 
-    const streakStat = makeStat(String(streak), "🔥 Streak");
-    const todayStat = makeStat("0/0", "✅ Today");
-    const accStat = makeStat("0%", "📊 Accuracy");
+    const streakStat = makeStat(String(streak), "Streak");
+    const todayStat = makeStat("0/0", "Today");
+    const accStat = makeStat("0%", "Accuracy");
     statsBar.appendChild(streakStat);
     statsBar.appendChild(todayStat);
     statsBar.appendChild(accStat);
@@ -156,7 +156,7 @@ export function createSafeSkillUp(container: HTMLElement, config: ConfigBase, ct
             row.onclick = () => ctx.fire("select", { skill: skill.name });
 
             const icon = elAttrs("span", { "data-role": "skill-icon" });
-            icon.textContent = "📚";
+            icon.textContent = "book";
             row.appendChild(icon);
 
             const name = elAttrs("span", { "data-role": "skill-name" });

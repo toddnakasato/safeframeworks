@@ -1,0 +1,26 @@
+{
+  "id": "briefing-0004",
+  "component": "briefing",
+  "type": "structure",
+  "title": "Briefing configurable width and horizontal alignment for narrow sidebar testing",
+  "description": "Add width and align metadata fields to BriefingMetadata. Builder reads them and sets structural CSS. Samples set to 20vw and center.",
+  "status": "closed",
+  "resolution": "Added width and align fields to BriefingMetadata. Builder reads metadata.width (CSS value) and metadata.align (left/center/right) and applies as structural inline styles (width, margin-left/right auto). Both samples set to 20vw centered. All proves pass (event-coverage 5 failures are pre-existing input.ts dynamic fire).",
+  "proves": [
+    "builder-structure",
+    "builder-dumb",
+    "paint-unopinionated",
+    "paint-contrast"
+  ],
+  "test": {
+    "command": "prove builder-structure --component briefing",
+    "assert": {
+      "ok": true
+    }
+  },
+  "params": {
+    "component": "briefing"
+  },
+  "created": "2026-06-19T10:36:43.969Z",
+  "updated": "2026-06-19T11:00:00.000Z"
+}

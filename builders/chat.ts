@@ -56,7 +56,7 @@ export function createSafeChat(container: HTMLElement, config: ConfigBase, ctx: 
     input.type = "text";
     input.placeholder = placeholder;
 
-    const sendBtn = el("button", "chat-send", "➤") as HTMLButtonElement;
+    const sendBtn = el("button", "chat-send", ">") as HTMLButtonElement;
     sendBtn.disabled = true;
 
     const handleSend = () => {

@@ -1,17 +1,17 @@
 {
   "ok": true,
-  "component": "parser",
-  "total": 330,
-  "passed": 330,
+  "component": "briefing",
+  "total": 332,
+  "passed": 332,
   "failed": 0,
   "groups": {
-    "uses-readList-or-readRecord": 1,
+    "uses-readList-or-readRecord": 0,
     "uses-shared-el": 1,
     "uses-applyIntent": 0,
     "uses-applyPaintState": 1,
     "has-data-component": 1,
     "no-schema-dot-fields": 0,
-    "imports-match-calls": 4,
+    "imports-match-calls": 3,
     "metadata-is-declared": 1,
     "required-metadata-fields": 0,
     "no-getDataSource": 1,
@@ -23,95 +23,85 @@
     "standard-export-name": 1,
     "routed-through-render": 1,
     "wrappers-use-buildComponent": 278,
-    "ticket-required-roles": 15,
-    "ticket-required-css": 15,
+    "ticket-required-roles": 17,
+    "ticket-required-css": 17,
     "valid-child-variants": 3,
     "samples-registered-in-index": 2
   },
   "checks": [
     {
-      "group": "uses-readList-or-readRecord",
-      "name": "parser: uses readList or readRecord",
-      "status": "pass"
-    },
-    {
       "group": "uses-shared-el",
-      "name": "parser: uses shared el/elAttrs from utils",
+      "name": "briefing: uses shared el/elAttrs from utils",
       "status": "pass"
     },
     {
       "group": "uses-applyPaintState",
-      "name": "parser: uses applyPaintState",
+      "name": "briefing: uses applyPaintState",
       "status": "pass"
     },
     {
       "group": "has-data-component",
-      "name": "parser: sets data-component",
+      "name": "briefing: sets data-component",
       "status": "pass"
     },
     {
       "group": "imports-match-calls",
-      "name": "parser: imports readList",
+      "name": "briefing: imports applyIntent",
       "status": "pass"
     },
     {
       "group": "imports-match-calls",
-      "name": "parser: imports applyIntent",
+      "name": "briefing: imports applyPaintState",
       "status": "pass"
     },
     {
       "group": "imports-match-calls",
-      "name": "parser: imports applyPaintState",
-      "status": "pass"
-    },
-    {
-      "group": "imports-match-calls",
-      "name": "parser: imports elAttrs",
+      "name": "briefing: imports elAttrs",
       "status": "pass"
     },
     {
       "group": "metadata-is-declared",
-      "name": "parser: metadata variable is declared",
+      "name": "briefing: metadata variable is declared",
       "status": "pass"
     },
     {
       "group": "no-getDataSource",
-      "name": "parser: no raw getDataSource",
+      "name": "briefing: no raw getDataSource",
       "status": "pass"
     },
     {
       "group": "no-initSafe",
-      "name": "parser: no initSafe function",
+      "name": "briefing: no initSafe function",
       "status": "pass"
     },
     {
       "group": "no-module-scope-constants",
-      "name": "parser: no module-scope uppercase constants",
+      "name": "briefing: no module-scope uppercase constants",
       "status": "pass"
     },
     {
       "group": "no-cross-function-scope-leak",
-      "name": "parser: no cross-function scope leaks",
+      "name": "briefing: no cross-function scope leaks",
       "status": "pass"
     },
     {
       "group": "no-function-tdz",
-      "name": "parser: no TDZ within functions",
+      "name": "briefing: no TDZ within functions",
       "status": "pass"
     },
     {
       "group": "no-local-contract-interfaces",
-      "name": "parser: no duplicate contract interfaces",
+      "name": "briefing: no duplicate contract interfaces",
       "status": "pass"
     },
     {
       "group": "standard-export-name",
-      "name": "parser: exports createSafe{Name}",
+      "name": "briefing: exports createSafe{Name}",
       "status": "pass"
     },
     {
       "group": "routed-through-render",
-      "name": "parser: routed in render.ts",
+      "name": "briefing: routed in render.ts",
       "status": "pass"
     },
     {
@@ -1506,152 +1496,172 @@
     },
     {
       "group": "ticket-required-roles",
-      "name": "week-0001: builder has data-role=\"header\"",
+      "name": "drag-drop-0001: builder has data-role=\"header\"",
       "status": "pass"
     },
     {
       "group": "ticket-required-roles",
-      "name": "week-0001: builder has data-role=\"body\"",
+      "name": "drag-drop-0001: builder has data-role=\"header-title\"",
       "status": "pass"
     },
     {
       "group": "ticket-required-roles",
-      "name": "week-0001: builder has data-role=\"panel-left\"",
+      "name": "drag-drop-0001: builder has data-role=\"header-date\"",
       "status": "pass"
     },
     {
       "group": "ticket-required-roles",
-      "name": "week-0001: builder has data-role=\"panel-right\"",
+      "name": "drag-drop-0001: builder has data-role=\"body\"",
       "status": "pass"
     },
     {
       "group": "ticket-required-roles",
-      "name": "week-0001: builder has data-role=\"tab-bar\"",
+      "name": "drag-drop-0001: builder has data-role=\"section\"",
       "status": "pass"
     },
     {
       "group": "ticket-required-roles",
-      "name": "week-0001: builder has data-role=\"tab-group\"",
+      "name": "drag-drop-0001: builder has data-role=\"section-header\"",
       "status": "pass"
     },
     {
       "group": "ticket-required-roles",
-      "name": "week-0001: builder has data-role=\"tab-panel\"",
+      "name": "drag-drop-0001: builder has data-role=\"section-icon\"",
       "status": "pass"
     },
     {
       "group": "ticket-required-roles",
-      "name": "week-0001: builder has data-role=\"tab-content\"",
+      "name": "drag-drop-0001: builder has data-role=\"section-title\"",
       "status": "pass"
     },
     {
       "group": "ticket-required-roles",
-      "name": "week-0001: builder has data-role=\"tree\"",
+      "name": "drag-drop-0001: builder has data-role=\"section-count\"",
       "status": "pass"
     },
     {
       "group": "ticket-required-roles",
-      "name": "week-0001: builder has data-role=\"node\"",
+      "name": "drag-drop-0001: builder has data-role=\"section-content\"",
       "status": "pass"
     },
     {
       "group": "ticket-required-roles",
-      "name": "week-0001: builder has data-role=\"json-view\"",
+      "name": "drag-drop-0001: builder has data-role=\"metrics-grid\"",
       "status": "pass"
     },
     {
       "group": "ticket-required-roles",
-      "name": "week-0001: builder has data-role=\"json-pre\"",
+      "name": "drag-drop-0001: builder has data-role=\"metric-card\"",
       "status": "pass"
     },
     {
       "group": "ticket-required-roles",
-      "name": "week-0001: builder has data-role=\"copy-btn\"",
+      "name": "drag-drop-0001: builder has data-role=\"metric-value\"",
       "status": "pass"
     },
     {
       "group": "ticket-required-roles",
-      "name": "week-0001: builder has data-role=\"parse-header\"",
+      "name": "drag-drop-0001: builder has data-role=\"metric-label\"",
       "status": "pass"
     },
     {
       "group": "ticket-required-roles",
-      "name": "week-0001: builder has data-role=\"placeholder\"",
+      "name": "drag-drop-0001: builder has data-role=\"chat-bar\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "drag-drop-0001: builder has data-role=\"chat-input\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-roles",
+      "name": "drag-drop-0001: builder has data-role=\"empty\"",
       "status": "pass"
     },
     {
       "group": "ticket-required-css",
-      "name": "week-0001: structure.css styles data-role=\"header\"",
+      "name": "drag-drop-0001: structure.css styles data-role=\"header\"",
       "status": "pass"
     },
     {
       "group": "ticket-required-css",
-      "name": "week-0001: structure.css styles data-role=\"body\"",
+      "name": "drag-drop-0001: structure.css styles data-role=\"header-title\"",
       "status": "pass"
     },
     {
       "group": "ticket-required-css",
-      "name": "week-0001: structure.css styles data-role=\"panel-left\"",
+      "name": "drag-drop-0001: structure.css styles data-role=\"header-date\"",
       "status": "pass"
     },
     {
       "group": "ticket-required-css",
-      "name": "week-0001: structure.css styles data-role=\"panel-right\"",
+      "name": "drag-drop-0001: structure.css styles data-role=\"body\"",
       "status": "pass"
     },
     {
       "group": "ticket-required-css",
-      "name": "week-0001: structure.css styles data-role=\"tab-bar\"",
+      "name": "drag-drop-0001: structure.css styles data-role=\"section\"",
       "status": "pass"
     },
     {
       "group": "ticket-required-css",
-      "name": "week-0001: structure.css styles data-role=\"tab-group\"",
+      "name": "drag-drop-0001: structure.css styles data-role=\"section-header\"",
       "status": "pass"
     },
     {
       "group": "ticket-required-css",
-      "name": "week-0001: structure.css styles data-role=\"tab-panel\"",
+      "name": "drag-drop-0001: structure.css styles data-role=\"section-icon\"",
       "status": "pass"
     },
     {
       "group": "ticket-required-css",
-      "name": "week-0001: structure.css styles data-role=\"tab-content\"",
+      "name": "drag-drop-0001: structure.css styles data-role=\"section-title\"",
       "status": "pass"
     },
     {
       "group": "ticket-required-css",
-      "name": "week-0001: structure.css styles data-role=\"tree\"",
+      "name": "drag-drop-0001: structure.css styles data-role=\"section-count\"",
       "status": "pass"
     },
     {
       "group": "ticket-required-css",
-      "name": "week-0001: structure.css styles data-role=\"node\"",
+      "name": "drag-drop-0001: structure.css styles data-role=\"section-content\"",
       "status": "pass"
     },
     {
       "group": "ticket-required-css",
-      "name": "week-0001: structure.css styles data-role=\"json-view\"",
+      "name": "drag-drop-0001: structure.css styles data-role=\"metrics-grid\"",
       "status": "pass"
     },
     {
       "group": "ticket-required-css",
-      "name": "week-0001: structure.css styles data-role=\"json-pre\"",
+      "name": "drag-drop-0001: structure.css styles data-role=\"metric-card\"",
       "status": "pass"
     },
     {
       "group": "ticket-required-css",
-      "name": "week-0001: structure.css styles data-role=\"copy-btn\"",
+      "name": "drag-drop-0001: structure.css styles data-role=\"metric-value\"",
       "status": "pass"
     },
     {
       "group": "ticket-required-css",
-      "name": "week-0001: structure.css styles data-role=\"parse-header\"",
+      "name": "drag-drop-0001: structure.css styles data-role=\"metric-label\"",
       "status": "pass"
     },
     {
       "group": "ticket-required-css",
-      "name": "week-0001: structure.css styles data-role=\"placeholder\"",
+      "name": "drag-drop-0001: structure.css styles data-role=\"chat-bar\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "drag-drop-0001: structure.css styles data-role=\"chat-input\"",
+      "status": "pass"
+    },
+    {
+      "group": "ticket-required-css",
+      "name": "drag-drop-0001: structure.css styles data-role=\"empty\"",
       "status": "pass"
     },
     {
@@ -1671,15 +1681,15 @@
     },
     {
       "group": "samples-registered-in-index",
-      "name": "parser/parser-default.json: registered in SAMPLES",
+      "name": "briefing/briefing-default.json: registered in SAMPLES",
       "status": "pass"
     },
     {
       "group": "samples-registered-in-index",
-      "name": "parser/parser-compact.json: registered in SAMPLES",
+      "name": "briefing/briefing-compact.json: registered in SAMPLES",
       "status": "pass"
     }
   ],
   "failures": [],
-  "ts": "2026-06-18T19:43:35.890Z"
+  "ts": "2026-06-19T13:08:15.859Z"
 }

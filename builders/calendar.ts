@@ -31,7 +31,7 @@ export function createSafeCalendar(container: HTMLElement, config: ConfigBase, c
     root.setAttribute("data-component", "calendar");
     applyIntent(root, metadata);
 
-    const fireNavigate = (dir: number) => {
+    const doNavigate = (dir: number) => {
         const d = new Date(viewYear, viewMonth + dir, 1);
         viewYear = d.getFullYear();
         viewMonth = d.getMonth();
@@ -43,7 +43,7 @@ export function createSafeCalendar(container: HTMLElement, config: ConfigBase, c
         render();
     };
 
-    const fireSelect = (y: number, m: number, d: number) => {
+    const doSelect = (y: number, m: number, d: number) => {
         ctx.fire("select", { year: y, month: m, day: d, date: `${y}-${String(m).padStart(2, "0")}-${String(d).padStart(2, "0")}` });
     };
 
@@ -61,14 +61,14 @@ export function createSafeCalendar(container: HTMLElement, config: ConfigBase, c
         if (nav) {
             const prev = el("button", "calendar-nav", "\u2039");
             prev.setAttribute("data-dir", "prev");
-            prev.onclick = () => fireNavigate(-1);
+            prev.onclick = () => doNavigate(-1);
             header.appendChild(prev);
         }
         header.appendChild(el("span", "calendar-title", `${MONTH_NAMES[month]} ${year}`));
         if (nav) {
             const next = el("button", "calendar-nav", "\u203a");
             next.setAttribute("data-dir", "next");
-            next.onclick = () => fireNavigate(1);
+            next.onclick = () => doNavigate(1);
             header.appendChild(next);
         }
         month_.appendChild(header);
@@ -81,7 +81,7 @@ export function createSafeCalendar(container: HTMLElement, config: ConfigBase, c
             if (day === null) cell.setAttribute("data-empty", "true");
             if (isToday) cell.setAttribute("data-today", "true");
             if (day !== null && (i % 7 === 0 || i % 7 === 6)) cell.setAttribute("data-weekend", "true");
-            if (day !== null) cell.onclick = () => fireSelect(year, month, day);
+            if (day !== null) cell.onclick = () => doSelect(year, month, day);
             grid.appendChild(cell);
         });
         month_.appendChild(grid);
@@ -100,7 +100,7 @@ export function createSafeCalendar(container: HTMLElement, config: ConfigBase, c
             const cell = el("div", "calendar-flat-cell", day === null ? "" : String(day));
             if (day === null) cell.setAttribute("data-empty", "true");
             if (isToday) cell.setAttribute("data-today", "true");
-            if (day !== null) cell.onclick = () => fireSelect(year, month, day);
+            if (day !== null) cell.onclick = () => doSelect(year, month, day);
             daysEl.appendChild(cell);
         }
         row.appendChild(daysEl);
@@ -159,11 +159,11 @@ export function createSafeCalendar(container: HTMLElement, config: ConfigBase, c
             const prevMini = buildMonthGrid(prevDate.getFullYear(), prevDate.getMonth(), "xs", false, "narrow");
             prevMini.setAttribute("data-role", "calendar-browse-mini");
             prevMini.setAttribute("data-dir", "prev");
-            prevMini.onclick = () => fireNavigate(-1);
+            prevMini.onclick = () => doNavigate(-1);
             const nextMini = buildMonthGrid(nextDate.getFullYear(), nextDate.getMonth(), "xs", false, "narrow");
             nextMini.setAttribute("data-role", "calendar-browse-mini");
             nextMini.setAttribute("data-dir", "next");
-            nextMini.onclick = () => fireNavigate(1);
+            nextMini.onclick = () => doNavigate(1);
             nav.appendChild(prevMini);
             nav.appendChild(nextMini);
             root.appendChild(nav);
@@ -216,8 +216,8 @@ export function createSafeCalendar(container: HTMLElement, config: ConfigBase, c
                 }
             }
 
-            // Wrap fireSelect to also update panel
-            const origFire = fireSelect;
+            // Wrap doSelect to also update panel
+            const origFire = doSelect;
             const detailFireSelect = (y: number, m: number, d: number) => {
                 origFire(y, m, d);
                 updatePanel(`${y}-${String(m).padStart(2, "0")}-${String(d).padStart(2, "0")}`);

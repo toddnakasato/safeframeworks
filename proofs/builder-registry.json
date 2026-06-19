@@ -1,11 +1,11 @@
 {
   "ok": true,
-  "total": 280,
-  "passed": 280,
+  "total": 284,
+  "passed": 284,
   "failed": 0,
   "groups": {
-    "no-numeric-suffix": 140,
-    "has-variant-name": 140
+    "no-numeric-suffix": 142,
+    "has-variant-name": 142
   },
   "checks": [
     {
@@ -450,12 +450,32 @@
     },
     {
       "group": "no-numeric-suffix",
+      "name": "drag-drop/drag-drop-team-assign.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "drag-drop/drag-drop-team-assign.json: has variant",
+      "status": "pass"
+    },
+    {
+      "group": "no-numeric-suffix",
       "name": "drag-drop/drag-drop-template.json",
       "status": "pass"
     },
     {
       "group": "has-variant-name",
       "name": "drag-drop/drag-drop-template.json: has variant",
+      "status": "pass"
+    },
+    {
+      "group": "no-numeric-suffix",
+      "name": "drag-drop/drag-drop-work-item.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "drag-drop/drag-drop-work-item.json: has variant",
       "status": "pass"
     },
     {

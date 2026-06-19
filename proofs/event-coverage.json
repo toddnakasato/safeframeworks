@@ -1,10 +1,10 @@
 {
   "ok": true,
-  "total": 87,
-  "passed": 87,
+  "total": 88,
+  "passed": 88,
   "failed": 0,
   "groups": {
-    "event-is-fired": 87
+    "event-is-fired": 88
   },
   "checks": [
     {
@@ -255,6 +255,11 @@
     {
       "group": "event-is-fired",
       "name": "drag-drop: fires \"file-drop\"",
+      "status": "pass"
+    },
+    {
+      "group": "event-is-fired",
+      "name": "drag-drop: fires \"filter\"",
       "status": "pass"
     },
     {

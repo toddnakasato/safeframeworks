@@ -4,7 +4,7 @@
     "lng": -73.9857,
     "Name": "Empire State HQ",
     "Description": "Headquarters — 180 staff, floors 42-45",
-    "Icon": "🏢",
+    "Icon": "building",
     "Radius": 800,
     "Accent": "info"
   },
@@ -13,7 +13,7 @@
     "lng": -73.9855,
     "Name": "Times Square Sales",
     "Description": "Enterprise sales — 45 reps, $12M pipeline",
-    "Icon": "💼",
+    "Icon": "briefcase",
     "Radius": 600,
     "Accent": "success"
   },
@@ -22,7 +22,7 @@
     "lng": -73.9772,
     "Name": "Grand Central Engineering",
     "Description": "Platform team — 85 engineers, 3 squads",
-    "Icon": "⚙️",
+    "Icon": "settings",
     "Radius": 500,
     "Accent": "brand"
   },
@@ -31,7 +31,7 @@
     "lng": -74.0088,
     "Name": "FiDi Data Center",
     "Description": "Primary DC — 2,400 servers, 99.99% uptime",
-    "Icon": "🖥️",
+    "Icon": "monitor️",
     "Radius": 400,
     "Accent": "danger"
   },
@@ -40,7 +40,7 @@
     "lng": -73.9712,
     "Name": "Upper West Support",
     "Description": "Customer success — 32 agents, 24/7 coverage",
-    "Icon": "🎧",
+    "Icon": "headphones",
     "Radius": 700,
     "Accent": "warn"
   },
@@ -49,7 +49,7 @@
     "lng": -73.9566,
     "Name": "Midtown East Finance",
     "Description": "Finance & legal — 28 staff, CFO office",
-    "Icon": "💰",
+    "Icon": "coins",
     "Radius": 450,
     "Accent": "success"
   },
@@ -58,7 +58,7 @@
     "lng": -74.0018,
     "Name": "Chelsea Creative",
     "Description": "Design studio — 22 designers, UX lab",
-    "Icon": "🎨",
+    "Icon": "palette",
     "Radius": 550,
     "Accent": "danger"
   },
@@ -67,7 +67,7 @@
     "lng": -73.9897,
     "Name": "East Village Startup Lab",
     "Description": "Incubator — 6 startups, shared workspace",
-    "Icon": "🚀",
+    "Icon": "rocket",
     "Radius": 350,
     "Accent": "brand"
   }

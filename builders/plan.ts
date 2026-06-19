@@ -112,7 +112,7 @@ export function createSafePlan(container: HTMLElement, config: ConfigBase, ctx: 
 
             /* Icon */
             const icon = elAttrs("span", { "data-role": "step-icon" });
-            icon.textContent = step._status === "done" ? "✓" : step._status === "skipped" ? "—" : step._status === "active" ? "▸" : "○";
+            icon.textContent = step._status === "done" ? "check" : step._status === "skipped" ? "—" : step._status === "active" ? "▸" : "○";
             row.appendChild(icon);
 
             /* Impact */
@@ -149,7 +149,7 @@ export function createSafePlan(container: HTMLElement, config: ConfigBase, ctx: 
 
                 const actions = elAttrs("div", { "data-role": "step-actions" });
                 const btnDone = elAttrs("button", { "data-role": "btn-done" });
-                btnDone.textContent = "Done ✓";
+                btnDone.textContent = "Done check";
                 btnDone.onclick = (e) => { e.stopPropagation(); completeStep(step._id); };
                 actions.appendChild(btnDone);
 
