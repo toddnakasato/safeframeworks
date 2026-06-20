@@ -1,0 +1,234 @@
+{
+  "ok": false,
+  "folder": "safeframeworks",
+  "total": 546,
+  "passed": 501,
+  "failed": 45,
+  "failures": [
+    {
+      "group": "render",
+      "name": "samples/hierarchy/hierarchy-treemap-disk.json: builder runs",
+      "error": "threw: undefined is not an object (evaluating 'document2.createElementNS')"
+    },
+    {
+      "group": "structure",
+      "name": "samples/chart/chart-bar.json: root has data-component",
+      "error": "no child element in container"
+    },
+    {
+      "group": "structure",
+      "name": "samples/chart/chart-pie.json: root has data-component",
+      "error": "no child element in container"
+    },
+    {
+      "group": "structure",
+      "name": "samples/map/map-markers.json: root has data-component",
+      "error": "expected data-component=\"map\", got \"undefined\""
+    },
+    {
+      "group": "tree",
+      "name": "samples/map/map-markers.json: expected vs actual (2 mismatches)",
+      "error": "root[data-component]: expected=map actual=MISSING; root[data-variant]: expected=default actual=MISSING"
+    },
+    {
+      "group": "structure",
+      "name": "samples/map/map-path.json: root has data-component",
+      "error": "expected data-component=\"map\", got \"undefined\""
+    },
+    {
+      "group": "tree",
+      "name": "samples/map/map-path.json: expected vs actual (2 mismatches)",
+      "error": "root[data-component]: expected=map actual=MISSING; root[data-variant]: expected=default actual=MISSING"
+    },
+    {
+      "group": "tree",
+      "name": "samples/button/buttons-ai-responses.json: expected vs actual (3 mismatches)",
+      "error": "root > helpful[data-key]: expected=helpful actual=MISSING; root > more[data-key]: expected=more actual=MISSING; root > different[data-key]: expected=different actual=MISSING"
+    },
+    {
+      "group": "tree",
+      "name": "samples/button/buttons-vertical-stack.json: expected vs actual (3 mismatches)",
+      "error": "root > start[data-key]: expected=start actual=MISSING; root > create[data-key]: expected=create actual=MISSING; root > settings[data-key]: expected=settings actual=MISSING"
+    },
+    {
+      "group": "tree",
+      "name": "samples/button/buttons-toggle-filter.json: expected vs actual (4 mismatches)",
+      "error": "root > all[data-key]: expected=all actual=MISSING; root > active[data-key]: expected=active actual=MISSING; root > archived[data-key]: expected=archived actual=MISSING"
+    },
+    {
+      "group": "tree",
+      "name": "samples/button/buttons-nav-menu.json: expected vs actual (3 mismatches)",
+      "error": "root > dashboard[data-key]: expected=dashboard actual=MISSING; root > projects[data-key]: expected=projects actual=MISSING; root > team[data-key]: expected=team actual=MISSING"
+    },
+    {
+      "group": "tree",
+      "name": "samples/button/buttons-stepper.json: expected vs actual (5 mismatches)",
+      "error": "root > requirements[data-key]: expected=requirements actual=MISSING; root > design[data-key]: expected=design actual=MISSING; root > build[data-key]: expected=build actual=MISSING"
+    },
+    {
+      "group": "tree",
+      "name": "samples/button/buttons-icon-toolbar.json: expected vs actual (4 mismatches)",
+      "error": "root > like[data-key]: expected=like actual=MISSING; root > star[data-key]: expected=star actual=MISSING; root > comment[data-key]: expected=comment actual=MISSING"
+    },
+    {
+      "group": "tree",
+      "name": "samples/briefing/briefing-priority.json: expected vs actual (3 mismatches)",
+      "error": "root > priorities[data-key]: expected=priorities actual=MISSING; root > priorities > list: expected=contains data-component=\"list\" actual=not found in subtree; root > radar[data-key]: expected=radar actual=MISSING"
+    },
+    {
+      "group": "tree",
+      "name": "samples/briefing/briefing-delta.json: expected vs actual (4 mismatches)",
+      "error": "root > timeline[data-key]: expected=timeline actual=MISSING; root > timeline > timeline: expected=contains data-component=\"timeline\" actual=not found in subtree; root > alerts[data-key]: expected=alerts actual=MISSING"
+    },
+    {
+      "group": "tree",
+      "name": "samples/briefing/briefing-standup.json: expected vs actual (4 mismatches)",
+      "error": "root > yesterday[data-key]: expected=yesterday actual=MISSING; root > yesterday > list: expected=contains data-component=\"list\" actual=not found in subtree; root > today[data-key]: expected=today actual=MISSING"
+    },
+    {
+      "group": "tree",
+      "name": "samples/briefing/briefing-memo.json: expected vs actual (4 mismatches)",
+      "error": "root > situation[data-key]: expected=situation actual=MISSING; root > situation > list: expected=contains data-component=\"list\" actual=not found in subtree; root > developments[data-key]: expected=developments actual=MISSING"
+    },
+    {
+      "group": "tree",
+      "name": "samples/briefing/briefing-narrative.json: expected vs actual (2 mismatches)",
+      "error": "root > content[data-key]: expected=content actual=MISSING; root > content > list: expected=contains data-component=\"list\" actual=not found in subtree"
+    },
+    {
+      "group": "tree",
+      "name": "samples/briefing/briefing-digest.json: expected vs actual (2 mismatches)",
+      "error": "root > stories[data-key]: expected=stories actual=MISSING; root > stories > list: expected=contains data-component=\"list\" actual=not found in subtree"
+    },
+    {
+      "group": "tree",
+      "name": "samples/briefing/briefing-finance.json: expected vs actual (4 mismatches)",
+      "error": "root > markets[data-key]: expected=markets actual=MISSING; root > markets > list: expected=contains data-component=\"list\" actual=not found in subtree; root > positions[data-key]: expected=positions actual=MISSING"
+    },
+    {
+      "group": "tree",
+      "name": "samples/briefing/briefing-default.json: expected vs actual (12 mismatches)",
+      "error": "root > calendar[data-key]: expected=calendar actual=MISSING; root > calendar > calendar: expected=contains data-component=\"calendar\" actual=not found in subtree; root > leads[data-key]: expected=leads actual=MISSING"
+    },
+    {
+      "group": "tree",
+      "name": "samples/briefing/briefing-compact.json: expected vs actual (7 mismatches)",
+      "error": "root > alerts[data-key]: expected=alerts actual=MISSING; root > alerts > callout: expected=contains data-component=\"callout\" actual=not found in subtree; root > gauge-leads[data-key]: expected=gauge-leads actual=MISSING"
+    },
+    {
+      "group": "render",
+      "name": "samples/gauge/gauge-radial.json: builder runs",
+      "error": "threw: undefined is not an object (evaluating 'document2.createElementNS')"
+    },
+    {
+      "group": "render",
+      "name": "samples/gauge/gauge-target.json: builder runs",
+      "error": "threw: undefined is not an object (evaluating 'document2.createElementNS')"
+    },
+    {
+      "group": "render",
+      "name": "samples/gauge/gauge-minimal.json: builder runs",
+      "error": "threw: undefined is not an object (evaluating 'document2.createElementNS')"
+    },
+    {
+      "group": "render",
+      "name": "samples/gauge/gauge-half.json: builder runs",
+      "error": "threw: undefined is not an object (evaluating 'document2.createElementNS')"
+    },
+    {
+      "group": "render",
+      "name": "samples/gauge/gauge-thresholds.json: builder runs",
+      "error": "threw: undefined is not an object (evaluating 'document2.createElementNS')"
+    },
+    {
+      "group": "tree",
+      "name": "samples/columns/columns-header-footer.json: expected vs actual (20 mismatches)",
+      "error": "root > columns-header > toolbar[data-key]: expected=toolbar actual=MISSING; root > columns-header > toolbar.children: expected=1 children actual=0 children (empty); root > columns-body > item-1[data-key]: expected=item-1 actual=MISSING"
+    },
+    {
+      "group": "tree",
+      "name": "samples/columns/columns-header.json: expected vs actual (14 mismatches)",
+      "error": "root > columns-header > toolbar[data-key]: expected=toolbar actual=MISSING; root > columns-header > toolbar.children: expected=1 children actual=0 children (empty); root > columns-body > item-1[data-key]: expected=item-1 actual=MISSING"
+    },
+    {
+      "group": "tree",
+      "name": "samples/columns/columns-footer.json: expected vs actual (14 mismatches)",
+      "error": "root > columns-body > item-1[data-key]: expected=item-1 actual=MISSING; root > columns-body > item-1.children: expected=1 children actual=0 children (empty); root > columns-body > item-2[data-key]: expected=item-2 actual=MISSING"
+    },
+    {
+      "group": "tree",
+      "name": "samples/nav/nav-classic.json: expected vs actual (12 mismatches)",
+      "error": "root > orders[data-key]: expected=orders actual=MISSING; root > orders > nav: expected=contains data-component=\"nav\" actual=not found in subtree; root > catalog[data-key]: expected=catalog actual=MISSING"
+    },
+    {
+      "group": "render",
+      "name": "samples/timeline/timeline-alternating.json: builder runs",
+      "error": "threw: undefined is not an object (evaluating 'document2.createElementNS')"
+    },
+    {
+      "group": "render",
+      "name": "samples/funnel/funnel-horizontal.json: builder runs",
+      "error": "threw: undefined is not an object (evaluating 'document2.createElementNS')"
+    },
+    {
+      "group": "render",
+      "name": "samples/funnel/funnel-vertical.json: builder runs",
+      "error": "threw: undefined is not an object (evaluating 'document2.createElementNS')"
+    },
+    {
+      "group": "structure",
+      "name": "samples/flow/flow-matrix-trade.json: root has data-component",
+      "error": "no child element in container"
+    },
+    {
+      "group": "structure",
+      "name": "samples/flow/flow-chord-trade.json: root has data-component",
+      "error": "no child element in container"
+    },
+    {
+      "group": "structure",
+      "name": "samples/flow/flow-arc-trade.json: root has data-component",
+      "error": "no child element in container"
+    },
+    {
+      "group": "structure",
+      "name": "samples/flow/flow-sankey-revenue.json: root has data-component",
+      "error": "no child element in container"
+    },
+    {
+      "group": "structure",
+      "name": "samples/flow/flow-dagre-pipeline.json: root has data-component",
+      "error": "no child element in container"
+    },
+    {
+      "group": "structure",
+      "name": "samples/flow/flow-force-team.json: root has data-component",
+      "error": "no child element in container"
+    },
+    {
+      "group": "structure",
+      "name": "samples/flow/flow-edge-bundling-modules.json: root has data-component",
+      "error": "no child element in container"
+    },
+    {
+      "group": "tree",
+      "name": "proof/components/nav.json: expected vs actual (1 mismatches)",
+      "error": "root > home[data-key]: expected=home actual=MISSING"
+    },
+    {
+      "group": "tree",
+      "name": "fora/components/nav.json: expected vs actual (2 mismatches)",
+      "error": "root > views[data-key]: expected=views actual=MISSING; root > views > nav: expected=contains data-component=\"nav\" actual=not found in subtree"
+    },
+    {
+      "group": "tree",
+      "name": "crutchtools/components/nav.json: expected vs actual (3 mismatches)",
+      "error": "root > home[data-key]: expected=home actual=MISSING; root > dashboard[data-key]: expected=dashboard actual=MISSING; root > kernels[data-key]: expected=kernels actual=MISSING"
+    },
+    {
+      "group": "tree",
+      "name": "dominion/components/nav.json: expected vs actual (2 mismatches)",
+      "error": "root > views[data-key]: expected=views actual=MISSING; root > views > nav: expected=contains data-component=\"nav\" actual=not found in subtree"
+    }
+  ]
+}
