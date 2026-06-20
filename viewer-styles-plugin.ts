@@ -19,7 +19,13 @@ function implementations(): string[] {
 function flatten(impl: string): string | null {
   const paintPath = join(IMPLS_DIR, impl, "paint.css");
   if (!existsSync(paintPath)) return null;
-  const core = readFileSync(join(STYLES_ROOT, "core/structure.css"), "utf-8");
+  const coreDir = join(STYLES_ROOT, "core");
+  // Resolve @import chain in structure.css
+  let core = readFileSync(join(coreDir, "structure.css"), "utf-8");
+  core = core.replace(/@import\s+["']\.\/([^"']+)["']\s*;/g, (_match, file) => {
+    const importPath = join(coreDir, file);
+    return existsSync(importPath) ? readFileSync(importPath, "utf-8") : "";
+  });
   const paint = readFileSync(paintPath, "utf-8");
   return `/* served from safestyles source: core/structure.css + implementations/${impl}/paint.css */\n${core}\n\n/* ======== paint (${impl}) ======== */\n${paint}`;
 }
