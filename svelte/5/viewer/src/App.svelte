@@ -49,15 +49,52 @@
 
   const comps = { "layout": SafeLayout, "columns": SafeColumns, "card": SafeCard, "button": SafeButton, "table": SafeTable, "tree": SafeTree, "sheet": SafeSheet, "chart": SafeChart, "heatmap": SafeHeatmap, "gauge": SafeGauge, "funnel": SafeFunnel, "flow": SafeFlow, "hierarchy": SafeHierarchy, "timeline": SafeTimeline, "map": SafeMap, "calendar": SafeCalendar, "toggle": SafeToggle, "week": SafeWeek, "chat": SafeChat, "tabs": SafeTabs, "callout": SafeCallout, "drag-drop": SafeDragDrop, "grid": SafeGrid, "input": SafeInput, "list": SafeList, "picker": SafePicker, "nav": SafeNav, "parser": SafeParser, "plan": SafePlan, "skillup": SafeSkillUp, "dispatch": SafeDispatch, "briefing": SafeBriefing };
   const STYLES = ["vanilla", "tailwind", "tailwind-daisy", "material"];
+  const THEMES = {};
+  // Discover themes from safestyles
+  const themeGlob = import.meta.glob("/public/styles/*/themes/*.css", { query: "?url" });
+  for (const p of Object.keys(themeGlob)) {
+    const m = p.match(/styles\/([^/]+)\/themes\/([^/]+)\.css$/);
+    if (!m) continue;
+    (THEMES[m[1]] ??= []).push(m[2]);
+  }
+  for (const k of Object.keys(THEMES)) THEMES[k].sort((a, b) => a === "default" ? -1 : b === "default" ? 1 : a.localeCompare(b));
+
   const componentNames = Object.keys(SAMPLES).sort();
   let activeStyle = $state("vanilla");
+  let activeTheme = $state("default");
   let activeComponent = $state(null);
   let activeVariation = $state(null);
 
+  function loadStyle(name, theme) {
+    document.getElementById("safestyle-link")?.remove();
+    document.getElementById("safestyle-paint")?.remove();
+    document.getElementById("safestyle-theme")?.remove();
+    const link = document.createElement("link");
+    link.id = "safestyle-link";
+    link.rel = "stylesheet";
+    link.href = `/styles/${name}/components.css`;
+    document.head.appendChild(link);
+    const paintLink = document.createElement("link");
+    paintLink.id = "safestyle-paint";
+    paintLink.rel = "stylesheet";
+    paintLink.href = `/styles/${name}/paint.css`;
+    document.head.appendChild(paintLink);
+    const themeLink = document.createElement("link");
+    themeLink.id = "safestyle-theme";
+    themeLink.rel = "stylesheet";
+    themeLink.href = `/styles/${name}/themes/${theme}.css`;
+    document.head.appendChild(themeLink);
+  }
+
   function switchStyle(s) {
     activeStyle = s;
-    const link = document.getElementById("safestyle-link");
-    if (link) link.setAttribute("href", "/styles/" + s + "/components.css");
+    activeTheme = "default";
+    loadStyle(s, "default");
+  }
+
+  function switchTheme(t) {
+    activeTheme = t;
+    loadStyle(activeStyle, t);
   }
 
   function selectComponent(name) {
@@ -75,9 +112,20 @@
   <div class="sidebar">
     <div class="brand"><img src="/shield.png" alt="SafeDesk" /><span>svelte/5</span></div>
       <div class="section-label">STYLE</div>
-    {#each STYLES as s}
-      <button class="style-btn" class:active={s === activeStyle} on:click={() => switchStyle(s)}>{s}</button>
-    {/each}
+    <div class="style-dropdowns">
+      <label class="dropdown-label">Framework</label>
+      <select class="dropdown" bind:value={activeStyle} onchange={(e) => switchStyle(e.target.value)}>
+        {#each STYLES as s}
+          <option value={s}>{s}</option>
+        {/each}
+      </select>
+      <label class="dropdown-label">Theme</label>
+      <select class="dropdown" bind:value={activeTheme} onchange={(e) => switchTheme(e.target.value)}>
+        {#each (THEMES[activeStyle] ?? ["default"]) as t}
+          <option value={t}>{t}</option>
+        {/each}
+      </select>
+    </div>
 
     <div class="section-label" style="margin-top:16px">COMPONENTS</div>
     <button class="comp-btn" class:active={activeComponent === null} on:click={() => selectComponent(null)}>All</button>
@@ -91,7 +139,7 @@
     {/each}
   </div>
   <div class="main">
-    <h3>svelte/5 — {activeStyle}{#if activeComponent}<span class="active-comp"> — {activeVariation ?? activeComponent}</span>{/if}</h3>
+    <h3>svelte/5 — {activeStyle}{#if activeTheme !== "default"}/{activeTheme}{/if}{#if activeComponent}<span class="active-comp"> — {activeVariation ?? activeComponent}</span>{/if}</h3>
     {#each (activeComponent ? [activeComponent] : componentNames) as comp (comp + (activeVariation ?? ""))}
       {#each (activeVariation ? [activeVariation] : Object.keys(SAMPLES[comp]).sort()) as v (v)}
         <div class="component-card">
@@ -113,6 +161,9 @@
   .brand img { width: 18px; height: 21px; }
   .section-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: #6b7280; margin-bottom: 8px; }
   .style-btn, .comp-btn, .var-btn { display: block; width: 100%; text-align: left; padding: 4px 8px; font-size: 13px; border: none; border-radius: 4px; cursor: pointer; background: transparent; color: #1a1a1a; margin-bottom: 2px; }
+  .style-dropdowns { padding: 0 8px; display: flex; flex-direction: column; gap: 6px; }
+  .dropdown-label { font-size: 11px; font-weight: 500; color: #6b7280; }
+  .dropdown { width: 100%; padding: 4px 8px; font-size: 13px; border-radius: 4px; border: 1px solid #d1d5db; background: #fff; color: #1a1a1a; }
   .var-btn { padding-left: 22px; }
   .style-btn.active, .comp-btn.active, .var-btn.active { background: #3b82f6; color: white; }
   .style-btn:hover, .comp-btn:hover, .var-btn:hover { background: #f3f4f6; }
