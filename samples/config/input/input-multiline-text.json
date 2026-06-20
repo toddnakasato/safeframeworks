@@ -1,0 +1,23 @@
+{
+  "component": "input",
+  "metadata": {
+    "inputType": "multiline-text",
+    "align": "left",
+    "valign": "top",
+    "placeholder": "Enter notes...",
+    "maxLines": 5
+  },
+  "eventHandler": {
+    "handler": "input"
+  },
+  "data": {
+    "record": {
+      "name": "record",
+      "type": "record",
+      "source": "inline",
+      "inline": {
+        "notes": "Line one\nLine two\nLine three"
+      }
+    }
+  }
+}

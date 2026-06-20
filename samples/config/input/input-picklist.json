@@ -1,0 +1,27 @@
+{
+  "component": "input",
+  "metadata": {
+    "inputType": "picklist",
+    "align": "left",
+    "valign": "center",
+    "options": [
+      { "label": "New", "value": "new" },
+      { "label": "In Progress", "value": "in-progress" },
+      { "label": "Closed", "value": "closed" }
+    ],
+    "defaultSelectMessage": "Select status..."
+  },
+  "eventHandler": {
+    "handler": "input"
+  },
+  "data": {
+    "record": {
+      "name": "record",
+      "type": "record",
+      "source": "inline",
+      "inline": {
+        "status": "new"
+      }
+    }
+  }
+}

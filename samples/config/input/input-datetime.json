@@ -1,0 +1,22 @@
+{
+  "component": "input",
+  "metadata": {
+    "inputType": "datetime",
+    "align": "left",
+    "valign": "center",
+    "displayFormat": "datetime"
+  },
+  "eventHandler": {
+    "handler": "input"
+  },
+  "data": {
+    "record": {
+      "name": "record",
+      "type": "record",
+      "source": "inline",
+      "inline": {
+        "scheduledAt": "2026-06-20T14:30:00"
+      }
+    }
+  }
+}

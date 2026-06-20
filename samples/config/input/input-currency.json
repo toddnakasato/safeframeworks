@@ -1,0 +1,24 @@
+{
+  "component": "input",
+  "metadata": {
+    "inputType": "currency",
+    "align": "right",
+    "valign": "center",
+    "placeholder": "0.00",
+    "displayFormat": "currency",
+    "decimalPlaces": 2
+  },
+  "eventHandler": {
+    "handler": "input"
+  },
+  "data": {
+    "record": {
+      "name": "record",
+      "type": "record",
+      "source": "inline",
+      "inline": {
+        "amount": 1250.75
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "component": "input",
+  "metadata": {
+    "inputType": "date",
+    "align": "left",
+    "valign": "center",
+    "displayFormat": "date"
+  },
+  "eventHandler": {
+    "handler": "input"
+  },
+  "data": {
+    "record": {
+      "name": "record",
+      "type": "record",
+      "source": "inline",
+      "inline": {
+        "closeDate": "2026-06-20"
+      }
+    }
+  }
+}

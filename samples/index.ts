@@ -66,6 +66,14 @@ import heatmapMatrixConfig from "./config/heatmap/heatmap-matrix.json";
 import heatmapDenseConfig from "./config/heatmap/heatmap-dense.json";
 import inputTextConfig from "./config/input/input-text.json";
 import inputNumberConfig from "./config/input/input-number.json";
+import inputMultilineTextConfig from "./config/input/input-multiline-text.json";
+import inputCurrencyConfig from "./config/input/input-currency.json";
+import inputDateConfig from "./config/input/input-date.json";
+import inputDatetimeConfig from "./config/input/input-datetime.json";
+import inputCheckboxConfig from "./config/input/input-checkbox.json";
+import inputRadioConfig from "./config/input/input-radio.json";
+import inputToggleConfig from "./config/input/input-toggle.json";
+import inputPicklistConfig from "./config/input/input-picklist.json";
 import layoutStackConfig from "./config/layout/layout-stack.json";
 import layoutSidebarConfig from "./config/layout/layout-sidebar.json";
 import listActionsConfig from "./config/list/list-actions.json";
@@ -346,6 +354,14 @@ export const SAMPLES: Record<string, Record<string, ConfigBase>> = {
     input: {
         "input-text": resolveData(inputTextConfig as unknown as ConfigBase),
         "input-number": resolveData(inputNumberConfig as unknown as ConfigBase),
+        "input-multiline-text": resolveData(inputMultilineTextConfig as unknown as ConfigBase),
+        "input-currency": resolveData(inputCurrencyConfig as unknown as ConfigBase),
+        "input-date": resolveData(inputDateConfig as unknown as ConfigBase),
+        "input-datetime": resolveData(inputDatetimeConfig as unknown as ConfigBase),
+        "input-checkbox": resolveData(inputCheckboxConfig as unknown as ConfigBase),
+        "input-radio": resolveData(inputRadioConfig as unknown as ConfigBase),
+        "input-toggle": resolveData(inputToggleConfig as unknown as ConfigBase),
+        "input-picklist": resolveData(inputPicklistConfig as unknown as ConfigBase),
     },
     layout: {
         "layout-stack": resolveData(layoutStackConfig as unknown as ConfigBase),

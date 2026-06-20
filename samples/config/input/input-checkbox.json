@@ -1,0 +1,21 @@
+{
+  "component": "input",
+  "metadata": {
+    "inputType": "checkbox",
+    "align": "left",
+    "valign": "center"
+  },
+  "eventHandler": {
+    "handler": "input"
+  },
+  "data": {
+    "record": {
+      "name": "record",
+      "type": "record",
+      "source": "inline",
+      "inline": {
+        "isActive": true
+      }
+    }
+  }
+}
