@@ -1,0 +1,75 @@
+{
+  "component": "nav",
+  "metadata": {
+    "navStyle": "icon-rail",
+    "title": "App",
+    "icon": "hexagon"
+  },
+  "eventHandler": {
+    "handler": "nav"
+  },
+  "data": {
+    "entries": {
+      "name": "entries",
+      "type": "list",
+      "source": "inline",
+      "inline": [
+        {
+          "key": "home",
+          "label": "Home",
+          "icon": "home"
+        },
+        {
+          "key": "search",
+          "label": "Search",
+          "icon": "search"
+        },
+        {
+          "key": "inbox",
+          "label": "Inbox",
+          "icon": "inbox",
+          "badge": 5
+        },
+        {
+          "key": "calendar",
+          "label": "Calendar",
+          "icon": "calendar"
+        },
+        {
+          "key": "files",
+          "label": "Files",
+          "icon": "folder"
+        },
+        {
+          "key": "analytics",
+          "label": "Analytics",
+          "icon": "bar-chart-2"
+        },
+        {
+          "key": "users",
+          "label": "Users",
+          "icon": "users",
+          "badge": 12
+        },
+        {
+          "key": "settings",
+          "label": "Settings",
+          "icon": "settings",
+          "section": "bottom"
+        },
+        {
+          "key": "help",
+          "label": "Help",
+          "icon": "help-circle",
+          "section": "bottom"
+        },
+        {
+          "key": "profile",
+          "label": "Profile",
+          "icon": "user",
+          "section": "bottom"
+        }
+      ]
+    }
+  }
+}

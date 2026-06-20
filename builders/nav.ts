@@ -60,7 +60,9 @@ export function createSafeNav(container: HTMLElement, config: ConfigBase, ctx: S
     // First group starts expanded (figma default)
     if (groups.length) expanded.add(groups[0][0]);
 
-    const root = elAttrs("div", { "data-component": "nav", "data-nav-style": "accordion" });
+    const navStyle = (metadata.navStyle as string) ?? "classic";
+
+    const root = elAttrs("div", { "data-component": "nav", "data-nav-style": navStyle });
     applyPaintState(root, metadata, "nav");
     // Intent only — paint is safestyles' job.
     if (accent) root.setAttribute("data-accent", accent);

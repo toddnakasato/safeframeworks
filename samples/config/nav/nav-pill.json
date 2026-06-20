@@ -1,0 +1,92 @@
+{
+  "component": "nav",
+  "metadata": {
+    "navStyle": "pill",
+    "title": "Readwise",
+    "icon": "book-open"
+  },
+  "eventHandler": {
+    "handler": "nav"
+  },
+  "data": {
+    "entries": {
+      "name": "entries",
+      "type": "list",
+      "source": "inline",
+      "inline": [
+        {
+          "key": "discover",
+          "label": "Discover",
+          "icon": "compass"
+        },
+        {
+          "key": "library",
+          "label": "Library",
+          "icon": "library"
+        },
+        {
+          "key": "write",
+          "label": "Write",
+          "icon": "pen-tool"
+        },
+        {
+          "key": "media",
+          "label": "Media",
+          "icon": "film"
+        },
+        {
+          "key": "highlights",
+          "label": "Highlights",
+          "icon": "highlighter"
+        },
+        {
+          "key": "saved-1",
+          "label": "Product Ideas",
+          "icon": "bookmark",
+          "sectionHeading": "Saved"
+        },
+        {
+          "key": "saved-2",
+          "label": "Design Refs",
+          "icon": "bookmark"
+        },
+        {
+          "key": "saved-3",
+          "label": "Research",
+          "icon": "bookmark"
+        },
+        {
+          "key": "tag-ux",
+          "label": "UX",
+          "icon": "hash",
+          "sectionHeading": "Tags",
+          "tag": "#6366f1"
+        },
+        {
+          "key": "tag-eng",
+          "label": "Engineering",
+          "icon": "hash",
+          "tag": "#22c55e"
+        },
+        {
+          "key": "tag-design",
+          "label": "Design",
+          "icon": "hash",
+          "tag": "#f59e0b"
+        },
+        {
+          "key": "tag-product",
+          "label": "Product",
+          "icon": "hash",
+          "tag": "#ef4444"
+        },
+        {
+          "key": "tag-research",
+          "label": "Research",
+          "icon": "hash",
+          "tag": "#06b6d4"
+        }
+      ]
+    }
+  }
+}

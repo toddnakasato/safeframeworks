@@ -102,8 +102,12 @@ import listSimpleHorizontalConfig from "./config/list/list-simple-horizontal.jso
 import listSimplePagedConfig from "./config/list/list-simple-paged.json";
 import mapMarkersConfig from "./config/map/map-markers.json";
 import mapPathConfig from "./config/map/map-path.json";
-import navHorizontalConfig from "./config/nav/nav-horizontal.json";
-import navSidebarConfig from "./config/nav/nav-sidebar.json";
+import navAccordionConfig from "./config/nav/nav-accordion.json";
+import navClassicConfig from "./config/nav/nav-classic.json";
+import navGroupedConfig from "./config/nav/nav-grouped.json";
+import navDarkConfig from "./config/nav/nav-dark.json";
+import navPillConfig from "./config/nav/nav-pill.json";
+import navIconRailConfig from "./config/nav/nav-icon-rail.json";
 import pickerListConfig from "./config/picker/picker-list.json";
 import pickerCardConfig from "./config/picker/picker-card.json";
 import parserDefaultConfig from "./config/parser/parser-default.json";
@@ -410,8 +414,12 @@ export const SAMPLES: Record<string, Record<string, ConfigBase>> = {
         "map-path": resolveData(mapPathConfig as unknown as ConfigBase),
     },
     nav: {
-        "nav-horizontal": resolveData(navHorizontalConfig as unknown as ConfigBase),
-        "nav-sidebar": resolveData(navSidebarConfig as unknown as ConfigBase),
+        "nav-accordion": resolveData(navAccordionConfig as unknown as ConfigBase),
+        "nav-classic": resolveData(navClassicConfig as unknown as ConfigBase),
+        "nav-grouped": resolveData(navGroupedConfig as unknown as ConfigBase),
+        "nav-dark": resolveData(navDarkConfig as unknown as ConfigBase),
+        "nav-pill": resolveData(navPillConfig as unknown as ConfigBase),
+        "nav-icon-rail": resolveData(navIconRailConfig as unknown as ConfigBase),
     },
     picker: {
         "picker-list": resolveData(pickerListConfig as unknown as ConfigBase),

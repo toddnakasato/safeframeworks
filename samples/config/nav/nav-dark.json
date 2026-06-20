@@ -1,0 +1,94 @@
+{
+  "component": "nav",
+  "metadata": {
+    "navStyle": "dark",
+    "title": "DevConsole",
+    "subtitle": "v2",
+    "icon": "terminal"
+  },
+  "eventHandler": {
+    "handler": "nav"
+  },
+  "data": {
+    "entries": {
+      "name": "entries",
+      "type": "list",
+      "source": "inline",
+      "inline": [
+        {
+          "key": "src",
+          "label": "src",
+          "icon": "folder",
+          "children": [
+            {
+              "key": "components",
+              "label": "components",
+              "icon": "folder",
+              "badge": "12"
+            },
+            {
+              "key": "hooks",
+              "label": "hooks",
+              "icon": "folder"
+            },
+            {
+              "key": "utils",
+              "label": "utils",
+              "icon": "folder",
+              "badge": "\u03b2"
+            }
+          ]
+        },
+        {
+          "key": "config",
+          "label": "config",
+          "icon": "folder",
+          "children": [
+            {
+              "key": "env",
+              "label": ".env",
+              "icon": "file"
+            },
+            {
+              "key": "tsconfig",
+              "label": "tsconfig.json",
+              "icon": "file"
+            },
+            {
+              "key": "vite",
+              "label": "vite.config.ts",
+              "icon": "file"
+            }
+          ]
+        },
+        {
+          "key": "tests",
+          "label": "tests",
+          "icon": "folder",
+          "children": [
+            {
+              "key": "unit",
+              "label": "unit",
+              "icon": "folder"
+            },
+            {
+              "key": "e2e",
+              "label": "e2e",
+              "icon": "folder"
+            }
+          ]
+        },
+        {
+          "key": "readme",
+          "label": "README.md",
+          "icon": "file-text"
+        },
+        {
+          "key": "license",
+          "label": "LICENSE",
+          "icon": "file"
+        }
+      ]
+    }
+  }
+}
