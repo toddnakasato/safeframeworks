@@ -99,6 +99,40 @@ export function createSafeNav(container: HTMLElement, config: ConfigBase, ctx: S
 
     function render() {
         nav.replaceChildren();
+
+        if (navStyle === "grouped") {
+            // Grouped: flat items with section headings from sectionHeading field
+            let currentHeading = "";
+            for (const [key, item] of groups) {
+                const heading = item.sectionHeading as string | undefined;
+                if (heading && heading !== currentHeading) {
+                    currentHeading = heading;
+                    const h = elAttrs("div", { "data-nav-section-heading": "" });
+                    h.textContent = heading;
+                    nav.appendChild(h);
+                }
+                const isActive = active === key;
+                const btn = elAttrs("button", { "data-nav-button": "", "data-depth": "0" });
+                if (isActive) btn.setAttribute("data-active", "true");
+                const ic = iconEl(item.icon as string, 15);
+                if (ic) { const s = elAttrs("span", { "data-nav-icon": "" }); s.appendChild(ic); btn.appendChild(s); }
+                const lbl = elAttrs("span", { "data-nav-label": "" });
+                lbl.textContent = (item.label as string) ?? key;
+                btn.appendChild(lbl);
+                const badge = item.badge as string | number | undefined;
+                if (badge != null) {
+                    const b = elAttrs("span", { "data-nav-badge": "" });
+                    if (typeof badge === "string" && isNaN(Number(badge))) b.setAttribute("data-badge-accent", "true");
+                    b.textContent = String(badge);
+                    btn.appendChild(b);
+                }
+                btn.onclick = () => fire(key);
+                nav.appendChild(btn);
+            }
+            return;
+        }
+
+        // Default: accordion with expand/collapse
         for (const [gKey, group] of groups) {
             const gAccent = group.accent as string | undefined;
             const isExpanded = expanded.has(gKey);
