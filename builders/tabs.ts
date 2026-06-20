@@ -5,12 +5,6 @@ import type { TabItem } from "../../safecontracts/src/components/tabs";
 
 /*----------------------------------------------------------------------------------------------------
  *
- * Helpers
- *
- ----------------------------------------------------------------------------------------------------*/
-
-/*----------------------------------------------------------------------------------------------------
- *
  * Implementation
  *
  ----------------------------------------------------------------------------------------------------*/
@@ -22,58 +16,34 @@ export function createSafeTabs(container: HTMLElement, config: ConfigBase, ctx: 
     const position = (metadata.position as string) ?? "top";
     let active = (metadata.defaultActive as string) ?? tabs[0]?.key ?? "";
 
-    const isVertical = position === "left" || position === "right";
-    const borderStyle = "1px solid var(--sd-border, var(--border, #ccc))";
-
-    const root = document.createElement("div");
-    root.setAttribute("data-component", "tabs");
+    const root = elAttrs("div", { "data-component": "tabs", "data-position": position });
     applyIntent(root, metadata);
     applyPaintState(root, metadata, "tabs");
-    root.setAttribute("data-position", position);
-    root.style.display = "flex";
-    root.style.flexDirection = isVertical
-        ? (position === "left" ? "row" : "row-reverse")
-        : (position === "top" ? "column" : "column-reverse");
 
     function render() {
         root.replaceChildren();
 
-        const bar = document.createElement("div");
-        bar.setAttribute("data-tabs-bar", "");
-        bar.setAttribute("data-position", position);
-        bar.style.display = "flex";
-        bar.style.flexDirection = isVertical ? "column" : "row";
-        bar.style.gap = variant === "pill" ? "4px" : "0";
-        if (isVertical) {
-            bar.style.padding = "4px";
-        } else {
-        }
+        const bar = elAttrs("div", { "data-tabs-bar": "", "data-position": position });
 
         for (const tab of tabs) {
-            const btn = document.createElement("button");
-            btn.setAttribute("data-tab", "");
+            const btn = elAttrs("button", { "data-tab": "" });
             if (active === tab.key) btn.setAttribute("data-active", "");
             btn.onclick = () => {
                 active = tab.key;
                 ctx.fire("select", { key: tab.key });
                 render();
             };
-            btn.style.display = "flex";
-            btn.style.gap = "6px";
-            btn.style.padding = variant === "pill" ? "6px 14px" : "8px 16px";
 
             if (tab.icon) {
-                const icon = document.createElement("span");
+                const icon = elAttrs("span", { "data-role": "tab-icon" });
                 icon.textContent = tab.icon;
                 btn.appendChild(icon);
             }
-            const label = document.createElement("span");
+            const label = elAttrs("span", { "data-role": "tab-label" });
             label.textContent = tab.label;
             btn.appendChild(label);
             if (tab.badge !== undefined) {
-                const badge = document.createElement("span");
-                badge.setAttribute("data-tab-badge", "");
-                badge.style.padding = "1px 6px";
+                const badge = elAttrs("span", { "data-tab-badge": "" });
                 badge.textContent = String(tab.badge);
                 btn.appendChild(badge);
             }
@@ -82,14 +52,9 @@ export function createSafeTabs(container: HTMLElement, config: ConfigBase, ctx: 
         root.appendChild(bar);
 
         if (children && Object.keys(children).length > 0) {
-            const panel = document.createElement("div");
-            panel.setAttribute("data-tabs-panel", "");
-            panel.style.flex = "1";
-            panel.style.overflow = "auto";
+            const panel = elAttrs("div", { "data-tabs-panel": "" });
             if ((children as Record<string, any>)[active]) {
-                const content = document.createElement("div");
-                content.setAttribute("data-tab-content", "");
-                content.setAttribute("data-tab-key", active);
+                const content = elAttrs("div", { "data-tab-content": "", "data-tab-key": active });
                 panel.appendChild(content);
             }
             root.appendChild(panel);

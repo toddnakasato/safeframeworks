@@ -57,10 +57,6 @@ export function createSafeGauge(container: HTMLElement, config: ConfigBase, ctx:
     root.onclick = () => ctx.fire("click", { value });
 
     const svgEl = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    svgEl.style.width = "100%";
-    svgEl.style.maxWidth = "200px";
-    svgEl.style.display = "block";
-    svgEl.style.margin = "0 auto";
     root.appendChild(svgEl);
 
     const svg = d3.select(svgEl);

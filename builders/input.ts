@@ -971,7 +971,6 @@ export function createSafeInput(container: HTMLElement, config: ConfigBase, ctx:
             if (maxLines) {
                 // react applies the same clamp inline
                 span.style.maxHeight = `${maxLines * 1.5}em`;
-                span.style.overflow = "hidden";
             }
             span.onclick = handleTextClick;
             wrap.appendChild(span);

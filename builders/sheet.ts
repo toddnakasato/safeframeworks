@@ -418,7 +418,6 @@ export function createSafeSheet(container: HTMLElement, config: ConfigBase, ctx:
         }
 
         const scroll = el("div", "scroll");
-        scroll.style.overflow = "auto";
 
         let table: HTMLElement;
         if (variant === "skeleton") table = renderSkeleton();
