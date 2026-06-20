@@ -24,8 +24,7 @@ export function createSafeColumns(container: HTMLElement, config: ConfigBase, _c
     root.setAttribute("data-radius", radius);
     root.setAttribute("data-spacing", spacing);
     root.setAttribute("data-columns", String(totalColumns));
-    // Structural grid template — react sets the same inline.
-    root.style.display = "grid";
+    // Data-driven grid: template and gap from metadata
     root.style.gridTemplateColumns = `repeat(${totalColumns}, minmax(0, 1fr))`;
     root.style.gap = gap;
     root.style.rowGap = rowGap;
