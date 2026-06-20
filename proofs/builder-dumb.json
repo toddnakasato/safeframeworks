@@ -1,8 +1,8 @@
 {
   "ok": true,
   "component": "all",
-  "total": 344,
-  "passed": 344,
+  "total": 349,
+  "passed": 349,
   "failed": 0,
   "groups": {
     "no-contracts-emit": 33,
@@ -16,7 +16,7 @@
     "render-creates-ctx": 1,
     "render-injects-transport": 1,
     "no-empty-samples": 25,
-    "valid-sample-variant": 54
+    "valid-sample-variant": 59
   },
   "checks": [
     {
@@ -1521,7 +1521,32 @@
     },
     {
       "group": "valid-sample-variant",
-      "name": "layout/layout-sidebar.json: variant 'left-main' is valid",
+      "name": "layout/layout-main-detail.json: variant 'main-detail' is valid",
+      "status": "pass"
+    },
+    {
+      "group": "valid-sample-variant",
+      "name": "layout/layout-left-main-right.json: variant 'left-main-right' is valid",
+      "status": "pass"
+    },
+    {
+      "group": "valid-sample-variant",
+      "name": "layout/layout-single.json: variant 'single' is valid",
+      "status": "pass"
+    },
+    {
+      "group": "valid-sample-variant",
+      "name": "layout/layout-header-main-detail.json: variant 'header-main-detail' is valid",
+      "status": "pass"
+    },
+    {
+      "group": "valid-sample-variant",
+      "name": "layout/layout-header-main.json: variant 'header-main' is valid",
+      "status": "pass"
+    },
+    {
+      "group": "valid-sample-variant",
+      "name": "layout/layout-left-main.json: variant 'left-main' is valid",
       "status": "pass"
     },
     {
@@ -1741,5 +1766,5 @@
     }
   ],
   "failures": [],
-  "ts": "2026-06-19T14:38:41.588Z"
+  "ts": "2026-06-20T11:55:36.494Z"
 }

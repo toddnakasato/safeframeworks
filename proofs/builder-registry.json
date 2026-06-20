@@ -1,11 +1,11 @@
 {
   "ok": true,
-  "total": 300,
-  "passed": 300,
+  "total": 378,
+  "passed": 378,
   "failed": 0,
   "groups": {
-    "no-numeric-suffix": 150,
-    "has-variant-name": 150
+    "no-numeric-suffix": 189,
+    "has-variant-name": 189
   },
   "checks": [
     {
@@ -430,6 +430,36 @@
     },
     {
       "group": "no-numeric-suffix",
+      "name": "columns/columns-footer.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "columns/columns-footer.json: has variant",
+      "status": "pass"
+    },
+    {
+      "group": "no-numeric-suffix",
+      "name": "columns/columns-header-footer.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "columns/columns-header-footer.json: has variant",
+      "status": "pass"
+    },
+    {
+      "group": "no-numeric-suffix",
+      "name": "columns/columns-header.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "columns/columns-header.json: has variant",
+      "status": "pass"
+    },
+    {
+      "group": "no-numeric-suffix",
       "name": "columns/columns-three.json",
       "status": "pass"
     },
@@ -640,6 +670,16 @@
     },
     {
       "group": "no-numeric-suffix",
+      "name": "gauge/gauge-half.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "gauge/gauge-half.json: has variant",
+      "status": "pass"
+    },
+    {
+      "group": "no-numeric-suffix",
       "name": "gauge/gauge-minimal.json",
       "status": "pass"
     },
@@ -656,6 +696,26 @@
     {
       "group": "has-variant-name",
       "name": "gauge/gauge-radial.json: has variant",
+      "status": "pass"
+    },
+    {
+      "group": "no-numeric-suffix",
+      "name": "gauge/gauge-target.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "gauge/gauge-target.json: has variant",
+      "status": "pass"
+    },
+    {
+      "group": "no-numeric-suffix",
+      "name": "gauge/gauge-thresholds.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "gauge/gauge-thresholds.json: has variant",
       "status": "pass"
     },
     {
@@ -740,32 +800,282 @@
     },
     {
       "group": "no-numeric-suffix",
-      "name": "input/input-form.json",
+      "name": "input/input-autocomplete.json",
       "status": "pass"
     },
     {
       "group": "has-variant-name",
-      "name": "input/input-form.json: has variant",
+      "name": "input/input-autocomplete.json: has variant",
       "status": "pass"
     },
     {
       "group": "no-numeric-suffix",
-      "name": "input/input-single.json",
+      "name": "input/input-checkbox.json",
       "status": "pass"
     },
     {
       "group": "has-variant-name",
-      "name": "input/input-single.json: has variant",
+      "name": "input/input-checkbox.json: has variant",
       "status": "pass"
     },
     {
       "group": "no-numeric-suffix",
-      "name": "layout/layout-sidebar.json",
+      "name": "input/input-color.json",
       "status": "pass"
     },
     {
       "group": "has-variant-name",
-      "name": "layout/layout-sidebar.json: has variant",
+      "name": "input/input-color.json: has variant",
+      "status": "pass"
+    },
+    {
+      "group": "no-numeric-suffix",
+      "name": "input/input-currency.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "input/input-currency.json: has variant",
+      "status": "pass"
+    },
+    {
+      "group": "no-numeric-suffix",
+      "name": "input/input-date.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "input/input-date.json: has variant",
+      "status": "pass"
+    },
+    {
+      "group": "no-numeric-suffix",
+      "name": "input/input-datetime.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "input/input-datetime.json: has variant",
+      "status": "pass"
+    },
+    {
+      "group": "no-numeric-suffix",
+      "name": "input/input-file.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "input/input-file.json: has variant",
+      "status": "pass"
+    },
+    {
+      "group": "no-numeric-suffix",
+      "name": "input/input-masked.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "input/input-masked.json: has variant",
+      "status": "pass"
+    },
+    {
+      "group": "no-numeric-suffix",
+      "name": "input/input-multiline-text.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "input/input-multiline-text.json: has variant",
+      "status": "pass"
+    },
+    {
+      "group": "no-numeric-suffix",
+      "name": "input/input-number.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "input/input-number.json: has variant",
+      "status": "pass"
+    },
+    {
+      "group": "no-numeric-suffix",
+      "name": "input/input-password.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "input/input-password.json: has variant",
+      "status": "pass"
+    },
+    {
+      "group": "no-numeric-suffix",
+      "name": "input/input-picklist.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "input/input-picklist.json: has variant",
+      "status": "pass"
+    },
+    {
+      "group": "no-numeric-suffix",
+      "name": "input/input-pin.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "input/input-pin.json: has variant",
+      "status": "pass"
+    },
+    {
+      "group": "no-numeric-suffix",
+      "name": "input/input-radio.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "input/input-radio.json: has variant",
+      "status": "pass"
+    },
+    {
+      "group": "no-numeric-suffix",
+      "name": "input/input-range-date.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "input/input-range-date.json: has variant",
+      "status": "pass"
+    },
+    {
+      "group": "no-numeric-suffix",
+      "name": "input/input-rating.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "input/input-rating.json: has variant",
+      "status": "pass"
+    },
+    {
+      "group": "no-numeric-suffix",
+      "name": "input/input-search.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "input/input-search.json: has variant",
+      "status": "pass"
+    },
+    {
+      "group": "no-numeric-suffix",
+      "name": "input/input-signature.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "input/input-signature.json: has variant",
+      "status": "pass"
+    },
+    {
+      "group": "no-numeric-suffix",
+      "name": "input/input-slider.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "input/input-slider.json: has variant",
+      "status": "pass"
+    },
+    {
+      "group": "no-numeric-suffix",
+      "name": "input/input-tags.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "input/input-tags.json: has variant",
+      "status": "pass"
+    },
+    {
+      "group": "no-numeric-suffix",
+      "name": "input/input-text.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "input/input-text.json: has variant",
+      "status": "pass"
+    },
+    {
+      "group": "no-numeric-suffix",
+      "name": "input/input-toggle.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "input/input-toggle.json: has variant",
+      "status": "pass"
+    },
+    {
+      "group": "no-numeric-suffix",
+      "name": "layout/layout-header-main-detail.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "layout/layout-header-main-detail.json: has variant",
+      "status": "pass"
+    },
+    {
+      "group": "no-numeric-suffix",
+      "name": "layout/layout-header-main.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "layout/layout-header-main.json: has variant",
+      "status": "pass"
+    },
+    {
+      "group": "no-numeric-suffix",
+      "name": "layout/layout-left-main-right.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "layout/layout-left-main-right.json: has variant",
+      "status": "pass"
+    },
+    {
+      "group": "no-numeric-suffix",
+      "name": "layout/layout-left-main.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "layout/layout-left-main.json: has variant",
+      "status": "pass"
+    },
+    {
+      "group": "no-numeric-suffix",
+      "name": "layout/layout-main-detail.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "layout/layout-main-detail.json: has variant",
+      "status": "pass"
+    },
+    {
+      "group": "no-numeric-suffix",
+      "name": "layout/layout-single.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "layout/layout-single.json: has variant",
       "status": "pass"
     },
     {
@@ -920,22 +1230,102 @@
     },
     {
       "group": "no-numeric-suffix",
-      "name": "nav/nav-horizontal.json",
+      "name": "nav/nav-accordion.json",
       "status": "pass"
     },
     {
       "group": "has-variant-name",
-      "name": "nav/nav-horizontal.json: has variant",
+      "name": "nav/nav-accordion.json: has variant",
       "status": "pass"
     },
     {
       "group": "no-numeric-suffix",
-      "name": "nav/nav-sidebar.json",
+      "name": "nav/nav-classic.json",
       "status": "pass"
     },
     {
       "group": "has-variant-name",
-      "name": "nav/nav-sidebar.json: has variant",
+      "name": "nav/nav-classic.json: has variant",
+      "status": "pass"
+    },
+    {
+      "group": "no-numeric-suffix",
+      "name": "nav/nav-grouped.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "nav/nav-grouped.json: has variant",
+      "status": "pass"
+    },
+    {
+      "group": "no-numeric-suffix",
+      "name": "nav/nav-icon-rail.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "nav/nav-icon-rail.json: has variant",
+      "status": "pass"
+    },
+    {
+      "group": "no-numeric-suffix",
+      "name": "nav/nav-pill.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "nav/nav-pill.json: has variant",
+      "status": "pass"
+    },
+    {
+      "group": "no-numeric-suffix",
+      "name": "nav/nav-tree.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "nav/nav-tree.json: has variant",
+      "status": "pass"
+    },
+    {
+      "group": "no-numeric-suffix",
+      "name": "navmain/navmain-default.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "navmain/navmain-default.json: has variant",
+      "status": "pass"
+    },
+    {
+      "group": "no-numeric-suffix",
+      "name": "navmain/navmain-footer.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "navmain/navmain-footer.json: has variant",
+      "status": "pass"
+    },
+    {
+      "group": "no-numeric-suffix",
+      "name": "navmain/navmain-header-footer.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "navmain/navmain-header-footer.json: has variant",
+      "status": "pass"
+    },
+    {
+      "group": "no-numeric-suffix",
+      "name": "navmain/navmain-header.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "navmain/navmain-header.json: has variant",
       "status": "pass"
     },
     {

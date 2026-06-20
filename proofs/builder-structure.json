@@ -1,8 +1,8 @@
 {
   "ok": true,
   "component": "all",
-  "total": 1221,
-  "passed": 1221,
+  "total": 1255,
+  "passed": 1255,
   "failed": 0,
   "groups": {
     "uses-readList-or-readRecord": 24,
@@ -11,9 +11,9 @@
     "uses-applyPaintState": 21,
     "has-data-component": 34,
     "no-schema-dot-fields": 5,
-    "imports-match-calls": 88,
+    "imports-match-calls": 89,
     "metadata-is-declared": 26,
-    "required-metadata-fields": 24,
+    "required-metadata-fields": 27,
     "no-getDataSource": 34,
     "no-initSafe": 34,
     "no-module-scope-constants": 34,
@@ -27,7 +27,7 @@
     "ticket-required-css": 115,
     "ticket-required-nesting": 5,
     "valid-child-variants": 15,
-    "samples-registered-in-index": 146
+    "samples-registered-in-index": 176
   },
   "checks": [
     {
@@ -1706,6 +1706,11 @@
       "status": "pass"
     },
     {
+      "group": "imports-match-calls",
+      "name": "tabs: imports elAttrs",
+      "status": "pass"
+    },
+    {
       "group": "metadata-is-declared",
       "name": "tabs: metadata variable is declared",
       "status": "pass"
@@ -2102,7 +2107,7 @@
     },
     {
       "group": "imports-match-calls",
-      "name": "gauge: imports readList",
+      "name": "gauge: imports readRecord",
       "status": "pass"
     },
     {
@@ -5412,12 +5417,112 @@
     },
     {
       "group": "samples-registered-in-index",
-      "name": "input/input-single.json: registered in SAMPLES",
+      "name": "input/input-pin.json: registered in SAMPLES",
       "status": "pass"
     },
     {
       "group": "samples-registered-in-index",
-      "name": "input/input-form.json: registered in SAMPLES",
+      "name": "input/input-number.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "input/input-checkbox.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "input/input-picklist.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "input/input-rating.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "input/input-multiline-text.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "input/input-slider.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "input/input-date.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "input/input-signature.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "input/input-radio.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "input/input-search.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "input/input-file.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "input/input-toggle.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "input/input-range-date.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "input/input-masked.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "input/input-password.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "input/input-datetime.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "input/input-text.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "input/input-currency.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "input/input-color.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "input/input-tags.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "input/input-autocomplete.json: registered in SAMPLES",
       "status": "pass"
     },
     {
@@ -5737,7 +5842,22 @@
     },
     {
       "group": "samples-registered-in-index",
+      "name": "gauge/gauge-target.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
       "name": "gauge/gauge-minimal.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "gauge/gauge-half.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "gauge/gauge-thresholds.json: registered in SAMPLES",
       "status": "pass"
     },
     {
@@ -5767,17 +5887,52 @@
     },
     {
       "group": "samples-registered-in-index",
+      "name": "columns/columns-header-footer.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "columns/columns-header.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "columns/columns-footer.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
       "name": "columns/columns-three.json: registered in SAMPLES",
       "status": "pass"
     },
     {
       "group": "samples-registered-in-index",
-      "name": "nav/nav-horizontal.json: registered in SAMPLES",
+      "name": "nav/nav-grouped.json: registered in SAMPLES",
       "status": "pass"
     },
     {
       "group": "samples-registered-in-index",
-      "name": "nav/nav-sidebar.json: registered in SAMPLES",
+      "name": "nav/nav-tree.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "nav/nav-accordion.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "nav/nav-pill.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "nav/nav-icon-rail.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "nav/nav-classic.json: registered in SAMPLES",
       "status": "pass"
     },
     {
@@ -6112,7 +6267,22 @@
     },
     {
       "group": "required-metadata-fields",
+      "name": "gauge/gauge-target.json: has required field config",
+      "status": "pass"
+    },
+    {
+      "group": "required-metadata-fields",
       "name": "gauge/gauge-minimal.json: has required field config",
+      "status": "pass"
+    },
+    {
+      "group": "required-metadata-fields",
+      "name": "gauge/gauge-half.json: has required field config",
+      "status": "pass"
+    },
+    {
+      "group": "required-metadata-fields",
+      "name": "gauge/gauge-thresholds.json: has required field config",
       "status": "pass"
     },
     {
@@ -6137,5 +6307,5 @@
     }
   ],
   "failures": [],
-  "ts": "2026-06-19T14:38:41.551Z"
+  "ts": "2026-06-20T11:56:22.451Z"
 }

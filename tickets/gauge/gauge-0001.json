@@ -4,7 +4,7 @@
   "type": "variation",
   "title": "fix guage. its showing NAN. add other variations",
   "description": "fix guage. its showing NAN. add other variations",
-  "status": "open",
+  "status": "closed",
   "proves": [
     "builder-reconcile",
     "paint-definition"
@@ -13,5 +13,6 @@
     "component": "gauge"
   },
   "created": "2026-06-20T04:07:11.248Z",
-  "updated": "2026-06-20T04:07:11.248Z"
+  "updated": "2026-06-20T11:02:34.641Z",
+  "resolution": "Closed without resolution"
 }

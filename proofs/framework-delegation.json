@@ -1,10 +1,10 @@
 {
-  "ok": true,
+  "ok": false,
   "framework": "all",
   "version": "all",
-  "total": 1408,
+  "total": 1416,
   "passed": 1408,
-  "failed": 0,
+  "failed": 8,
   "wrapperCounts": {
     "react/18": 35,
     "react/19": 35,
@@ -16,7 +16,7 @@
     "svelte/5": 35
   },
   "groups": {
-    "builder-coverage": 280,
+    "builder-coverage": 288,
     "wrapper-delegates": 280,
     "no-direct-fire": 280,
     "no-payload-construction": 280,
@@ -193,6 +193,12 @@
       "group": "builder-coverage",
       "name": "react/18: has wrapper for heatmap",
       "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "react/18: has wrapper for navmain",
+      "status": "fail",
+      "error": "react/18 missing wrapper for builder \"navmain\""
     },
     {
       "group": "builder-coverage",
@@ -1071,6 +1077,12 @@
     },
     {
       "group": "builder-coverage",
+      "name": "react/19: has wrapper for navmain",
+      "status": "fail",
+      "error": "react/19 missing wrapper for builder \"navmain\""
+    },
+    {
+      "group": "builder-coverage",
       "name": "react/19: has wrapper for toggle",
       "status": "pass"
     },
@@ -1943,6 +1955,12 @@
       "group": "builder-coverage",
       "name": "angular/21: has wrapper for heatmap",
       "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "angular/21: has wrapper for navmain",
+      "status": "fail",
+      "error": "angular/21 missing wrapper for builder \"navmain\""
     },
     {
       "group": "builder-coverage",
@@ -2821,6 +2839,12 @@
     },
     {
       "group": "builder-coverage",
+      "name": "angular/22: has wrapper for navmain",
+      "status": "fail",
+      "error": "angular/22 missing wrapper for builder \"navmain\""
+    },
+    {
+      "group": "builder-coverage",
       "name": "angular/22: has wrapper for toggle",
       "status": "pass"
     },
@@ -3693,6 +3717,12 @@
       "group": "builder-coverage",
       "name": "vue/2: has wrapper for heatmap",
       "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "vue/2: has wrapper for navmain",
+      "status": "fail",
+      "error": "vue/2 missing wrapper for builder \"navmain\""
     },
     {
       "group": "builder-coverage",
@@ -4571,6 +4601,12 @@
     },
     {
       "group": "builder-coverage",
+      "name": "vue/3: has wrapper for navmain",
+      "status": "fail",
+      "error": "vue/3 missing wrapper for builder \"navmain\""
+    },
+    {
+      "group": "builder-coverage",
       "name": "vue/3: has wrapper for toggle",
       "status": "pass"
     },
@@ -5443,6 +5479,12 @@
       "group": "builder-coverage",
       "name": "svelte/4: has wrapper for heatmap",
       "status": "pass"
+    },
+    {
+      "group": "builder-coverage",
+      "name": "svelte/4: has wrapper for navmain",
+      "status": "fail",
+      "error": "svelte/4 missing wrapper for builder \"navmain\""
     },
     {
       "group": "builder-coverage",
@@ -6321,6 +6363,12 @@
     },
     {
       "group": "builder-coverage",
+      "name": "svelte/5: has wrapper for navmain",
+      "status": "fail",
+      "error": "svelte/5 missing wrapper for builder \"navmain\""
+    },
+    {
+      "group": "builder-coverage",
       "name": "svelte/5: has wrapper for toggle",
       "status": "pass"
     },
@@ -7065,6 +7113,47 @@
       "status": "pass"
     }
   ],
-  "failures": [],
-  "ts": "2026-06-19T14:37:23.223Z"
+  "failures": [
+    {
+      "group": "builder-coverage",
+      "name": "react/18: has wrapper for navmain",
+      "error": "react/18 missing wrapper for builder \"navmain\""
+    },
+    {
+      "group": "builder-coverage",
+      "name": "react/19: has wrapper for navmain",
+      "error": "react/19 missing wrapper for builder \"navmain\""
+    },
+    {
+      "group": "builder-coverage",
+      "name": "angular/21: has wrapper for navmain",
+      "error": "angular/21 missing wrapper for builder \"navmain\""
+    },
+    {
+      "group": "builder-coverage",
+      "name": "angular/22: has wrapper for navmain",
+      "error": "angular/22 missing wrapper for builder \"navmain\""
+    },
+    {
+      "group": "builder-coverage",
+      "name": "vue/2: has wrapper for navmain",
+      "error": "vue/2 missing wrapper for builder \"navmain\""
+    },
+    {
+      "group": "builder-coverage",
+      "name": "vue/3: has wrapper for navmain",
+      "error": "vue/3 missing wrapper for builder \"navmain\""
+    },
+    {
+      "group": "builder-coverage",
+      "name": "svelte/4: has wrapper for navmain",
+      "error": "svelte/4 missing wrapper for builder \"navmain\""
+    },
+    {
+      "group": "builder-coverage",
+      "name": "svelte/5: has wrapper for navmain",
+      "error": "svelte/5 missing wrapper for builder \"navmain\""
+    }
+  ],
+  "ts": "2026-06-20T12:11:34.009Z"
 }

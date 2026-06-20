@@ -1,12 +1,12 @@
 {
   "ok": true,
-  "total": 528,
-  "passed": 528,
+  "total": 563,
+  "passed": 563,
   "failed": 0,
   "groups": {
     "lucide-installed": 8,
     "no-emoji-builders": 35,
-    "no-emoji-samples": 150,
+    "no-emoji-samples": 185,
     "no-emoji-data": 33,
     "no-emoji-wrappers": 293,
     "no-emoji-viewers": 8,
@@ -365,12 +365,112 @@
     },
     {
       "group": "no-emoji-samples",
-      "name": "input/input-single.json: no emoji",
+      "name": "input/input-pin.json: no emoji",
       "status": "pass"
     },
     {
       "group": "no-emoji-samples",
-      "name": "input/input-form.json: no emoji",
+      "name": "input/input-number.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "input/input-checkbox.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "input/input-picklist.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "input/input-rating.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "input/input-multiline-text.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "input/input-slider.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "input/input-date.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "input/input-signature.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "input/input-radio.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "input/input-search.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "input/input-file.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "input/input-toggle.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "input/input-range-date.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "input/input-masked.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "input/input-password.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "input/input-datetime.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "input/input-text.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "input/input-currency.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "input/input-color.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "input/input-tags.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "input/input-autocomplete.json: no emoji",
       "status": "pass"
     },
     {
@@ -385,7 +485,32 @@
     },
     {
       "group": "no-emoji-samples",
-      "name": "layout/layout-sidebar.json: no emoji",
+      "name": "layout/layout-main-detail.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "layout/layout-left-main-right.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "layout/layout-single.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "layout/layout-header-main-detail.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "layout/layout-header-main.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "layout/layout-left-main.json: no emoji",
       "status": "pass"
     },
     {
@@ -700,7 +825,22 @@
     },
     {
       "group": "no-emoji-samples",
+      "name": "gauge/gauge-target.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
       "name": "gauge/gauge-minimal.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "gauge/gauge-half.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "gauge/gauge-thresholds.json: no emoji",
       "status": "pass"
     },
     {
@@ -730,17 +870,52 @@
     },
     {
       "group": "no-emoji-samples",
+      "name": "columns/columns-header-footer.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "columns/columns-header.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "columns/columns-footer.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
       "name": "columns/columns-three.json: no emoji",
       "status": "pass"
     },
     {
       "group": "no-emoji-samples",
-      "name": "nav/nav-horizontal.json: no emoji",
+      "name": "nav/nav-grouped.json: no emoji",
       "status": "pass"
     },
     {
       "group": "no-emoji-samples",
-      "name": "nav/nav-sidebar.json: no emoji",
+      "name": "nav/nav-tree.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "nav/nav-accordion.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "nav/nav-pill.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "nav/nav-icon-rail.json: no emoji",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji-samples",
+      "name": "nav/nav-classic.json: no emoji",
       "status": "pass"
     },
     {
