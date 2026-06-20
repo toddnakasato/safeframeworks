@@ -11,42 +11,92 @@
   },
   "children": {
     "metrics": {
-      "component": "list",
+      "component": "grid",
       "metadata": {
         "section": "metrics",
         "order": 0,
-        "icon": "\u25c9",
-        "title": "KPIs",
-        "variant": "simple"
+        "icon": "activity",
+        "title": "Metrics",
+        "columns": 2,
+        "spacing": "compact"
       },
-      "data": {
-        "items": {
-          "name": "items",
-          "type": "list",
-          "source": "inline",
-          "inline": [
-            {
-              "label": "Open",
-              "value": 8
-            },
-            {
-              "label": "Closed",
-              "value": 14
-            }
-          ],
-          "schema": {
-            "fields": [
-              {
-                "name": "label",
-                "label": "Label",
-                "type": "text"
-              },
-              {
-                "name": "value",
-                "label": "Value",
-                "type": "number"
+      "children": {
+        "leads": {
+          "component": "metric",
+          "metadata": {
+            "valueField": "value",
+            "label": "Leads",
+            "format": "compact",
+            "trend": "up",
+            "trendValue": "+8%"
+          },
+          "data": {
+            "record": {
+              "name": "record",
+              "type": "record",
+              "source": "inline",
+              "inline": {
+                "value": 12
               }
-            ]
+            }
+          }
+        },
+        "opps": {
+          "component": "metric",
+          "metadata": {
+            "valueField": "value",
+            "label": "Opps",
+            "format": "compact",
+            "trend": "down",
+            "trendValue": "-2%"
+          },
+          "data": {
+            "record": {
+              "name": "record",
+              "type": "record",
+              "source": "inline",
+              "inline": {
+                "value": 3
+              }
+            }
+          }
+        },
+        "tasks": {
+          "component": "metric",
+          "metadata": {
+            "valueField": "value",
+            "label": "Tasks",
+            "format": "compact"
+          },
+          "data": {
+            "record": {
+              "name": "record",
+              "type": "record",
+              "source": "inline",
+              "inline": {
+                "value": 5
+              }
+            }
+          }
+        },
+        "alerts": {
+          "component": "metric",
+          "metadata": {
+            "valueField": "value",
+            "label": "Alerts",
+            "format": "compact",
+            "trend": "up",
+            "trendValue": "+1"
+          },
+          "data": {
+            "record": {
+              "name": "record",
+              "type": "record",
+              "source": "inline",
+              "inline": {
+                "value": 2
+              }
+            }
           }
         }
       }
