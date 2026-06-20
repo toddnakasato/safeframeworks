@@ -17,91 +17,183 @@
     "nav": {
       "component": "nav",
       "metadata": {
-        "navStyle": "classic",
-        "title": "App"
-      },
-      "children": {
-        "dashboard": {
-          "component": "nav",
-          "metadata": {
-            "label": "Dashboard",
-            "icon": "layout-dashboard"
-          }
-        },
-        "orders": {
-          "component": "nav",
-          "metadata": {
-            "label": "Orders",
-            "icon": "shopping-cart",
-            "badge": "12"
-          },
-          "children": {
-            "all": {
-              "component": "nav",
-              "metadata": {
-                "label": "All Orders"
-              }
-            },
-            "pending": {
-              "component": "nav",
-              "metadata": {
-                "label": "Pending",
-                "badge": "5"
-              }
-            },
-            "fulfilled": {
-              "component": "nav",
-              "metadata": {
-                "label": "Fulfilled"
-              }
-            }
-          }
-        },
-        "products": {
-          "component": "nav",
-          "metadata": {
-            "label": "Products",
-            "icon": "package"
-          },
-          "children": {
-            "catalog": {
-              "component": "nav",
-              "metadata": {
-                "label": "Catalog"
-              }
-            },
-            "pricing": {
-              "component": "nav",
-              "metadata": {
-                "label": "Pricing"
-              }
-            }
-          }
-        },
-        "customers": {
-          "component": "nav",
-          "metadata": {
-            "label": "Customers",
-            "icon": "users"
-          }
-        },
-        "analytics": {
-          "component": "nav",
-          "metadata": {
-            "label": "Analytics",
-            "icon": "bar-chart"
-          }
-        },
-        "settings": {
-          "component": "nav",
-          "metadata": {
-            "label": "Settings",
-            "icon": "settings"
-          }
-        }
+        "navStyle": "accordion",
+        "title": "Shopfront",
+        "subtitle": "Admin Panel",
+        "icon": "store",
+        "accent": "brand"
       },
       "eventHandler": {
         "handler": "nav"
+      },
+      "data": {
+        "entries": {
+          "name": "entries",
+          "type": "list",
+          "source": "inline",
+          "inline": [
+            {
+              "key": "orders",
+              "label": "Orders",
+              "icon": "shopping-cart",
+              "accent": "brand",
+              "children": [
+                {
+                  "key": "all-orders",
+                  "label": "All Orders",
+                  "badge": "234"
+                },
+                {
+                  "key": "pending",
+                  "label": "Pending",
+                  "badge": "12"
+                },
+                {
+                  "key": "fulfilled",
+                  "label": "Fulfilled"
+                },
+                {
+                  "key": "cancelled",
+                  "label": "Cancelled"
+                },
+                {
+                  "key": "returns",
+                  "label": "Returns",
+                  "badge": "3"
+                }
+              ]
+            },
+            {
+              "key": "catalog",
+              "label": "Catalog",
+              "icon": "package",
+              "accent": "danger",
+              "children": [
+                {
+                  "key": "products",
+                  "label": "Products"
+                },
+                {
+                  "key": "collections",
+                  "label": "Collections"
+                },
+                {
+                  "key": "pricing",
+                  "label": "Pricing"
+                },
+                {
+                  "key": "tags-attributes",
+                  "label": "Tags & Attributes"
+                }
+              ]
+            },
+            {
+              "key": "customers",
+              "label": "Customers",
+              "icon": "star",
+              "accent": "warn",
+              "children": [
+                {
+                  "key": "all-customers",
+                  "label": "All Customers"
+                },
+                {
+                  "key": "segments",
+                  "label": "Segments"
+                },
+                {
+                  "key": "loyalty",
+                  "label": "Loyalty"
+                }
+              ]
+            },
+            {
+              "key": "finance",
+              "label": "Finance",
+              "icon": "credit-card",
+              "accent": "success",
+              "children": [
+                {
+                  "key": "transactions",
+                  "label": "Transactions"
+                },
+                {
+                  "key": "payouts",
+                  "label": "Payouts"
+                },
+                {
+                  "key": "invoices",
+                  "label": "Invoices"
+                }
+              ]
+            },
+            {
+              "key": "analytics",
+              "label": "Analytics",
+              "icon": "bar-chart",
+              "accent": "info",
+              "children": [
+                {
+                  "key": "overview",
+                  "label": "Overview"
+                },
+                {
+                  "key": "sales",
+                  "label": "Sales"
+                },
+                {
+                  "key": "traffic",
+                  "label": "Traffic"
+                }
+              ]
+            },
+            {
+              "key": "marketing",
+              "label": "Marketing",
+              "icon": "megaphone",
+              "accent": "neutral",
+              "children": [
+                {
+                  "key": "campaigns",
+                  "label": "Campaigns"
+                },
+                {
+                  "key": "email",
+                  "label": "Email",
+                  "badge": "New"
+                },
+                {
+                  "key": "discounts",
+                  "label": "Discounts"
+                }
+              ]
+            },
+            {
+              "key": "globe",
+              "label": "",
+              "icon": "globe",
+              "section": "bottom"
+            },
+            {
+              "key": "refresh",
+              "label": "",
+              "icon": "refresh-ccw",
+              "section": "bottom"
+            },
+            {
+              "key": "shipping",
+              "label": "",
+              "icon": "truck",
+              "section": "bottom"
+            },
+            {
+              "key": "mail",
+              "label": "",
+              "icon": "mail",
+              "section": "bottom"
+            }
+          ]
+        }
       }
     }
   }
