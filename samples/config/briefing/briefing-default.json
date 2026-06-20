@@ -174,19 +174,18 @@
         "message": "Pipeline dropped 15% this week. 3 tasks overdue. New lead: Umbrella Corp (score 88)."
       }
     },
-    "metric-leads": {
-      "component": "metric",
+    "gauge-leads": {
+      "component": "gauge",
       "metadata": {
         "section": "metrics",
         "order": 0,
-        "icon": "activity",
-        "title": "Leads",
+        "sectionColumns": "1fr 1fr",
+        "variant": "half",
         "valueField": "value",
-        "label": "Leads",
-        "format": "compact",
-        "trend": "up",
-        "trendValue": "+8%",
-        "sectionColumns": "1fr 1fr"
+        "labelField": "label",
+        "min": 0,
+        "max": 20,
+        "unit": ""
       },
       "data": {
         "record": {
@@ -194,24 +193,24 @@
           "type": "record",
           "source": "inline",
           "inline": {
-            "value": 12
+            "value": 12,
+            "label": "Leads"
           }
         }
       }
     },
-    "metric-opps": {
-      "component": "metric",
+    "gauge-opps": {
+      "component": "gauge",
       "metadata": {
         "section": "metrics",
         "order": 0,
-        "icon": "activity",
-        "title": "Opps",
+        "sectionColumns": "1fr 1fr",
+        "variant": "half",
         "valueField": "value",
-        "label": "Opps",
-        "format": "compact",
-        "trend": "down",
-        "trendValue": "-2%",
-        "sectionColumns": "1fr 1fr"
+        "labelField": "label",
+        "min": 0,
+        "max": 500000,
+        "unit": "$"
       },
       "data": {
         "record": {
@@ -219,22 +218,24 @@
           "type": "record",
           "source": "inline",
           "inline": {
-            "value": 3
+            "value": 340000,
+            "label": "Pipeline"
           }
         }
       }
     },
-    "metric-tasks": {
-      "component": "metric",
+    "gauge-tasks": {
+      "component": "gauge",
       "metadata": {
         "section": "metrics",
         "order": 0,
-        "icon": "activity",
-        "title": "Tasks",
+        "sectionColumns": "1fr 1fr",
+        "variant": "half",
         "valueField": "value",
-        "label": "Tasks",
-        "format": "compact",
-        "sectionColumns": "1fr 1fr"
+        "labelField": "label",
+        "min": 0,
+        "max": 8,
+        "unit": ""
       },
       "data": {
         "record": {
@@ -242,24 +243,24 @@
           "type": "record",
           "source": "inline",
           "inline": {
-            "value": 5
+            "value": 5,
+            "label": "Tasks"
           }
         }
       }
     },
-    "metric-alerts": {
-      "component": "metric",
+    "gauge-close": {
+      "component": "gauge",
       "metadata": {
         "section": "metrics",
         "order": 0,
-        "icon": "activity",
-        "title": "Alerts",
+        "sectionColumns": "1fr 1fr",
+        "variant": "half",
         "valueField": "value",
-        "label": "Alerts",
-        "format": "compact",
-        "trend": "up",
-        "trendValue": "+1",
-        "sectionColumns": "1fr 1fr"
+        "labelField": "label",
+        "min": 0,
+        "max": 100,
+        "unit": "%"
       },
       "data": {
         "record": {
@@ -267,7 +268,8 @@
           "type": "record",
           "source": "inline",
           "inline": {
-            "value": 2
+            "value": 68,
+            "label": "Close Rate"
           }
         }
       }
