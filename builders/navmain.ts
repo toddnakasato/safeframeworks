@@ -1,5 +1,7 @@
-import type { ConfigBase, SafeFireContext } from "../../safecontracts/src/contracts";
+import type { ConfigBase, OnSafeEvent, SafeFireContext } from "../../safecontracts/src/contracts";
 import { el } from "../utils/util";
+
+export type RenderChild = (config: ConfigBase, onEvent?: OnSafeEvent, container?: HTMLElement) => HTMLElement;
 
 /*----------------------------------------------------------------------------------------------------
  *
@@ -7,7 +9,12 @@ import { el } from "../utils/util";
  *
  ----------------------------------------------------------------------------------------------------*/
 
-export function createSafeNavMain(container: HTMLElement, config: ConfigBase, _ctx?: SafeFireContext): HTMLElement {
+export function createSafeNavMain(
+    container: HTMLElement,
+    config: ConfigBase,
+    _ctx?: SafeFireContext,
+    renderChild?: RenderChild,
+): HTMLElement {
     const metadata = config.metadata;
     const variant = (metadata.variant as string) ?? "default";
     const width = metadata.width as string | undefined;
@@ -22,14 +29,13 @@ export function createSafeNavMain(container: HTMLElement, config: ConfigBase, _c
     if (width) root.style.width = width;
 
     if (variant === "default") {
-        // No header/footer — all children in body
         for (const [key, childConfig] of children) {
             const cell = el("div", "navmain-item");
             cell.setAttribute("data-key", key);
+            if (renderChild) renderChild(childConfig as ConfigBase, undefined, cell);
             root.appendChild(cell);
         }
     } else {
-        // Positioned: header, body (scrolls), footer
         const headerEl = (variant === "header" || variant === "header-footer") ? el("div", "navmain-header") : null;
         const bodyEl = el("div", "navmain-body");
         const footerEl = (variant === "footer" || variant === "header-footer") ? el("div", "navmain-footer") : null;
@@ -39,6 +45,7 @@ export function createSafeNavMain(container: HTMLElement, config: ConfigBase, _c
             const position = childMeta.position as string | undefined;
             const cell = el("div", "navmain-item");
             cell.setAttribute("data-key", key);
+            if (renderChild) renderChild(childConfig as ConfigBase, undefined, cell);
 
             if (position === "header" && headerEl) {
                 headerEl.appendChild(cell);

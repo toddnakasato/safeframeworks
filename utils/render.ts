@@ -131,7 +131,7 @@ export function buildComponent(config: ConfigBase, onEvent?: OnSafeEvent): HTMLE
             createSafeNav(container, config, ctx);
             break;
         case "navmain":
-            createSafeNavMain(container, config, ctx);
+            createSafeNavMain(container, config, ctx, buildComponent);
             break;
         case "picker":
             createSafePicker(container, config, ctx);
