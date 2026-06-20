@@ -11,30 +11,50 @@
   },
   "children": {
     "metrics": {
-      "component": "gauge",
-      "metadata": { "section": "metrics", "order": 0, "icon": "◉", "title": "KPIs" },
+      "component": "list",
+      "metadata": {
+        "section": "metrics",
+        "order": 0,
+        "icon": "\u25c9",
+        "title": "KPIs",
+        "variant": "simple"
+      },
       "data": {
         "record": {
           "name": "brief-metrics",
           "type": "list",
           "source": "inline",
           "inline": [
-            { "label": "Open", "value": 8 },
-            { "label": "Closed", "value": 14 }
+            {
+              "label": "Open",
+              "value": 8
+            },
+            {
+              "label": "Closed",
+              "value": 14
+            }
           ]
         }
       }
     },
     "alerts": {
       "component": "callout",
-      "metadata": { "section": "alerts", "order": 1, "icon": "zap", "title": "Alerts" },
+      "metadata": {
+        "section": "alerts",
+        "order": 1,
+        "icon": "zap",
+        "title": "Alerts"
+      },
       "data": {
         "items": {
           "name": "brief-alerts",
           "type": "list",
           "source": "inline",
           "inline": [
-            { "message": "Deployment pending", "severity": "info" }
+            {
+              "message": "Deployment pending",
+              "severity": "info"
+            }
           ]
         }
       }
