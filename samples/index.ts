@@ -64,8 +64,8 @@ import gridDetailConfig from "./config/grid/grid-detail.json";
 import gridCompactConfig from "./config/grid/grid-compact.json";
 import heatmapMatrixConfig from "./config/heatmap/heatmap-matrix.json";
 import heatmapDenseConfig from "./config/heatmap/heatmap-dense.json";
-import inputFormConfig from "./config/input/input-form.json";
-import inputSingleConfig from "./config/input/input-single.json";
+import inputTextConfig from "./config/input/input-text.json";
+import inputNumberConfig from "./config/input/input-number.json";
 import layoutStackConfig from "./config/layout/layout-stack.json";
 import layoutSidebarConfig from "./config/layout/layout-sidebar.json";
 import listActionsConfig from "./config/list/list-actions.json";
@@ -344,8 +344,8 @@ export const SAMPLES: Record<string, Record<string, ConfigBase>> = {
         "heatmap-dense": resolveData(heatmapDenseConfig as unknown as ConfigBase),
     },
     input: {
-        "input-form": resolveData(inputFormConfig as unknown as ConfigBase),
-        "input-single": resolveData(inputSingleConfig as unknown as ConfigBase),
+        "input-text": resolveData(inputTextConfig as unknown as ConfigBase),
+        "input-number": resolveData(inputNumberConfig as unknown as ConfigBase),
     },
     layout: {
         "layout-stack": resolveData(layoutStackConfig as unknown as ConfigBase),

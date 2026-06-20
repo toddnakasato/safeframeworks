@@ -4,7 +4,7 @@
     "inputType": "text",
     "align": "left",
     "valign": "center",
-    "placeholder": "Type here..."
+    "placeholder": "Enter name..."
   },
   "eventHandler": {
     "handler": "input"
@@ -15,9 +15,7 @@
       "type": "record",
       "source": "inline",
       "inline": {
-        "value": "Sample",
-        "field": "name",
-        "type": "text"
+        "name": "Acme Corp"
       }
     }
   }
