@@ -1,0 +1,26 @@
+{
+  "component": "input",
+  "metadata": {
+    "inputType": "range-date",
+    "align": "left",
+    "valign": "center",
+    "rangeStartLabel": "From",
+    "rangeEndLabel": "To"
+  },
+  "eventHandler": {
+    "handler": "input"
+  },
+  "data": {
+    "record": {
+      "name": "record",
+      "type": "record",
+      "source": "inline",
+      "inline": {
+        "period": [
+          "2026-01-01",
+          "2026-06-30"
+        ]
+      }
+    }
+  }
+}

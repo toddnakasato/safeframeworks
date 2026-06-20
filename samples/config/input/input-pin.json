@@ -1,0 +1,22 @@
+{
+  "component": "input",
+  "metadata": {
+    "inputType": "pin",
+    "align": "center",
+    "valign": "center",
+    "pinLength": 6
+  },
+  "eventHandler": {
+    "handler": "input"
+  },
+  "data": {
+    "record": {
+      "name": "record",
+      "type": "record",
+      "source": "inline",
+      "inline": {
+        "code": ""
+      }
+    }
+  }
+}

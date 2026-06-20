@@ -1,0 +1,26 @@
+{
+  "component": "input",
+  "metadata": {
+    "inputType": "signature",
+    "align": "left",
+    "valign": "center",
+    "signatureWidth": 400,
+    "signatureHeight": 150,
+    "penColor": "#000000",
+    "penWidth": 2,
+    "signatureClearLabel": "Clear"
+  },
+  "eventHandler": {
+    "handler": "input"
+  },
+  "data": {
+    "record": {
+      "name": "record",
+      "type": "record",
+      "source": "inline",
+      "inline": {
+        "sig": null
+      }
+    }
+  }
+}

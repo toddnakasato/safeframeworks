@@ -1,0 +1,33 @@
+{
+  "component": "input",
+  "metadata": {
+    "inputType": "autocomplete",
+    "align": "left",
+    "valign": "center",
+    "placeholder": "Type state name...",
+    "suggestions": [
+      "California",
+      "Colorado",
+      "Connecticut",
+      "Delaware",
+      "Florida",
+      "Georgia",
+      "Illinois",
+      "Indiana",
+      "Iowa"
+    ]
+  },
+  "eventHandler": {
+    "handler": "input"
+  },
+  "data": {
+    "record": {
+      "name": "record",
+      "type": "record",
+      "source": "inline",
+      "inline": {
+        "state": ""
+      }
+    }
+  }
+}

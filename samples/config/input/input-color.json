@@ -1,0 +1,22 @@
+{
+  "component": "input",
+  "metadata": {
+    "inputType": "color",
+    "align": "left",
+    "valign": "center",
+    "defaultColor": "#3b82f6"
+  },
+  "eventHandler": {
+    "handler": "input"
+  },
+  "data": {
+    "record": {
+      "name": "record",
+      "type": "record",
+      "source": "inline",
+      "inline": {
+        "brandColor": "#3b82f6"
+      }
+    }
+  }
+}

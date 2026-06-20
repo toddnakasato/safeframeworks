@@ -1,0 +1,23 @@
+{
+  "component": "input",
+  "metadata": {
+    "inputType": "file",
+    "align": "left",
+    "valign": "center",
+    "accept": ".pdf,.xlsx,.csv",
+    "multiple": true
+  },
+  "eventHandler": {
+    "handler": "input"
+  },
+  "data": {
+    "record": {
+      "name": "record",
+      "type": "record",
+      "source": "inline",
+      "inline": {
+        "attachment": null
+      }
+    }
+  }
+}

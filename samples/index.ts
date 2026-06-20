@@ -74,6 +74,18 @@ import inputCheckboxConfig from "./config/input/input-checkbox.json";
 import inputRadioConfig from "./config/input/input-radio.json";
 import inputToggleConfig from "./config/input/input-toggle.json";
 import inputPicklistConfig from "./config/input/input-picklist.json";
+import inputSliderConfig from "./config/input/input-slider.json";
+import inputRatingConfig from "./config/input/input-rating.json";
+import inputColorConfig from "./config/input/input-color.json";
+import inputPasswordConfig from "./config/input/input-password.json";
+import inputSearchConfig from "./config/input/input-search.json";
+import inputFileConfig from "./config/input/input-file.json";
+import inputTagsConfig from "./config/input/input-tags.json";
+import inputAutocompleteConfig from "./config/input/input-autocomplete.json";
+import inputMaskedConfig from "./config/input/input-masked.json";
+import inputPinConfig from "./config/input/input-pin.json";
+import inputRangeDateConfig from "./config/input/input-range-date.json";
+import inputSignatureConfig from "./config/input/input-signature.json";
 import layoutStackConfig from "./config/layout/layout-stack.json";
 import layoutSidebarConfig from "./config/layout/layout-sidebar.json";
 import listActionsConfig from "./config/list/list-actions.json";
@@ -362,6 +374,18 @@ export const SAMPLES: Record<string, Record<string, ConfigBase>> = {
         "input-radio": resolveData(inputRadioConfig as unknown as ConfigBase),
         "input-toggle": resolveData(inputToggleConfig as unknown as ConfigBase),
         "input-picklist": resolveData(inputPicklistConfig as unknown as ConfigBase),
+        "input-slider": resolveData(inputSliderConfig as unknown as ConfigBase),
+        "input-rating": resolveData(inputRatingConfig as unknown as ConfigBase),
+        "input-color": resolveData(inputColorConfig as unknown as ConfigBase),
+        "input-password": resolveData(inputPasswordConfig as unknown as ConfigBase),
+        "input-search": resolveData(inputSearchConfig as unknown as ConfigBase),
+        "input-file": resolveData(inputFileConfig as unknown as ConfigBase),
+        "input-tags": resolveData(inputTagsConfig as unknown as ConfigBase),
+        "input-autocomplete": resolveData(inputAutocompleteConfig as unknown as ConfigBase),
+        "input-masked": resolveData(inputMaskedConfig as unknown as ConfigBase),
+        "input-pin": resolveData(inputPinConfig as unknown as ConfigBase),
+        "input-range-date": resolveData(inputRangeDateConfig as unknown as ConfigBase),
+        "input-signature": resolveData(inputSignatureConfig as unknown as ConfigBase),
     },
     layout: {
         "layout-stack": resolveData(layoutStackConfig as unknown as ConfigBase),

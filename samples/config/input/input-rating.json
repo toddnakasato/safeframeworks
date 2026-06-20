@@ -1,0 +1,24 @@
+{
+  "component": "input",
+  "metadata": {
+    "inputType": "rating",
+    "align": "left",
+    "valign": "center",
+    "maxIcons": 5,
+    "filledIcon": "*",
+    "emptyIcon": "-"
+  },
+  "eventHandler": {
+    "handler": "input"
+  },
+  "data": {
+    "record": {
+      "name": "record",
+      "type": "record",
+      "source": "inline",
+      "inline": {
+        "score": 3
+      }
+    }
+  }
+}

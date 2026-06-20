@@ -1,0 +1,28 @@
+{
+  "component": "input",
+  "metadata": {
+    "inputType": "tags",
+    "align": "left",
+    "valign": "center",
+    "placeholder": "Add tag...",
+    "tagSeparator": ",",
+    "maxTags": 10
+  },
+  "eventHandler": {
+    "handler": "input"
+  },
+  "data": {
+    "record": {
+      "name": "record",
+      "type": "record",
+      "source": "inline",
+      "inline": {
+        "labels": [
+          "urgent",
+          "review",
+          "Q3"
+        ]
+      }
+    }
+  }
+}

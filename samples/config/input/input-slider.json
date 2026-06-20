@@ -1,0 +1,26 @@
+{
+  "component": "input",
+  "metadata": {
+    "inputType": "slider",
+    "align": "left",
+    "valign": "center",
+    "min": 0,
+    "max": 100,
+    "step": 1,
+    "showValue": true,
+    "forceEditMode": true
+  },
+  "eventHandler": {
+    "handler": "input"
+  },
+  "data": {
+    "record": {
+      "name": "record",
+      "type": "record",
+      "source": "inline",
+      "inline": {
+        "progress": 65
+      }
+    }
+  }
+}

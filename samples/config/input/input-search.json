@@ -1,0 +1,23 @@
+{
+  "component": "input",
+  "metadata": {
+    "inputType": "search",
+    "align": "left",
+    "valign": "center",
+    "placeholder": "Search records...",
+    "showClear": true
+  },
+  "eventHandler": {
+    "handler": "input"
+  },
+  "data": {
+    "record": {
+      "name": "record",
+      "type": "record",
+      "source": "inline",
+      "inline": {
+        "query": ""
+      }
+    }
+  }
+}

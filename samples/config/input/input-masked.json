@@ -1,0 +1,24 @@
+{
+  "component": "input",
+  "metadata": {
+    "inputType": "masked",
+    "align": "left",
+    "valign": "center",
+    "mask": "(###) ###-####",
+    "maskChar": "_",
+    "placeholder": "(___) ___-____"
+  },
+  "eventHandler": {
+    "handler": "input"
+  },
+  "data": {
+    "record": {
+      "name": "record",
+      "type": "record",
+      "source": "inline",
+      "inline": {
+        "phone": "5551234567"
+      }
+    }
+  }
+}
