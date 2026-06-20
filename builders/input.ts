@@ -964,6 +964,7 @@ export function createSafeInput(container: HTMLElement, config: ConfigBase, ctx:
             const span = el("span", "value", displayValue || defaultText);
             if (isLink) span.setAttribute("data-link", "true");
             span.setAttribute("data-text-align", textAlign);
+            if (inputType === "multiline-text") span.setAttribute("data-multiline", "true");
             if (maxLines) {
                 // react applies the same clamp inline
                 span.style.maxHeight = `${maxLines * 1.5}em`;

@@ -5,7 +5,7 @@
     "align": "left",
     "valign": "top",
     "placeholder": "Enter notes...",
-    "maxLines": 5
+    "maxLines": 10
   },
   "eventHandler": {
     "handler": "input"
@@ -16,7 +16,7 @@
       "type": "record",
       "source": "inline",
       "inline": {
-        "notes": "Line one\nLine two\nLine three"
+        "notes": "Borrower submitted application on 06/01/2026.\nCredit report pulled — score 742.\nEmployment verified with HR department.\nBank statements reviewed for last 3 months.\nProperty appraisal ordered — expected 06/15.\nTitle search initiated with First American.\nFlood zone determination: Zone X (no flood insurance required).\nDebt-to-income ratio calculated at 38%.\nLoan-to-value ratio: 75%.\nConditional approval issued pending appraisal."
       }
     }
   }
