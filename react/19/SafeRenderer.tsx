@@ -264,8 +264,20 @@ export function renderConfigBase(config: ConfigBase, onEvent?: OnSafeEvent, ctx?
         return <ProofViewerBridge config={config} onEvent={stampedOnEvent} />;
     }
 
-    // --- Unknown ---
-    return <div style={{ padding: "var(--sd-space-md)", color: "var(--sd-text-dim)", fontSize: "var(--sd-font-sm)" }}>Unknown component: {component}</div>;
+    // --- Fallback: delegate to shared builder (DOM) ---
+    return <BuilderBridge config={config} onEvent={stampedOnEvent} />;
+}
+
+/** Bridge — mounts any component via shared buildComponent (DOM builder). */
+function BuilderBridge({ config, onEvent }: { config: ConfigBase; onEvent?: OnSafeEvent }) {
+    const ref = useRef<HTMLDivElement>(null);
+    useEffect(() => {
+        if (!ref.current) return;
+        ref.current.innerHTML = "";
+        const root = buildComponent(config, onEvent);
+        if (root) ref.current.appendChild(root);
+    }, [config, onEvent]);
+    return <div ref={ref} />;
 }
 
 // Layout resolution lives in safecontracts (resolver-layout.ts) — re-exported here
