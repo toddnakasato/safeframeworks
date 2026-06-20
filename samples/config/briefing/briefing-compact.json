@@ -10,96 +10,6 @@
     "align": "center"
   },
   "children": {
-    "metrics": {
-      "component": "grid",
-      "metadata": {
-        "section": "metrics",
-        "order": 0,
-        "icon": "activity",
-        "title": "Metrics",
-        "columns": "1fr 1fr"
-      },
-      "children": {
-        "leads": {
-          "component": "metric",
-          "metadata": {
-            "valueField": "value",
-            "label": "Leads",
-            "format": "compact",
-            "trend": "up",
-            "trendValue": "+8%"
-          },
-          "data": {
-            "record": {
-              "name": "record",
-              "type": "record",
-              "source": "inline",
-              "inline": {
-                "value": 12
-              }
-            }
-          }
-        },
-        "opps": {
-          "component": "metric",
-          "metadata": {
-            "valueField": "value",
-            "label": "Opps",
-            "format": "compact",
-            "trend": "down",
-            "trendValue": "-2%"
-          },
-          "data": {
-            "record": {
-              "name": "record",
-              "type": "record",
-              "source": "inline",
-              "inline": {
-                "value": 3
-              }
-            }
-          }
-        },
-        "tasks": {
-          "component": "metric",
-          "metadata": {
-            "valueField": "value",
-            "label": "Tasks",
-            "format": "compact"
-          },
-          "data": {
-            "record": {
-              "name": "record",
-              "type": "record",
-              "source": "inline",
-              "inline": {
-                "value": 5
-              }
-            }
-          }
-        },
-        "alerts": {
-          "component": "metric",
-          "metadata": {
-            "valueField": "value",
-            "label": "Alerts",
-            "format": "compact",
-            "trend": "up",
-            "trendValue": "+1"
-          },
-          "data": {
-            "record": {
-              "name": "record",
-              "type": "record",
-              "source": "inline",
-              "inline": {
-                "value": 2
-              }
-            }
-          }
-        }
-      }
-    },
     "alerts": {
       "component": "callout",
       "metadata": {
@@ -119,6 +29,104 @@
               "severity": "info"
             }
           ]
+        }
+      }
+    },
+    "metric-leads": {
+      "component": "metric",
+      "metadata": {
+        "section": "metrics",
+        "order": 0,
+        "icon": "activity",
+        "title": "Leads",
+        "valueField": "value",
+        "label": "Leads",
+        "format": "compact",
+        "trend": "up",
+        "trendValue": "+8%",
+        "sectionColumns": "1fr 1fr"
+      },
+      "data": {
+        "record": {
+          "name": "record",
+          "type": "record",
+          "source": "inline",
+          "inline": {
+            "value": 12
+          }
+        }
+      }
+    },
+    "metric-opps": {
+      "component": "metric",
+      "metadata": {
+        "section": "metrics",
+        "order": 0,
+        "icon": "activity",
+        "title": "Opps",
+        "valueField": "value",
+        "label": "Opps",
+        "format": "compact",
+        "trend": "down",
+        "trendValue": "-2%",
+        "sectionColumns": "1fr 1fr"
+      },
+      "data": {
+        "record": {
+          "name": "record",
+          "type": "record",
+          "source": "inline",
+          "inline": {
+            "value": 3
+          }
+        }
+      }
+    },
+    "metric-tasks": {
+      "component": "metric",
+      "metadata": {
+        "section": "metrics",
+        "order": 0,
+        "icon": "activity",
+        "title": "Tasks",
+        "valueField": "value",
+        "label": "Tasks",
+        "format": "compact",
+        "sectionColumns": "1fr 1fr"
+      },
+      "data": {
+        "record": {
+          "name": "record",
+          "type": "record",
+          "source": "inline",
+          "inline": {
+            "value": 5
+          }
+        }
+      }
+    },
+    "metric-alerts": {
+      "component": "metric",
+      "metadata": {
+        "section": "metrics",
+        "order": 0,
+        "icon": "activity",
+        "title": "Alerts",
+        "valueField": "value",
+        "label": "Alerts",
+        "format": "compact",
+        "trend": "up",
+        "trendValue": "+1",
+        "sectionColumns": "1fr 1fr"
+      },
+      "data": {
+        "record": {
+          "name": "record",
+          "type": "record",
+          "source": "inline",
+          "inline": {
+            "value": 2
+          }
         }
       }
     }

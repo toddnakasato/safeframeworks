@@ -79,6 +79,25 @@ export function createSafeBriefing(
         const childMeta = childConfig.metadata;
         const sectionType = (childMeta.section as string) ?? key;
         const sectionTitle = (childMeta.title as string) ?? key;
+        const sectionColumns = (childMeta.sectionColumns as string) ?? "";
+
+        // Group consecutive children with the same section into one section
+        const existingSection = body.querySelector(`[data-section="${sectionType}"]`) as HTMLElement | null;
+        if (existingSection) {
+            // Append to existing section content
+            const content = existingSection.querySelector("[data-role='section-content']") as HTMLElement;
+            if (content && renderChild) {
+                const rendered = renderChild(childConfig);
+                content.appendChild(rendered);
+                // Apply grid if sectionColumns set
+                if (sectionColumns && !content.style.gridTemplateColumns) {
+                    content.style.display = "grid";
+                    content.style.gridTemplateColumns = sectionColumns;
+                    content.style.gap = "8px";
+                }
+            }
+            continue;
+        }
 
         const section = elAttrs("div", { "data-role": "section", "data-section": sectionType });
 
@@ -111,6 +130,11 @@ export function createSafeBriefing(
 
         /* Section content — delegate to child builder */
         const content = elAttrs("div", { "data-role": "section-content" });
+        if (sectionColumns) {
+            content.style.display = "grid";
+            content.style.gridTemplateColumns = sectionColumns;
+            content.style.gap = "8px";
+        }
         if (renderChild) {
             const rendered = renderChild(childConfig);
             content.appendChild(rendered);
