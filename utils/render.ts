@@ -28,6 +28,7 @@ import { createSafeLayout } from "../builders/layout";
 import { createSafeList } from "../builders/list";
 import { createSafeMetric } from "../builders/metric";
 import { createSafeNav } from "../builders/nav";
+import { createSafeNavMain } from "../builders/navmain";
 import { createSafePicker } from "../builders/picker";
 import { createSafeSheet } from "../builders/sheet";
 import { createSafeTable } from "../builders/table";
@@ -128,6 +129,9 @@ export function buildComponent(config: ConfigBase, onEvent?: OnSafeEvent): HTMLE
             break;
         case "nav":
             createSafeNav(container, config, ctx);
+            break;
+        case "navmain":
+            createSafeNavMain(container, config, ctx);
             break;
         case "picker":
             createSafePicker(container, config, ctx);

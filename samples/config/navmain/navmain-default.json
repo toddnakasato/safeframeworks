@@ -1,0 +1,57 @@
+{
+  "component": "navmain",
+  "metadata": {
+    "component": "navmain",
+    "variant": "default"
+  },
+  "children": {
+    "link-1": {
+      "component": "callout",
+      "metadata": {
+        "component": "callout",
+        "variant": "success",
+        "message": "Nav item 1"
+      }
+    },
+    "link-2": {
+      "component": "callout",
+      "metadata": {
+        "component": "callout",
+        "variant": "success",
+        "message": "Nav item 2"
+      }
+    },
+    "link-3": {
+      "component": "callout",
+      "metadata": {
+        "component": "callout",
+        "variant": "success",
+        "message": "Nav item 3"
+      }
+    },
+    "link-4": {
+      "component": "callout",
+      "metadata": {
+        "component": "callout",
+        "variant": "success",
+        "message": "Nav item 4"
+      }
+    },
+    "link-5": {
+      "component": "callout",
+      "metadata": {
+        "component": "callout",
+        "variant": "success",
+        "message": "Nav item 5"
+      }
+    },
+    "link-6": {
+      "component": "callout",
+      "metadata": {
+        "component": "callout",
+        "variant": "success",
+        "message": "Nav item 6"
+      }
+    }
+  }
+}
