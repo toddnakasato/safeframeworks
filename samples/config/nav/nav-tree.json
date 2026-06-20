@@ -1,7 +1,7 @@
 {
   "component": "nav",
   "metadata": {
-    "navStyle": "dark",
+    "navStyle": "classic",
     "title": "DevConsole",
     "subtitle": "v2",
     "icon": "terminal"

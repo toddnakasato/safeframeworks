@@ -105,7 +105,7 @@ import mapPathConfig from "./config/map/map-path.json";
 import navAccordionConfig from "./config/nav/nav-accordion.json";
 import navClassicConfig from "./config/nav/nav-classic.json";
 import navGroupedConfig from "./config/nav/nav-grouped.json";
-import navDarkConfig from "./config/nav/nav-dark.json";
+import navTreeConfig from "./config/nav/nav-tree.json";
 import navPillConfig from "./config/nav/nav-pill.json";
 import navIconRailConfig from "./config/nav/nav-icon-rail.json";
 import pickerListConfig from "./config/picker/picker-list.json";
@@ -417,7 +417,7 @@ export const SAMPLES: Record<string, Record<string, ConfigBase>> = {
         "nav-accordion": resolveData(navAccordionConfig as unknown as ConfigBase),
         "nav-classic": resolveData(navClassicConfig as unknown as ConfigBase),
         "nav-grouped": resolveData(navGroupedConfig as unknown as ConfigBase),
-        "nav-dark": resolveData(navDarkConfig as unknown as ConfigBase),
+        "nav-tree": resolveData(navTreeConfig as unknown as ConfigBase),
         "nav-pill": resolveData(navPillConfig as unknown as ConfigBase),
         "nav-icon-rail": resolveData(navIconRailConfig as unknown as ConfigBase),
     },
