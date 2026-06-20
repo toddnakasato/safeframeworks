@@ -25,12 +25,14 @@ export function createSafeChat(container: HTMLElement, config: ConfigBase, ctx: 
 
     const root = el("div");
     root.setAttribute("data-component", "chat");
+    root.setAttribute("data-layout", "column");
 
     const header = el("div", "chat-header");
     header.appendChild(el("span", "chat-title", title));
     root.appendChild(header);
 
     const messagesEl = el("div", "chat-messages");
+    messagesEl.setAttribute("data-layout", "column");
     root.appendChild(messagesEl);
 
     function renderMessages() {

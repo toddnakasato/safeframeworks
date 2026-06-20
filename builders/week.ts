@@ -26,6 +26,7 @@ export function createSafeWeek(container: HTMLElement, config: ConfigBase, ctx: 
 
     const root = el("div");
     root.setAttribute("data-component", "week");
+    root.setAttribute("data-layout", "column");
     applyIntent(root, metadata);
 
     const doNavigate = (dir: number) => {
@@ -60,6 +61,7 @@ export function createSafeWeek(container: HTMLElement, config: ConfigBase, ctx: 
 
         for (const date of dates) {
             const h = el("div", "week-day-header");
+            h.setAttribute("data-layout", "column");
             if (isSameDay(date, displayToday)) h.setAttribute("data-today", "true");
             if (isWeekend(date)) h.setAttribute("data-weekend", "true");
             h.appendChild(el("span", "week-day-name", DAY_NAMES_SHORT[date.getDay()]));
@@ -90,6 +92,7 @@ export function createSafeWeek(container: HTMLElement, config: ConfigBase, ctx: 
         const grid = el("div", "week-mini-grid");
         for (const date of dates) {
             const day = el("div", "week-mini-day");
+            day.setAttribute("data-layout", "column");
             if (isSameDay(date, displayToday)) day.setAttribute("data-today", "true");
             if (isWeekend(date)) day.setAttribute("data-weekend", "true");
             day.appendChild(el("div", "week-mini-day-name", DAY_NAMES_SHORT[date.getDay()]));

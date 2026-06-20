@@ -112,6 +112,7 @@ function buildSimple(root: HTMLElement, config: ConfigBase, data: any[], ctx: Sa
         root.replaceChildren();
         const { page, totalPages, slice, go } = makePager(state, data.length, pageSize, ctx, render);
         const items = el("div", "list-items");
+        items.setAttribute("data-layout", "column");
         slice(data).forEach((item, i) => {
             const label = typeof item === "string" ? item : item[labelField];
             const description = typeof item === "object" ? item[descriptionField] : undefined;
@@ -127,6 +128,7 @@ function buildSimple(root: HTMLElement, config: ConfigBase, data: any[], ctx: Sa
                 row.appendChild(ic);
             }
             const body = el("span", "item-body");
+            body.setAttribute("data-layout", "column");
             body.appendChild(el("span", "item-label", String(label ?? "")));
             if (description) body.appendChild(el("span", "item-description", String(description)));
             row.appendChild(body);
@@ -166,6 +168,7 @@ function buildSelection(root: HTMLElement, config: ConfigBase, data: any[], ctx:
     function render() {
         root.replaceChildren();
         const items = el("div", "list-items");
+        items.setAttribute("data-layout", "column");
         data.forEach((item, i) => {
             const row = el("div", "list-item");
             if (isSelected(i)) row.setAttribute("data-selected", "true");
@@ -178,6 +181,7 @@ function buildSelection(root: HTMLElement, config: ConfigBase, data: any[], ctx:
             if (mode === "multiple" && isSelected(i)) control.textContent = "check";
             row.appendChild(control);
             const body = el("span", "item-body");
+            body.setAttribute("data-layout", "column");
             body.appendChild(el("span", "item-label", String(item[labelField] ?? "")));
             if (item[descriptionField]) body.appendChild(el("span", "item-description", String(item[descriptionField])));
             row.appendChild(body);
@@ -206,6 +210,7 @@ function buildColumns(root: HTMLElement, config: ConfigBase, data: any[], ctx: S
         for (const f of fields) header.appendChild(el("span", "header-cell", String(f.label ?? f.name)));
         root.appendChild(header);
         const items = el("div", "list-items");
+        items.setAttribute("data-layout", "column");
         slice(data).forEach((item, i) => {
             const row = el("div", "list-item");
             row.style.gridTemplateColumns = `repeat(${fields.length}, 1fr)`;
@@ -269,6 +274,7 @@ function buildFiles(root: HTMLElement, config: ConfigBase, data: any[], ctx: Saf
         root.replaceChildren();
         const { page, totalPages, slice, go } = makePager(state, data.length, pageSize, ctx, render);
         const items = el("div", "list-items");
+        items.setAttribute("data-layout", "column");
         slice(data).forEach((item, i) => {
             const row = el("div", "list-item");
             if (item.type != null) row.setAttribute("data-file-type", String(item.type));
@@ -280,6 +286,7 @@ function buildFiles(root: HTMLElement, config: ConfigBase, data: any[], ctx: Saf
             if (g) ic.appendChild(g);
             row.appendChild(ic);
             const body = el("span", "item-body");
+            body.setAttribute("data-layout", "column");
             body.appendChild(el("span", "item-label", String(item[labelField] ?? "")));
             body.appendChild(el("span", "item-meta", String(item.size ?? "")));
             row.appendChild(body);
@@ -308,6 +315,7 @@ function buildActions(root: HTMLElement, config: ConfigBase, data: any[], ctx: S
     const statusAccents: Record<string, string> = { ...LIST_STATUS_ACCENTS, ...overrides };
 
     const items = el("div", "list-items");
+        items.setAttribute("data-layout", "column");
     data.forEach((item, i) => {
         const status = item[statusField] as string | undefined;
         const intent = status ? statusAccents[status.toLowerCase()] ?? "neutral" : undefined;
@@ -319,6 +327,7 @@ function buildActions(root: HTMLElement, config: ConfigBase, data: any[], ctx: S
         if (g) ic.appendChild(g);
         row.appendChild(ic);
         const body = el("span", "item-body");
+            body.setAttribute("data-layout", "column");
         body.appendChild(el("span", "item-label", String(item[labelField] ?? "")));
         body.appendChild(el("span", "item-meta", String(item[timeField] ?? "")));
         row.appendChild(body);
@@ -385,6 +394,7 @@ function buildHierarchy(root: HTMLElement, config: ConfigBase, data: any[], ctx:
         const flat = flattenTree(data, expanded);
         const { page, totalPages, slice, go } = makePager(state, flat.length, pageSize, ctx, render);
         const items = el("div", "list-items");
+        items.setAttribute("data-layout", "column");
         for (const node of slice(flat)) {
             const isGroup = !!node.children?.length;
             const isOpen = expanded.has(String(node.id));
@@ -504,6 +514,7 @@ function buildPropertyGrid(root: HTMLElement, config: ConfigBase, data: any[], c
     function render() {
         root.replaceChildren();
         const items = el("div", "list-items");
+        items.setAttribute("data-layout", "column");
         for (const n of data) items.appendChild(renderNode(n, 0));
         root.appendChild(items);
     }
@@ -566,6 +577,7 @@ function buildGantt(root: HTMLElement, config: ConfigBase, data: any[], ctx: Saf
         dateRow.style.gridTemplateColumns = `repeat(${days}, 1fr)`;
         for (const d of dates) {
             const cell = el("span", "gantt-date");
+            cell.setAttribute("data-layout", "column");
             if (sameDay(d, today)) cell.setAttribute("data-today", "true");
             if (d.getDay() === 0 || d.getDay() === 6) cell.setAttribute("data-weekend", "true");
             cell.appendChild(el("span", "gantt-day-name", DAY_NAMES_SHORT[d.getDay()]));
@@ -576,6 +588,7 @@ function buildGantt(root: HTMLElement, config: ConfigBase, data: any[], ctx: Saf
         scroll.appendChild(header);
 
         const items = el("div", "list-items");
+        items.setAttribute("data-layout", "column");
         data.forEach((item, i) => {
             const intent = (item.accent as string) ?? "brand";
             const row = el("div", "gantt-row");

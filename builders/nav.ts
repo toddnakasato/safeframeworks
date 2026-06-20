@@ -62,7 +62,7 @@ export function createSafeNav(container: HTMLElement, config: ConfigBase, ctx: S
 
     const navStyle = (metadata.navStyle as string) ?? "classic";
 
-    const root = elAttrs("div", { "data-component": "nav", "data-nav-style": navStyle });
+    const root = elAttrs("div", { "data-component": "nav", "data-nav-style": navStyle, "data-layout": "column" });
     applyPaintState(root, metadata, "nav");
     // Intent only — paint is safestyles' job.
     if (accent) root.setAttribute("data-accent", accent);
@@ -88,7 +88,7 @@ export function createSafeNav(container: HTMLElement, config: ConfigBase, ctx: S
         root.appendChild(header);
     }
 
-    const nav = elAttrs("nav", { "data-nav-main": "" });
+    const nav = elAttrs("nav", { "data-nav-main": "", "data-layout": "column" });
     root.appendChild(nav);
 
     const fire = (key: string) => {
@@ -157,7 +157,7 @@ export function createSafeNav(container: HTMLElement, config: ConfigBase, ctx: S
             wrap.appendChild(btn);
 
             if (isExpanded && Array.isArray(group.children)) {
-                const kids = elAttrs("div", { "data-nav-children": "" });
+                const kids = elAttrs("div", { "data-nav-children": "", "data-layout": "column" });
                 for (const child of group.children as any[]) {
                     const key = `${gKey}.${child.key ?? child.label}`;
                     const isActive = active === key;
@@ -190,7 +190,7 @@ export function createSafeNav(container: HTMLElement, config: ConfigBase, ctx: S
     render();
 
     if (bottom.length) {
-        const foot = elAttrs("div", { "data-nav-bottom": "" });
+        const foot = elAttrs("div", { "data-nav-bottom": "", "data-layout": "column" });
         for (const [key, child] of bottom) {
             const b = elAttrs("button", { "data-nav-button": "", "data-icon-only": "true" });
             const ic = iconEl(child.icon as string, 15);

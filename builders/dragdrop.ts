@@ -36,6 +36,7 @@ function buildGeneric(root: HTMLElement, config: ConfigBase, items: Record<strin
     const dropDesc = (config.metadata.dropDescription as string) ?? "Drag an item to this zone";
 
     const source = el("div", "drag-source");
+    source.setAttribute("data-layout", "column");
     items.forEach((item, i) => {
         const id = (item.id as string) ?? String(i);
         const node = el("div", "drag-item");
@@ -57,6 +58,7 @@ function buildGeneric(root: HTMLElement, config: ConfigBase, items: Record<strin
     });
 
     const targets = el("div", "drop-targets");
+    targets.setAttribute("data-layout", "column");
     const zone = el("div", "drop-zone");
     zone.setAttribute("data-layout", "column");
     zone.addEventListener("drop", (e: DragEvent) => {
@@ -93,6 +95,7 @@ function buildFile(root: HTMLElement, config: ConfigBase, ctx: SafeFireContext):
     };
 
     const zone = el("div", "file-zone");
+    zone.setAttribute("data-layout", "column");
     const input = document.createElement("input");
     input.type = "file";
     input.accept = accept;
@@ -127,6 +130,7 @@ function buildPalette(root: HTMLElement, config: ConfigBase, ctx: SafeFireContex
     const sections = (config.metadata.sections as any[]) ?? [{ id: "main", label: "Main" }];
 
     const sidebar = el("div", "palette-sidebar");
+    sidebar.setAttribute("data-layout", "column");
     for (const cat of categories) {
         const catEl = el("div", "palette-category");
         catEl.appendChild(el("div", "palette-category-label", cat.label));

@@ -55,6 +55,7 @@ export function createSafeCalendar(container: HTMLElement, config: ConfigBase, c
         const month_ = el("div");
         month_.setAttribute("data-component", "calendar");
         month_.setAttribute("data-variant", "grid");
+        month_.setAttribute("data-layout", "column");
         month_.setAttribute("data-size", gridSize);
 
         const header = el("div", "calendar-header");
@@ -259,12 +260,14 @@ export function createSafeCalendar(container: HTMLElement, config: ConfigBase, c
         }
 
         if (variant === "flat") {
+            root.setAttribute("data-layout", "column");
             root.appendChild(buildFlatDayHeaders(37));
             for (let i = 0; i < 12; i++) root.appendChild(buildFlatMonth(cfgYear, i));
             return;
         }
 
         if (variant === "flat-quarter") {
+            root.setAttribute("data-layout", "column");
             const quarterLabels = ["Q1", "Q2", "Q3", "Q4"];
             const quarterAccents = ["success", "info", "warn", "danger"];
             root.appendChild(buildFlatDayHeaders(37));

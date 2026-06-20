@@ -33,6 +33,7 @@ export function createSafeToggle(container: HTMLElement, config: ConfigBase, ctx
         const buildLabelEl = (): HTMLElement | null => {
             if (!label) return null;
             const wrap = el("div", "toggle-label-wrap");
+            wrap.setAttribute("data-layout", "column");
             wrap.appendChild(el("span", "toggle-label", label));
             if (description) wrap.appendChild(el("span", "toggle-description", description));
             return wrap;
@@ -131,6 +132,7 @@ export function createSafeToggle(container: HTMLElement, config: ConfigBase, ctx
                 if (item.icon) header.appendChild(el("span", "toggle-icon", item.icon));
 
                 const labelWrap = el("div", "toggle-label-wrap");
+                labelWrap.setAttribute("data-layout", "column");
                 labelWrap.style.flex = "1"; // react applies this inline too
                 const labelRow = el("div", "toggle-label-row");
                 labelRow.appendChild(el("span", "toggle-label", item.label));
@@ -151,6 +153,7 @@ export function createSafeToggle(container: HTMLElement, config: ConfigBase, ctx
                     for (const child of item.children) {
                         const row = el("div", "toggle-child-row");
                         const wrap = el("div", "toggle-label-wrap");
+            wrap.setAttribute("data-layout", "column");
                         wrap.appendChild(el("span", "toggle-label", child.label));
                         if (child.description) wrap.appendChild(el("span", "toggle-description", child.description));
                         row.appendChild(wrap);
