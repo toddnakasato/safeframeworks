@@ -20,8 +20,8 @@
         "variant": "simple"
       },
       "data": {
-        "record": {
-          "name": "briefing-metrics",
+        "items": {
+          "name": "items",
           "type": "list",
           "source": "inline",
           "inline": [
@@ -45,7 +45,21 @@
               "value": 2,
               "target": "alerts"
             }
-          ]
+          ],
+          "schema": {
+            "fields": [
+              {
+                "name": "label",
+                "label": "Label",
+                "type": "text"
+              },
+              {
+                "name": "value",
+                "label": "Value",
+                "type": "number"
+              }
+            ]
+          }
         }
       }
     },

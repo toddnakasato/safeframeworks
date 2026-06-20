@@ -20,8 +20,8 @@
         "variant": "simple"
       },
       "data": {
-        "record": {
-          "name": "brief-metrics",
+        "items": {
+          "name": "items",
           "type": "list",
           "source": "inline",
           "inline": [
@@ -33,7 +33,21 @@
               "label": "Closed",
               "value": 14
             }
-          ]
+          ],
+          "schema": {
+            "fields": [
+              {
+                "name": "label",
+                "label": "Label",
+                "type": "text"
+              },
+              {
+                "name": "value",
+                "label": "Value",
+                "type": "number"
+              }
+            ]
+          }
         }
       }
     },
