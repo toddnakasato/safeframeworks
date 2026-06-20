@@ -41,6 +41,12 @@ export function createSafeColumns(container: HTMLElement, config: ConfigBase, _c
         const bodyEl = el("div", "columns-body");
         const footerEl = hasFooter ? el("div", "columns-footer") : null;
 
+        // Header/footer surface from metadata
+        const headerSurface = (metadata.headerSurface as string) ?? "";
+        const footerSurface = (metadata.footerSurface as string) ?? "";
+        if (headerEl && headerSurface) headerEl.setAttribute("data-surface", headerSurface);
+        if (footerEl && footerSurface) footerEl.setAttribute("data-surface", footerSurface);
+
         // Body gets the grid
         bodyEl.style.gridTemplateColumns = `repeat(${totalColumns}, minmax(0, 1fr))`;
         bodyEl.style.gap = gap;
