@@ -128,12 +128,12 @@
     </div>
 
     <div class="section-label" style="margin-top:16px">COMPONENTS</div>
-    <button class="comp-btn" class:active={activeComponent === null} on:click={() => selectComponent(null)}>All</button>
+    <button class="comp-btn" class:active={activeComponent === null} onclick={() => selectComponent(null)}>All</button>
     {#each componentNames as name}
-      <button class="comp-btn" class:active={activeComponent === name && !activeVariation} on:click={() => selectComponent(name)}>{name}</button>
+      <button class="comp-btn" class:active={activeComponent === name && !activeVariation} onclick={() => selectComponent(name)}>{name}</button>
       {#if activeComponent === name}
         {#each Object.keys(SAMPLES[name]).sort() as v}
-          <button class="var-btn" class:active={activeVariation === v} on:click={() => selectVariation(name, v)}>{v}</button>
+          <button class="var-btn" class:active={activeVariation === v} onclick={() => selectVariation(name, v)}>{v}</button>
         {/each}
       {/if}
     {/each}
