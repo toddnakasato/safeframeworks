@@ -54,6 +54,9 @@ import chatConversationConfig from "./config/chat/chat-conversation.json";
 import chatSimpleConfig from "./config/chat/chat-simple.json";
 import columnsTwoConfig from "./config/columns/columns-two.json";
 import columnsThreeConfig from "./config/columns/columns-three.json";
+import columnsHeaderConfig from "./config/columns/columns-header.json";
+import columnsFooterConfig from "./config/columns/columns-footer.json";
+import columnsHeaderFooterConfig from "./config/columns/columns-header-footer.json";
 import dragDropListConfig from "./config/drag-drop/drag-drop-list.json";
 import dragDropKanbanConfig from "./config/drag-drop/drag-drop-kanban.json";
 import funnelVerticalConfig from "./config/funnel/funnel-vertical.json";
@@ -348,6 +351,9 @@ export const SAMPLES: Record<string, Record<string, ConfigBase>> = {
     columns: {
         "columns-two": resolveData(columnsTwoConfig as unknown as ConfigBase),
         "columns-three": resolveData(columnsThreeConfig as unknown as ConfigBase),
+        "columns-header": resolveData(columnsHeaderConfig as unknown as ConfigBase),
+        "columns-footer": resolveData(columnsFooterConfig as unknown as ConfigBase),
+        "columns-header-footer": resolveData(columnsHeaderFooterConfig as unknown as ConfigBase),
     },
     "drag-drop": {
         "drag-drop-list": resolveData(dragDropListConfig as unknown as ConfigBase),
