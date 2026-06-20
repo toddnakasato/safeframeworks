@@ -119,6 +119,7 @@ export function createSafePicker(container: HTMLElement, config: ConfigBase, ctx
     }
 
     const results: HTMLElement = isCardGrid ? el("div", "grid") : el("ul", "list");
+    if (!isCardGrid) results.setAttribute("data-layout", "column");
     if (isCardGrid) {
         const cardMin = (metadata.cardMinWidth as string) ?? "220px";
         results.style.display = "grid";
@@ -180,6 +181,7 @@ export function createSafePicker(container: HTMLElement, config: ConfigBase, ctx
         filtered.forEach((row, i) => {
             if (isCardGrid) {
                 const card = el("div", "card");
+                card.setAttribute("data-layout", "column");
                 card.setAttribute("data-surface", "raised");
                 card.setAttribute("data-radius", radius);
                 card.onclick = () => ctx.fire("select", { row, index: i });

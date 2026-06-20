@@ -58,6 +58,7 @@ function buildGeneric(root: HTMLElement, config: ConfigBase, items: Record<strin
 
     const targets = el("div", "drop-targets");
     const zone = el("div", "drop-zone");
+    zone.setAttribute("data-layout", "column");
     zone.addEventListener("drop", (e: DragEvent) => {
         e.preventDefault();
         zone.removeAttribute("data-over");
@@ -181,6 +182,7 @@ function buildPalette(root: HTMLElement, config: ConfigBase, ctx: SafeFireContex
 function buildRow(root: HTMLElement, config: ConfigBase, items: Record<string, any>[], ctx: SafeFireContext): void {
     const labelField = (config.metadata.labelField as string) ?? "name";
     const container = el("div", "drop-zone");
+    container.setAttribute("data-layout", "column");
 
     function render() {
         container.replaceChildren();
@@ -274,6 +276,7 @@ function buildTable(root: HTMLElement, config: ConfigBase, items: Record<string,
 
     const fileList = el("div", "file-list");
     const table = el("div", "drop-zone");
+    table.setAttribute("data-layout", "column");
 
     function render() {
         table.replaceChildren();
@@ -336,6 +339,7 @@ function buildTemplate(root: HTMLElement, config: ConfigBase, ctx: SafeFireConte
 
     for (const zone of zones) {
         const zoneEl = el("div", "drop-zone");
+        zoneEl.setAttribute("data-layout", "column");
         zoneEl.setAttribute("data-zone", zone);
         const label = el("div", "zone-label", zone);
         zoneEl.appendChild(label);
@@ -372,6 +376,7 @@ function buildTeamAssign(root: HTMLElement, config: ConfigBase, items: Record<st
     const teams = (config.metadata.teams as any[]) ?? [{ id: "team-a", name: "Team A", icon: "settings" }, { id: "team-b", name: "Team B", icon: "rocket" }];
 
     const roster = el("div", "roster");
+    roster.setAttribute("data-layout", "column");
     const teamGrid = el("div", "grid");
 
     // Track assignments: teamId -> item ids
@@ -398,6 +403,7 @@ function buildTeamAssign(root: HTMLElement, config: ConfigBase, items: Record<st
             const handle = el("span", "drag-handle", "⠿");
             const avatar = el("span", "avatar", String(item[avatarField] ?? (String(item[nameField] ?? "")[0] ?? "?")));
             const info = el("div", "roster-info");
+            info.setAttribute("data-layout", "column");
             const nameEl = el("span", "roster-name", String(item[nameField] ?? `Person ${i + 1}`));
             const roleEl = el("span", "type-badge", String(item[roleField] ?? ""));
             info.appendChild(nameEl);

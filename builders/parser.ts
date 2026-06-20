@@ -115,7 +115,7 @@ export function createSafeParser(container: HTMLElement, config: ConfigBase, ctx
         tabs: { id: string; label: string; build: (panel: HTMLElement) => void }[],
         defaultTab?: string
     ): HTMLElement {
-        const wrapper = elAttrs("div", { "data-role": "tab-group" });
+        const wrapper = elAttrs("div", { "data-role": "tab-group", "data-layout": "column" });
         const bar = elAttrs("div", { "data-role": "tab-bar" });
         const contentArea = elAttrs("div", { "data-role": "tab-content" });
 
@@ -158,7 +158,7 @@ export function createSafeParser(container: HTMLElement, config: ConfigBase, ctx
     /* ================================================================
      * Left panel — Parse | Generate | Verify
      * ================================================================ */
-    const leftPanel = elAttrs("div", { "data-role": "panel-left" });
+    const leftPanel = elAttrs("div", { "data-role": "panel-left", "data-layout": "column" });
 
     const leftTabs = buildTabs([
         {
@@ -204,7 +204,7 @@ export function createSafeParser(container: HTMLElement, config: ConfigBase, ctx
             id: "generate",
             label: "Generate",
             build: (panel) => {
-                const placeholder = elAttrs("div", { "data-role": "placeholder" });
+                const placeholder = elAttrs("div", { "data-role": "placeholder", "data-layout": "column" });
                 const icon = elAttrs("div", { "data-role": "placeholder-icon" });
                 icon.textContent = "upload";
                 placeholder.appendChild(icon);
@@ -221,7 +221,7 @@ export function createSafeParser(container: HTMLElement, config: ConfigBase, ctx
             id: "verify",
             label: "Verify",
             build: (panel) => {
-                const placeholder = elAttrs("div", { "data-role": "placeholder" });
+                const placeholder = elAttrs("div", { "data-role": "placeholder", "data-layout": "column" });
                 const icon = elAttrs("div", { "data-role": "placeholder-icon" });
                 icon.textContent = "check";
                 placeholder.appendChild(icon);
@@ -242,7 +242,7 @@ export function createSafeParser(container: HTMLElement, config: ConfigBase, ctx
     /* ================================================================
      * Right panel — Document Sections | JSON Structure
      * ================================================================ */
-    const rightPanel = elAttrs("div", { "data-role": "panel-right" });
+    const rightPanel = elAttrs("div", { "data-role": "panel-right", "data-layout": "column" });
 
     const tree = buildParserTree(data, idField, parentField);
 

@@ -42,6 +42,7 @@ export function createSafeTimeline(container: HTMLElement, config: ConfigBase, c
 
     const root = el("div");
     root.setAttribute("data-component", "timeline");
+    root.setAttribute("data-layout", "column");
     applyIntent(root, metadata);
     applyPaintState(root, metadata, "timeline");
 
@@ -370,6 +371,7 @@ export function createSafeTimeline(container: HTMLElement, config: ConfigBase, c
             row.onclick = () => doSelect(i, item);
             row.appendChild(el("div", "tl-career-date", String(item[dateField])));
             const dotCol = el("div", "tl-career-dot-col");
+            dotCol.setAttribute("data-layout", "column");
             dotCol.appendChild(el("div", "tl-dot"));
             if (i < sorted.length - 1) dotCol.appendChild(el("div", "tl-career-line"));
             row.appendChild(dotCol);
@@ -492,6 +494,7 @@ export function createSafeTimeline(container: HTMLElement, config: ConfigBase, c
         const dotsRow = el("div", "tl-h-dots");
         sorted.forEach((item, i) => {
             const dotWrap = el("div", "tl-h-dot-wrap");
+            dotWrap.setAttribute("data-layout", "column");
             dotWrap.onclick = () => doSelect(i, item);
             const dot = el("div", "tl-dot");
             dot.setAttribute("data-status", String(item.status ?? "default"));
@@ -550,6 +553,7 @@ export function createSafeTimeline(container: HTMLElement, config: ConfigBase, c
         const strip = el("div", "tl-sprint-days-strip");
         sorted.forEach((item, i) => {
             const col = el("div", "tl-sprint-day-col");
+            col.setAttribute("data-layout", "column");
             if (item.today) col.setAttribute("data-today", "true");
             col.onclick = () => doSelect(i, item);
             col.appendChild(el("div", "tl-sprint-day-label", String(item[dateField])));
@@ -596,6 +600,7 @@ export function createSafeTimeline(container: HTMLElement, config: ConfigBase, c
         const strip = el("div", "tl-stream-strip");
         sorted.forEach((item, i) => {
             const col = el("div", "tl-stream-event");
+            col.setAttribute("data-layout", "column");
             col.onclick = () => doSelect(i, item);
             const label = el("div", "tl-stream-label", String(item[labelField] ?? ""));
             col.appendChild(label);
@@ -621,6 +626,7 @@ export function createSafeTimeline(container: HTMLElement, config: ConfigBase, c
         event.onclick = () => doSelect(i, item);
 
         const marker = el("div", "marker");
+        marker.setAttribute("data-layout", "column");
         if (icon) {
             marker.appendChild(el("span", "icon", icon));
         } else {

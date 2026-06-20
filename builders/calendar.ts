@@ -181,6 +181,7 @@ export function createSafeCalendar(container: HTMLElement, config: ConfigBase, c
 
             // Panel
             const panel = el("div", "calendar-detail-panel");
+            panel.setAttribute("data-layout", "column");
             const panelHeader = el("div", "calendar-detail-panel-header");
             const panelTitle = el("span", "calendar-detail-panel-title", "Select a day");
             const collapseBtn = el("button", "calendar-detail-collapse", "▸");

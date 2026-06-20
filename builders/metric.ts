@@ -32,6 +32,7 @@ export function createSafeMetric(container: HTMLElement, config: ConfigBase, ctx
 
     const root = el("div");
     root.setAttribute("data-component", "metric");
+    root.setAttribute("data-layout", "column");
 
     if (metadata.title) {
         const title = el("span");

@@ -81,9 +81,11 @@ export function createSafeToggle(container: HTMLElement, config: ConfigBase, ctx
             for (const item of items) {
                 const row = el("div", "toggle-table-row");
                 const cell1 = el("div", "toggle-table-cell");
+                cell1.setAttribute("data-layout", "column");
                 cell1.appendChild(el("span", "toggle-label", item.label));
                 if (item.description) cell1.appendChild(el("span", "toggle-description", item.description));
                 const cell2 = el("div", "toggle-table-cell");
+                cell2.setAttribute("data-layout", "column");
                 cell2.setAttribute("data-align", "right");
                 cell2.appendChild(buildSwitchTrack(!!states[item.key], undefined, () => handleToggle(item.key, item.label)));
                 row.append(cell1, cell2);
@@ -172,6 +174,7 @@ export function createSafeToggle(container: HTMLElement, config: ConfigBase, ctx
             grid.replaceChildren();
             items.forEach((item: any, i: number) => {
                 const cell = el("div", "toggle-check-cell");
+                cell.setAttribute("data-layout", "column");
                 const label = el("div", "toggle-check-label", item.icon ?? item.label ?? "");
                 const track = buildSwitchTrack(!!item.checked, !!item.disabled, () => {
                     item.checked = !item.checked;

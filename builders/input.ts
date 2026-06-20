@@ -402,6 +402,7 @@ export function createSafeInput(container: HTMLElement, config: ConfigBase, ctx:
 
         if (inputType === "tags") {
             const tw = el("div", "tags-wrap");
+            tw.setAttribute("data-layout", "column");
             const list = el("div", "tags-list");
             (Array.isArray(editValue) ? editValue : []).forEach((tag: string, i: number) => {
                 const t = el("span", "tag", tag);
@@ -532,6 +533,7 @@ export function createSafeInput(container: HTMLElement, config: ConfigBase, ctx:
 
         if (inputType === "signature") {
             const sw = el("div", "signature-wrap");
+            sw.setAttribute("data-layout", "column");
             const canvas = el("canvas", "signature-canvas") as HTMLCanvasElement;
             canvas.width = signatureWidth;
             canvas.height = signatureHeight;
@@ -583,6 +585,7 @@ export function createSafeInput(container: HTMLElement, config: ConfigBase, ctx:
 
         if (inputType === "address") {
             const aw = el("div", "address-wrap");
+            aw.setAttribute("data-layout", "column");
             for (const af of addressFieldsList) {
                 const inp = el("input", "field") as HTMLInputElement;
                 inp.type = "text";

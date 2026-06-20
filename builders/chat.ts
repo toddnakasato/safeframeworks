@@ -90,6 +90,7 @@ export function createSafeChat(container: HTMLElement, config: ConfigBase, ctx: 
             btn.onclick = () => ctx.fire("action", { label: action.label });
             if (action.icon) btn.appendChild(el("span", "chat-action-icon", action.icon));
             const text = el("div", "chat-action-text");
+            text.setAttribute("data-layout", "column");
             text.appendChild(el("span", "chat-action-label", action.label));
             if (action.description) text.appendChild(el("span", "chat-action-desc", action.description));
             btn.appendChild(text);
