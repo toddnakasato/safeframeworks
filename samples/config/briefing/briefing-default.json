@@ -17,8 +17,7 @@
         "order": 0,
         "icon": "activity",
         "title": "Metrics",
-        "columns": 2,
-        "spacing": "compact"
+        "columns": "1fr 1fr"
       },
       "children": {
         "leads": {
