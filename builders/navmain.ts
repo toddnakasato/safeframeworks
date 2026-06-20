@@ -1,7 +1,7 @@
 import type { ConfigBase, OnSafeEvent, SafeFireContext } from "../../safecontracts/src/contracts";
 import { el } from "../utils/util";
 
-export type RenderChild = (config: ConfigBase, onEvent?: OnSafeEvent, container?: HTMLElement) => HTMLElement;
+export type RenderChild = (config: ConfigBase, onEvent?: OnSafeEvent) => HTMLElement;
 
 /*----------------------------------------------------------------------------------------------------
  *
@@ -32,7 +32,7 @@ export function createSafeNavMain(
         for (const [key, childConfig] of children) {
             const cell = el("div", "navmain-item");
             cell.setAttribute("data-key", key);
-            if (renderChild) renderChild(childConfig as ConfigBase, undefined, cell);
+            if (renderChild) cell.appendChild(renderChild(childConfig as ConfigBase));
             root.appendChild(cell);
         }
     } else {
@@ -45,7 +45,7 @@ export function createSafeNavMain(
             const position = childMeta.position as string | undefined;
             const cell = el("div", "navmain-item");
             cell.setAttribute("data-key", key);
-            if (renderChild) renderChild(childConfig as ConfigBase, undefined, cell);
+            if (renderChild) cell.appendChild(renderChild(childConfig as ConfigBase));
 
             if (position === "header" && headerEl) {
                 headerEl.appendChild(cell);
