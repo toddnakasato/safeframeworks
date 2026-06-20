@@ -60,6 +60,9 @@ import funnelVerticalConfig from "./config/funnel/funnel-vertical.json";
 import funnelHorizontalConfig from "./config/funnel/funnel-horizontal.json";
 import gaugeRadialConfig from "./config/gauge/gauge-radial.json";
 import gaugeMinimalConfig from "./config/gauge/gauge-minimal.json";
+import gaugeHalfConfig from "./config/gauge/gauge-half.json";
+import gaugeTargetConfig from "./config/gauge/gauge-target.json";
+import gaugeThresholdsConfig from "./config/gauge/gauge-thresholds.json";
 import gridDetailConfig from "./config/grid/grid-detail.json";
 import gridCompactConfig from "./config/grid/grid-compact.json";
 import heatmapMatrixConfig from "./config/heatmap/heatmap-matrix.json";
@@ -358,6 +361,9 @@ export const SAMPLES: Record<string, Record<string, ConfigBase>> = {
     gauge: {
         "gauge-radial": resolveData(gaugeRadialConfig as unknown as ConfigBase),
         "gauge-minimal": resolveData(gaugeMinimalConfig as unknown as ConfigBase),
+        "gauge-half": resolveData(gaugeHalfConfig as unknown as ConfigBase),
+        "gauge-target": resolveData(gaugeTargetConfig as unknown as ConfigBase),
+        "gauge-thresholds": resolveData(gaugeThresholdsConfig as unknown as ConfigBase),
     },
     grid: {
         "grid-detail": resolveData(gridDetailConfig as unknown as ConfigBase),

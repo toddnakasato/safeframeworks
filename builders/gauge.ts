@@ -1,7 +1,7 @@
 import * as d3 from "d3";
 import type { SafeFireContext } from "../../safecontracts/src/contracts";
 import type { ConfigBase } from "../../safecontracts/src/contracts";
-import { elAttrs, applyPaintState, applyIntent, readList } from "../utils/util";
+import { elAttrs, applyPaintState, applyIntent, readRecord } from "../utils/util";
 
 /*----------------------------------------------------------------------------------------------------
  *
@@ -34,7 +34,7 @@ export function createSafeGauge(container: HTMLElement, config: ConfigBase, ctx:
     const thresholds = (metadata.thresholds as [number, string][]) ?? [[60, "var(--sd-danger)"], [80, "var(--sd-warning)"], [100, "var(--sd-success)"]];
 
     // Self-extract record data from the first DataSource (contract: record).
-    const data = readList(config);
+    const data = readRecord(config);
 
     const value = Number(data[valueField]) ?? 0;
     const label = labelField ? String(data[labelField] ?? "") : "";

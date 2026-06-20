@@ -1,12 +1,13 @@
 {
   "component": "gauge",
   "metadata": {
-    "variant": "minimal",
+    "variant": "default",
     "valueField": "value",
     "labelField": "label",
     "min": 0,
-    "max": 100,
-    "unit": "%"
+    "max": 200,
+    "target": 150,
+    "unit": "kW"
   },
   "eventHandler": {
     "handler": "gauge"
@@ -17,8 +18,8 @@
       "type": "record",
       "source": "inline",
       "inline": {
-        "value": 45,
-        "label": "CPU Usage"
+        "value": 127,
+        "label": "Power Output"
       }
     }
   }

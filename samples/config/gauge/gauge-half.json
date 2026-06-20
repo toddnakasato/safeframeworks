@@ -1,7 +1,7 @@
 {
   "component": "gauge",
   "metadata": {
-    "variant": "minimal",
+    "variant": "half",
     "valueField": "value",
     "labelField": "label",
     "min": 0,
@@ -17,8 +17,8 @@
       "type": "record",
       "source": "inline",
       "inline": {
-        "value": 45,
-        "label": "CPU Usage"
+        "value": 82,
+        "label": "Disk Space"
       }
     }
   }

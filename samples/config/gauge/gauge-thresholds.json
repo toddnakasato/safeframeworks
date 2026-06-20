@@ -1,12 +1,26 @@
 {
   "component": "gauge",
   "metadata": {
-    "variant": "minimal",
+    "variant": "default",
     "valueField": "value",
     "labelField": "label",
     "min": 0,
     "max": 100,
-    "unit": "%"
+    "unit": "\u00b0C",
+    "thresholds": [
+      [
+        40,
+        "var(--sd-success)"
+      ],
+      [
+        70,
+        "var(--sd-warning)"
+      ],
+      [
+        100,
+        "var(--sd-danger)"
+      ]
+    ]
   },
   "eventHandler": {
     "handler": "gauge"
@@ -17,8 +31,8 @@
       "type": "record",
       "source": "inline",
       "inline": {
-        "value": 45,
-        "label": "CPU Usage"
+        "value": 78,
+        "label": "Temperature"
       }
     }
   }

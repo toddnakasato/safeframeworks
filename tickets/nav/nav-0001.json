@@ -1,0 +1,18 @@
+{
+  "id": "nav-0001",
+  "component": "nav",
+  "type": "variation",
+  "title": "implment the variations for navigation from the figma design",
+  "description": "implment the variations for navigation from the figma design",
+  "status": "closed",
+  "proves": [
+    "builder-reconcile",
+    "paint-definition"
+  ],
+  "params": {
+    "component": "nav"
+  },
+  "created": "2026-06-20T03:49:41.232Z",
+  "updated": "2026-06-20T04:10:44.000Z",
+  "resolution": "Implemented 5 navStyle variants from figma: classic, grouped, pill, icon-rail, accordion. Added nav-tree sample for recursive nesting. Fixed builder to read navStyle from metadata. Added section heading rendering for grouped. Added border-left for accordion children. Removed dark as a navStyle (theme concern)."
+}
