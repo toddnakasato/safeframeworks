@@ -26,28 +26,19 @@ export function createSafeLayout(
 
     const root = el("div");
     root.setAttribute("data-component", "layout");
+    root.setAttribute("data-variant", variant);
 
     // External paint state (resolved from state.json by host)
     const _activeScene = metadata.activeScene ?? null;
-
-    // Paint intent attributes
     if (_activeScene != null) root.setAttribute("data-active-scene", String(_activeScene));
 
-    root.setAttribute("data-variant", variant);
-
-    // Grid/flex styles
-    if (variant === "left-main" || variant === "right-main" || variant === "left-center-right") {
-        root.style.display = "grid";
-        root.style.gridTemplateColumns = columns ?? (variant === "left-main" ? "220px 1fr" : variant === "right-main" ? "1fr 220px" : "220px 1fr 220px");
-        root.style.height = "100%";
-    } else if (variant === "top-main" || variant === "main-bottom") {
-        root.style.display = "grid";
-        root.style.gridTemplateRows = columns ?? "auto 1fr";
-        root.style.height = "100%";
-    } else if (variant === "stack") {
-        root.style.display = "flex";
-        root.style.flexDirection = "column";
-        root.style.height = "100%";
+    // Custom grid columns/rows override from metadata
+    if (columns) {
+        if (variant === "left-main" || variant === "main-detail" || variant === "left-main-right") {
+            root.style.gridTemplateColumns = columns;
+        } else if (variant === "header-main" || variant === "header-main-detail") {
+            root.style.gridTemplateRows = columns;
+        }
     }
 
     if (backLabel) {
@@ -64,7 +55,6 @@ export function createSafeLayout(
         const r = el("div");
         r.setAttribute("data-role", "layout-region");
         r.setAttribute("data-region", region);
-        r.style.overflow = "auto";
 
         // Render child into region
         const child = config.children?.[region];
