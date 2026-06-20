@@ -2,10 +2,10 @@
   "component": "layout",
   "metadata": {
     "component": "layout",
-    "variant": "stack"
+    "variant": "left-main-right"
   },
   "children": {
-    "top": {
+    "left": {
       "component": "columns",
       "metadata": {
         "component": "columns",
@@ -13,7 +13,7 @@
       },
       "children": {}
     },
-    "middle": {
+    "main": {
       "component": "columns",
       "metadata": {
         "component": "columns",
@@ -21,7 +21,7 @@
       },
       "children": {}
     },
-    "bottom": {
+    "right": {
       "component": "columns",
       "metadata": {
         "component": "columns",

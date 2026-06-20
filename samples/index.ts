@@ -89,8 +89,13 @@ import inputMaskedConfig from "./config/input/input-masked.json";
 import inputPinConfig from "./config/input/input-pin.json";
 import inputRangeDateConfig from "./config/input/input-range-date.json";
 import inputSignatureConfig from "./config/input/input-signature.json";
+import layoutSingleConfig from "./config/layout/layout-single.json";
 import layoutStackConfig from "./config/layout/layout-stack.json";
-import layoutSidebarConfig from "./config/layout/layout-sidebar.json";
+import layoutLeftMainConfig from "./config/layout/layout-left-main.json";
+import layoutMainDetailConfig from "./config/layout/layout-main-detail.json";
+import layoutLeftMainRightConfig from "./config/layout/layout-left-main-right.json";
+import layoutHeaderMainConfig from "./config/layout/layout-header-main.json";
+import layoutHeaderMainDetailConfig from "./config/layout/layout-header-main-detail.json";
 import listActionsConfig from "./config/list/list-actions.json";
 import listColumnsContactsConfig from "./config/list/list-columns-contacts.json";
 import listFileBrowserConfig from "./config/list/list-file-browser.json";
@@ -398,8 +403,13 @@ export const SAMPLES: Record<string, Record<string, ConfigBase>> = {
         "input-signature": resolveData(inputSignatureConfig as unknown as ConfigBase),
     },
     layout: {
+        "layout-single": resolveData(layoutSingleConfig as unknown as ConfigBase),
         "layout-stack": resolveData(layoutStackConfig as unknown as ConfigBase),
-        "layout-sidebar": resolveData(layoutSidebarConfig as unknown as ConfigBase),
+        "layout-left-main": resolveData(layoutLeftMainConfig as unknown as ConfigBase),
+        "layout-main-detail": resolveData(layoutMainDetailConfig as unknown as ConfigBase),
+        "layout-left-main-right": resolveData(layoutLeftMainRightConfig as unknown as ConfigBase),
+        "layout-header-main": resolveData(layoutHeaderMainConfig as unknown as ConfigBase),
+        "layout-header-main-detail": resolveData(layoutHeaderMainDetailConfig as unknown as ConfigBase),
     },
     list: {
         "list-actions": resolveData(listActionsConfig as unknown as ConfigBase),

@@ -1,0 +1,17 @@
+{
+  "component": "layout",
+  "metadata": {
+    "component": "layout",
+    "variant": "single"
+  },
+  "children": {
+    "main": {
+      "component": "columns",
+      "metadata": {
+        "component": "columns",
+        "totalColumns": 1
+      },
+      "children": {}
+    }
+  }
+}
