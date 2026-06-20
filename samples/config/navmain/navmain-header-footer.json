@@ -10,80 +10,106 @@
       "metadata": {
         "component": "callout",
         "variant": "insight",
-        "message": "Logo / Brand",
+        "message": "Acme Corp",
         "position": "header"
       }
     },
-    "link-1": {
-      "component": "callout",
+    "nav": {
+      "component": "nav",
       "metadata": {
-        "component": "callout",
-        "variant": "success",
-        "message": "Nav item 1"
+        "navStyle": "classic",
+        "title": "App"
+      },
+      "children": {
+        "dashboard": {
+          "component": "nav",
+          "metadata": {
+            "label": "Dashboard",
+            "icon": "layout-dashboard"
+          }
+        },
+        "orders": {
+          "component": "nav",
+          "metadata": {
+            "label": "Orders",
+            "icon": "shopping-cart",
+            "badge": "12"
+          },
+          "children": {
+            "all": {
+              "component": "nav",
+              "metadata": {
+                "label": "All Orders"
+              }
+            },
+            "pending": {
+              "component": "nav",
+              "metadata": {
+                "label": "Pending",
+                "badge": "5"
+              }
+            },
+            "fulfilled": {
+              "component": "nav",
+              "metadata": {
+                "label": "Fulfilled"
+              }
+            }
+          }
+        },
+        "products": {
+          "component": "nav",
+          "metadata": {
+            "label": "Products",
+            "icon": "package"
+          },
+          "children": {
+            "catalog": {
+              "component": "nav",
+              "metadata": {
+                "label": "Catalog"
+              }
+            },
+            "pricing": {
+              "component": "nav",
+              "metadata": {
+                "label": "Pricing"
+              }
+            }
+          }
+        },
+        "customers": {
+          "component": "nav",
+          "metadata": {
+            "label": "Customers",
+            "icon": "users"
+          }
+        },
+        "analytics": {
+          "component": "nav",
+          "metadata": {
+            "label": "Analytics",
+            "icon": "bar-chart"
+          }
+        },
+        "settings": {
+          "component": "nav",
+          "metadata": {
+            "label": "Settings",
+            "icon": "settings"
+          }
+        }
+      },
+      "eventHandler": {
+        "handler": "nav"
       }
     },
-    "link-2": {
-      "component": "callout",
-      "metadata": {
-        "component": "callout",
-        "variant": "success",
-        "message": "Nav item 2"
-      }
-    },
-    "link-3": {
-      "component": "callout",
-      "metadata": {
-        "component": "callout",
-        "variant": "success",
-        "message": "Nav item 3"
-      }
-    },
-    "link-4": {
-      "component": "callout",
-      "metadata": {
-        "component": "callout",
-        "variant": "success",
-        "message": "Nav item 4"
-      }
-    },
-    "link-5": {
-      "component": "callout",
-      "metadata": {
-        "component": "callout",
-        "variant": "success",
-        "message": "Nav item 5"
-      }
-    },
-    "link-6": {
-      "component": "callout",
-      "metadata": {
-        "component": "callout",
-        "variant": "success",
-        "message": "Nav item 6"
-      }
-    },
-    "link-7": {
-      "component": "callout",
-      "metadata": {
-        "component": "callout",
-        "variant": "success",
-        "message": "Nav item 7"
-      }
-    },
-    "link-8": {
-      "component": "callout",
-      "metadata": {
-        "component": "callout",
-        "variant": "success",
-        "message": "Nav item 8"
-      }
-    },
-    "settings": {
+    "version": {
       "component": "callout",
       "metadata": {
         "component": "callout",
         "variant": "warning",
-        "message": "Settings / Profile",
+        "message": "v2.4.1 \u2014 Settings",
         "position": "footer"
       }
     }
