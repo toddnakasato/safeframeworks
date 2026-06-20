@@ -22,7 +22,7 @@ export function createSafeDispatch(container: HTMLElement, config: ConfigBase, c
 
     const data = readList(config);
 
-    const root = elAttrs("div", { "data-component": "dispatch" });
+    const root = elAttrs("div", { "data-component": "dispatch", "data-layout": "column" });
     applyIntent(root, metadata);
     applyPaintState(root, metadata, "dispatch");
 

@@ -62,6 +62,7 @@ export function createSafePicker(container: HTMLElement, config: ConfigBase, ctx
 
     const root = el("div");
     root.setAttribute("data-component", "picker");
+    root.setAttribute("data-layout", "column");
     applyIntent(root, metadata);
     applyPaintState(root, metadata, "picker");
 

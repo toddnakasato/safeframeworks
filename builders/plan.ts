@@ -25,7 +25,7 @@ export function createSafePlan(container: HTMLElement, config: ConfigBase, ctx: 
 
     const data = readList(config);
 
-    const root = elAttrs("div", { "data-component": "plan" });
+    const root = elAttrs("div", { "data-component": "plan", "data-layout": "column" });
     applyIntent(root, metadata);
     applyPaintState(root, metadata, "plan");
 

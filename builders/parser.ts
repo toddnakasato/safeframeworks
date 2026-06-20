@@ -79,7 +79,7 @@ export function createSafeParser(container: HTMLElement, config: ConfigBase, ctx
 
     const data = readList(config);
 
-    const root = elAttrs("div", { "data-component": "parser" });
+    const root = elAttrs("div", { "data-component": "parser", "data-layout": "column" });
     applyIntent(root, metadata);
     applyPaintState(root, metadata, "parser");
 

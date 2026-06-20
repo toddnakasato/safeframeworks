@@ -29,6 +29,7 @@ export function createSafeCard(container: HTMLElement, config: ConfigBase, ctx: 
 
     const root = el("div");
     root.setAttribute("data-component", "card");
+    root.setAttribute("data-layout", "column");
     applyIntent(root, metadata);
     applyPaintState(root, metadata, "card");
 

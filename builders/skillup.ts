@@ -20,7 +20,7 @@ export function createSafeSkillUp(container: HTMLElement, config: ConfigBase, ct
 
     const data = readList(config);
 
-    const root = elAttrs("div", { "data-component": "skillup" });
+    const root = elAttrs("div", { "data-component": "skillup", "data-layout": "column" });
     applyIntent(root, metadata);
     applyPaintState(root, metadata, "skillup");
 

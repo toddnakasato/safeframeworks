@@ -31,7 +31,7 @@ export function createSafeBriefing(
     const panelAlign = (metadata.align as string) ?? "";
     const children = config.children ?? {};
 
-    const root = elAttrs("div", { "data-component": "briefing" });
+    const root = elAttrs("div", { "data-component": "briefing", "data-layout": "column" });
     applyIntent(root, metadata);
     applyPaintState(root, metadata, "briefing");
 
