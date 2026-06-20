@@ -2,23 +2,56 @@
   "component": "columns",
   "metadata": {
     "component": "columns",
-    "totalColumns": 1
+    "totalColumns": 1,
+    "height": "400px"
   },
   "children": {
-    "content-1": {
+    "item-1": {
       "component": "callout",
       "metadata": {
         "component": "callout",
         "variant": "success",
-        "message": "Scrollable Content 1"
+        "message": "Scrollable item 1"
       }
     },
-    "content-2": {
+    "item-2": {
       "component": "callout",
       "metadata": {
         "component": "callout",
         "variant": "success",
-        "message": "Scrollable Content 2"
+        "message": "Scrollable item 2"
+      }
+    },
+    "item-3": {
+      "component": "callout",
+      "metadata": {
+        "component": "callout",
+        "variant": "success",
+        "message": "Scrollable item 3"
+      }
+    },
+    "item-4": {
+      "component": "callout",
+      "metadata": {
+        "component": "callout",
+        "variant": "success",
+        "message": "Scrollable item 4"
+      }
+    },
+    "item-5": {
+      "component": "callout",
+      "metadata": {
+        "component": "callout",
+        "variant": "success",
+        "message": "Scrollable item 5"
+      }
+    },
+    "item-6": {
+      "component": "callout",
+      "metadata": {
+        "component": "callout",
+        "variant": "success",
+        "message": "Scrollable item 6"
       }
     },
     "actions": {

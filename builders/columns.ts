@@ -31,6 +31,10 @@ export function createSafeColumns(container: HTMLElement, config: ConfigBase, _c
     root.setAttribute("data-columns", String(totalColumns));
     if (hasPositioned) root.setAttribute("data-positioned", "");
 
+    // Data-driven height from metadata (for samples/viewer previews)
+    const height = metadata.height as string | undefined;
+    if (height) root.style.height = height;
+
     if (hasPositioned) {
         // Three-section layout: header (pinned top), body (scrolls), footer (pinned bottom)
         const headerEl = hasHeader ? el("div", "columns-header") : null;
