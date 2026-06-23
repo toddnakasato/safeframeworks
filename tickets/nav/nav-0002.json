@@ -1,0 +1,12 @@
+{
+  "id": "nav-0002",
+  "component": "nav",
+  "type": "bug",
+  "title": "nav has no CSS in safestyles/implementations/vanilla/components.css",
+  "description": "safedesk build render confirms 6 nav buttons in DOM. render.json shows styles=vanilla. But grep finds zero [data-nav-button] or [data-nav] rules in safestyles/implementations/vanilla/components.css. Nav renders invisibly — buttons exist but have no visual styling.",
+  "root_cause": "safestyles/implementations/vanilla/components.css missing [data-nav-button], [data-nav-main], [data-nav-header], [data-nav-item], [data-nav-children], [data-nav-bottom] rules.",
+  "fix": "Add nav CSS rules to safestyles/implementations/vanilla/components.css matching the data-* attributes set by builders/nav.ts.",
+  "status": "open",
+  "priority": "high",
+  "blocks": "safeapp dominion left nav visibility"
+}
