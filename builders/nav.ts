@@ -22,6 +22,10 @@ function iconEl(name: string | undefined, size: number): SVGElement | null {
 export function createSafeNav(container: HTMLElement, config: ConfigBase, ctx: SafeFireContext): HTMLElement {
     const metadata = config.metadata;
 
+    // DEBUG
+    console.log("[nav] config.children keys:", Object.keys(config.children ?? {}));
+    console.log("[nav] config.metadata.navStyle:", metadata.navStyle);
+
     const title = metadata.title as string | undefined;
     const subtitle = metadata.subtitle as string | undefined;
     const headerIconName = (metadata.icon as string) ?? "store";
@@ -29,15 +33,19 @@ export function createSafeNav(container: HTMLElement, config: ConfigBase, ctx: S
     const width = metadata.width as number | undefined;
 
     const expanded = new Set<string>();
-    let active = "";
+    let active = (metadata.activeScene as string) ?? "";
 
     // Read items from config.children — one way, config declares intent
     const children = Object.entries(config.children ?? {}) as [string, ConfigBase][];
     const groups = children.filter(([, c]) => c.metadata?.section !== "bottom");
     const bottom = children.filter(([, c]) => c.metadata?.section === "bottom");
 
-    // First group starts expanded
+    // First group starts expanded; also expand the group containing the active item
     if (groups.length) expanded.add(groups[0][0]);
+    if (active) {
+        const activeGroup = active.split(".")[0];
+        expanded.add(activeGroup);
+    }
 
     const navStyle = (metadata.navStyle as string) ?? "classic";
 
