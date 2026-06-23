@@ -1,0 +1,77 @@
+{
+  "component": "tabs",
+  "metadata": {
+    "variant": "default",
+    "defaultActive": "repayments",
+    "tabs": [
+      { "key": "repayments", "label": "Repayments", "child": "repayments" },
+      { "key": "accounts",   "label": "Accounts",   "child": "accounts"   },
+      { "key": "leads",      "label": "Leads",       "child": "leads"      }
+    ]
+  },
+  "children": {
+    "repayments": {
+      "component": "table",
+      "metadata": { "variant": "default", "spacing": "compact", "pageSize": 50, "sortable": true },
+      "data": {
+        "rows": {
+          "name": "repayments",
+          "type": "list",
+          "source": "file",
+          "format": "parquet",
+          "schema": {
+            "fields": [
+              { "name": "Name",                     "label": "Name",    "type": "text"     },
+              { "name": "cmbls__Loan_Name__c",      "label": "Loan",    "type": "text"     },
+              { "name": "cmbls__Payment_Amount__c", "label": "Payment", "type": "currency" },
+              { "name": "cmbls__Status__c",         "label": "Status",  "type": "text"     },
+              { "name": "CreatedDate",              "label": "Created", "type": "date"     }
+            ]
+          }
+        }
+      }
+    },
+    "accounts": {
+      "component": "table",
+      "metadata": { "variant": "default", "spacing": "compact", "pageSize": 50, "sortable": true },
+      "data": {
+        "rows": {
+          "name": "accounts",
+          "type": "list",
+          "source": "file",
+          "format": "parquet",
+          "schema": {
+            "fields": [
+              { "name": "Name",         "label": "Name",    "type": "text" },
+              { "name": "Type",         "label": "Type",    "type": "text" },
+              { "name": "BillingState", "label": "State",   "type": "text" },
+              { "name": "OwnerId",      "label": "Owner",   "type": "text" },
+              { "name": "CreatedDate",  "label": "Created", "type": "date" }
+            ]
+          }
+        }
+      }
+    },
+    "leads": {
+      "component": "table",
+      "metadata": { "variant": "default", "spacing": "compact", "pageSize": 50, "sortable": true },
+      "data": {
+        "rows": {
+          "name": "leads",
+          "type": "list",
+          "source": "file",
+          "format": "parquet",
+          "schema": {
+            "fields": [
+              { "name": "Name",       "label": "Name",    "type": "text" },
+              { "name": "Status",     "label": "Status",  "type": "text" },
+              { "name": "LeadSource", "label": "Source",  "type": "text" },
+              { "name": "OwnerId",    "label": "Owner",   "type": "text" },
+              { "name": "CreatedDate","label": "Created", "type": "date" }
+            ]
+          }
+        }
+      }
+    }
+  }
+}

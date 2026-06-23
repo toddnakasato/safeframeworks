@@ -164,6 +164,7 @@ import tabsVerticalConfig from "./config/tabs/tabs-vertical.json";
 import tabsDefaultConfig from "./config/tabs/tabs-default.json";
 import tabsPillConfig from "./config/tabs/tabs-pill.json";
 import tabsUnderlineConfig from "./config/tabs/tabs-underline.json";
+import tabsWithDataConfig from "./config/tabs/tabs-with-data.json";
 import timelineVerticalConfig from "./config/timeline/timeline-vertical.json";
 import timelineAlternatingConfig from "./config/timeline/timeline-alternating.json";
 import timelineVRoadmapConfig from "./config/timeline/timeline-v-roadmap.json";
@@ -233,6 +234,9 @@ import hierarchyDiskUsageData from "./data/hierarchy-disk-usage.json";
 import tableRowsData from "./data/table-rows.json";
 import timelineEventsData from "./data/timeline-events.json";
 import treeNodesData from "./data/tree-nodes.json";
+import repaymentsData from "./data/repayments.json";
+import accountsData from "./data/accounts.json";
+import leadsData from "./data/leads.json";
 import { RESOLVED_DATA } from "./data-resolved";
 
 /** data/<name>.json keyed by DataSource.name — mirrors SceneHost file loading. */
@@ -272,6 +276,9 @@ const DATA_FILES: Record<string, unknown> = {
     "events": RESOLVED_DATA["events"],
     "timeline-events": timelineEventsData,
     "tree-nodes": treeNodesData,
+    "repayments": repaymentsData,
+    "accounts": accountsData,
+    "leads": leadsData,
 };
 
 /** Sample runtime state — backs source: "state" datasources, mirroring
@@ -281,20 +288,29 @@ const SAMPLE_STATE: Record<string, any> = {
 };
 
 /** Resolve source references by attaching values as inline.
- *  file → DATA_FILES[name], state → SAMPLE_STATE[name]. */
+ *  file → DATA_FILES[name], state → SAMPLE_STATE[name].
+ *  Recurses into children so tab/card child configs get data too. */
 function resolveData(config: ConfigBase): ConfigBase {
-    if (!config.data) return config;
     const data: Record<string, DataSource> = {};
-    for (const [key, ds] of Object.entries(config.data)) {
-        if (ds.source === "file" && ds.name in DATA_FILES) {
-            data[key] = { ...ds, inline: DATA_FILES[ds.name] as DataSource["inline"] };
-        } else if (ds.source === "state" && ds.name in SAMPLE_STATE) {
-            data[key] = { ...ds, inline: SAMPLE_STATE[ds.name] as DataSource["inline"] };
-        } else {
-            data[key] = ds;
+    if (config.data) {
+        for (const [key, ds] of Object.entries(config.data)) {
+            if (ds.source === "file" && ds.name in DATA_FILES) {
+                data[key] = { ...ds, inline: DATA_FILES[ds.name] as DataSource["inline"] };
+            } else if (ds.source === "state" && ds.name in SAMPLE_STATE) {
+                data[key] = { ...ds, inline: SAMPLE_STATE[ds.name] as DataSource["inline"] };
+            } else {
+                data[key] = ds;
+            }
         }
     }
-    return { ...config, data };
+    const children = config.children
+        ? Object.fromEntries(Object.entries(config.children).map(([k, v]) => [k, resolveData(v)]))
+        : undefined;
+    return {
+        ...config,
+        ...(Object.keys(data).length > 0 ? { data } : {}),
+        ...(children ? { children } : {}),
+    };
 }
 
 /** component -> variation -> resolved ConfigBase. */
@@ -514,6 +530,7 @@ export const SAMPLES: Record<string, Record<string, ConfigBase>> = {
         "tabs-default": resolveData(tabsDefaultConfig as unknown as ConfigBase),
         "tabs-pill": resolveData(tabsPillConfig as unknown as ConfigBase),
         "tabs-underline": resolveData(tabsUnderlineConfig as unknown as ConfigBase),
+        "tabs-with-data": resolveData(tabsWithDataConfig as unknown as ConfigBase),
     },
     timeline: {
         "timeline-vertical": resolveData(timelineVerticalConfig as unknown as ConfigBase),
