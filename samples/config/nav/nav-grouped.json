@@ -5,82 +5,19 @@
     "title": "Workspace",
     "icon": "layout-dashboard"
   },
-  "eventHandler": {
-    "handler": "nav"
-  },
-  "data": {
-    "entries": {
-      "name": "entries",
-      "type": "list",
-      "source": "inline",
-      "inline": [
-        {
-          "key": "overview",
-          "label": "Overview",
-          "icon": "home",
-          "sectionHeading": "General"
-        },
-        {
-          "key": "inbox",
-          "label": "Inbox",
-          "icon": "inbox",
-          "badge": "3"
-        },
-        {
-          "key": "calendar",
-          "label": "Calendar",
-          "icon": "calendar"
-        },
-        {
-          "key": "members",
-          "label": "Members",
-          "icon": "users",
-          "sectionHeading": "Team"
-        },
-        {
-          "key": "roles",
-          "label": "Roles",
-          "icon": "shield"
-        },
-        {
-          "key": "activity",
-          "label": "Activity",
-          "icon": "activity"
-        },
-        {
-          "key": "posts",
-          "label": "Posts",
-          "icon": "file-text",
-          "sectionHeading": "Content"
-        },
-        {
-          "key": "media",
-          "label": "Media",
-          "icon": "image"
-        },
-        {
-          "key": "pages",
-          "label": "Pages",
-          "icon": "book-open"
-        },
-        {
-          "key": "api-keys",
-          "label": "API Keys",
-          "icon": "key",
-          "sectionHeading": "Integrations",
-          "badge": "New"
-        },
-        {
-          "key": "webhooks",
-          "label": "Webhooks",
-          "icon": "webhook"
-        },
-        {
-          "key": "plugins",
-          "label": "Plugins",
-          "icon": "puzzle"
-        }
-      ]
-    }
+  "eventHandler": { "handler": "nav" },
+  "children": {
+    "overview":  { "component": "nav", "metadata": { "label": "Overview",  "icon": "home",       "sectionHeading": "General" } },
+    "inbox":     { "component": "nav", "metadata": { "label": "Inbox",     "icon": "inbox",      "badge": "3" } },
+    "calendar":  { "component": "nav", "metadata": { "label": "Calendar",  "icon": "calendar" } },
+    "members":   { "component": "nav", "metadata": { "label": "Members",   "icon": "users",      "sectionHeading": "Team" } },
+    "roles":     { "component": "nav", "metadata": { "label": "Roles",     "icon": "shield" } },
+    "activity":  { "component": "nav", "metadata": { "label": "Activity",  "icon": "activity" } },
+    "posts":     { "component": "nav", "metadata": { "label": "Posts",     "icon": "file-text",  "sectionHeading": "Content" } },
+    "media":     { "component": "nav", "metadata": { "label": "Media",     "icon": "image" } },
+    "pages":     { "component": "nav", "metadata": { "label": "Pages",     "icon": "book-open" } },
+    "api-keys":  { "component": "nav", "metadata": { "label": "API Keys",  "icon": "key",        "sectionHeading": "Integrations", "badge": "New" } },
+    "webhooks":  { "component": "nav", "metadata": { "label": "Webhooks",  "icon": "webhook" } },
+    "plugins":   { "component": "nav", "metadata": { "label": "Plugins",   "icon": "puzzle" } }
   }
 }

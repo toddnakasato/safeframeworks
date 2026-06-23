@@ -6,89 +6,35 @@
     "subtitle": "v2",
     "icon": "terminal"
   },
-  "eventHandler": {
-    "handler": "nav"
-  },
-  "data": {
-    "entries": {
-      "name": "entries",
-      "type": "list",
-      "source": "inline",
-      "inline": [
-        {
-          "key": "src",
-          "label": "src",
-          "icon": "folder",
-          "children": [
-            {
-              "key": "components",
-              "label": "components",
-              "icon": "folder",
-              "badge": "12"
-            },
-            {
-              "key": "hooks",
-              "label": "hooks",
-              "icon": "folder"
-            },
-            {
-              "key": "utils",
-              "label": "utils",
-              "icon": "folder",
-              "badge": "\u03b2"
-            }
-          ]
-        },
-        {
-          "key": "config",
-          "label": "config",
-          "icon": "folder",
-          "children": [
-            {
-              "key": "env",
-              "label": ".env",
-              "icon": "file"
-            },
-            {
-              "key": "tsconfig",
-              "label": "tsconfig.json",
-              "icon": "file"
-            },
-            {
-              "key": "vite",
-              "label": "vite.config.ts",
-              "icon": "file"
-            }
-          ]
-        },
-        {
-          "key": "tests",
-          "label": "tests",
-          "icon": "folder",
-          "children": [
-            {
-              "key": "unit",
-              "label": "unit",
-              "icon": "folder"
-            },
-            {
-              "key": "e2e",
-              "label": "e2e",
-              "icon": "folder"
-            }
-          ]
-        },
-        {
-          "key": "readme",
-          "label": "README.md",
-          "icon": "file-text"
-        },
-        {
-          "key": "license",
-          "label": "LICENSE",
-          "icon": "file"
-        }
-      ]
-    }
+  "eventHandler": { "handler": "nav" },
+  "children": {
+    "src": {
+      "component": "nav",
+      "metadata": { "label": "src", "icon": "folder" },
+      "children": {
+        "components": { "component": "nav", "metadata": { "label": "components", "icon": "folder", "badge": "12" } },
+        "hooks":      { "component": "nav", "metadata": { "label": "hooks",      "icon": "folder" } },
+        "utils":      { "component": "nav", "metadata": { "label": "utils",      "icon": "folder", "badge": "β" } }
+      }
+    },
+    "config": {
+      "component": "nav",
+      "metadata": { "label": "config", "icon": "folder" },
+      "children": {
+        "env":      { "component": "nav", "metadata": { "label": ".env",           "icon": "file" } },
+        "tsconfig": { "component": "nav", "metadata": { "label": "tsconfig.json",  "icon": "file" } },
+        "vite":     { "component": "nav", "metadata": { "label": "vite.config.ts", "icon": "file" } }
+      }
+    },
+    "tests": {
+      "component": "nav",
+      "metadata": { "label": "tests", "icon": "folder" },
+      "children": {
+        "unit": { "component": "nav", "metadata": { "label": "unit", "icon": "folder" } },
+        "e2e":  { "component": "nav", "metadata": { "label": "e2e",  "icon": "folder" } }
+      }
+    },
+    "readme":  { "component": "nav", "metadata": { "label": "README.md", "icon": "file-text" } },
+    "license": { "component": "nav", "metadata": { "label": "LICENSE",   "icon": "file" } }
   }
 }

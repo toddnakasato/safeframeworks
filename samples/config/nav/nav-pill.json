@@ -5,88 +5,20 @@
     "title": "Readwise",
     "icon": "book-open"
   },
-  "eventHandler": {
-    "handler": "nav"
-  },
-  "data": {
-    "entries": {
-      "name": "entries",
-      "type": "list",
-      "source": "inline",
-      "inline": [
-        {
-          "key": "discover",
-          "label": "Discover",
-          "icon": "compass"
-        },
-        {
-          "key": "library",
-          "label": "Library",
-          "icon": "library"
-        },
-        {
-          "key": "write",
-          "label": "Write",
-          "icon": "pen-tool"
-        },
-        {
-          "key": "media",
-          "label": "Media",
-          "icon": "film"
-        },
-        {
-          "key": "highlights",
-          "label": "Highlights",
-          "icon": "highlighter"
-        },
-        {
-          "key": "saved-1",
-          "label": "Product Ideas",
-          "icon": "bookmark",
-          "sectionHeading": "Saved"
-        },
-        {
-          "key": "saved-2",
-          "label": "Design Refs",
-          "icon": "bookmark"
-        },
-        {
-          "key": "saved-3",
-          "label": "Research",
-          "icon": "bookmark"
-        },
-        {
-          "key": "tag-ux",
-          "label": "UX",
-          "icon": "hash",
-          "sectionHeading": "Tags",
-          "tag": "#6366f1"
-        },
-        {
-          "key": "tag-eng",
-          "label": "Engineering",
-          "icon": "hash",
-          "tag": "#22c55e"
-        },
-        {
-          "key": "tag-design",
-          "label": "Design",
-          "icon": "hash",
-          "tag": "#f59e0b"
-        },
-        {
-          "key": "tag-product",
-          "label": "Product",
-          "icon": "hash",
-          "tag": "#ef4444"
-        },
-        {
-          "key": "tag-research",
-          "label": "Research",
-          "icon": "hash",
-          "tag": "#06b6d4"
-        }
-      ]
-    }
+  "eventHandler": { "handler": "nav" },
+  "children": {
+    "discover":    { "component": "nav", "metadata": { "label": "Discover",      "icon": "compass" } },
+    "library":     { "component": "nav", "metadata": { "label": "Library",       "icon": "library" } },
+    "write":       { "component": "nav", "metadata": { "label": "Write",         "icon": "pen-tool" } },
+    "media":       { "component": "nav", "metadata": { "label": "Media",         "icon": "film" } },
+    "highlights":  { "component": "nav", "metadata": { "label": "Highlights",    "icon": "highlighter" } },
+    "saved-1":     { "component": "nav", "metadata": { "label": "Product Ideas", "icon": "bookmark", "sectionHeading": "Saved" } },
+    "saved-2":     { "component": "nav", "metadata": { "label": "Design Refs",   "icon": "bookmark" } },
+    "saved-3":     { "component": "nav", "metadata": { "label": "Research",      "icon": "bookmark" } },
+    "tag-ux":      { "component": "nav", "metadata": { "label": "UX",            "icon": "hash", "sectionHeading": "Tags" } },
+    "tag-eng":     { "component": "nav", "metadata": { "label": "Engineering",   "icon": "hash" } },
+    "tag-design":  { "component": "nav", "metadata": { "label": "Design",        "icon": "hash" } },
+    "tag-product": { "component": "nav", "metadata": { "label": "Product",       "icon": "hash" } },
+    "tag-research":{ "component": "nav", "metadata": { "label": "Research",      "icon": "hash" } }
   }
 }
