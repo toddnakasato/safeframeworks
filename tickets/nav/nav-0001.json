@@ -1,18 +1,17 @@
 {
   "id": "nav-0001",
   "component": "nav",
-  "type": "variation",
-  "title": "implment the variations for navigation from the figma design",
-  "description": "implment the variations for navigation from the figma design",
-  "status": "closed",
-  "proves": [
-    "builder-reconcile",
-    "paint-definition"
+  "type": "bug",
+  "title": "createSafeNav reads items from data.rows (readList) — should read from config.children",
+  "description": "createSafeNav currently reads nav items from readList(config) — inline data rows. This forces nav item intent (labels, icons, keys, event context) into a data slot instead of config.children. This is wrong. Nav items are config, not data. All composition components (tabs, card, layout, columns) declare their children in config.children. Nav must follow the same pattern. createSafeNav should walk config.children like createSafeNavMain does.",
+  "root_cause": "builders/nav.ts line 55: const navData = readList(config). Nav items should come from config.children entries, not from data.rows.inline.",
+  "fix": "Rewrite createSafeNav to walk config.children. Each child ConfigBase has metadata.label, metadata.icon, metadata.eventName, metadata.eventContext. Remove readList dependency for nav item rendering. Update dominion/components/nav.json to use config.children (already done — revert the inline data change).",
+  "affected_files": [
+    "safeframeworks/builders/nav.ts",
+    "safebuilds/dominion/components/nav.json"
   ],
-  "params": {
-    "component": "nav"
-  },
-  "created": "2026-06-20T03:49:41.232Z",
-  "updated": "2026-06-20T04:10:44.000Z",
-  "resolution": "Implemented 5 navStyle variants from figma: classic, grouped, pill, icon-rail, accordion. Added nav-tree sample for recursive nesting. Fixed builder to read navStyle from metadata. Added section heading rendering for grouped. Added border-left for accordion children. Removed dark as a navStyle (theme concern)."
+  "proof": "prove builder-render — nav samples must pass after fix. prove framework-delegation — no change needed.",
+  "status": "open",
+  "priority": "high",
+  "blocks": "safeapp dominion left nav"
 }
