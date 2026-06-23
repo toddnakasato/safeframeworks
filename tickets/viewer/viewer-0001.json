@@ -2,9 +2,9 @@
   "id": "viewer-0001",
   "component": "viewer",
   "type": "bug",
-  "title": "Vue 2 viewer App.vue fails to compile — @vitejs/plugin-vue2 cannot process TypeScript in script setup blocks",
-  "description": "Vue 2 viewer (vue/2/viewer) fails with 'Unexpected token, expected \",\"' because @vitejs/plugin-vue2 has no TypeScript transform for <script setup lang=\"ts\"> blocks. The plugin processes SFC templates but passes the script block through its own Babel-based parser which does not handle TypeScript generics, ref<T>, computed<T>, or type annotations. App.vue was copied from vue/3 viewer and uses Vue 3 Composition API + TypeScript throughout. Stripping generics from the script did not resolve it — the plugin parser fails on any TypeScript syntax in the script block. Fix: add unplugin-vue2-script-setup to vite.config — this provides proper TypeScript + script setup compilation for Vue 2.7 via esbuild. Was broken before tabs-0001 work began.",
-  "status": "open",
+  "title": "Vue 2 viewer dropped — @vitejs/plugin-vue2 incompatible with TypeScript script setup",
+  "description": "Vue 2 viewer (vue/2/viewer) could not be fixed. @vitejs/plugin-vue2 does not support TypeScript in <script setup lang=\"ts\"> blocks without an additional TypeScript transform that is incompatible with the rest of the build chain. Vue 2 is dropped from safeframeworks. All vue/2 source files removed. ARCHITECTURE.md updated to document 7 supported frameworks.",
+  "status": "closed",
   "proves": ["framework-boot"],
   "params": { "component": "viewer", "framework": "vue-2" },
   "test": {
@@ -12,12 +12,15 @@
     "assert": { "ok": true }
   },
   "acceptance": [
-    "Vue 2 viewer starts without compile errors",
-    "All component samples load in vue/2 viewer",
-    "prove framework-boot passes for vue-2"
+    "Vue 2 dropped and documented in ARCHITECTURE.md",
+    "vue/2 directory removed from safeframeworks",
+    "safeapp-vue-2 binary removed"
   ],
-  "files": [],
-  "resolution": "",
+  "files": [
+    "vue/2/ (removed)",
+    "docs/ARCHITECTURE.md"
+  ],
+  "resolution": "Vue 2 dropped. @vitejs/plugin-vue2 does not support TypeScript in script setup blocks. 7 frameworks remain: React 18/19, Angular 21/22, Vue 3, Svelte 4/5.",
   "created": "2026-06-23T00:00:00.000Z",
   "updated": "2026-06-23T00:00:00.000Z"
 }
