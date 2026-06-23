@@ -73,6 +73,56 @@ function ProofViewerBridge({ config, onEvent }: { config: ConfigBase; onEvent?: 
 
 /*----------------------------------------------------------------------------------------------------
  *
+ * SafeTabsReact — React-native tabs. Reads metadata.tabs[], owns active state,
+ * renders only the active child via renderChild. Never uses the DOM builder.
+ *
+ ----------------------------------------------------------------------------------------------------*/
+
+interface SafeTabsReactProps {
+    config: ConfigBase;
+    onEvent?: OnSafeEvent;
+    renderChild: (child: ConfigBase) => ReactNode;
+}
+
+function SafeTabsReact({ config, onEvent, renderChild }: SafeTabsReactProps) {
+    const tabs = (config.metadata.tabs as Array<{ key: string; label: string; child: string; icon?: string }>) ?? [];
+    const defaultActive = (config.metadata.defaultActive as string) ?? tabs[0]?.key ?? "";
+    const position = (config.metadata.position as string) ?? "top";
+    const [active, setActive] = useState(defaultActive);
+
+    const activeChild = config.children ? (config.children as Record<string, ConfigBase>)[active] : null;
+
+    return (
+        <div data-component="tabs" data-variant={(config.metadata.variant as string) ?? "default"} data-position={position}>
+            <div data-tabs-bar="" data-position={position}>
+                {tabs.map(tab => (
+                    <button
+                        key={tab.key}
+                        data-tab=""
+                        {...(active === tab.key ? { "data-active": "" } : {})}
+                        onClick={() => {
+                            setActive(tab.key);
+                            onEvent?.({ name: "select", payload: { key: tab.key }, handler: config.eventHandler?.handler });
+                        }}
+                    >
+                        {tab.icon && <span data-role="tab-icon">{tab.icon}</span>}
+                        <span data-role="tab-label">{tab.label}</span>
+                    </button>
+                ))}
+            </div>
+            {activeChild && (
+                <div data-tabs-panel="">
+                    <div data-tab-content="" data-tab-key={active}>
+                        {renderChild(activeChild)}
+                    </div>
+                </div>
+            )}
+        </div>
+    );
+}
+
+/*----------------------------------------------------------------------------------------------------
+ *
  * Implementation
  *
  ----------------------------------------------------------------------------------------------------*/
@@ -153,7 +203,7 @@ export function renderConfigBase(config: ConfigBase, onEvent?: OnSafeEvent, ctx?
         return <SafeChat config={config} onEvent={stampedOnEvent} />;
     }
     if (component === "tabs") {
-        return <SafeTabs config={config} onEvent={stampedOnEvent} />;
+        return <SafeTabsReact config={config} onEvent={stampedOnEvent} renderChild={(child) => renderConfigBase(child, stampedOnEvent, childCtx())} />;
     }
     if (component === "callout") {
         return <SafeCallout config={config} onEvent={stampedOnEvent} />;

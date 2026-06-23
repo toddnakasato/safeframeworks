@@ -1,0 +1,42 @@
+{
+  "component": "tabs",
+  "metadata": {
+    "variant": "default",
+    "defaultActive": "overview",
+    "tabs": [
+      { "key": "overview", "label": "Overview",  "child": "overview" },
+      { "key": "details",  "label": "Details",   "child": "details" },
+      { "key": "history",  "label": "History",   "child": "history" }
+    ]
+  },
+  "eventHandler": { "handler": "tabs" },
+  "children": {
+    "overview": {
+      "component": "card",
+      "metadata": {
+        "variant": "filled",
+        "header": true,
+        "title": "Overview Tab",
+        "subtitle": "This is the overview panel"
+      }
+    },
+    "details": {
+      "component": "card",
+      "metadata": {
+        "variant": "filled",
+        "header": true,
+        "title": "Details Tab",
+        "subtitle": "This is the details panel"
+      }
+    },
+    "history": {
+      "component": "card",
+      "metadata": {
+        "variant": "filled",
+        "header": true,
+        "title": "History Tab",
+        "subtitle": "This is the history panel"
+      }
+    }
+  }
+}

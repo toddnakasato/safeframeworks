@@ -161,6 +161,9 @@ import tableContactsConfig from "./config/table/table-contacts.json";
 import tableEventsConfig from "./config/table/table-events.json";
 import tabsHorizontalConfig from "./config/tabs/tabs-horizontal.json";
 import tabsVerticalConfig from "./config/tabs/tabs-vertical.json";
+import tabsDefaultConfig from "./config/tabs/tabs-default.json";
+import tabsPillConfig from "./config/tabs/tabs-pill.json";
+import tabsUnderlineConfig from "./config/tabs/tabs-underline.json";
 import timelineVerticalConfig from "./config/timeline/timeline-vertical.json";
 import timelineAlternatingConfig from "./config/timeline/timeline-alternating.json";
 import timelineVRoadmapConfig from "./config/timeline/timeline-v-roadmap.json";
@@ -508,6 +511,9 @@ export const SAMPLES: Record<string, Record<string, ConfigBase>> = {
     tabs: {
         "tabs-horizontal": resolveData(tabsHorizontalConfig as unknown as ConfigBase),
         "tabs-vertical": resolveData(tabsVerticalConfig as unknown as ConfigBase),
+        "tabs-default": resolveData(tabsDefaultConfig as unknown as ConfigBase),
+        "tabs-pill": resolveData(tabsPillConfig as unknown as ConfigBase),
+        "tabs-underline": resolveData(tabsUnderlineConfig as unknown as ConfigBase),
     },
     timeline: {
         "timeline-vertical": resolveData(timelineVerticalConfig as unknown as ConfigBase),

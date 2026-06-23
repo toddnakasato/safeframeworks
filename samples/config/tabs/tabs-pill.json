@@ -1,0 +1,39 @@
+{
+  "component": "tabs",
+  "metadata": {
+    "variant": "pill",
+    "defaultActive": "alpha",
+    "tabs": [
+      { "key": "alpha", "label": "Alpha", "child": "alpha" },
+      { "key": "beta",  "label": "Beta",  "child": "beta" },
+      { "key": "gamma", "label": "Gamma", "child": "gamma" }
+    ]
+  },
+  "eventHandler": { "handler": "tabs" },
+  "children": {
+    "alpha": {
+      "component": "callout",
+      "metadata": {
+        "variant": "info",
+        "title": "Alpha Panel",
+        "message": "Only Alpha should be visible when Alpha tab is active."
+      }
+    },
+    "beta": {
+      "component": "callout",
+      "metadata": {
+        "variant": "success",
+        "title": "Beta Panel",
+        "message": "Only Beta should be visible when Beta tab is active."
+      }
+    },
+    "gamma": {
+      "component": "callout",
+      "metadata": {
+        "variant": "warning",
+        "title": "Gamma Panel",
+        "message": "Only Gamma should be visible when Gamma tab is active."
+      }
+    }
+  }
+}

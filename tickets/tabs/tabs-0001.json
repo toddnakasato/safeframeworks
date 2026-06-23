@@ -1,0 +1,40 @@
+{
+  "id": "tabs-0001",
+  "component": "tabs",
+  "type": "bug",
+  "title": "Tab child rendering — all children render stacked instead of showing only the active tab",
+  "description": "All framework wrappers (Angular, React, Vue, Svelte) fall through to a generic children loop after rendering the tabs component. The result is all child configs rendered stacked below the tab bar, regardless of which tab is active. Root cause: SafeRendererComponent (and equivalents) checks childMode !== 'component' and renders all children unconditionally. SafeTabsComponent does not own child rendering — it delegates to the builder which outputs an empty data-tab-content div with no child mounted. Fix required in all four framework wrappers: SafeTabs must intercept child rendering, track active tab state, and mount only the active child config. The generic children loop must not fire for tabs. The builder-render proof (573 checks) passes because it only validates DOM structure, not which children are visible. A new prove assertion is needed: for tabs, only the active child's data-tab-key matches the active tab key, and no other children are in the DOM.",
+  "status": "open",
+  "proves": [
+    "builder-render",
+    "builder-structure",
+    "framework-boot",
+    "cross-framework"
+  ],
+  "params": {
+    "component": "tabs",
+    "frameworks": ["angular-21", "angular-22", "react-18", "react-19", "svelte-4", "svelte-5", "vue-2", "vue-3"]
+  },
+  "test": {
+    "command": "prove builder-render",
+    "assert": {
+      "ok": true,
+      "passed": 573,
+      "failed": 0
+    }
+  },
+  "acceptance": [
+    "Clicking a tab shows only that tab's child content",
+    "All other children are not in the DOM (not hidden, not rendered)",
+    "defaultActive tab is shown on first render",
+    "Tab bar remains visible during child swap",
+    "Fix applied to: Angular 21, Angular 22, React 18, React 19, Vue 2, Vue 3, Svelte 4, Svelte 5",
+    "prove builder-render passes 573/573",
+    "prove cross-framework passes",
+    "prove framework-boot passes"
+  ],
+  "files": [],
+  "resolution": "",
+  "created": "2026-06-23T00:00:00.000Z",
+  "updated": "2026-06-23T00:00:00.000Z"
+}

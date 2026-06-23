@@ -3,20 +3,38 @@
   "metadata": {
     "variant": "default",
     "position": "top",
+    "defaultActive": "one",
     "tabs": [
-      {
-        "key": "one",
-        "label": "Tab One",
-        "child": ""
-      },
-      {
-        "key": "two",
-        "label": "Tab Two",
-        "child": ""
-      }
+      { "key": "one", "label": "Tab One",   "child": "one" },
+      { "key": "two", "label": "Tab Two",   "child": "two" },
+      { "key": "three", "label": "Tab Three", "child": "three" }
     ]
   },
-  "eventHandler": {
-    "handler": "tabs"
+  "eventHandler": { "handler": "tabs" },
+  "children": {
+    "one": {
+      "component": "callout",
+      "metadata": {
+        "variant": "info",
+        "title": "Tab One",
+        "message": "Content for Tab One — horizontal position top."
+      }
+    },
+    "two": {
+      "component": "callout",
+      "metadata": {
+        "variant": "success",
+        "title": "Tab Two",
+        "message": "Content for Tab Two — horizontal position top."
+      }
+    },
+    "three": {
+      "component": "callout",
+      "metadata": {
+        "variant": "warning",
+        "title": "Tab Three",
+        "message": "Content for Tab Three — horizontal position top."
+      }
+    }
   }
 }
