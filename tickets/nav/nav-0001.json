@@ -11,7 +11,8 @@
     "safebuilds/dominion/components/nav.json"
   ],
   "proof": "prove builder-render — nav samples must pass after fix. prove framework-delegation — no change needed.",
-  "status": "open",
+  "status": "closed",
+  "resolution": "builders/nav.ts rewritten to walk config.children. All samples already used config.children. prove builder-render 591/591.",
   "priority": "high",
   "blocks": "safeapp dominion left nav"
 }
