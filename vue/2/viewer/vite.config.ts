@@ -5,6 +5,10 @@ import { viewerStyles } from "../../../viewer-styles-plugin";
 
 export default defineConfig({
   plugins: [vue(), viewerStyles()],
+  esbuild: {
+    include: /\.[jt]sx?$/,
+    exclude: [],
+  },
   server: { port: 1435, strictPort: true },
   build: { outDir: "dist", emptyOutDir: true },
   resolve: {
