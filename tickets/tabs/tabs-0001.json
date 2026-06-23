@@ -42,7 +42,7 @@
     "safeframeworks/samples/config/tabs/tabs-underline.json",
     "safeframeworks/samples/index.ts"
   ],
-  "resolution": "React 19 fixed: SafeTabsReact component in SafeRenderer.tsx owns active state, renders only active child via renderConfigBase, passes data-position to both root and bar. Five samples updated with children and correct positions. Remaining: React 18, Angular 21, Angular 22, Vue 2, Vue 3, Svelte 4, Svelte 5.",
+  "resolution": "safecontracts: tabs added to CHILD_MODES as 'component' — suppresses stacked children loop in all frameworks. Framework fixes: React 19 (SafeTabsReact in SafeRenderer.tsx), Angular 21/22 (own DOM, stable listeners), Vue 3 (buildComponent per active child), Svelte 5 ($effect + buildComponent). Root cause: builders fire via ctx.fire/EPRPP async — Angular must own DOM directly, not intercept events. Remaining: React 18, Svelte 4, Vue 2.",
   "created": "2026-06-23T00:00:00.000Z",
   "updated": "2026-06-23T00:00:00.000Z"
 }
