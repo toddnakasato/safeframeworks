@@ -3,42 +3,14 @@ import { getDataSource } from "safecontracts";
 import type { ReactNode } from "react";
 import type { ConfigBase, ConfigLayout, OnSafeEvent } from "safecontracts";
 import { buildComponent } from "../../utils/render";
-import { SafeButton } from "./SafeButton";
-import { SafeCalendar } from "./SafeCalendar";
-import { SafeCallout } from "./SafeCallout";
-import { SafeChat } from "./SafeChat";
-import { SafeWeek } from "./SafeWeek";
-import { SafeToggle } from "./SafeToggle";
-import { SafeTabs } from "./SafeTabs";
-import { SafeDragDrop } from "./SafeDragDrop";
 import { SafeCard } from "./SafeCard";
-import { SafeChart } from "./SafeChart";
 import { SafeColumns } from "./SafeColumns";
-import { SafeFunnel } from "./SafeFunnel";
-import { SafeGauge } from "./SafeGauge";
-import { SafeGrid } from "./SafeGrid";
-import { SafeHeatmap } from "./SafeHeatmap";
-import { SafeInput } from "./SafeInput";
 import { SafeLayout } from "./SafeLayout";
+import { SafeButton } from "./SafeButton";
 import type { RenderChild } from "../../builders/layout";
 
 // Universal DOM render callback — stamps handler before rendering children
 const renderChild: RenderChild = buildComponent;
-import { SafeList } from "./SafeList";
-import { SafeMap } from "./SafeMap";
-import { SafeNav } from "./SafeNav";
-import { SafePicker } from "./SafePicker";
-import { SafeFlow } from "./SafeFlow";
-import { SafeSheet } from "./SafeSheet";
-import { SafeTable } from "./SafeTable";
-import { SafeTimeline } from "./SafeTimeline";
-import { SafeTree } from "./SafeTree";
-import { SafeBriefing } from "./SafeBriefing";
-import { SafePlan } from "./SafePlan";
-import { SafeSkillUp } from "./SafeSkillUp";
-import { SafeDispatch } from "./SafeDispatch";
-import { SafeParser } from "./SafeParser";
-import { SafeHierarchy } from "./SafeHierarchy";
 
 function extractData(config: ConfigBase): { inline: any; list: any[]; record: Record<string, any> } {
     const raw = getDataSource(config)?.inline;
@@ -58,6 +30,18 @@ export interface RenderContext {
     handler?: string;
 }
 
+/** Bridge — mounts any component via shared buildComponent (DOM builder). */
+function BuilderBridge({ config, onEvent }: { config: ConfigBase; onEvent?: OnSafeEvent }) {
+    const ref = useRef<HTMLDivElement>(null);
+    useEffect(() => {
+        if (!ref.current) return;
+        ref.current.innerHTML = "";
+        const root = buildComponent(config, onEvent);
+        if (root) ref.current.appendChild(root);
+    }, [config, onEvent]);
+    return <div ref={ref} />;
+}
+
 /** Dev-only bridge — mounts proof-viewer via buildComponent (DOM builder). */
 function ProofViewerBridge({ config, onEvent }: { config: ConfigBase; onEvent?: OnSafeEvent }) {
     const containerRef = useRef<HTMLDivElement>(null);
@@ -73,83 +57,32 @@ function ProofViewerBridge({ config, onEvent }: { config: ConfigBase; onEvent?: 
 
 /*----------------------------------------------------------------------------------------------------
  *
- * SafeTabsReact — React-native tabs. Reads metadata.tabs[], owns active state,
- * renders only the active child via renderChild. Never uses the DOM builder.
- *
- ----------------------------------------------------------------------------------------------------*/
-
-interface SafeTabsReactProps {
-    config: ConfigBase;
-    onEvent?: OnSafeEvent;
-    renderChild: (child: ConfigBase) => ReactNode;
-}
-
-function SafeTabsReact({ config, onEvent, renderChild }: SafeTabsReactProps) {
-    const tabs = (config.metadata.tabs as Array<{ key: string; label: string; child: string; icon?: string }>) ?? [];
-    const defaultActive = (config.metadata.defaultActive as string) ?? tabs[0]?.key ?? "";
-    const position = (config.metadata.position as string) ?? "top";
-    const [active, setActive] = useState(defaultActive);
-
-    const activeChild = config.children ? (config.children as Record<string, ConfigBase>)[active] : null;
-
-    return (
-        <div data-component="tabs" data-variant={(config.metadata.variant as string) ?? "default"} data-position={position}>
-            <div data-tabs-bar="" data-position={position}>
-                {tabs.map(tab => (
-                    <button
-                        key={tab.key}
-                        data-tab=""
-                        {...(active === tab.key ? { "data-active": "" } : {})}
-                        onClick={() => {
-                            setActive(tab.key);
-                            onEvent?.({ name: "select", payload: { key: tab.key }, handler: config.eventHandler?.handler });
-                        }}
-                    >
-                        {tab.icon && <span data-role="tab-icon">{tab.icon}</span>}
-                        <span data-role="tab-label">{tab.label}</span>
-                    </button>
-                ))}
-            </div>
-            {activeChild && (
-                <div data-tabs-panel="">
-                    <div data-tab-content="" data-tab-key={active}>
-                        {renderChild(activeChild)}
-                    </div>
-                </div>
-            )}
-        </div>
-    );
-}
-
-/*----------------------------------------------------------------------------------------------------
- *
  * Implementation
+ *
+ * Rule: only composition components (layout, columns, card, button) have framework-native
+ * handling because they need React to recurse into children. Every other component delegates
+ * to BuilderBridge which calls buildComponent — one builder, one path.
  *
  ----------------------------------------------------------------------------------------------------*/
 
 export function renderConfigBase(config: ConfigBase, onEvent?: OnSafeEvent, ctx?: RenderContext): ReactNode {
     const component = config.component ?? (config.metadata.component as string);
-    const { inline, list, record } = extractData(config);
+    const { record, list } = extractData(config);
 
-    // Resolve the handler: this config's own eventHandler takes precedence, otherwise inherit from parent context
     const handler = config.eventHandler?.handler ?? ctx?.handler;
 
-    // Build a child context that carries the handler down the tree
     const childCtx = (extra?: Partial<RenderContext>): RenderContext => ({
         ...ctx,
         ...extra,
         handler
     });
 
-    // Wrap onEvent to stamp the handler on every event fired from this subtree
     const stampedOnEvent: OnSafeEvent | undefined =
         onEvent && handler
-            ? (event) => {
-                  onEvent({ ...event, handler });
-              }
+            ? (event) => { onEvent({ ...event, handler }); }
             : onEvent;
 
-    // --- Container components (recurse into children) ---
+    // --- Composition components (need React recursion into children) ---
 
     if (component === "layout") {
         return <SafeLayout config={config} onEvent={stampedOnEvent} renderChild={renderChild} />;
@@ -165,13 +98,9 @@ export function renderConfigBase(config: ConfigBase, onEvent?: OnSafeEvent, ctx?
             for (const [key, child] of Object.entries(config.children)) {
                 childNodes.push(
                     <div key={key} data-child={key}>
-                        {renderConfigBase(
-                            child,
-                            stampedOnEvent,
-                            childCtx({
-                                parentContext: { parent: (config.metadata.ref as string) ?? "card", path: key }
-                            })
-                        )}
+                        {renderConfigBase(child, stampedOnEvent, childCtx({
+                            parentContext: { parent: (config.metadata.ref as string) ?? "card", path: key }
+                        }))}
                     </div>
                 );
             }
@@ -188,29 +117,6 @@ export function renderConfigBase(config: ConfigBase, onEvent?: OnSafeEvent, ctx?
         );
     }
 
-    // --- Leaf components ---
-
-    if (component === "calendar") {
-        return <SafeCalendar config={config} onEvent={stampedOnEvent} />;
-    }
-    if (component === "toggle") {
-        return <SafeToggle config={config} data={list} onEvent={stampedOnEvent} />;
-    }
-    if (component === "week") {
-        return <SafeWeek config={config} onEvent={stampedOnEvent} />;
-    }
-    if (component === "chat") {
-        return <SafeChat config={config} onEvent={stampedOnEvent} />;
-    }
-    if (component === "tabs") {
-        return <SafeTabsReact config={config} onEvent={stampedOnEvent} renderChild={(child) => renderConfigBase(child, stampedOnEvent, childCtx())} />;
-    }
-    if (component === "callout") {
-        return <SafeCallout config={config} onEvent={stampedOnEvent} />;
-    }
-    if (component === "drag-drop") {
-        return <SafeDragDrop config={config} data={list} onEvent={stampedOnEvent} />;
-    }
     if (component === "button") {
         return (
             <SafeButton
@@ -224,113 +130,15 @@ export function renderConfigBase(config: ConfigBase, onEvent?: OnSafeEvent, ctx?
         );
     }
 
-    if (component === "grid") {
-        return <SafeGrid config={config} data={record} onEvent={stampedOnEvent} />;
-    }
-
-    if (component === "input") {
-        const field = (config.metadata.field as string) ?? Object.keys(record)[0];
-        return <SafeInput config={config} data={record} field={field} onEvent={stampedOnEvent} />;
-    }
-
-    if (component === "list") {
-        return <SafeList config={config} data={list} onEvent={stampedOnEvent} />;
-    }
-
-    if (component === "picker") {
-        return <SafePicker config={config} data={list} onEvent={stampedOnEvent} />;
-    }
-
-    if (component === "table") {
-        return <SafeTable config={config} data={list} onEvent={stampedOnEvent} />;
-    }
-
-    if (component === "tree") {
-        return <SafeTree config={config} data={list} onEvent={stampedOnEvent} />;
-    }
-
-    if (component === "briefing") {
-        return <SafeBriefing config={config} onEvent={stampedOnEvent} />;
-    }
-
-    if (component === "plan") {
-        return <SafePlan config={config} onEvent={stampedOnEvent} />;
-    }
-
-    if (component === "skillup") {
-        return <SafeSkillUp config={config} onEvent={stampedOnEvent} />;
-    }
-
-    if (component === "dispatch") {
-        return <SafeDispatch config={config} onEvent={stampedOnEvent} />;
-    }
-
-    if (component === "parser") {
-        return <SafeParser config={config} onEvent={stampedOnEvent} />;
-    }
-
-    if (component === "sheet") {
-        return <SafeSheet config={config} data={list} onEvent={stampedOnEvent} />;
-    }
-
-    if (component === "chart") {
-        return <SafeChart config={config} data={list} onEvent={stampedOnEvent} />;
-    }
-
-    if (component === "heatmap") {
-        return <SafeHeatmap config={config} data={list} onEvent={stampedOnEvent} />;
-    }
-
-    if (component === "gauge") {
-        return <SafeGauge config={config} data={record} onEvent={stampedOnEvent} />;
-    }
-
-    if (component === "funnel") {
-        return <SafeFunnel config={config} data={list} onEvent={stampedOnEvent} />;
-    }
-
-    if (component === "flow") {
-        return <SafeFlow config={config} onEvent={stampedOnEvent} />;
-    }
-
-    if (component === "hierarchy") {
-        return <SafeHierarchy config={config} onEvent={stampedOnEvent} />;
-    }
-
-    if (component === "timeline") {
-        return <SafeTimeline config={config} data={list} onEvent={stampedOnEvent} />;
-    }
-
-    if (component === "map") {
-        return <SafeMap config={config} data={list} onEvent={stampedOnEvent} />;
-    }
-
-    if (component === "nav") {
-        return <SafeNav config={config} onEvent={stampedOnEvent} />;
-    }
-
-    // --- Dev-only components (rendered via buildComponent) ---
+    // --- Dev-only ---
     if (component === "proof-viewer") {
         return <ProofViewerBridge config={config} onEvent={stampedOnEvent} />;
     }
 
-    // --- Fallback: delegate to shared builder (DOM) ---
+    // --- All other components delegate to the builder — one path, no reinvention ---
     return <BuilderBridge config={config} onEvent={stampedOnEvent} />;
 }
 
-/** Bridge — mounts any component via shared buildComponent (DOM builder). */
-function BuilderBridge({ config, onEvent }: { config: ConfigBase; onEvent?: OnSafeEvent }) {
-    const ref = useRef<HTMLDivElement>(null);
-    useEffect(() => {
-        if (!ref.current) return;
-        ref.current.innerHTML = "";
-        const root = buildComponent(config, onEvent);
-        if (root) ref.current.appendChild(root);
-    }, [config, onEvent]);
-    return <div ref={ref} />;
-}
-
 // Layout resolution lives in safecontracts (resolver-layout.ts) — re-exported here
-// so existing imports from the renderer keep working.
 export { resolveConfigLayout } from "safecontracts";
 export type { ConfigResolver } from "safecontracts";

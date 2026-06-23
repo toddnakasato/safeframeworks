@@ -1,0 +1,19 @@
+{
+  "ok": false,
+  "folder": "safeframeworks",
+  "total": 3,
+  "passed": 1,
+  "failed": 2,
+  "failures": [
+    {
+      "group": "angular-22",
+      "name": "SafeTabsComponent: import",
+      "error": "Standard Angular field decorators are not supported in JIT mode."
+    },
+    {
+      "group": "angular-21",
+      "name": "SafeTabsComponent: import",
+      "error": "Standard Angular field decorators are not supported in JIT mode."
+    }
+  ]
+}
