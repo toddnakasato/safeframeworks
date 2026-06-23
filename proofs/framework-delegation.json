@@ -1,44 +1,8 @@
 {
-  "ok": false,
+  "ok": true,
   "folder": "safeframeworks",
   "total": 21,
-  "passed": 14,
-  "failed": 7,
-  "failures": [
-    {
-      "group": "react-18",
-      "name": "no leaf components reimplemented in framework",
-      "error": "framework reimplements builder components (should delegate to buildComponent): calendar, callout, chart, chat, drag-drop, flow, funnel, gauge, grid, heatmap, hierarchy, input, list, map, picker, sheet, table, tabs, timeline, toggle, tree, week"
-    },
-    {
-      "group": "angular-22",
-      "name": "no leaf components reimplemented in framework",
-      "error": "framework reimplements builder components (should delegate to buildComponent): drag-drop"
-    },
-    {
-      "group": "angular-22",
-      "name": "delegates to buildComponent",
-      "error": "no reference to buildComponent or BuilderBridge — renderer does not delegate to builder"
-    },
-    {
-      "group": "angular-21",
-      "name": "no leaf components reimplemented in framework",
-      "error": "framework reimplements builder components (should delegate to buildComponent): drag-drop"
-    },
-    {
-      "group": "angular-21",
-      "name": "delegates to buildComponent",
-      "error": "no reference to buildComponent or BuilderBridge — renderer does not delegate to builder"
-    },
-    {
-      "group": "vue-3",
-      "name": "no leaf components reimplemented in framework",
-      "error": "framework reimplements builder components (should delegate to buildComponent): drag-drop"
-    },
-    {
-      "group": "vue-3",
-      "name": "delegates to buildComponent",
-      "error": "no reference to buildComponent or BuilderBridge — renderer does not delegate to builder"
-    }
-  ]
+  "passed": 21,
+  "failed": 0,
+  "failures": []
 }
