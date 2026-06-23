@@ -404,13 +404,13 @@ function groupChecks(checks: any[]): { group: string; total: number; passed: num
       <div class="style-section">
         <div>
           <label class="label-text">Framework</label>
-          <select :value="activeStyle" @change="selectStyle(($event.target as HTMLSelectElement).value)" class="dropdown">
+          <select :value="activeStyle" @change="selectStyle($event.target.value)" class="dropdown">
             <option v-for="s in STYLES" :key="s" :value="s">{{ s }}</option>
           </select>
         </div>
         <div>
           <label class="label-text">Theme</label>
-          <select :value="activeTheme" @change="activeTheme = ($event.target as HTMLSelectElement).value" class="dropdown">
+          <select :value="activeTheme" @change="activeTheme = $event.target.value" class="dropdown">
             <option v-for="t in (THEMES[activeStyle] ?? ['default'])" :key="t" :value="t">{{ t }}</option>
           </select>
         </div>
@@ -450,8 +450,8 @@ function groupChecks(checks: any[]): { group: string; total: number; passed: num
         <!-- Components -->
         <div class="section-label" style="margin-top: 12px">Components</div>
         <button class="sidebar-btn" :class="{ active: activeComponent === null && !proofView && !ticketView }" @click="selectComponent(null)">All</button>
-        <template v-for="name in COMPONENT_NAMES" :key="name">
-          <button class="sidebar-btn" :class="{ active: name === activeComponent && !activeVariation && !proofView && !ticketView }" @click="selectComponent(name)">{{ name }}</button>
+        <template v-for="name in COMPONENT_NAMES">
+          <button :key="name" class="sidebar-btn" :class="{ active: name === activeComponent && !activeVariation && !proofView && !ticketView }" @click="selectComponent(name)">{{ name }}</button>
           <template v-if="name === activeComponent">
             <button
               v-for="v in Object.keys(SAMPLES[name]).sort()" :key="v"

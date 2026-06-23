@@ -1,0 +1,23 @@
+{
+  "id": "viewer-0001",
+  "component": "viewer",
+  "type": "bug",
+  "title": "Vue 2 viewer App.vue fails to compile — TypeScript generics not supported by @vitejs/plugin-vue2",
+  "description": "The Vue 2 viewer (vue/2/viewer) uses @vitejs/plugin-vue2 which does not support TypeScript generics in <script lang=\"ts\"> blocks without an additional babel TypeScript preset. The error is: 'Unexpected token, expected \",\"' at invoke<string>(...) in App.vue line 148. The App.vue was written against Vue 3 conventions and never worked with the Vue 2 plugin. Fix: add @vitejs/plugin-vue2-script-setup and babel-preset-typescript to vite.config, or replace TypeScript generics in App.vue with plain JS type assertions. SafeTabs.vue for Vue 2 is correctly written and not the source of this error.",
+  "status": "open",
+  "proves": ["framework-boot"],
+  "params": { "component": "viewer", "framework": "vue-2" },
+  "test": {
+    "command": "prove framework-boot",
+    "assert": { "ok": true }
+  },
+  "acceptance": [
+    "Vue 2 viewer starts without compile errors",
+    "All component samples load in vue/2 viewer",
+    "prove framework-boot passes for vue-2"
+  ],
+  "files": [],
+  "resolution": "",
+  "created": "2026-06-23T00:00:00.000Z",
+  "updated": "2026-06-23T00:00:00.000Z"
+}

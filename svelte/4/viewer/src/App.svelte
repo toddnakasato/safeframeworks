@@ -50,9 +50,9 @@
   const comps = { "layout": SafeLayout, "columns": SafeColumns, "card": SafeCard, "button": SafeButton, "table": SafeTable, "tree": SafeTree, "sheet": SafeSheet, "chart": SafeChart, "heatmap": SafeHeatmap, "gauge": SafeGauge, "funnel": SafeFunnel, "flow": SafeFlow, "hierarchy": SafeHierarchy, "timeline": SafeTimeline, "map": SafeMap, "calendar": SafeCalendar, "toggle": SafeToggle, "week": SafeWeek, "chat": SafeChat, "tabs": SafeTabs, "callout": SafeCallout, "drag-drop": SafeDragDrop, "grid": SafeGrid, "input": SafeInput, "list": SafeList, "picker": SafePicker, "nav": SafeNav, "parser": SafeParser, "plan": SafePlan, "skillup": SafeSkillUp, "dispatch": SafeDispatch, "briefing": SafeBriefing };
   const STYLES = ["vanilla", "tailwind", "tailwind-daisy", "material"];
   const componentNames = Object.keys(SAMPLES).sort();
-  let activeStyle = $state("vanilla");
-  let activeComponent = $state(null);
-  let activeVariation = $state(null);
+  let activeStyle = "vanilla";
+  let activeComponent = null;
+  let activeVariation = null;
 
   function switchStyle(s) {
     activeStyle = s;
