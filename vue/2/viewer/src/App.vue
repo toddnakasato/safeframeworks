@@ -54,9 +54,9 @@ const comps: Record<string, any> = {
 };
 
 /** Tauri invoke — safe no-op when not in Tauri context */
-async function invoke<T>(cmd: string, args?: Record<string, any>): Promise<T> {
+async function invoke(cmd: string, args?: Record<string, any>): Promise<any> {
   const { invoke: tauriInvoke } = await import('@tauri-apps/api/core');
-  return tauriInvoke<T>(cmd, args);
+  return tauriInvoke(cmd, args);
 }
 
 /** Listen for Tauri events */
@@ -145,7 +145,7 @@ onMounted(() => {
   invoke('watch_dir', { path: STATE_DIR }).catch(() => {});
   listen('fs-change', async (_path: string) => {
     try {
-      const raw = await invoke<string>('read_file_content', { path: STATE_FILE });
+      const raw = await invoke('read_file_content', { path: STATE_FILE }) as string;
       paintState.value = JSON.parse(raw);
     } catch {}
   }).then(fn => { unlistenFn = fn; });
@@ -212,7 +212,7 @@ function handleEvent(event: SafeEvent) {
   if (event.data?.month !== undefined) args.push('--month', String(event.data.month));
   if (event.data?.day !== undefined) args.push('--day', String(event.data.day));
   if (event.data?.date) args.push('--date', String(event.data.date));
-  invoke<string>('safecli_run', { name: 'safedesk', args }).catch(e => console.warn('[paint]', e));
+  invoke('safecli_run', { name: 'safedesk', args }).catch(e => console.warn('[paint]', e));
 }
 
 async function runProofs(commands: string[]) {
@@ -229,7 +229,7 @@ async function runProofs(commands: string[]) {
       commands.map(async cmd => {
         try {
           const { invoke: tauriInvoke } = await import('@tauri-apps/api/core');
-          const out = await tauriInvoke<string>('safecli_run', { name: 'safedesk', args: ['prove', cmd] });
+          const out = await tauriInvoke('safecli_run', { name: 'safedesk', args: ['prove', cmd] }) as string;
           const parsed = JSON.parse(out);
           const entry = { passed: parsed.passed ?? 0, total: parsed.total ?? 0, failed: parsed.failed ?? 0, checks: parsed.checks, failures: parsed.failures };
           proofResults.value = { ...proofResults.value, [cmd]: entry };
@@ -282,7 +282,7 @@ async function proveTicket(t: Ticket) {
         if (current) args.push(current);
         return args;
       };
-      const out = await tauriInvoke<string>('safecli_run', { name: 'safedesk', args: parseCmd(t.test.command) });
+      const out = await tauriInvoke('safecli_run', { name: 'safedesk', args: parseCmd(t.test.command) }) as string;
       const output = JSON.parse(out);
       const failures: string[] = [];
       for (const [path, expected] of Object.entries(t.test.assert)) {
