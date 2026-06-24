@@ -1,12 +1,12 @@
 {
   "ok": true,
-  "total": 250,
-  "passed": 250,
+  "total": 296,
+  "passed": 296,
   "failed": 0,
   "groups": {
-    "no-opinionated-styles": 29,
-    "no-hardcoded-colors": 36,
-    "no-emoji": 185
+    "no-opinionated-styles": 30,
+    "no-hardcoded-colors": 37,
+    "no-emoji": 229
   },
   "checks": [
     {
@@ -142,6 +142,11 @@
     {
       "group": "no-opinionated-styles",
       "name": "heatmap: no opinionated inline styles",
+      "status": "pass"
+    },
+    {
+      "group": "no-opinionated-styles",
+      "name": "navmain: no opinionated inline styles",
       "status": "pass"
     },
     {
@@ -331,6 +336,11 @@
     },
     {
       "group": "no-hardcoded-colors",
+      "name": "navmain: no hardcoded colors outside var(--sd-*)",
+      "status": "pass"
+    },
+    {
+      "group": "no-hardcoded-colors",
       "name": "toggle: no hardcoded colors outside var(--sd-*)",
       "status": "pass"
     },
@@ -506,7 +516,17 @@
     },
     {
       "group": "no-emoji",
+      "name": "navmain: no emoji in builder source",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji",
       "name": "toggle: no emoji in builder source",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji",
+      "name": "tabs/tabs-underline.json: no emoji in sample config",
       "status": "pass"
     },
     {
@@ -516,7 +536,22 @@
     },
     {
       "group": "no-emoji",
+      "name": "tabs/tabs-with-data.json: no emoji in sample config",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji",
       "name": "tabs/tabs-horizontal.json: no emoji in sample config",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji",
+      "name": "tabs/tabs-pill.json: no emoji in sample config",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji",
+      "name": "tabs/tabs-default.json: no emoji in sample config",
       "status": "pass"
     },
     {
@@ -646,12 +681,112 @@
     },
     {
       "group": "no-emoji",
-      "name": "input/input-single.json: no emoji in sample config",
+      "name": "input/input-pin.json: no emoji in sample config",
       "status": "pass"
     },
     {
       "group": "no-emoji",
-      "name": "input/input-form.json: no emoji in sample config",
+      "name": "input/input-number.json: no emoji in sample config",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji",
+      "name": "input/input-checkbox.json: no emoji in sample config",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji",
+      "name": "input/input-picklist.json: no emoji in sample config",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji",
+      "name": "input/input-rating.json: no emoji in sample config",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji",
+      "name": "input/input-multiline-text.json: no emoji in sample config",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji",
+      "name": "input/input-slider.json: no emoji in sample config",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji",
+      "name": "input/input-date.json: no emoji in sample config",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji",
+      "name": "input/input-signature.json: no emoji in sample config",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji",
+      "name": "input/input-radio.json: no emoji in sample config",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji",
+      "name": "input/input-search.json: no emoji in sample config",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji",
+      "name": "input/input-file.json: no emoji in sample config",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji",
+      "name": "input/input-toggle.json: no emoji in sample config",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji",
+      "name": "input/input-range-date.json: no emoji in sample config",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji",
+      "name": "input/input-masked.json: no emoji in sample config",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji",
+      "name": "input/input-password.json: no emoji in sample config",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji",
+      "name": "input/input-datetime.json: no emoji in sample config",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji",
+      "name": "input/input-text.json: no emoji in sample config",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji",
+      "name": "input/input-currency.json: no emoji in sample config",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji",
+      "name": "input/input-color.json: no emoji in sample config",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji",
+      "name": "input/input-tags.json: no emoji in sample config",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji",
+      "name": "input/input-autocomplete.json: no emoji in sample config",
       "status": "pass"
     },
     {
@@ -666,7 +801,32 @@
     },
     {
       "group": "no-emoji",
-      "name": "layout/layout-sidebar.json: no emoji in sample config",
+      "name": "layout/layout-main-detail.json: no emoji in sample config",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji",
+      "name": "layout/layout-left-main-right.json: no emoji in sample config",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji",
+      "name": "layout/layout-single.json: no emoji in sample config",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji",
+      "name": "layout/layout-header-main-detail.json: no emoji in sample config",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji",
+      "name": "layout/layout-header-main.json: no emoji in sample config",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji",
+      "name": "layout/layout-left-main.json: no emoji in sample config",
       "status": "pass"
     },
     {
@@ -916,6 +1076,26 @@
     },
     {
       "group": "no-emoji",
+      "name": "navmain/navmain-header-footer.json: no emoji in sample config",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji",
+      "name": "navmain/navmain-default.json: no emoji in sample config",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji",
+      "name": "navmain/navmain-footer.json: no emoji in sample config",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji",
+      "name": "navmain/navmain-header.json: no emoji in sample config",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji",
       "name": "list/list-actions.json: no emoji in sample config",
       "status": "pass"
     },
@@ -981,7 +1161,22 @@
     },
     {
       "group": "no-emoji",
+      "name": "gauge/gauge-target.json: no emoji in sample config",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji",
       "name": "gauge/gauge-minimal.json: no emoji in sample config",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji",
+      "name": "gauge/gauge-half.json: no emoji in sample config",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji",
+      "name": "gauge/gauge-thresholds.json: no emoji in sample config",
       "status": "pass"
     },
     {
@@ -1011,17 +1206,52 @@
     },
     {
       "group": "no-emoji",
+      "name": "columns/columns-header-footer.json: no emoji in sample config",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji",
+      "name": "columns/columns-header.json: no emoji in sample config",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji",
+      "name": "columns/columns-footer.json: no emoji in sample config",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji",
       "name": "columns/columns-three.json: no emoji in sample config",
       "status": "pass"
     },
     {
       "group": "no-emoji",
-      "name": "nav/nav-horizontal.json: no emoji in sample config",
+      "name": "nav/nav-grouped.json: no emoji in sample config",
       "status": "pass"
     },
     {
       "group": "no-emoji",
-      "name": "nav/nav-sidebar.json: no emoji in sample config",
+      "name": "nav/nav-tree.json: no emoji in sample config",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji",
+      "name": "nav/nav-accordion.json: no emoji in sample config",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji",
+      "name": "nav/nav-pill.json: no emoji in sample config",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji",
+      "name": "nav/nav-icon-rail.json: no emoji in sample config",
+      "status": "pass"
+    },
+    {
+      "group": "no-emoji",
+      "name": "nav/nav-classic.json: no emoji in sample config",
       "status": "pass"
     },
     {

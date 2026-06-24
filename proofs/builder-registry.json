@@ -1290,46 +1290,6 @@
     },
     {
       "group": "no-numeric-suffix",
-      "name": "navmain/navmain-default.json",
-      "status": "pass"
-    },
-    {
-      "group": "has-variant-name",
-      "name": "navmain/navmain-default.json: has variant",
-      "status": "pass"
-    },
-    {
-      "group": "no-numeric-suffix",
-      "name": "navmain/navmain-footer.json",
-      "status": "pass"
-    },
-    {
-      "group": "has-variant-name",
-      "name": "navmain/navmain-footer.json: has variant",
-      "status": "pass"
-    },
-    {
-      "group": "no-numeric-suffix",
-      "name": "navmain/navmain-header-footer.json",
-      "status": "pass"
-    },
-    {
-      "group": "has-variant-name",
-      "name": "navmain/navmain-header-footer.json: has variant",
-      "status": "pass"
-    },
-    {
-      "group": "no-numeric-suffix",
-      "name": "navmain/navmain-header.json",
-      "status": "pass"
-    },
-    {
-      "group": "has-variant-name",
-      "name": "navmain/navmain-header.json: has variant",
-      "status": "pass"
-    },
-    {
-      "group": "no-numeric-suffix",
       "name": "parser/parser-compact.json",
       "status": "pass"
     },
@@ -1620,6 +1580,16 @@
     },
     {
       "group": "no-numeric-suffix",
+      "name": "tabs/tabs-default.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "tabs/tabs-default.json: has variant",
+      "status": "pass"
+    },
+    {
+      "group": "no-numeric-suffix",
       "name": "tabs/tabs-horizontal.json",
       "status": "pass"
     },
@@ -1630,12 +1600,42 @@
     },
     {
       "group": "no-numeric-suffix",
+      "name": "tabs/tabs-pill.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "tabs/tabs-pill.json: has variant",
+      "status": "pass"
+    },
+    {
+      "group": "no-numeric-suffix",
+      "name": "tabs/tabs-underline.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "tabs/tabs-underline.json: has variant",
+      "status": "pass"
+    },
+    {
+      "group": "no-numeric-suffix",
       "name": "tabs/tabs-vertical.json",
       "status": "pass"
     },
     {
       "group": "has-variant-name",
       "name": "tabs/tabs-vertical.json: has variant",
+      "status": "pass"
+    },
+    {
+      "group": "no-numeric-suffix",
+      "name": "tabs/tabs-with-data.json",
+      "status": "pass"
+    },
+    {
+      "group": "has-variant-name",
+      "name": "tabs/tabs-with-data.json: has variant",
       "status": "pass"
     },
     {

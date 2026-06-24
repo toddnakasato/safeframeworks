@@ -1,9 +1,9 @@
 {
-  "ok": true,
+  "ok": false,
   "component": "all",
-  "total": 1255,
-  "passed": 1255,
-  "failed": 0,
+  "total": 1225,
+  "passed": 1223,
+  "failed": 2,
   "groups": {
     "uses-readList-or-readRecord": 24,
     "uses-shared-el": 34,
@@ -11,7 +11,7 @@
     "uses-applyPaintState": 21,
     "has-data-component": 34,
     "no-schema-dot-fields": 5,
-    "imports-match-calls": 89,
+    "imports-match-calls": 88,
     "metadata-is-declared": 26,
     "required-metadata-fields": 27,
     "no-getDataSource": 34,
@@ -22,12 +22,12 @@
     "no-function-tdz": 34,
     "standard-export-name": 34,
     "routed-through-render": 34,
-    "wrappers-use-buildComponent": 278,
+    "wrappers-use-buildComponent": 244,
     "ticket-required-roles": 115,
     "ticket-required-css": 115,
     "ticket-required-nesting": 5,
-    "valid-child-variants": 15,
-    "samples-registered-in-index": 176
+    "valid-child-variants": 16,
+    "samples-registered-in-index": 180
   },
   "checks": [
     {
@@ -398,7 +398,8 @@
     {
       "group": "uses-readList-or-readRecord",
       "name": "nav: uses readList or readRecord",
-      "status": "pass"
+      "status": "fail",
+      "error": "nav.ts has slot 'entries' but uses raw getDataSource instead of readList/readRecord/readData"
     },
     {
       "group": "uses-shared-el",
@@ -413,11 +414,6 @@
     {
       "group": "has-data-component",
       "name": "nav: sets data-component",
-      "status": "pass"
-    },
-    {
-      "group": "imports-match-calls",
-      "name": "nav: imports readList",
       "status": "pass"
     },
     {
@@ -3702,176 +3698,6 @@
     },
     {
       "group": "wrappers-use-buildComponent",
-      "name": "vue/2/SafeBriefing.vue: uses buildComponent",
-      "status": "pass"
-    },
-    {
-      "group": "wrappers-use-buildComponent",
-      "name": "vue/2/SafeCallout.vue: uses buildComponent",
-      "status": "pass"
-    },
-    {
-      "group": "wrappers-use-buildComponent",
-      "name": "vue/2/SafeDragDrop.vue: uses buildComponent",
-      "status": "pass"
-    },
-    {
-      "group": "wrappers-use-buildComponent",
-      "name": "vue/2/SafePicker.vue: uses buildComponent",
-      "status": "pass"
-    },
-    {
-      "group": "wrappers-use-buildComponent",
-      "name": "vue/2/SafeFlow.vue: uses buildComponent",
-      "status": "pass"
-    },
-    {
-      "group": "wrappers-use-buildComponent",
-      "name": "vue/2/SafeChat.vue: uses buildComponent",
-      "status": "pass"
-    },
-    {
-      "group": "wrappers-use-buildComponent",
-      "name": "vue/2/SafePlan.vue: uses buildComponent",
-      "status": "pass"
-    },
-    {
-      "group": "wrappers-use-buildComponent",
-      "name": "vue/2/SafeChart.vue: uses buildComponent",
-      "status": "pass"
-    },
-    {
-      "group": "wrappers-use-buildComponent",
-      "name": "vue/2/SafeSheet.vue: uses buildComponent",
-      "status": "pass"
-    },
-    {
-      "group": "wrappers-use-buildComponent",
-      "name": "vue/2/SafeHeatmap.vue: uses buildComponent",
-      "status": "pass"
-    },
-    {
-      "group": "wrappers-use-buildComponent",
-      "name": "vue/2/SafeToggle.vue: uses buildComponent",
-      "status": "pass"
-    },
-    {
-      "group": "wrappers-use-buildComponent",
-      "name": "vue/2/SafeButton.vue: uses buildComponent",
-      "status": "pass"
-    },
-    {
-      "group": "wrappers-use-buildComponent",
-      "name": "vue/2/SafeStoryFlow.vue: uses buildComponent",
-      "status": "pass"
-    },
-    {
-      "group": "wrappers-use-buildComponent",
-      "name": "vue/2/SafeSkillUp.vue: uses buildComponent",
-      "status": "pass"
-    },
-    {
-      "group": "wrappers-use-buildComponent",
-      "name": "vue/2/SafeCalendar.vue: uses buildComponent",
-      "status": "pass"
-    },
-    {
-      "group": "wrappers-use-buildComponent",
-      "name": "vue/2/SafeTimeline.vue: uses buildComponent",
-      "status": "pass"
-    },
-    {
-      "group": "wrappers-use-buildComponent",
-      "name": "vue/2/SafeTree.vue: uses buildComponent",
-      "status": "pass"
-    },
-    {
-      "group": "wrappers-use-buildComponent",
-      "name": "vue/2/SafeParser.vue: uses buildComponent",
-      "status": "pass"
-    },
-    {
-      "group": "wrappers-use-buildComponent",
-      "name": "vue/2/SafeGauge.vue: uses buildComponent",
-      "status": "pass"
-    },
-    {
-      "group": "wrappers-use-buildComponent",
-      "name": "vue/2/SafeInput.vue: uses buildComponent",
-      "status": "pass"
-    },
-    {
-      "group": "wrappers-use-buildComponent",
-      "name": "vue/2/SafeColumns.vue: uses buildComponent",
-      "status": "pass"
-    },
-    {
-      "group": "wrappers-use-buildComponent",
-      "name": "vue/2/SafeMap.vue: uses buildComponent",
-      "status": "pass"
-    },
-    {
-      "group": "wrappers-use-buildComponent",
-      "name": "vue/2/SafeFunnel.vue: uses buildComponent",
-      "status": "pass"
-    },
-    {
-      "group": "wrappers-use-buildComponent",
-      "name": "vue/2/SafeHierarchy.vue: uses buildComponent",
-      "status": "pass"
-    },
-    {
-      "group": "wrappers-use-buildComponent",
-      "name": "vue/2/SafeScene.vue: uses buildComponent",
-      "status": "pass"
-    },
-    {
-      "group": "wrappers-use-buildComponent",
-      "name": "vue/2/SafeTable.vue: uses buildComponent",
-      "status": "pass"
-    },
-    {
-      "group": "wrappers-use-buildComponent",
-      "name": "vue/2/SafeGrid.vue: uses buildComponent",
-      "status": "pass"
-    },
-    {
-      "group": "wrappers-use-buildComponent",
-      "name": "vue/2/SafeList.vue: uses buildComponent",
-      "status": "pass"
-    },
-    {
-      "group": "wrappers-use-buildComponent",
-      "name": "vue/2/SafeCard.vue: uses buildComponent",
-      "status": "pass"
-    },
-    {
-      "group": "wrappers-use-buildComponent",
-      "name": "vue/2/SafeNav.vue: uses buildComponent",
-      "status": "pass"
-    },
-    {
-      "group": "wrappers-use-buildComponent",
-      "name": "vue/2/SafeTabs.vue: uses buildComponent",
-      "status": "pass"
-    },
-    {
-      "group": "wrappers-use-buildComponent",
-      "name": "vue/2/SafeDispatch.vue: uses buildComponent",
-      "status": "pass"
-    },
-    {
-      "group": "wrappers-use-buildComponent",
-      "name": "vue/2/SafeWeek.vue: uses buildComponent",
-      "status": "pass"
-    },
-    {
-      "group": "wrappers-use-buildComponent",
-      "name": "vue/2/SafeMetric.vue: uses buildComponent",
-      "status": "pass"
-    },
-    {
-      "group": "wrappers-use-buildComponent",
       "name": "vue/3/SafeBriefing.vue: uses buildComponent",
       "status": "pass"
     },
@@ -5217,6 +5043,12 @@
     },
     {
       "group": "valid-child-variants",
+      "name": "tabs/tabs-underline.json: child list variant \"default\" valid for list",
+      "status": "fail",
+      "error": "tabs-underline.json child \"list\" uses variant \"default\" but list builder only supports: simple, icon, selection, columns, files, actions, hierarchy, property-grid, gantt"
+    },
+    {
+      "group": "valid-child-variants",
       "name": "briefing/briefing-priority.json: child priorities variant \"simple\" valid for list",
       "status": "pass"
     },
@@ -5292,12 +5124,32 @@
     },
     {
       "group": "samples-registered-in-index",
+      "name": "tabs/tabs-underline.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
       "name": "tabs/tabs-vertical.json: registered in SAMPLES",
       "status": "pass"
     },
     {
       "group": "samples-registered-in-index",
+      "name": "tabs/tabs-with-data.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
       "name": "tabs/tabs-horizontal.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "tabs/tabs-pill.json: registered in SAMPLES",
+      "status": "pass"
+    },
+    {
+      "group": "samples-registered-in-index",
+      "name": "tabs/tabs-default.json: registered in SAMPLES",
       "status": "pass"
     },
     {
@@ -6306,6 +6158,17 @@
       "status": "pass"
     }
   ],
-  "failures": [],
-  "ts": "2026-06-20T11:56:22.451Z"
+  "failures": [
+    {
+      "group": "uses-readList-or-readRecord",
+      "name": "nav: uses readList or readRecord",
+      "error": "nav.ts has slot 'entries' but uses raw getDataSource instead of readList/readRecord/readData"
+    },
+    {
+      "group": "valid-child-variants",
+      "name": "tabs/tabs-underline.json: child list variant \"default\" valid for list",
+      "error": "tabs-underline.json child \"list\" uses variant \"default\" but list builder only supports: simple, icon, selection, columns, files, actions, hierarchy, property-grid, gantt"
+    }
+  ],
+  "ts": "2026-06-24T17:59:24.473Z"
 }

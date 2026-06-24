@@ -119,10 +119,6 @@ import navGroupedConfig from "./config/nav/nav-grouped.json";
 import navTreeConfig from "./config/nav/nav-tree.json";
 import navPillConfig from "./config/nav/nav-pill.json";
 import navIconRailConfig from "./config/nav/nav-icon-rail.json";
-import navmainDefaultConfig from "./config/navmain/navmain-default.json";
-import navmainHeaderConfig from "./config/navmain/navmain-header.json";
-import navmainFooterConfig from "./config/navmain/navmain-footer.json";
-import navmainHeaderFooterConfig from "./config/navmain/navmain-header-footer.json";
 import pickerListConfig from "./config/picker/picker-list.json";
 import pickerCardConfig from "./config/picker/picker-card.json";
 import parserDefaultConfig from "./config/parser/parser-default.json";
@@ -465,12 +461,6 @@ export const SAMPLES: Record<string, Record<string, ConfigBase>> = {
         "nav-tree": resolveData(navTreeConfig as unknown as ConfigBase),
         "nav-pill": resolveData(navPillConfig as unknown as ConfigBase),
         "nav-icon-rail": resolveData(navIconRailConfig as unknown as ConfigBase),
-    },
-    navmain: {
-        "navmain-default": resolveData(navmainDefaultConfig as unknown as ConfigBase),
-        "navmain-header": resolveData(navmainHeaderConfig as unknown as ConfigBase),
-        "navmain-footer": resolveData(navmainFooterConfig as unknown as ConfigBase),
-        "navmain-header-footer": resolveData(navmainHeaderFooterConfig as unknown as ConfigBase),
     },
     picker: {
         "picker-list": resolveData(pickerListConfig as unknown as ConfigBase),
