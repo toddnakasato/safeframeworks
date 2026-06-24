@@ -8,15 +8,16 @@
  */
 import { computed, ref, onMounted, onUnmounted, watch } from "vue";
 import type { ConfigBase, OnSafeEvent, RenderPlan } from "safecontracts";
-import { buildRenderPlan, stampHandler } from "safecontracts";
+import { buildRenderPlan, stampHandler, COMPONENT_REGISTRY } from "safecontracts";
 import { buildComponent } from "../../utils/render";
 
-const COMPOSITION = new Set(["layout", "columns"]);
+const COMPOSITION = new Set(["layout", "columns", "button"]);
+const KNOWN = new Set([...COMPONENT_REGISTRY, ...COMPOSITION]);
 
 const props = defineProps<{ config?: ConfigBase; plan?: RenderPlan; onEvent?: OnSafeEvent }>();
 
 const plan = computed<RenderPlan>(() =>
-  props.plan ?? buildRenderPlan(props.config!, COMPOSITION)
+  props.plan ?? buildRenderPlan(props.config!, KNOWN)
 );
 
 const stamped = computed<OnSafeEvent | undefined>(() => {

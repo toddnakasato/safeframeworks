@@ -8,10 +8,11 @@
 import { Component, Input, OnChanges, ElementRef, AfterViewInit, OnDestroy } from "@angular/core";
 import { NgFor, NgIf } from "@angular/common";
 import type { ConfigBase, OnSafeEvent, RenderPlan } from "safecontracts";
-import { buildRenderPlan, stampHandler } from "safecontracts";
+import { buildRenderPlan, stampHandler, COMPONENT_REGISTRY } from "safecontracts";
 import { buildComponent } from "../../utils/render";
 
-const COMPOSITION = new Set(["layout", "columns"]);
+const COMPOSITION = new Set(["layout", "columns", "button"]);
+const KNOWN = new Set([...COMPONENT_REGISTRY, ...COMPOSITION]);
 
 /** Mounts any component via buildComponent (DOM builder). No reinvention. */
 @Component({
@@ -81,7 +82,7 @@ export class SafeRendererComponent implements OnChanges {
   stampedOnEvent?: OnSafeEvent;
 
   ngOnChanges() {
-    this.p = this.plan ?? (this.config ? buildRenderPlan(this.config, COMPOSITION) : undefined);
+    this.p = this.plan ?? (this.config ? buildRenderPlan(this.config, KNOWN) : undefined);
     if (!this.p) return;
     const handler = this.p.handler;
     const onEvent = this.onEvent;
