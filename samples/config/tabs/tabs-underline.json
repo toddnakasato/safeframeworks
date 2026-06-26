@@ -4,24 +4,45 @@
     "variant": "underline",
     "defaultActive": "list",
     "tabs": [
-      { "key": "list",    "label": "List View",   "child": "list" },
-      { "key": "metrics", "label": "Metrics",     "child": "metrics" }
+      {
+        "key": "list",
+        "label": "List View",
+        "child": "list"
+      },
+      {
+        "key": "metrics",
+        "label": "Metrics",
+        "child": "metrics"
+      }
     ]
   },
-  "eventHandler": { "handler": "tabs" },
+  "eventHandler": {
+    "handler": "tabs"
+  },
   "children": {
     "list": {
       "component": "list",
-      "metadata": { "variant": "default" },
+      "metadata": {
+        "variant": "simple"
+      },
       "data": {
         "rows": {
           "name": "items",
           "type": "list",
           "source": "inline",
           "inline": [
-            { "label": "Item A", "value": "100" },
-            { "label": "Item B", "value": "200" },
-            { "label": "Item C", "value": "300" }
+            {
+              "label": "Item A",
+              "value": "100"
+            },
+            {
+              "label": "Item B",
+              "value": "200"
+            },
+            {
+              "label": "Item C",
+              "value": "300"
+            }
           ]
         }
       }

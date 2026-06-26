@@ -1,8 +1,8 @@
 {
   "ok": true,
   "component": "all",
-  "total": 349,
-  "passed": 349,
+  "total": 348,
+  "passed": 348,
   "failed": 0,
   "groups": {
     "no-contracts-emit": 33,
@@ -15,7 +15,7 @@
     "no-use-before-declaration": 35,
     "render-creates-ctx": 1,
     "render-injects-transport": 1,
-    "no-empty-samples": 25,
+    "no-empty-samples": 24,
     "valid-sample-variant": 59
   },
   "checks": [
@@ -1436,11 +1436,6 @@
     },
     {
       "group": "no-empty-samples",
-      "name": "nav: at least one sample has inline data",
-      "status": "pass"
-    },
-    {
-      "group": "no-empty-samples",
       "name": "sheet: at least one sample has inline data",
       "status": "pass"
     },
@@ -1766,5 +1761,5 @@
     }
   ],
   "failures": [],
-  "ts": "2026-06-24T18:00:57.221Z"
+  "ts": "2026-06-26T09:08:48.569Z"
 }

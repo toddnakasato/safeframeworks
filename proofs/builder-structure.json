@@ -1,11 +1,11 @@
 {
-  "ok": false,
+  "ok": true,
   "component": "all",
-  "total": 1225,
-  "passed": 1223,
-  "failed": 2,
+  "total": 1224,
+  "passed": 1224,
+  "failed": 0,
   "groups": {
-    "uses-readList-or-readRecord": 24,
+    "uses-readList-or-readRecord": 23,
     "uses-shared-el": 34,
     "uses-applyIntent": 21,
     "uses-applyPaintState": 21,
@@ -394,12 +394,6 @@
       "group": "standard-export-name",
       "name": "table: exports createSafe{Name}",
       "status": "pass"
-    },
-    {
-      "group": "uses-readList-or-readRecord",
-      "name": "nav: uses readList or readRecord",
-      "status": "fail",
-      "error": "nav.ts has slot 'entries' but uses raw getDataSource instead of readList/readRecord/readData"
     },
     {
       "group": "uses-shared-el",
@@ -5043,9 +5037,8 @@
     },
     {
       "group": "valid-child-variants",
-      "name": "tabs/tabs-underline.json: child list variant \"default\" valid for list",
-      "status": "fail",
-      "error": "tabs-underline.json child \"list\" uses variant \"default\" but list builder only supports: simple, icon, selection, columns, files, actions, hierarchy, property-grid, gantt"
+      "name": "tabs/tabs-underline.json: child list variant \"simple\" valid for list",
+      "status": "pass"
     },
     {
       "group": "valid-child-variants",
@@ -6158,17 +6151,6 @@
       "status": "pass"
     }
   ],
-  "failures": [
-    {
-      "group": "uses-readList-or-readRecord",
-      "name": "nav: uses readList or readRecord",
-      "error": "nav.ts has slot 'entries' but uses raw getDataSource instead of readList/readRecord/readData"
-    },
-    {
-      "group": "valid-child-variants",
-      "name": "tabs/tabs-underline.json: child list variant \"default\" valid for list",
-      "error": "tabs-underline.json child \"list\" uses variant \"default\" but list builder only supports: simple, icon, selection, columns, files, actions, hierarchy, property-grid, gantt"
-    }
-  ],
-  "ts": "2026-06-24T17:59:24.473Z"
+  "failures": [],
+  "ts": "2026-06-26T09:08:54.087Z"
 }

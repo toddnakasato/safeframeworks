@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "checked": 27,
+  "checked": 32,
   "builders": {
     "layout": {
       "ok": true,
@@ -45,6 +45,36 @@
         "emit-delegation": "pass",
         "data-component": "pass",
         "data-fields": "pass (5/5)"
+      }
+    },
+    "briefing": {
+      "ok": true,
+      "impl": "builders/briefing.ts",
+      "via": "builder",
+      "checks": {
+        "exists": "pass",
+        "imports-safecontracts": "pass",
+        "config-typed": "pass",
+        "reads-metadata": "pass",
+        "data-record-contract": "pass",
+        "emit-delegation": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (2/2)"
+      }
+    },
+    "dispatch": {
+      "ok": true,
+      "impl": "builders/dispatch.ts",
+      "via": "builder",
+      "checks": {
+        "exists": "pass",
+        "imports-safecontracts": "pass",
+        "config-typed": "pass",
+        "reads-metadata": "pass",
+        "data-record-contract": "pass",
+        "emit-delegation": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (2/2)"
       }
     },
     "button": {
@@ -375,6 +405,51 @@
         "emit-delegation": "pass",
         "data-component": "pass",
         "data-fields": "pass (1/1)"
+      }
+    },
+    "parser": {
+      "ok": true,
+      "impl": "builders/parser.ts",
+      "via": "builder",
+      "checks": {
+        "exists": "pass",
+        "imports-safecontracts": "pass",
+        "config-typed": "pass",
+        "reads-metadata": "pass",
+        "data-record-contract": "pass",
+        "emit-delegation": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (2/2)"
+      }
+    },
+    "plan": {
+      "ok": true,
+      "impl": "builders/plan.ts",
+      "via": "builder",
+      "checks": {
+        "exists": "pass",
+        "imports-safecontracts": "pass",
+        "config-typed": "pass",
+        "reads-metadata": "pass",
+        "data-record-contract": "pass",
+        "emit-delegation": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (2/2)"
+      }
+    },
+    "skillup": {
+      "ok": true,
+      "impl": "builders/skillup.ts",
+      "via": "builder",
+      "checks": {
+        "exists": "pass",
+        "imports-safecontracts": "pass",
+        "config-typed": "pass",
+        "reads-metadata": "pass",
+        "data-record-contract": "pass",
+        "emit-delegation": "pass",
+        "data-component": "pass",
+        "data-fields": "pass (2/2)"
       }
     },
     "nav": {
