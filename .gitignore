@@ -1,2 +1,5 @@
 node_modules
 dist
+
+# orbit wake trigger files
+builders/wake.ndjson
