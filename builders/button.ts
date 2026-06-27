@@ -137,7 +137,7 @@ function buildButtonGroup(config: ConfigBase, ctx: SafeFireContext): HTMLElement
 
     for (const [key, child] of Object.entries(config.children ?? {})) {
         const item = elAttrs("div", { "data-role": "group-item" });
-        if (!child.component || child.component === "button") {
+        if (!child.component) {
             item.appendChild(buildButton(child, ctx, key));
         } else {
             // Non-button child: placeholder only — full renderer recursion is the host's job.
