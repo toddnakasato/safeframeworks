@@ -96,7 +96,7 @@ function buildFile(root: HTMLElement, config: ConfigBase, ctx: SafeFireContext):
 
     const zone = el("div", "file-zone");
     zone.setAttribute("data-layout", "column");
-    const input = document.createElement("input");
+    const input = el("input");
     input.type = "file";
     input.accept = accept;
     input.multiple = multiple;

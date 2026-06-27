@@ -3,6 +3,7 @@ import type { SafeFireContext } from "../../safecontracts/src/contracts";
 import type { ConfigBase } from "../../safecontracts/src/contracts";
 import { resolveColors } from "../../safecontracts/src/palette";
 import { elAttrs, applyPaintState, applyIntent, readList } from "../utils/util";
+import { el } from "../utils/util";
 
 /*----------------------------------------------------------------------------------------------------
  *
@@ -21,7 +22,7 @@ export function createSafeFunnel(container: HTMLElement, config: ConfigBase, ctx
 
     const data = readList(config);
 
-    const root = document.createElement("div");
+    const root = el("div");
     root.setAttribute("data-component", "funnel");
     applyIntent(root, metadata);
     applyPaintState(root, metadata, "funnel");

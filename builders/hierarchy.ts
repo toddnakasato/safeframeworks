@@ -4,6 +4,7 @@ import type { ConfigBase } from "../../safecontracts/src/contracts";
 import { HIERARCHY_DEFAULTS } from "../../safecontracts/src/components/hierarchy";
 import { resolveColors } from "../../safecontracts/src/palette";
 import { elAttrs, applyIntent, readList } from "../utils/util";
+import { el } from "../utils/util";
 
 /*----------------------------------------------------------------------------------------------------
  *
@@ -21,7 +22,7 @@ export function createSafeHierarchy(container: HTMLElement, config: ConfigBase, 
 
     const data = readList(config);
 
-    const rootEl = document.createElement("div");
+    const rootEl = el("div");
     rootEl.setAttribute("data-component", "hierarchy");
     applyIntent(rootEl, metadata);
     rootEl.setAttribute("data-variant", variant);

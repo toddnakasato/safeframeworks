@@ -188,7 +188,7 @@ export function createSafeSheet(container: HTMLElement, config: ConfigBase, ctx:
     };
 
     function renderHeaderRow(table: HTMLElement, cols: number, extraLeading = 0, extraTrailingLabel?: string) {
-        const thead = document.createElement("thead");
+        const thead = el("thead");
         const headerRow = el("tr", "header-row");
         if (rowNumbers) headerRow.appendChild(el("th", "corner"));
         for (let i = 0; i < extraLeading; i++) headerRow.appendChild(el("th", "corner"));
@@ -211,7 +211,7 @@ export function createSafeSheet(container: HTMLElement, config: ConfigBase, ctx:
     function renderSkeleton() {
         const table = el("table", "grid");
         if (columnHeaders && columns.length) renderHeaderRow(table, skeletonCols);
-        const tbody = document.createElement("tbody");
+        const tbody = el("tbody");
         for (let r = 0; r < skeletonRows; r++) {
             const tr = el("tr", "row");
             if (rowNumbers) tr.appendChild(el("td", "row-number", String(r + 1)));
@@ -229,7 +229,7 @@ export function createSafeSheet(container: HTMLElement, config: ConfigBase, ctx:
     function renderEmpty() {
         const table = el("table", "grid");
         renderHeaderRow(table, columns.length || numCols);
-        const tbody = document.createElement("tbody");
+        const tbody = el("tbody");
         const tr = el("tr", "row");
         const td = el("td", "empty-message", emptyMessage);
         td.setAttribute("colspan", String((columns.length || numCols) + (rowNumbers ? 1 : 0)));
@@ -241,7 +241,7 @@ export function createSafeSheet(container: HTMLElement, config: ConfigBase, ctx:
 
     function renderKeyValue() {
         const table = el("table", "grid");
-        const tbody = document.createElement("tbody");
+        const tbody = el("tbody");
         for (let r = 0; r < numRows; r++) {
             const tr = el("tr", "row");
             const label = el("td", "kv-label", formatValue(evaluated[r]?.[0], columns[0]));
@@ -260,7 +260,7 @@ export function createSafeSheet(container: HTMLElement, config: ConfigBase, ctx:
         const table = el("table", "grid");
         const dataCols = columns.length ? columns.map((_, i) => i).filter((i) => i !== gc) : evaluated[0]?.map((_, i) => i).filter((i) => i !== gc) ?? [];
         if (columnHeaders && columns.length) {
-            const thead = document.createElement("thead");
+            const thead = el("thead");
             const headerRow = el("tr", "header-row");
             for (const c of dataCols) {
                 const th = el("th", "col-header", columns[c]?.label ?? colLabel(c));
@@ -270,7 +270,7 @@ export function createSafeSheet(container: HTMLElement, config: ConfigBase, ctx:
             thead.appendChild(headerRow);
             table.appendChild(thead);
         }
-        const tbody = document.createElement("tbody");
+        const tbody = el("tbody");
         let currentGroup: any = Symbol("none");
         for (let r = 0; r < numRows; r++) {
             const groupVal = evaluated[r]?.[gc];
@@ -301,7 +301,7 @@ export function createSafeSheet(container: HTMLElement, config: ConfigBase, ctx:
     function renderPivot() {
         const table = el("table", "grid");
         renderHeaderRow(table, numCols, 0, totalsCol ? SHEET_DEFAULTS.totalsLabel : undefined);
-        const tbody = document.createElement("tbody");
+        const tbody = el("tbody");
         for (let r = 0; r < numRows; r++) {
             const tr = el("tr", "row");
             for (let c = 0; c < numCols; c++) {
@@ -322,7 +322,7 @@ export function createSafeSheet(container: HTMLElement, config: ConfigBase, ctx:
         }
         table.appendChild(tbody);
         if (totalsRow) {
-            const tfoot = document.createElement("tfoot");
+            const tfoot = el("tfoot");
             const tr = el("tr", "totals-row");
             const totals = columnTotals(evaluated, numCols);
             for (let c = 0; c < numCols; c++) {
@@ -343,7 +343,7 @@ export function createSafeSheet(container: HTMLElement, config: ConfigBase, ctx:
     }
 
     function renderRows(table: HTMLElement) {
-        const tbody = document.createElement("tbody");
+        const tbody = el("tbody");
         for (let r = 0; r < numRows; r++) {
             const tr = el("tr", "row");
             if (r < frozenRows) tr.setAttribute("data-frozen", "true");
@@ -369,7 +369,7 @@ export function createSafeSheet(container: HTMLElement, config: ConfigBase, ctx:
                 td.ondblclick = () => handleCellDoubleClick(r, c);
 
                 if (isEditing) {
-                    const input = document.createElement("input");
+                    const input = el("input");
                     input.setAttribute("data-role", "cell-input");
                     input.value = editValue;
                     input.oninput = () => { editValue = input.value; };
@@ -390,7 +390,7 @@ export function createSafeSheet(container: HTMLElement, config: ConfigBase, ctx:
         }
         table.appendChild(tbody);
         if (totalsRow) {
-            const tfoot = document.createElement("tfoot");
+            const tfoot = el("tfoot");
             const tr = el("tr", "totals-row");
             if (rowNumbers) tr.appendChild(el("td", "row-number"));
             const totals = columnTotals(evaluated, numCols);

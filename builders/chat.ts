@@ -53,7 +53,7 @@ export function createSafeChat(container: HTMLElement, config: ConfigBase, ctx: 
     });
 
     const inputArea = el("div", "chat-input-area");
-    const input = document.createElement("input");
+    const input = el("input");
     input.setAttribute("data-role", "chat-input");
     input.type = "text";
     input.placeholder = placeholder;

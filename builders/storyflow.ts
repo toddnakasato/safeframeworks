@@ -1,6 +1,6 @@
 import type { SafeFireContext } from "../../safecontracts/src/contracts";
 import type { ConfigBase } from "../../safecontracts/src/contracts";
-import { elAttrs } from "../utils/util";
+import { el, elAttrs } from "../utils/util";
 
 /*----------------------------------------------------------------------------------------------------
  *
@@ -14,7 +14,7 @@ export function createSafeStoryFlow(
     ctx: SafeFireContext,
     renderChild?: (container: HTMLElement, child: ConfigBase, ctx: SafeFireContext) => void
 ): HTMLElement {
-    const root = document.createElement("div");
+    const root = el("div");
     root.setAttribute("data-component", "story-flow");
     if (config.metadata?.name) root.setAttribute("data-name", config.metadata.name as string);
 
@@ -31,7 +31,7 @@ export function createSafeStoryFlow(
     // Render children — each child is a scene or step
     if (config.children && renderChild) {
         for (const [key, child] of Object.entries(config.children)) {
-            const childContainer = document.createElement("div");
+            const childContainer = el("div");
             childContainer.setAttribute("data-story-child", key);
             root.appendChild(childContainer);
             renderChild(childContainer, child, handleEvent);

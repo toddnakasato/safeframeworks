@@ -487,10 +487,10 @@ function buildPropertyGrid(root: HTMLElement, config: ConfigBase, data: any[], c
         row.style.paddingLeft = `${level * 20 + 12}px`;
         row.appendChild(el("span", "prop-name", String(node.name ?? "")));
         if (options) {
-            const select = document.createElement("select");
+            const select = el("select");
             select.setAttribute("data-role", "prop-value");
             for (const o of options) {
-                const opt = document.createElement("option");
+                const opt = el("option");
                 opt.value = o;
                 opt.textContent = o;
                 select.appendChild(opt);
@@ -499,7 +499,7 @@ function buildPropertyGrid(root: HTMLElement, config: ConfigBase, data: any[], c
             select.onchange = () => commit(id, select.value);
             row.appendChild(select);
         } else {
-            const input = document.createElement("input");
+            const input = el("input");
             input.setAttribute("data-role", "prop-value");
             input.type = typeof node.value === "number" ? "number" : "text";
             input.value = String(values[id] ?? "");

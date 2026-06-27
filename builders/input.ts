@@ -630,12 +630,12 @@ export function createSafeInput(container: HTMLElement, config: ConfigBase, ctx:
             if (!hasPicklistFilter && !isMultiSelect) {
                 const sel = el("select", "field") as HTMLSelectElement;
                 sel.setAttribute("data-text-align", textAlign);
-                const def = document.createElement("option");
+                const def = el("option");
                 def.value = "";
                 def.textContent = defaultSelectMessage;
                 sel.appendChild(def);
                 for (const o of options) {
-                    const opt = document.createElement("option");
+                    const opt = el("option");
                     opt.value = o.value;
                     opt.textContent = o.label;
                     sel.appendChild(opt);
@@ -648,7 +648,7 @@ export function createSafeInput(container: HTMLElement, config: ConfigBase, ctx:
                 sel.multiple = true;
                 sel.size = selectSize;
                 for (const o of options) {
-                    const opt = document.createElement("option");
+                    const opt = el("option");
                     opt.value = o.value;
                     opt.textContent = o.label;
                     opt.selected = Array.isArray(rawValue) && rawValue.includes(o.value);
@@ -671,12 +671,12 @@ export function createSafeInput(container: HTMLElement, config: ConfigBase, ctx:
                     ? options.filter((o) => o.label.toLowerCase().includes(picklistFilterText.toLowerCase()))
                     : options;
                 const sel = el("select", "field") as HTMLSelectElement;
-                const def = document.createElement("option");
+                const def = el("option");
                 def.value = "";
                 def.textContent = defaultSelectMessage;
                 sel.appendChild(def);
                 for (const o of filtered) {
-                    const opt = document.createElement("option");
+                    const opt = el("option");
                     opt.value = o.value;
                     opt.textContent = o.label;
                     sel.appendChild(opt);
@@ -706,12 +706,12 @@ export function createSafeInput(container: HTMLElement, config: ConfigBase, ctx:
                     ? lookupRecords.filter((r) => r.name.toLowerCase().includes(lookupSearchText.toLowerCase()))
                     : lookupRecords;
                 const sel = el("select", "field") as HTMLSelectElement;
-                const def = document.createElement("option");
+                const def = el("option");
                 def.value = "";
                 def.textContent = lookupPrompt(filtered);
                 sel.appendChild(def);
                 for (const r of filtered) {
-                    const opt = document.createElement("option");
+                    const opt = el("option");
                     opt.value = r.id;
                     opt.textContent = r.name;
                     sel.appendChild(opt);

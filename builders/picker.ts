@@ -78,16 +78,16 @@ export function createSafePicker(container: HTMLElement, config: ConfigBase, ctx
         form.addEventListener("submit", (e) => e.preventDefault());
 
         if (filterField && filterOptions.length > 0) {
-            const select = document.createElement("select");
+            const select = el("select");
             select.setAttribute("data-role", "filter");
             select.setAttribute("data-accent", accent);
             select.setAttribute("data-radius", radius);
-            const all = document.createElement("option");
+            const all = el("option");
             all.value = "";
             all.textContent = (metadata.filterLabel as string) ?? "All";
             select.appendChild(all);
             for (const v of filterOptions) {
-                const opt = document.createElement("option");
+                const opt = el("option");
                 opt.value = v;
                 opt.textContent = v;
                 select.appendChild(opt);
@@ -101,7 +101,7 @@ export function createSafePicker(container: HTMLElement, config: ConfigBase, ctx
             form.appendChild(select);
         }
 
-        const input = document.createElement("input");
+        const input = el("input");
         input.setAttribute("data-role", "search-input");
         input.setAttribute("data-surface", surface);
         input.setAttribute("data-accent", accent);

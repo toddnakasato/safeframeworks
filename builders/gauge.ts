@@ -2,6 +2,7 @@ import * as d3 from "d3";
 import type { SafeFireContext } from "../../safecontracts/src/contracts";
 import type { ConfigBase } from "../../safecontracts/src/contracts";
 import { elAttrs, applyPaintState, applyIntent, readRecord } from "../utils/util";
+import { el } from "../utils/util";
 
 /*----------------------------------------------------------------------------------------------------
  *
@@ -50,7 +51,7 @@ export function createSafeGauge(container: HTMLElement, config: ConfigBase, ctx:
         return thresholds[thresholds.length - 1]?.[1] ?? "var(--sd-accent)";
     };
 
-    const root = document.createElement("div");
+    const root = el("div");
     root.setAttribute("data-component", "gauge");
     applyIntent(root, metadata);
     applyPaintState(root, metadata, "gauge");

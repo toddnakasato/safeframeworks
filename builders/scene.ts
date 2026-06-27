@@ -1,6 +1,6 @@
 import type { SafeFireContext } from "../../safecontracts/src/contracts";
 import type { ConfigBase } from "../../safecontracts/src/contracts";
-import { elAttrs, applyPaintState } from "../utils/util";
+import { el, elAttrs, applyPaintState } from "../utils/util";
 
 /**
  * createSafeScene — renders a ConfigBase's children. No state management.
@@ -14,7 +14,7 @@ export function createSafeScene(
     renderChild?: (container: HTMLElement, child: ConfigBase, ctx: SafeFireContext) => void
 ): HTMLElement {
 
-    const root = document.createElement("div");
+    const root = el("div");
     root.setAttribute("data-component", "scene");
     applyPaintState(root, config.metadata, "scene");
 
@@ -28,7 +28,7 @@ export function createSafeScene(
     // Render children — each child is a ConfigBase, rendered by the caller's renderChild
     if (config.children && renderChild) {
         for (const [key, child] of Object.entries(config.children)) {
-            const childContainer = document.createElement("div");
+            const childContainer = el("div");
             childContainer.setAttribute("data-scene-child", key);
             root.appendChild(childContainer);
             renderChild(childContainer, child, handleEvent);

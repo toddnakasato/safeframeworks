@@ -128,7 +128,7 @@ export function createSafeTable(container: HTMLElement, config: ConfigBase, ctx:
         // Filter input
         if (metadata.filterable) {
             const filterWrap = el("div", "filter-wrap");
-            const filterInput = document.createElement("input") as HTMLInputElement;
+            const filterInput = el("input") as HTMLInputElement;
             filterInput.type = "text";
             filterInput.placeholder = (metadata.filterPlaceholder as string) ?? "Filter…";
             filterInput.setAttribute("data-role", "filter");
@@ -149,7 +149,7 @@ export function createSafeTable(container: HTMLElement, config: ConfigBase, ctx:
         if (rowNumbers) headerRow.appendChild(el("th", "row-number-header", "#"));
         if (selectable) {
             const th = el("th", "select-header");
-            const cb = document.createElement("input");
+            const cb = el("input");
             cb.type = "checkbox";
             cb.checked = selected.size === paged.length && paged.length > 0;
             cb.onchange = () => {
@@ -296,7 +296,7 @@ export function createSafeTable(container: HTMLElement, config: ConfigBase, ctx:
                     e.stopPropagation();
                     handleRowSelect(rowId);
                 };
-                const cb = document.createElement("input");
+                const cb = el("input");
                 cb.type = "checkbox";
                 cb.checked = selected.has(rowId);
                 cb.onchange = () => handleRowSelect(rowId);
