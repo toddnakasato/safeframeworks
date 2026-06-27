@@ -90,7 +90,7 @@ export function createSafeBriefing(
                 const rendered = renderChild(childConfig);
                 content.appendChild(rendered);
                 // Apply grid via data attribute — safestyles handles layout
-                if (sectionColumns && !content.dataset.sectionGrid) {
+                if (sectionColumns && !content.getAttribute("data-section-grid")) {
                     content.setAttribute("data-section-grid", sectionColumns);
                 }
             }
