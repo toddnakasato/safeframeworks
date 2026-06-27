@@ -226,8 +226,6 @@ function buildColumns(root: HTMLElement, config: ConfigBase, data: any[], ctx: S
                         const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
                         svg.setAttribute("data-role", "sparkline");
                         svg.setAttribute("viewBox", "0 0 60 20");
-                        svg.style.width = "60px";
-                        svg.style.height = "20px";
                         const nums = values.map(Number).filter(n => !isNaN(n));
                         const min = Math.min(...nums);
                         const max = Math.max(...nums);

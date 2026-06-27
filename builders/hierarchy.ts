@@ -28,7 +28,6 @@ export function createSafeHierarchy(container: HTMLElement, config: ConfigBase, 
 
     const svgEl = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     svgEl.style.width = "100%";
-    svgEl.style.maxWidth = "600px";
     svgEl.style.display = "block";
     svgEl.setAttribute("viewBox", `0 0 ${WIDTH} ${HEIGHT}`);
     rootEl.appendChild(svgEl);

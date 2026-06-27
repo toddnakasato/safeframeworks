@@ -122,10 +122,7 @@ export function createSafePicker(container: HTMLElement, config: ConfigBase, ctx
     if (!isCardGrid) results.setAttribute("data-layout", "column");
     if (isCardGrid) {
         const cardMin = (metadata.cardMinWidth as string) ?? "220px";
-        results.style.display = "grid";
-        results.style.gridTemplateColumns = `repeat(auto-fill, minmax(${cardMin}, 1fr))`;
-        results.style.gap = "10px";
-        results.style.alignContent = "start";
+        results.setAttribute("data-picker-grid", cardMin);
     } else {
         results.setAttribute("data-surface", surface);
         results.setAttribute("data-radius", radius);

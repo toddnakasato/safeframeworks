@@ -51,7 +51,6 @@ export function createSafeTimeline(container: HTMLElement, config: ConfigBase, c
         root.style.overflowX = "auto";
         const svgEl = document.createElementNS("http://www.w3.org/2000/svg", "svg");
         svgEl.style.width = "100%";
-        if (variant === "horizontal") svgEl.style.minWidth = "600px";
         svgEl.style.display = "block";
         root.appendChild(svgEl);
         const svg = d3.select(svgEl);
