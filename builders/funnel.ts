@@ -28,7 +28,6 @@ export function createSafeFunnel(container: HTMLElement, config: ConfigBase, ctx
 
     const svgEl = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     svgEl.style.width = "100%";
-    svgEl.style.maxWidth = "500px";
     svgEl.style.display = "block";
     root.appendChild(svgEl);
     container.appendChild(root);

@@ -89,11 +89,9 @@ export function createSafeBriefing(
             if (content && renderChild) {
                 const rendered = renderChild(childConfig);
                 content.appendChild(rendered);
-                // Apply grid if sectionColumns set
-                if (sectionColumns && !content.style.gridTemplateColumns) {
-                    content.style.display = "grid";
-                    content.style.gridTemplateColumns = sectionColumns;
-                    content.style.gap = "8px";
+                // Apply grid via data attribute — safestyles handles layout
+                if (sectionColumns && !content.dataset.sectionGrid) {
+                    content.setAttribute("data-section-grid", sectionColumns);
                 }
             }
             continue;
@@ -131,9 +129,7 @@ export function createSafeBriefing(
         /* Section content — delegate to child builder */
         const content = elAttrs("div", { "data-role": "section-content" });
         if (sectionColumns) {
-            content.style.display = "grid";
-            content.style.gridTemplateColumns = sectionColumns;
-            content.style.gap = "8px";
+            content.setAttribute("data-section-grid", sectionColumns);
         }
         if (renderChild) {
             const rendered = renderChild(childConfig);
