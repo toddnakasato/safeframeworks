@@ -89,9 +89,10 @@ export function createSafeBriefing(
             if (content && renderChild) {
                 const rendered = renderChild(childConfig);
                 content.appendChild(rendered);
-                // Apply grid via data attribute — safestyles handles layout
-                if (sectionColumns && !content.getAttribute("data-section-grid")) {
-                    content.setAttribute("data-section-grid", sectionColumns);
+                // Apply grid — config-driven, not hardcoded
+                if (sectionColumns && !content.style.gridTemplateColumns) {
+                    content.style.display = "grid";
+                    content.style.gridTemplateColumns = sectionColumns;
                 }
             }
             continue;
@@ -129,7 +130,8 @@ export function createSafeBriefing(
         /* Section content — delegate to child builder */
         const content = elAttrs("div", { "data-role": "section-content" });
         if (sectionColumns) {
-            content.setAttribute("data-section-grid", sectionColumns);
+            content.style.display = "grid";
+            content.style.gridTemplateColumns = sectionColumns;
         }
         if (renderChild) {
             const rendered = renderChild(childConfig);
