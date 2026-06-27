@@ -8,7 +8,7 @@
         {
           "name": "resolve_script",
           "ok": true,
-          "evidence": "resolved 33 data files (298 total rows) → /Users/toddnakasato/Documents/FF/VSCODE/FFPROD/safeconfig/safeframeworks/samples/data-resolved.ts"
+          "evidence": "resolved 38 data files (598 total rows) → /Users/toddnakasato/Documents/FF/VSCODE/FFPROD/safeconfig/safeframeworks/samples/data-resolved.ts"
         },
         {
           "name": "data_resolved_exists",
@@ -73,5 +73,5 @@
       ]
     }
   },
-  "timestamp": "2026-06-15T12:00:04.023Z"
+  "timestamp": "2026-06-26T15:07:58.325Z"
 }

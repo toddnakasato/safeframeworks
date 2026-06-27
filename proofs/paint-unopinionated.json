@@ -1,12 +1,12 @@
 {
   "ok": true,
-  "total": 296,
-  "passed": 296,
+  "total": 289,
+  "passed": 289,
   "failed": 0,
   "groups": {
-    "no-opinionated-styles": 30,
-    "no-hardcoded-colors": 37,
-    "no-emoji": 229
+    "no-opinionated-styles": 29,
+    "no-hardcoded-colors": 36,
+    "no-emoji": 224
   },
   "checks": [
     {
@@ -142,11 +142,6 @@
     {
       "group": "no-opinionated-styles",
       "name": "heatmap: no opinionated inline styles",
-      "status": "pass"
-    },
-    {
-      "group": "no-opinionated-styles",
-      "name": "navmain: no opinionated inline styles",
       "status": "pass"
     },
     {
@@ -336,11 +331,6 @@
     },
     {
       "group": "no-hardcoded-colors",
-      "name": "navmain: no hardcoded colors outside var(--sd-*)",
-      "status": "pass"
-    },
-    {
-      "group": "no-hardcoded-colors",
       "name": "toggle: no hardcoded colors outside var(--sd-*)",
       "status": "pass"
     },
@@ -512,11 +502,6 @@
     {
       "group": "no-emoji",
       "name": "heatmap: no emoji in builder source",
-      "status": "pass"
-    },
-    {
-      "group": "no-emoji",
-      "name": "navmain: no emoji in builder source",
       "status": "pass"
     },
     {
@@ -1072,26 +1057,6 @@
     {
       "group": "no-emoji",
       "name": "table/table-row-numbers.json: no emoji in sample config",
-      "status": "pass"
-    },
-    {
-      "group": "no-emoji",
-      "name": "navmain/navmain-header-footer.json: no emoji in sample config",
-      "status": "pass"
-    },
-    {
-      "group": "no-emoji",
-      "name": "navmain/navmain-default.json: no emoji in sample config",
-      "status": "pass"
-    },
-    {
-      "group": "no-emoji",
-      "name": "navmain/navmain-footer.json: no emoji in sample config",
-      "status": "pass"
-    },
-    {
-      "group": "no-emoji",
-      "name": "navmain/navmain-header.json: no emoji in sample config",
       "status": "pass"
     },
     {

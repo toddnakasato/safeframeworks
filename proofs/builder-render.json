@@ -1,6 +1,7 @@
 {
   "ok": true,
   "folder": "safeframeworks",
+  "group": "all",
   "total": 579,
   "passed": 579,
   "failed": 0,
