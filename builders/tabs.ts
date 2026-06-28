@@ -1,8 +1,9 @@
-import type { ConfigBase } from "../../safecontracts/src/contracts";
+import type { ConfigBase, ChildRef } from "../../safecontracts/src/contracts";
 import type { SafeFireContext } from "../../safecontracts/src/contracts";
 import { elAttrs, applyPaintState, applyIntent } from "../utils/util";
 import type { TabItem } from "../../safecontracts/src/components/tabs";
 import { buildComponent } from "../utils/render";
+import { isChildRef } from "../../safecontracts/src/resolver-refs";
 
 /*----------------------------------------------------------------------------------------------------
  *
@@ -63,10 +64,10 @@ export function createSafeTabs(container: HTMLElement, config: ConfigBase, ctx: 
 
     function mountActive() {
         panel.innerHTML = "";
-        const childConfig = children ? (children as Record<string, ConfigBase>)[active] : null;
-        if (childConfig) {
+        const child = children ? (children as Record<string, ConfigBase | ChildRef>)[active] : null;
+        if (child && !isChildRef(child)) {
             const content = elAttrs("div", { "data-tab-content": "", "data-tab-key": active });
-            const childEl = buildComponent(childConfig, ctx.onEvent);
+            const childEl = buildComponent(child, undefined);
             content.appendChild(childEl);
             panel.appendChild(content);
         }
