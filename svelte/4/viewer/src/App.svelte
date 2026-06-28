@@ -61,12 +61,12 @@
   for (const k of Object.keys(THEMES)) THEMES[k].sort((a, b) => a === "default" ? -1 : b === "default" ? 1 : a.localeCompare(b));
 
   const componentNames = Object.keys(SAMPLES).sort();
-  let activeStyle = $state("vanilla");
-  let activeTheme = $state("default");
-  let activeComponent = $state(null);
-  let activeVariation = $state(null);
-  let tickets = $state([]);
-  let ticketView = $state(null);
+  let activeStyle = "vanilla";
+  let activeTheme = "default";
+  let activeComponent = null;
+  let activeVariation = null;
+  let tickets = [];
+  let ticketView = null;
 
   function loadStyle(name, theme) {
     document.getElementById("safestyle-link")?.remove();
@@ -143,49 +143,53 @@
     }
     btn.textContent = "Prove"; btn.disabled = false;
   }
+
+  $: openTickets = tickets.filter(t => t.status === "open" || t.status === "in-progress");
+  $: closedTickets = tickets.filter(t => t.status === "closed" || t.status === "proved").sort((a, b) => b.updated.localeCompare(a.updated));
+  $: activeTickets = ticketView === "open" ? openTickets : closedTickets;
+  $: currentThemes = THEMES[activeStyle] ?? ["default"];
 </script>
 
 <div class="viewer">
   <div class="sidebar">
-    <div class="brand"><img src="/shield.png" alt="SafeDesk" /><span>svelte/5</span></div>
+    <div class="brand"><img src="/shield.png" alt="SafeDesk" /><span>svelte/4</span></div>
     <div class="section-label">STYLE</div>
     <div class="style-dropdowns">
       <label class="dropdown-label">Framework</label>
-      <select class="dropdown" bind:value={activeStyle} onchange={(e) => switchStyle(e.target.value)}>
+      <select class="dropdown" value={activeStyle} on:change={(e) => switchStyle(e.target.value)}>
         {#each STYLES as s}<option value={s}>{s}</option>{/each}
       </select>
       <label class="dropdown-label">Theme</label>
-      <select class="dropdown" bind:value={activeTheme} onchange={(e) => switchTheme(e.target.value)}>
-        {#each (THEMES[activeStyle] ?? ["default"]) as t}<option value={t}>{t}</option>{/each}
+      <select class="dropdown" value={activeTheme} on:change={(e) => switchTheme(e.target.value)}>
+        {#each currentThemes as t}<option value={t}>{t}</option>{/each}
       </select>
     </div>
 
     <div class="section-label" style="margin-top:16px">TICKETS</div>
-    <button class="comp-btn" class:active={ticketView === "open"} onclick={() => showTickets("open")}>
-      Open {tickets.filter(t => t.status === "open" || t.status === "in-progress").length > 0 ? `(${tickets.filter(t => t.status === "open" || t.status === "in-progress").length})` : ""}
+    <button class="comp-btn" class:active={ticketView === "open"} on:click={() => showTickets("open")}>
+      Open {openTickets.length > 0 ? `(${openTickets.length})` : ""}
     </button>
-    <button class="comp-btn" class:active={ticketView === "closed"} onclick={() => showTickets("closed")}>
-      Closed {tickets.filter(t => t.status === "closed" || t.status === "proved").length > 0 ? `(${tickets.filter(t => t.status === "closed" || t.status === "proved").length})` : ""}
+    <button class="comp-btn" class:active={ticketView === "closed"} on:click={() => showTickets("closed")}>
+      Closed {closedTickets.length > 0 ? `(${closedTickets.length})` : ""}
     </button>
 
     <div class="section-label" style="margin-top:16px">COMPONENTS</div>
-    <button class="comp-btn" class:active={activeComponent === null && !ticketView} onclick={() => selectComponent(null)}>All</button>
+    <button class="comp-btn" class:active={activeComponent === null && !ticketView} on:click={() => selectComponent(null)}>All</button>
     {#each componentNames as name}
-      <button class="comp-btn" class:active={activeComponent === name && !activeVariation && !ticketView} onclick={() => selectComponent(name)}>{name}</button>
+      <button class="comp-btn" class:active={activeComponent === name && !activeVariation && !ticketView} on:click={() => selectComponent(name)}>{name}</button>
       {#if activeComponent === name}
         {#each Object.keys(SAMPLES[name]).sort() as v}
-          <button class="var-btn" class:active={activeVariation === v} onclick={() => selectVariation(name, v)}>{v}</button>
+          <button class="var-btn" class:active={activeVariation === v} on:click={() => selectVariation(name, v)}>{v}</button>
         {/each}
       {/if}
     {/each}
   </div>
   <div class="main">
-    <h3>svelte/5 — {activeStyle}{#if activeTheme !== "default"}/{activeTheme}{/if}{#if ticketView}<span class="active-comp"> — tickets/{ticketView}</span>{:else if activeComponent}<span class="active-comp"> — {activeVariation ?? activeComponent}</span>{/if}</h3>
+    <h3>svelte/4 — {activeStyle}{#if activeTheme !== "default"}/{activeTheme}{/if}{#if ticketView}<span class="active-comp"> — tickets/{ticketView}</span>{:else if activeComponent}<span class="active-comp"> — {activeVariation ?? activeComponent}</span>{/if}</h3>
 
     {#if ticketView}
-      <!-- Ticket list view -->
       <div class="ticket-list">
-        {#each (ticketView === "open" ? tickets.filter(t => t.status === "open" || t.status === "in-progress") : tickets.filter(t => t.status === "closed" || t.status === "proved").sort((a, b) => b.updated.localeCompare(a.updated))) as t (t.id)}
+        {#each activeTickets as t (t.id)}
           <div class="ticket-card">
             <div class="ticket-header">
               <div>
@@ -204,11 +208,11 @@
               {#if t.resolution}<span>resolution: {t.resolution}</span>{/if}
             </div>
             <div class="ticket-actions">
-              <button class="btn-prove" onclick={(e) => { const btn = e.currentTarget; const res = btn.parentElement.querySelector('.prove-result'); handleProveTicket(t, btn, res); }}>Prove</button>
+              <button class="btn-prove" on:click={(e) => { const btn = e.currentTarget; const res = btn.parentElement.querySelector('.prove-result'); handleProveTicket(t, btn, res); }}>Prove</button>
               <span class="prove-result"></span>
               {#if t.status === "open"}
-                <button class="btn-action" onclick={async () => { await updateTicket({ ...t, status: "in-progress" }); refreshTickets(); }}>Start</button>
-                <button class="btn-action" onclick={async () => { await updateTicket({ ...t, status: "closed", resolution: "Closed without resolution" }); refreshTickets(); }}>Close</button>
+                <button class="btn-action" on:click={async () => { await updateTicket({ ...t, status: "in-progress" }); refreshTickets(); }}>Start</button>
+                <button class="btn-action" on:click={async () => { await updateTicket({ ...t, status: "closed", resolution: "Closed without resolution" }); refreshTickets(); }}>Close</button>
               {/if}
             </div>
           </div>
@@ -217,7 +221,6 @@
         {/each}
       </div>
     {:else}
-      <!-- Component view -->
       {#each (activeComponent ? [activeComponent] : componentNames) as comp (comp + (activeVariation ?? ""))}
         {#each (activeVariation ? [activeVariation] : Object.keys(SAMPLES[comp]).sort()) as v (v)}
           <div class="component-card">
@@ -226,7 +229,6 @@
               <svelte:component this={comps[comp]} config={SAMPLES[comp][v]} onEvent={handleEvent} />
             </div>
             <div style="border-top: 1px solid var(--sd-border, #e5e7eb)" use:proofMount={comp}></div>
-            <!-- Ticket creation -->
             <div class="ticket-create">
               <select class="ticket-type-select" id={`ticket-type-${comp}`}>
                 <option value="bug">bug</option><option value="event">event</option><option value="paint">paint</option>
@@ -234,7 +236,7 @@
                 <option value="variation">variation</option><option value="new-component">new-component</option>
               </select>
               <input class="ticket-title-input" id={`ticket-title-${comp}`} placeholder="Describe the issue..." />
-              <button class="btn-prove" onclick={() => {
+              <button class="btn-prove" on:click={() => {
                 const titleEl = document.getElementById(`ticket-title-${comp}`);
                 const typeEl = document.getElementById(`ticket-type-${comp}`);
                 handleCreateTicket(comp, typeEl, titleEl);
@@ -267,7 +269,6 @@
   .component-card { border: 1px solid var(--sd-border, #e5e7eb); border-radius: 8px; overflow: hidden; margin-bottom: 16px; }
   .component-label { padding: 8px 12px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--sd-text-muted, #6b7280); border-bottom: 1px solid var(--sd-border, #e5e7eb); background: var(--sd-surface-raised, #fafafa); }
   .component-body { padding: 16px; }
-  /* Ticket styles */
   .ticket-list { display: flex; flex-direction: column; gap: 12px; }
   .ticket-card { border: 1px solid var(--sd-border, #e5e7eb); border-radius: 6px; overflow: hidden; }
   .ticket-header { padding: 10px 12px; display: flex; justify-content: space-between; align-items: center; background: var(--sd-surface-raised, #fafafa); }
