@@ -1,8 +1,8 @@
 {
   "ok": true,
   "component": "all",
-  "total": 1224,
-  "passed": 1224,
+  "total": 1389,
+  "passed": 1389,
   "failed": 0,
   "groups": {
     "uses-readList-or-readRecord": 23,
@@ -11,8 +11,8 @@
     "uses-applyPaintState": 21,
     "has-data-component": 34,
     "no-schema-dot-fields": 5,
-    "imports-match-calls": 88,
-    "metadata-is-declared": 26,
+    "imports-match-calls": 90,
+    "metadata-is-declared": 28,
     "required-metadata-fields": 27,
     "no-getDataSource": 34,
     "no-initSafe": 34,
@@ -27,7 +27,13 @@
     "ticket-required-css": 115,
     "ticket-required-nesting": 5,
     "valid-child-variants": 16,
-    "samples-registered-in-index": 180
+    "samples-registered-in-index": 180,
+    "no-unresolved-ref-passthrough": 1,
+    "function-signature-shape": 96,
+    "no-direct-children-cast": 0,
+    "return-type-htmlelement": 31,
+    "no-module-scope-mutable-state": 0,
+    "case-name-matches-data-component": 33
   },
   "checks": [
     {
@@ -696,6 +702,16 @@
       "status": "pass"
     },
     {
+      "group": "imports-match-calls",
+      "name": "chat: imports applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "metadata-is-declared",
+      "name": "chat: metadata variable is declared",
+      "status": "pass"
+    },
+    {
       "group": "no-getDataSource",
       "name": "chat: no raw getDataSource",
       "status": "pass"
@@ -788,6 +804,16 @@
     {
       "group": "imports-match-calls",
       "name": "metric: imports readRecord",
+      "status": "pass"
+    },
+    {
+      "group": "imports-match-calls",
+      "name": "metric: imports applyIntent",
+      "status": "pass"
+    },
+    {
+      "group": "metadata-is-declared",
+      "name": "metric: metadata variable is declared",
       "status": "pass"
     },
     {
@@ -6149,8 +6175,813 @@
       "group": "required-metadata-fields",
       "name": "heatmap/heatmap-matrix.json: has required field config",
       "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "funnel: first param is container: HTMLElement",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "funnel: second param is config: ConfigBase",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "funnel: third param is ctx",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "callout: first param is container: HTMLElement",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "callout: second param is config: ConfigBase",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "callout: third param is ctx",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "briefing: first param is container: HTMLElement",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "briefing: second param is config: ConfigBase",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "briefing: third param is ctx",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "week: first param is container: HTMLElement",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "week: second param is config: ConfigBase",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "week: third param is ctx",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "table: first param is container: HTMLElement",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "table: second param is config: ConfigBase",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "table: third param is ctx",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "nav: first param is container: HTMLElement",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "nav: second param is config: ConfigBase",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "nav: third param is ctx",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "input: first param is container: HTMLElement",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "input: second param is config: ConfigBase",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "input: third param is ctx",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "button: first param is container: HTMLElement",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "button: second param is config: ConfigBase",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "button: third param is ctx",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "sheet: first param is container: HTMLElement",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "sheet: second param is config: ConfigBase",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "sheet: third param is ctx",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "chat: first param is container: HTMLElement",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "chat: second param is config: ConfigBase",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "chat: third param is ctx",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "columns: first param is container: HTMLElement",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "columns: second param is config: ConfigBase",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "columns: third param is ctx",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "metric: first param is container: HTMLElement",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "metric: second param is config: ConfigBase",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "metric: third param is ctx",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "storyflow: first param is container: HTMLElement",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "storyflow: second param is config: ConfigBase",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "storyflow: third param is ctx",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "calendar: first param is container: HTMLElement",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "calendar: second param is config: ConfigBase",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "calendar: third param is ctx",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "card: first param is container: HTMLElement",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "card: second param is config: ConfigBase",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "card: third param is ctx",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "parser: first param is container: HTMLElement",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "parser: second param is config: ConfigBase",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "parser: third param is ctx",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "map: first param is container: HTMLElement",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "map: second param is config: ConfigBase",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "map: third param is ctx",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "hierarchy: first param is container: HTMLElement",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "hierarchy: second param is config: ConfigBase",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "hierarchy: third param is ctx",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "skillup: first param is container: HTMLElement",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "skillup: second param is config: ConfigBase",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "skillup: third param is ctx",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "scene: first param is container: HTMLElement",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "scene: second param is config: ConfigBase",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "scene: third param is ctx",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "dragdrop: first param is container: HTMLElement",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "dragdrop: second param is config: ConfigBase",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "dragdrop: third param is ctx",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "dispatch: first param is container: HTMLElement",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "dispatch: second param is config: ConfigBase",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "dispatch: third param is ctx",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "tabs: first param is container: HTMLElement",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "tabs: second param is config: ConfigBase",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "tabs: third param is ctx",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "list: first param is container: HTMLElement",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "list: second param is config: ConfigBase",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "list: third param is ctx",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "timeline: first param is container: HTMLElement",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "timeline: second param is config: ConfigBase",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "timeline: third param is ctx",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "plan: first param is container: HTMLElement",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "plan: second param is config: ConfigBase",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "plan: third param is ctx",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "tree: first param is container: HTMLElement",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "tree: second param is config: ConfigBase",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "tree: third param is ctx",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "gauge: first param is container: HTMLElement",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "gauge: second param is config: ConfigBase",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "gauge: third param is ctx",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "picker: first param is container: HTMLElement",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "picker: second param is config: ConfigBase",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "picker: third param is ctx",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "grid: first param is container: HTMLElement",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "grid: second param is config: ConfigBase",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "grid: third param is ctx",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "heatmap: first param is container: HTMLElement",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "heatmap: second param is config: ConfigBase",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "heatmap: third param is ctx",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "toggle: first param is container: HTMLElement",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "toggle: second param is config: ConfigBase",
+      "status": "pass"
+    },
+    {
+      "group": "function-signature-shape",
+      "name": "toggle: third param is ctx",
+      "status": "pass"
+    },
+    {
+      "group": "no-unresolved-ref-passthrough",
+      "name": "tabs.ts: guards children against ChildRef before buildComponent",
+      "status": "pass"
+    },
+    {
+      "group": "return-type-htmlelement",
+      "name": "funnel: returns HTMLElement",
+      "status": "pass"
+    },
+    {
+      "group": "return-type-htmlelement",
+      "name": "callout: returns HTMLElement",
+      "status": "pass"
+    },
+    {
+      "group": "return-type-htmlelement",
+      "name": "briefing: returns HTMLElement",
+      "status": "pass"
+    },
+    {
+      "group": "return-type-htmlelement",
+      "name": "week: returns HTMLElement",
+      "status": "pass"
+    },
+    {
+      "group": "return-type-htmlelement",
+      "name": "table: returns HTMLElement",
+      "status": "pass"
+    },
+    {
+      "group": "return-type-htmlelement",
+      "name": "nav: returns HTMLElement",
+      "status": "pass"
+    },
+    {
+      "group": "return-type-htmlelement",
+      "name": "input: returns HTMLElement",
+      "status": "pass"
+    },
+    {
+      "group": "return-type-htmlelement",
+      "name": "button: returns HTMLElement",
+      "status": "pass"
+    },
+    {
+      "group": "return-type-htmlelement",
+      "name": "sheet: returns HTMLElement",
+      "status": "pass"
+    },
+    {
+      "group": "return-type-htmlelement",
+      "name": "chat: returns HTMLElement",
+      "status": "pass"
+    },
+    {
+      "group": "return-type-htmlelement",
+      "name": "columns: returns HTMLElement",
+      "status": "pass"
+    },
+    {
+      "group": "return-type-htmlelement",
+      "name": "metric: returns HTMLElement",
+      "status": "pass"
+    },
+    {
+      "group": "return-type-htmlelement",
+      "name": "storyflow: returns HTMLElement",
+      "status": "pass"
+    },
+    {
+      "group": "return-type-htmlelement",
+      "name": "calendar: returns HTMLElement",
+      "status": "pass"
+    },
+    {
+      "group": "return-type-htmlelement",
+      "name": "card: returns HTMLElement",
+      "status": "pass"
+    },
+    {
+      "group": "return-type-htmlelement",
+      "name": "parser: returns HTMLElement",
+      "status": "pass"
+    },
+    {
+      "group": "return-type-htmlelement",
+      "name": "hierarchy: returns HTMLElement",
+      "status": "pass"
+    },
+    {
+      "group": "return-type-htmlelement",
+      "name": "skillup: returns HTMLElement",
+      "status": "pass"
+    },
+    {
+      "group": "return-type-htmlelement",
+      "name": "scene: returns HTMLElement",
+      "status": "pass"
+    },
+    {
+      "group": "return-type-htmlelement",
+      "name": "dragdrop: returns HTMLElement",
+      "status": "pass"
+    },
+    {
+      "group": "return-type-htmlelement",
+      "name": "dispatch: returns HTMLElement",
+      "status": "pass"
+    },
+    {
+      "group": "return-type-htmlelement",
+      "name": "tabs: returns HTMLElement",
+      "status": "pass"
+    },
+    {
+      "group": "return-type-htmlelement",
+      "name": "list: returns HTMLElement",
+      "status": "pass"
+    },
+    {
+      "group": "return-type-htmlelement",
+      "name": "timeline: returns HTMLElement",
+      "status": "pass"
+    },
+    {
+      "group": "return-type-htmlelement",
+      "name": "plan: returns HTMLElement",
+      "status": "pass"
+    },
+    {
+      "group": "return-type-htmlelement",
+      "name": "tree: returns HTMLElement",
+      "status": "pass"
+    },
+    {
+      "group": "return-type-htmlelement",
+      "name": "gauge: returns HTMLElement",
+      "status": "pass"
+    },
+    {
+      "group": "return-type-htmlelement",
+      "name": "picker: returns HTMLElement",
+      "status": "pass"
+    },
+    {
+      "group": "return-type-htmlelement",
+      "name": "grid: returns HTMLElement",
+      "status": "pass"
+    },
+    {
+      "group": "return-type-htmlelement",
+      "name": "heatmap: returns HTMLElement",
+      "status": "pass"
+    },
+    {
+      "group": "return-type-htmlelement",
+      "name": "toggle: returns HTMLElement",
+      "status": "pass"
+    },
+    {
+      "group": "case-name-matches-data-component",
+      "name": "case \"layout\" builder sets matching data-component",
+      "status": "pass"
+    },
+    {
+      "group": "case-name-matches-data-component",
+      "name": "case \"briefing\" builder sets matching data-component",
+      "status": "pass"
+    },
+    {
+      "group": "case-name-matches-data-component",
+      "name": "case \"button\" builder sets matching data-component",
+      "status": "pass"
+    },
+    {
+      "group": "case-name-matches-data-component",
+      "name": "case \"calendar\" builder sets matching data-component",
+      "status": "pass"
+    },
+    {
+      "group": "case-name-matches-data-component",
+      "name": "case \"callout\" builder sets matching data-component",
+      "status": "pass"
+    },
+    {
+      "group": "case-name-matches-data-component",
+      "name": "case \"card\" builder sets matching data-component",
+      "status": "pass"
+    },
+    {
+      "group": "case-name-matches-data-component",
+      "name": "case \"chat\" builder sets matching data-component",
+      "status": "pass"
+    },
+    {
+      "group": "case-name-matches-data-component",
+      "name": "case \"columns\" builder sets matching data-component",
+      "status": "pass"
+    },
+    {
+      "group": "case-name-matches-data-component",
+      "name": "case \"drag-drop\" builder sets matching data-component",
+      "status": "pass"
+    },
+    {
+      "group": "case-name-matches-data-component",
+      "name": "case \"funnel\" builder sets matching data-component",
+      "status": "pass"
+    },
+    {
+      "group": "case-name-matches-data-component",
+      "name": "case \"gauge\" builder sets matching data-component",
+      "status": "pass"
+    },
+    {
+      "group": "case-name-matches-data-component",
+      "name": "case \"grid\" builder sets matching data-component",
+      "status": "pass"
+    },
+    {
+      "group": "case-name-matches-data-component",
+      "name": "case \"heatmap\" builder sets matching data-component",
+      "status": "pass"
+    },
+    {
+      "group": "case-name-matches-data-component",
+      "name": "case \"hierarchy\" builder sets matching data-component",
+      "status": "pass"
+    },
+    {
+      "group": "case-name-matches-data-component",
+      "name": "case \"input\" builder sets matching data-component",
+      "status": "pass"
+    },
+    {
+      "group": "case-name-matches-data-component",
+      "name": "case \"list\" builder sets matching data-component",
+      "status": "pass"
+    },
+    {
+      "group": "case-name-matches-data-component",
+      "name": "case \"metric\" builder sets matching data-component",
+      "status": "pass"
+    },
+    {
+      "group": "case-name-matches-data-component",
+      "name": "case \"nav\" builder sets matching data-component",
+      "status": "pass"
+    },
+    {
+      "group": "case-name-matches-data-component",
+      "name": "case \"picker\" builder sets matching data-component",
+      "status": "pass"
+    },
+    {
+      "group": "case-name-matches-data-component",
+      "name": "case \"sheet\" builder sets matching data-component",
+      "status": "pass"
+    },
+    {
+      "group": "case-name-matches-data-component",
+      "name": "case \"table\" builder sets matching data-component",
+      "status": "pass"
+    },
+    {
+      "group": "case-name-matches-data-component",
+      "name": "case \"tabs\" builder sets matching data-component",
+      "status": "pass"
+    },
+    {
+      "group": "case-name-matches-data-component",
+      "name": "case \"timeline\" builder sets matching data-component",
+      "status": "pass"
+    },
+    {
+      "group": "case-name-matches-data-component",
+      "name": "case \"toggle\" builder sets matching data-component",
+      "status": "pass"
+    },
+    {
+      "group": "case-name-matches-data-component",
+      "name": "case \"tree\" builder sets matching data-component",
+      "status": "pass"
+    },
+    {
+      "group": "case-name-matches-data-component",
+      "name": "case \"plan\" builder sets matching data-component",
+      "status": "pass"
+    },
+    {
+      "group": "case-name-matches-data-component",
+      "name": "case \"skillup\" builder sets matching data-component",
+      "status": "pass"
+    },
+    {
+      "group": "case-name-matches-data-component",
+      "name": "case \"dispatch\" builder sets matching data-component",
+      "status": "pass"
+    },
+    {
+      "group": "case-name-matches-data-component",
+      "name": "case \"parser\" builder sets matching data-component",
+      "status": "pass"
+    },
+    {
+      "group": "case-name-matches-data-component",
+      "name": "case \"week\" builder sets matching data-component",
+      "status": "pass"
+    },
+    {
+      "group": "case-name-matches-data-component",
+      "name": "case \"chart\" builder sets matching data-component",
+      "status": "pass"
+    },
+    {
+      "group": "case-name-matches-data-component",
+      "name": "case \"flow\" builder sets matching data-component",
+      "status": "pass"
+    },
+    {
+      "group": "case-name-matches-data-component",
+      "name": "case \"map\" builder sets matching data-component",
+      "status": "pass"
     }
   ],
   "failures": [],
-  "ts": "2026-06-28T00:19:58.095Z"
+  "ts": "2026-06-28T12:31:03.224Z"
 }

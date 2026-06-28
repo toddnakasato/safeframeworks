@@ -1,10 +1,10 @@
 {
   "ok": true,
-  "total": 592,
-  "passed": 592,
+  "total": 595,
+  "passed": 595,
   "failed": 0,
   "summary": {
-    "registry": 32,
+    "registry": 35,
     "builders": 35,
     "builderComponents": 35,
     "knownExtensions": [
@@ -15,7 +15,7 @@
     "frameworkTargets": 7
   },
   "groups": {
-    "registry-has-builder": 32,
+    "registry-has-builder": 35,
     "builder-has-registry": 35,
     "builder-has-wrapper": 245,
     "no-stranded-wrapper": 245,
@@ -180,6 +180,21 @@
     {
       "group": "registry-has-builder",
       "name": "registry → builder: list",
+      "status": "pass"
+    },
+    {
+      "group": "registry-has-builder",
+      "name": "registry → builder: metric",
+      "status": "pass"
+    },
+    {
+      "group": "registry-has-builder",
+      "name": "registry → builder: scene",
+      "status": "pass"
+    },
+    {
+      "group": "registry-has-builder",
+      "name": "registry → builder: story-flow",
       "status": "pass"
     },
     {
@@ -2984,5 +2999,5 @@
     }
   ],
   "failures": [],
-  "ts": "2026-06-28T00:19:58.230Z"
+  "ts": "2026-06-28T12:30:32.220Z"
 }

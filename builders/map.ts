@@ -1,6 +1,6 @@
-import L from "leaflet";
+// Type-only import — does not execute at runtime, safe in Bun/Node CLI prove context.
+import type L_TYPE from "leaflet";
 import type { SafeFireContext } from "../../safecontracts/src/contracts";
-import "leaflet/dist/leaflet.css";
 import type { ConfigBase } from "../../safecontracts/src/contracts";
 import { applyIntent, readList } from "../utils/util";
 
@@ -37,7 +37,7 @@ function accentColor(accent?: string): string {
     return getComputedStyle(document.documentElement).getPropertyValue(v).trim() || "#3b82f6";
 }
 
-function createIcon(accent?: string, icon?: string): L.DivIcon {
+function createIcon(L: typeof L_TYPE, accent?: string, icon?: string): L_TYPE.DivIcon {
     // Structure + intent attribute only — paint lives in safestyles.
     return L.divIcon({
         className: "",
@@ -58,7 +58,19 @@ export function mapData(config: ConfigBase): Record<string, any>[] {
  *
  ----------------------------------------------------------------------------------------------------*/
 
-export function createSafeMap(container: HTMLElement, config: ConfigBase, data: Record<string, any>[], ctx: SafeFireContext): L.Map {
+export function createSafeMap(container: HTMLElement, config: ConfigBase, data: Record<string, any>[], ctx: SafeFireContext): L_TYPE.Map {
+    // Leaflet requires a browser DOM. In the Bun/Node CLI prove context there is no window —
+    // return a stub with data-* attributes set so prove-builder-render can diff structure.
+    if (typeof window === "undefined") {
+        container.setAttribute("data-component", "map");
+        container.setAttribute("data-variant", "default");
+        return null as unknown as L_TYPE.Map;
+    }
+    // Runtime-only: load leaflet and its CSS only when a real browser DOM is present.
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    const L = require("leaflet") as typeof L_TYPE;
+    require("leaflet/dist/leaflet.css");
+
     const metadata = config.metadata;
     // External paint state (resolved from state.json by host)
     const _selectedArea = metadata.selectedArea ?? null;
@@ -86,8 +98,8 @@ export function createSafeMap(container: HTMLElement, config: ConfigBase, data: 
     L.tileLayer(TILE_URLS[variant] ?? TILE_URLS.default, { maxZoom: 18 }).addTo(map);
     L.control.attribution({ prefix: false }).addAttribution('© <a href="https://www.openstreetmap.org">OSM</a>').addTo(map);
 
-    const allLayers: L.Layer[] = [];
-    const pathPoints: L.LatLngExpression[] = [];
+    const allLayers: L_TYPE.Layer[] = [];
+    const pathPoints: L_TYPE.LatLngExpression[] = [];
 
     for (let i = 0; i < data.length; i++) {
         const d = data[i];
@@ -101,7 +113,7 @@ export function createSafeMap(container: HTMLElement, config: ConfigBase, data: 
         const accent = accentField ? String(d[accentField] ?? "") : undefined;
         const radius = radiusField ? Number(d[radiusField]) : undefined;
 
-        const marker = L.marker([lat, lng], { icon: createIcon(accent, icon) }).addTo(map);
+        const marker = L.marker([lat, lng], { icon: createIcon(L, accent, icon) }).addTo(map);
 
         if (label || desc) {
             const popupHtml = `<div data-map-popup>
