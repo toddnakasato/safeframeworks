@@ -1,4 +1,4 @@
-import { el, readRecord } from "../utils/util";
+import { el, readRecord, applyIntent } from "../utils/util";
 import type { SafeFireContext } from "../../safecontracts/src/contracts";
 import type { ConfigBase } from "../../safecontracts/src/contracts";
 import { fmtCurrency, fmtInt, fmtPercent } from "../../safecontracts/src/contracts-formatter";
@@ -33,6 +33,7 @@ export function createSafeMetric(container: HTMLElement, config: ConfigBase, ctx
     const root = el("div");
     root.setAttribute("data-component", "metric");
     root.setAttribute("data-layout", "column");
+    applyIntent(root, metadata);
 
     if (metadata.title) {
         const title = el("span");

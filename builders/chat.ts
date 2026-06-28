@@ -1,5 +1,5 @@
 import type { ConfigBase } from "../../safecontracts/src/contracts";
-import { el, readList } from "../utils/util";
+import { el, readList, applyIntent } from "../utils/util";
 import type { SafeFireContext } from "../../safecontracts/src/contracts";
 import type { ChatMessage } from "../../safecontracts/src/components/chat";
 import { nowTime } from "../../safecontracts/src/contracts-date";
@@ -26,6 +26,7 @@ export function createSafeChat(container: HTMLElement, config: ConfigBase, ctx: 
     const root = el("div");
     root.setAttribute("data-component", "chat");
     root.setAttribute("data-layout", "column");
+    applyIntent(root, metadata);
 
     const header = el("div", "chat-header");
     header.appendChild(el("span", "chat-title", title));
