@@ -67,6 +67,62 @@
   let activeVariation = $state(null);
   let tickets = $state([]);
   let ticketView = $state(null);
+  let proofView = $state(false);
+  let activeProof = $state(null);
+  let proofResults = $state({});
+  let proofRunning = $state(false);
+  let runningCommands = $state(new Set());
+  let proofProgress = $state(null);
+  let proofToast = $state(null);
+
+  const PROOF_DOMAINS = [
+    { label: "builder", commands: ["builder-dumb", "builder-reconcile", "builder-structure"] },
+    { label: "event", commands: ["event-coverage", "event-declared", "event-payload"] },
+    { label: "framework", commands: ["framework-boot", "framework-delegation"] },
+    { label: "paint", commands: ["paint-chain", "paint-contrast", "paint-cssonly", "paint-definition", "paint-parity", "paint-unopinionated"] },
+    { label: "ticket", commands: ["ticket"] },
+  ];
+  const ALL_PROVE_COMMANDS = PROOF_DOMAINS.flatMap(d => d.commands);
+
+  async function runProofs(commands) {
+    proofRunning = true;
+    proofProgress = { done: 0, total: commands.length };
+    const cleared = { ...proofResults };
+    commands.forEach(c => delete cleared[c]);
+    proofResults = cleared;
+    runningCommands = new Set(commands);
+    let doneCount = 0;
+    try {
+      const { invoke } = await import("@tauri-apps/api/core");
+      const results = await Promise.all(commands.map(async cmd => {
+        try {
+          const out = await invoke("safecli_run", { name: "safezero", args: ["prove", cmd] });
+          const parsed = JSON.parse(out);
+          const entry = { passed: parsed.passed ?? 0, total: parsed.total ?? 0, failed: parsed.failed ?? 0, checks: parsed.checks, failures: parsed.failures };
+          proofResults = { ...proofResults, [cmd]: entry };
+          runningCommands = new Set([...runningCommands].filter(c => c !== cmd));
+          doneCount++; proofProgress = { done: doneCount, total: commands.length };
+          return [cmd, entry];
+        } catch {
+          const entry = { passed: 0, total: 1, failed: 1 };
+          proofResults = { ...proofResults, [cmd]: entry };
+          runningCommands = new Set([...runningCommands].filter(c => c !== cmd));
+          doneCount++; proofProgress = { done: doneCount, total: commands.length };
+          return [cmd, entry];
+        }
+      }));
+      const totalP = results.reduce((s, [,v]) => s + (v.passed ?? 0), 0);
+      const totalT = results.reduce((s, [,v]) => s + (v.total ?? 0), 0);
+      const totalF = results.reduce((s, [,v]) => s + (v.failed ?? 0), 0);
+      const pass = totalF === 0;
+      proofToast = { message: `${totalP}/${totalT} checks ${pass ? "passed PASS" : `— ${totalF} failed FAIL`}`, color: pass ? "var(--sd-success, #15803d)" : "var(--sd-danger, #dc2626)" };
+      setTimeout(() => { proofToast = null; }, 4000);
+    } finally {
+      proofRunning = false;
+      runningCommands = new Set();
+      proofProgress = null;
+    }
+  }
 
   function loadStyle(name, theme) {
     document.getElementById("safestyle-link")?.remove();
@@ -88,9 +144,10 @@
 
   function switchStyle(s) { activeStyle = s; activeTheme = "default"; loadStyle(s, "default"); }
   function switchTheme(t) { activeTheme = t; loadStyle(activeStyle, t); }
-  function selectComponent(name) { activeComponent = name; activeVariation = null; ticketView = null; }
-  function selectVariation(comp, v) { activeComponent = comp; activeVariation = v; ticketView = null; }
-  function showTickets(view) { ticketView = view; activeComponent = null; activeVariation = null; }
+  function selectComponent(name) { activeComponent = name; activeVariation = null; ticketView = null; proofView = false; activeProof = null; }
+  function selectVariation(comp, v) { activeComponent = comp; activeVariation = v; ticketView = null; proofView = false; activeProof = null; }
+  function showTickets(view) { ticketView = view; activeComponent = null; activeVariation = null; proofView = false; activeProof = null; }
+  function showProofs(label) { activeProof = label; proofView = true; ticketView = null; }
 
   function refreshTickets() {
     listAllTickets().then(t => { tickets = t; }).catch(e => console.error("[tickets] load failed", e));
@@ -122,7 +179,7 @@
           if (current) args.push(current);
           return args;
         };
-        const out = await invoke("safecli_run", { name: "safedesk", args: parseCmd(t.test.command) });
+        const out = await invoke("safecli_run", { name: "safezero", args: parseCmd(t.test.command) });
         const output = JSON.parse(out);
         const failures = [];
         for (const [path, expected] of Object.entries(t.test.assert)) {
@@ -160,6 +217,12 @@
       </select>
     </div>
 
+    <div class="section-label" style="margin-top:16px">PROOFS</div>
+    <button class="comp-btn" class:active={proofView && activeProof === null} onclick={() => showProofs(null)}>All</button>
+    {#each PROOF_DOMAINS as d}
+      <button class="comp-btn" class:active={proofView && activeProof === d.label} onclick={() => showProofs(d.label)}>{d.label}</button>
+    {/each}
+
     <div class="section-label" style="margin-top:16px">TICKETS</div>
     <button class="comp-btn" class:active={ticketView === "open"} onclick={() => showTickets("open")}>
       Open {tickets.filter(t => t.status === "open" || t.status === "in-progress").length > 0 ? `(${tickets.filter(t => t.status === "open" || t.status === "in-progress").length})` : ""}
@@ -180,9 +243,70 @@
     {/each}
   </div>
   <div class="main">
-    <h3>svelte/5 — {activeStyle}{#if activeTheme !== "default"}/{activeTheme}{/if}{#if ticketView}<span class="active-comp"> — tickets/{ticketView}</span>{:else if activeComponent}<span class="active-comp"> — {activeVariation ?? activeComponent}</span>{/if}</h3>
+    <h3>svelte/5 — {activeStyle}{#if activeTheme !== "default"}/{activeTheme}{/if}{#if proofView}<span class="active-comp"> — proofs{activeProof ? ` / ${activeProof}` : ""}</span>{:else if ticketView}<span class="active-comp"> — tickets/{ticketView}</span>{:else if activeComponent}<span class="active-comp"> — {activeVariation ?? activeComponent}</span>{/if}</h3>
 
-    {#if ticketView}
+    {#if proofView}
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:center;gap:12px">
+          <button class="btn-prove" style="padding:6px 16px;font-size:13px;font-weight:600;border-radius:4px;cursor:{proofRunning?'wait':'pointer'};background:{proofRunning?'var(--sd-text-muted,#6b7280)':'var(--sd-accent,#2563eb)'}" disabled={proofRunning}
+            onclick={() => runProofs(activeProof ? (PROOF_DOMAINS.find(d => d.label === activeProof)?.commands ?? []) : ALL_PROVE_COMMANDS)}>
+            {proofRunning ? `⟳ Running${proofProgress ? ` ${proofProgress.done}/${proofProgress.total}` : "..."}` : `▶ ${activeProof ? `Run ${activeProof}` : "Run All"}`}
+          </button>
+          {#if (() => { const cmds = activeProof ? (PROOF_DOMAINS.find(d => d.label === activeProof)?.commands ?? []) : ALL_PROVE_COMMANDS; return cmds.reduce((s,c) => s+(proofResults[c]?.total??0),0) > 0; })()}
+            {@const cmds = activeProof ? (PROOF_DOMAINS.find(d => d.label === activeProof)?.commands ?? []) : ALL_PROVE_COMMANDS}
+            {@const totalT = cmds.reduce((s,c) => s+(proofResults[c]?.total??0),0)}
+            {@const totalP = cmds.reduce((s,c) => s+(proofResults[c]?.passed??0),0)}
+            {@const totalF = cmds.reduce((s,c) => s+(proofResults[c]?.failed??0),0)}
+            <span style="font-size:13px;font-weight:600;color:{totalF===0?'var(--sd-success,#15803d)':'var(--sd-danger,#dc2626)'}">{totalP}/{totalT} {totalF===0?'PASS':`(${totalF} failed)`}</span>
+          {/if}
+        </div>
+        {#each (activeProof ? PROOF_DOMAINS.filter(d => d.label === activeProof) : PROOF_DOMAINS) as domain}
+          <div>
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+              <span style="font-size:12px;font-weight:700;text-transform:uppercase;color:var(--sd-text-muted,#6b7280)">{domain.label}</span>
+              {#if !activeProof}
+                <button class="btn-action" disabled={proofRunning} onclick={() => runProofs(domain.commands)}>Run</button>
+              {/if}
+              {#if domain.commands.reduce((s,c) => s+(proofResults[c]?.total??0),0) > 0}
+                {@const dt = domain.commands.reduce((s,c) => s+(proofResults[c]?.total??0),0)}
+                {@const dp = domain.commands.reduce((s,c) => s+(proofResults[c]?.passed??0),0)}
+                <span style="font-size:11px;font-weight:600;color:{dp===dt?'var(--sd-success,#15803d)':'var(--sd-danger,#dc2626)'}">{dp}/{dt}</span>
+              {/if}
+            </div>
+            {#each domain.commands as cmd}
+              {@const r = proofResults[cmd]}
+              {@const isRunning = runningCommands.has(cmd)}
+              {@const hasResults = r && r.total > 0}
+              {@const pass = r && r.failed === 0}
+              <div style="border:1px solid var(--sd-border,#e5e7eb);border-radius:6px;margin-bottom:8px;overflow:hidden;opacity:{isRunning?0.6:1}">
+                <div style="padding:8px 12px;display:flex;justify-content:space-between;align-items:center;background:var(--sd-surface-raised,#fafafa)">
+                  <span style="font-size:13px;font-weight:600">{cmd}</span>
+                  {#if isRunning}<span style="font-size:11px;color:var(--sd-text-muted,#6b7280)">⟳ running</span>{/if}
+                  {#if !isRunning && hasResults}<span style="font-size:12px;font-weight:600;color:{pass?'var(--sd-success,#15803d)':'var(--sd-danger,#dc2626)'}">{r.passed}/{r.total} {pass?'PASS':'FAIL'}</span>{/if}
+                </div>
+                {#if hasResults && r.failures?.length > 0}
+                  <div style="padding:8px 12px;border-top:1px solid var(--sd-border,#e5e7eb)">
+                    {#each r.failures as f}<div style="font-size:11px;color:var(--sd-danger,#dc2626);font-family:monospace;padding:2px 0">{f.error?.slice(0,120)}</div>{/each}
+                  </div>
+                {/if}
+                {#if hasResults && r.checks}
+                  <div style="padding:8px 12px;border-top:1px solid var(--sd-border,#e5e7eb);font-size:11px;color:var(--sd-text-dim,#475569)">
+                    {#each [...new Set(r.checks.map(c => c.group))] as group}
+                      {@const gc = r.checks.filter(c => c.group === group)}
+                      {@const gp = gc.filter(c => c.status === "pass").length}
+                      <div style="display:flex;justify-content:space-between;padding:1px 0">
+                        <span>{group}</span>
+                        <span style="font-weight:600;color:{gp===gc.length?'var(--sd-success,#15803d)':'var(--sd-danger,#dc2626)'}">{gp}/{gc.length}</span>
+                      </div>
+                    {/each}
+                  </div>
+                {/if}
+              </div>
+            {/each}
+          </div>
+        {/each}
+      </div>
+    {:else if ticketView}
       <!-- Ticket list view -->
       <div class="ticket-list">
         {#each (ticketView === "open" ? tickets.filter(t => t.status === "open" || t.status === "in-progress") : tickets.filter(t => t.status === "closed" || t.status === "proved").sort((a, b) => b.updated.localeCompare(a.updated))) as t (t.id)}
@@ -246,6 +370,12 @@
     {/if}
   </div>
 </div>
+
+{#if proofToast}
+  <div style="position:fixed;bottom:24px;right:24px;padding:10px 20px;border-radius:6px;background:var(--sd-surface-deep,#1e293b);color:{proofToast.color};font-size:13px;font-weight:600;box-shadow:0 4px 12px rgba(0,0,0,0.25);z-index:9999">
+    {proofToast.message}
+  </div>
+{/if}
 
 <style>
   .viewer { display: flex; height: 100vh; font-family: system-ui, sans-serif; background: var(--sd-surface-base, #fff); color: var(--sd-text, #1a1a1a); }

@@ -13,6 +13,23 @@ export default defineConfig({
     outDir: "dist",
     emptyOutDir: true,
   },
+  define: {
+    "process.env.NODE_ENV": JSON.stringify("development"),
+  },
+  optimizeDeps: {
+    include: [
+      "react",
+      "react-dom",
+      "react-dom/client",
+      "@monaco-editor/react",
+      "leaflet",
+    ],
+    esbuildOptions: {
+      define: {
+        "process.env.NODE_ENV": JSON.stringify("development"),
+      },
+    },
+  },
   resolve: {
     alias: {
       "chart.js": path.resolve(__dirname, "node_modules/chart.js"),

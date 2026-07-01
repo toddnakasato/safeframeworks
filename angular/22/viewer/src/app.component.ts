@@ -3,7 +3,7 @@
  * Full feature parity with react/19 viewer: Proofs, Tickets, Components,
  * EPRPP paint state, style/theme picklists, mutual exclusion.
  */
-import { Component, OnInit, OnDestroy, AfterViewChecked, ElementRef } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewChecked, ElementRef, ChangeDetectorRef, NgZone } from '@angular/core';
 import { SAMPLES } from '../../../../samples';
 import { createSafeProofViewer } from '../../../../dev/proof-viewer';
 import { NgFor, NgIf, NgStyle, NgSwitch, NgSwitchCase } from '@angular/common';
@@ -367,7 +367,7 @@ function loadStyle(name: string, theme: string) {
   `]
 })
 export class AppComponent implements OnInit, OnDestroy, AfterViewChecked {
-  constructor(private el: ElementRef) {}
+  constructor(private el: ElementRef, private cdr: ChangeDetectorRef, private ngZone: NgZone) {}
 
   // Style/Theme state
   styles = [...STYLES];
@@ -541,7 +541,7 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewChecked {
       if (event.data?.month !== undefined) args.push('--month', String(event.data.month));
       if (event.data?.day !== undefined) args.push('--day', String(event.data.day));
       if (event.data?.date) args.push('--date', String(event.data.date));
-      await invoke<string>('safecli_run', { name: 'safedesk', args });
+      await invoke<string>('safecli_run', { name: 'safezero', args });
     } catch (e) {
       console.warn('[paint]', e);
     }
@@ -607,20 +607,26 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewChecked {
         commands.map(async cmd => {
           try {
             const { invoke: tauriInvoke } = await import('@tauri-apps/api/core');
-            const out = await tauriInvoke<string>('safecli_run', { name: 'safedesk', args: ['prove', cmd] });
+            const out = await tauriInvoke<string>('safecli_run', { name: 'safezero', args: ['prove', cmd] });
             const parsed = JSON.parse(out);
             const entry: ProofResult = { passed: parsed.passed ?? 0, total: parsed.total ?? 0, failed: parsed.failed ?? 0, checks: parsed.checks, failures: parsed.failures };
-            this.proofResults = { ...this.proofResults, [cmd]: entry };
-            this.runningCommands = new Set([...this.runningCommands].filter(c => c !== cmd));
-            doneCount++;
-            this.proofProgress = { done: doneCount, total: commands.length };
+            this.ngZone.run(() => {
+              this.proofResults = { ...this.proofResults, [cmd]: entry };
+              this.runningCommands = new Set([...this.runningCommands].filter(c => c !== cmd));
+              doneCount++;
+              this.proofProgress = { done: doneCount, total: commands.length };
+              this.cdr.markForCheck();
+            });
             return [cmd, entry] as [string, ProofResult];
           } catch {
-            const entry: ProofResult = { passed: 0, total: 0, failed: -1 };
-            this.proofResults = { ...this.proofResults, [cmd]: entry };
-            this.runningCommands = new Set([...this.runningCommands].filter(c => c !== cmd));
-            doneCount++;
-            this.proofProgress = { done: doneCount, total: commands.length };
+            const entry: ProofResult = { passed: 0, total: 1, failed: 1 };
+            this.ngZone.run(() => {
+              this.proofResults = { ...this.proofResults, [cmd]: entry };
+              this.runningCommands = new Set([...this.runningCommands].filter(c => c !== cmd));
+              doneCount++;
+              this.proofProgress = { done: doneCount, total: commands.length };
+              this.cdr.markForCheck();
+            });
             return [cmd, entry] as [string, ProofResult];
           }
         })
@@ -631,11 +637,13 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewChecked {
       const totalF = results.reduce((s, [, v]) => s + (v.failed ?? 0), 0);
       const pass = totalF === 0;
       this.proofToast = { message: `${totalP}/${totalT} checks ${pass ? 'passed PASS' : `— ${totalF} failed FAIL`}`, color: pass ? 'var(--sd-success, #15803d)' : 'var(--sd-danger, #dc2626)' };
-      setTimeout(() => { this.proofToast = null; }, 4000);
+      this.cdr.markForCheck();
+      setTimeout(() => { this.proofToast = null; this.cdr.markForCheck(); }, 4000);
     } finally {
       this.proofRunning = false;
       this.runningCommands = new Set();
       this.proofProgress = null;
+      this.cdr.markForCheck();
     }
   }
 
@@ -696,7 +704,7 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewChecked {
           if (current) args.push(current);
           return args;
         };
-        const out = await tauriInvoke<string>('safecli_run', { name: 'safedesk', args: parseCmd(t.test.command) });
+        const out = await tauriInvoke<string>('safecli_run', { name: 'safezero', args: parseCmd(t.test.command) });
         const output = JSON.parse(out);
         const failures: string[] = [];
         for (const [path, expected] of Object.entries(t.test.assert)) {

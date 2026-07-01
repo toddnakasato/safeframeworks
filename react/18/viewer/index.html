@@ -7,6 +7,12 @@
 </head>
 <body>
     <script>
+      /* process shim — React 18 CJS checks process.env.NODE_ENV */
+      if (typeof process === "undefined") {
+        window.process = { env: { NODE_ENV: "development" } };
+      }
+    </script>
+    <script>
       /* Fail visibly + report verdict — the safeapp contract, viewer flavor.
          Errors land in the DOM (never a white screen) and POST to the vite
          plugin's /__verdict sink -> runtime/render.json for proofs. */

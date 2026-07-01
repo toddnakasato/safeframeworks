@@ -1,10 +1,11 @@
 {
   "ok": true,
-  "total": 258,
-  "passed": 258,
+  "total": 293,
+  "passed": 293,
   "failed": 0,
   "groups": {
-    "boot-compiles": 258
+    "boot-compiles": 258,
+    "no-bare-require": 35
   },
   "checks": [
     {
@@ -1295,6 +1296,181 @@
     {
       "group": "boot-compiles",
       "name": "vue/3/SafeMetric.vue",
+      "status": "pass"
+    },
+    {
+      "group": "no-bare-require",
+      "name": "builders/funnel.ts: no bare require()",
+      "status": "pass"
+    },
+    {
+      "group": "no-bare-require",
+      "name": "builders/callout.ts: no bare require()",
+      "status": "pass"
+    },
+    {
+      "group": "no-bare-require",
+      "name": "builders/briefing.ts: no bare require()",
+      "status": "pass"
+    },
+    {
+      "group": "no-bare-require",
+      "name": "builders/week.ts: no bare require()",
+      "status": "pass"
+    },
+    {
+      "group": "no-bare-require",
+      "name": "builders/table.ts: no bare require()",
+      "status": "pass"
+    },
+    {
+      "group": "no-bare-require",
+      "name": "builders/nav.ts: no bare require()",
+      "status": "pass"
+    },
+    {
+      "group": "no-bare-require",
+      "name": "builders/input.ts: no bare require()",
+      "status": "pass"
+    },
+    {
+      "group": "no-bare-require",
+      "name": "builders/button.ts: no bare require()",
+      "status": "pass"
+    },
+    {
+      "group": "no-bare-require",
+      "name": "builders/sheet.ts: no bare require()",
+      "status": "pass"
+    },
+    {
+      "group": "no-bare-require",
+      "name": "builders/chat.ts: no bare require()",
+      "status": "pass"
+    },
+    {
+      "group": "no-bare-require",
+      "name": "builders/columns.ts: no bare require()",
+      "status": "pass"
+    },
+    {
+      "group": "no-bare-require",
+      "name": "builders/metric.ts: no bare require()",
+      "status": "pass"
+    },
+    {
+      "group": "no-bare-require",
+      "name": "builders/storyflow.ts: no bare require()",
+      "status": "pass"
+    },
+    {
+      "group": "no-bare-require",
+      "name": "builders/calendar.ts: no bare require()",
+      "status": "pass"
+    },
+    {
+      "group": "no-bare-require",
+      "name": "builders/card.ts: no bare require()",
+      "status": "pass"
+    },
+    {
+      "group": "no-bare-require",
+      "name": "builders/parser.ts: no bare require()",
+      "status": "pass"
+    },
+    {
+      "group": "no-bare-require",
+      "name": "builders/map.ts: no bare require()",
+      "status": "pass"
+    },
+    {
+      "group": "no-bare-require",
+      "name": "builders/hierarchy.ts: no bare require()",
+      "status": "pass"
+    },
+    {
+      "group": "no-bare-require",
+      "name": "builders/skillup.ts: no bare require()",
+      "status": "pass"
+    },
+    {
+      "group": "no-bare-require",
+      "name": "builders/flow.ts: no bare require()",
+      "status": "pass"
+    },
+    {
+      "group": "no-bare-require",
+      "name": "builders/chart.ts: no bare require()",
+      "status": "pass"
+    },
+    {
+      "group": "no-bare-require",
+      "name": "builders/scene.ts: no bare require()",
+      "status": "pass"
+    },
+    {
+      "group": "no-bare-require",
+      "name": "builders/dragdrop.ts: no bare require()",
+      "status": "pass"
+    },
+    {
+      "group": "no-bare-require",
+      "name": "builders/dispatch.ts: no bare require()",
+      "status": "pass"
+    },
+    {
+      "group": "no-bare-require",
+      "name": "builders/layout.ts: no bare require()",
+      "status": "pass"
+    },
+    {
+      "group": "no-bare-require",
+      "name": "builders/tabs.ts: no bare require()",
+      "status": "pass"
+    },
+    {
+      "group": "no-bare-require",
+      "name": "builders/list.ts: no bare require()",
+      "status": "pass"
+    },
+    {
+      "group": "no-bare-require",
+      "name": "builders/timeline.ts: no bare require()",
+      "status": "pass"
+    },
+    {
+      "group": "no-bare-require",
+      "name": "builders/plan.ts: no bare require()",
+      "status": "pass"
+    },
+    {
+      "group": "no-bare-require",
+      "name": "builders/tree.ts: no bare require()",
+      "status": "pass"
+    },
+    {
+      "group": "no-bare-require",
+      "name": "builders/gauge.ts: no bare require()",
+      "status": "pass"
+    },
+    {
+      "group": "no-bare-require",
+      "name": "builders/picker.ts: no bare require()",
+      "status": "pass"
+    },
+    {
+      "group": "no-bare-require",
+      "name": "builders/grid.ts: no bare require()",
+      "status": "pass"
+    },
+    {
+      "group": "no-bare-require",
+      "name": "builders/heatmap.ts: no bare require()",
+      "status": "pass"
+    },
+    {
+      "group": "no-bare-require",
+      "name": "builders/toggle.ts: no bare require()",
       "status": "pass"
     }
   ],

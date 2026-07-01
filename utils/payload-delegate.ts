@@ -46,7 +46,7 @@ export const buildPayloadViaCli: BuildPayloadFn = async (component: string, even
     if (coords.label) args.push("--label", String(coords.label));
 
     try {
-        const out = await invoke<string>("safecli_run", { name: "safedesk", args });
+        const out = await invoke<string>("safecli_run", { name: "safezero", args });
         return JSON.parse(out.trim());
     } catch (e: any) {
         return { ok: false, error: `safedesk payload build failed: ${e}` };

@@ -147,7 +147,7 @@ export default function App() {
         commands.map(async cmd => {
           try {
             const { invoke: tauriInvoke } = await import("@tauri-apps/api/core");
-            const out = await tauriInvoke<string>("safecli_run", { name: "safedesk", args: ["prove", cmd] });
+            const out = await tauriInvoke<string>("safecli_run", { name: "safezero", args: ["prove", cmd] });
             const parsed = JSON.parse(out);
             const entry = { passed: parsed.passed ?? 0, total: parsed.total ?? 0, failed: parsed.failed ?? 0, checks: parsed.checks, failures: parsed.failures };
             setProofResults(prev => ({ ...prev, [cmd]: entry }));
@@ -156,7 +156,7 @@ export default function App() {
             setProofProgress({ done: doneCount, total: commands.length });
             return [cmd, entry] as [string, any];
           } catch {
-            const entry = { passed: 0, total: 0, failed: -1 };
+            const entry = { passed: 0, total: 1, failed: 1 };
             setProofResults(prev => ({ ...prev, [cmd]: entry }));
             setRunningCommands(prev => { const next = new Set(prev); next.delete(cmd); return next; });
             doneCount++;
@@ -204,7 +204,7 @@ export default function App() {
       if (event.data?.month !== undefined) args.push("--month", String(event.data.month));
       if (event.data?.day !== undefined) args.push("--day", String(event.data.day));
       if (event.data?.date) args.push("--date", String(event.data.date));
-      await invoke<string>("safecli_run", { name: "safedesk", args });
+      await invoke<string>("safecli_run", { name: "safezero", args });
     } catch (e) {
       console.warn("[paint]", e);
     }
@@ -392,7 +392,7 @@ export default function App() {
                             if (current) args.push(current);
                             return args;
                           };
-                          const out = await tauriInvoke<string>("safecli_run", { name: "safedesk", args: parseCmd(t.test.command) });
+                          const out = await tauriInvoke<string>("safecli_run", { name: "safezero", args: parseCmd(t.test.command) });
                           const output = JSON.parse(out);
                           const failures: string[] = [];
                           for (const [path, expected] of Object.entries(t.test.assert)) {

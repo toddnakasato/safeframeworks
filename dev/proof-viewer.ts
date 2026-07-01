@@ -17,7 +17,7 @@ async function invoke<T>(cmd: string, args?: Record<string, any>): Promise<T> {
 
 async function runCli(args: string[]): Promise<any> {
     try {
-        const out = await invoke<string>("safecli_run", { name: "safedesk", args });
+        const out = await invoke<string>("safecli_run", { name: "safezero", args });
         return JSON.parse(out);
     } catch (e: any) {
         return { ok: false, error: e?.message ?? String(e) };

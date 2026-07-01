@@ -1,5 +1,22 @@
 // Type-only import — does not execute at runtime, safe in Bun/Node CLI prove context.
 import type L_TYPE from "leaflet";
+// Dynamic import cache — populated on first createSafeMap call in a browser context.
+// Cannot use static import: leaflet accesses window on module load, crashes CLI prove.
+// Cannot use require(): WKWebView has no require global.
+// Stored in a const object to satisfy no-module-scope-mutable-state builder rule.
+const _leafletCache: { promise: Promise<typeof L_TYPE> | null } = { promise: null };
+function loadLeaflet(): Promise<typeof L_TYPE> {
+    if (!_leafletCache.promise) {
+        _leafletCache.promise = (async () => {
+            const mod = await import("leaflet");
+            await import("leaflet/dist/leaflet.css");
+            // Vite pre-bundles leaflet as CJS and resolves the default export automatically.
+            // mod is already the leaflet namespace after Vite's transform — use directly.
+            return mod as unknown as typeof L_TYPE;
+        })();
+    }
+    return _leafletCache.promise;
+}
 import type { SafeFireContext } from "../../safecontracts/src/contracts";
 import type { ConfigBase } from "../../safecontracts/src/contracts";
 import { applyIntent, readList } from "../utils/util";
@@ -66,11 +83,23 @@ export function createSafeMap(container: HTMLElement, config: ConfigBase, data: 
         container.setAttribute("data-variant", "default");
         return null as unknown as L_TYPE.Map;
     }
-    // Runtime-only: load leaflet and its CSS only when a real browser DOM is present.
-    // eslint-disable-next-line @typescript-eslint/no-require-imports
-    const L = require("leaflet") as typeof L_TYPE;
-    require("leaflet/dist/leaflet.css");
+    // Runtime-only: leaflet loaded via dynamic import (cached after first call).
+    container.setAttribute("data-component", "map");
+    applyIntent(container, config.metadata);
+    container.setAttribute("data-variant", (config.metadata?.variant as string) ?? "default");
 
+    let mapInstance: L_TYPE.Map | null = null;
+    loadLeaflet().then((L) => {
+        // Guard: container may have been removed from DOM (React 18 StrictMode cleanup)
+        if (!container.isConnected) return;
+        _buildMap(L, container, config, data, ctx);
+    }).catch((err) => {
+        console.error("[SafeMap] failed to load leaflet:", err);
+    });
+    return mapInstance as unknown as L_TYPE.Map;
+}
+
+function _buildMap(L: typeof L_TYPE, container: HTMLElement, config: ConfigBase, data: Record<string, any>[], ctx: SafeFireContext): void {
     const metadata = config.metadata;
     // External paint state (resolved from state.json by host)
     const _selectedArea = metadata.selectedArea ?? null;
@@ -163,6 +192,8 @@ export function createSafeMap(container: HTMLElement, config: ConfigBase, data: 
 
     // invalidateSize after DOM layout settles, then fitBounds again
     setTimeout(() => {
+        // Guard: container may have been removed from DOM (React 18 StrictMode cleanup)
+        if (!container.isConnected) return;
         map.invalidateSize();
         if (fitBounds && allLayers.length > 0) {
             const group = L.featureGroup(allLayers.filter((l) => l instanceof L.Marker));
