@@ -75,6 +75,63 @@
   let runningCommands = $state(new Set());
   let proofProgress = $state(null);
   let proofToast = $state(null);
+  let orbitorView = $state(false);
+  let activeOrbitor = $state(null);
+  let orbitorTail = $state(null);
+  let orbitorLoading = $state(false);
+
+  // Orbitor categories — alpha order (TICKET_CATEGORIES)
+  const ORBITOR_NAMES = ["alive", "crave", "drive", "enforce", "learn", "orbit", "pulse", "safeagents", "safeapp", "safebuilds", "safecli", "safeconfig", "safecontracts", "safeframeworks", "safelibs", "safestyles"];
+  const ORBITOR_GOALS = {
+    alive: "goal-alive", crave: "goal-crave", drive: "goal-drive", enforce: "goal-enforce",
+    learn: "goal-learn", orbit: "goal-orbit", pulse: "goal-pulse",
+    safeagents: "goal-safeagents-structure", safeapp: "goal-safeapp-structure",
+    safebuilds: "goal-safebuilds-structure", safecli: "goal-safecli-structure",
+    safeconfig: "goal-safeconfig-structure", safecontracts: "goal-safecontracts",
+    safeframeworks: "goal-safeframeworks-builders", safelibs: "goal-safelibs", safestyles: "goal-safestyles-structure",
+  };
+
+  async function loadOrbitorTail(orbitor) {
+    orbitorLoading = true;
+    try {
+      const { invoke } = await import("@tauri-apps/api/core");
+      const args = ["orbit", "tail", "--limit", "100"];
+      if (orbitor) args.push("--goal", ORBITOR_GOALS[orbitor]);
+      const out = await invoke("safecli_run", { name: "safezero", args });
+      const parsed = JSON.parse(out);
+      orbitorTail = { entries: parsed.entries ?? [], ts: parsed.ts };
+    } catch (e) {
+      console.error("[orbitor] tail failed", e);
+      orbitorTail = { entries: [], ts: new Date().toISOString() };
+    } finally {
+      orbitorLoading = false;
+    }
+  }
+
+  function showOrbitors(orbitor) {
+    activeOrbitor = orbitor;
+    orbitorView = true;
+    proofView = false;
+    activeProof = null;
+    ticketView = null;
+    loadOrbitorTail(orbitor);
+  }
+
+    async function wakeOrbitor(goalId) {
+      try {
+        const { invoke } = await import("@tauri-apps/api/core");
+        const args = goalId ? ["orbit", "wake", "--goal", goalId] : ["orbit", "wake-all"];
+        await invoke("safecli_run", { name: "safezero", args });
+      } catch (e) { console.error("[orbitor] wake failed", e); }
+    }
+
+  const fmtEst = (ts) => new Date(ts).toLocaleTimeString("en-US", { timeZone: "America/New_York", hour12: true });
+
+  // Bottom-anchored auto-scroll — pin scrollTop to scrollHeight after render/update.
+  function scrollBottom(node) {
+    node.scrollTop = node.scrollHeight;
+    return { update() { node.scrollTop = node.scrollHeight; } };
+  }
 
   const PROOF_DOMAINS = [
     { label: "builder", commands: ["builder-dumb", "builder-reconcile", "builder-structure"] },
@@ -148,17 +205,41 @@
   function selectComponent(name) {
     activeComponent = name;
     activeVariation = Object.keys(SAMPLES[name] ?? {}).sort()[0] ?? null;
-    ticketView = null; proofView = false; activeProof = null;
+    ticketView = null; proofView = false; activeProof = null; orbitorView = false;
   }
-  function selectVariation(comp, v) { activeComponent = comp; activeVariation = v; ticketView = null; proofView = false; activeProof = null; }
-  function showTickets(view) { ticketView = view; activeComponent = null; activeVariation = null; proofView = false; activeProof = null; }
-  function showProofs(label) { activeProof = label; proofView = true; ticketView = null; }
+  function selectVariation(comp, v) { activeComponent = comp; activeVariation = v; ticketView = null; proofView = false; activeProof = null; orbitorView = false; }
+  function showTickets(view) { ticketView = view; activeComponent = null; activeVariation = null; proofView = false; activeProof = null; orbitorView = false; }
+  function showProofs(label) { activeProof = label; proofView = true; ticketView = null; orbitorView = false; }
 
   function refreshTickets() {
     listAllTickets().then(t => { tickets = t; }).catch(e => console.error("[tickets] load failed", e));
   }
 
   onMount(() => { refreshTickets(); });
+
+  // Live orbitor view — watch safeagent/heartbeats/ and re-tail on change.
+  onMount(() => {
+    const HEARTBEATS_DIR = "/Users/toddnakasato/Documents/FF/VSCODE/FFPROD/safeconfig/safeagent/heartbeats";
+    let timer = null;
+    let unlisten = null;
+    let disposed = false;
+    (async () => {
+      try {
+        const { invoke } = await import("@tauri-apps/api/core");
+        invoke("watch_dir", { path: HEARTBEATS_DIR }).catch(() => {});
+        const { listen } = await import("@tauri-apps/api/event");
+        const fn = await listen("fs-change", (event) => {
+          const path = event?.payload ?? event;
+          if (typeof path !== "string" || !path.includes("heartbeats")) return;
+          if (!orbitorView) return;
+          if (timer) clearTimeout(timer);
+          timer = setTimeout(() => loadOrbitorTail(activeOrbitor), 1000);
+        });
+        if (disposed) fn(); else unlisten = fn;
+      } catch {}
+    })();
+    return () => { disposed = true; if (unlisten) unlisten(); if (timer) clearTimeout(timer); };
+  });
 
   async function handleCreateTicket(comp, typeEl, titleEl) {
     if (!titleEl?.value.trim()) return;
@@ -224,11 +305,20 @@
       </select>
     </div>
 
+    <div style="display:flex;align-items:center;gap:8px;margin-top:16px">
+      <button class="section-label" style="margin-top:0;background:none;border:none;padding:0;cursor:pointer;text-align:left;flex:1;text-decoration:{orbitorView ? 'none' : 'underline'}" onclick={() => showOrbitors(activeOrbitor)}>ORBITORS</button>
+      <button style="font-size:10px;font-weight:600;padding:1px 8px;border-radius:3px;border:1px solid var(--sd-border, #d1d5db);background:var(--sd-surface-base, #fff);color:var(--sd-text, #1a1a1a);cursor:pointer" onclick={() => wakeOrbitor(null)}>Wake All</button>
+    </div>
+    <select class="dropdown" value={orbitorView ? (activeOrbitor ?? "All") : "All"} onchange={(e) => showOrbitors(e.target.value === "All" ? null : e.target.value)}>
+      <option value="All">All</option>
+      {#each ORBITOR_NAMES as n}<option value={n}>{n}</option>{/each}
+    </select>
+
     <div class="section-label" style="margin-top:16px">PROOFS</div>
-    <button class="comp-btn" class:active={proofView && activeProof === null} onclick={() => showProofs(null)}>All</button>
-    {#each PROOF_DOMAINS as d}
-      <button class="comp-btn" class:active={proofView && activeProof === d.label} onclick={() => showProofs(d.label)}>{d.label}</button>
-    {/each}
+    <select class="dropdown" value={activeProof && activeProof !== "__none__" ? activeProof : "All"} onchange={(e) => showProofs(e.target.value === "All" ? null : e.target.value)}>
+      <option value="All">All</option>
+      {#each PROOF_DOMAINS as d}<option value={d.label}>{d.label}</option>{/each}
+    </select>
 
     <div class="section-label" style="margin-top:16px">TICKETS</div>
     <button class="comp-btn" class:active={ticketView === "open"} onclick={() => showTickets("open")}>
@@ -238,10 +328,9 @@
       Closed {tickets.filter(t => t.status === "closed" || t.status === "proved").length > 0 ? `(${tickets.filter(t => t.status === "closed" || t.status === "proved").length})` : ""}
     </button>
 
-    <div class="section-label" style="margin-top:16px">COMPONENTS</div>
-    <div style="display:flex;flex-direction:column;gap:6px;padding:0 2px">
+    <div style="display:flex;flex-direction:column;gap:6px;padding:0 2px;margin-top:16px">
       <div>
-        <label class="dropdown-label">Component</label>
+        <button class="dropdown-label" style="background:none;border:none;padding:0;cursor:pointer;text-align:left;width:100%;text-decoration:{(!proofView && !ticketView && !orbitorView) ? 'none' : 'underline'}" onclick={() => activeComponent && (activeVariation ? selectVariation(activeComponent, activeVariation) : selectComponent(activeComponent))}>Component</button>
         <select class="dropdown" value={activeComponent} onchange={(e) => selectComponent(e.target.value)}>
           {#each componentNames as n}<option value={n}>{n}</option>{/each}
         </select>
@@ -257,9 +346,41 @@
     </div>
   </div>
   <div class="main">
-    <h3>svelte/5 — {activeStyle}{#if activeTheme !== "default"}/{activeTheme}{/if}{#if proofView}<span class="active-comp"> — proofs{activeProof ? ` / ${activeProof}` : ""}</span>{:else if ticketView}<span class="active-comp"> — tickets/{ticketView}</span>{:else if activeComponent}<span class="active-comp"> — {activeVariation ?? activeComponent}</span>{/if}</h3>
+    <h3>svelte/5 — {activeStyle}{#if activeTheme !== "default"}/{activeTheme}{/if}{#if orbitorView}<span class="active-comp"> — orbitors{activeOrbitor ? ` / ${activeOrbitor}` : " / all"}</span>{:else if proofView}<span class="active-comp"> — proofs{activeProof ? ` / ${activeProof}` : ""}</span>{:else if ticketView}<span class="active-comp"> — tickets/{ticketView}</span>{:else if activeComponent}<span class="active-comp"> — {activeVariation ?? activeComponent}</span>{/if}</h3>
 
-    {#if proofView}
+    {#if orbitorView}
+      <div>
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
+          {#if orbitorTail}<span style="font-size:11px;color:var(--sd-text-muted, #6b7280)">live — as of {fmtEst(orbitorTail.ts)} ET</span>{/if}
+        </div>
+        <div style="display:grid;grid-template-columns:{activeOrbitor ? '1fr' : 'repeat(3, 1fr)'};grid-template-rows:{activeOrbitor ? 'auto' : 'repeat(8, 1fr)'};gap:12px;height:{activeOrbitor ? 'auto' : 'calc(100vh - 140px)'}">
+          {#each (activeOrbitor ? (orbitorTail?.entries ?? []) : [...(orbitorTail?.entries ?? [])].concat(Array(Math.max(0, 24 - (orbitorTail?.entries?.length ?? 0))).fill(null))) as entry, idx (entry ? entry.goal_id : `empty-${idx}`)}
+            {#if !entry}
+              <div style="border:1px dashed var(--sd-border,#e5e7eb);border-radius:6px;opacity:0.4"></div>
+            {:else}
+              {@const name = entry.category ?? entry.goal_id.replace(/^goal-/, "")}
+              {@const dot = entry.liveness === "alive" ? "var(--sd-success, #15803d)" : entry.liveness === "stale" ? "var(--sd-warn, #d97706)" : "var(--sd-text-muted, #9ca3af)"}
+              <div style="border:1px solid var(--sd-border, #e5e7eb);border-radius:6px;overflow:hidden;display:flex;flex-direction:column;min-height:0">
+                <div style="padding:8px 12px;display:flex;align-items:center;gap:8px;background:var(--sd-surface-raised, #fafafa);border-bottom:1px solid var(--sd-border, #e5e7eb)">
+                  <span class:blink={entry.liveness === "alive"} style="width:8px;height:8px;border-radius:50%;background:{dot};display:inline-block"></span>
+                  <span style="font-size:12px;font-weight:700">{name}</span>
+                  <button style="margin-left:auto;font-size:10px;font-weight:600;padding:1px 8px;border-radius:3px;border:1px solid var(--sd-border, #d1d5db);background:var(--sd-surface-base, #fff);color:var(--sd-text, #1a1a1a);cursor:pointer" onclick={() => wakeOrbitor(entry.goal_id)}>Wake</button>
+                </div>
+                <div use:scrollBottom={entry.lines} style="padding:8px 12px;font-family:monospace;font-size:10px;line-height:1.6;flex:1;overflow:auto;min-height:0">
+                  {#if entry.lines.length === 0}<div style="color:var(--sd-text-muted, #9ca3af)">no data</div>{/if}
+                  {#each entry.lines as l}
+                    <div style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">
+                      <span style="color:var(--sd-text-muted, #9ca3af)">{fmtEst(l.ts)} </span>
+                      <span style="color:{l.verdict === 'GREEN' ? 'var(--sd-success, #15803d)' : 'var(--sd-danger, #dc2626)'}" title={l.output}>{l.output}</span>
+                    </div>
+                  {/each}
+                </div>
+              </div>
+            {/if}
+          {/each}
+        </div>
+      </div>
+    {:else if proofView}
       <div style="display:flex;flex-direction:column;gap:16px">
         <div style="display:flex;align-items:center;gap:12px">
           <button class="btn-prove" style="padding:6px 16px;font-size:13px;font-weight:600;border-radius:4px;cursor:{proofRunning?'wait':'pointer'};background:{proofRunning?'var(--sd-text-muted,#6b7280)':'var(--sd-accent,#2563eb)'}" disabled={proofRunning}
@@ -357,7 +478,6 @@
           <div class="component-body">
             <svelte:component this={comps[activeComponent]} config={SAMPLES[activeComponent][activeVariation]} onEvent={handleEvent} />
           </div>
-          <div style="border-top: 1px solid var(--sd-border, #e5e7eb)" use:proofMount={activeComponent}></div>
           <div class="ticket-create">
             <select class="ticket-type-select" id={`ticket-type-${activeComponent}`}>
               <option value="bug">bug</option><option value="event">event</option><option value="paint">paint</option>
@@ -423,4 +543,6 @@
   .ticket-create { padding: 8px 12px; border-top: 1px solid var(--sd-border, #e5e7eb); display: flex; gap: 6px; align-items: center; }
   .ticket-type-select { padding: 3px 6px; font-size: 10px; border-radius: 3px; border: 1px solid var(--sd-border, #d1d5db); background: var(--sd-surface-base, #fff); color: var(--sd-text, #0f172a); }
   .ticket-title-input { flex: 1; padding: 3px 6px; font-size: 11px; border-radius: 3px; border: 1px solid var(--sd-border, #d1d5db); background: var(--sd-surface-base, #fff); color: var(--sd-text, #0f172a); }
+  @keyframes orbitor-blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.25; } }
+  .blink { animation: orbitor-blink 1.5s ease-in-out infinite; }
 </style>

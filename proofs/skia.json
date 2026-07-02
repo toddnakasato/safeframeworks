@@ -1,0 +1,150 @@
+{
+  "ok": true,
+  "total": 28,
+  "passed": 28,
+  "failed": 0,
+  "checks": [
+    {
+      "group": "contracts",
+      "name": "contracts-skia.ts exists",
+      "status": "pass"
+    },
+    {
+      "group": "contracts",
+      "name": "SkiaZone exported from hub",
+      "status": "pass"
+    },
+    {
+      "group": "contracts",
+      "name": "SkiaSceneData exported from hub",
+      "status": "pass"
+    },
+    {
+      "group": "contracts",
+      "name": "SKIA_COMPONENTS exported from hub",
+      "status": "pass"
+    },
+    {
+      "group": "contracts",
+      "name": "skia.ts command file exists",
+      "status": "pass"
+    },
+    {
+      "group": "contracts",
+      "name": "skia registered in safezero.ts",
+      "status": "pass"
+    },
+    {
+      "group": "list",
+      "name": "safezero skia list exits 0",
+      "status": "pass"
+    },
+    {
+      "group": "list",
+      "name": "list includes table",
+      "status": "pass"
+    },
+    {
+      "group": "list",
+      "name": "list includes flowmap",
+      "status": "pass"
+    },
+    {
+      "group": "render",
+      "name": "safezero skia render --component table exits 0",
+      "status": "pass"
+    },
+    {
+      "group": "render",
+      "name": "render returns component=table",
+      "status": "pass"
+    },
+    {
+      "group": "svg-shape",
+      "name": "svg is non-empty string",
+      "status": "pass"
+    },
+    {
+      "group": "svg-shape",
+      "name": "svg starts with <svg",
+      "status": "pass"
+    },
+    {
+      "group": "svg-shape",
+      "name": "svg has width attribute",
+      "status": "pass"
+    },
+    {
+      "group": "svg-shape",
+      "name": "width is positive number",
+      "status": "pass"
+    },
+    {
+      "group": "svg-shape",
+      "name": "height is positive number",
+      "status": "pass"
+    },
+    {
+      "group": "zones-shape",
+      "name": "zones is an array",
+      "status": "pass"
+    },
+    {
+      "group": "zones-shape",
+      "name": "zones is non-empty",
+      "status": "pass"
+    },
+    {
+      "group": "zones-shape",
+      "name": "every zone has required fields",
+      "status": "pass"
+    },
+    {
+      "group": "zones-shape",
+      "name": "zone coordinates are numbers",
+      "status": "pass"
+    },
+    {
+      "group": "zone-events",
+      "name": "zone event names are known",
+      "status": "pass"
+    },
+    {
+      "group": "flowmap-render",
+      "name": "safezero skia render --component flowmap exits 0",
+      "status": "pass"
+    },
+    {
+      "group": "flowmap-render",
+      "name": "flowmap svg contains bezier C command",
+      "status": "pass"
+    },
+    {
+      "group": "flowmap-render",
+      "name": "flowmap svg contains feGaussianBlur glow filter",
+      "status": "pass"
+    },
+    {
+      "group": "flowmap-render",
+      "name": "flowmap svg contains animate pulse rings",
+      "status": "pass"
+    },
+    {
+      "group": "flowmap-render",
+      "name": "flowmap zones include node:click events",
+      "status": "pass"
+    },
+    {
+      "group": "flowmap-render",
+      "name": "flowmap zones include edge:click events",
+      "status": "pass"
+    },
+    {
+      "group": "flowmap-render",
+      "name": "flowmap width and height set",
+      "status": "pass"
+    }
+  ],
+  "failures": [],
+  "ts": "2026-07-01T03:30:28.454Z"
+}

@@ -4,9 +4,10 @@
  * the same components styled differently. Sidebar: component menu with
  * variation sub-items, generated from SAMPLES.
  */
-import { useState, useEffect, useCallback, Component } from "react";
+import { useState, useEffect, useCallback, useRef, Component } from "react";
 import type { ReactNode, ErrorInfo } from "react";
 import { renderConfigBase } from "../../SafeRenderer";
+import { CraveStations } from "./CraveStations";
 import { SAMPLES } from "../../../../samples";
 import type { SafeEvent, ConfigBase, Ticket, TicketType } from "safecontracts";
 import { listAllTickets, createTicket, updateTicket } from "./ticket-service";
@@ -92,6 +93,10 @@ export default function App() {
   const [tickets, setTickets] = useState<Ticket[]>([]);
   const [ticketView, setTicketView] = useState<"open" | "closed" | null>(null);
   const [ticketForm, setTicketForm] = useState<{ component: string } | null>(null);
+  const [orbitorView, setOrbitorView] = useState(false);
+  const [activeOrbitor, setActiveOrbitor] = useState<string | null>(null);
+  const [orbitorTail, setOrbitorTail] = useState<{ entries: any[]; ts: string } | null>(null);
+  const [orbitorLoading, setOrbitorLoading] = useState(false);
 
   useEffect(() => {
     loadStyle(activeStyle, activeTheme);
@@ -132,6 +137,70 @@ export default function App() {
     { label: "ticket", commands: ["ticket"] },
   ];
   const ALL_PROVE_COMMANDS = PROOF_DOMAINS.flatMap(d => d.commands);
+
+  // Orbitor categories — alpha order (TICKET_CATEGORIES)
+  const ORBITOR_NAMES = ["alive", "crave", "drive", "enforce", "learn", "orbit", "pulse", "safeagents", "safeapp", "safebuilds", "safecli", "safeconfig", "safecontracts", "safeframeworks", "safelibs", "safestyles"];
+  const ORBITOR_GOALS: Record<string, string> = {
+    alive: "goal-alive", crave: "goal-crave", drive: "goal-drive", enforce: "goal-enforce",
+    learn: "goal-learn", orbit: "goal-orbit", pulse: "goal-pulse",
+    safeagents: "goal-safeagents-structure", safeapp: "goal-safeapp-structure",
+    safebuilds: "goal-safebuilds-structure", safecli: "goal-safecli-structure",
+    safeconfig: "goal-safeconfig-structure", safecontracts: "goal-safecontracts",
+    safeframeworks: "goal-safeframeworks-builders", safelibs: "goal-safelibs", safestyles: "goal-safestyles-structure",
+  };
+
+  const loadOrbitorTail = useCallback(async (orbitor: string | null) => {
+    setOrbitorLoading(true);
+    try {
+      const { invoke: tauriInvoke } = await import("@tauri-apps/api/core");
+      const args = ["orbit", "tail", "--limit", "100"];
+      if (orbitor) args.push("--goal", ORBITOR_GOALS[orbitor]);
+      const out = await tauriInvoke<string>("safecli_run", { name: "safezero", args });
+      const parsed = JSON.parse(out);
+      setOrbitorTail({ entries: parsed.entries ?? [], ts: parsed.ts });
+    } catch (e) {
+      console.error("[orbitor] tail failed", e);
+      setOrbitorTail({ entries: [], ts: new Date().toISOString() });
+    } finally {
+      setOrbitorLoading(false);
+    }
+  }, []);
+
+  const fmtEst = (ts: string) => new Date(ts).toLocaleTimeString("en-US", { timeZone: "America/New_York", hour12: true });
+
+  const wakeOrbitor = async (goalId: string | null) => {
+    try {
+      const { invoke: tauriInvoke } = await import("@tauri-apps/api/core");
+      const args = goalId ? ["orbit", "wake", "--goal", goalId] : ["orbit", "wake-all"];
+      await tauriInvoke<string>("safecli_run", { name: "safezero", args });
+    } catch (e) { console.error("[orbitor] wake failed", e); }
+  };
+
+  const showOrbitors = (orbitor: string | null) => {
+    setActiveOrbitor(orbitor);
+    setOrbitorView(true);
+    setProofView(false);
+    setActiveProof("__none__");
+    setTicketView(null);
+    loadOrbitorTail(orbitor);
+  };
+
+  // Live orbitor view — watch safeagent/heartbeats/ and re-tail on change.
+  const orbitorLive = useRef<{ view: boolean; orbitor: string | null }>({ view: false, orbitor: null });
+  useEffect(() => { orbitorLive.current = { view: orbitorView, orbitor: activeOrbitor }; }, [orbitorView, activeOrbitor]);
+  useEffect(() => {
+    const HEARTBEATS_DIR = "/Users/toddnakasato/Documents/FF/VSCODE/FFPROD/safeconfig/safeagent/heartbeats";
+    invoke("watch_dir", { path: HEARTBEATS_DIR }).catch(() => {});
+    let timer: ReturnType<typeof setTimeout> | null = null;
+    let unlisten: (() => void) | null = null;
+    listen("fs-change", (path: string) => {
+      if (typeof path !== "string" || !path.includes("heartbeats")) return;
+      if (!orbitorLive.current.view) return;
+      if (timer) clearTimeout(timer);
+      timer = setTimeout(() => loadOrbitorTail(orbitorLive.current.orbitor), 1000);
+    }).then(fn => { unlisten = fn; });
+    return () => { if (unlisten) unlisten(); if (timer) clearTimeout(timer); };
+  }, []);
 
   const runProofs = async (commands: string[]) => {
     setProofRunning(true);
@@ -228,6 +297,7 @@ export default function App() {
     setProofView(false);
     setActiveProof("__none__");
     setTicketView(null);
+    setOrbitorView(false);
   };
   const selectVariation = (comp: string, variation: string) => {
     setActiveComponent(comp);
@@ -235,6 +305,7 @@ export default function App() {
     setProofView(false);
     setActiveProof("__none__");
     setTicketView(null);
+    setOrbitorView(false);
   };
 
   /** Always show exactly one [component, variation] pair. */
@@ -284,17 +355,39 @@ export default function App() {
           </div>
         </div>
 
+        {/* Orbitors */}
+        <div style={{ padding: 8, borderBottom: "1px solid var(--sd-border, #e5e7eb)" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+            <button onClick={() => showOrbitors(activeOrbitor)}
+              style={{ ...sectionLabel, background: "none", border: "none", padding: 0, cursor: "pointer", textAlign: "left", flex: 1, textDecoration: orbitorView ? "none" : "underline" }}>
+              Orbitors
+            </button>
+            <button onClick={() => wakeOrbitor(null)}
+              style={{ fontSize: 10, fontWeight: 600, padding: "1px 8px", borderRadius: 3, border: "1px solid var(--sd-border, #d1d5db)", background: "var(--sd-surface-base, #fff)", color: "var(--sd-text, #1a1a1a)", cursor: "pointer", marginBottom: 8 }}>
+              Wake All
+            </button>
+          </div>
+          <select
+            value={orbitorView ? (activeOrbitor ?? "All") : "All"}
+            onChange={e => { const v = e.target.value; showOrbitors(v === "All" ? null : v); }}
+            style={dropdownStyle}
+          >
+            <option value="All">All</option>
+            {ORBITOR_NAMES.map(n => <option key={n} value={n}>{n}</option>)}
+          </select>
+        </div>
+
         {/* Proofs */}
         <div style={{ padding: 8, borderBottom: "1px solid var(--sd-border, #e5e7eb)" }}>
           <div style={sectionLabel}>Proofs</div>
-          <button onClick={() => { setActiveProof(null); setProofView(true); setTicketView(null); }} style={itemStyle(activeProof === null && proofView)}>
-            All
-          </button>
-          {PROOF_DOMAINS.map(d => (
-            <button key={d.label} onClick={() => { setActiveProof(d.label); setProofView(true); setTicketView(null); }} style={itemStyle(activeProof === d.label && proofView)}>
-              {d.label}
-            </button>
-          ))}
+          <select
+            value={activeProof && activeProof !== "__none__" ? activeProof : "All"}
+            onChange={e => { const v = e.target.value; setActiveProof(v === "All" ? null : v); setProofView(true); setTicketView(null); setOrbitorView(false); }}
+            style={dropdownStyle}
+          >
+            <option value="All">All</option>
+            {PROOF_DOMAINS.map(d => <option key={d.label} value={d.label}>{d.label}</option>)}
+          </select>
         </div>
 
         {/* Component menu with variation sub-items */}
@@ -305,19 +398,21 @@ export default function App() {
             const open = tickets.filter(t => t.status === "open" || t.status === "in-progress");
             const closed = tickets.filter(t => t.status === "closed" || t.status === "proved");
             return (<>
-              <button onClick={() => { setTicketView("open"); setProofView(false); setActiveProof("__none__"); }} style={itemStyle(ticketView === "open" && !proofView)}>
+              <button onClick={() => { setTicketView("open"); setProofView(false); setActiveProof("__none__"); setOrbitorView(false); }} style={itemStyle(ticketView === "open" && !proofView)}>
                 Open {open.length > 0 && `(${open.length})`}
               </button>
-              <button onClick={() => { setTicketView("closed"); setProofView(false); setActiveProof("__none__"); }} style={itemStyle(ticketView === "closed" && !proofView)}>
+              <button onClick={() => { setTicketView("closed"); setProofView(false); setActiveProof("__none__"); setOrbitorView(false); }} style={itemStyle(ticketView === "closed" && !proofView)}>
                 Closed {closed.length > 0 && `(${closed.length})`}
               </button>
             </>);
           })()}
 
-          <div style={{ ...sectionLabel, marginTop: 12 }}>Components</div>
-          <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: 6, marginTop: 12 }}>
             <div>
-              <label style={labelStyle}>Component</label>
+              <button onClick={() => activeComponent && (activeVariation ? selectVariation(activeComponent, activeVariation) : selectComponent(activeComponent))}
+                style={{ ...labelStyle, background: "none", border: "none", padding: 0, cursor: "pointer", textAlign: "left", width: "100%", textDecoration: (!proofView && !ticketView && !orbitorView) ? "none" : "underline" }}>
+                Component
+              </button>
               <select
                 value={activeComponent ?? ""}
                 onChange={e => selectComponent(e.target.value)}
@@ -347,12 +442,51 @@ export default function App() {
       <div style={{ flex: 1, overflow: "auto", padding: 24, background: "var(--sd-surface-base, #fff)" }}>
         <div style={{ fontSize: 14, fontWeight: 600, marginBottom: 16, color: "var(--sd-text, #1a1a1a)" }}>
           react/19 — {activeStyle}{activeTheme !== "default" ? `/${activeTheme}` : ""}
-          {proofView && <span style={{ fontWeight: 400, color: "var(--sd-text-muted, #6b7280)" }}> — proofs{activeProof && activeProof !== "__none__" ? ` / ${activeProof}` : ""}</span>}
+          {orbitorView && <span style={{ fontWeight: 400, color: "var(--sd-text-muted, #6b7280)" }}> — orbitors{activeOrbitor ? ` / ${activeOrbitor}` : " / all"}</span>}
+          {!orbitorView && proofView && <span style={{ fontWeight: 400, color: "var(--sd-text-muted, #6b7280)" }}> — proofs{activeProof && activeProof !== "__none__" ? ` / ${activeProof}` : ""}</span>}
           {ticketView && <span style={{ fontWeight: 400, color: "var(--sd-text-muted, #6b7280)" }}> — tickets / {ticketView}</span>}
-          {!proofView && !ticketView && activeComponent && <span style={{ fontWeight: 400, color: "var(--sd-text-muted, #6b7280)" }}> — {activeVariation ?? activeComponent}</span>}
+          {!orbitorView && !proofView && !ticketView && activeComponent && <span style={{ fontWeight: 400, color: "var(--sd-text-muted, #6b7280)" }}> — {activeVariation ?? activeComponent}</span>}
         </div>
 
-        {ticketView ? (
+        {orbitorView ? (
+          /* Orbitor view — grid of orbitor cells, last N pass outputs each */
+          <div>
+            <style>{`@keyframes orbitor-blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.25; } }`}</style>
+            <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
+              {orbitorTail && <span style={{ fontSize: 11, color: "var(--sd-text-muted, #6b7280)" }}>live — as of {fmtEst(orbitorTail.ts)} ET</span>}
+            </div>
+            <div style={{ display: "grid", gridTemplateColumns: activeOrbitor ? "1fr" : "repeat(3, 1fr)", gridTemplateRows: activeOrbitor ? "auto" : "repeat(8, 1fr)", gap: 12, height: activeOrbitor ? "auto" : "calc(100vh - 140px)" }}>
+              {(activeOrbitor ? (orbitorTail?.entries ?? []) : [...(orbitorTail?.entries ?? [])].concat(Array(Math.max(0, 24 - (orbitorTail?.entries?.length ?? 0))).fill(null))).map((e: any, idx: number) => {
+                if (!e) return <div key={`empty-${idx}`} style={{ border: "1px dashed var(--sd-border, #e5e7eb)", borderRadius: 6, opacity: 0.4 }} />;
+                const name = e.category ?? e.goal_id.replace(/^goal-/, "");
+                const dot = e.liveness === "alive" ? "var(--sd-success, #15803d)" : e.liveness === "stale" ? "var(--sd-warn, #d97706)" : "var(--sd-text-muted, #9ca3af)";
+                return (
+                  <div key={e.goal_id} style={{ border: "1px solid var(--sd-border, #e5e7eb)", borderRadius: 6, overflow: "hidden", display: "flex", flexDirection: "column", minHeight: 0 }}>
+                    <div style={{ padding: "8px 12px", display: "flex", alignItems: "center", gap: 8, background: "var(--sd-surface-raised, #fafafa)", borderBottom: "1px solid var(--sd-border, #e5e7eb)" }}>
+                      <span style={{ width: 8, height: 8, borderRadius: "50%", background: dot, display: "inline-block", animation: e.liveness === "alive" ? "orbitor-blink 1.5s ease-in-out infinite" : "none" }} />
+                      <span style={{ fontSize: 12, fontWeight: 700 }}>{name}</span>
+                      <button onClick={() => wakeOrbitor(e.goal_id)}
+                        style={{ marginLeft: "auto", fontSize: 10, fontWeight: 600, padding: "1px 8px", borderRadius: 3, border: "1px solid var(--sd-border, #d1d5db)", background: "var(--sd-surface-base, #fff)", color: "var(--sd-text, #1a1a1a)", cursor: "pointer" }}>
+                        Wake
+                      </button>
+                    </div>
+                    <div ref={el => { if (el) el.scrollTop = el.scrollHeight; }} style={{ padding: "8px 12px", fontFamily: "monospace", fontSize: 10, lineHeight: 1.6, flex: 1, overflow: "auto", minHeight: 0 }}>
+                      {e.lines.length === 0 && <div style={{ color: "var(--sd-text-muted, #9ca3af)" }}>no data</div>}
+                      {e.lines.map((l: any, i: number) => (
+                        <div key={i} style={{ whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+                          <span style={{ color: "var(--sd-text-muted, #9ca3af)" }}>{fmtEst(l.ts)} </span>
+                          <span style={{ color: l.verdict === "GREEN" ? "var(--sd-success, #15803d)" : "var(--sd-danger, #dc2626)" }} title={l.output}>
+                            {l.output}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        ) : ticketView ? (
           /* Ticket view */
           <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
             {(() => {
@@ -531,24 +665,15 @@ export default function App() {
             ))}
           </div>
         ) : (
-          /* Component view */
+          /* Component view — live component + five-station CRAVE panel */
           <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
             {toShow.map(([comp, v]) => (
-              <div key={v} style={{ border: "1px solid var(--sd-border, #e5e7eb)", borderRadius: 8, overflow: "hidden" }}>
-                <div style={{ padding: "8px 12px", fontSize: 11, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.05em", color: "var(--sd-text-muted, #6b7280)", borderBottom: "1px solid var(--sd-border, #e5e7eb)", background: "var(--sd-surface-raised, #fafafa)" }}>
-                  {v}
-                </div>
-                <div style={{ padding: 16 }}>
-                  <ComponentBoundary label={`${comp}/${v}`}>
-                    {renderConfigBase(paintConfig(SAMPLES[comp][v]), handleEvent)}
-                  </ComponentBoundary>
-                </div>
-                <div style={{ borderTop: "1px solid var(--sd-border, #e5e7eb)" }}>
-                  <ComponentBoundary label={`proof-viewer/${comp}`}>
-                    {renderConfigBase({ component: "proof-viewer", metadata: { target: comp } } as any, handleEvent)}
-                  </ComponentBoundary>
-                </div>
-                {/* Ticket creation */}
+              <CraveStations
+                key={`${comp}/${v}`}
+                config={paintConfig(SAMPLES[comp][v])}
+                label={v}
+                onOuterEvent={handleEvent}
+                ticketRow={
                 <div style={{ padding: "8px 12px", borderTop: "1px solid var(--sd-border, #e5e7eb)", display: "flex", gap: 6, alignItems: "center" }}>
                   <select id={`ticket-type-${comp}`} defaultValue="bug" style={{ padding: "3px 6px", fontSize: 10, borderRadius: 3, border: "1px solid var(--sd-border, #d1d5db)", background: "var(--sd-surface-base, #fff)", color: "var(--sd-text, #0f172a)" }}>
                     <option value="bug">bug</option><option value="event">event</option><option value="paint">paint</option>
@@ -567,7 +692,8 @@ export default function App() {
                     + Ticket
                   </button>
                 </div>
-              </div>
+                }
+              />
             ))}
           </div>
         )}

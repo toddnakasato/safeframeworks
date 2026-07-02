@@ -59,6 +59,7 @@ async function listen(event: string, handler: (payload: any) => void): Promise<(
 
 const STATE_DIR = 'runtime';
 const STATE_FILE = 'runtime/state.json';
+const HEARTBEATS_DIR = '/Users/toddnakasato/Documents/FF/VSCODE/FFPROD/safeconfig/safeagent/heartbeats';
 const STYLES = ['vanilla', 'tailwind', 'tailwind-daisy', 'material'] as const;
 const COMPONENT_NAMES = Object.keys(SAMPLES).sort();
 
@@ -93,6 +94,17 @@ const PROOF_DOMAINS: ProofDomain[] = [
   { label: 'ticket', commands: ['ticket'] },
 ];
 const ALL_PROVE_COMMANDS = PROOF_DOMAINS.flatMap(d => d.commands);
+
+// Orbitor categories — alpha order (TICKET_CATEGORIES)
+const ORBITOR_NAMES = ['alive', 'crave', 'drive', 'enforce', 'learn', 'orbit', 'pulse', 'safeagents', 'safeapp', 'safebuilds', 'safecli', 'safeconfig', 'safecontracts', 'safeframeworks', 'safelibs', 'safestyles'];
+const ORBITOR_GOALS: Record<string, string> = {
+  alive: 'goal-alive', crave: 'goal-crave', drive: 'goal-drive', enforce: 'goal-enforce',
+  learn: 'goal-learn', orbit: 'goal-orbit', pulse: 'goal-pulse',
+  safeagents: 'goal-safeagents-structure', safeapp: 'goal-safeapp-structure',
+  safebuilds: 'goal-safebuilds-structure', safecli: 'goal-safecli-structure',
+  safeconfig: 'goal-safeconfig-structure', safecontracts: 'goal-safecontracts',
+  safeframeworks: 'goal-safeframeworks-builders', safelibs: 'goal-safelibs', safestyles: 'goal-safestyles-structure',
+};
 
 /** Load a safestyles implementation + theme dynamically. */
 function loadStyle(name: string, theme: string) {
@@ -146,11 +158,25 @@ function loadStyle(name: string, theme: string) {
           </div>
         </div>
 
+        <!-- Orbitors section -->
+        <div [ngStyle]="{ padding: '8px', borderBottom: '1px solid var(--sd-border, #e5e7eb)' }">
+          <div [ngStyle]="{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }">
+            <button (click)="showOrbitors(activeOrbitor)" [ngStyle]="{ fontSize: '11px', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--sd-text-muted, #6b7280)', padding: '0', background: 'none', border: 'none', cursor: 'pointer', textAlign: 'left', flex: '1', textDecoration: orbitorView ? 'none' : 'underline' }">Orbitors</button>
+            <button (click)="wakeOrbitor(null)" [ngStyle]="{ fontSize: '10px', fontWeight: '600', padding: '1px 8px', borderRadius: '3px', border: '1px solid var(--sd-border, #d1d5db)', background: 'var(--sd-surface-base, #fff)', color: 'var(--sd-text, #1a1a1a)', cursor: 'pointer' }">Wake All</button>
+          </div>
+          <select [ngModel]="orbitorView ? (activeOrbitor ?? 'All') : 'All'" (ngModelChange)="showOrbitors($event === 'All' ? null : $event)" [ngStyle]="dropdownStyle">
+            <option value="All">All</option>
+            <option *ngFor="let n of orbitorNames" [value]="n">{{n}}</option>
+          </select>
+        </div>
+
         <!-- Proofs section -->
         <div [ngStyle]="{ padding: '8px', borderBottom: '1px solid var(--sd-border, #e5e7eb)' }">
           <div [ngStyle]="sectionLabel">Proofs</div>
-          <button (click)="openProofs(null)" [ngStyle]="itemStyle(activeProof === null && proofView)">All</button>
-          <button *ngFor="let d of proofDomains" (click)="openProofs(d.label)" [ngStyle]="itemStyle(activeProof === d.label && proofView)">{{d.label}}</button>
+          <select [ngModel]="activeProof && activeProof !== '__none__' ? activeProof : 'All'" (ngModelChange)="openProofs($event === 'All' ? null : $event)" [ngStyle]="dropdownStyle">
+            <option value="All">All</option>
+            <option *ngFor="let d of proofDomains" [value]="d.label">{{d.label}}</option>
+          </select>
         </div>
 
         <!-- Scrollable area: Tickets + Components -->
@@ -165,10 +191,9 @@ function loadStyle(name: string, theme: string) {
           </button>
 
           <!-- Components -->
-          <div [ngStyle]="{ fontSize: '11px', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--sd-text-muted, #6b7280)', marginBottom: '8px', padding: '0 4px', marginTop: '12px' }">Components</div>
-          <div [ngStyle]="{ display: 'flex', flexDirection: 'column', gap: '6px' }">
+          <div [ngStyle]="{ display: 'flex', flexDirection: 'column', gap: '6px', marginTop: '12px' }">
             <div>
-              <label [ngStyle]="labelStyle">Component</label>
+              <button (click)="activeComponent && (activeVariation ? selectVariation(activeComponent!, activeVariation!) : selectComponent(activeComponent!))" [ngStyle]="{ fontSize: '10px', fontWeight: '600', color: 'var(--sd-text-muted, #6b7280)', padding: '0', background: 'none', border: 'none', cursor: 'pointer', textAlign: 'left', width: '100%', textDecoration: (!proofView && !ticketView && !orbitorView) ? 'none' : 'underline' }">Component</button>
               <select [ngModel]="activeComponent" (ngModelChange)="selectComponent($event)" [ngStyle]="dropdownStyle">
                 <option *ngFor="let n of componentNames" [value]="n">{{n}}</option>
               </select>
@@ -187,13 +212,42 @@ function loadStyle(name: string, theme: string) {
       <div [ngStyle]="{ flex: '1', overflow: 'auto', padding: '24px', background: 'var(--sd-surface-base, #fff)' }">
         <div [ngStyle]="{ fontSize: '14px', fontWeight: '600', marginBottom: '16px', color: 'var(--sd-text, #1a1a1a)' }">
           angular/21 — {{activeStyle}}{{activeTheme !== 'default' ? '/' + activeTheme : ''}}
-          <span *ngIf="proofView" [ngStyle]="{ fontWeight: '400', color: 'var(--sd-text-muted, #6b7280)' }"> — proofs{{activeProof && activeProof !== '__none__' ? ' / ' + activeProof : ''}}</span>
+          <span *ngIf="orbitorView" [ngStyle]="{ fontWeight: '400', color: 'var(--sd-text-muted, #6b7280)' }"> — orbitors{{activeOrbitor ? ' / ' + activeOrbitor : ' / all'}}</span>
+          <span *ngIf="!orbitorView && proofView" [ngStyle]="{ fontWeight: '400', color: 'var(--sd-text-muted, #6b7280)' }"> — proofs{{activeProof && activeProof !== '__none__' ? ' / ' + activeProof : ''}}</span>
           <span *ngIf="ticketView" [ngStyle]="{ fontWeight: '400', color: 'var(--sd-text-muted, #6b7280)' }"> — tickets / {{ticketView}}</span>
-          <span *ngIf="!proofView && !ticketView && activeComponent" [ngStyle]="{ fontWeight: '400', color: 'var(--sd-text-muted, #6b7280)' }"> — {{activeVariation ?? activeComponent}}</span>
+          <span *ngIf="!orbitorView && !proofView && !ticketView && activeComponent" [ngStyle]="{ fontWeight: '400', color: 'var(--sd-text-muted, #6b7280)' }"> — {{activeVariation ?? activeComponent}}</span>
         </div>
 
+        <!-- ORBITOR VIEW -->
+        <ng-container *ngIf="orbitorView">
+          <div>
+            <div [ngStyle]="{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }">
+              <span *ngIf="orbitorTail" [ngStyle]="{ fontSize: '11px', color: 'var(--sd-text-muted, #6b7280)' }">live — as of {{fmtEst(orbitorTail.ts)}} ET</span>
+            </div>
+            <div [ngStyle]="{ display: 'grid', gridTemplateColumns: activeOrbitor ? '1fr' : 'repeat(3, 1fr)', gridTemplateRows: activeOrbitor ? 'auto' : 'repeat(8, 1fr)', height: activeOrbitor ? 'auto' : 'calc(100vh - 140px)', gap: '12px' }">
+              <ng-container *ngFor="let e of paddedEntries()">
+                <div *ngIf="!e" [ngStyle]="{ border: '1px dashed var(--sd-border, #e5e7eb)', borderRadius: '6px', opacity: '0.4' }"></div>
+                <div *ngIf="e" [ngStyle]="{ border: '1px solid var(--sd-border, #e5e7eb)', borderRadius: '6px', overflow: 'hidden', display: 'flex', flexDirection: 'column', minHeight: '0' }">
+                  <div [ngStyle]="{ padding: '8px 12px', display: 'flex', alignItems: 'center', gap: '8px', background: 'var(--sd-surface-raised, #fafafa)', borderBottom: '1px solid var(--sd-border, #e5e7eb)' }">
+                    <span [class.orbitor-dot-blink]="e.liveness === 'alive'" [ngStyle]="{ width: '8px', height: '8px', borderRadius: '50%', background: e.liveness === 'alive' ? 'var(--sd-success, #15803d)' : e.liveness === 'stale' ? 'var(--sd-warn, #d97706)' : 'var(--sd-text-muted, #9ca3af)', display: 'inline-block' }"></span>
+                    <span [ngStyle]="{ fontSize: '12px', fontWeight: '700' }">{{orbitorName(e)}}</span>
+                    <button (click)="wakeOrbitor(e.goal_id)" [ngStyle]="{ marginLeft: 'auto', fontSize: '10px', fontWeight: '600', padding: '1px 8px', borderRadius: '3px', border: '1px solid var(--sd-border, #d1d5db)', background: 'var(--sd-surface-base, #fff)', color: 'var(--sd-text, #1a1a1a)', cursor: 'pointer' }">Wake</button>
+                  </div>
+                  <div class="orbitor-lines" [ngStyle]="{ padding: '8px 12px', fontFamily: 'monospace', fontSize: '10px', lineHeight: '1.6', flex: '1', overflow: 'auto', minHeight: '0' }">
+                    <div *ngIf="e.lines.length === 0" [ngStyle]="{ color: 'var(--sd-text-muted, #9ca3af)' }">no data</div>
+                    <div *ngFor="let l of e.lines" [ngStyle]="{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }">
+                      <span [ngStyle]="{ color: 'var(--sd-text-muted, #9ca3af)' }">{{fmtEst(l.ts)}} </span>
+                      <span [title]="l.output" [ngStyle]="{ color: l.verdict === 'GREEN' ? 'var(--sd-success, #15803d)' : 'var(--sd-danger, #dc2626)' }">{{l.output}}</span>
+                    </div>
+                  </div>
+                </div>
+              </ng-container>
+            </div>
+          </div>
+        </ng-container>
+
         <!-- TICKET VIEW -->
-        <ng-container *ngIf="ticketView">
+        <ng-container *ngIf="ticketView && !orbitorView">
           <div [ngStyle]="{ display: 'flex', flexDirection: 'column', gap: '12px' }">
             <div *ngIf="filteredTickets().length === 0" [ngStyle]="{ color: 'var(--sd-text-muted, #6b7280)', fontSize: '13px' }">No {{ticketView}} tickets.</div>
             <div *ngFor="let t of filteredTickets()" [ngStyle]="{ border: '1px solid var(--sd-border, #e5e7eb)', borderRadius: '6px', overflow: 'hidden' }">
@@ -240,7 +294,7 @@ function loadStyle(name: string, theme: string) {
         </ng-container>
 
         <!-- PROOF VIEW -->
-        <ng-container *ngIf="proofView && !ticketView">
+        <ng-container *ngIf="proofView && !ticketView && !orbitorView">
           <div [ngStyle]="{ display: 'flex', flexDirection: 'column', gap: '16px' }">
             <!-- Run button + progress -->
             <div [ngStyle]="{ display: 'flex', alignItems: 'center', gap: '12px' }">
@@ -300,7 +354,7 @@ function loadStyle(name: string, theme: string) {
         </ng-container>
 
         <!-- COMPONENT VIEW -->
-        <ng-container *ngIf="!ticketView && !proofView">
+        <ng-container *ngIf="!ticketView && !proofView && !orbitorView">
           <div [ngStyle]="{ display: 'flex', flexDirection: 'column', gap: '24px' }">
             <ng-container *ngFor="let pair of toShow()">
               <div [ngStyle]="{ border: '1px solid var(--sd-border, #e5e7eb)', borderRadius: '8px', overflow: 'hidden' }">
@@ -370,6 +424,8 @@ function loadStyle(name: string, theme: string) {
   `,
   styles: [`
     @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    @keyframes orbitor-blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.25; } }
+    .orbitor-dot-blink { animation: orbitor-blink 1.5s ease-in-out infinite; }
     :host { display: block; height: 100vh; }
   `]
 })
@@ -404,6 +460,14 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewChecked {
   tickets: Ticket[] = [];
   ticketView: 'open' | 'closed' | null = null;
 
+  // Orbitor state
+  orbitorView = false;
+  activeOrbitor: string | null = null;
+  orbitorTail: { entries: any[]; ts: string } | null = null;
+  orbitorLoading = false;
+  orbitorNames = ORBITOR_NAMES;
+  private orbitorDebounce: any = null;
+
   // Shared inline styles
   labelStyle = { fontSize: '11px', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--sd-text-muted, #6b7280)', display: 'block', marginBottom: '4px' };
   dropdownStyle = { width: '100%', padding: '4px 8px', fontSize: '13px', borderRadius: '4px', border: '1px solid var(--sd-border, #d1d5db)', background: 'var(--sd-surface-base, #fff)', color: 'var(--sd-text, #1a1a1a)' };
@@ -420,20 +484,12 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewChecked {
 
   ngOnDestroy() {
     if (this.unlisten) this.unlisten();
+    if (this.orbitorDebounce) clearTimeout(this.orbitorDebounce);
   }
 
   ngAfterViewChecked() {
-    const cards = this.el.nativeElement.querySelectorAll('[data-component-card]');
-    cards.forEach((card: HTMLElement) => {
-      if (card.querySelector('.proof-viewer')) return;
-      const body = card.querySelector('[data-component]');
-      const comp = body?.getAttribute('data-component');
-      if (!comp) return;
-      const panel = document.createElement('div');
-      panel.style.borderTop = '1px solid var(--sd-border, #e5e7eb)';
-      createSafeProofViewer(panel, { component: 'proof-viewer', metadata: { target: comp } } as any, this.handleEvent);
-      card.appendChild(panel);
-    });
+    // Bottom-anchor orbitor cell logs (newest at bottom)
+    this.el.nativeElement.querySelectorAll('.orbitor-lines').forEach((n: HTMLElement) => { n.scrollTop = n.scrollHeight; });
   }
 
   // --- EPRPP File watcher ---
@@ -445,7 +501,17 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewChecked {
       await invoke('watch_dir', { path: STATE_DIR });
     } catch {}
     try {
-      this.unlisten = await listen('fs-change', async () => {
+      await invoke('watch_dir', { path: HEARTBEATS_DIR });
+    } catch {}
+    try {
+      this.unlisten = await listen('fs-change', async (payload: any) => {
+        if (typeof payload === 'string' && payload.includes('heartbeats')) {
+          if (this.orbitorView) {
+            if (this.orbitorDebounce) clearTimeout(this.orbitorDebounce);
+            this.orbitorDebounce = setTimeout(() => this.loadOrbitorTail(this.activeOrbitor), 1000);
+          }
+          return;
+        }
         try {
           const raw = await invoke<string>('read_file_content', { path: STATE_FILE });
           this.paintState = JSON.parse(raw);
@@ -489,6 +555,7 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewChecked {
     this.proofView = false;
     this.activeProof = '__none__';
     this.ticketView = null;
+    this.orbitorView = false;
   }
 
   selectVariation(comp: string, v: string) {
@@ -497,6 +564,7 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewChecked {
     this.proofView = false;
     this.activeProof = '__none__';
     this.ticketView = null;
+    this.orbitorView = false;
   }
 
   allVariations(comp: string): string[] {
@@ -555,11 +623,70 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewChecked {
     }
   };
 
+  // --- Orbitors ---
+  showOrbitors(orbitor: string | null) {
+    this.activeOrbitor = orbitor;
+    this.orbitorView = true;
+    this.proofView = false;
+    this.activeProof = '__none__';
+    this.ticketView = null;
+    this.loadOrbitorTail(orbitor);
+  }
+
+  async wakeOrbitor(goalId: string | null) {
+    try {
+      const args = goalId ? ['orbit', 'wake', '--goal', goalId] : ['orbit', 'wake-all'];
+      await invoke<string>('safecli_run', { name: 'safezero', args });
+    } catch (e) { console.error('[orbitor] wake failed', e); }
+  }
+
+  async loadOrbitorTail(orbitor: string | null) {
+    this.orbitorLoading = true;
+    this.cdr.markForCheck();
+    try {
+      const args = ['orbit', 'tail', '--limit', '100'];
+      if (orbitor) args.push('--goal', ORBITOR_GOALS[orbitor]);
+      const { invoke: tauriInvoke } = await import('@tauri-apps/api/core');
+      const out = await tauriInvoke<string>('safecli_run', { name: 'safezero', args });
+      const parsed = JSON.parse(out);
+      this.ngZone.run(() => {
+        this.orbitorTail = { entries: parsed.entries ?? [], ts: parsed.ts };
+        this.cdr.markForCheck();
+      });
+    } catch (e) {
+      console.error('[orbitor] tail failed', e);
+      this.ngZone.run(() => {
+        this.orbitorTail = { entries: [], ts: new Date().toISOString() };
+        this.cdr.markForCheck();
+      });
+    } finally {
+      this.ngZone.run(() => {
+        this.orbitorLoading = false;
+        this.cdr.markForCheck();
+      });
+    }
+  }
+
+  orbitorName(e: any): string {
+    return e.category ?? String(e.goal_id ?? '').replace(/^goal-/, '');
+  }
+
+  paddedEntries(): any[] {
+    const e = this.orbitorTail?.entries ?? [];
+    if (this.activeOrbitor) return e;
+    return [...e, ...Array(Math.max(0, 24 - e.length)).fill(null)];
+  }
+
+  fmtEst(ts: string): string {
+    return new Date(ts).toLocaleTimeString('en-US', { timeZone: 'America/New_York', hour12: true });
+  }
+
   // --- Proofs ---
   openProofs(domain: string | null) {
     this.activeProof = domain;
     this.proofView = true;
     this.ticketView = null;
+    this.orbitorView = false;
   }
 
   getActiveCommands(): string[] {
@@ -660,6 +787,7 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewChecked {
     this.ticketView = view;
     this.proofView = false;
     this.activeProof = '__none__';
+    this.orbitorView = false;
   }
 
   filteredTickets(): Ticket[] {

@@ -19,6 +19,7 @@ fn safecli_run(name: String, args: Vec<String>) -> Result<String, String> {
     let output = std::process::Command::new(&bin)
         .args(&args)
         .current_dir(&cwd)
+        .env("SAFEZERO_ROOT", "/Users/toddnakasato/Documents/FF/VSCODE/FFPROD/safeconfig")
         .output()
         .map_err(|e| format!("spawn {}: {}", name, e))?;
     Ok(String::from_utf8_lossy(&output.stdout).to_string())

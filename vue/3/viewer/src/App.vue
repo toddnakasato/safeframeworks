@@ -120,6 +120,10 @@ const runningCommands = ref<Set<string>>(new Set());
 const proofProgress = ref<{ done: number; total: number } | null>(null);
 const tickets = ref<Ticket[]>([]);
 const ticketView = ref<'open' | 'closed' | null>(null);
+const orbitorView = ref(false);
+const activeOrbitor = ref<string | null>(null);
+const orbitorTail = ref<{ entries: any[]; ts: string } | null>(null);
+const orbitorLoading = ref(false);
 
 const PROOF_DOMAINS: { label: string; commands: string[] }[] = [
   { label: 'builder', commands: ['builder-dumb', 'builder-reconcile', 'builder-structure'] },
@@ -129,6 +133,65 @@ const PROOF_DOMAINS: { label: string; commands: string[] }[] = [
   { label: 'ticket', commands: ['ticket'] },
 ];
 const ALL_PROVE_COMMANDS = PROOF_DOMAINS.flatMap(d => d.commands);
+
+// Orbitor categories — alpha order (TICKET_CATEGORIES)
+const ORBITOR_NAMES = ["alive", "crave", "drive", "enforce", "learn", "orbit", "pulse", "safeagents", "safeapp", "safebuilds", "safecli", "safeconfig", "safecontracts", "safeframeworks", "safelibs", "safestyles"];
+const ORBITOR_GOALS: Record<string, string> = {
+  alive: "goal-alive", crave: "goal-crave", drive: "goal-drive", enforce: "goal-enforce",
+  learn: "goal-learn", orbit: "goal-orbit", pulse: "goal-pulse",
+  safeagents: "goal-safeagents-structure", safeapp: "goal-safeapp-structure",
+  safebuilds: "goal-safebuilds-structure", safecli: "goal-safecli-structure",
+  safeconfig: "goal-safeconfig-structure", safecontracts: "goal-safecontracts",
+  safeframeworks: "goal-safeframeworks-builders", safelibs: "goal-safelibs", safestyles: "goal-safestyles-structure",
+};
+
+async function loadOrbitorTail(orbitor: string | null) {
+  orbitorLoading.value = true;
+  try {
+    const { invoke: tauriInvoke } = await import('@tauri-apps/api/core');
+    const args = ['orbit', 'tail', '--limit', '100'];
+    if (orbitor) args.push('--goal', ORBITOR_GOALS[orbitor]);
+    const out = await tauriInvoke<string>('safecli_run', { name: 'safezero', args });
+    const parsed = JSON.parse(out);
+    orbitorTail.value = { entries: parsed.entries ?? [], ts: parsed.ts };
+  } catch (e) {
+    console.error('[orbitor] tail failed', e);
+    orbitorTail.value = { entries: [], ts: new Date().toISOString() };
+  } finally {
+    orbitorLoading.value = false;
+  }
+}
+
+function showOrbitors(orbitor: string | null) {
+  activeOrbitor.value = orbitor;
+  orbitorView.value = true;
+  proofView.value = false;
+  activeProof.value = '__none__';
+  ticketView.value = null;
+  loadOrbitorTail(orbitor);
+}
+
+async function wakeOrbitor(goalId: string | null) {
+  try {
+    const args = goalId ? ['orbit', 'wake', '--goal', goalId] : ['orbit', 'wake-all'];
+    await invoke<string>('safecli_run', { name: 'safezero', args });
+  } catch (e) { console.error('[orbitor] wake failed', e); }
+}
+
+const fmtEst = (ts: string) => new Date(ts).toLocaleTimeString('en-US', { timeZone: 'America/New_York', hour12: true });
+
+// All mode: pad to 24 cells (3x8 grid); single-orbitor mode: entries as-is.
+const paddedEntries = computed<any[]>(() => {
+  const entries = orbitorTail.value?.entries ?? [];
+  if (activeOrbitor.value) return entries;
+  return [...entries, ...Array(Math.max(0, 24 - entries.length)).fill(null)];
+});
+
+// Auto-scroll orbitor cell bodies to bottom (newest lines at bottom).
+const vScrollBottom = {
+  mounted: (el: HTMLElement) => { el.scrollTop = el.scrollHeight; },
+  updated: (el: HTMLElement) => { el.scrollTop = el.scrollHeight; },
+};
 
 // Watch style/theme and load CSS
 watch([activeStyle, activeTheme], ([s, t]) => loadStyle(s, t), { immediate: true });
@@ -141,6 +204,8 @@ onMounted(() => refreshTickets());
 
 // EPRPP: start file watcher + listen for changes
 let unlistenFn: (() => void) | null = null;
+let orbitorUnlistenFn: (() => void) | null = null;
+let orbitorTimer: ReturnType<typeof setTimeout> | null = null;
 onMounted(() => {
   invoke('write_state', { path: STATE_FILE, content: JSON.stringify(paintState.value) }).catch(() => {});
   invoke('watch_dir', { path: STATE_DIR }).catch(() => {});
@@ -150,8 +215,22 @@ onMounted(() => {
       paintState.value = JSON.parse(raw);
     } catch {}
   }).then(fn => { unlistenFn = fn; });
+
+  // Live orbitor view — watch safeagent/heartbeats/ and re-tail on change (debounced).
+  const HEARTBEATS_DIR = '/Users/toddnakasato/Documents/FF/VSCODE/FFPROD/safeconfig/safeagent/heartbeats';
+  invoke('watch_dir', { path: HEARTBEATS_DIR }).catch(() => {});
+  listen('fs-change', (path: string) => {
+    if (typeof path !== 'string' || !path.includes('heartbeats')) return;
+    if (!orbitorView.value) return;
+    if (orbitorTimer) clearTimeout(orbitorTimer);
+    orbitorTimer = setTimeout(() => loadOrbitorTail(activeOrbitor.value), 1000);
+  }).then(fn => { orbitorUnlistenFn = fn; });
 });
-onUnmounted(() => { if (unlistenFn) unlistenFn(); });
+onUnmounted(() => {
+  if (unlistenFn) unlistenFn();
+  if (orbitorUnlistenFn) orbitorUnlistenFn();
+  if (orbitorTimer) clearTimeout(orbitorTimer);
+});
 
 // --- Actions ---
 function selectStyle(s: string) {
@@ -165,6 +244,7 @@ function selectComponent(name: string) {
   proofView.value = false;
   activeProof.value = '__none__';
   ticketView.value = null;
+  orbitorView.value = false;
 }
 
 function selectVariation(comp: string, variation: string) {
@@ -173,18 +253,21 @@ function selectVariation(comp: string, variation: string) {
   proofView.value = false;
   activeProof.value = '__none__';
   ticketView.value = null;
+  orbitorView.value = false;
 }
 
 function selectProof(label: string | null) {
   activeProof.value = label;
   proofView.value = true;
   ticketView.value = null;
+  orbitorView.value = false;
 }
 
 function selectTicketView(view: 'open' | 'closed') {
   ticketView.value = view;
   proofView.value = false;
   activeProof.value = '__none__';
+  orbitorView.value = false;
 }
 
 /** Merge paint state into a ConfigBase's metadata */
@@ -368,6 +451,7 @@ const visibleDomains = computed(() => {
 
 // Header subtitle
 const headerSubtitle = computed(() => {
+  if (orbitorView.value) return ` — orbitors${activeOrbitor.value ? ` / ${activeOrbitor.value}` : ' / all'}`;
   if (proofView.value) return ` — proofs${activeProof.value && activeProof.value !== '__none__' ? ` / ${activeProof.value}` : ''}`;
   if (ticketView.value) return ` — tickets / ${ticketView.value}`;
   if (activeComponent.value) return ` — ${activeVariation.value ?? activeComponent.value}`;
@@ -417,20 +501,25 @@ function groupChecks(checks: any[]): { group: string; total: number; passed: num
         </div>
       </div>
 
+      <!-- Orbitors -->
+      <div class="proofs-section">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <button class="section-label" :style="{ background: 'none', border: 'none', padding: 0, cursor: 'pointer', textAlign: 'left', flex: 1, textDecoration: orbitorView ? 'none' : 'underline' }" @click="showOrbitors(activeOrbitor)">Orbitors</button>
+          <button style="font-size: 10px; font-weight: 600; padding: 1px 8px; border-radius: 3px; border: 1px solid var(--sd-border, #d1d5db); background: var(--sd-surface-base, #fff); color: var(--sd-text, #1a1a1a); cursor: pointer;" @click="wakeOrbitor(null)">Wake All</button>
+        </div>
+        <select class="dropdown" :value="orbitorView ? (activeOrbitor ?? 'All') : 'All'" @change="showOrbitors(($event.target as HTMLSelectElement).value === 'All' ? null : ($event.target as HTMLSelectElement).value)">
+          <option value="All">All</option>
+          <option v-for="n in ORBITOR_NAMES" :key="n" :value="n">{{ n }}</option>
+        </select>
+      </div>
+
       <!-- Proofs -->
       <div class="proofs-section">
         <div class="section-label">Proofs</div>
-        <button
-          class="sidebar-btn"
-          :class="{ active: activeProof === null && proofView }"
-          @click="selectProof(null)"
-        >All</button>
-        <button
-          v-for="d in PROOF_DOMAINS" :key="d.label"
-          class="sidebar-btn"
-          :class="{ active: activeProof === d.label && proofView }"
-          @click="selectProof(d.label)"
-        >{{ d.label }}</button>
+        <select class="dropdown" :value="activeProof && activeProof !== '__none__' ? activeProof : 'All'" @change="selectProof(($event.target as HTMLSelectElement).value === 'All' ? null : ($event.target as HTMLSelectElement).value)">
+          <option value="All">All</option>
+          <option v-for="d in PROOF_DOMAINS" :key="d.label" :value="d.label">{{ d.label }}</option>
+        </select>
       </div>
 
       <!-- Scrollable: Tickets + Components -->
@@ -449,10 +538,9 @@ function groupChecks(checks: any[]): { group: string; total: number; passed: num
         >Closed{{ closedTickets.length > 0 ? ` (${closedTickets.length})` : '' }}</button>
 
         <!-- Components -->
-        <div class="section-label" style="margin-top: 12px">Components</div>
-        <div style="display: flex; flex-direction: column; gap: 6px;">
+        <div style="display: flex; flex-direction: column; gap: 6px; margin-top: 12px;">
           <div>
-            <label class="dropdown-label">Component</label>
+            <button class="dropdown-label" :style="{ background: 'none', border: 'none', padding: 0, cursor: 'pointer', textAlign: 'left', width: '100%', textDecoration: (!proofView && !ticketView && !orbitorView) ? 'none' : 'underline' }" @click="activeComponent && (activeVariation ? selectVariation(activeComponent, activeVariation) : selectComponent(activeComponent))">Component</button>
             <select class="dropdown" :value="activeComponent" @change="(e: any) => selectComponent(e.target.value)">
               <option v-for="n in COMPONENT_NAMES" :key="n" :value="n">{{ n }}</option>
             </select>
@@ -474,8 +562,34 @@ function groupChecks(checks: any[]): { group: string; total: number; passed: num
         <span v-if="headerSubtitle" class="header-subtitle">{{ headerSubtitle }}</span>
       </div>
 
+      <!-- Orbitor view -->
+      <div v-if="orbitorView">
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+          <span v-if="orbitorTail" style="font-size: 11px; color: var(--sd-text-muted, #6b7280)">live — as of {{ fmtEst(orbitorTail.ts) }} ET</span>
+        </div>
+        <div :style="{ display: 'grid', gridTemplateColumns: activeOrbitor ? '1fr' : 'repeat(3, 1fr)', gridTemplateRows: activeOrbitor ? 'auto' : 'repeat(8, 1fr)', gap: '12px', height: activeOrbitor ? 'auto' : 'calc(100vh - 140px)' }">
+          <template v-for="(entry, idx) in paddedEntries" :key="entry ? entry.goal_id : `empty-${idx}`">
+            <div v-if="!entry" style="border: 1px dashed var(--sd-border, #e5e7eb); border-radius: 6px; opacity: 0.4;"></div>
+            <div v-else style="border: 1px solid var(--sd-border, #e5e7eb); border-radius: 6px; overflow: hidden; display: flex; flex-direction: column; min-height: 0;">
+              <div style="padding: 8px 12px; display: flex; align-items: center; gap: 8px; background: var(--sd-surface-raised, #fafafa); border-bottom: 1px solid var(--sd-border, #e5e7eb);">
+                <span :class="{ blink: entry.liveness === 'alive' }" :style="{ width: '8px', height: '8px', borderRadius: '50%', display: 'inline-block', background: entry.liveness === 'alive' ? 'var(--sd-success, #15803d)' : entry.liveness === 'stale' ? 'var(--sd-warn, #d97706)' : 'var(--sd-text-muted, #9ca3af)' }"></span>
+                <span style="font-size: 12px; font-weight: 700;">{{ entry.category ?? entry.goal_id.replace(/^goal-/, '') }}</span>
+                <button style="margin-left: auto; font-size: 10px; font-weight: 600; padding: 1px 8px; border-radius: 3px; border: 1px solid var(--sd-border, #d1d5db); background: var(--sd-surface-base, #fff); color: var(--sd-text, #1a1a1a); cursor: pointer;" @click="wakeOrbitor(entry.goal_id)">Wake</button>
+              </div>
+              <div v-scroll-bottom style="padding: 8px 12px; font-family: monospace; font-size: 10px; line-height: 1.6; flex: 1; overflow: auto; min-height: 0;">
+                <div v-if="entry.lines.length === 0" style="color: var(--sd-text-muted, #9ca3af)">no data</div>
+                <div v-for="(l, i) in entry.lines" :key="i" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                  <span style="color: var(--sd-text-muted, #9ca3af)">{{ fmtEst(l.ts) }} </span>
+                  <span :style="{ color: l.verdict === 'GREEN' ? 'var(--sd-success, #15803d)' : 'var(--sd-danger, #dc2626)' }" :title="l.output">{{ l.output }}</span>
+                </div>
+              </div>
+            </div>
+          </template>
+        </div>
+      </div>
+
       <!-- Ticket view -->
-      <div v-if="ticketView" class="content-column">
+      <div v-else-if="ticketView" class="content-column">
         <div v-if="filteredTickets.length === 0" class="empty-text">No {{ ticketView }} tickets.</div>
         <div v-for="t in filteredTickets" :key="t.id" class="ticket-card">
           <div class="ticket-header">
@@ -559,7 +673,6 @@ function groupChecks(checks: any[]): { group: string; total: number; passed: num
           <div class="component-body">
             <component :is="comps[comp]" :config="paintConfig(SAMPLES[comp][v])" :on-event="handleEvent" />
           </div>
-          <div class="proof-panel" :ref="(el: any) => mountProof(el, comp)"></div>
           <!-- Ticket creation -->
           <div class="ticket-create">
             <select :id="`ticket-type-${comp}`" class="ticket-type-select">
@@ -581,6 +694,8 @@ function groupChecks(checks: any[]): { group: string; total: number; passed: num
 
 <style>
 @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes orbitor-blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.25; } }
+.blink { animation: orbitor-blink 1.5s ease-in-out infinite; }
 
 .viewer { display: flex; height: 100vh; font-family: system-ui, sans-serif; background: var(--sd-surface-base, #fff); color: var(--sd-text, #1a1a1a); }
 .sidebar { width: 220px; border-right: 1px solid var(--sd-border, #e5e7eb); display: flex; flex-direction: column; overflow: hidden; background: var(--sd-surface-raised, #f9fafb); flex-shrink: 0; }
