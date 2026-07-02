@@ -61,10 +61,11 @@
   for (const k of Object.keys(THEMES)) THEMES[k].sort((a, b) => a === "default" ? -1 : b === "default" ? 1 : a.localeCompare(b));
 
   const componentNames = Object.keys(SAMPLES).sort();
+  const DEFAULT_COMP = componentNames.includes("briefing") ? "briefing" : componentNames[0];
   let activeStyle = "vanilla";
   let activeTheme = "default";
-  let activeComponent = null;
-  let activeVariation = null;
+  let activeComponent = DEFAULT_COMP;
+  let activeVariation = Object.keys(SAMPLES[DEFAULT_COMP] ?? {}).sort()[0] ?? null;
   let tickets = [];
   let ticketView = null;
   let proofView = false;
@@ -144,7 +145,11 @@
 
   function switchStyle(s) { activeStyle = s; activeTheme = "default"; loadStyle(s, "default"); }
   function switchTheme(t) { activeTheme = t; loadStyle(activeStyle, t); }
-  function selectComponent(name) { activeComponent = name; activeVariation = null; ticketView = null; proofView = false; activeProof = null; }
+  function selectComponent(name) {
+    activeComponent = name;
+    activeVariation = Object.keys(SAMPLES[name] ?? {}).sort()[0] ?? null;
+    ticketView = null; proofView = false; activeProof = null;
+  }
   function selectVariation(comp, v) { activeComponent = comp; activeVariation = v; ticketView = null; proofView = false; activeProof = null; }
   function showTickets(view) { ticketView = view; activeComponent = null; activeVariation = null; proofView = false; activeProof = null; }
   function showProofs(label) { activeProof = label; proofView = true; ticketView = null; }
@@ -237,15 +242,22 @@
     </button>
 
     <div class="section-label" style="margin-top:16px">COMPONENTS</div>
-    <button class="comp-btn" class:active={activeComponent === null && !ticketView} on:click={() => selectComponent(null)}>All</button>
-    {#each componentNames as name}
-      <button class="comp-btn" class:active={activeComponent === name && !activeVariation && !ticketView} on:click={() => selectComponent(name)}>{name}</button>
-      {#if activeComponent === name}
-        {#each Object.keys(SAMPLES[name]).sort() as v}
-          <button class="var-btn" class:active={activeVariation === v} on:click={() => selectVariation(name, v)}>{v}</button>
-        {/each}
-      {/if}
-    {/each}
+    <div style="display:flex;flex-direction:column;gap:6px;padding:0 2px">
+      <div>
+        <label class="dropdown-label">Component</label>
+        <select class="dropdown" value={activeComponent} on:change={(e) => selectComponent(e.target.value)}>
+          {#each componentNames as n}<option value={n}>{n}</option>{/each}
+        </select>
+      </div>
+      <div>
+        <label class="dropdown-label">Variation</label>
+        <select class="dropdown" value={activeVariation} on:change={(e) => selectVariation(activeComponent, e.target.value)} disabled={!activeComponent}>
+          {#if activeComponent}
+            {#each Object.keys(SAMPLES[activeComponent]).sort() as v}<option value={v}>{v}</option>{/each}
+          {/if}
+        </select>
+      </div>
+    </div>
   </div>
   <div class="main">
     <h3>svelte/4 — {activeStyle}{#if activeTheme !== "default"}/{activeTheme}{/if}{#if proofView}<span class="active-comp"> — proofs{activeProof ? ` / ${activeProof}` : ""}</span>{:else if ticketView}<span class="active-comp"> — tickets/{ticketView}</span>{:else if activeComponent}<span class="active-comp"> — {activeVariation ?? activeComponent}</span>{/if}</h3>
@@ -342,30 +354,28 @@
         {/each}
       </div>
     {:else}
-      {#each (activeComponent ? [activeComponent] : componentNames) as comp (comp + (activeVariation ?? ""))}
-        {#each (activeVariation ? [activeVariation] : Object.keys(SAMPLES[comp]).sort()) as v (v)}
-          <div class="component-card">
-            <div class="component-label">{v}</div>
-            <div class="component-body">
-              <svelte:component this={comps[comp]} config={SAMPLES[comp][v]} onEvent={handleEvent} />
-            </div>
-            <div style="border-top: 1px solid var(--sd-border, #e5e7eb)" use:proofMount={comp}></div>
-            <div class="ticket-create">
-              <select class="ticket-type-select" id={`ticket-type-${comp}`}>
-                <option value="bug">bug</option><option value="event">event</option><option value="paint">paint</option>
-                <option value="style">style</option><option value="data">data</option><option value="structure">structure</option>
-                <option value="variation">variation</option><option value="new-component">new-component</option>
-              </select>
-              <input class="ticket-title-input" id={`ticket-title-${comp}`} placeholder="Describe the issue..." />
-              <button class="btn-prove" on:click={() => {
-                const titleEl = document.getElementById(`ticket-title-${comp}`);
-                const typeEl = document.getElementById(`ticket-type-${comp}`);
-                handleCreateTicket(comp, typeEl, titleEl);
-              }}>+ Ticket</button>
-            </div>
+      {#if activeComponent && activeVariation && SAMPLES[activeComponent]?.[activeVariation]}
+        <div class="component-card">
+          <div class="component-label">{activeVariation}</div>
+          <div class="component-body">
+            <svelte:component this={comps[activeComponent]} config={SAMPLES[activeComponent][activeVariation]} onEvent={handleEvent} />
           </div>
-        {/each}
-      {/each}
+          <div style="border-top: 1px solid var(--sd-border, #e5e7eb)" use:proofMount={activeComponent}></div>
+          <div class="ticket-create">
+            <select class="ticket-type-select" id={`ticket-type-${activeComponent}`}>
+              <option value="bug">bug</option><option value="event">event</option><option value="paint">paint</option>
+              <option value="style">style</option><option value="data">data</option><option value="structure">structure</option>
+              <option value="variation">variation</option><option value="new-component">new-component</option>
+            </select>
+            <input class="ticket-title-input" id={`ticket-title-${activeComponent}`} placeholder="Describe the issue..." />
+            <button class="btn-prove" on:click={() => {
+              const titleEl = document.getElementById(`ticket-title-${activeComponent}`);
+              const typeEl = document.getElementById(`ticket-type-${activeComponent}`);
+              handleCreateTicket(activeComponent, typeEl, titleEl);
+            }}>+ Ticket</button>
+          </div>
+        </div>
+      {/if}
     {/if}
   </div>
 </div>

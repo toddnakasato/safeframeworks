@@ -166,13 +166,20 @@ function loadStyle(name: string, theme: string) {
 
           <!-- Components -->
           <div [ngStyle]="{ fontSize: '11px', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--sd-text-muted, #6b7280)', marginBottom: '8px', padding: '0 4px', marginTop: '12px' }">Components</div>
-          <button (click)="selectComponent(null)" [ngStyle]="itemStyle(activeComponent === null && !proofView && !ticketView)">All</button>
-          <ng-container *ngFor="let name of componentNames">
-            <button (click)="selectComponent(name)" [ngStyle]="itemStyle(name === activeComponent && !activeVariation && !proofView && !ticketView)">{{name}}</button>
-            <ng-container *ngIf="activeComponent === name">
-              <button *ngFor="let v of allVariations(name)" (click)="selectVariation(name, v)" [ngStyle]="itemStyle(v === activeVariation, 1)">{{v}}</button>
-            </ng-container>
-          </ng-container>
+          <div [ngStyle]="{ display: 'flex', flexDirection: 'column', gap: '6px' }">
+            <div>
+              <label [ngStyle]="labelStyle">Component</label>
+              <select [ngModel]="activeComponent" (ngModelChange)="selectComponent($event)" [ngStyle]="dropdownStyle">
+                <option *ngFor="let n of componentNames" [value]="n">{{n}}</option>
+              </select>
+            </div>
+            <div>
+              <label [ngStyle]="labelStyle">Variation</label>
+              <select [ngModel]="activeVariation" (ngModelChange)="selectVariation(activeComponent!, $event)" [ngStyle]="dropdownStyle" [disabled]="!activeComponent">
+                <option *ngFor="let v of allVariations(activeComponent!)" [value]="v">{{v}}</option>
+              </select>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -375,8 +382,8 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewChecked {
   activeTheme = 'default';
 
   // Component state
-  activeComponent: string | null = null;
-  activeVariation: string | null = null;
+  activeComponent: string | null = COMPONENT_NAMES.includes('briefing') ? 'briefing' : COMPONENT_NAMES[0];
+  activeVariation: string | null = Object.keys((SAMPLES as any)[COMPONENT_NAMES.includes('briefing') ? 'briefing' : COMPONENT_NAMES[0]] ?? {}).sort()[0] ?? null;
   componentNames = COMPONENT_NAMES;
 
   // Paint state (EPRPP)
@@ -475,9 +482,10 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewChecked {
   }
 
   // --- Component navigation ---
-  selectComponent(name: string | null) {
+  selectComponent(name: string) {
+    const firstVar = Object.keys((SAMPLES as any)[name] ?? {}).sort()[0] ?? null;
     this.activeComponent = name;
-    this.activeVariation = null;
+    this.activeVariation = firstVar;
     this.proofView = false;
     this.activeProof = '__none__';
     this.ticketView = null;
@@ -496,14 +504,14 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewChecked {
   }
 
   toShow(): [string, string][] {
-    const result: [string, string][] = [];
-    for (const comp of this.activeComponent ? [this.activeComponent] : COMPONENT_NAMES) {
-      const variations = Object.keys((SAMPLES as any)[comp] ?? {}).sort();
-      for (const v of this.activeVariation ? [this.activeVariation] : variations) {
-        if ((SAMPLES as any)[comp]?.[v]) result.push([comp, v]);
-      }
+    if (this.activeComponent && this.activeVariation && (SAMPLES as any)[this.activeComponent]?.[this.activeVariation]) {
+      return [[this.activeComponent, this.activeVariation]];
     }
-    return result;
+    if (this.activeComponent) {
+      const firstVar = Object.keys((SAMPLES as any)[this.activeComponent] ?? {}).sort()[0];
+      if (firstVar) return [[this.activeComponent, firstVar]];
+    }
+    return [];
   }
 
   cfg(comp: string, v: string): any {

@@ -107,8 +107,9 @@ function loadStyle(name: string, theme: string) {
 // --- State ---
 const activeStyle = ref<string>('vanilla');
 const activeTheme = ref<string>('default');
-const activeComponent = ref<string | null>(null);
-const activeVariation = ref<string | null>(null);
+const DEFAULT_COMPONENT = COMPONENT_NAMES.includes('briefing') ? 'briefing' : COMPONENT_NAMES[0];
+const activeComponent = ref<string | null>(DEFAULT_COMPONENT);
+const activeVariation = ref<string | null>(Object.keys(SAMPLES[DEFAULT_COMPONENT] ?? {}).sort()[0] ?? null);
 const paintState = ref<Record<string, any>>({});
 const activeProof = ref<string | null>(null);
 const proofResults = ref<Record<string, { passed: number; total: number; failed: number; checks?: any[]; failures?: any[] }>>({});
@@ -158,9 +159,9 @@ function selectStyle(s: string) {
   activeTheme.value = 'default';
 }
 
-function selectComponent(name: string | null) {
+function selectComponent(name: string) {
   activeComponent.value = name;
-  activeVariation.value = null;
+  activeVariation.value = Object.keys(SAMPLES[name] ?? {}).sort()[0] ?? null;
   proofView.value = false;
   activeProof.value = '__none__';
   ticketView.value = null;
@@ -324,16 +325,16 @@ async function submitTicket(comp: string) {
   refreshTickets();
 }
 
-// Computed: [component, variation] pairs to render
+// Computed: always exactly one [component, variation] pair
 const toShow = computed<[string, string][]>(() => {
-  const result: [string, string][] = [];
-  for (const comp of activeComponent.value ? [activeComponent.value] : COMPONENT_NAMES) {
-    const variations = Object.keys(SAMPLES[comp] ?? {}).sort();
-    for (const v of activeVariation.value ? [activeVariation.value] : variations) {
-      if (SAMPLES[comp]?.[v]) result.push([comp, v]);
-    }
+  const comp = activeComponent.value;
+  const v = activeVariation.value;
+  if (comp && v && SAMPLES[comp]?.[v]) return [[comp, v]];
+  if (comp) {
+    const firstVar = Object.keys(SAMPLES[comp] ?? {}).sort()[0];
+    if (firstVar) return [[comp, firstVar]];
   }
-  return result;
+  return [];
 });
 
 // Filtered tickets
@@ -449,18 +450,20 @@ function groupChecks(checks: any[]): { group: string; total: number; passed: num
 
         <!-- Components -->
         <div class="section-label" style="margin-top: 12px">Components</div>
-        <button class="sidebar-btn" :class="{ active: activeComponent === null && !proofView && !ticketView }" @click="selectComponent(null)">All</button>
-        <template v-for="name in COMPONENT_NAMES" :key="name">
-          <button class="sidebar-btn" :class="{ active: name === activeComponent && !activeVariation && !proofView && !ticketView }" @click="selectComponent(name)">{{ name }}</button>
-          <template v-if="name === activeComponent">
-            <button
-              v-for="v in Object.keys(SAMPLES[name]).sort()" :key="v"
-              class="sidebar-btn var-btn"
-              :class="{ active: v === activeVariation }"
-              @click="selectVariation(name, v)"
-            >{{ v }}</button>
-          </template>
-        </template>
+        <div style="display: flex; flex-direction: column; gap: 6px;">
+          <div>
+            <label class="dropdown-label">Component</label>
+            <select class="dropdown" :value="activeComponent" @change="(e: any) => selectComponent(e.target.value)">
+              <option v-for="n in COMPONENT_NAMES" :key="n" :value="n">{{ n }}</option>
+            </select>
+          </div>
+          <div>
+            <label class="dropdown-label">Variation</label>
+            <select class="dropdown" :value="activeVariation" @change="(e: any) => selectVariation(activeComponent!, e.target.value)" :disabled="!activeComponent">
+              <option v-for="v in (activeComponent ? Object.keys(SAMPLES[activeComponent]).sort() : [])" :key="v" :value="v">{{ v }}</option>
+            </select>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -587,6 +590,7 @@ function groupChecks(checks: any[]): { group: string; total: number; passed: num
 .style-section { padding: 12px; border-bottom: 1px solid var(--sd-border, #e5e7eb); display: flex; flex-direction: column; gap: 8px; }
 .label-text { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--sd-text-muted, #6b7280); display: block; margin-bottom: 4px; }
 .dropdown { width: 100%; padding: 4px 8px; font-size: 13px; border-radius: 4px; border: 1px solid var(--sd-border, #d1d5db); background: var(--sd-surface-base, #fff); color: var(--sd-text, #1a1a1a); }
+.dropdown-label { font-size: 11px; font-weight: 500; color: var(--sd-text-muted, #6b7280); display: block; margin-bottom: 2px; }
 
 .proofs-section { padding: 8px; border-bottom: 1px solid var(--sd-border, #e5e7eb); }
 .section-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--sd-text-muted, #6b7280); margin-bottom: 8px; padding: 0 4px; }

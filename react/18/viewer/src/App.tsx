@@ -40,6 +40,8 @@ class ComponentBoundary extends Component<{ label: string; children: ReactNode }
 
 const STYLES = ["vanilla", "tailwind", "tailwind-daisy", "material"] as const;
 const COMPONENT_NAMES = Object.keys(SAMPLES).sort();
+const DEFAULT_COMPONENT = COMPONENT_NAMES.includes("briefing") ? "briefing" : COMPONENT_NAMES[0];
+const DEFAULT_VARIATION = Object.keys(SAMPLES[DEFAULT_COMPONENT] ?? {}).sort()[0] ?? null;
 
 // Themes per implementation — discovered from safestyles at build time
 // (public/styles symlinks to safestyles/implementations).
@@ -77,8 +79,8 @@ function loadStyle(name: string, theme: string) {
 export default function App() {
   const [activeStyle, setActiveStyle] = useState<string>("vanilla");
   const [activeTheme, setActiveTheme] = useState<string>("default");
-  const [activeComponent, setActiveComponent] = useState<string | null>(null);
-  const [activeVariation, setActiveVariation] = useState<string | null>(null);
+  const [activeComponent, setActiveComponent] = useState<string | null>(DEFAULT_COMPONENT);
+  const [activeVariation, setActiveVariation] = useState<string | null>(DEFAULT_VARIATION);
   const [paintState, setPaintState] = useState<Record<string, any>>({});
   const [activeProof, setActiveProof] = useState<string | null>(null);
   const [proofResults, setProofResults] = useState<Record<string, { passed: number; total: number; failed: number; checks?: any[]; failures?: any[] }>>({});
@@ -219,9 +221,10 @@ export default function App() {
     };
   }
 
-  const selectComponent = (name: string | null) => {
+  const selectComponent = (name: string) => {
+    const firstVar = Object.keys(SAMPLES[name] ?? {}).sort()[0] ?? null;
     setActiveComponent(name);
-    setActiveVariation(null);
+    setActiveVariation(firstVar);
     setProofView(false);
     setActiveProof("__none__");
     setTicketView(null);
@@ -234,13 +237,13 @@ export default function App() {
     setTicketView(null);
   };
 
-  /** [component, variation] pairs to render, per current selection. */
+  /** Always show exactly one [component, variation] pair. */
   const toShow: [string, string][] = [];
-  for (const comp of activeComponent ? [activeComponent] : COMPONENT_NAMES) {
-    const variations = Object.keys(SAMPLES[comp] ?? {}).sort();
-    for (const v of activeVariation ? [activeVariation] : variations) {
-      if (SAMPLES[comp]?.[v]) toShow.push([comp, v]);
-    }
+  if (activeComponent && activeVariation && SAMPLES[activeComponent]?.[activeVariation]) {
+    toShow.push([activeComponent, activeVariation]);
+  } else if (activeComponent) {
+    const firstVar = Object.keys(SAMPLES[activeComponent] ?? {}).sort()[0];
+    if (firstVar) toShow.push([activeComponent, firstVar]);
   }
 
   const itemStyle = (active: boolean, indent = 0): React.CSSProperties => ({
@@ -312,21 +315,31 @@ export default function App() {
           })()}
 
           <div style={{ ...sectionLabel, marginTop: 12 }}>Components</div>
-          <button onClick={() => selectComponent(null)} style={itemStyle(activeComponent === null && !proofView)}>
-            All
-          </button>
-          {COMPONENT_NAMES.map(name => (
-            <div key={name}>
-              <button onClick={() => selectComponent(name)} style={itemStyle(name === activeComponent && !activeVariation && !proofView)}>
-                {name}
-              </button>
-              {name === activeComponent && Object.keys(SAMPLES[name]).sort().map(v => (
-                <button key={v} onClick={() => selectVariation(name, v)} style={itemStyle(v === activeVariation, 1)}>
-                  {v}
-                </button>
-              ))}
+          <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+            <div>
+              <label style={labelStyle}>Component</label>
+              <select
+                value={activeComponent ?? ""}
+                onChange={e => selectComponent(e.target.value)}
+                style={dropdownStyle}
+              >
+                {COMPONENT_NAMES.map(n => <option key={n} value={n}>{n}</option>)}
+              </select>
             </div>
-          ))}
+            <div>
+              <label style={labelStyle}>Variation</label>
+              <select
+                value={activeVariation ?? ""}
+                onChange={e => selectVariation(activeComponent!, e.target.value)}
+                style={dropdownStyle}
+                disabled={!activeComponent}
+              >
+                {activeComponent && Object.keys(SAMPLES[activeComponent] ?? {}).sort().map(v => (
+                  <option key={v} value={v}>{v}</option>
+                ))}
+              </select>
+            </div>
+          </div>
         </div>
       </div>
 

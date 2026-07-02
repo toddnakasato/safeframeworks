@@ -61,10 +61,11 @@
   for (const k of Object.keys(THEMES)) THEMES[k].sort((a, b) => a === "default" ? -1 : b === "default" ? 1 : a.localeCompare(b));
 
   const componentNames = Object.keys(SAMPLES).sort();
+  const DEFAULT_COMP = componentNames.includes("briefing") ? "briefing" : componentNames[0];
   let activeStyle = $state("vanilla");
   let activeTheme = $state("default");
-  let activeComponent = $state(null);
-  let activeVariation = $state(null);
+  let activeComponent = $state(DEFAULT_COMP);
+  let activeVariation = $state(Object.keys(SAMPLES[DEFAULT_COMP] ?? {}).sort()[0] ?? null);
   let tickets = $state([]);
   let ticketView = $state(null);
   let proofView = $state(false);
@@ -144,7 +145,11 @@
 
   function switchStyle(s) { activeStyle = s; activeTheme = "default"; loadStyle(s, "default"); }
   function switchTheme(t) { activeTheme = t; loadStyle(activeStyle, t); }
-  function selectComponent(name) { activeComponent = name; activeVariation = null; ticketView = null; proofView = false; activeProof = null; }
+  function selectComponent(name) {
+    activeComponent = name;
+    activeVariation = Object.keys(SAMPLES[name] ?? {}).sort()[0] ?? null;
+    ticketView = null; proofView = false; activeProof = null;
+  }
   function selectVariation(comp, v) { activeComponent = comp; activeVariation = v; ticketView = null; proofView = false; activeProof = null; }
   function showTickets(view) { ticketView = view; activeComponent = null; activeVariation = null; proofView = false; activeProof = null; }
   function showProofs(label) { activeProof = label; proofView = true; ticketView = null; }
@@ -200,6 +205,8 @@
     }
     btn.textContent = "Prove"; btn.disabled = false;
   }
+
+  // svelte 5: derived values computed inline in template
 </script>
 
 <div class="viewer">
@@ -208,11 +215,11 @@
     <div class="section-label">STYLE</div>
     <div class="style-dropdowns">
       <label class="dropdown-label">Framework</label>
-      <select class="dropdown" bind:value={activeStyle} onchange={(e) => switchStyle(e.target.value)}>
+      <select class="dropdown" value={activeStyle} onchange={(e) => switchStyle(e.target.value)}>
         {#each STYLES as s}<option value={s}>{s}</option>{/each}
       </select>
       <label class="dropdown-label">Theme</label>
-      <select class="dropdown" bind:value={activeTheme} onchange={(e) => switchTheme(e.target.value)}>
+      <select class="dropdown" value={activeTheme} onchange={(e) => switchTheme(e.target.value)}>
         {#each (THEMES[activeStyle] ?? ["default"]) as t}<option value={t}>{t}</option>{/each}
       </select>
     </div>
@@ -232,15 +239,22 @@
     </button>
 
     <div class="section-label" style="margin-top:16px">COMPONENTS</div>
-    <button class="comp-btn" class:active={activeComponent === null && !ticketView} onclick={() => selectComponent(null)}>All</button>
-    {#each componentNames as name}
-      <button class="comp-btn" class:active={activeComponent === name && !activeVariation && !ticketView} onclick={() => selectComponent(name)}>{name}</button>
-      {#if activeComponent === name}
-        {#each Object.keys(SAMPLES[name]).sort() as v}
-          <button class="var-btn" class:active={activeVariation === v} onclick={() => selectVariation(name, v)}>{v}</button>
-        {/each}
-      {/if}
-    {/each}
+    <div style="display:flex;flex-direction:column;gap:6px;padding:0 2px">
+      <div>
+        <label class="dropdown-label">Component</label>
+        <select class="dropdown" value={activeComponent} onchange={(e) => selectComponent(e.target.value)}>
+          {#each componentNames as n}<option value={n}>{n}</option>{/each}
+        </select>
+      </div>
+      <div>
+        <label class="dropdown-label">Variation</label>
+        <select class="dropdown" value={activeVariation} onchange={(e) => selectVariation(activeComponent, e.target.value)} disabled={!activeComponent}>
+          {#if activeComponent}
+            {#each Object.keys(SAMPLES[activeComponent]).sort() as v}<option value={v}>{v}</option>{/each}
+          {/if}
+        </select>
+      </div>
+    </div>
   </div>
   <div class="main">
     <h3>svelte/5 — {activeStyle}{#if activeTheme !== "default"}/{activeTheme}{/if}{#if proofView}<span class="active-comp"> — proofs{activeProof ? ` / ${activeProof}` : ""}</span>{:else if ticketView}<span class="active-comp"> — tickets/{ticketView}</span>{:else if activeComponent}<span class="active-comp"> — {activeVariation ?? activeComponent}</span>{/if}</h3>
@@ -252,12 +266,9 @@
             onclick={() => runProofs(activeProof ? (PROOF_DOMAINS.find(d => d.label === activeProof)?.commands ?? []) : ALL_PROVE_COMMANDS)}>
             {proofRunning ? `⟳ Running${proofProgress ? ` ${proofProgress.done}/${proofProgress.total}` : "..."}` : `▶ ${activeProof ? `Run ${activeProof}` : "Run All"}`}
           </button>
-          {#if (() => { const cmds = activeProof ? (PROOF_DOMAINS.find(d => d.label === activeProof)?.commands ?? []) : ALL_PROVE_COMMANDS; return cmds.reduce((s,c) => s+(proofResults[c]?.total??0),0) > 0; })()}
-            {@const cmds = activeProof ? (PROOF_DOMAINS.find(d => d.label === activeProof)?.commands ?? []) : ALL_PROVE_COMMANDS}
-            {@const totalT = cmds.reduce((s,c) => s+(proofResults[c]?.total??0),0)}
-            {@const totalP = cmds.reduce((s,c) => s+(proofResults[c]?.passed??0),0)}
-            {@const totalF = cmds.reduce((s,c) => s+(proofResults[c]?.failed??0),0)}
-            <span style="font-size:13px;font-weight:600;color:{totalF===0?'var(--sd-success,#15803d)':'var(--sd-danger,#dc2626)'}">{totalP}/{totalT} {totalF===0?'PASS':`(${totalF} failed)`}</span>
+          {#if (() => { const cmds = activeProof ? (PROOF_DOMAINS.find(d => d.label === activeProof)?.commands ?? []) : ALL_PROVE_COMMANDS; const t = cmds.reduce((s,c) => s+(proofResults[c]?.total??0),0); const p = cmds.reduce((s,c) => s+(proofResults[c]?.passed??0),0); const f = cmds.reduce((s,c) => s+(proofResults[c]?.failed??0),0); return t > 0 ? {t,p,f} : null; })() !== null}
+            {@const summary = (() => { const cmds = activeProof ? (PROOF_DOMAINS.find(d => d.label === activeProof)?.commands ?? []) : ALL_PROVE_COMMANDS; const t = cmds.reduce((s,c) => s+(proofResults[c]?.total??0),0); const p = cmds.reduce((s,c) => s+(proofResults[c]?.passed??0),0); const f = cmds.reduce((s,c) => s+(proofResults[c]?.failed??0),0); return {t,p,f}; })()}
+            <span style="font-size:13px;font-weight:600;color:{summary.f===0?'var(--sd-success,#15803d)':'var(--sd-danger,#dc2626)'}">{summary.p}/{summary.t} {summary.f===0?'PASS':`(${summary.f} failed)`}</span>
           {/if}
         </div>
         {#each (activeProof ? PROOF_DOMAINS.filter(d => d.label === activeProof) : PROOF_DOMAINS) as domain}
@@ -307,7 +318,6 @@
         {/each}
       </div>
     {:else if ticketView}
-      <!-- Ticket list view -->
       <div class="ticket-list">
         {#each (ticketView === "open" ? tickets.filter(t => t.status === "open" || t.status === "in-progress") : tickets.filter(t => t.status === "closed" || t.status === "proved").sort((a, b) => b.updated.localeCompare(a.updated))) as t (t.id)}
           <div class="ticket-card">
@@ -341,32 +351,28 @@
         {/each}
       </div>
     {:else}
-      <!-- Component view -->
-      {#each (activeComponent ? [activeComponent] : componentNames) as comp (comp + (activeVariation ?? ""))}
-        {#each (activeVariation ? [activeVariation] : Object.keys(SAMPLES[comp]).sort()) as v (v)}
-          <div class="component-card">
-            <div class="component-label">{v}</div>
-            <div class="component-body">
-              <svelte:component this={comps[comp]} config={SAMPLES[comp][v]} onEvent={handleEvent} />
-            </div>
-            <div style="border-top: 1px solid var(--sd-border, #e5e7eb)" use:proofMount={comp}></div>
-            <!-- Ticket creation -->
-            <div class="ticket-create">
-              <select class="ticket-type-select" id={`ticket-type-${comp}`}>
-                <option value="bug">bug</option><option value="event">event</option><option value="paint">paint</option>
-                <option value="style">style</option><option value="data">data</option><option value="structure">structure</option>
-                <option value="variation">variation</option><option value="new-component">new-component</option>
-              </select>
-              <input class="ticket-title-input" id={`ticket-title-${comp}`} placeholder="Describe the issue..." />
-              <button class="btn-prove" onclick={() => {
-                const titleEl = document.getElementById(`ticket-title-${comp}`);
-                const typeEl = document.getElementById(`ticket-type-${comp}`);
-                handleCreateTicket(comp, typeEl, titleEl);
-              }}>+ Ticket</button>
-            </div>
+      {#if activeComponent && activeVariation && SAMPLES[activeComponent]?.[activeVariation]}
+        <div class="component-card">
+          <div class="component-label">{activeVariation}</div>
+          <div class="component-body">
+            <svelte:component this={comps[activeComponent]} config={SAMPLES[activeComponent][activeVariation]} onEvent={handleEvent} />
           </div>
-        {/each}
-      {/each}
+          <div style="border-top: 1px solid var(--sd-border, #e5e7eb)" use:proofMount={activeComponent}></div>
+          <div class="ticket-create">
+            <select class="ticket-type-select" id={`ticket-type-${activeComponent}`}>
+              <option value="bug">bug</option><option value="event">event</option><option value="paint">paint</option>
+              <option value="style">style</option><option value="data">data</option><option value="structure">structure</option>
+              <option value="variation">variation</option><option value="new-component">new-component</option>
+            </select>
+            <input class="ticket-title-input" id={`ticket-title-${activeComponent}`} placeholder="Describe the issue..." />
+            <button class="btn-prove" onclick={() => {
+              const titleEl = document.getElementById(`ticket-title-${activeComponent}`);
+              const typeEl = document.getElementById(`ticket-type-${activeComponent}`);
+              handleCreateTicket(activeComponent, typeEl, titleEl);
+            }}>+ Ticket</button>
+          </div>
+        </div>
+      {/if}
     {/if}
   </div>
 </div>
@@ -397,7 +403,6 @@
   .component-card { border: 1px solid var(--sd-border, #e5e7eb); border-radius: 8px; overflow: hidden; margin-bottom: 16px; }
   .component-label { padding: 8px 12px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--sd-text-muted, #6b7280); border-bottom: 1px solid var(--sd-border, #e5e7eb); background: var(--sd-surface-raised, #fafafa); }
   .component-body { padding: 16px; }
-  /* Ticket styles */
   .ticket-list { display: flex; flex-direction: column; gap: 12px; }
   .ticket-card { border: 1px solid var(--sd-border, #e5e7eb); border-radius: 6px; overflow: hidden; }
   .ticket-header { padding: 10px 12px; display: flex; justify-content: space-between; align-items: center; background: var(--sd-surface-raised, #fafafa); }
