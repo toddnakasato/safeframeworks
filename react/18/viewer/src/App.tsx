@@ -7,6 +7,7 @@
 import { useState, useEffect, useCallback, useRef, Component } from "react";
 import type { ReactNode, ErrorInfo } from "react";
 import { renderConfigBase } from "../../SafeRenderer";
+import { CraveStations } from "./CraveStations";
 import { SAMPLES } from "../../../../samples";
 import type { SafeEvent, ConfigBase, Ticket, TicketType } from "safecontracts";
 import { listAllTickets, createTicket, updateTicket } from "./ticket-service";
@@ -664,20 +665,15 @@ export default function App() {
             ))}
           </div>
         ) : (
-          /* Component view */
+          /* Component view — live component + five-station CRAVE panel */
           <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
             {toShow.map(([comp, v]) => (
-              <div key={v} style={{ border: "1px solid var(--sd-border, #e5e7eb)", borderRadius: 8, overflow: "hidden" }}>
-                <div style={{ padding: "8px 12px", fontSize: 11, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.05em", color: "var(--sd-text-muted, #6b7280)", borderBottom: "1px solid var(--sd-border, #e5e7eb)", background: "var(--sd-surface-raised, #fafafa)" }}>
-                  {v}
-                </div>
-                <div style={{ padding: 16 }}>
-                  <ComponentBoundary label={`${comp}/${v}`}>
-                    {renderConfigBase(paintConfig(SAMPLES[comp][v]), handleEvent)}
-                  </ComponentBoundary>
-                </div>
-
-                {/* Ticket creation */}
+              <CraveStations
+                key={`${comp}/${v}`}
+                config={paintConfig(SAMPLES[comp][v])}
+                label={v}
+                onOuterEvent={handleEvent}
+                ticketRow={
                 <div style={{ padding: "8px 12px", borderTop: "1px solid var(--sd-border, #e5e7eb)", display: "flex", gap: 6, alignItems: "center" }}>
                   <select id={`ticket-type-${comp}`} defaultValue="bug" style={{ padding: "3px 6px", fontSize: 10, borderRadius: 3, border: "1px solid var(--sd-border, #d1d5db)", background: "var(--sd-surface-base, #fff)", color: "var(--sd-text, #0f172a)" }}>
                     <option value="bug">bug</option><option value="event">event</option><option value="paint">paint</option>
@@ -696,7 +692,8 @@ export default function App() {
                     + Ticket
                   </button>
                 </div>
-              </div>
+                }
+              />
             ))}
           </div>
         )}

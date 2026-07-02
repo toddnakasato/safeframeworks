@@ -2,6 +2,7 @@
   import { onMount } from 'svelte';
   import { SAMPLES } from '../../../../samples';
   import { createSafeProofViewer } from '../../../../dev/proof-viewer';
+  import { craveRun, pushCraveEvent, treeLines, treeCount } from '../../../../dev/crave-station';
   import { listAllTickets, createTicket, updateTicket } from './ticket-service';
 
   function proofMount(node, comp) {
@@ -291,6 +292,56 @@
   $: closedTickets = tickets.filter(t => t.status === "closed" || t.status === "proved").sort((a, b) => b.updated.localeCompare(a.updated));
   $: activeTickets = ticketView === "open" ? openTickets : closedTickets;
   $: currentThemes = THEMES[activeStyle] ?? ["default"];
+
+  // ── CRAVE five-station panel ──────────────────────────────────────────────
+  let craveMount = null;
+  let craveOverride = null;
+  let craveResult = null;
+  let craveEvents = [];
+  let configText = "";
+  let configErr = null;
+
+  const craveVerdictColor = (v) => v === "GREEN" ? "var(--sd-success, #15803d)" : v === "RED" ? "var(--sd-danger, #dc2626)" : "var(--sd-warn, #d97706)";
+
+  // reset override + ticker when the selected sample changes
+  function resetCrave(_key) {
+    craveOverride = null;
+    craveEvents = [];
+  }
+  $: resetCrave(`${activeComponent}/${activeVariation}`);
+
+  // effective config — user override wins, else the selected sample
+  $: craveConfig = craveOverride ?? ((activeComponent && activeVariation && SAMPLES[activeComponent]?.[activeVariation]) || null);
+
+  // keep the C-card textarea in sync with the effective config
+  function syncConfigText(cfg) {
+    if (!cfg) return;
+    configText = JSON.stringify(cfg, null, 2);
+    configErr = null;
+  }
+  $: syncConfigText(craveConfig);
+
+  // C→R→A→V→E: one pipeline run per effective config + mount.
+  // Body lives in a function so assignments inside don't retrigger the $: statement.
+  function runCravePipeline(cfg, el) {
+    if (!cfg || !el) return;
+    craveResult = craveRun(cfg, el, (ev) => {
+      craveEvents = pushCraveEvent(craveEvents, ev);
+      handleEvent(ev);
+    });
+  }
+  $: runCravePipeline(craveConfig, craveMount);
+
+  function applyConfigText(text) {
+    configText = text;
+    try {
+      const parsed = JSON.parse(text);
+      configErr = null;
+      craveOverride = parsed;
+    } catch (e) {
+      configErr = e.message?.split("\n")[0] ?? "invalid JSON";
+    }
+  }
 </script>
 
 <div class="viewer">
@@ -476,10 +527,18 @@
       </div>
     {:else}
       {#if activeComponent && activeVariation && SAMPLES[activeComponent]?.[activeVariation]}
-        <div class="component-card">
-          <div class="component-label">{activeVariation}</div>
-          <div class="component-body">
-            <svelte:component this={comps[activeComponent]} config={SAMPLES[activeComponent][activeVariation]} onEvent={handleEvent} />
+        <!-- Component card — the live E mount -->
+        <div class="component-card" style="margin-bottom:4px">
+          <div class="component-label" style="display:flex;align-items:center">
+            <span>{activeVariation}</span>
+            {#if craveResult}
+              <span style="margin-left:auto;font-size:10px;font-weight:600;color:{craveVerdictColor(craveResult.verdict)}">
+                CRAVE {craveResult.verdict} — {craveResult.renderMs}ms — {fmtEst(craveResult.ts)} ET
+              </span>
+            {/if}
+          </div>
+          <div style="padding:16px">
+            <div bind:this={craveMount}></div>
           </div>
           <div class="ticket-create">
             <select class="ticket-type-select" id={`ticket-type-${activeComponent}`}>
@@ -493,6 +552,82 @@
               const typeEl = document.getElementById(`ticket-type-${activeComponent}`);
               handleCreateTicket(activeComponent, typeEl, titleEl);
             }}>+ Ticket</button>
+          </div>
+        </div>
+
+        <!-- Five-station strip -->
+        <div style="display:grid;grid-template-columns:repeat(5, 1fr);gap:10px;height:38vh;margin-top:4px">
+          <!-- C — Config -->
+          <div class="crave-card">
+            <div class="crave-head">
+              <span>C — Config</span>
+              <span style="margin-left:auto;font-weight:400;text-transform:none">
+                {#if configErr}<span style="color:var(--sd-danger, #dc2626)">{configErr}</span>{:else}editable{/if}
+              </span>
+            </div>
+            <textarea
+              class="crave-body"
+              value={configText}
+              on:input={(e) => applyConfigText(e.target.value)}
+              spellcheck="false"
+              style="border:none;outline:none;resize:none;background:var(--sd-surface-base, #fff);color:var(--sd-text, #1a1a1a);width:100%"
+            ></textarea>
+          </div>
+
+          <!-- R — Render -->
+          <div class="crave-card">
+            <div class="crave-head">
+              <span>R — Render</span>
+              <span style="margin-left:auto;font-weight:400;text-transform:none">{treeCount(craveResult?.actual ?? null)} nodes — {craveResult?.renderMs ?? 0}ms</span>
+            </div>
+            <div class="crave-body">{treeLines(craveResult?.actual ?? null).join("\n") || "no output"}</div>
+          </div>
+
+          <!-- A — Assert -->
+          <div class="crave-card">
+            <div class="crave-head">
+              <span>A — Assert</span>
+              <span style="margin-left:auto;font-weight:400;text-transform:none">{treeCount(craveResult?.expected ?? null)} nodes expected</span>
+            </div>
+            <div class="crave-body">{treeLines(craveResult?.expected ?? null).join("\n") || "no expectation"}</div>
+          </div>
+
+          <!-- V — Verify -->
+          <div class="crave-card">
+            <div class="crave-head">
+              <span>V — Verify</span>
+              <span style="margin-left:auto;font-weight:700;text-transform:none;color:{craveVerdictColor(craveResult?.verdict)}">{craveResult?.verdict ?? "—"}</span>
+            </div>
+            <div class="crave-body">
+              {#if craveResult?.error}
+                <div style="color:var(--sd-danger, #dc2626)">{craveResult.error}</div>
+              {/if}
+              {#if craveResult && !craveResult.error && craveResult.mismatches.length === 0}
+                <div style="color:var(--sd-success, #15803d)">{"diffRenderedTrees: 0 mismatches\nexpected ≡ actual"}</div>
+              {/if}
+              {#each craveResult?.mismatches ?? [] as m}
+                <div style="color:var(--sd-danger, #dc2626);margin-bottom:4px">{`${m.path}\n  expected: ${String(m.expected)}\n  actual:   ${String(m.actual)}`}</div>
+              {/each}
+            </div>
+          </div>
+
+          <!-- E — Execute -->
+          <div class="crave-card">
+            <div class="crave-head">
+              <span>E — Execute</span>
+              <span style="margin-left:auto;font-weight:400;text-transform:none">{craveEvents.length} events</span>
+            </div>
+            <div class="crave-body" use:scrollBottom={craveEvents}>
+              {#if craveEvents.length === 0}<span style="color:var(--sd-text-muted, #9ca3af)">interact with the component above…</span>{/if}
+              {#each craveEvents as ev}
+                <div style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">
+                  <span style="color:var(--sd-text-muted, #9ca3af)">{fmtEst(ev.ts)} </span>
+                  <span style="color:var(--sd-accent, #2563eb)">{ev.origin}</span>
+                  <span>{` ${ev.name}`}</span>
+                  {#if ev.detail}<span style="color:var(--sd-text-muted, #6b7280)">{` ${ev.detail}`}</span>{/if}
+                </div>
+              {/each}
+            </div>
           </div>
         </div>
       {/if}
@@ -548,4 +683,7 @@
   .ticket-title-input { flex: 1; padding: 3px 6px; font-size: 11px; border-radius: 3px; border: 1px solid var(--sd-border, #d1d5db); background: var(--sd-surface-base, #fff); color: var(--sd-text, #0f172a); }
   @keyframes orbitor-blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.25; } }
   .blink { animation: orbitor-blink 1.5s ease-in-out infinite; }
+  .crave-card { border: 1px solid var(--sd-border, #e5e7eb); border-radius: 6px; overflow: hidden; display: flex; flex-direction: column; min-height: 0; }
+  .crave-head { padding: 6px 10px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--sd-text-muted, #6b7280); border-bottom: 1px solid var(--sd-border, #e5e7eb); background: var(--sd-surface-raised, #fafafa); display: flex; align-items: center; gap: 6px; }
+  .crave-body { padding: 8px 10px; font-family: monospace; font-size: 9.5px; line-height: 1.55; flex: 1; overflow: auto; min-height: 0; white-space: pre; }
 </style>

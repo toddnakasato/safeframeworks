@@ -3,43 +3,13 @@
  * Full feature parity with react/19 viewer: Proofs, Tickets, Components,
  * EPRPP paint state, style/theme picklists, mutual exclusion.
  */
-import { Component, OnInit, OnDestroy, AfterViewChecked, ElementRef, ChangeDetectorRef, NgZone } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit, AfterViewChecked, ElementRef, ChangeDetectorRef, NgZone } from '@angular/core';
 import { SAMPLES } from '../../../../samples';
 import { createSafeProofViewer } from '../../../../dev/proof-viewer';
-import { NgFor, NgIf, NgStyle, NgSwitch, NgSwitchCase } from '@angular/common';
+import { craveRun, pushCraveEvent, treeLines, treeCount } from '../../../../dev/crave-station';
+import type { CraveRun, CraveEventLine } from '../../../../dev/crave-station';
+import { NgFor, NgIf, NgStyle } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { SafeLayoutComponent } from '../../SafeLayout';
-import { SafeColumnsComponent } from '../../SafeColumns';
-import { SafeCardComponent } from '../../SafeCard';
-import { SafeButtonComponent } from '../../SafeButton';
-import { SafeTableComponent } from '../../SafeTable';
-import { SafeTreeComponent } from '../../SafeTree';
-import { SafeSheetComponent } from '../../SafeSheet';
-import { SafeChartComponent } from '../../SafeChart';
-import { SafeHeatmapComponent } from '../../SafeHeatmap';
-import { SafeGaugeComponent } from '../../SafeGauge';
-import { SafeFunnelComponent } from '../../SafeFunnel';
-import { SafeFlowComponent } from '../../SafeFlow';
-import { SafeHierarchyComponent } from '../../SafeHierarchy';
-import { SafeTimelineComponent } from '../../SafeTimeline';
-import { SafeMapComponent } from '../../SafeMap';
-import { SafeCalendarComponent } from '../../SafeCalendar';
-import { SafeToggleComponent } from '../../SafeToggle';
-import { SafeWeekComponent } from '../../SafeWeek';
-import { SafeChatComponent } from '../../SafeChat';
-import { SafeTabsComponent } from '../../SafeTabs';
-import { SafeCalloutComponent } from '../../SafeCallout';
-import { SafeDragDropComponent } from '../../SafeDragDrop';
-import { SafeGridComponent } from '../../SafeGrid';
-import { SafeInputComponent } from '../../SafeInput';
-import { SafeListComponent } from '../../SafeList';
-import { SafePickerComponent } from '../../SafePicker';
-import { SafeNavComponent } from '../../SafeNav';
-import { SafeParserComponent } from '../../SafeParser';
-import { SafePlanComponent } from '../../SafePlan';
-import { SafeSkillUpComponent } from '../../SafeSkillUp';
-import { SafeDispatchComponent } from '../../SafeDispatch';
-import { SafeBriefingComponent } from '../../SafeBriefing';
 import { listAllTickets, createTicket, updateTicket } from './ticket-service';
 import type { Ticket, TicketType } from 'safecontracts';
 import type { SafeEvent, ConfigBase } from 'safecontracts';
@@ -131,7 +101,7 @@ function loadStyle(name: string, theme: string) {
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [NgFor, NgIf, NgStyle, NgSwitch, NgSwitchCase, FormsModule, SafeLayoutComponent, SafeColumnsComponent, SafeCardComponent, SafeButtonComponent, SafeTableComponent, SafeTreeComponent, SafeSheetComponent, SafeChartComponent, SafeHeatmapComponent, SafeGaugeComponent, SafeFunnelComponent, SafeFlowComponent, SafeHierarchyComponent, SafeTimelineComponent, SafeMapComponent, SafeCalendarComponent, SafeToggleComponent, SafeWeekComponent, SafeChatComponent, SafeTabsComponent, SafeCalloutComponent, SafeDragDropComponent, SafeGridComponent, SafeInputComponent, SafeListComponent, SafePickerComponent, SafeNavComponent, SafeParserComponent, SafePlanComponent, SafeSkillUpComponent, SafeDispatchComponent, SafeBriefingComponent],
+  imports: [NgFor, NgIf, NgStyle, FormsModule],
   template: `
     <div [ngStyle]="{ display: 'flex', height: '100vh', fontFamily: 'system-ui, sans-serif', background: 'var(--sd-surface-base, #fff)', color: 'var(--sd-text, #1a1a1a)' }">
       <!-- Sidebar -->
@@ -353,49 +323,20 @@ function loadStyle(name: string, theme: string) {
           </div>
         </ng-container>
 
-        <!-- COMPONENT VIEW -->
+        <!-- COMPONENT VIEW — live component + five-station CRAVE panel -->
         <ng-container *ngIf="!ticketView && !proofView && !orbitorView">
           <div [ngStyle]="{ display: 'flex', flexDirection: 'column', gap: '24px' }">
-            <ng-container *ngFor="let pair of toShow()">
-              <div [ngStyle]="{ border: '1px solid var(--sd-border, #e5e7eb)', borderRadius: '8px', overflow: 'hidden' }">
-                <div [ngStyle]="{ padding: '8px 12px', fontSize: '11px', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--sd-text-muted, #6b7280)', borderBottom: '1px solid var(--sd-border, #e5e7eb)', background: 'var(--sd-surface-raised, #fafafa)' }">
-                  {{pair[1]}}
+            <ng-container *ngFor="let pair of toShow(); trackBy: trackPair">
+              <!-- Component card — the live E mount -->
+              <div data-component-card [ngStyle]="{ border: '1px solid var(--sd-border, #e5e7eb)', borderRadius: '8px', overflow: 'hidden' }">
+                <div [ngStyle]="{ padding: '8px 12px', fontSize: '11px', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--sd-text-muted, #6b7280)', borderBottom: '1px solid var(--sd-border, #e5e7eb)', background: 'var(--sd-surface-raised, #fafafa)', display: 'flex', alignItems: 'center' }">
+                  <span>{{pair[1]}}</span>
+                  <span *ngIf="craveResult" [ngStyle]="{ marginLeft: 'auto', fontSize: '10px', fontWeight: '600', color: craveVerdictColor() }">
+                    CRAVE {{craveResult ? craveResult.verdict : ''}} — {{craveResult ? craveResult.renderMs : 0}}ms — {{craveResult ? fmtEst(craveResult.ts) : ''}} ET
+                  </span>
                 </div>
                 <div [ngStyle]="{ padding: '16px' }">
-                  <ng-container [ngSwitch]="pair[0]">
-                    <safe-layout *ngSwitchCase="'layout'" [config]="cfg(pair[0], pair[1])" [onEvent]="handleEvent"></safe-layout>
-                    <safe-columns *ngSwitchCase="'columns'" [config]="cfg(pair[0], pair[1])" [onEvent]="handleEvent"></safe-columns>
-                    <safe-card *ngSwitchCase="'card'" [config]="cfg(pair[0], pair[1])" [onEvent]="handleEvent"></safe-card>
-                    <safe-button *ngSwitchCase="'button'" [config]="cfg(pair[0], pair[1])" [onEvent]="handleEvent"></safe-button>
-                    <safe-table *ngSwitchCase="'table'" [config]="cfg(pair[0], pair[1])" [onEvent]="handleEvent"></safe-table>
-                    <safe-tree *ngSwitchCase="'tree'" [config]="cfg(pair[0], pair[1])" [onEvent]="handleEvent"></safe-tree>
-                    <safe-sheet *ngSwitchCase="'sheet'" [config]="cfg(pair[0], pair[1])" [onEvent]="handleEvent"></safe-sheet>
-                    <safe-chart *ngSwitchCase="'chart'" [config]="cfg(pair[0], pair[1])" [onEvent]="handleEvent"></safe-chart>
-                    <safe-heatmap *ngSwitchCase="'heatmap'" [config]="cfg(pair[0], pair[1])" [onEvent]="handleEvent"></safe-heatmap>
-                    <safe-gauge *ngSwitchCase="'gauge'" [config]="cfg(pair[0], pair[1])" [onEvent]="handleEvent"></safe-gauge>
-                    <safe-funnel *ngSwitchCase="'funnel'" [config]="cfg(pair[0], pair[1])" [onEvent]="handleEvent"></safe-funnel>
-                    <safe-flow *ngSwitchCase="'flow'" [config]="cfg(pair[0], pair[1])" [onEvent]="handleEvent"></safe-flow>
-                    <safe-hierarchy *ngSwitchCase="'hierarchy'" [config]="cfg(pair[0], pair[1])" [onEvent]="handleEvent"></safe-hierarchy>
-                    <safe-timeline *ngSwitchCase="'timeline'" [config]="cfg(pair[0], pair[1])" [onEvent]="handleEvent"></safe-timeline>
-                    <safe-map *ngSwitchCase="'map'" [config]="cfg(pair[0], pair[1])" [onEvent]="handleEvent"></safe-map>
-                    <safe-calendar *ngSwitchCase="'calendar'" [config]="cfg(pair[0], pair[1])" [onEvent]="handleEvent"></safe-calendar>
-                    <safe-toggle *ngSwitchCase="'toggle'" [config]="cfg(pair[0], pair[1])" [onEvent]="handleEvent"></safe-toggle>
-                    <safe-week *ngSwitchCase="'week'" [config]="cfg(pair[0], pair[1])" [onEvent]="handleEvent"></safe-week>
-                    <safe-chat *ngSwitchCase="'chat'" [config]="cfg(pair[0], pair[1])" [onEvent]="handleEvent"></safe-chat>
-                    <safe-tabs *ngSwitchCase="'tabs'" [config]="cfg(pair[0], pair[1])" [onEvent]="handleEvent"></safe-tabs>
-                    <safe-callout *ngSwitchCase="'callout'" [config]="cfg(pair[0], pair[1])" [onEvent]="handleEvent"></safe-callout>
-                    <safe-drag-drop *ngSwitchCase="'drag-drop'" [config]="cfg(pair[0], pair[1])" [onEvent]="handleEvent"></safe-drag-drop>
-                    <safe-grid *ngSwitchCase="'grid'" [config]="cfg(pair[0], pair[1])" [onEvent]="handleEvent"></safe-grid>
-                    <safe-input *ngSwitchCase="'input'" [config]="cfg(pair[0], pair[1])" [onEvent]="handleEvent"></safe-input>
-                    <safe-list *ngSwitchCase="'list'" [config]="cfg(pair[0], pair[1])" [onEvent]="handleEvent"></safe-list>
-                    <safe-picker *ngSwitchCase="'picker'" [config]="cfg(pair[0], pair[1])" [onEvent]="handleEvent"></safe-picker>
-                    <safe-nav *ngSwitchCase="'nav'" [config]="cfg(pair[0], pair[1])" [onEvent]="handleEvent"></safe-nav>
-                    <safe-parser *ngSwitchCase="'parser'" [config]="cfg(pair[0], pair[1])" [onEvent]="handleEvent"></safe-parser>
-                    <safe-plan *ngSwitchCase="'plan'" [config]="cfg(pair[0], pair[1])" [onEvent]="handleEvent"></safe-plan>
-                    <safe-skillup *ngSwitchCase="'skillup'" [config]="cfg(pair[0], pair[1])" [onEvent]="handleEvent"></safe-skillup>
-                    <safe-dispatch *ngSwitchCase="'dispatch'" [config]="cfg(pair[0], pair[1])" [onEvent]="handleEvent"></safe-dispatch>
-                    <safe-briefing *ngSwitchCase="'briefing'" [config]="cfg(pair[0], pair[1])" [onEvent]="handleEvent"></safe-briefing>
-                  </ng-container>
+                  <div #craveMount class="crave-mount"></div>
                 </div>
                 <!-- Ticket creation row -->
                 <div [ngStyle]="{ padding: '8px 12px', borderTop: '1px solid var(--sd-border, #e5e7eb)', display: 'flex', gap: '6px', alignItems: 'center' }">
@@ -409,6 +350,70 @@ function loadStyle(name: string, theme: string) {
                     [ngStyle]="{ padding: '3px 8px', fontSize: '10px', fontWeight: '600', borderRadius: '3px', border: 'none', background: 'var(--sd-accent, #2563eb)', color: 'var(--sd-text-inverse, #fff)', cursor: 'pointer' }">
                     + Ticket
                   </button>
+                </div>
+              </div>
+
+              <!-- Five-station strip -->
+              <div [ngStyle]="{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '10px', height: '38vh', marginTop: '4px' }">
+                <!-- C — Config -->
+                <div [ngStyle]="craveCardStyle">
+                  <div [ngStyle]="craveCardHead">
+                    <span>C — Config</span>
+                    <span [ngStyle]="{ marginLeft: 'auto', fontWeight: '400', textTransform: 'none' }">
+                      <span *ngIf="configErr" [ngStyle]="{ color: 'var(--sd-danger, #dc2626)' }">{{configErr}}</span>
+                      <span *ngIf="!configErr">editable</span>
+                    </span>
+                  </div>
+                  <textarea [value]="configText" (input)="applyConfigText($any($event.target).value)" spellcheck="false"
+                    [ngStyle]="craveTextareaStyle"></textarea>
+                </div>
+
+                <!-- R — Render -->
+                <div [ngStyle]="craveCardStyle">
+                  <div [ngStyle]="craveCardHead">
+                    <span>R — Render</span>
+                    <span [ngStyle]="{ marginLeft: 'auto', fontWeight: '400', textTransform: 'none' }">{{actualCount}} nodes — {{craveResult ? craveResult.renderMs : 0}}ms</span>
+                  </div>
+                  <div [ngStyle]="craveCardBody">{{renderTreeText || 'no output'}}</div>
+                </div>
+
+                <!-- A — Assert -->
+                <div [ngStyle]="craveCardStyle">
+                  <div [ngStyle]="craveCardHead">
+                    <span>A — Assert</span>
+                    <span [ngStyle]="{ marginLeft: 'auto', fontWeight: '400', textTransform: 'none' }">{{expectedCount}} nodes expected</span>
+                  </div>
+                  <div [ngStyle]="craveCardBody">{{expectedTreeText || 'no expectation'}}</div>
+                </div>
+
+                <!-- V — Verify -->
+                <div [ngStyle]="craveCardStyle">
+                  <div [ngStyle]="craveCardHead">
+                    <span>V — Verify</span>
+                    <span [ngStyle]="{ marginLeft: 'auto', fontWeight: '700', textTransform: 'none', color: craveVerdictColor() }">{{craveResult ? craveResult.verdict : '—'}}</span>
+                  </div>
+                  <div [ngStyle]="craveCardBody">
+                    <div *ngIf="craveResult && craveResult.error" [ngStyle]="{ color: 'var(--sd-danger, #dc2626)' }">{{craveResult.error}}</div>
+                    <div *ngIf="craveResult && !craveResult.error && craveResult.mismatches.length === 0" [ngStyle]="{ color: 'var(--sd-success, #15803d)', whiteSpace: 'pre' }">diffRenderedTrees: 0 mismatches&#10;expected ≡ actual</div>
+                    <div *ngFor="let m of craveResult ? craveResult.mismatches : []" [ngStyle]="{ color: 'var(--sd-danger, #dc2626)', marginBottom: '4px', whiteSpace: 'pre' }">{{m.path}}&#10;  expected: {{m.expected}}&#10;  actual:   {{m.actual}}</div>
+                  </div>
+                </div>
+
+                <!-- E — Execute -->
+                <div [ngStyle]="craveCardStyle">
+                  <div [ngStyle]="craveCardHead">
+                    <span>E — Execute</span>
+                    <span [ngStyle]="{ marginLeft: 'auto', fontWeight: '400', textTransform: 'none' }">{{craveEvents.length}} events</span>
+                  </div>
+                  <div class="crave-events" [ngStyle]="craveCardBody">
+                    <span *ngIf="craveEvents.length === 0" [ngStyle]="{ color: 'var(--sd-text-muted, #9ca3af)' }">interact with the component above…</span>
+                    <div *ngFor="let ev of craveEvents" [ngStyle]="{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }">
+                      <span [ngStyle]="{ color: 'var(--sd-text-muted, #9ca3af)' }">{{fmtEst(ev.ts)}} </span>
+                      <span [ngStyle]="{ color: 'var(--sd-accent, #2563eb)' }">{{ev.origin}}</span>
+                      <span> {{ev.name}}</span>
+                      <span *ngIf="ev.detail" [ngStyle]="{ color: 'var(--sd-text-muted, #6b7280)' }"> {{ev.detail}}</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </ng-container>
@@ -429,7 +434,7 @@ function loadStyle(name: string, theme: string) {
     :host { display: block; height: 100vh; }
   `]
 })
-export class AppComponent implements OnInit, OnDestroy, AfterViewChecked {
+export class AppComponent implements OnInit, OnDestroy, AfterViewInit, AfterViewChecked {
   constructor(private el: ElementRef, private cdr: ChangeDetectorRef, private ngZone: NgZone) {}
 
   // Style/Theme state
@@ -473,6 +478,23 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewChecked {
   dropdownStyle = { width: '100%', padding: '4px 8px', fontSize: '13px', borderRadius: '4px', border: '1px solid var(--sd-border, #d1d5db)', background: 'var(--sd-surface-base, #fff)', color: 'var(--sd-text, #1a1a1a)' };
   sectionLabel = { fontSize: '11px', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--sd-text-muted, #6b7280)', marginBottom: '8px', padding: '0 4px' };
 
+  // CRAVE station state
+  craveOverride: ConfigBase | null = null;
+  craveResult: CraveRun | null = null;
+  craveEvents: CraveEventLine[] = [];
+  configText = '';
+  configErr: string | null = null;
+  renderTreeText = '';
+  expectedTreeText = '';
+  actualCount = 0;
+  expectedCount = 0;
+
+  // CRAVE card styles
+  craveCardStyle = { border: '1px solid var(--sd-border, #e5e7eb)', borderRadius: '6px', overflow: 'hidden', display: 'flex', flexDirection: 'column', minHeight: '0' };
+  craveCardHead = { padding: '6px 10px', fontSize: '10px', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--sd-text-muted, #6b7280)', borderBottom: '1px solid var(--sd-border, #e5e7eb)', background: 'var(--sd-surface-raised, #fafafa)', display: 'flex', alignItems: 'center', gap: '6px' };
+  craveCardBody = { padding: '8px 10px', fontFamily: 'monospace', fontSize: '9.5px', lineHeight: '1.55', flex: '1', overflow: 'auto', minHeight: '0', whiteSpace: 'pre' };
+  craveTextareaStyle = { padding: '8px 10px', fontFamily: 'monospace', fontSize: '9.5px', lineHeight: '1.55', flex: '1', overflow: 'auto', minHeight: '0', whiteSpace: 'pre', border: 'none', outline: 'none', resize: 'none', background: 'var(--sd-surface-base, #fff)', color: 'var(--sd-text, #1a1a1a)', width: '100%' };
+
   get openTicketCount() { return this.tickets.filter(t => t.status === 'open' || t.status === 'in-progress').length; }
   get closedTicketCount() { return this.tickets.filter(t => t.status === 'closed' || t.status === 'proved').length; }
 
@@ -487,9 +509,72 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewChecked {
     if (this.orbitorDebounce) clearTimeout(this.orbitorDebounce);
   }
 
+  ngAfterViewInit() {
+    this.scheduleCraveRun();
+  }
+
   ngAfterViewChecked() {
-    // Bottom-anchor orbitor cell logs (newest at bottom)
+    // Bottom-anchor orbitor cell logs + CRAVE event ticker (newest at bottom)
     this.el.nativeElement.querySelectorAll('.orbitor-lines').forEach((n: HTMLElement) => { n.scrollTop = n.scrollHeight; });
+    this.el.nativeElement.querySelectorAll('.crave-events').forEach((n: HTMLElement) => { n.scrollTop = n.scrollHeight; });
+    if (this.craveNeedsRun && this.el.nativeElement.querySelector('.crave-mount')) {
+      this.craveNeedsRun = false;
+      setTimeout(() => this.runCrave());
+    }
+  }
+
+  // --- CRAVE pipeline ---
+  private craveNeedsRun = false;
+
+  private scheduleCraveRun() {
+    this.craveNeedsRun = true;
+    this.cdr.markForCheck();
+  }
+
+  craveVerdictColor(): string {
+    if (this.craveResult?.verdict === 'GREEN') return 'var(--sd-success, #15803d)';
+    if (this.craveResult?.verdict === 'RED') return 'var(--sd-danger, #dc2626)';
+    return 'var(--sd-warn, #d97706)';
+  }
+
+  applyConfigText(text: string) {
+    this.configText = text;
+    try {
+      const parsed = JSON.parse(text);
+      this.configErr = null;
+      this.craveOverride = parsed;
+      this.runCrave();
+    } catch (e: any) {
+      this.configErr = e?.message?.split('\n')[0] ?? 'invalid JSON';
+      this.cdr.markForCheck();
+    }
+  }
+
+  runCrave() {
+    const pair = this.toShow()[0];
+    if (!pair) return;
+    const mountEl = this.el.nativeElement.querySelector('.crave-mount') as HTMLElement | null;
+    if (!mountEl) return;
+    const effective = this.craveOverride ?? this.cfg(pair[0], pair[1]);
+    this.craveResult = craveRun(effective, mountEl, (e: SafeEvent) => this.ngZone.run(() => {
+      this.craveEvents = pushCraveEvent(this.craveEvents, e);
+      this.handleEvent(e);
+      this.cdr.markForCheck();
+    }));
+    this.renderTreeText = treeLines(this.craveResult.actual).join('\n');
+    this.expectedTreeText = treeLines(this.craveResult.expected).join('\n');
+    this.actualCount = treeCount(this.craveResult.actual);
+    this.expectedCount = treeCount(this.craveResult.expected);
+    this.configText = JSON.stringify(effective, null, 2);
+    this.cdr.markForCheck();
+  }
+
+  private resetCrave() {
+    this.craveOverride = null;
+    this.craveEvents = [];
+    this.craveResult = null;
+    this.configErr = null;
+    this.scheduleCraveRun();
   }
 
   // --- EPRPP File watcher ---
@@ -556,6 +641,7 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewChecked {
     this.activeProof = '__none__';
     this.ticketView = null;
     this.orbitorView = false;
+    this.resetCrave();
   }
 
   selectVariation(comp: string, v: string) {
@@ -565,11 +651,14 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewChecked {
     this.activeProof = '__none__';
     this.ticketView = null;
     this.orbitorView = false;
+    this.resetCrave();
   }
 
   allVariations(comp: string): string[] {
     return Object.keys((SAMPLES as any)[comp] ?? {}).sort();
   }
+
+  trackPair(_i: number, pair: [string, string]): string { return pair[0] + '/' + pair[1]; }
 
   toShow(): [string, string][] {
     if (this.activeComponent && this.activeVariation && (SAMPLES as any)[this.activeComponent]?.[this.activeVariation]) {

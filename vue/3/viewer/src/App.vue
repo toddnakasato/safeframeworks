@@ -7,51 +7,10 @@
 import { ref, computed, watch, onMounted, onUnmounted } from 'vue';
 import { SAMPLES } from '../../../../samples';
 import { createSafeProofViewer } from '../../../../dev/proof-viewer';
+import { craveRun, pushCraveEvent, treeLines, treeCount } from '../../../../dev/crave-station';
+import type { CraveRun, CraveEventLine } from '../../../../dev/crave-station';
 import type { SafeEvent, ConfigBase, TicketType, Ticket } from 'safecontracts';
 import { listAllTickets, createTicket, updateTicket } from './ticket-service';
-import SafeLayout from '../../SafeLayout.vue';
-import SafeColumns from '../../SafeColumns.vue';
-import SafeCard from '../../SafeCard.vue';
-import SafeButton from '../../SafeButton.vue';
-import SafeTable from '../../SafeTable.vue';
-import SafeTree from '../../SafeTree.vue';
-import SafeSheet from '../../SafeSheet.vue';
-import SafeChart from '../../SafeChart.vue';
-import SafeHeatmap from '../../SafeHeatmap.vue';
-import SafeGauge from '../../SafeGauge.vue';
-import SafeFunnel from '../../SafeFunnel.vue';
-import SafeFlow from '../../SafeFlow.vue';
-import SafeHierarchy from '../../SafeHierarchy.vue';
-import SafeTimeline from '../../SafeTimeline.vue';
-import SafeMap from '../../SafeMap.vue';
-import SafeCalendar from '../../SafeCalendar.vue';
-import SafeToggle from '../../SafeToggle.vue';
-import SafeWeek from '../../SafeWeek.vue';
-import SafeChat from '../../SafeChat.vue';
-import SafeTabs from '../../SafeTabs.vue';
-import SafeCallout from '../../SafeCallout.vue';
-import SafeDragDrop from '../../SafeDragDrop.vue';
-import SafeGrid from '../../SafeGrid.vue';
-import SafeInput from '../../SafeInput.vue';
-import SafeList from '../../SafeList.vue';
-import SafePicker from '../../SafePicker.vue';
-import SafeNav from '../../SafeNav.vue';
-import SafeParser from '../../SafeParser.vue';
-import SafePlan from '../../SafePlan.vue';
-import SafeSkillUp from '../../SafeSkillUp.vue';
-import SafeDispatch from '../../SafeDispatch.vue';
-import SafeBriefing from '../../SafeBriefing.vue';
-
-const comps: Record<string, any> = {
-  layout: SafeLayout, columns: SafeColumns, card: SafeCard, button: SafeButton,
-  table: SafeTable, tree: SafeTree, sheet: SafeSheet, chart: SafeChart,
-  heatmap: SafeHeatmap, gauge: SafeGauge, funnel: SafeFunnel, flow: SafeFlow,
-  hierarchy: SafeHierarchy, timeline: SafeTimeline, map: SafeMap, calendar: SafeCalendar,
-  toggle: SafeToggle, week: SafeWeek, chat: SafeChat, tabs: SafeTabs,
-  callout: SafeCallout, 'drag-drop': SafeDragDrop, grid: SafeGrid, input: SafeInput,
-  list: SafeList, picker: SafePicker, nav: SafeNav, parser: SafeParser,
-  plan: SafePlan, skillup: SafeSkillUp, dispatch: SafeDispatch, briefing: SafeBriefing,
-};
 
 /** Tauri invoke — safe no-op when not in Tauri context */
 async function invoke<T>(cmd: string, args?: Record<string, any>): Promise<T> {
@@ -420,6 +379,64 @@ const toShow = computed<[string, string][]>(() => {
   return [];
 });
 
+// --- CRAVE five-station panel state ---
+const craveOverride = ref<ConfigBase | null>(null);
+const craveResult = ref<CraveRun | null>(null);
+const craveEvents = ref<CraveEventLine[]>([]);
+const configText = ref('');
+const configErr = ref<string | null>(null);
+const mountEl = ref<HTMLElement | null>(null);
+
+// Sample config for the active pair, with EPRPP paint state applied
+const sampleConfig = computed<ConfigBase | null>(() => {
+  const pair = toShow.value[0];
+  if (!pair) return null;
+  return paintConfig(SAMPLES[pair[0]][pair[1]]);
+});
+
+// Effective config: override (from edited C card) wins over the sample
+const effectiveConfig = computed<ConfigBase | null>(() => craveOverride.value ?? sampleConfig.value);
+
+// Reset override + ticker when the selected sample changes
+watch([activeComponent, activeVariation], () => {
+  craveOverride.value = null;
+  craveEvents.value = [];
+});
+
+// Keep the C card text in sync with the effective config
+watch(effectiveConfig, cfg => {
+  configText.value = cfg ? JSON.stringify(cfg, null, 2) : '';
+  configErr.value = null;
+}, { immediate: true });
+
+function onCraveEvent(event: SafeEvent) {
+  craveEvents.value = pushCraveEvent(craveEvents.value, event);
+  handleEvent(event);
+}
+
+// C→R→A→V→E: one pipeline run per effective config (mount IS the live display)
+watch([effectiveConfig, mountEl], ([cfg, el]) => {
+  if (!cfg || !el) return;
+  craveResult.value = craveRun(cfg, el, onCraveEvent);
+}, { flush: 'post' });
+
+// C card edits: valid JSON re-runs the pipeline; invalid keeps last good render
+function applyConfigText(text: string) {
+  configText.value = text;
+  try {
+    const parsed = JSON.parse(text);
+    configErr.value = null;
+    craveOverride.value = parsed;
+  } catch (e: any) {
+    configErr.value = e.message?.split('\n')[0] ?? 'invalid JSON';
+  }
+}
+
+const verdictColor = computed(() =>
+  craveResult.value?.verdict === 'GREEN' ? 'var(--sd-success, #15803d)'
+  : craveResult.value?.verdict === 'RED' ? 'var(--sd-danger, #dc2626)'
+  : 'var(--sd-warn, #d97706)');
+
 // Filtered tickets
 const openTickets = computed(() => tickets.value.filter(t => t.status === 'open' || t.status === 'in-progress'));
 const closedTickets = computed(() => tickets.value.filter(t => t.status === 'closed' || t.status === 'proved').sort((a, b) => b.updated.localeCompare(a.updated)));
@@ -666,22 +683,101 @@ function groupChecks(checks: any[]): { group: string; total: number; passed: num
         </div>
       </div>
 
-      <!-- Component view -->
+      <!-- Component view — CRAVE five-station panel -->
       <div v-else class="content-column" style="gap: 24px">
-        <div v-for="[comp, v] in toShow" :key="`${comp}-${v}`" class="component-card">
-          <div class="component-label">{{ v }}</div>
-          <div class="component-body">
-            <component :is="comps[comp]" :config="paintConfig(SAMPLES[comp][v])" :on-event="handleEvent" />
+        <div v-for="[comp, v] in toShow" :key="`${comp}-${v}`" style="display: flex; flex-direction: column; gap: 4px;">
+          <!-- Component card — the live E mount -->
+          <div class="component-card">
+            <div class="component-label" style="display: flex; align-items: center;">
+              <span>{{ v }}</span>
+              <span v-if="craveResult" :style="{ marginLeft: 'auto', fontSize: '10px', fontWeight: 600, color: verdictColor }">
+                CRAVE {{ craveResult.verdict }} — {{ craveResult.renderMs }}ms — {{ fmtEst(craveResult.ts) }} ET
+              </span>
+            </div>
+            <div class="component-body">
+              <div :ref="(el: any) => { mountEl = el as HTMLElement | null }"></div>
+            </div>
+            <!-- Ticket creation -->
+            <div class="ticket-create">
+              <select :id="`ticket-type-${comp}`" class="ticket-type-select">
+                <option value="bug">bug</option><option value="event">event</option><option value="paint">paint</option>
+                <option value="style">style</option><option value="data">data</option><option value="structure">structure</option>
+                <option value="variation">variation</option><option value="new-component">new-component</option>
+              </select>
+              <input :id="`ticket-title-${comp}`" placeholder="Describe the issue..." class="ticket-input" />
+              <button class="btn-ticket-create" @click="submitTicket(comp)">+ Ticket</button>
+            </div>
           </div>
-          <!-- Ticket creation -->
-          <div class="ticket-create">
-            <select :id="`ticket-type-${comp}`" class="ticket-type-select">
-              <option value="bug">bug</option><option value="event">event</option><option value="paint">paint</option>
-              <option value="style">style</option><option value="data">data</option><option value="structure">structure</option>
-              <option value="variation">variation</option><option value="new-component">new-component</option>
-            </select>
-            <input :id="`ticket-title-${comp}`" placeholder="Describe the issue..." class="ticket-input" />
-            <button class="btn-ticket-create" @click="submitTicket(comp)">+ Ticket</button>
+
+          <!-- Five-station strip -->
+          <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; height: 38vh; margin-top: 4px;">
+            <!-- C — Config -->
+            <div class="crave-card">
+              <div class="crave-head">
+                <span>C — Config</span>
+                <span class="crave-meta">
+                  <span v-if="configErr" style="color: var(--sd-danger, #dc2626)">{{ configErr }}</span>
+                  <template v-else>editable</template>
+                </span>
+              </div>
+              <textarea
+                class="crave-body crave-textarea"
+                :value="configText"
+                spellcheck="false"
+                @input="applyConfigText(($event.target as HTMLTextAreaElement).value)"
+              ></textarea>
+            </div>
+
+            <!-- R — Render -->
+            <div class="crave-card">
+              <div class="crave-head">
+                <span>R — Render</span>
+                <span class="crave-meta">{{ treeCount(craveResult?.actual ?? null) }} nodes — {{ craveResult?.renderMs ?? 0 }}ms</span>
+              </div>
+              <div class="crave-body">{{ treeLines(craveResult?.actual ?? null).join('\n') || 'no output' }}</div>
+            </div>
+
+            <!-- A — Assert -->
+            <div class="crave-card">
+              <div class="crave-head">
+                <span>A — Assert</span>
+                <span class="crave-meta">{{ treeCount(craveResult?.expected ?? null) }} nodes expected</span>
+              </div>
+              <div class="crave-body">{{ treeLines(craveResult?.expected ?? null).join('\n') || 'no expectation' }}</div>
+            </div>
+
+            <!-- V — Verify -->
+            <div class="crave-card">
+              <div class="crave-head">
+                <span>V — Verify</span>
+                <span class="crave-meta" :style="{ fontWeight: 700, color: verdictColor }">{{ craveResult?.verdict ?? '—' }}</span>
+              </div>
+              <div class="crave-body">
+                <div v-if="craveResult?.error" style="color: var(--sd-danger, #dc2626)">{{ craveResult.error }}</div>
+                <div v-if="craveResult && !craveResult.error && craveResult.mismatches.length === 0" style="color: var(--sd-success, #15803d)">diffRenderedTrees: 0 mismatches
+expected ≡ actual</div>
+                <div v-for="(m, i) in craveResult?.mismatches ?? []" :key="i" style="color: var(--sd-danger, #dc2626); margin-bottom: 4px;">{{ m.path }}
+  expected: {{ String(m.expected) }}
+  actual:   {{ String(m.actual) }}</div>
+              </div>
+            </div>
+
+            <!-- E — Execute -->
+            <div class="crave-card">
+              <div class="crave-head">
+                <span>E — Execute</span>
+                <span class="crave-meta">{{ craveEvents.length }} events</span>
+              </div>
+              <div v-scroll-bottom class="crave-body">
+                <span v-if="craveEvents.length === 0" style="color: var(--sd-text-muted, #9ca3af)">interact with the component above…</span>
+                <div v-for="(ev, i) in craveEvents" :key="i" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                  <span style="color: var(--sd-text-muted, #9ca3af)">{{ fmtEst(ev.ts) }} </span>
+                  <span style="color: var(--sd-accent, #2563eb)">{{ ev.origin }}</span>
+                  <span> {{ ev.name }}</span>
+                  <span v-if="ev.detail" style="color: var(--sd-text-muted, #6b7280)"> {{ ev.detail }}</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -763,6 +859,13 @@ function groupChecks(checks: any[]): { group: string; total: number; passed: num
 .component-card { border: 1px solid var(--sd-border, #e5e7eb); border-radius: 8px; overflow: hidden; }
 .component-label { padding: 8px 12px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--sd-text-muted, #6b7280); border-bottom: 1px solid var(--sd-border, #e5e7eb); background: var(--sd-surface-raised, #fafafa); }
 .component-body { padding: 16px; }
+
+/* CRAVE five-station cards */
+.crave-card { border: 1px solid var(--sd-border, #e5e7eb); border-radius: 6px; overflow: hidden; display: flex; flex-direction: column; min-height: 0; }
+.crave-head { padding: 6px 10px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--sd-text-muted, #6b7280); border-bottom: 1px solid var(--sd-border, #e5e7eb); background: var(--sd-surface-raised, #fafafa); display: flex; align-items: center; gap: 6px; }
+.crave-meta { margin-left: auto; font-weight: 400; text-transform: none; }
+.crave-body { padding: 8px 10px; font-family: monospace; font-size: 9.5px; line-height: 1.55; flex: 1; overflow: auto; min-height: 0; white-space: pre; }
+.crave-textarea { border: none; outline: none; resize: none; background: var(--sd-surface-base, #fff); color: var(--sd-text, #1a1a1a); width: 100%; }
 
 /* Ticket creation in component cards */
 .ticket-create { padding: 8px 12px; border-top: 1px solid var(--sd-border, #e5e7eb); display: flex; gap: 6px; align-items: center; }
